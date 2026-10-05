@@ -1,10 +1,33 @@
 {
   "schema": "sparkqwen.atlas-engine-source/v1",
-  "status": "baseline",
-  "note": "Bring-up baseline: unmodified Atlas-Inf main. The SparkQwen engine branch (sparkqwen/atlas-<date>) will be cut from this commit plus the ported SparkGLM work.",
-  "repository": "https://github.com/Atlas-Inf/atlas.git",
-  "branch": "main",
-  "commit": "4405bce359714672c57944fafd8aef9df35de524",
+  "status": "candidate_unvalidated",
+  "note": "SparkGLM's upstream series (generic serving, scheduler, grammar, prefix-cache and RDMA comm work; GLM-only paths are gated off for qwen4_exp) plus nine unmerged Atlas-Inf Flash-Next fixes. Built on <build-host>; not yet run on hardware.",
+  "repository": "https://github.com/Enntity/atlas.git",
+  "branch": "sparkqwen/atlas-20261005",
+  "commit": "4261e370dfdaff71fb89e82006866623f117a77e",
   "kernel_target": "qwen3.8-flash-next",
-  "license": "AGPL-3.0-only"
+  "license": "AGPL-3.0-only",
+  "layers": {
+    "atlas_inf_main_base": "4405bce359714672c57944fafd8aef9df35de524",
+    "sparkglm_upstream_series": {
+      "branch": "upstream/glm53-flash-20261005-rebase",
+      "commit": "6251db8e"
+    },
+    "atlas_inf_unmerged_picks": [
+      "66dbda37",
+      "8ca15b8b",
+      "4e6297e5",
+      "a31fcadd",
+      "b8c784de",
+      "4e42f921",
+      "9d84bace",
+      "c41d8298",
+      "5eda7c5c"
+    ]
+  },
+  "baseline": {
+    "branch": "atlas-inf main",
+    "commit": "4405bce359714672c57944fafd8aef9df35de524",
+    "binary": "<build-host>:~/atlas-builds/spark-sqbase-4405bce3"
+  }
 }
