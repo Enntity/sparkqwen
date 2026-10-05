@@ -30,7 +30,7 @@ unmodified Atlas-Inf main 4405bce3. Upstream picks use
 |---|---|---|
 | 8fca681d | MoE EP unpermute kernel optional (GLM series made it mandatory) | qwen target starts |
 | 99b889bf | GLM series' 26 optional kernel probes declared expected-absent on qwen3.8-flash-next | qwen target passes the startup audit; logprob hash = Atlas main |
-| 39e87a3e (now 0e48..) | TP2 milestone 1: tp=ep=2, sharded GDN/attention, EP experts, replicated mHC/PLE/QSA/lm_head; probe fix; attention dense shard fix | 25.8 tok/s C1 (no MTP), 818K KV tokens |
+| 39e87a3e | TP2 milestone 1: tp=ep=2, sharded GDN/attention, EP experts, replicated mHC/PLE/QSA/lm_head; probe fix; attention dense shard fix | 25.8 tok/s C1 (no MTP), 818K KV tokens |
 | fc7a02cd | Attention TP shards quantized with the full matrix's NVFP4 scale | TP1-vs-TP2 drift 0.041 → 0.026 |
 | 06427ee3 | EP/TP: concurrent decode with an active QSA row goes per sequence | no more two-rank crash; probe 39/40, 12/12 |
 | 0e487227..ba9fd77c | MTP at TP2 from a TP=1 view; EP worker verify commit = head's; rank 1 skips mtp.*; parity entries | MTP works at TP2 |
