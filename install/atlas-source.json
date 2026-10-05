@@ -1,0 +1,10 @@
+{
+  "schema": "sparkqwen.atlas-engine-source/v1",
+  "status": "baseline",
+  "note": "Bring-up baseline: unmodified Atlas-Inf main. The SparkQwen engine branch (sparkqwen/atlas-<date>) will be cut from this commit plus the ported SparkGLM work.",
+  "repository": "https://github.com/Atlas-Inf/atlas.git",
+  "branch": "main",
+  "commit": "4405bce359714672c57944fafd8aef9df35de524",
+  "kernel_target": "qwen3.8-flash-next",
+  "license": "AGPL-3.0-only"
+}

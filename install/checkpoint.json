@@ -1,0 +1,9 @@
+{
+  "schema": "sparkqwen.checkpoint/v1",
+  "repository": "nvidia/Qwen3.8-Flash-Next-NVFP4",
+  "revision": null,
+  "size_gib": 123.6,
+  "format": "ModelOpt MIXED_PRECISION: routed experts NVFP4 (group 16), PLE n-gram embedding FP8, MTP experts FP8 block (128), everything else BF16",
+  "why": "NVIDIA's own quantization is preferred. RedHatAI/Qwen3.8-Flash-Next-NVFP4 (compressed-tensors, 173.6 GiB, BF16 PLE) and RadixArk/Qwen3.8-Flash-Next-NVFP4 (Atlas's default, 126.0 GiB, BF16 MTP) are the alternatives.",
+  "served_model_name": "qwen3.8-flash-next-atlas"
+}
