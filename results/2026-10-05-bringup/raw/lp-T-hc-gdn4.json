@@ -1,0 +1,18 @@
+{
+ "tag": "T-hc-gdn4",
+ "runs": [
+  {
+   "n": 30802,
+   "hash": "a9388f013eee",
+   "sum": -20041.0138,
+   "secs": 69.8
+  },
+  {
+   "n": 30802,
+   "hash": "a9388f013eee",
+   "sum": -20041.0138,
+   "secs": 69.9
+  }
+ ],
+ "reproducible": true
+}

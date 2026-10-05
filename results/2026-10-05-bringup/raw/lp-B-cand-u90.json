@@ -1,0 +1,18 @@
+{
+ "tag": "B-cand-u90",
+ "runs": [
+  {
+   "n": 30802,
+   "hash": "e9a6a92b3ce4",
+   "sum": -22507.0514,
+   "secs": 71.3
+  },
+  {
+   "n": 30802,
+   "hash": "e9a6a92b3ce4",
+   "sum": -22507.0514,
+   "secs": 71.5
+  }
+ ],
+ "reproducible": true
+}

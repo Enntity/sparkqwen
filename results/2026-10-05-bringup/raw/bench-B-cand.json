@@ -1,0 +1,427 @@
+{
+ "arm": "B-cand",
+ "date": "2026-10-05 12:45:45",
+ "cells": {
+  "decode": [
+   {
+    "ttft": 0.399,
+    "wall": 20.436,
+    "out": 384,
+    "prompt": 69,
+    "cached": 0,
+    "tok_s": 19.11,
+    "text_head": "The user wants a calm, detailed essay about lighthouse staffing and maintenance ",
+    "kind": "prose",
+    "rep": 0
+   },
+   {
+    "ttft": 0.446,
+    "wall": 19.827,
+    "out": 384,
+    "prompt": 69,
+    "cached": 64,
+    "tok_s": 19.76,
+    "text_head": "The user wants a calm, detailed essay about lighthouse staffing and maintenance ",
+    "kind": "prose",
+    "rep": 1
+   },
+   {
+    "ttft": 0.395,
+    "wall": 19.808,
+    "out": 384,
+    "prompt": 69,
+    "cached": 64,
+    "tok_s": 19.73,
+    "text_head": "The user wants a calm, detailed essay about lighthouse staffing and maintenance ",
+    "kind": "prose",
+    "rep": 2
+   },
+   {
+    "ttft": 0.371,
+    "wall": 20.798,
+    "out": 384,
+    "prompt": 65,
+    "cached": 32,
+    "tok_s": 18.75,
+    "text_head": "The user wants a Python module that implements an LRU cache with:\n1. TTL (Time-T",
+    "kind": "code",
+    "rep": 0
+   },
+   {
+    "ttft": 0.397,
+    "wall": 20.045,
+    "out": 384,
+    "prompt": 65,
+    "cached": 64,
+    "tok_s": 19.49,
+    "text_head": "The user wants a Python module that implements an LRU cache with:\n1. TTL (Time-T",
+    "kind": "code",
+    "rep": 1
+   },
+   {
+    "ttft": 0.38,
+    "wall": 20.04,
+    "out": 384,
+    "prompt": 65,
+    "cached": 64,
+    "tok_s": 19.48,
+    "text_head": "The user wants a Python module that implements an LRU cache with:\n1. TTL (Time-T",
+    "kind": "code",
+    "rep": 2
+   },
+   {
+    "ttft": 0.439,
+    "wall": 17.992,
+    "out": 384,
+    "prompt": 77,
+    "cached": 32,
+    "tok_s": 21.82,
+    "text_head": "The user wants a JSON array of 12 fictional library books. Each object needs: ti",
+    "kind": "json",
+    "rep": 0
+   },
+   {
+    "ttft": 0.405,
+    "wall": 17.094,
+    "out": 384,
+    "prompt": 77,
+    "cached": 64,
+    "tok_s": 22.95,
+    "text_head": "The user wants a JSON array of 12 fictional library books. Each object needs: ti",
+    "kind": "json",
+    "rep": 1
+   },
+   {
+    "ttft": 0.408,
+    "wall": 17.098,
+    "out": 384,
+    "prompt": 77,
+    "cached": 64,
+    "tok_s": 22.95,
+    "text_head": "The user wants a JSON array of 12 fictional library books. Each object needs: ti",
+    "kind": "json",
+    "rep": 2
+   }
+  ],
+  "prefill": [
+   {
+    "ttft": 1.54,
+    "wall": 2.468,
+    "out": 16,
+    "prompt": 2022,
+    "cached": 32,
+    "tok_s": 16.17,
+    "text_head": "The user asks which shelf holds Entry 3. Let me look at Entry ",
+    "size": 2048,
+    "rep": 0
+   },
+   {
+    "ttft": 1.548,
+    "wall": 2.442,
+    "out": 16,
+    "prompt": 2023,
+    "cached": 32,
+    "tok_s": 16.79,
+    "text_head": "The user asks which shelf holds Entry 3. Let me look at Entry ",
+    "size": 2048,
+    "rep": 1
+   },
+   {
+    "ttft": 0.019,
+    "wall": 0.019,
+    "out": 0,
+    "prompt": null,
+    "cached": null,
+    "tok_s": 0.0,
+    "text_head": "",
+    "size": 8192,
+    "rep": 0
+   },
+   {
+    "ttft": 0.017,
+    "wall": 0.017,
+    "out": 0,
+    "prompt": null,
+    "cached": null,
+    "tok_s": 0.0,
+    "text_head": "",
+    "size": 8192,
+    "rep": 1
+   },
+   {
+    "ttft": 0.023,
+    "wall": 0.023,
+    "out": 0,
+    "prompt": null,
+    "cached": null,
+    "tok_s": 0.0,
+    "text_head": "",
+    "size": 16384,
+    "rep": 0
+   },
+   {
+    "ttft": 0.023,
+    "wall": 0.023,
+    "out": 0,
+    "prompt": null,
+    "cached": null,
+    "tok_s": 0.0,
+    "text_head": "",
+    "size": 16384,
+    "rep": 1
+   },
+   {
+    "ttft": 0.031,
+    "wall": 0.031,
+    "out": 0,
+    "prompt": null,
+    "cached": null,
+    "tok_s": 0.0,
+    "text_head": "",
+    "size": 28672,
+    "rep": 0
+   },
+   {
+    "ttft": 0.03,
+    "wall": 0.03,
+    "out": 0,
+    "prompt": null,
+    "cached": null,
+    "tok_s": 0.0,
+    "text_head": "",
+    "size": 28672,
+    "rep": 1
+   }
+  ],
+  "conc": [
+   {
+    "c": 1,
+    "rep": 0,
+    "wall": 14.87,
+    "tokens": 256,
+    "agg_tok_s": 17.22,
+    "per_stream_tok_s": [
+     17.65
+    ],
+    "ttft": [
+     0.424
+    ]
+   },
+   {
+    "c": 1,
+    "rep": 1,
+    "wall": 13.22,
+    "tokens": 256,
+    "agg_tok_s": 19.37,
+    "per_stream_tok_s": [
+     19.91
+    ],
+    "ttft": [
+     0.413
+    ]
+   },
+   {
+    "c": 2,
+    "rep": 0,
+    "wall": 21.89,
+    "tokens": 512,
+    "agg_tok_s": 23.39,
+    "per_stream_tok_s": [
+     11.87,
+     12.25
+    ],
+    "ttft": [
+     0.408,
+     0.797
+    ]
+   },
+   {
+    "c": 2,
+    "rep": 1,
+    "wall": 21.59,
+    "tokens": 512,
+    "agg_tok_s": 23.72,
+    "per_stream_tok_s": [
+     12.04,
+     12.45
+    ],
+    "ttft": [
+     0.406,
+     0.791
+    ]
+   },
+   {
+    "c": 4,
+    "rep": 0,
+    "wall": 34.31,
+    "tokens": 1024,
+    "agg_tok_s": 29.84,
+    "per_stream_tok_s": [
+     7.58,
+     7.61,
+     7.82,
+     7.72
+    ],
+    "ttft": [
+     0.408,
+     0.796,
+     1.714,
+     1.28
+    ]
+   },
+   {
+    "c": 4,
+    "rep": 1,
+    "wall": 34.3,
+    "tokens": 1024,
+    "agg_tok_s": 29.86,
+    "per_stream_tok_s": [
+     7.53,
+     7.61,
+     7.8,
+     7.71
+    ],
+    "ttft": [
+     0.405,
+     0.791,
+     1.608,
+     1.2
+    ]
+   }
+  ],
+  "warm": [
+   {
+    "ttft": 0.023,
+    "wall": 0.023,
+    "out": 0,
+    "prompt": null,
+    "cached": null,
+    "tok_s": 0.0,
+    "text_head": "",
+    "size": 8192,
+    "turn": 0
+   },
+   {
+    "ttft": 0.021,
+    "wall": 0.021,
+    "out": 0,
+    "prompt": null,
+    "cached": null,
+    "tok_s": 0.0,
+    "text_head": "",
+    "size": 8192,
+    "turn": 1
+   },
+   {
+    "ttft": 0.021,
+    "wall": 0.021,
+    "out": 0,
+    "prompt": null,
+    "cached": null,
+    "tok_s": 0.0,
+    "text_head": "",
+    "size": 8192,
+    "turn": 2
+   },
+   {
+    "ttft": 0.02,
+    "wall": 0.02,
+    "out": 0,
+    "prompt": null,
+    "cached": null,
+    "tok_s": 0.0,
+    "text_head": "",
+    "size": 8192,
+    "turn": 3
+   },
+   {
+    "ttft": 0.021,
+    "wall": 0.021,
+    "out": 0,
+    "prompt": null,
+    "cached": null,
+    "tok_s": 0.0,
+    "text_head": "",
+    "size": 8192,
+    "turn": 4
+   },
+   {
+    "ttft": 0.022,
+    "wall": 0.022,
+    "out": 0,
+    "prompt": null,
+    "cached": null,
+    "tok_s": 0.0,
+    "text_head": "",
+    "size": 8192,
+    "turn": 5
+   },
+   {
+    "ttft": 0.034,
+    "wall": 0.034,
+    "out": 0,
+    "prompt": null,
+    "cached": null,
+    "tok_s": 0.0,
+    "text_head": "",
+    "size": 20480,
+    "turn": 0
+   },
+   {
+    "ttft": 0.032,
+    "wall": 0.032,
+    "out": 0,
+    "prompt": null,
+    "cached": null,
+    "tok_s": 0.0,
+    "text_head": "",
+    "size": 20480,
+    "turn": 1
+   },
+   {
+    "ttft": 0.033,
+    "wall": 0.033,
+    "out": 0,
+    "prompt": null,
+    "cached": null,
+    "tok_s": 0.0,
+    "text_head": "",
+    "size": 20480,
+    "turn": 2
+   },
+   {
+    "ttft": 0.032,
+    "wall": 0.032,
+    "out": 0,
+    "prompt": null,
+    "cached": null,
+    "tok_s": 0.0,
+    "text_head": "",
+    "size": 20480,
+    "turn": 3
+   },
+   {
+    "ttft": 0.031,
+    "wall": 0.031,
+    "out": 0,
+    "prompt": null,
+    "cached": null,
+    "tok_s": 0.0,
+    "text_head": "",
+    "size": 20480,
+    "turn": 4
+   },
+   {
+    "ttft": 0.031,
+    "wall": 0.031,
+    "out": 0,
+    "prompt": null,
+    "cached": null,
+    "tok_s": 0.0,
+    "text_head": "",
+    "size": 20480,
+    "turn": 5
+   }
+  ]
+ }
+}

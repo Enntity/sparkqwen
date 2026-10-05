@@ -1,0 +1,18 @@
+{
+ "tag": "nsys-m1",
+ "runs": [
+  {
+   "n": 30802,
+   "hash": "4db292ac9ab3",
+   "sum": -20419.6795,
+   "secs": 70.5
+  },
+  {
+   "n": 30802,
+   "hash": "4db292ac9ab3",
+   "sum": -20419.6795,
+   "secs": 70.8
+  }
+ ],
+ "reproducible": true
+}

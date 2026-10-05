@@ -1,0 +1,58 @@
+=== C1
+steps 129.0 step 60.4 ms idle 5.3 ms launches/step 989
+  class small(<60us marginal)     12.66 ms/step   672.8 launches/step  mean   18.8 us
+  class other-large               28.18 ms/step   121.7 launches/step  mean  231.5 us
+  class moe                       14.29 ms/step   195.0 launches/step  mean   73.3 us
+ 23.82 ms   71.9/st   331.3 us  dense_gemv_bf16
+  9.00 ms   47.3/st   190.5 us  moe_expert_gate_up_shared_t
+  5.66 ms   95.5/st    59.3 us  hc_pre_finish_x4
+  3.91 ms   95.5/st    41.0 us  hc_pre_down
+  3.40 ms   47.3/st    72.0 us  moe_expert_silu_down_shared_t
+  1.17 ms   35.4/st    32.9 us  gated_delta_rule_decode_f32
+  0.95 ms   11.8/st    80.5 us  w4a16_gemv_qg
+  0.91 ms   95.5/st     9.6 us  hc_pre_stage
+  0.90 ms    0.7/st  1215.3 us  moe_w4a16_fused_gate_up_t_k64
+  0.86 ms   59.1/st    14.6 us  w4a16_gemv_sw
+  0.65 ms   96.0/st     6.8 us  hc_post
+  0.60 ms    2.6/st   235.2 us  dense_gemm_bf16_pipelined
+  0.49 ms    0.7/st   657.7 us  moe_w4a16_grouped_gemm_ptrtable_t_k64
+  0.37 ms    5.2/st    71.5 us  Kernel2
+  0.31 ms   47.3/st     6.6 us  moe_topk_softmax
+  0.27 ms    0.7/st   364.0 us  w4a16_gemm
+  0.23 ms   35.4/st     6.5 us  dense_gemv_ba_gates
+  0.21 ms   11.8/st    18.1 us  kernel
+  0.19 ms    2.2/st    86.0 us  w4a16_gemm_t
+  0.19 ms   35.4/st     5.2 us  causal_conv1d_update_l2norm_f32
+  0.15 ms   47.3/st     3.2 us  moe_weighted_sum_blend
+  0.15 ms   11.8/st    12.7 us  paged_decode_attn
+  0.13 ms   11.8/st    10.8 us  w4a16_gemv_dual
+  0.08 ms    0.5/st   178.3 us  fp8_fp8_gemm_ldmab
+=== C4
+steps 516.0 step 35.4 ms idle 4.5 ms launches/step 584
+  class small(<60us marginal)      4.64 ms/step   334.9 launches/step  mean   13.8 us
+  class other-large               11.94 ms/step    55.1 launches/step  mean  216.6 us
+  class moe                       14.26 ms/step   194.4 launches/step  mean   73.3 us
+  9.03 ms   47.0/st   192.2 us  moe_expert_gate_up_shared_t
+  5.40 ms   23.1/st   233.6 us  Kernel2
+  3.38 ms    0.2/st 13625.3 us  dense_gemm_bf16
+  3.36 ms   47.0/st    71.5 us  moe_expert_silu_down_shared_t
+  1.91 ms   35.4/st    53.9 us  gated_delta_rule_decode_f32
+  1.47 ms   24.1/st    61.1 us  hc_pre_finish_x4
+  1.01 ms   24.1/st    42.0 us  hc_pre_down
+  0.87 ms    0.7/st  1165.3 us  moe_w4a16_fused_gate_up_t_k64
+  0.63 ms    2.6/st   245.3 us  dense_gemm_bf16_pipelined
+  0.47 ms    0.7/st   633.1 us  moe_w4a16_grouped_gemm_ptrtable_t_k64
+  0.32 ms   47.0/st     6.8 us  w4a16_gemv_sw
+  0.31 ms    8.8/st    34.9 us  w4a16_gemv_batch4_os
+  0.31 ms   47.0/st     6.5 us  moe_topk_softmax
+  0.30 ms   34.1/st     8.7 us  hc_post
+  0.27 ms    0.7/st   365.1 us  w4a16_gemm
+  0.23 ms   24.1/st     9.6 us  hc_pre_stage
+  0.19 ms    2.2/st    84.7 us  w4a16_gemm_t
+  0.16 ms   11.8/st    13.3 us  kernel
+  0.16 ms   35.4/st     4.4 us  causal_conv1d_update_l2norm_f32
+  0.15 ms    2.9/st    51.8 us  w4a16_gemv_batch4
+  0.13 ms   35.4/st     3.8 us  dense_gemv_ba_gates
+  0.13 ms   47.0/st     2.7 us  moe_weighted_sum_blend
+  0.08 ms    0.5/st   180.9 us  fp8_fp8_gemm_ldmab
+  0.07 ms   35.4/st     2.0 us  gated_rms_norm_f32_input_sigmoid

@@ -1,0 +1,18 @@
+{
+ "tag": "T-qp",
+ "runs": [
+  {
+   "n": 30802,
+   "hash": "3e4d311dc6ec",
+   "sum": -22752.2291,
+   "secs": 69.0
+  },
+  {
+   "n": 30802,
+   "hash": "3e4d311dc6ec",
+   "sum": -22752.2291,
+   "secs": 69.1
+  }
+ ],
+ "reproducible": true
+}
