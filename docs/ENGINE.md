@@ -60,7 +60,7 @@ where noted:
 | Vectorized mHC decode kernels | `ATLAS_QWEN4EXP_HC_FAST` |
 | MTP depth up to 3 with an adaptive ladder, NVFP4 draft head, confidence stop | `ATLAS_QWEN4EXP_MTP_DEPTH`, `ATLAS_MTP_SINGLE_DEPTH_ADAPT`, `ATLAS_QWEN4EXP_DRAFT_HEAD_NVFP4`, `ATLAS_QWEN4EXP_MTP_CONFIDENCE` |
 | Verify that gives the same tokens as serial decode, up to four draft rows, so speculation also runs inside `<think>` | `ATLAS_QWEN4EXP_EXACT_VERIFY` |
-| Multi-sequence batching with the same output as one sequence at a time | `ATLAS_QWEN4EXP_BATCH_FAST` |
+| Multi-sequence batching with the same output as one sequence at a time, including a batched path for small batches | `ATLAS_QWEN4EXP_BATCH_FAST`, `_BATCH_SMALL` |
 | Vocab-split LM head with a batched head GEMM | `ATLAS_QWEN4EXP_LMHEAD_SPLIT`, `_LMHEAD_BATCHM` |
 | Faster MoE row kernels; fused decode steps | `ATLAS_QWEN4EXP_MOE_FAST`, `_DECODE_FUSE` |
 | Prefill kernels for MoE, Gated DeltaNet, the QSA scorer and mHC; sequence-parallel prefill across both Sparks | `ATLAS_QWEN4EXP_PREFILL_MOE`, `_GDN`, `_QSA_SCORE`, `_HC`, `_SP` |
