@@ -1,0 +1,747 @@
+[1m== image ghcr.io/enntity/atlas-sparkqwen:e8ea13c4816b[0m
+[1m== building ghcr.io/enntity/atlas-sparkqwen:e8ea13c4816b from source (a cold build takes 30-60 minutes)[0m
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 DONE 0.0s
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 5.09kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/nvidia/cuda:13.0.0-runtime-ubuntu24.04@sha256:95318efecfd68ab3d109da5277863257b06137c84f34a87f38de970d5cd035d3
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/nvidia/cuda:13.0.0-devel-ubuntu24.04@sha256:1e8ac7a54c184a1af8ef2167f28fa98281892a835c981ebcddb1fad04bdd452d
+#3 DONE 0.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 99B done
+#4 DONE 0.0s
+
+#5 [stage-1  1/12] FROM docker.io/nvidia/cuda:13.0.0-runtime-ubuntu24.04@sha256:95318efecfd68ab3d109da5277863257b06137c84f34a87f38de970d5cd035d3
+#5 DONE 0.0s
+
+#6 [builder  1/17] FROM docker.io/nvidia/cuda:13.0.0-devel-ubuntu24.04@sha256:1e8ac7a54c184a1af8ef2167f28fa98281892a835c981ebcddb1fad04bdd452d
+#6 DONE 0.0s
+
+#7 [stage-1  2/12] RUN apt-get update -qq && apt-get install -y -qq --no-install-recommends --allow-change-held-packages     python3 ca-certificates libnccl2=2.31.2-1+cuda13.3 libibverbs1 librdmacm1     ibverbs-providers libnl-3-200 libnl-route-3-200 && rm -rf /var/lib/apt/lists/*
+#7 CACHED
+
+#8 [internal] load build context
+#8 transferring context: 38.39MB 0.3s done
+#8 DONE 0.4s
+
+#9 [builder  6/17] COPY engine/Cargo.toml engine/Cargo.lock engine/rust-toolchain.toml engine/README.md ./
+#9 CACHED
+
+#10 [builder  4/17] RUN git clone https://github.com/NVIDIA/cutlass.git /opt/cutlass &&     git -C /opt/cutlass checkout cf064d2e6bad2886238ac565b3b49007764f4939
+#10 CACHED
+
+#11 [builder  5/17] WORKDIR /build
+#11 CACHED
+
+#12 [builder  8/17] COPY engine/kernels/ kernels/
+#12 CACHED
+
+#13 [builder 10/17] COPY engine/jinja-templates/ jinja-templates/
+#13 CACHED
+
+#14 [builder  7/17] COPY engine/crates/ crates/
+#14 CACHED
+
+#15 [builder  9/17] COPY engine/vendor/ vendor/
+#15 CACHED
+
+#16 [builder  2/17] RUN apt-get update -qq && apt-get install -y -qq --no-install-recommends --allow-change-held-packages     git ca-certificates build-essential python3 curl pkg-config cmake libclang-dev     libibverbs-dev librdmacm-dev libnccl2=2.31.2-1+cuda13.3 libnccl-dev=2.31.2-1+cuda13.3 &&     rm -rf /var/lib/apt/lists/*
+#16 CACHED
+
+#17 [builder  3/17] RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs |     sh -s -- -y --profile minimal --default-toolchain 1.93.1
+#17 CACHED
+
+#18 [builder 11/17] COPY engine/tests/fixtures/ tests/fixtures/
+#18 CACHED
+
+#19 [builder 12/17] COPY engine/test_data/ test_data/
+#19 DONE 0.1s
+
+#20 [builder 13/17] RUN --mount=type=cache,target=/build/target,id=atlas-cargo-target-sparkqwen,sharing=shared     cargo build --locked --release -j "4" -p spark-server &&     install -D target/release/spark /build/dist/spark
+#20 0.185     Updating crates.io index
+#20 1.245  Downloading crates ...
+#20 1.341   Downloaded adler2 v2.0.1
+#20 1.355   Downloaded anstream v1.0.0
+#20 1.365   Downloaded allocator-api2 v0.2.21
+#20 1.377   Downloaded idna_adapter v1.2.1
+#20 1.378   Downloaded ident_case v1.0.1
+#20 1.394   Downloaded clap_lex v1.0.0
+#20 1.394   Downloaded anstyle v1.0.14
+#20 1.395   Downloaded anstyle-query v1.1.5
+#20 1.396   Downloaded anstyle-parse v1.0.0
+#20 1.397   Downloaded ahash v0.8.12
+#20 1.409   Downloaded futures-sink v0.3.33
+#20 1.412   Downloaded funty v2.0.0
+#20 1.413   Downloaded fastrand v2.3.0
+#20 1.414   Downloaded image-webp v0.2.4
+#20 1.416   Downloaded crypto-common v0.1.7
+#20 1.422   Downloaded icu_properties v2.1.2
+#20 1.426   Downloaded generic-array v0.14.7
+#20 1.427   Downloaded document-features v0.2.12
+#20 1.428   Downloaded futures-io v0.3.33
+#20 1.429   Downloaded equivalent v1.0.2
+#20 1.430   Downloaded anyhow v1.0.104
+#20 1.432   Downloaded darling_macro v0.23.0
+#20 1.432   Downloaded cfg-if v1.0.4
+#20 1.438   Downloaded atomic-waker v1.1.2
+#20 1.439   Downloaded futures-task v0.3.33
+#20 1.440   Downloaded darling_macro v0.20.11
+#20 1.442   Downloaded httpdate v1.0.3
+#20 1.443   Downloaded futures-core v0.3.33
+#20 1.444   Downloaded byteorder-lite v0.1.0
+#20 1.445   Downloaded fnv v1.0.7
+#20 1.445   Downloaded http-body v1.0.1
+#20 1.447   Downloaded form_urlencoded v1.2.2
+#20 1.447   Downloaded matchers v0.2.0
+#20 1.448   Downloaded lru v0.12.5
+#20 1.449   Downloaded futures-macro v0.3.33
+#20 1.450   Downloaded errno v0.3.14
+#20 1.451   Downloaded derive_builder_macro v0.20.2
+#20 1.451   Downloaded cpufeatures v0.2.17
+#20 1.452   Downloaded colorchoice v1.0.4
+#20 1.458   Downloaded heck v0.5.0
+#20 1.461   Downloaded block-buffer v0.10.4
+#20 1.462   Downloaded digest v0.10.7
+#20 1.463   Downloaded fax v0.2.7
+#20 1.464   Downloaded foldhash v0.1.5
+#20 1.465   Downloaded axum-core v0.5.6
+#20 1.466   Downloaded mime v0.3.17
+#20 1.467   Downloaded lazy_static v1.5.0
+#20 1.468   Downloaded is_terminal_polyfill v1.70.2
+#20 1.469   Downloaded instability v0.3.12
+#20 1.469   Downloaded num-conv v0.2.0
+#20 1.470   Downloaded foldhash v0.2.0
+#20 1.471   Downloaded macro_rules_attribute-proc_macro v0.2.2
+#20 1.471   Downloaded either v1.15.0
+#20 1.472   Downloaded castaway v0.2.4
+#20 1.473   Downloaded memo-map v0.3.3
+#20 1.475   Downloaded quick-error v2.0.1
+#20 1.475   Downloaded derive_builder_core v0.20.2
+#20 1.477   Downloaded color_quant v1.1.0
+#20 1.478   Downloaded dashmap v6.2.1
+#20 1.479   Downloaded futures-executor v0.3.33
+#20 1.481   Downloaded displaydoc v0.2.5
+#20 1.482   Downloaded shlex v1.3.0
+#20 1.483   Downloaded derive_builder v0.20.2
+#20 1.486   Downloaded stable_deref_trait v1.2.1
+#20 1.486   Downloaded radium v0.7.0
+#20 1.487   Downloaded powerfmt v0.2.0
+#20 1.487   Downloaded percent-encoding v2.3.2
+#20 1.488   Downloaded cookie v0.18.1
+#20 1.489   Downloaded strsim v0.11.1
+#20 1.490   Downloaded clap_derive v4.6.4
+#20 1.491   Downloaded slab v0.4.12
+#20 1.492   Downloaded simd-adler32 v0.3.8
+#20 1.493   Downloaded darling v0.23.0
+#20 1.496   Downloaded httparse v1.10.1
+#20 1.498   Downloaded tap v1.0.1
+#20 1.498   Downloaded crossbeam-epoch v0.9.20
+#20 1.500   Downloaded sync_wrapper v1.0.2
+#20 1.500   Downloaded bytemuck v1.25.0
+#20 1.502   Downloaded clap v4.6.6
+#20 1.506   Downloaded socket2 v0.6.4
+#20 1.508   Downloaded time-core v0.1.8
+#20 1.508   Downloaded aho-corasick v1.1.4
+#20 1.511   Downloaded tokio-macros v2.7.0
+#20 1.512   Downloaded darling_core v0.20.11
+#20 1.514   Downloaded thread_local v1.1.9
+#20 1.515   Downloaded icu_normalizer_data v2.1.1
+#20 1.516   Downloaded darling_core v0.23.0
+#20 1.519   Downloaded tinystr v0.8.2
+#20 1.521   Downloaded sharded-slab v0.1.7
+#20 1.522   Downloaded toml_write v0.1.2
+#20 1.523   Downloaded tokio-stream v0.1.19
+#20 1.526   Downloaded tower-service v0.3.3
+#20 1.526   Downloaded http v1.4.0
+#20 1.528   Downloaded hyper-util v0.1.20
+#20 1.533   Downloaded tracing-log v0.2.0
+#20 1.533   Downloaded tracing-core v0.1.36
+#20 1.534   Downloaded h2 v0.4.16
+#20 1.538   Downloaded unicode-truncate v1.1.0
+#20 1.539   Downloaded futures-util v0.3.33
+#20 1.546   Downloaded toml_datetime v0.6.11
+#20 1.547   Downloaded yoke v0.8.1
+#20 1.548   Downloaded wyz v0.5.1
+#20 1.549   Downloaded want v0.3.1
+#20 1.549   Downloaded version_check v0.9.5
+#20 1.550   Downloaded utf8parse v0.2.2
+#20 1.550   Downloaded utf8_iter v1.0.4
+#20 1.551   Downloaded utf8-zero v0.8.1
+#20 1.552   Downloaded yoke-derive v0.8.1
+#20 1.552   Downloaded ureq-proto v0.6.0
+#20 1.555   Downloaded zerovec-derive v0.11.2
+#20 1.556   Downloaded syn v3.0.3
+#20 1.562   Downloaded sha2 v0.10.9
+#20 1.563   Downloaded zune-core v0.5.1
+#20 1.565   Downloaded rand_chacha v0.9.0
+#20 1.566   Downloaded tokio-util v0.7.18
+#20 1.569   Downloaded tiff v0.11.3
+#20 1.572   Downloaded tokenizers v0.23.1
+#20 1.576   Downloaded time v0.3.47
+#20 1.583   Downloaded try-lock v0.2.5
+#20 1.584   Downloaded zerofrom-derive v0.1.6
+#20 1.584   Downloaded tower-http v0.7.0
+#20 1.590   Downloaded serde_path_to_error v0.1.20
+#20 1.591   Downloaded tracing v0.1.44
+#20 1.599   Downloaded url v2.5.8
+#20 1.600   Downloaded ureq v3.3.0
+#20 1.603   Downloaded rustls-pki-types v1.14.0
+#20 1.605   Downloaded zeroize v1.8.2
+#20 1.606   Downloaded icu_normalizer v2.1.1
+#20 1.608   Downloaded signal-hook v0.3.18
+#20 1.609   Downloaded zerotrie v0.2.3
+#20 1.611   Downloaded zerocopy v0.8.39
+#20 1.623   Downloaded zerovec v0.11.5
+#20 1.626   Downloaded unicode-ident v1.0.24
+#20 1.628   Downloaded serde v1.0.229
+#20 1.630   Downloaded weezl v0.1.12
+#20 1.631   Downloaded tui-textarea v0.7.0
+#20 1.633   Downloaded prometheus v0.14.0
+#20 1.635   Downloaded rustls-webpki v0.103.15
+#20 1.636   Downloaded rand v0.8.6
+#20 1.638   Downloaded io-uring v0.7.13
+#20 1.640   Downloaded rand v0.9.3
+#20 1.643   Downloaded zune-jpeg v0.5.12
+#20 1.644   Downloaded indexmap v2.13.0
+#20 1.647   Downloaded unicode-normalization-alignments v0.1.12
+#20 1.649   Downloaded unicode-segmentation v1.12.0
+#20 1.651   Downloaded typenum v1.20.1
+#20 1.652   Downloaded itertools v0.13.0
+#20 1.656   Downloaded png v0.18.1
+#20 1.658   Downloaded regex v1.12.3
+#20 1.661   Downloaded libm v0.2.16
+#20 1.667   Downloaded serde_json v1.0.151
+#20 1.671   Downloaded winnow v0.7.14
+#20 1.676   Downloaded minijinja v2.21.0
+#20 1.679   Downloaded tracing-subscriber v0.3.23
+#20 1.684   Downloaded rayon v1.12.0
+#20 1.689   Downloaded image v0.25.10
+#20 1.694   Downloaded unicode-width v0.1.14
+#20 1.697   Downloaded moxcms v0.8.1
+#20 1.702   Downloaded itertools v0.14.0
+#20 1.706   Downloaded rustix v0.38.44
+#20 1.718   Downloaded regex-syntax v0.8.10
+#20 1.722   Downloaded rustls v0.23.45
+#20 1.728   Downloaded rustix v1.1.4
+#20 1.741   Downloaded mio v1.2.1
+#20 1.744   Downloaded idna v1.1.0
+#20 1.746   Downloaded icu_properties_data v2.1.2
+#20 1.751   Downloaded nom v7.1.3
+#20 1.754   Downloaded miniz_oxide v0.8.9
+#20 1.755   Downloaded ratatui v0.29.0
+#20 1.765   Downloaded memchr v2.8.0
+#20 1.768   Downloaded toml_edit v0.22.27
+#20 1.770   Downloaded proc-macro2 v1.0.106
+#20 1.772   Downloaded regex-automata v0.4.14
+#20 1.779   Downloaded num-traits v0.2.19
+#20 1.781   Downloaded minimal-lexical v0.2.1
+#20 1.783   Downloaded rayon-core v1.13.0
+#20 1.785   Downloaded serde_core v1.0.229
+#20 1.786   Downloaded ryu v1.0.23
+#20 1.788   Downloaded onig_sys v69.9.1
+#20 1.798   Downloaded rand_distr v0.4.3
+#20 1.799   Downloaded serde_derive v1.0.229
+#20 1.801   Downloaded safetensors v0.8.0
+#20 1.801   Downloaded once_cell v1.21.4
+#20 1.802   Downloaded memmap2 v0.9.11
+#20 1.803   Downloaded log v0.4.29
+#20 1.804   Downloaded zerocopy-derive v0.8.39
+#20 1.809   Downloaded pxfm v0.1.28
+#20 1.822   Downloaded libc v0.2.189
+#20 1.842   Downloaded writeable v0.6.2
+#20 1.843   Downloaded webpki-roots v1.0.6
+#20 1.845   Downloaded unicode_categories v0.1.1
+#20 1.846   Downloaded unicode-width v0.2.0
+#20 1.849   Downloaded parking_lot v0.12.5
+#20 1.850   Downloaded matchit v0.8.4
+#20 1.851   Downloaded litemap v0.8.1
+#20 1.852   Downloaded parking_lot_core v0.9.12
+#20 1.853   Downloaded litrs v1.0.0
+#20 1.855   Downloaded libloading v0.9.0
+#20 1.856   Downloaded zerofrom v0.1.6
+#20 1.856   Downloaded tower v0.5.3
+#20 1.861   Downloaded tokio v1.52.3
+#20 1.882   Downloaded strum_macros v0.26.4
+#20 1.883   Downloaded nu-ansi-term v0.50.3
+#20 1.884   Downloaded zmij v1.0.21
+#20 1.885   Downloaded rand_core v0.9.5
+#20 1.886   Downloaded rand_core v0.6.4
+#20 1.886   Downloaded ppv-lite86 v0.2.21
+#20 1.887   Downloaded pin-project-lite v0.2.16
+#20 1.889   Downloaded paste v1.0.15
+#20 1.891   Downloaded onig v6.5.1
+#20 1.892   Downloaded indoc v2.0.7
+#20 1.893   Downloaded syn v2.0.117
+#20 1.898   Downloaded rustversion v1.0.22
+#20 1.899   Downloaded untrusted v0.9.0
+#20 1.900   Downloaded spm_precompiled v0.1.4
+#20 1.905   Downloaded libloading v0.8.9
+#20 1.906   Downloaded icu_provider v2.1.1
+#20 1.908   Downloaded bitvec v1.1.1
+#20 1.915   Downloaded ring v0.17.14
+#20 1.937   Downloaded strum v0.26.3
+#20 1.937   Downloaded quote v1.0.45
+#20 1.939   Downloaded pkg-config v0.3.32
+#20 1.939   Downloaded macro_rules_attribute v0.2.2
+#20 1.940   Downloaded lock_api v0.4.14
+#20 1.940   Downloaded itoa v1.0.17
+#20 1.941   Downloaded esaxx-rs v0.1.10
+#20 1.943   Downloaded clap_builder v4.6.6
+#20 1.946   Downloaded axum v0.8.9
+#20 1.950   Downloaded tracing-attributes v0.1.31
+#20 1.951   Downloaded hyper v1.8.1
+#20 1.955   Downloaded hashbrown v0.16.1
+#20 1.957   Downloaded hashbrown v0.15.5
+#20 1.960   Downloaded hashbrown v0.14.5
+#20 1.962   Downloaded crossterm v0.28.1
+#20 1.965   Downloaded tower-layer v0.3.3
+#20 1.965   Downloaded toml v0.8.23
+#20 1.967   Downloaded rayon-cond v0.4.0
+#20 1.967   Downloaded rand_chacha v0.3.1
+#20 1.967   Downloaded cc v1.2.56
+#20 1.969   Downloaded serde_urlencoded v0.7.1
+#20 1.970   Downloaded icu_collections v2.1.1
+#20 1.972   Downloaded flate2 v1.1.9
+#20 1.975   Downloaded compact_str v0.9.0
+#20 1.976   Downloaded compact_str v0.8.2
+#20 1.978   Downloaded bytes v1.11.1
+#20 1.980   Downloaded time-macros v0.2.27
+#20 1.981   Downloaded thiserror-impl v2.0.19
+#20 1.981   Downloaded tempfile v3.27.0
+#20 1.983   Downloaded serde_spanned v0.6.9
+#20 1.983   Downloaded half v2.7.1
+#20 1.984   Downloaded base64 v0.22.1
+#20 1.986   Downloaded thiserror v2.0.19
+#20 1.989   Downloaded synstructure v0.13.2
+#20 1.989   Downloaded signal-hook-mio v0.2.5
+#20 1.990   Downloaded monostate v0.1.18
+#20 1.991   Downloaded icu_locale_core v2.1.1
+#20 1.994   Downloaded base64 v0.13.1
+#20 1.995   Downloaded subtle v2.6.1
+#20 1.995   Downloaded static_assertions v1.1.0
+#20 1.996   Downloaded smallvec v1.15.1
+#20 1.997   Downloaded signal-hook-registry v1.4.8
+#20 1.997   Downloaded futures v0.3.33
+#20 2.000   Downloaded crossbeam-utils v0.8.21
+#20 2.001   Downloaded getrandom v0.3.4
+#20 2.003   Downloaded getrandom v0.2.17
+#20 2.004   Downloaded darling v0.20.11
+#20 2.006   Downloaded cookie_store v0.22.1
+#20 2.007   Downloaded autocfg v1.5.0
+#20 2.008   Downloaded daachorse v1.0.1
+#20 2.009   Downloaded bitflags v2.11.0
+#20 2.011   Downloaded monostate-impl v0.1.18
+#20 2.011   Downloaded gif v0.14.2
+#20 2.013   Downloaded futures-channel v0.3.33
+#20 2.013   Downloaded crc32fast v1.5.0
+#20 2.014   Downloaded scopeguard v1.2.0
+#20 2.015   Downloaded linux-raw-sys v0.4.15
+#20 2.041   Downloaded potential_utf v0.1.4
+#20 2.041   Downloaded pin-utils v0.1.0
+#20 2.041   Downloaded http-body-util v0.1.3
+#20 2.042   Downloaded deranged v0.5.8
+#20 2.043   Downloaded find-msvc-tools v0.1.9
+#20 2.044   Downloaded fdeflate v0.3.7
+#20 2.044   Downloaded cassowary v0.3.0
+#20 2.045   Downloaded dary_heap v0.3.8
+#20 2.045   Downloaded crossbeam-deque v0.8.6
+#20 2.046   Downloaded linux-raw-sys v0.12.1
+#20 2.150 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: compiled 212 kernels for target 0 (gb10, qwen3.8-flash-next, nvfp4) (19 model-specific overrides)
+#20 2.150 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: dedup+parallel: 212/212 unique nvcc invocations (0 cache hits, 1.0× dedup), 20 parallel workers
+#20 2.152     Finished `release` profile [optimized] target(s) in 1.98s
+#20 DONE 2.4s
+
+#21 [builder 14/17] COPY install/rust-notices.py /product/install/rust-notices.py
+#21 DONE 0.1s
+
+#22 [builder 15/17] RUN python3 /product/install/rust-notices.py /build /build/dist/notices-rust
+#22 0.269  Downloading crates ...
+#22 0.367   Downloaded ciborium-ll v0.2.2
+#22 0.416   Downloaded ciborium v0.2.2
+#22 0.417   Downloaded cast v0.3.0
+#22 0.418   Downloaded plotters-svg v0.3.7
+#22 0.418   Downloaded oorandom v11.1.5
+#22 0.419   Downloaded alloca v0.4.0
+#22 0.419   Downloaded anes v0.1.6
+#22 0.432   Downloaded ciborium-io v0.2.2
+#22 0.435   Downloaded page_size v0.6.0
+#22 0.436   Downloaded walkdir v2.5.0
+#22 0.437   Downloaded same-file v1.0.6
+#22 0.438   Downloaded plotters-backend v0.3.7
+#22 0.448   Downloaded criterion-plot v0.8.2
+#22 0.449   Downloaded tinytemplate v1.2.1
+#22 0.467   Downloaded criterion v0.8.2
+#22 0.471   Downloaded plotters v0.3.7
+#22 0.563 303 third-party crates, 1 without a license file in the crate
+#22 DONE 0.6s
+
+#23 [builder 16/17] RUN mkdir -p /opt/cuda-stubs &&     ln -s /usr/local/cuda/lib64/stubs/libcuda.so /opt/cuda-stubs/libcuda.so.1
+#23 DONE 0.2s
+
+#24 [builder 17/17] RUN --mount=type=cache,target=/build/target,id=atlas-cargo-target-sparkqwen,sharing=shared     set -eu; for check in atlas-core:qwen4_exp_ spark-server:scheduler::lifecycle_tests         spark-server:scheduler::admission:: spark-server:cancellation_tests         spark-server:disconnect_prefill_tests spark-server:buffered_disconnect_ spark-server:tool_parser::; do       crate=${check%%:*}; filter=${check#*:};       if [ "$crate" = spark-server ]; then target="--bin spark"; else target="--lib"; fi;       LD_LIBRARY_PATH=/opt/cuda-stubs:/usr/local/cuda/lib64       timeout --signal=TERM --kill-after=10s 600       cargo test --locked --release -j "4" -p "$crate" $target "$filter"         > /tmp/atlas-check.log 2>&1 || { cat /tmp/atlas-check.log; exit 1; };       cat /tmp/atlas-check.log;       grep -E 'test result: ok. [1-9][0-9]* passed;' /tmp/atlas-check.log;     done
+#24 3.732    Compiling atlas-core v1.0.0-beta-preview (/build/crates/atlas-core)
+#24 3.732     Finished `release` profile [optimized] target(s) in 3.51s
+#24 3.732      Running unittests src/lib.rs (target/release/deps/atlas_core-72704e53be51b1fe)
+#24 3.732 
+#24 3.732 running 22 tests
+#24 3.732 test config::parsers::qwen4_exp::qwen4_exp_tests::indexer_maps_onto_index_fields_and_only_full_attention_layers ... ok
+#24 3.732 test config::parsers::qwen4_exp::qwen4_exp_tests::a_zero_ple_layer_id_is_refused ... ok
+#24 3.732 test config::parsers::qwen4_exp::qwen4_exp_tests::hyper_connections_map_onto_the_deepseek_v4_fields ... ok
+#24 3.732 test config::parsers::qwen4_exp::qwen4_exp_tests::attention_is_gated_and_layer_types_survive ... ok
+#24 3.732 test config::parsers::qwen4_exp::qwen4_exp_tests::both_naming_revisions_route_to_this_parser ... ok
+#24 3.732 test config::parsers::qwen4_exp::qwen4_exp_tests::ngram_head_count_must_divide_hidden_size ... ok
+#24 3.732 test config::parsers::qwen4_exp::qwen4_exp_tests::missing_text_config_is_refused ... ok
+#24 3.732 test config::parsers::qwen4_exp::qwen4_exp_tests::layer_types_length_must_match_num_hidden_layers ... ok
+#24 3.732 test config::parsers::qwen4_exp::qwen4_exp_tests::partial_hyper_connection_config_is_refused ... ok
+#24 3.732 test config::parsers::qwen4_exp::qwen4_exp_tests::ngram_geometry_matches_the_longcat_formula ... ok
+#24 3.732 test config::parsers::qwen4_exp::qwen4_exp_tests::parses_the_real_config_json_when_present ... ok
+#24 3.732 test config::parsers::qwen4_exp::qwen4_exp_tests::partial_indexer_config_is_refused ... ok
+#24 3.732 test config::parsers::qwen4_exp::qwen4_exp_tests::parses_the_shipped_checkpoint_config ... ok
+#24 3.732 test config::parsers::qwen4_exp::qwen4_exp_tests::ple_layer_id_past_the_end_is_refused ... ok
+#24 3.732 test config::parsers::qwen4_exp::qwen4_exp_tests::rope_reads_through_the_nested_rope_parameters ... ok
+#24 3.732 test config::parsers::qwen4_exp::qwen4_exp_tests::vision_tower_is_parsed ... ok
+#24 3.732 test config::parsers::qwen4_exp::qwen4_exp_tests::the_nvfp4_quantization_config_is_read_from_the_top_level ... ok
+#24 3.732 test config::parsers::qwen4_exp::qwen4_exp_tests::the_fp8_release_carries_its_block_size_through_too ... ok
+#24 3.732 test config::tests::qwen4_exp_fixture_parses_the_hybrid_moe_layout ... ok
+#24 3.732 test config::tests::qwen4_exp_forces_topk_renormalisation_the_config_does_not_state ... ok
+#24 3.732 test config::tests::qwen4_exp_does_not_declare_the_longcat_trio ... ok
+#24 3.732 test config::tests::qwen4_exp_ngram_geometry_survives_the_real_parse ... ok
+#24 3.732 
+#24 3.732 test result: ok. 22 passed; 0 failed; 0 ignored; 0 measured; 170 filtered out; finished in 0.00s
+#24 3.732 
+#24 3.732 test result: ok. 22 passed; 0 failed; 0 ignored; 0 measured; 170 filtered out; finished in 0.00s
+#24 44.03 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: compiled 212 kernels for target 0 (gb10, qwen3.8-flash-next, nvfp4) (19 model-specific overrides)
+#24 44.03 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: dedup+parallel: 212/212 unique nvcc invocations (0 cache hits, 1.0× dedup), 20 parallel workers
+#24 44.03    Compiling spark-server v1.0.0-beta-preview (/build/crates/spark-server)
+#24 44.03     Finished `release` profile [optimized] target(s) in 40.20s
+#24 44.03      Running unittests src/main.rs (target/release/deps/spark-2dbc31b56cdbbf2a)
+#24 44.03 
+#24 44.03 running 13 tests
+#24 44.03 test scheduler::lifecycle_tests::empty_output_edges ... ok
+#24 44.03 test scheduler::lifecycle_tests::normal_stops_are_unchanged ... ok
+#24 44.03 test scheduler::lifecycle_tests::early_stop_one_token_short_of_budget_is_not_length ... ok
+#24 44.03 test scheduler::lifecycle_tests::non_truncating_stops_are_not_relabelled_as_length ... ok
+#24 44.03 test scheduler::lifecycle_tests::call_site::call_site_passes_the_real_seq_len ... ok
+#24 44.03 test scheduler::lifecycle_tests::eos_on_the_last_budgeted_token_is_stop_not_length ... ok
+#24 44.03 test scheduler::lifecycle_tests::token_derived_stops_outrank_non_timeout_guards ... ok
+#24 44.03 test scheduler::lifecycle_tests::call_site::call_site_passes_the_real_last_token_and_eos ... ok
+#24 44.03 test scheduler::lifecycle_tests::call_site::call_site_passes_the_real_budget ... ok
+#24 44.03 test scheduler::lifecycle_tests::timeout_unchanged_and_still_outranks_everything ... ok
+#24 44.03 test scheduler::lifecycle_tests::length_means_budget_exhausted_only ... ok
+#24 44.03 test scheduler::lifecycle_tests::call_site::call_site_passes_the_real_guard ... ok
+#24 44.03 test scheduler::lifecycle_tests::call_site::terminal_model_error_is_sent_as_error_without_successful_done ... ok
+#24 44.03 
+#24 44.03 test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 2613 filtered out; finished in 0.00s
+#24 44.03 
+#24 44.03 test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 2613 filtered out; finished in 0.00s
+#24 44.21 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: compiled 212 kernels for target 0 (gb10, qwen3.8-flash-next, nvfp4) (19 model-specific overrides)
+#24 44.21 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: dedup+parallel: 212/212 unique nvcc invocations (0 cache hits, 1.0× dedup), 20 parallel workers
+#24 44.21     Finished `release` profile [optimized] target(s) in 0.10s
+#24 44.21      Running unittests src/main.rs (target/release/deps/spark-2dbc31b56cdbbf2a)
+#24 44.21 
+#24 44.21 running 11 tests
+#24 44.21 test scheduler::admission::tests::admission_stops_at_first_misfit_no_head_of_line_bypass ... ok
+#24 44.21 test scheduler::admission::tests::c128_overflow_queues_instead_of_admit_then_shoot ... ok
+#24 44.21 test scheduler::admission::tests::block_math_matches_legacy_formula ... ok
+#24 44.21 test scheduler::admission::tests::in_flight_commitments_reduce_capacity ... ok
+#24 44.21 test scheduler::admission::tests::ep_zero_capacity_rejects_even_a_single_request ... ok
+#24 44.21 test scheduler::admission::tests::fits_everything_admission_unchanged ... ok
+#24 44.21 test scheduler::admission::tests::watermark_caps_the_decode_reservation ... ok
+#24 44.21 test scheduler::admission::tests::liveness_oversized_lone_request_still_admits ... ok
+#24 44.21 test scheduler::admission::tests::watermark_zero_reserves_prompt_only_legacy ... ok
+#24 44.21 test scheduler::admission::tests::ep_oversized_stream_gets_error_before_allocation ... ok
+#24 44.21 test scheduler::admission::tests::ep_oversized_blocking_request_gets_error_before_allocation ... ok
+#24 44.21 
+#24 44.21 test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 2615 filtered out; finished in 0.00s
+#24 44.21 
+#24 44.21 test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 2615 filtered out; finished in 0.00s
+#24 44.39 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: compiled 212 kernels for target 0 (gb10, qwen3.8-flash-next, nvfp4) (19 model-specific overrides)
+#24 44.39 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: dedup+parallel: 212/212 unique nvcc invocations (0 cache hits, 1.0× dedup), 20 parallel workers
+#24 44.39     Finished `release` profile [optimized] target(s) in 0.10s
+#24 44.39      Running unittests src/main.rs (target/release/deps/spark-2dbc31b56cdbbf2a)
+#24 44.39 
+#24 44.39 running 10 tests
+#24 44.39 test scheduler::emit_step::tests::cancellation_tests::streaming_cancel_semantics_unchanged_for_blocking_helper ... ok
+#24 44.39 test scheduler::emit_step::tests::cancellation_tests::buffered_disconnect_retires_dead_receiver_at_emit ... ok
+#24 44.39 test scheduler::emit_step::tests::cancellation_tests::emit_and_retirement_helper_preserve_budgets_and_finish_precedence ... ok
+#24 44.39 test scheduler::emit_step::tests::cancellation_tests::buffered_live_receiver_still_emits ... ok
+#24 44.39 test scheduler::emit_step::tests::cancellation_tests::buffered_disconnect_retires_at_decode_boundary ... ok
+#24 44.39 test scheduler::emit_step::tests::cancellation_tests::non_spec_without_cancel_still_enforces_token_and_context_limits ... ok
+#24 44.39 test scheduler::emit_step::tests::cancellation_tests::non_spec_cancel_after_sampling_is_rechecked_before_commit ... ok
+#24 44.39 test scheduler::emit_step::tests::cancellation_tests::non_spec_preset_cancel_retires_without_committing_sampled_token ... ok
+#24 44.39 test scheduler::emit_step::tests::cancellation_tests::non_spec_midbatch_cancel_preserves_other_rows_and_original_mapping ... ok
+#24 44.39 test scheduler::emit_step::tests::cancellation_tests::cancelled_host_sampling_preserves_request_adaptive_state_serial_and_parallel ... ok
+#24 44.39 
+#24 44.39 test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 2616 filtered out; finished in 0.00s
+#24 44.39 
+#24 44.39 test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 2616 filtered out; finished in 0.00s
+#24 44.59 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: compiled 212 kernels for target 0 (gb10, qwen3.8-flash-next, nvfp4) (19 model-specific overrides)
+#24 44.59 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: dedup+parallel: 212/212 unique nvcc invocations (0 cache hits, 1.0× dedup), 20 parallel workers
+#24 44.59     Finished `release` profile [optimized] target(s) in 0.10s
+#24 44.59      Running unittests src/main.rs (target/release/deps/spark-2dbc31b56cdbbf2a)
+#24 44.59 
+#24 44.59 running 2 tests
+#24 44.59 test scheduler::phase_continue_prefills::disconnect_prefill_tests::streaming_prefill_is_never_retired_by_disconnect_sweep ... ok
+#24 44.59 test scheduler::phase_continue_prefills::disconnect_prefill_tests::dead_blocking_prefill_retires_and_live_one_survives ... ok
+#24 44.59 
+#24 44.59 test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 2624 filtered out; finished in 0.00s
+#24 44.59 
+#24 44.59 test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 2624 filtered out; finished in 0.00s
+#24 44.79 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: compiled 212 kernels for target 0 (gb10, qwen3.8-flash-next, nvfp4) (19 model-specific overrides)
+#24 44.79 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: dedup+parallel: 212/212 unique nvcc invocations (0 cache hits, 1.0× dedup), 20 parallel workers
+#24 44.79     Finished `release` profile [optimized] target(s) in 0.10s
+#24 44.79      Running unittests src/main.rs (target/release/deps/spark-2dbc31b56cdbbf2a)
+#24 44.79 
+#24 44.79 running 5 tests
+#24 44.79 test scheduler::emit_step::tests::cancellation_tests::buffered_disconnect_retires_at_decode_boundary ... ok
+#24 44.79 test scheduler::preempt_tests::resume::buffered_disconnect_drops_parked_history_without_reprefill ... ok
+#24 44.79 test scheduler::emit_step::tests::cancellation_tests::buffered_disconnect_retires_dead_receiver_at_emit ... ok
+#24 44.79 test scheduler::preempt_tests::resume::buffered_disconnect_removes_spill_without_restoration ... ok
+#24 44.79 test scheduler::preempt_tests::resume::buffered_disconnect_keeps_failed_spill_cleanup_for_retry ... ok
+#24 44.79 
+#24 44.79 test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 2621 filtered out; finished in 0.00s
+#24 44.79 
+#24 44.79 test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 2621 filtered out; finished in 0.00s
+#24 44.99 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: compiled 212 kernels for target 0 (gb10, qwen3.8-flash-next, nvfp4) (19 model-specific overrides)
+#24 44.99 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: dedup+parallel: 212/212 unique nvcc invocations (0 cache hits, 1.0× dedup), 20 parallel workers
+#24 44.99     Finished `release` profile [optimized] target(s) in 0.10s
+#24 44.99      Running unittests src/main.rs (target/release/deps/spark-2dbc31b56cdbbf2a)
+#24 44.99 
+#24 44.99 running 177 tests
+#24 44.99 test tool_parser::prompt_levers::tests::two_models_can_disagree_within_one_process ... ok
+#24 44.99 test tool_parser::prompt_levers::tests::off_is_the_default_and_the_json_path ... ok
+#24 44.99 test tool_parser::poolside_v1::tests::blocking_parser_accepts_complete_zero_argument_call ... ok
+#24 44.99 test tool_parser::poolside_v1::tests::rejects_incomplete_argument_pair ... ok
+#24 44.99 test tool_parser::poolside_v1::tests::default_parse_drops_bare_identifier_instead_of_fabricating_a_call ... ok
+#24 44.99 test tool_parser::poolside_v1::tests::blocking_parser_does_not_salvage_incomplete_poolside_envelope ... ok
+#24 44.99 test tool_parser::poolside_v1::tests::streaming_detector_promotes_bare_names_only_when_opted_in ... ok
+#24 44.99 test tool_parser::poolside_v1::tests::rejects_duplicate_argument_keys ... ok
+#24 44.99 test tool_parser::poolside_v1::tests::streaming_parser_does_not_emit_incomplete_poolside_envelope ... ok
+#24 44.99 test tool_parser::tests::deepseek_v4_dsml::deepseek_v4_parser_is_registered ... ok
+#24 44.99 test tool_parser::poolside_v1::tests::parses_native_poolside_call ... ok
+#24 44.99 test tool_parser::poolside_v1::tests::preserves_unquoted_string_whitespace_exactly ... ok
+#24 44.99 test tool_parser::tests::deepseek_v4_dsml::blocking_dsml_parser_preserves_typed_arguments ... ok
+#24 44.99 test tool_parser::tests::deepseek_v4_dsml::streaming_dsml_parser_handles_split_special_tokens ... ok
+#24 44.99 test tool_parser::tests::group_a::parse_minimax_xml_drops_write_with_empty_filepath ... ok
+#24 44.99 test tool_parser::tests::group_a::parse_hermes_with_content_and_multiple ... ok
+#24 44.99 test tool_parser::tests::group_a::parse_minimax_xml_drops_write_with_whitespace_filepath ... ok
+#24 44.99 test tool_parser::tests::group_a::parse_minimax_xml_keeps_bash_with_empty_path_field ... ok
+#24 44.99 test tool_parser::tests::group_a::parse_minimax_xml_keeps_write_with_valid_filepath ... ok
+#24 44.99 test tool_parser::tests::group_a::parse_no_calls ... ok
+#24 44.99 test tool_parser::tests::group_a::parse_hermes_single_call ... ok
+#24 44.99 test tool_parser::tests::group_a::streaming_detector_hermes ... ok
+#24 44.99 test tool_parser::tests::group_a::streaming_detector_minimax_bpe_broken_split_chunks ... ok
+#24 44.99 test tool_parser::tests::group_a::streaming_detector_minimax_envelope_bpe_broken ... ok
+#24 44.99 test tool_parser::tests::group_a::streaming_detector_minimax_envelope_bpe_broken_two_invokes ... ok
+#24 44.99 test tool_parser::tests::group_a::validate_allows_read_with_empty_path ... ok
+#24 44.99 test tool_parser::tests::group_a::validate_rejects_write_with_empty_filepath ... ok
+#24 44.99 test tool_parser::tests::group_a_formats::minimax_xml_format_tool_calls_roundtrip ... ok
+#24 44.99 test tool_parser::tests::group_a_formats::parse_minimax_xml_multiple_params ... ok
+#24 44.99 test tool_parser::tests::group_a::streaming_detector_minimax_envelope_canonical ... ok
+#24 44.99 test tool_parser::tests::group_a_formats::parse_minimax_xml_single_param ... ok
+#24 44.99 test tool_parser::tests::group_a_formats::parse_minimax_xml_with_content_prefix ... ok
+#24 44.99 test tool_parser::tests::group_a_formats::parse_qwen3_coder_empty_body_then_backfill ... ok
+#24 44.99 test tool_parser::tests::group_a_formats::parse_qwen3_coder_single_param ... ok
+#24 44.99 test tool_parser::tests::group_b::into_parser_returns_correct_name ... ok
+#24 44.99 test tool_parser::tests::group_b::parse_gemma4_namespaced_function_name ... ok
+#24 44.99 test tool_parser::tests::group_b::parse_hermes_namespaced_function_name ... ok
+#24 44.99 test tool_parser::tests::group_b::parse_bare_tag_style_nested_params ... ok
+#24 44.99 test tool_parser::tests::group_b::format_tool_response_default ... ok
+#24 44.99 test tool_parser::tests::group_b::hermes_parser_system_prompt_contains_json ... ok
+#24 44.99 test tool_parser::tests::group_b::parse_bare_duplicated_name_equals ... ok
+#24 44.99 test tool_parser::tests::group_b::parse_bare_mistral_namespaced_function_name ... ok
+#24 44.99 test tool_parser::tests::group_b::parse_bare_attribute_style_no_wrapper ... ok
+#24 44.99 test tool_parser::tests::group_b::parse_bare_tag_style_simple ... ok
+#24 44.99 test tool_parser::tests::group_b::parse_mike_screenshot_format ... ok
+#24 44.99 test tool_parser::tests::group_b::parse_minimax_namespaced_function_name ... ok
+#24 44.99 test tool_parser::tests::group_b::parse_mistral_namespaced_function_name ... ok
+#24 44.99 test tool_parser::tests::group_b::parse_qwen3_coder_call_direct_two_funcs_returns_first_only_no_bleed ... ok
+#24 44.99 test tool_parser::tests::group_b::parse_qwen3_coder_duplicated_name_equals ... ok
+#24 44.99 test tool_parser::tests::group_b::parse_qwen3_coder_json_args_grammar_mode ... ok
+#24 44.99 test tool_parser::tests::group_b::parse_qwen3_coder_multiple_params ... ok
+#24 44.99 test tool_parser::tests::group_b::parse_qwen3_coder_name_with_trailing_garbage ... ok
+#24 44.99 test tool_parser::tests::group_b::parse_qwen3_coder_namespaced_function_name ... ok
+#24 44.99 test tool_parser::tests::group_b::parse_qwen3_coder_two_consecutive_functions_no_field_bleed ... ok
+#24 44.99 test tool_parser::tests::group_b::parse_qwen3_coder_with_content ... ok
+#24 44.99 test tool_parser::tests::group_b::parse_qwen3_coder_unclosed_param_then_next_function_does_not_bleed ... ok
+#24 44.99 test tool_parser::tests::group_b::parse_tag_style_inside_tool_call_wrapper ... ok
+#24 44.99 test tool_parser::tests::group_b::qwen3_coder_parser_system_prompt_contains_xml ... ok
+#24 44.99 test tool_parser::tests::group_b::qwen3_coder_template_owned_definitions_keep_choice_policy ... ok
+#24 44.99 test tool_parser::tests::group_b::streaming_bare_function_flush ... ok
+#24 44.99 test tool_parser::tests::group_b::tool_call_format_from_str ... ok
+#24 44.99 test tool_parser::tests::group_b::streaming_detector_qwen3_coder ... ok
+#24 44.99 test tool_parser::tests::group_b_mistral::parse_mistral_multiple_calls ... ok
+#24 44.99 test tool_parser::tests::group_b::tscg_is_decided_per_model_not_per_process ... ok
+#24 44.99 test tool_parser::tests::group_b_mistral::parse_mistral_single_call ... ok
+#24 44.99 test tool_parser::tests::group_b_mistral::parse_mistral_with_leading_content ... ok
+#24 44.99 test tool_parser::tests::group_c::find_balanced_json_end_string_braces ... ok
+#24 44.99 test tool_parser::tests::group_c::find_balanced_json_end_simple ... ok
+#24 44.99 test tool_parser::tests::group_c::fuzzy_repair_case_insensitive ... ok
+#24 44.99 test tool_parser::tests::group_c::fuzzy_repair_dash_vs_underscore ... ok
+#24 44.99 test tool_parser::tests::group_c::fuzzy_repair_mcp_double_underscore_added ... ok
+#24 44.99 test tool_parser::tests::group_c::fuzzy_repair_mcp_double_underscore_dropped ... ok
+#24 44.99 test tool_parser::tests::group_c::fuzzy_repair_no_false_positive_on_distinct_names ... ok
+#24 44.99 test tool_parser::tests::group_c::leak_markers_default_is_empty ... ok
+#24 44.99 test tool_parser::tests::group_c::leak_markers_minimax_has_invoke_open ... ok
+#24 44.99 test tool_parser::tests::group_c::leak_markers_qwen3_coder_has_parameter_open ... ok
+#24 44.99 test tool_parser::tests::group_c::mistral_native_parser_format_tool_calls ... ok
+#24 44.99 test tool_parser::tests::group_c::mistral_native_parser_name_and_dispatch ... ok
+#24 44.99 test tool_parser::tests::group_c::parse_mistral_nested_json_args ... ok
+#24 44.99 test tool_parser::tests::group_c::parse_mistral_truncated_args_recovered ... ok
+#24 44.99 test tool_parser::tests::group_c::parse_mistral_with_whitespace ... ok
+#24 44.99 test tool_parser::tests::group_c::qwen3_coder_f33_bash_description_has_retry_rule ... ok
+#24 44.99 test tool_parser::tests::group_c::qwen3_coder_prompt_has_antinarration_hardening ... ok
+#24 44.99 test tool_parser::tests::group_c::qwen3_missing_param_close_doesnt_swallow_next_param ... ok
+#24 44.99 test tool_parser::tests::group_c::qwen3_tool_call_close_inside_param_value_not_terminating ... ok
+#24 44.99 test tool_parser::tests::group_c::salvage_does_not_fire_when_legitimate_function_opener_present ... ok
+#24 44.99 test tool_parser::tests::group_c::salvage_rejects_non_identifier_name ... ok
+#24 44.99 test tool_parser::tests::group_c::salvage_param_as_function_recovers_write_call ... ok
+#24 44.99 test tool_parser::tests::group_c::salvage_requires_closing_function_tag ... ok
+#24 44.99 test tool_parser::tests::group_c::streaming_detector_mistral_single ... ok
+#24 44.99 test tool_parser::tests::group_c::streaming_detector_mistral_split_tokens ... ok
+#24 44.99 test tool_parser::tests::group_d::flush_after_incremental_start_does_not_double_emit ... ok
+#24 44.99 test tool_parser::tests::group_e::coerce_all_multi_call ... ok
+#24 44.99 test tool_parser::tests::group_e::coerce_boolean_capitalized ... ok
+#24 44.99 test tool_parser::tests::group_e::coerce_array_string ... ok
+#24 44.99 test tool_parser::tests::group_e::coerce_boolean_false_lower ... ok
+#24 44.99 test tool_parser::tests::group_e::coerce_boolean_lower ... ok
+#24 44.99 test tool_parser::tests::group_e::coerce_boolean_true_capitalized ... ok
+#24 44.99 test tool_parser::tests::group_e::coerce_ignores_missing_tool ... ok
+#24 44.99 test tool_parser::tests::group_e::coerce_integer_string ... ok
+#24 44.99 test tool_parser::tests::group_e::coerce_invalid_arguments_json_is_noop ... ok
+#24 44.99 test tool_parser::tests::group_e::coerce_null_string ... ok
+#24 44.99 test tool_parser::tests::group_e::coerce_object_string ... ok
+#24 44.99 test tool_parser::tests::group_e::empty_arg_preserved ... ok
+#24 44.99 test tool_parser::tests::group_e::no_coerce_unparseable ... ok
+#24 44.99 test tool_parser::tests::group_e::no_coerce_already_number ... ok
+#24 44.99 test tool_parser::tests::group_e::coerce_number_float ... ok
+#24 44.99 test tool_parser::tests::group_e::qwen3_coder_wants_typed ... ok
+#24 44.99 test tool_parser::tests::group_e::qwen3_xml_has_grammar ... ok
+#24 44.99 test tool_parser::tests::group_e::qwen3_xml_coerced_via_parse_and_coerce_all ... ok
+#24 44.99 test tool_parser::tests::group_e::qwen3_xml_name ... ok
+#24 44.99 test tool_parser::tests::group_e::qwen3_xml_system_prompt_contains_markers ... ok
+#24 44.99 test tool_parser::tests::group_e::qwen3_xml_wants_typed ... ok
+#24 44.99 test tool_parser::tests::group_e::repair_empty_key_in_nested_array_item ... ok
+#24 44.99 test tool_parser::tests::group_e::repair_empty_key_in_stringified_nested_array ... ok
+#24 44.99 test tool_parser::tests::group_e::repair_empty_key_skips_when_multiple_required_missing ... ok
+#24 44.99 test tool_parser::tests::group_e::tool_call_format_from_str_qwen3_xml ... ok
+#24 44.99 test tool_parser::tests::group_e::repair_empty_key_skips_when_value_not_in_enum ... ok
+#24 44.99 test tool_parser::tests::group_f::backfill_fills_omitted_subagent_type_with_valid_agent ... ok
+#24 44.99 test tool_parser::tests::group_f::backfill_subagent_type_prefers_general_purpose_variant ... ok
+#24 44.99 test tool_parser::tests::group_f::namespaced_bare_identifier_still_parses_as_tool ... ok
+#24 44.99 test tool_parser::tests::group_f::phantom_json_colon_prose_is_not_a_tool_call ... ok
+#24 44.99 test tool_parser::tests::group_f::tool_call_colon_prefix_falls_through_to_embedded_json_name ... ok
+#24 44.99 test tool_parser::tests::group_g_parallel::parse_hermes_three_calls_same_name_distinct_args ... ok
+#24 44.99 test tool_parser::tests::group_g_parallel::parse_hermes_two_calls_all_returned_in_order ... ok
+#24 44.99 test tool_parser::tests::group_g_parallel::parse_qwen3_coder_three_calls_with_content_around ... ok
+#24 44.99 test tool_parser::tests::group_g_parallel::parse_qwen3_coder_two_calls_all_returned ... ok
+#24 44.99 test tool_parser::tests::group_g_parallel::parse_hermes_unterminated_tail_garbage_contained ... ok
+#24 44.99 test tool_parser::tests::group_g_parallel::parse_qwen3_coder_unterminated_tail_keeps_closed_params ... ok
+#24 44.99 test tool_parser::tests::group_g_parallel::parse_qwen3_coder_unterminated_tail_garbage_contained ... ok
+#24 44.99 test tool_parser::tests::group_g_parallel::parse_single_call_regression_unchanged ... ok
+#24 44.99 test tool_parser::tests::group_g_parallel::streaming_blocking_parity_on_unterminated_tail ... ok
+#24 44.99 test tool_parser::tests::group_g_parallel::streaming_hermes_two_calls_incrementing_index ... ok
+#24 44.99 test tool_parser::tests::group_g_parallel::streaming_single_call_close_streamed_regression ... ok
+#24 44.99 test tool_parser::tests::group_g_parallel::streaming_single_call_dangling_close_flush_regression ... ok
+#24 44.99 test tool_parser::tests::group_h_salvage::buffered_pipeline_recovers_live_shape_1 ... ok
+#24 44.99 test tool_parser::tests::group_g_parallel::streaming_qwen3_coder_three_calls_incrementing_index ... ok
+#24 44.99 test tool_parser::tests::group_h_salvage::buffered_pipeline_recovers_live_shape_2 ... ok
+#24 44.99 test tool_parser::tests::group_g_parallel::streaming_two_calls_with_interleaved_content ... ok
+#24 44.99 test tool_parser::tests::group_h_salvage::buffered_salvage_does_not_clobber_populated_target ... ok
+#24 44.99 test tool_parser::tests::group_h_salvage::buffered_recovers_garbled_close_reopen ... ok
+#24 44.99 test tool_parser::tests::group_h_salvage::legit_close_prefix_content_not_split ... ok
+#24 44.99 test tool_parser::tests::group_g_parallel::grammar_shaped_hermes_two_calls_all_chunk_sizes ... ok
+#24 44.99 test tool_parser::tests::group_h_salvage::salvage_helper_never_rewrites_legit_schema_keys ... ok
+#24 44.99 test tool_parser::tests::group_h_salvage::salvage_helper_resplits_echoed_key ... ok
+#24 44.99 test tool_parser::tests::group_h_salvage::streaming_live_fragments_recover_echoed_key ... ok
+#24 44.99 test tool_parser::tests::group_i_poolside_safety::empty_content_remains_schema_valid ... ok
+#24 44.99 test tool_parser::tests::group_i_poolside_safety::empty_write_path_is_not_executable ... ok
+#24 44.99 test tool_parser::tests::group_h_salvage::streaming_recovers_garbled_close_reopen ... ok
+#24 44.99 test tool_parser::tests::group_i_poolside_safety::missing_write_path_is_not_executable_after_backfill ... ok
+#24 44.99 test tool_parser::tests::group_i_poolside_safety::poolside_parser_does_not_reinject_tool_prompt ... ok
+#24 44.99 test tool_parser::tests::group_j_poolside_stream_name::closed_zero_argument_call_matches_every_split ... ok
+#24 44.99 test tool_parser::tests::group_j_poolside_stream_name::malformed_native_header_never_uses_nested_name ... ok
+#24 44.99 test tool_parser::tests::group_j_poolside_stream_name::incomplete_native_envelope_is_not_completed_at_eos ... ok
+#24 44.99 test tool_parser::tests::group_j_poolside_stream_name::native_header_precedes_nested_attachment_name ... ok
+#24 44.99 test tool_parser::tests::group_j_poolside_stream_name::other_format_headers_keep_existing_names ... ok
+#24 44.99 test tool_parser::tests::group_j_poolside_stream_name::partial_header_waits_for_complete_arg_key ... ok
+#24 44.99 test tool_parser::tests::streaming_frag::qwen3_coder_live_coerces_integer_param ... ok
+#24 44.99 test tool_parser::tests::streaming_frag::qwen3_coder_streaming_close_with_final_value_in_same_chunk ... ok
+#24 44.99 test tool_parser::tests::streaming_frag::qwen3_coder_live_flush_path_emits_closing_brace ... ok
+#24 44.99 test tool_parser::tests::streaming_frag::qwen3_coder_streaming_fragmented_at_path_boundary ... ok
+#24 44.99 test tool_parser::tests::streaming_frag::qwen3_coder_streaming_fragmented_at_xml_opener ... ok
+#24 44.99 test tool_parser::tests::streaming_frag::qwen3_coder_live_streams_multiple_fragments_before_end ... ok
+#24 44.99 test tool_parser::tests::streaming_frag::qwen3_coder_streaming_same_name_tool_calls_no_collision ... ok
+#24 44.99 test tool_parser::tests::streaming_frag_env::kill_switch_buffers_full_args_no_fragments ... ignored, mutates process-global ATLAS_BUFFER_TOOL_ARGS; run serially with --ignored --test-threads=1
+#24 44.99 test tool_parser::tests::streaming_leak::flush_content_sanitizer_drops_held_back_trailing_close ... ok
+#24 44.99 test tool_parser::tests::streaming_frag_env::bare_function_streams_incrementally_and_emits_call_once ... ok
+#24 44.99 test tool_parser::tests::streaming_leak::scrub_tool_tags_preserves_non_tool_content ... ok
+#24 44.99 test tool_parser::tests::streaming_leak::qwen3_coder_runaway_content_dump_not_leaked ... ok
+#24 44.99 test tool_parser::tests::streaming_leak::qwen3_coder_spurious_trailing_close_reaches_flush_not_leaked ... ok
+#24 44.99 test tool_parser::tests::streaming_leak::qwen3_coder_doubled_tool_call_close_not_leaked ... ok
+#24 44.99 test tool_parser::tests::streaming_leak::qwen3_coder_spurious_trailing_close_underscore_call_not_leaked ... ok
+#24 44.99 test tool_parser::tests::streaming_leak::scrub_tool_tags_strips_runaway_markup_dump ... ok
+#24 44.99 test tool_parser::validation::path_sanitizer_tests::punctuation_drifted_workdir_is_repaired_to_cwd ... ok
+#24 44.99 test tool_parser::validation::path_sanitizer_tests::punctuation_drifted_cwd_inside_bash_command_is_repaired ... ok
+#24 44.99 test tool_parser::validation::path_sanitizer_tests::malformed_quoted_comma_filepath_sanitized ... ok
+#24 44.99 test tool_parser::tests::group_j_poolside_stream_name::native_arguments_match_blocking_parser_at_every_split ... ok
+#24 44.99 
+#24 44.99 test result: ok. 176 passed; 0 failed; 1 ignored; 0 measured; 2449 filtered out; finished in 0.01s
+#24 44.99 
+#24 44.99 test result: ok. 176 passed; 0 failed; 1 ignored; 0 measured; 2449 filtered out; finished in 0.01s
+#24 DONE 45.0s
+
+#25 [stage-1  3/12] COPY --from=builder /build/dist/spark /usr/local/bin/spark
+#25 DONE 0.1s
+
+#26 [stage-1  4/12] COPY --from=builder /build/jinja-templates/ /jinja-templates/
+#26 DONE 0.1s
+
+#27 [stage-1  5/12] COPY --from=builder /opt/cutlass/LICENSE.txt /opt/atlas/notices/CUTLASS-LICENSE.txt
+#27 DONE 0.1s
+
+#28 [stage-1  6/12] COPY --from=builder /build/dist/notices-rust/ /opt/atlas/notices/rust/
+#28 DONE 0.1s
+
+#29 [stage-1  7/12] COPY install/serve.py /opt/atlas/
+#29 DONE 0.1s
+
+#30 [stage-1  8/12] COPY install/profiles/ /opt/atlas/profiles/
+#30 DONE 0.1s
+
+#31 [stage-1  9/12] COPY install/atlas-source.json /opt/atlas/source-manifest.json
+#31 DONE 0.1s
+
+#32 [stage-1 10/12] COPY install/checkpoint.json /opt/atlas/checkpoint.json
+#32 DONE 0.1s
+
+#33 [stage-1 11/12] COPY engine/LICENSE /LICENSE
+#33 DONE 0.1s
+
+#34 [stage-1 12/12] RUN test -n "e8ea13c4816bda8acdf1614743f707e6e765140e"
+#34 DONE 0.2s
+
+#35 exporting to image
+#35 exporting layers
+#35 exporting layers 0.8s done
+#35 writing image sha256:286fd90df4777932a90e411b9ebbe5b6d43c042e1e9f0348abb6d8f51e2c2ec4 done
+#35 naming to ghcr.io/enntity/atlas-sparkqwen:e8ea13c4816b done
+#35 DONE 0.9s
+[1m== copying the image to <rank1-fabric-ip>[0m
+Loaded image: ghcr.io/enntity/atlas-sparkqwen:e8ea13c4816b
+[1m== start rank 1 on <rank1-fabric-ip>, then rank 0 here (leader <rank0-fabric-ip>, profile 8x32k)[0m
+a47b25443b967fd6329df715c8cda08e9098dd5efabba1d51e7ec016d1d76a45
+started atlas-sparkqwen-rank1 (rank 1); follow with: docker logs -f atlas-sparkqwen-rank1
+3bb7c3089bb229d9f7edd826161950672e64e8d13b37324bacce57596b64ba47
+started atlas-sparkqwen-rank0 (rank 0); follow with: docker logs -f atlas-sparkqwen-rank0
+[1m== loading (a few minutes; the first start also compiles CUDA kernels)[0m
+[1m== ready: http://127.0.0.1:8893/v1 model qwen3.8-flash-next-atlas[0m
+smoke: 17*23 = 391

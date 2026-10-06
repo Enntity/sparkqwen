@@ -16,12 +16,12 @@ cp .env.example .env      # set WORKER to the other Spark's ssh destination
 ./start.sh
 ```
 
-**Status: bring-up.** The engine is pinned
+**Status: early.** The engine is pinned
 ([`install/atlas-source.json`](install/atlas-source.json): Enntity/atlas
-`sparkqwen/atlas-20261006-longctx` at 3322e221), but the recipe has not yet
-built its image or run end to end from a clean clone. The numbers below were
-measured on our pair with engine binaries from the integration branch the pin
-was cut from ([docs/LIMITATIONS.md](docs/LIMITATIONS.md)).
+`sparkqwen/atlas-20261006-longctx` at 3322e221). `./start.sh` from a clean
+clone built the image, served the pair and reproduced the numbers below on
+our Sparks; no image is published yet, so the first start builds one
+([docs/LIMITATIONS.md](docs/LIMITATIONS.md)).
 
 ## What it does
 

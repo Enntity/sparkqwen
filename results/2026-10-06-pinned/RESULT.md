@@ -9,10 +9,10 @@ the `FP8_GDN` opt-in (`raw/env-PFP8.list`). Checkpoint
 `nvidia/Qwen3.8-Flash-Next-NVFP4` @ fc694b54. Serve flags: `--max-seq-len 32768
 --max-num-seqs 8 --gpu-memory-utilization 0.88 --kv-cache-dtype bf16
 --enable-prefix-caching --speculative --num-drafts 3`, reasoning effort low by
-default. The binary was built from the pinned commit by our development
-scripts and run in a runtime image with the profile's flags; the recipe's own
-image (`install/build.sh`) was not used. Single-session measurements on our
-pair, not a guarantee.
+default. The tables below were measured with a binary built from the pinned
+commit by our development scripts; the recipe's own image, built from a clean
+clone by `./start.sh`, then reproduced them (last section). Single-session
+measurements on our pair, not a guarantee.
 
 ## Decode: sparkDash protocol
 
@@ -74,5 +74,27 @@ and 12/12 on both arms (`raw/qprobe-*.jsonl`).
   computation (`raw/agentic-*.json`, `raw/round_ag.out`, `raw/round_ev.out`;
   chain-aware snapshot eviction made no difference).
 
-Host addresses and home paths in `raw/*.out` are replaced with placeholders;
-the files are otherwise as written.
+## From a clean clone
+
+`git clone` of this repository at 1f15595 on one Spark, `.env` with `WORKER`
+and `MODEL_ROOT` (the pinned checkpoint revision was already on both Sparks,
+so the download step was skipped), then `./start.sh`: it built
+`ghcr.io/enntity/atlas-sparkqwen:e8ea13c4816b` from the pinned engine commit
+(build-time tests: 239 passed), copied it to the other Spark, started both
+ranks with the `8x32k` profile and answered the smoke test
+(`raw/recipe/start.log`). Against that server (`raw/recipe/`):
+
+- prompt logprobs identical to the development binary's (`PDEF`) on 1K, 6K
+  and 20K-token prompts, and the same greedy text;
+- sparkDash C1 structured / prose / code / json 81.4 / 57.7 / 84.6 / 71.4,
+  C8 aggregate 128.2 / 114.9 / 112.2 / 119.0 tok/s (the same configuration;
+  differences are run-to-run noise);
+- quality probe 40/40 and 12/12.
+
+The first clean-clone attempt failed at the build-time tests (the image
+copied one of the four engine test configs that atlas-core's test binary
+includes); 1f15595 fixed it.
+
+Host addresses, user names and home paths in `raw/*.out` and
+`raw/recipe/*` are replaced with placeholders; the files are otherwise as
+written.

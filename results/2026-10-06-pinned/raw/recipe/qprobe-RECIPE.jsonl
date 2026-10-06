@@ -1,0 +1,52 @@
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "-16698", "out": " \u00d7 100 \u00f7 4 = 450,600 \u00f7 4 = **112,650**\n\n**Step 3:** 95,047 \u2212 112,650 + 905 = \u221217,603 + 905 = **\u221216,698**\n\nAnswer: -16698"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "249536", "out": "0 = 210,350\n4207 \u00d7 5 = 21,035\n4207 \u00d7 55 = 231,385\n\n**Step 3: Combine**\n480,298 \u2212 231,385 + 623 = 249,536\n\nAnswer: 249536"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "42473", "out": " + 1476 \u00d7 6 = 59,040 + 8,856 = **67,896**\n\n**Step 3:** 109,584 \u2212 67,896 + 785 = 41,688 + 785 = **42,473**\n\nAnswer: 42473"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "487820", "out": "4 = 964,300 \u00f7 4 = **241,075**\n\n**Step 3: Combine**\n728,736 \u2212 241,075 + 159 = 487,661 + 159 = **487,820**\n\nAnswer: 487820"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "132000", "out": "409 \u00d7 3 = 4,227\nSum = **60,587**\n\n**Step 3: Combine**\n191,995 \u2212 60,587 = 131,408\n131,408 + 592 = 132,000\n\nAnswer: 132000"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "-37503", "out": "3 \u00d7 2 = 7,666\nSum = **352,636**\n\n**Step 3: Combine**\n314,820 \u2212 352,636 = \u221237,816\n\u221237,816 + 313 = \u221237,503\n\nAnswer: -37503"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "47947", "out": "2648 \u00d7 3 = 105,920 + 7,944 = **113,864**\n\n**Step 3:** 161,540 \u2212 113,864 + 271 = 47,676 + 271 = **47,947**\n\nAnswer: 47947"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "204581", "out": "7 \u00d7 3 = 79,670 + 23,901 = **103,571**\n\n**Step 3:** 307,260 \u2212 103,571 + 892 = 203,689 + 892 = **204,581**\n\nAnswer: 204581"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "-403100", "out": "6703 \u00d7 7 = 469210 + 46921 = **516131**\n\n**Step 3:** 112326 \u2212 516131 + 705 = \u2212403805 + 705 = **\u2212403100**\n\nAnswer: -403100"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "10293", "out": "0 \u00d7 42 = 74,340\n\n**Step 2:** 4982 \u00d7 13 = 64,766\n\n**Step 3:** 74,340 \u2212 64,766 + 719 = 9,574 + 719 = 10,293\n\nAnswer: 10293"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "220276", "out": " \u00d7 7 = 55,405\n7915 \u00d7 67 = 530,305\n\n**Step 3: Combine**\n750,465 \u2212 530,305 + 116 = 220,160 + 116 = 220,276\n\nAnswer: 220276"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "-67255", "out": " \u00d7 4 = 189,150 + 25,220 = **214,370**\n\n**Step 3:** 146,379 \u2212 214,370 + 736 = \u221267,991 + 736 = **\u221267,255**\n\nAnswer: -67255"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "-119926", "out": "3,300 \u2212 8,132 = **195,168**\n\n**Step 3: Combine**\n74,616 \u2212 195,168 + 626 = \u2212120,552 + 626 = **\u2212119,926**\n\nAnswer: -119926"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "344512", "out": "p 1:** 6824 \u00d7 60 = 409,440\n\n**Step 2:** 2731 \u00d7 24 = 65,544\n\n**Step 3:** 409,440 \u2212 65,544 + 616 = 344,512\n\nAnswer: 344512"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "233610", "out": "6 \u00d7 5 = 97,860 + 48,930 = **146,790**\n\n**Step 3:** 380,016 \u2212 146,790 + 384 = 233,226 + 384 = **233,610**\n\nAnswer: 233610"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "81469", "out": "2602 \u00d7 3 = 234,180 \u2212 7,806 = **226,374**\n\n**Step 3:** 306,912 \u2212 226,374 + 931 = 80,538 + 931 = **81,469**\n\nAnswer: 81469"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "543092", "out": ",320\n1754 \u00d7 4 = 7,016\n\u2192 147,336\n\n**Step 3:** Combine\n689,552 \u2212 147,336 = 542,216\n542,216 + 876 = 543,092\n\nAnswer: 543092"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "115412", "out": "2637 \u00d7 3 = 79,110 + 7,911 = **87,021**\n\n**Step 3:** 201,768 \u2212 87,021 + 665 = 114,747 + 665 = **115,412**\n\nAnswer: 115412"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "-69792", "out": "0 \u00d7 4 = 130,000 + 26,000 = **156,000**\n\n**Step 3:** 85,404 \u2212 156,000 + 804 = \u221270,596 + 804 = **\u221269,792**\n\nAnswer: -69792"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "-391996", "out": " 6749 \u00d7 4 = 607,410 + 26,996 = 634,406\n\n**Step 3:** 242,040 \u2212 634,406 + 370 = \u2212392,366 + 370 = \u2212391,996\n\nAnswer: -391996"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "146275", "out": "\u00d7 10 + 4707 \u00d7 3 = 47,070 + 14,121 = 61,191\n\n**Step 3:** 207,160 \u2212 61,191 + 306 = 145,969 + 306 = 146,275\n\nAnswer: 146275"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "290830", "out": ",260\n1321 \u00d7 3 = 3,963\nSum = 83,223\n\n**Step 3:** Combine\n373,934 \u2212 83,223 + 119 = 290,711 + 119 = 290,830\n\nAnswer: 290830"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "-487763", "out": "25 = 677,250 \u2212 7,525 = **669,725**\n\n**Step 3:** 181,740 \u2212 669,725 + 222 = \u2212487,985 + 222 = **\u2212487,763**\n\nAnswer: -487763"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "470504", "out": "141,760 + 7,088 = **148,848**\n\n**Step 3: Combine**\n618,936 \u2212 148,848 + 416 = 470,088 + 416 = **470,504**\n\nAnswer: 470504"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "455071", "out": "1191 \u00d7 1 = 35,730 + 1,191 = **36,921**\n\n**Step 3:** 491,400 \u2212 36,921 + 592 = 454,479 + 592 = **455,071**\n\nAnswer: 455071"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "63826", "out": "9460 \u00d7 4 = 37,840\nSum = **605,440**\n\n**Step 3: Combine**\n668,355 \u2212 605,440 = 62,915\n62,915 + 911 = 63,826\n\nAnswer: 63826"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "409135", "out": "61,400 + 56,490 = **217,890**\n\n**Step 3: Combine**\n626,535 \u2212 217,890 + 490 = 408,645 + 490 = **409,135**\n\nAnswer: 409135"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "-211629", "out": "\u00d7 2 = 273,700 + 7,820 = **281,520**\n\n**Step 3:** 69,479 \u2212 281,520 + 412 = \u2212212,041 + 412 = **\u2212211,629**\n\nAnswer: -211629"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "-569970", "out": ",600 + 60,760 = **668,360**\n\n**Step 3: Combine**\n97,584 \u2212 668,360 + 806 = \u2212570,776 + 806 = **\u2212569,970**\n\nAnswer: -569970"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "198197", "out": "\n1963 \u00d7 20 = 39,260\n1963 \u00d7 8 = 15,704\nSum = 54,964\n\n**Step 3: Combine**\n252,539 \u2212 54,964 + 622 = 198,197\n\nAnswer: 198197"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "525870", "out": "0\n5963 \u00d7 5 = 29,815\nSum = 89,445\n\n**Step 3: Combine**\n615,208 \u2212 89,445 = 525,763\n525,763 + 107 = 525,870\n\nAnswer: 525870"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "-493732", "out": "** 8666 \u00d7 32 = 277,312\n\n**Step 2:** 8386 \u00d7 92 = 771,512\n\n**Step 3:** 277,312 \u2212 771,512 + 468 = \u2212493,732\n\nAnswer: -493732"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "-102623", "out": " 3979 \u00d7 4 = 397,900 \u2212 15,916 = 381,984\n\n**Step 3:** 279,000 \u2212 381,984 + 361 = \u2212102,984 + 361 = \u2212102,623\n\nAnswer: -102623"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "-626410", "out": " 80 + 7559 \\times 3) = -(604720 + 22677) = -627397$$\n\n**Step 4: Add 987.**\n\n$$-627397 + 987 = -626410$$\n\nAnswer: -626410"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "-199039", "out": "+ 8855 \u00d7 1 = 354,200 + 8,855 = 363,055\n\n**Step 3:** 163,100 \u2212 363,055 + 916 = \u2212199,955 + 916 = \u2212199,039\n\nAnswer: -199039"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "334864", "out": " \u00d7 5 = 330,500 + 33,050 = **363,550**\n\n**Step 3:** 698,205 \u2212 363,550 + 209 = 334,655 + 209 = **334,864**\n\nAnswer: 334864"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "29972", "out": "370 \u00d7 4 = 187,400 + 37,480 = **224,880**\n\n**Step 3:** 254,138 \u2212 224,880 + 714 = 29,258 + 714 = **29,972**\n\nAnswer: 29972"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "-49432", "out": " \u00d7 3 = 252,300 + 12,615 = **264,915**\n\n**Step 3:** 214,598 \u2212 264,915 + 885 = \u221250,317 + 885 = **\u221249,432**\n\nAnswer: -49432"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "35952", "out": "1**\n\n**Step 2:** 6225 \u00d7 30 = **186,750**\n\n**Step 3:** 222,431 \u2212 186,750 + 271 = 35,681 + 271 = **35,952**\n\nAnswer: 35952"}
+{"tag": "RECIPE", "kind": "arith", "ok": true, "answer": "-381530", "out": "56 \u00d7 3 = 507920 \u2212 21768 = **486152**\n\n**Step 3:** 104027 \u2212 486152 + 595 = 104622 \u2212 486152 = **\u2212381530**\n\nAnswer: -381530"}
+{"tag": "RECIPE", "kind": "needle", "ok": true, "answer": "79098087", "out": "79098087"}
+{"tag": "RECIPE", "kind": "needle", "ok": true, "answer": "06704974", "out": "06704974"}
+{"tag": "RECIPE", "kind": "needle", "ok": true, "answer": "69595526", "out": "69595526"}
+{"tag": "RECIPE", "kind": "needle", "ok": true, "answer": "97820892", "out": "97820892"}
+{"tag": "RECIPE", "kind": "needle", "ok": true, "answer": "58884302", "out": "58884302"}
+{"tag": "RECIPE", "kind": "needle", "ok": true, "answer": "23532875", "out": "23532875"}
+{"tag": "RECIPE", "kind": "needle", "ok": true, "answer": "94000233", "out": "94000233"}
+{"tag": "RECIPE", "kind": "needle", "ok": true, "answer": "85365588", "out": "85365588"}
+{"tag": "RECIPE", "kind": "needle", "ok": true, "answer": "85523407", "out": "85523407"}
+{"tag": "RECIPE", "kind": "needle", "ok": true, "answer": "34022437", "out": "34022437"}
+{"tag": "RECIPE", "kind": "needle", "ok": true, "answer": "39767714", "out": "39767714"}
+{"tag": "RECIPE", "kind": "needle", "ok": true, "answer": "52903839", "out": "52903839"}

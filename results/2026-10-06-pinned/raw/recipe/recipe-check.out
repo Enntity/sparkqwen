@@ -1,0 +1,15 @@
+prose   n=   984 mean|d|=0.00000 max|d|=0.0000 >0.05: 0 first>0.05 at None  sumA=-161.48 sumB=-161.48
+reg6k   n=  5910 mean|d|=0.00000 max|d|=0.0000 >0.05: 0 first>0.05 at None  sumA=-6472.07 sumB=-6472.07
+reg20k  n= 20018 mean|d|=0.00000 max|d|=0.0000 >0.05: 0 first>0.05 at None  sumA=-21489.22 sumB=-21489.22
+greedy same: True
+structured C1: median 81.42 tok/s, aggregate 81.42, TTFT 243 ms
+structured C8: median 16.74 tok/s, aggregate 128.22, TTFT 1243.1 ms
+prose C1: median 57.65 tok/s, aggregate 57.65, TTFT 254.1 ms
+prose C8: median 14.86 tok/s, aggregate 114.92, TTFT 1185.5 ms
+code C1: median 84.58 tok/s, aggregate 84.58, TTFT 269.6 ms
+code C8: median 14.7 tok/s, aggregate 112.23, TTFT 1312.2 ms
+json C1: median 71.37 tok/s, aggregate 71.37, TTFT 270.8 ms
+json C8: median 15.43 tok/s, aggregate 118.96, TTFT 1202 ms
+RECIPE arith: 40/40
+RECIPE needle: 12/12
+ghcr.io/enntity/atlas-sparkqwen:e8ea13c4816b

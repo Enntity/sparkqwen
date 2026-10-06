@@ -3,16 +3,13 @@
 
 What to know before relying on SparkQwen.
 
-## The recipe has not run end to end yet
+## Installation
 
-- **The image has not been built by the recipe yet.** The engine is pinned
-  (`install/atlas-source.json`), but `install/build.sh` has not been run end
-  to end and no SparkQwen image exists, published or local.
-- The measurements (bring-up and `results/2026-10-06-pinned`) were taken with
-  engine binaries built by our development scripts, run inside a runtime
-  image with the same flags and environment the profiles carry. They were not
-  taken with an image built by `install/build.sh`, and `./start.sh` has not
-  been run from a clean clone.
+- No SparkQwen image is published; `./start.sh` builds one from the pinned
+  engine (a cold build takes 30-60 minutes). The recipe ran end to end from a
+  clean clone on our pair and reproduced the published numbers
+  (`results/2026-10-06-pinned`, From a clean clone), with the checkpoint
+  already in place; the download path itself was not exercised in that run.
 
 ## Scope of the measurements
 

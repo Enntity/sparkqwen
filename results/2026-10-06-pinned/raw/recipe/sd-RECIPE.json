@@ -1,0 +1,116 @@
+{
+ "tag": "RECIPE",
+ "date": "2026-10-06T11:41:56.181Z",
+ "protocol": "sparkDash decode bench (MiaAI-Lab, MIT)",
+ "max": 400,
+ "waves": [
+  {
+   "type": "structured",
+   "c": 1,
+   "medianTps": 81.42,
+   "aggregateTps": 81.42,
+   "medianTtftMs": 243,
+   "perStream": [
+    81.42
+   ]
+  },
+  {
+   "type": "structured",
+   "c": 8,
+   "medianTps": 16.74,
+   "aggregateTps": 128.22,
+   "medianTtftMs": 1243.1,
+   "perStream": [
+    16.07,
+    16.25,
+    16.45,
+    16.64,
+    16.83,
+    17.02,
+    17.15,
+    17.43
+   ]
+  },
+  {
+   "type": "prose",
+   "c": 1,
+   "medianTps": 57.65,
+   "aggregateTps": 57.65,
+   "medianTtftMs": 254.1,
+   "perStream": [
+    57.65
+   ]
+  },
+  {
+   "type": "prose",
+   "c": 8,
+   "medianTps": 14.86,
+   "aggregateTps": 114.92,
+   "medianTtftMs": 1185.5,
+   "perStream": [
+    14.4,
+    14.54,
+    14.93,
+    14.79,
+    15.37,
+    14.67,
+    15.08,
+    15.22
+   ]
+  },
+  {
+   "type": "code",
+   "c": 1,
+   "medianTps": 84.58,
+   "aggregateTps": 84.58,
+   "medianTtftMs": 269.6,
+   "perStream": [
+    84.58
+   ]
+  },
+  {
+   "type": "code",
+   "c": 8,
+   "medianTps": 14.7,
+   "aggregateTps": 112.23,
+   "medianTtftMs": 1312.2,
+   "perStream": [
+    15.73,
+    14.21,
+    14.34,
+    14.78,
+    14.63,
+    14.49,
+    14.92,
+    15.07
+   ]
+  },
+  {
+   "type": "json",
+   "c": 1,
+   "medianTps": 71.37,
+   "aggregateTps": 71.37,
+   "medianTtftMs": 270.8,
+   "perStream": [
+    71.37
+   ]
+  },
+  {
+   "type": "json",
+   "c": 8,
+   "medianTps": 15.43,
+   "aggregateTps": 118.96,
+   "medianTtftMs": 1202,
+   "perStream": [
+    14.91,
+    15.05,
+    15.2,
+    15.66,
+    15.82,
+    15.5,
+    15.98,
+    15.35
+   ]
+  }
+ ]
+}
