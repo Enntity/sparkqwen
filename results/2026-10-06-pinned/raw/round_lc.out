@@ -1,0 +1,41 @@
+== LCbase up after 44 s; MemAvailable 5 / 14 GiB
+ld: KV cache: 121.7 GB total × 88% util = 107.1 GB budget; 101.2 GB pre-KV + 4.7 GB reserve → 1.2 GB for KV → 6651 blocks × 16 tok/block = 106416 max KV tokens
+paged_impl: KV cache: 16385 blocks × 13 layers = 6.5 GB total
+== LC up after 44 s; MemAvailable 12 / 14 GiB
+ QSA: indexer capacity 262144 tokens (max_seq_len=262144); per-seq pooled keys grow on demand, 64 B/token
+ QSA: indexer capacity 262144 tokens (max_seq_len=262144); per-seq pooled keys grow on demand, 64 B/token
+ QSA: indexer capacity 262144 tokens (max_seq_len=262144); per-seq pooled keys grow on demand, 64 B/token
+ QSA: indexer capacity 262144 tokens (max_seq_len=262144); per-seq pooled keys grow on demand, 64 B/token
+ QSA: indexer capacity 262144 tokens (max_seq_len=262144); per-seq pooled keys grow on demand, 64 B/token
+ QSA: indexer capacity 262144 tokens (max_seq_len=262144); per-seq pooled keys grow on demand, 64 B/token
+ QSA: indexer capacity 262144 tokens (max_seq_len=262144); per-seq pooled keys grow on demand, 64 B/token
+ QSA: indexer capacity 262144 tokens (max_seq_len=262144); per-seq pooled keys grow on demand, 64 B/token
+ QSA: indexer capacity 262144 tokens (max_seq_len=262144); per-seq pooled keys grow on demand, 64 B/token
+ QSA: indexer capacity 262144 tokens (max_seq_len=262144); per-seq pooled keys grow on demand, 64 B/token
+ QSA: indexer capacity 262144 tokens (max_seq_len=262144); per-seq pooled keys grow on demand, 64 B/token
+ QSA: indexer capacity 262144 tokens (max_seq_len=262144); per-seq pooled keys grow on demand, 64 B/token
+ld: KV cache: 121.7 GB total × 88% util = 107.1 GB budget; 98.7 GB pre-KV + 4.7 GB reserve → 3.7 GB for KV (incl. 0.2 GB for 768 B/token of per-sequence indexer state) → 19190 blocks × 16 tok/block = 307040 max KV tokens
+paged_impl: KV cache: 16385 blocks × 13 layers = 0.5 GB total
+needle {'prompt': 77463, 'ttft': 27.0, 'n': 81, 'tps': 27.9, 'ans': '40639565'} ok True
+follow-up {'prompt': 77501, 'ttft': 0.6, 'n': 489, 'tps': 29.6, 'error': None}
+after needle: alive
+exhaust {'prompt': 100863, 'ttft': 46.7, 'n': 85, 'tps': 1.2, 'ans': '60723746'} ok True
+exhaust {'prompt': 100863, 'ttft': 111.8, 'n': 80, 'tps': 1.9, 'ans': '21998280'} ok True
+exhaust {'prompt': 100863, 'ttft': 79.3, 'n': 84, 'tps': 1.1, 'ans': '84858220'} ok True
+exhaust {'prompt': 100863, 'ttft': 153.9, 'n': 84, 'tps': 24.9, 'ans': '16923662'} ok True
+after exhaust: alive
+follow-up {'prompt': 77501, 'ttft': 0.5, 'n': 90, 'tps': 33.3, 'error': None}
+post-exhaust: alive
+## exactness LCbase vs LC
+prose   n=   984 mean|d|=0.00000 max|d|=0.0000 >0.05: 0 first>0.05 at None  sumA=-161.48 sumB=-161.48
+reg6k   n=  5910 mean|d|=0.00000 max|d|=0.0000 >0.05: 0 first>0.05 at None  sumA=-6454.43 sumB=-6454.43
+reg20k  n= 20018 mean|d|=0.00000 max|d|=0.0000 >0.05: 0 first>0.05 at None  sumA=-21375.27 sumB=-21375.27
+greedy same: True
+## decode regression (32K config)
+== LCsd up after 43 s; MemAvailable 13 / 15 GiB
+structured C1: median 83.21 tok/s, aggregate 83.21, TTFT 238.2 ms
+structured C8: median 16.05 tok/s, aggregate 122.3, TTFT 1175.9 ms
+prose C1: median 60.17 tok/s, aggregate 60.17, TTFT 246.2 ms
+prose C8: median 14.4 tok/s, aggregate 111.55, TTFT 1179.8 ms
+code C1: median 73 tok/s, aggregate 73, TTFT 271.2 ms
+code C8: median 13.98 tok/s, aggregate 108.14, TTFT 1245.8 ms

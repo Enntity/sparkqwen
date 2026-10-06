@@ -1,0 +1,34 @@
+== PDEF: MemAvailable 117 / 116 GiB before start
+started atlas-sparkglm-rank1 rank=1 bin=spark-squp-3322e221 util=0.88 maxseq=32768 rdma=1 env=def.list --speculative --num-drafts 3
+started atlas-sparkglm-rank0 rank=0 bin=spark-squp-3322e221 util=0.88 maxseq=32768 rdma=1 env=def.list --speculative --num-drafts 3
+== PDEF up after 44 s; MemAvailable 13 / 20 GiB
+2026-10-06T09:20:37.189457Z  INFO spark::main_modules::serve_phases::topology: TP-local head counts: num_attention_heads=12, num_key_value_heads=1, linear_num_key_heads=8, linear_num_value_heads=24
+2026-10-06T09:21:06.240048Z  INFO spark_comm::nccl_backend::rdma_pair::bootstrap: RDMA pair: rank 0 listening on <rank0-fabric-ip>:29512, admitting <rank1-fabric-ip>
+2026-10-06T09:21:06.729810Z  INFO spark_comm::nccl_backend::rdma_pair: RDMA pair all-reduce ready: rank 0, rails ["rocep1s0f0", "roceP2p1s0f0"], capacity 80 MB, one-shot Some(Config { max: 1048576, stripe_min: 1048576, timeout_ns: 300000000
+2026-10-06T09:21:06.729826Z  INFO spark_comm::nccl_backend::rdma_pair: ATLAS_GLM_CMD_RDMA: command words ride the RDMA pair (ring of 1024 words)
+2026-10-06T09:21:13.032329Z  INFO spark_model::factory::build: KV cache: 121.7 GB total × 88% util = 107.1 GB budget; 97.7 GB pre-KV + 4.7 GB reserve → 4.7 GB for KV (incl. 0.3 GB for 768 B/token of per-sequence indexer state) → 24186 
+2026-10-06T09:21:13.183827Z  INFO spark_comm::nccl_backend::pair_ops: RDMA one-shot kernel set (graph-capturable collectives enabled)
+│ rdma_oneshot                       aff390c70c01   used                 N
+smoke: '391' 88
+{'n': 30802, 'hash': '7dfd647ae479', 'sum': -22752.9517, 'secs': 56.4}
+{'n': 30802, 'hash': '7dfd647ae479', 'sum': -22752.9517, 'secs': 56.3}
+REPRODUCIBLE PDEF
+decode prose 0 0.296 56.35 382
+decode prose 1 0.278 59.87 382
+decode prose 2 0.276 60.06 382
+decode code 0 0.278 56.2 384
+decode code 1 0.271 62.08 384
+decode code 2 0.273 62.97 384
+decode json 0 0.29 56.39 384
+decode json 1 0.294 61.15 384
+decode json 2 0.282 61.85 384
+prefill 2048 0 2022 0.935
+prefill 2048 1 2023 0.952
+prefill 8192 0 8170 3.119
+prefill 8192 1 8169 3.082
+prefill 16384 0 16390 6.212
+prefill 16384 1 16408 6.123
+prefill 28672 0 28809 11.319
+prefill 28672 1 28819 11.273
+wrote ~/sparkqwen-dev/bench-PDEF.json
+== PDEF done; MemAvailable now 13 / 20 GiB

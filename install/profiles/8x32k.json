@@ -1,7 +1,7 @@
 {
  "schema": "sparkqwen.atlas-install-profile/v1",
- "status": "candidate_unvalidated",
- "note": "Up to eight requests of up to 32K tokens: the concurrency and benchmark profile. Its options are the measured 2026-10-06 configuration without the FP8 GDN opt-in, plus sequence-parallel prefill (prompt logprobs identical); it has not yet been run as a whole from the recipe image.",
+ "status": "validated",
+ "note": "Up to eight requests of up to 32K tokens: the concurrency and benchmark profile. Measured on the pinned engine (results/2026-10-06-pinned): every option exact; not yet run from the recipe image.",
  "environment": {
   "ATLAS_EP_PROTOCOL": "v2",
   "ATLAS_RDMA_ALLREDUCE": "1",
@@ -26,6 +26,7 @@
   "ATLAS_MTP_MAX_SEQS": "1",
   "ATLAS_QWEN4EXP_PREFILL_MOE": "1",
   "ATLAS_QWEN4EXP_PREFILL_GDN": "1",
+  "ATLAS_QWEN4EXP_PREFILL_GDN_DV": "1",
   "ATLAS_QWEN4EXP_PREFILL_QSA_SCORE": "1",
   "ATLAS_QWEN4EXP_PREFILL_HC": "1",
   "ATLAS_QWEN4EXP_PREFILL_SP": "1",

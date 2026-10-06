@@ -1,0 +1,34 @@
+== PFP8: MemAvailable 117 / 117 GiB before start
+started atlas-sparkglm-rank1 rank=1 bin=spark-squp-3322e221 util=0.88 maxseq=32768 rdma=1 env=deffp8.list --speculative --num-drafts 3
+started atlas-sparkglm-rank0 rank=0 bin=spark-squp-3322e221 util=0.88 maxseq=32768 rdma=1 env=deffp8.list --speculative --num-drafts 3
+== PFP8 up after 44 s; MemAvailable 13 / 15 GiB
+2026-10-06T09:36:49.842674Z  INFO spark::main_modules::serve_phases::topology: TP-local head counts: num_attention_heads=12, num_key_value_heads=1, linear_num_key_heads=8, linear_num_value_heads=24
+2026-10-06T09:37:21.750629Z  INFO spark_comm::nccl_backend::rdma_pair::bootstrap: RDMA pair: rank 0 listening on <rank0-fabric-ip>:29512, admitting <rank1-fabric-ip>
+2026-10-06T09:37:22.263806Z  INFO spark_comm::nccl_backend::rdma_pair: RDMA pair all-reduce ready: rank 0, rails ["rocep1s0f0", "roceP2p1s0f0"], capacity 80 MB, one-shot Some(Config { max: 1048576, stripe_min: 1048576, timeout_ns: 300000000
+2026-10-06T09:37:22.263818Z  INFO spark_comm::nccl_backend::rdma_pair: ATLAS_GLM_CMD_RDMA: command words ride the RDMA pair (ring of 1024 words)
+2026-10-06T09:37:29.228312Z  INFO spark_model::factory::build: KV cache: 121.7 GB total × 88% util = 107.1 GB budget; 98.7 GB pre-KV + 4.7 GB reserve → 3.7 GB for KV (incl. 0.2 GB for 768 B/token of per-sequence indexer state) → 18977 
+2026-10-06T09:37:29.363937Z  INFO spark_comm::nccl_backend::pair_ops: RDMA one-shot kernel set (graph-capturable collectives enabled)
+│ rdma_oneshot                       aff390c70c01   used                 N
+smoke: '391' 66
+{'n': 30802, 'hash': '7dfd647ae479', 'sum': -22752.9517, 'secs': 56.5}
+{'n': 30802, 'hash': '7dfd647ae479', 'sum': -22752.9517, 'secs': 56.5}
+REPRODUCIBLE PFP8
+decode prose 0 0.298 55.57 376
+decode prose 1 0.279 60.35 376
+decode prose 2 0.278 60.36 376
+decode code 0 0.274 61.95 384
+decode code 1 0.268 67.26 384
+decode code 2 0.28 68.66 384
+decode json 0 0.295 61.9 384
+decode json 1 0.298 66.78 384
+decode json 2 0.294 68.05 384
+prefill 2048 0 2022 0.911
+prefill 2048 1 2023 0.925
+prefill 8192 0 8170 3.198
+prefill 8192 1 8169 3.143
+prefill 16384 0 16390 6.184
+prefill 16384 1 16408 6.193
+prefill 28672 0 28809 11.277
+prefill 28672 1 28819 11.264
+wrote ~/sparkqwen-dev/bench-PFP8.json
+== PFP8 done; MemAvailable now 13 / 15 GiB

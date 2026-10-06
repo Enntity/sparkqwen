@@ -1,0 +1,17 @@
+== LC: MemAvailable 117 / 117 GiB before start
+started atlas-sparkglm-rank1 rank=1 bin=spark-sqlc-9d47589c util=0.88 maxseq=262144 rdma=1 env=long.list --speculative --num-drafts 3
+started atlas-sparkglm-rank0 rank=0 bin=spark-sqlc-9d47589c util=0.88 maxseq=262144 rdma=1 env=long.list --speculative --num-drafts 3
+== LC up after 44 s; MemAvailable 12 / 14 GiB
+2026-10-06T07:22:37.831740Z  INFO spark::main_modules::serve_phases::topology: TP-local head counts: num_attention_heads=12, num_key_value_heads=1, linear_num_key_heads=8, linear_num_value_heads=24
+2026-10-06T07:23:08.384055Z  INFO spark_comm::nccl_backend::rdma_pair::bootstrap: RDMA pair: rank 0 listening on <rank0-fabric-ip>:29512, admitting <rank1-fabric-ip>
+2026-10-06T07:23:08.409080Z  INFO spark_comm::nccl_backend::rdma_pair: RDMA pair all-reduce ready: rank 0, rails ["rocep1s0f0", "roceP2p1s0f0"], capacity 80 MB, one-shot Some(Config { max: 1048576, stripe_min: 1048576, timeout_ns: 300000000
+2026-10-06T07:23:08.409088Z  INFO spark_comm::nccl_backend::rdma_pair: ATLAS_GLM_CMD_RDMA: command words ride the RDMA pair (ring of 1024 words)
+2026-10-06T07:23:15.379560Z  INFO spark_model::factory::build: KV cache: 121.7 GB total × 88% util = 107.1 GB budget; 98.7 GB pre-KV + 4.7 GB reserve → 3.7 GB for KV (incl. 0.2 GB for 768 B/token of per-sequence indexer state) → 19190 
+2026-10-06T07:23:15.552843Z  INFO spark_comm::nccl_backend::pair_ops: RDMA one-shot kernel set (graph-capturable collectives enabled)
+│ rdma_oneshot                       aff390c70c01   used                 N
+smoke: '391' 66
+{'n': 30802, 'hash': '5a62c825ef66', 'sum': -23114.3498, 'secs': 54.6}
+{'n': 30802, 'hash': '5a62c825ef66', 'sum': -23114.3498, 'secs': 59.6}
+REPRODUCIBLE LC
+wrote ~/sparkqwen-dev/bench-LC.json
+== LC done; MemAvailable now 12 / 14 GiB

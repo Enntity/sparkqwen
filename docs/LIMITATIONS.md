@@ -8,9 +8,9 @@ What to know before relying on SparkQwen.
 - **The image has not been built by the recipe yet.** The engine is pinned
   (`install/atlas-source.json`), but `install/build.sh` has not been run end
   to end and no SparkQwen image exists, published or local.
-- The bring-up measurements were taken with engine binaries built from the
-  integration branch by our development scripts, run inside a runtime image
-  with the same flags and environment the profiles now carry. They were not
+- The measurements (bring-up and `results/2026-10-06-pinned`) were taken with
+  engine binaries built by our development scripts, run inside a runtime
+  image with the same flags and environment the profiles carry. They were not
   taken with an image built by `install/build.sh`, and `./start.sh` has not
   been run from a clean clone.
 
@@ -20,15 +20,11 @@ What to know before relying on SparkQwen.
   Other firmware, drivers, cables or cooling may give different numbers.
 - The published comparison figures in the README are other people's results
   on their hardware and harness. We did not re-run them.
-- **The README's sparkDash decode and prefill numbers were measured with the
-  lossy `FP8_GDN` opt-in on** (the decode numbers also without
-  sequence-parallel prefill). The default profile (no FP8 GDN, with
-  sequence-parallel prefill) has not been measured as a whole. On our own `sq_bench.py`, the exact TP2
-  configuration of the first bring-up round decoded 31.8 / 33.1 / 36.4 tok/s
-  (prose / code / JSON) against 38.9 / 40.5 / 41.7 with NVFP4 GDN projections.
-  The decode work since then is exact.
-- The quality probe scored 40/40 and 12/12 with the FP8 GDN opt-in, and 39/40
-  and 12/12 on an earlier exact TP2 engine. A single-GPU run of the probe,
+- The README's numbers are the default profile on the pinned engine, every
+  option exact (`results/2026-10-06-pinned`); the `FP8_GDN` row is the lossy
+  opt-in. The bring-up bundle's headline numbers had that opt-in on.
+- The quality probe scored 40/40 and 12/12 on the default profile and on the
+  FP8 GDN opt-in (`results/2026-10-06-pinned`). A single-GPU run of the probe,
   for reference, is still owed.
 
 ## Throughput at concurrency

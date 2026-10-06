@@ -1,0 +1,197 @@
+{
+ "arm": "PDEF",
+ "date": "2026-10-06 02:23:14",
+ "cells": {
+  "decode": [
+   {
+    "ttft": 0.296,
+    "wall": 7.056,
+    "out": 382,
+    "prompt": 69,
+    "cached": 32,
+    "tok_s": 56.35,
+    "text_head": "The user wants a calm, detailed essay about lighthouse staffing and maintenance ",
+    "kind": "prose",
+    "rep": 0
+   },
+   {
+    "ttft": 0.278,
+    "wall": 6.642,
+    "out": 382,
+    "prompt": 69,
+    "cached": 64,
+    "tok_s": 59.87,
+    "text_head": "The user wants a calm, detailed essay about lighthouse staffing and maintenance ",
+    "kind": "prose",
+    "rep": 1
+   },
+   {
+    "ttft": 0.276,
+    "wall": 6.62,
+    "out": 382,
+    "prompt": 69,
+    "cached": 64,
+    "tok_s": 60.06,
+    "text_head": "The user wants a calm, detailed essay about lighthouse staffing and maintenance ",
+    "kind": "prose",
+    "rep": 2
+   },
+   {
+    "ttft": 0.278,
+    "wall": 7.093,
+    "out": 384,
+    "prompt": 65,
+    "cached": 32,
+    "tok_s": 56.2,
+    "text_head": "The user wants a Python module that implements an LRU cache with:\n1. TTL (Time-T",
+    "kind": "code",
+    "rep": 0
+   },
+   {
+    "ttft": 0.271,
+    "wall": 6.44,
+    "out": 384,
+    "prompt": 65,
+    "cached": 64,
+    "tok_s": 62.08,
+    "text_head": "The user wants a Python module that implements an LRU cache with:\n1. TTL (Time-T",
+    "kind": "code",
+    "rep": 1
+   },
+   {
+    "ttft": 0.273,
+    "wall": 6.356,
+    "out": 384,
+    "prompt": 65,
+    "cached": 64,
+    "tok_s": 62.97,
+    "text_head": "The user wants a Python module that implements an LRU cache with:\n1. TTL (Time-T",
+    "kind": "code",
+    "rep": 2
+   },
+   {
+    "ttft": 0.29,
+    "wall": 7.082,
+    "out": 384,
+    "prompt": 77,
+    "cached": 32,
+    "tok_s": 56.39,
+    "text_head": "The user wants a JSON array of 12 fictional library books. Each object needs: ti",
+    "kind": "json",
+    "rep": 0
+   },
+   {
+    "ttft": 0.294,
+    "wall": 6.557,
+    "out": 384,
+    "prompt": 77,
+    "cached": 64,
+    "tok_s": 61.15,
+    "text_head": "The user wants a JSON array of 12 fictional library books. Each object needs: ti",
+    "kind": "json",
+    "rep": 1
+   },
+   {
+    "ttft": 0.282,
+    "wall": 6.474,
+    "out": 384,
+    "prompt": 77,
+    "cached": 64,
+    "tok_s": 61.85,
+    "text_head": "The user wants a JSON array of 12 fictional library books. Each object needs: ti",
+    "kind": "json",
+    "rep": 2
+   }
+  ],
+  "prefill": [
+   {
+    "ttft": 0.935,
+    "wall": 1.343,
+    "out": 16,
+    "prompt": 2022,
+    "cached": 32,
+    "tok_s": 36.73,
+    "text_head": "The user asks which shelf holds Entry 3. Let me look at Entry ",
+    "size": 2048,
+    "rep": 0
+   },
+   {
+    "ttft": 0.952,
+    "wall": 1.355,
+    "out": 16,
+    "prompt": 2023,
+    "cached": 32,
+    "tok_s": 37.22,
+    "text_head": "The user asks which shelf holds Entry 3. Let me look at Entry ",
+    "size": 2048,
+    "rep": 1
+   },
+   {
+    "ttft": 3.119,
+    "wall": 3.506,
+    "out": 16,
+    "prompt": 8170,
+    "cached": 32,
+    "tok_s": 38.75,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 8192,
+    "rep": 0
+   },
+   {
+    "ttft": 3.082,
+    "wall": 3.525,
+    "out": 16,
+    "prompt": 8169,
+    "cached": 32,
+    "tok_s": 33.9,
+    "text_head": "The user asks which shelf holds Entry 3. Let me look at Entry ",
+    "size": 8192,
+    "rep": 1
+   },
+   {
+    "ttft": 6.212,
+    "wall": 6.53,
+    "out": 16,
+    "prompt": 16390,
+    "cached": 32,
+    "tok_s": 47.16,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 16384,
+    "rep": 0
+   },
+   {
+    "ttft": 6.123,
+    "wall": 6.458,
+    "out": 16,
+    "prompt": 16408,
+    "cached": 32,
+    "tok_s": 44.7,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 16384,
+    "rep": 1
+   },
+   {
+    "ttft": 11.319,
+    "wall": 11.737,
+    "out": 16,
+    "prompt": 28809,
+    "cached": 32,
+    "tok_s": 35.93,
+    "text_head": "The user asks which shelf holds Entry 3. Let me look at Entry ",
+    "size": 28672,
+    "rep": 0
+   },
+   {
+    "ttft": 11.273,
+    "wall": 11.596,
+    "out": 16,
+    "prompt": 28819,
+    "cached": 32,
+    "tok_s": 46.39,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 28672,
+    "rep": 1
+   }
+  ]
+ }
+}

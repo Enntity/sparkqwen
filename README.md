@@ -25,26 +25,27 @@ was cut from ([docs/LIMITATIONS.md](docs/LIMITATIONS.md)).
 
 ## What it does
 
-Measured on two DGX Sparks joined by one 200G cable. Receipts and caveats:
-[bring-up](results/2026-10-05-bringup/RESULT.md).
+Measured on two DGX Sparks joined by one 200G cable with the pinned engine
+and the default profile. Receipts and caveats:
+[2026-10-06-pinned](results/2026-10-06-pinned/RESULT.md) (earlier:
+[bring-up](results/2026-10-05-bringup/RESULT.md)).
 
 | Workload | SparkQwen (Atlas, two Sparks) | Reference |
 |---|---|---|
-| sparkDash decode, one stream: structured / prose / code / JSON (thinking off, 400 tokens) | **83.5 / 60.0 / 72.4 / 74.8 tok/s** | MiaAI-Lab dual-Spark vLLM recipe (published, their harness): prose / code / structured 59.2 / 66.6 / 76.0 |
-| sparkDash aggregate, 4 streams | 96.0 / 85.6 / 84.9 / 90.2 tok/s | |
-| sparkDash aggregate, 8 streams | 123.7 / 112.7 / 109.2 / 124.4 tok/s | MiaAI-Lab (published): prose / code / structured 216.4 / 313.6 / 258.5. **We are 2–3x behind here.** |
-| Cold prompt 2K / 8K / 16K / 29K: time to first token | **0.94 / 3.15 / 6.22 / 11.33 s** | Atlas-Inf `main` on one GB10: 1.50 / 5.43 / 10.53 / 19.43 s |
-| The same with the `QSA_TC2R` opt-in | 0.94 / 2.69 / 5.12 / 9.19 s | |
+| sparkDash decode, one stream: structured / prose / code / JSON (thinking off, 400 tokens) | **81.5 / 60.1 / 77.3 / 71.8 tok/s** | MiaAI-Lab dual-Spark vLLM recipe (published, their harness): structured / prose / code 76.0 / 59.2 / 66.6 |
+| The same with the lossy `FP8_GDN` opt-in | 89.1 / 65.0 / 77.9 / 80.7 tok/s | |
+| sparkDash aggregate, 4 streams | 91.6 / 83.5 / 83.5 / 88.1 tok/s | |
+| sparkDash aggregate, 8 streams | 128.5 / 115.4 / 112.7 / 121.8 tok/s | MiaAI-Lab (published): structured / prose / code 258.5 / 216.4 / 313.6. **We are about 2x behind here.** |
+| Cold prompt 2K / 8K / 16K / 28K: time to first token | **0.94 / 3.10 / 6.17 / 11.30 s** | Atlas-Inf `main` on one GB10: 1.50 / 5.43 / 10.53 / 19.43 s |
 | Quality probe: arithmetic / two-hop 24K needle | 40/40 · 12/12 | |
-| Exactness checks on the pair: speculative verify (up to 4 rows), batched decode at 8 streams | 3,655 and 3,583 rows checked, 0 differ | |
+| Long context (`4x262k`) | 307K-token KV pool; 77K needle and follow-up correct; KV exhaustion handled without losing the pair | |
 
-**The decode and prefill rows above, and the quality probe, were measured
-with the lossy `FP8_GDN` opt-in on**, which the default profile leaves off;
-the default profile has not been measured as a whole yet. Everything else in
-that configuration is exact: the same output with each option on or off. Two
-Sparks do not give bit-identical output to one GPU (BF16 rounding of the
-tensor-parallel sums; see [docs/LIMITATIONS.md](docs/LIMITATIONS.md)). These
-are single-session measurements on our pair, not a guarantee for yours.
+The default profile is exact: each of its options gives the same output on or
+off, and the pinned engine's prompt logprobs match the build the bring-up
+measured bit for bit. Two Sparks do not give bit-identical output to one GPU
+(BF16 rounding of the tensor-parallel sums; see
+[docs/LIMITATIONS.md](docs/LIMITATIONS.md)). These are single-session
+measurements on our pair, not a guarantee for yours.
 
 ## Requirements
 

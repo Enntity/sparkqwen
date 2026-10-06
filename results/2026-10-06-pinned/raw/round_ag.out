@@ -1,0 +1,8 @@
+== AGfix up after 44 s; MemAvailable 12 / 15 GiB
+AGfix: correct 20/20; turn-0 TTFT [14.95, 17.83, 20.84, 23.88]; turns 1+ TTFT median 0.57 max 0.95
+AGfix8: correct 32/32; turn-0 TTFT [9.09, 12.04, 14.98, 17.94, 20.9, 23.87, 26.85, 29.83]; turns 1+ TTFT median 0.54 max 1.13
+AGfix: rank-agree 0, branch planned 0, recompute-all 3, restores 49, errors 0
+== AGbr up after 43 s; MemAvailable 12 / 15 GiB
+AGbr: correct 20/20; turn-0 TTFT [15.0, 17.89, 20.92, 23.95]; turns 1+ TTFT median 0.5 max 0.88
+AGbr8: correct 32/32; turn-0 TTFT [0.59, 0.79, 0.99, 1.19, 1.41, 1.64, 1.88, 2.13]; turns 1+ TTFT median 0.79 max 1.18
+AGbr: rank-agree 0, branch planned 0, recompute-all 2, restores 50, errors 0

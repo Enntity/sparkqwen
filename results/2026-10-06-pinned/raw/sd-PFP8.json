@@ -1,0 +1,212 @@
+{
+ "tag": "PFP8",
+ "date": "2026-10-06T09:42:03.498Z",
+ "protocol": "sparkDash decode bench (MiaAI-Lab, MIT)",
+ "max": 400,
+ "waves": [
+  {
+   "type": "structured",
+   "c": 1,
+   "medianTps": 89.11,
+   "aggregateTps": 89.11,
+   "medianTtftMs": 237.4,
+   "perStream": [
+    89.11
+   ]
+  },
+  {
+   "type": "structured",
+   "c": 2,
+   "medianTps": 33.33,
+   "aggregateTps": 65.76,
+   "medianTtftMs": 405.1,
+   "perStream": [
+    32.97,
+    33.68
+   ]
+  },
+  {
+   "type": "structured",
+   "c": 4,
+   "medianTps": 27.01,
+   "aggregateTps": 104.22,
+   "medianTtftMs": 650.7,
+   "perStream": [
+    26.56,
+    26.06,
+    52.47,
+    27.47
+   ]
+  },
+  {
+   "type": "structured",
+   "c": 8,
+   "medianTps": 18.13,
+   "aggregateTps": 137.28,
+   "medianTtftMs": 1176.8,
+   "perStream": [
+    17.37,
+    18.49,
+    17.86,
+    17.21,
+    18.23,
+    18.02,
+    18.67,
+    21.04
+   ]
+  },
+  {
+   "type": "prose",
+   "c": 1,
+   "medianTps": 65,
+   "aggregateTps": 65,
+   "medianTtftMs": 248.1,
+   "perStream": [
+    65
+   ]
+  },
+  {
+   "type": "prose",
+   "c": 2,
+   "medianTps": 30.73,
+   "aggregateTps": 60.7,
+   "medianTtftMs": 399.6,
+   "perStream": [
+    30.43,
+    31.02
+   ]
+  },
+  {
+   "type": "prose",
+   "c": 4,
+   "medianTps": 23.54,
+   "aggregateTps": 91.88,
+   "medianTtftMs": 679.6,
+   "perStream": [
+    23.03,
+    24.08,
+    23.36,
+    23.71
+   ]
+  },
+  {
+   "type": "prose",
+   "c": 8,
+   "medianTps": 16,
+   "aggregateTps": 123.45,
+   "medianTtftMs": 1180,
+   "perStream": [
+    15.47,
+    15.76,
+    15.92,
+    15.63,
+    16.08,
+    16.25,
+    16.42,
+    16.59
+   ]
+  },
+  {
+   "type": "code",
+   "c": 1,
+   "medianTps": 77.87,
+   "aggregateTps": 77.87,
+   "medianTtftMs": 264.3,
+   "perStream": [
+    77.87
+   ]
+  },
+  {
+   "type": "code",
+   "c": 2,
+   "medianTps": 31.46,
+   "aggregateTps": 62.26,
+   "medianTtftMs": 397.6,
+   "perStream": [
+    31.13,
+    31.79
+   ]
+  },
+  {
+   "type": "code",
+   "c": 4,
+   "medianTps": 23.55,
+   "aggregateTps": 91.88,
+   "medianTtftMs": 697.3,
+   "perStream": [
+    23.05,
+    23.36,
+    23.74,
+    24.13
+   ]
+  },
+  {
+   "type": "code",
+   "c": 8,
+   "medianTps": 15.56,
+   "aggregateTps": 119.93,
+   "medianTtftMs": 1245.2,
+   "perStream": [
+    15.03,
+    15.33,
+    15.48,
+    15.18,
+    15.64,
+    15.84,
+    16,
+    16.18
+   ]
+  },
+  {
+   "type": "json",
+   "c": 1,
+   "medianTps": 80.72,
+   "aggregateTps": 80.72,
+   "medianTtftMs": 271.4,
+   "perStream": [
+    80.72
+   ]
+  },
+  {
+   "type": "json",
+   "c": 2,
+   "medianTps": 31.39,
+   "aggregateTps": 62.12,
+   "medianTtftMs": 402.3,
+   "perStream": [
+    31.06,
+    31.72
+   ]
+  },
+  {
+   "type": "json",
+   "c": 4,
+   "medianTps": 25.05,
+   "aggregateTps": 97.62,
+   "medianTtftMs": 685.4,
+   "perStream": [
+    24.48,
+    24.84,
+    25.25,
+    25.66
+   ]
+  },
+  {
+   "type": "json",
+   "c": 8,
+   "medianTps": 17.95,
+   "aggregateTps": 138,
+   "medianTtftMs": 1167,
+   "perStream": [
+    17.44,
+    17.84,
+    18.26,
+    17.64,
+    17.25,
+    18.05,
+    18.49,
+    18.71
+   ]
+  }
+ ]
+}
