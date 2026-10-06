@@ -68,13 +68,18 @@ What to know before relying on SparkQwen.
 
 ## Numerics
 
-- Greedy output is not yet reproducible across server restarts at near-ties.
-  Prompt logprobs are bit-identical between runs and between the pinned and
-  measured binaries, but one 160-token greedy probe ended its reasoning at
-  different points in different server runs with the same binary and
-  environment. The suspected cause is prefix-cache state that depends on
-  timing (whether a checkpoint save finished before the next lookup); it is
-  under investigation.
+- **Prefix caching makes output depend on what is in the cache.** With
+  prefix caching off, greedy output is identical across requests and server
+  restarts. With it on (both profiles), a request that hits cached KV reuses
+  keys and values another request computed in a prefill pass of a different
+  length and chunk shape; prefill kernels are not row-invariant, so those
+  values are not bit-identical to computing them in this request's own pass,
+  and which entries exist depends on earlier traffic and its timing. Outputs
+  then differ where the next token is nearly tied: one 160-token greedy probe
+  gave three different completions (cache off; cache on in two states).
+  "Exact" in these docs means each option gives the same output on and off
+  for the same request history. vLLM's prefix caching has the same property
+  outside its batch-invariant mode.
 - Two-Spark (TP2) output is not bit-identical to single-GPU output. Below the
   QSA bound the mean prompt-logprob difference is 0.026 nats; the rest is BF16
   rounding of the tensor-parallel partial sums (96 reductions per token).
