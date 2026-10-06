@@ -90,6 +90,11 @@ ranks with the `8x32k` profile and answered the smoke test
   C8 aggregate 128.2 / 114.9 / 112.2 / 119.0 tok/s (the same configuration;
   differences are run-to-run noise);
 - quality probe 40/40 and 12/12.
+- `PROFILE=4x262k ./start.sh` (default options): a 384,720-token KV pool at
+  util 0.88, the 77K-token needle correct (33.1 s to first token; the TC2R
+  opt-in measured 27.0 s), a 0.6 s follow-up turn, and four concurrent 100K
+  prompts all answered with the pair serving afterwards
+  (`raw/recipe/long.out`, `raw/recipe/start-4x262k.log`).
 
 The first clean-clone attempt failed at the build-time tests (the image
 copied one of the four engine test configs that atlas-core's test binary

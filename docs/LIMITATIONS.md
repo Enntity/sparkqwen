@@ -54,7 +54,8 @@ What to know before relying on SparkQwen.
   binary, and four concurrent 100K prompts (more than the pool holds) all
   answered while the pair kept serving. Overcommitted requests wait for room,
   so their time to first token grows (47-154 s in that test).
-  `bench/long_probe.py` is the probe.
+  Through the recipe image with the profile's default options the pool is
+  384,720 tokens. `bench/long_probe.py` is the probe.
 - Prefix caching restores the recurrent state with the PLE n-gram history and
   QSA key state, so a conversation's follow-up turns start in about 0.5 s
   (`bench/agentic_probe.py`: 8 conversations over a shared 22K-token system

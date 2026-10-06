@@ -1,0 +1,9 @@
+needle {'prompt': 77463, 'ttft': 33.1, 'n': 80, 'tps': 27.4, 'ans': '40639565'} ok True
+follow-up {'prompt': 77501, 'ttft': 0.6, 'n': 496, 'tps': 29.8, 'error': None}
+exhaust {'prompt': 100863, 'ttft': 185.9, 'n': 175, 'tps': 31.2, 'ans': '60723746'} ok True
+exhaust {'prompt': 100863, 'ttft': 96.5, 'n': 85, 'tps': 0.9, 'ans': '21998280'} ok True
+exhaust {'prompt': 100863, 'ttft': 57.1, 'n': 84, 'tps': 1.0, 'ans': '84858220'} ok True
+exhaust {'prompt': 100863, 'ttft': 135.7, 'n': 84, 'tps': 1.6, 'ans': '16923662'} ok True
+follow-up {'prompt': 77501, 'ttft': 0.5, 'n': 496, 'tps': 31.3, 'error': None}
+alive-after
+ld: KV cache: 121.7 GB total × 88% util = 107.1 GB budget; 97.7 GB pre-KV + 4.7 GB reserve → 4.7 GB for KV (incl. 0.3 GB for 768 B/token of per-sequence indexer state) → 24045 blocks × 
