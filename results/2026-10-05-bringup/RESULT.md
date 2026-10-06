@@ -1,14 +1,14 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 # Bring-up: Qwen3.8-Flash-Next on two Sparks (2026-10-05)
 
-First measurements of SparkQwen on our two Sparks (GB10, one 200G RoCE cable),
+First measurements of SparkQwen on our pair of Sparks (GB10, one 200G RoCE cable),
 checkpoint `nvidia/Qwen3.8-Flash-Next-NVFP4` @ fc694b54. Every arm runs
 `raw/sq_bench.py` (streamed, temperature 0, `reasoning_effort: low`; decode = 3
 reps × 384 tokens per prompt, medians shown; prefill = cold TTFT, 2 reps; conc =
 aggregate tok/s, 256 tokens/stream, 2 reps; warm = median TTFT of 10 follow-up
 turns on 8K and 20K conversations) plus `raw/lp_repeat.py` (prompt-logprob hash,
-~30.8K tokens, two runs per server start). Engine binaries were built on
-<build-host> from the listed Enntity/atlas commits. These are single-session
+~30.8K tokens, two runs per server start). Engine binaries were built on a
+separate build host from the listed Enntity/atlas commits. These are single-session
 measurements on our pair, not a guarantee.
 
 ## Results
