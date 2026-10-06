@@ -1,33 +1,28 @@
 {
-  "schema": "sparkqwen.atlas-engine-source/v1",
-  "status": "candidate_unvalidated",
-  "note": "SparkGLM's upstream series (generic serving, scheduler, grammar, prefix-cache and RDMA comm work; GLM-only paths are gated off for qwen4_exp) plus nine unmerged Atlas-Inf Flash-Next fixes. Built on <build-host>; not yet run on hardware.",
+  "schema": "sparkqwen.atlas-engine-source/v2",
+  "note": "The Atlas engine is built from the public Enntity/atlas fork at this exact commit; build.sh refuses any other tree, and refuses to build while commit and tree are PENDING (the engine series is being cut).",
   "repository": "https://github.com/Enntity/atlas.git",
-  "branch": "sparkqwen/atlas-20261005",
-  "commit": "4261e370dfdaff71fb89e82006866623f117a77e",
-  "kernel_target": "qwen3.8-flash-next",
-  "license": "AGPL-3.0-only",
+  "branch": "sparkqwen/atlas-20261006-PENDING",
+  "commit": "PENDING",
+  "tree": "PENDING",
   "layers": {
-    "atlas_inf_main_base": "4405bce359714672c57944fafd8aef9df35de524",
-    "sparkglm_upstream_series": {
+    "atlas_inf_main_base": "PENDING",
+    "glm_upstream_series": {
       "branch": "upstream/glm53-flash-20261005-rebase",
-      "commit": "6251db8e"
+      "commit": "PENDING",
+      "note": "SparkGLM's upstream GLM-5.3-Flash series, which the Qwen series stacks on: generic serving, scheduler, grammar, prefix-cache and RDMA pair-communication work. Its GLM-only paths are gated by model type or kernel target and stay off for qwen4_exp."
     },
-    "atlas_inf_unmerged_picks": [
-      "66dbda37",
-      "8ca15b8b",
-      "4e6297e5",
-      "a31fcadd",
-      "b8c784de",
-      "4e42f921",
-      "9d84bace",
-      "c41d8298",
-      "5eda7c5c"
-    ]
+    "upstream_candidate": {
+      "branch": "upstream/qwen38-flash-next-20261006",
+      "commit": "PENDING",
+      "note": "The Qwen3.8-Flash-Next series in PR order: Atlas-Inf's unmerged Flash-Next fixes, TP=EP=2 for qwen4_exp, MTP at TP2, piecewise decode graphs, exact decode, verify, batching and prefill kernels, and the opt-in FP8 GDN projections and TC2R QSA prefill (docs/ENGINE.md)."
+    },
+    "sparkqwen_only": {
+      "commit": "PENDING",
+      "note": "Empty: no SparkQwen-only commits yet, so the pin is the upstream candidate's head."
+    }
   },
-  "baseline": {
-    "branch": "atlas-inf main",
-    "commit": "4405bce359714672c57944fafd8aef9df35de524",
-    "binary": "<build-host>:~/atlas-builds/spark-sqbase-4405bce3"
-  }
+  "kernel_target": "qwen3.8-flash-next",
+  "model_type": "qwen4_exp",
+  "license": "AGPL-3.0-only"
 }

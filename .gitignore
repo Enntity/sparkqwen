@@ -4,9 +4,8 @@ __pycache__/
 .venv/
 
 # Benchmark outputs; published receipts belong under results/.
-bench/out-*/
-bench/qprobe-*.jsonl
-*.mp4
+bench/*.json
+bench/*.jsonl
 
 # Never commit weights, compiled GPU artifacts or credentials.
 *.safetensors
