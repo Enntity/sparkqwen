@@ -89,9 +89,9 @@ What to know before relying on SparkQwen.
   and which entries exist depends on earlier traffic and its timing. Outputs
   then differ where the next token is nearly tied: one 160-token greedy probe
   gave three different completions (cache off; cache on in two states).
-  "Exact" in these docs means each option gives the same output on and off
-  for the same request history. vLLM's prefix caching has the same property
-  outside its batch-invariant mode.
+  "Exact" in these docs means each option gives bitwise the same logits on
+  and off for the same request history (token selection: see above). vLLM's
+  prefix caching has the same property outside its batch-invariant mode.
 - Two-Spark (TP2) output is not bit-identical to single-GPU output. Below the
   QSA bound the mean prompt-logprob difference is 0.026 nats; the rest is BF16
   rounding of the tensor-parallel partial sums (96 reductions per token).
