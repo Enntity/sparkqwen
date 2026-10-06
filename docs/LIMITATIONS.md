@@ -66,6 +66,20 @@ What to know before relying on SparkQwen.
 
 ## Numerics
 
+- **Greedy text is not yet independent of speculation and concurrency.**
+  The verify and batching kernels are exact (each row's logits are bitwise
+  serial decode's), but the scheduler's token selection is not: inside the
+  reasoning block, plain decode breaks an exact top-1 tie toward the higher
+  token id on the host while verify and the GPU argmax pick the lower one,
+  and verify evaluates the reasoning-budget and end-of-thinking rules for a
+  whole draft span with the state from before the span. Measured on the pair
+  with thinking on (8 prompts, prefix caching off): speculation on vs off at
+  one request, 0/8 identical texts; one request vs four, without
+  speculation, 0/8 identical. Quality is unaffected in our probes (40/40 and
+  12/12 with speculation on); the claim that options give the same output on
+  and off holds for logits, not yet for the selected tokens. A fix (one tie
+  rule, per-position reasoning state shared by decode and verify) is in
+  progress.
 - **Prefix caching makes output depend on what is in the cache.** With
   prefix caching off, greedy output is identical across requests and server
   restarts. With it on (both profiles), a request that hits cached KV reuses

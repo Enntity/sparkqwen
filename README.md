@@ -40,9 +40,12 @@ and the default profile. Receipts and caveats:
 | Quality probe: arithmetic / two-hop 24K needle | 40/40 · 12/12 | |
 | Long context (`4x262k`) | 307K-token KV pool; 77K needle and follow-up correct; KV exhaustion handled without losing the pair | |
 
-The default profile is exact: each of its options gives the same output on or
-off, and the pinned engine's prompt logprobs match the build the bring-up
-measured bit for bit. Two Sparks do not give bit-identical output to one GPU
+Every kernel-level option in the default profile is exact: per-row logits
+are bitwise the same on or off, and the pinned engine's prompt logprobs match
+the build the bring-up measured bit for bit. Token selection is not yet: with
+thinking on, greedy text with speculative decoding differs from text without
+it, and plain decode differs between one and several concurrent requests
+([docs/LIMITATIONS.md](docs/LIMITATIONS.md), Numerics); a fix is in progress. Two Sparks do not give bit-identical output to one GPU
 (BF16 rounding of the tensor-parallel sums; see
 [docs/LIMITATIONS.md](docs/LIMITATIONS.md)). These are single-session
 measurements on our pair, not a guarantee for yours.
