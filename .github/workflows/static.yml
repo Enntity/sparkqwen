@@ -1,0 +1,41 @@
+name: Checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  quick:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Launch contract, profiles and engine pin
+        run: python3 -m unittest discover -s install -p 'test_*.py' -v
+      - name: Shell scripts
+        run: shellcheck -S warning -e SC2054 start.sh install/*.sh
+      - name: Python compiles
+        run: python3 -m py_compile bench/*.py install/*.py
+      - name: sparkDash driver parses
+        run: node --check bench/sd_bench.mjs
+      - name: JSON is valid
+        run: for f in install/*.json install/profiles/*.json; do python3 -m json.tool "$f" > /dev/null || exit 1; done
+      - name: Engine pin
+        run: |
+          python3 - <<'PY'
+          import json
+          pin = json.load(open("install/atlas-source.json"))
+          if pin["commit"] == "PENDING":
+              print("::warning file=install/atlas-source.json::The engine pin is PENDING; build.sh refuses to build until the series is cut.")
+          else:
+              print("engine pinned at", pin["branch"], pin["commit"], "tree", pin["tree"])
+          PY
+      - name: Result receipts
+        run: for d in results/*/; do (cd "$d" && sha256sum -c --quiet SHA256SUMS); done

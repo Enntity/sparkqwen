@@ -1,0 +1,8 @@
+# Launch defaults, the engine pin, published results and licensing need
+# explicit maintainer review.
+/install/ @data-angel
+/start.sh @data-angel
+/results/ @data-angel
+/LICENSE* @data-angel
+/NOTICE @data-angel
+/docs/LICENSING.md @data-angel

@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use SparkQwen, cite this repository and the Atlas engine it builds."
+title: "SparkQwen: Qwen3.8-Flash-Next on two DGX Sparks with Atlas"
+type: software
+license: AGPL-3.0-only
+authors:
+  - family-names: "McCartney"
+    given-names: "Jason"
+repository-code: "https://github.com/Enntity/sparkqwen"
+references:
+  - type: software
+    title: "Atlas"
+    authors:
+      - name: "Atlas-Inf contributors"
+    repository-code: "https://github.com/Atlas-Inf/atlas"
+    license: AGPL-3.0-only
+  - type: software
+    title: "SparkGLM: GLM-5.3-Flash on two DGX Sparks with Atlas"
+    authors:
+      - family-names: "McCartney"
+        given-names: "Jason"
+    repository-code: "https://github.com/Enntity/sparkglm"
+    license: AGPL-3.0-only

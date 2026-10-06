@@ -1,23 +1,31 @@
 # Working in this repository
 
 SparkQwen is SparkGLM's distribution model applied to Qwen3.8-Flash-Next:
-Atlas on two DGX Sparks, one entry point, pinned engine, receipts for every
-claim. Local-only for now; no GitHub remote yet.
+Atlas on two DGX Sparks, one entry point, a pinned engine, receipts for every
+claim.
 
 - Keep it simple: one entry point (`start.sh`), one install directory, one
   results tree. Prefer removing code to adding it.
-- The image tag will be the git tree of `install/`. Anything that changes the
-  image lives in `install/`, and nothing else does.
-- Engine changes belong in `Enntity/atlas`: upstream-worthy work on a focused
-  branch cut from `atlas-inf/main`, SparkQwen-only work on `sparkqwen/*`. Then
-  update the pin in `install/atlas-source.json`. Never push to Atlas-Inf.
-- Port SparkGLM work by commit: cherry-pick the original change and say so in
-  the commit message and in `docs/PORTING.md` (SHA, GLM result, Qwen result).
+- The image tag is the git tree of `install/`. Anything that changes the image
+  must live in `install/`, and nothing else should.
+- Engine changes belong in `Enntity/atlas`, never in this repository:
+  upstream-worthy work on a focused branch cut from Atlas-Inf `main`, then
+  into the `upstream/qwen38-flash-next-*` series; SparkQwen-only work on the
+  `sparkqwen/*` branch. Then update the pin in `install/atlas-source.json`
+  (commit and tree together) and `docs/ENGINE.md`. Never push to Atlas-Inf.
+- This repository holds accepted work only. Plans, porting logs, WIP and
+  host-specific notes go to the private `sparkglm-research` repository under
+  `notes/sparkqwen/`. Keep host names, user names, private addresses and home
+  paths out of everything here except the unedited receipts in
+  `results/*/raw/`.
 - A performance claim needs raw receipts and `SHA256SUMS` under `results/`,
-  with its baseline measured on the same pair. Report every repetition.
-- Keep lossy or quality-affecting optimizations off by default. Speedups must
-  be exact: same output with them on or off.
-- our two Sparks serve SparkGLM in production. Do not take them without the
-  user's go-ahead. Downloads and builds go to <build-host>.
+  with its baseline measured on the same pair. Report every repetition, and
+  say which opt-ins were on.
+- Keep lossy or quality-affecting optimizations off by default. Say
+  "bit-exact" only for what was measured (same output with the option on and
+  off); never call the recipe lossless.
+- Never take a pair that serves production without its owner's go-ahead.
 - New files carry an SPDX header. Credit ideas and code taken from other
-  projects (origin, license) in code and docs.
+  projects (origin, license) in code and docs; keep third-party headers and
+  licenses intact (see `docs/LICENSING.md`).
+- Before sending a change, run the checks in `.github/workflows/static.yml`.
