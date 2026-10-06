@@ -1,0 +1,24 @@
+SparkQwen
+Copyright 2026 the SparkQwen contributors
+Licensed under AGPL-3.0-only (LICENSE).
+
+The Atlas engine is fetched at build time from Enntity/atlas at the commit in
+install/atlas-source.json (AGPL-3.0-only): Atlas-Inf, SparkGLM's GLM-5.3-Flash
+series, and the Qwen3.8-Flash-Next series, which includes changes picked from
+unmerged Atlas-Inf branches (docs/ENGINE.md).
+
+CUTLASS (BSD-3-Clause) is fetched at build time. The image ships its notice
+and the notices of the engine's Rust dependencies under /opt/atlas/notices/.
+
+install/start-node.sh is adapted from SparkGLM's, whose container flags follow
+LLooM's Atlas recipe (MIT, Copyright (c) 2026 LLooM contributors,
+LICENSES/MIT-LLooM.txt).
+
+bench/sd_bench.mjs implements the decode-bench protocol of MiaAI-Lab's
+sparkDash (MIT, https://github.com/MiaAI-Lab/sparkDash) and imports its
+prompts from a local checkout at run time; no sparkDash code or text is
+included in this repository.
+
+Model weights are not distributed in this repository. The checkpoint
+nvidia/Qwen3.8-Flash-Next-NVFP4 remains under its publisher's license; see
+docs/LICENSING.md.
