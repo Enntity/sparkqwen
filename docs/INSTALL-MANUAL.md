@@ -6,10 +6,10 @@ time. Run steps 1–3 on **both** Sparks with the same `MODEL_ROOT`.
 
 | Component | Pin |
 |---|---|
-| Engine | [`Enntity/atlas`](https://github.com/Enntity/atlas), commit pending ([`install/atlas-source.json`](../install/atlas-source.json), [docs/ENGINE.md](ENGINE.md)) |
+| Engine | [`Enntity/atlas`](https://github.com/Enntity/atlas), `sparkqwen/atlas-20261006-longctx` at 3322e221 ([`install/atlas-source.json`](../install/atlas-source.json), [docs/ENGINE.md](ENGINE.md)) |
 | Model | [`nvidia/Qwen3.8-Flash-Next-NVFP4`](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-NVFP4) @ `fc694b54fb0174e0913e6adf86691ef85a4ead47` ([`install/checkpoint.json`](../install/checkpoint.json)) |
 | Build dependencies | CUTLASS `cf064d2e`, NCCL 2.31.2, Rust 1.93.1, CUDA 13.0 |
-| Profiles | [`install/profiles/`](../install/profiles/): `8x32k` (default) and `4x262k` (pending validation) |
+| Profiles | [`install/profiles/`](../install/profiles/): `8x32k` (default) and `4x262k` (long context) |
 
 ## 1. Get the recipe
 
@@ -27,8 +27,7 @@ IMAGE=$(install/build.sh)
 `install/build.sh --tag` prints the tag without building: the git tree hash of
 `install/`. The build needs a clean `install/` directory. It fetches
 `Enntity/atlas` at the pinned commit, refuses any other tree, and builds the
-engine for `qwen3.8-flash-next` and its build-time tests. While the pin is
-still `PENDING` it stops with a message and builds nothing.
+engine for `qwen3.8-flash-next` and its build-time tests.
 
 No SparkQwen image is published yet. Once one is, `docker pull "$IMAGE"`
 replaces the build. To use the image on the other Spark, copy it:
@@ -69,8 +68,7 @@ until curl -sf http://127.0.0.1:8893/health; do sleep 10; done
 (`~/.cache/atlas-cuda`), and so do the first requests of each shape; later
 starts reuse it. Run one warmup pass before measuring.
 
-**Profiles.** `--profile 4x262k` selects the long-context profile (pending
-validation). A path to a JSON file runs your own profile. Use the same profile
+**Profiles.** `--profile 4x262k` selects the long-context profile. A path to a JSON file runs your own profile. Use the same profile
 on both ranks.
 
 **Opt-ins.** `--fp8-gdn` (lossy FP8 Gated DeltaNet projections) and

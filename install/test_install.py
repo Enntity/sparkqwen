@@ -48,7 +48,7 @@ class LaunchContract(unittest.TestCase):
         long_argv, _ = serve.launch(self.environment, load_profile('4x262k'))
         for arg in ('--max-seq-len=262144', '--max-num-seqs=4', '--max-batch-size=4'):
             self.assertIn(arg, long_argv)
-        self.assertEqual(load_profile('4x262k')['status'], 'pending_validation')
+        self.assertEqual(load_profile('4x262k')['status'], 'validated')
         for bad in ('../x', '', 'a/b', '.hidden'):
             with self.subTest(name=bad), self.assertRaises(ValueError):
                 serve.profile_path({'SPARKQWEN_PROFILE': bad}, HERE)

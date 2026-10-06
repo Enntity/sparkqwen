@@ -5,9 +5,9 @@ What to know before relying on SparkQwen.
 
 ## The recipe has not run end to end yet
 
-- **The engine pin is pending.** `install/atlas-source.json` names no commit
-  until the engine series is cut, and `install/build.sh` refuses to build
-  until it does. No SparkQwen image exists, published or local.
+- **The image has not been built by the recipe yet.** The engine is pinned
+  (`install/atlas-source.json`), but `install/build.sh` has not been run end
+  to end and no SparkQwen image exists, published or local.
 - The bring-up measurements were taken with engine binaries built from the
   integration branch by our development scripts, run inside a runtime image
   with the same flags and environment the profiles now carry. They were not
@@ -54,16 +54,31 @@ What to know before relying on SparkQwen.
 
 ## Long context
 
-- The `4x262k` profile is **pending validation**. Exactness, capacity, KV
-  exhaustion behavior and memory headroom at 262K have not been qualified.
-  `bench/long_probe.py` is the probe we use for it.
-- Prefix-cache retention across conversations is not ported yet: the
-  recurrent-state snapshot a cache hit restores from must also carry the PLE
-  n-gram history and QSA key state. Follow-up turns of one conversation
-  measured 0.40–0.43 s time to first token on 8K and 20K conversations.
+- The `4x262k` profile was qualified on the pair with the pinned series'
+  long-context commits: a 307K-token KV pool at util 0.88 (106K before), about
+  12 GiB MemAvailable after boot, a correct 77K-token needle and warm
+  follow-up turn (0.6 s TTFT), prompt logprobs identical to the previous
+  binary, and four concurrent 100K prompts (more than the pool holds) all
+  answered while the pair kept serving. Overcommitted requests wait for room,
+  so their time to first token grows (47-154 s in that test).
+  `bench/long_probe.py` is the probe.
+- Prefix caching restores the recurrent state with the PLE n-gram history and
+  QSA key state, so a conversation's follow-up turns start in about 0.5 s
+  (`bench/agentic_probe.py`: 8 conversations over a shared 22K-token system
+  prompt, 32/32 correct). New conversations that arrive together and share a
+  long prompt prefix do not yet share its computation: each restores the
+  nearest checkpoint (the 16K chunk boundary) and replays the rest, about
+  3 s apart, so eight of them took 15-36 s to their first token.
 
 ## Numerics
 
+- Greedy output is not yet reproducible across server restarts at near-ties.
+  Prompt logprobs are bit-identical between runs and between the pinned and
+  measured binaries, but one 160-token greedy probe ended its reasoning at
+  different points in different server runs with the same binary and
+  environment. The suspected cause is prefix-cache state that depends on
+  timing (whether a checkpoint save finished before the next lookup); it is
+  under investigation.
 - Two-Spark (TP2) output is not bit-identical to single-GPU output. Below the
   QSA bound the mean prompt-logprob difference is 0.026 nats; the rest is BF16
   rounding of the tensor-parallel partial sums (96 reductions per token).

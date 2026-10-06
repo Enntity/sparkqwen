@@ -1,24 +1,24 @@
 {
   "schema": "sparkqwen.atlas-engine-source/v2",
-  "note": "The Atlas engine is built from the public Enntity/atlas fork at this exact commit; build.sh refuses any other tree, and refuses to build while commit and tree are PENDING (the engine series is being cut).",
+  "note": "The Atlas engine is built from the public Enntity/atlas fork at this exact commit; build.sh refuses any other tree.",
   "repository": "https://github.com/Enntity/atlas.git",
-  "branch": "sparkqwen/atlas-20261006-PENDING",
-  "commit": "PENDING",
-  "tree": "PENDING",
+  "branch": "sparkqwen/atlas-20261006-longctx",
+  "commit": "3322e22109ec002f7efb32ff23fcf87840e19508",
+  "tree": "0dc63e98e9bc944d2bc6426df5d5bff190671170",
   "layers": {
-    "atlas_inf_main_base": "PENDING",
+    "atlas_inf_main_base": "4405bce359714672c57944fafd8aef9df35de524",
     "glm_upstream_series": {
       "branch": "upstream/glm53-flash-20261005-rebase",
-      "commit": "PENDING",
+      "commit": "6251db8ef9b130a37fbc2c2310fe030883f5eb30",
       "note": "SparkGLM's upstream GLM-5.3-Flash series, which the Qwen series stacks on: generic serving, scheduler, grammar, prefix-cache and RDMA pair-communication work. Its GLM-only paths are gated by model type or kernel target and stay off for qwen4_exp."
     },
     "upstream_candidate": {
       "branch": "upstream/qwen38-flash-next-20261006",
-      "commit": "PENDING",
-      "note": "The Qwen3.8-Flash-Next series in PR order: Atlas-Inf's unmerged Flash-Next fixes, TP=EP=2 for qwen4_exp, MTP at TP2, piecewise decode graphs, exact decode, verify, batching and prefill kernels, and the opt-in FP8 GDN projections and TC2R QSA prefill (docs/ENGINE.md)."
+      "commit": "3322e22109ec002f7efb32ff23fcf87840e19508",
+      "note": "The Qwen3.8-Flash-Next series in PR order: Atlas-Inf's unmerged Flash-Next fixes, TP=EP=2 for qwen4_exp, MTP at TP2, piecewise decode graphs, exact decode, verify, batching and prefill kernels, and the opt-in FP8 GDN projections and TC2R QSA prefill (docs/ENGINE.md). Also: rank-agreed Marconi restore depth in every multi-rank world (a TP2 prefix-cache deadlock fix), agreed KV-exhaustion refusals in decode/verify instead of a dead pair, and the long-context memory work (one-layer drafter KV, on-demand QSA carry, sliding raw-key window) that takes the 262K x 4 KV pool from 106K to 307K tokens at util 0.88."
     },
     "sparkqwen_only": {
-      "commit": "PENDING",
+      "commit": "3322e22109ec002f7efb32ff23fcf87840e19508",
       "note": "Empty: no SparkQwen-only commits yet, so the pin is the upstream candidate's head."
     }
   },

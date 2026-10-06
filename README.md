@@ -16,12 +16,12 @@ cp .env.example .env      # set WORKER to the other Spark's ssh destination
 ./start.sh
 ```
 
-**Status: bring-up.** The engine pin in
-[`install/atlas-source.json`](install/atlas-source.json) is still `PENDING`
-while the engine series is cut, so `./start.sh` cannot build the image yet,
-and the recipe has not run end to end from a clean clone. The numbers below
-were measured on our pair with engine binaries from the integration branch
-([docs/LIMITATIONS.md](docs/LIMITATIONS.md)).
+**Status: bring-up.** The engine is pinned
+([`install/atlas-source.json`](install/atlas-source.json): Enntity/atlas
+`sparkqwen/atlas-20261006-longctx` at 3322e221), but the recipe has not yet
+built its image or run end to end from a clean clone. The numbers below were
+measured on our pair with engine binaries from the integration branch the pin
+was cut from ([docs/LIMITATIONS.md](docs/LIMITATIONS.md)).
 
 ## What it does
 

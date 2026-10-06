@@ -7,9 +7,9 @@ pinned in [`install/atlas-source.json`](../install/atlas-source.json), for the
 kernel target `qwen3.8-flash-next` (model type `qwen4_exp`).
 [`install/build.sh`](../install/build.sh) refuses any other tree.
 
-**The pin is pending.** The engine series below is being cut from the
-integration branch the bring-up was measured on. Until `commit` and `tree` are
-filled in, there is nothing to build.
+The pin is `sparkqwen/atlas-20261006-longctx` at 3322e221, cut from the
+integration branch the bring-up was measured on. Its prompt logprobs match the
+measured integration binary bit for bit on the pair (1K, 6K and 20K prompts).
 
 ## Layers
 
