@@ -21,7 +21,8 @@ COPY engine/kernels/ kernels/
 COPY engine/vendor/ vendor/
 COPY engine/jinja-templates/ jinja-templates/
 COPY engine/tests/fixtures/ tests/fixtures/
-COPY engine/test_data/qwen4_exp_flash_next_config.json test_data/qwen4_exp_flash_next_config.json
+# The build-time tests compile every atlas-core test module, which include_str! these.
+COPY engine/test_data/ test_data/
 ENV ATLAS_TARGET_HW=gb10 ATLAS_TARGET_MODEL=qwen3.8-flash-next ATLAS_TARGET_QUANT=nvfp4
 ARG BUILD_JOBS=4
 # BuildKit cache mount for the cargo target directory, so iterating on the
