@@ -1,0 +1,96 @@
+{
+ "arm": "PSPt",
+ "date": "2026-10-05 21:18:18",
+ "cells": {
+  "prefill": [
+   {
+    "ttft": 0.934,
+    "wall": 1.36,
+    "out": 16,
+    "prompt": 2022,
+    "cached": 32,
+    "tok_s": 35.16,
+    "text_head": "The user asks which shelf holds Entry 3. Let me look at Entry ",
+    "size": 2048,
+    "rep": 0
+   },
+   {
+    "ttft": 0.945,
+    "wall": 1.289,
+    "out": 16,
+    "prompt": 2023,
+    "cached": 32,
+    "tok_s": 43.61,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 2048,
+    "rep": 1
+   },
+   {
+    "ttft": 2.703,
+    "wall": 3.139,
+    "out": 16,
+    "prompt": 8170,
+    "cached": 32,
+    "tok_s": 34.41,
+    "text_head": "The user asks which shelf holds Entry 3. Let me look at Entry ",
+    "size": 8192,
+    "rep": 0
+   },
+   {
+    "ttft": 2.674,
+    "wall": 3.098,
+    "out": 16,
+    "prompt": 8169,
+    "cached": 32,
+    "tok_s": 35.34,
+    "text_head": "The user asks which shelf holds Entry 3. Let me look at Entry ",
+    "size": 8192,
+    "rep": 1
+   },
+   {
+    "ttft": 5.157,
+    "wall": 5.524,
+    "out": 16,
+    "prompt": 16390,
+    "cached": 32,
+    "tok_s": 40.88,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 16384,
+    "rep": 0
+   },
+   {
+    "ttft": 5.082,
+    "wall": 5.428,
+    "out": 16,
+    "prompt": 16408,
+    "cached": 32,
+    "tok_s": 43.43,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 16384,
+    "rep": 1
+   },
+   {
+    "ttft": 9.143,
+    "wall": 9.463,
+    "out": 16,
+    "prompt": 28809,
+    "cached": 32,
+    "tok_s": 46.91,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 28672,
+    "rep": 0
+   },
+   {
+    "ttft": 9.244,
+    "wall": 9.71,
+    "out": 16,
+    "prompt": 28819,
+    "cached": 32,
+    "tok_s": 32.14,
+    "text_head": "The user asks which shelf holds Entry 3. Let me look at Entry ",
+    "size": 28672,
+    "rep": 1
+   }
+  ]
+ }
+}

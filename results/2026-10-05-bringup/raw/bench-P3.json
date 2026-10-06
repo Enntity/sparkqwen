@@ -1,0 +1,96 @@
+{
+ "arm": "P3",
+ "date": "2026-10-05 20:59:59",
+ "cells": {
+  "prefill": [
+   {
+    "ttft": 0.912,
+    "wall": 1.335,
+    "out": 16,
+    "prompt": 2022,
+    "cached": 32,
+    "tok_s": 35.5,
+    "text_head": "The user asks which shelf holds Entry 3. Let me look at Entry ",
+    "size": 2048,
+    "rep": 0
+   },
+   {
+    "ttft": 0.901,
+    "wall": 1.227,
+    "out": 16,
+    "prompt": 2023,
+    "cached": 32,
+    "tok_s": 45.98,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 2048,
+    "rep": 1
+   },
+   {
+    "ttft": 3.497,
+    "wall": 3.87,
+    "out": 16,
+    "prompt": 8170,
+    "cached": 32,
+    "tok_s": 40.27,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 8192,
+    "rep": 0
+   },
+   {
+    "ttft": 3.515,
+    "wall": 3.842,
+    "out": 16,
+    "prompt": 8169,
+    "cached": 32,
+    "tok_s": 45.9,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 8192,
+    "rep": 1
+   },
+   {
+    "ttft": 6.946,
+    "wall": 7.265,
+    "out": 16,
+    "prompt": 16390,
+    "cached": 32,
+    "tok_s": 46.99,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 16384,
+    "rep": 0
+   },
+   {
+    "ttft": 6.923,
+    "wall": 7.264,
+    "out": 16,
+    "prompt": 16408,
+    "cached": 32,
+    "tok_s": 43.91,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 16384,
+    "rep": 1
+   },
+   {
+    "ttft": 12.535,
+    "wall": 12.954,
+    "out": 16,
+    "prompt": 28809,
+    "cached": 32,
+    "tok_s": 35.79,
+    "text_head": "The user asks which shelf holds Entry 3. Let me look at Entry ",
+    "size": 28672,
+    "rep": 0
+   },
+   {
+    "ttft": 12.688,
+    "wall": 13.04,
+    "out": 16,
+    "prompt": 28819,
+    "cached": 32,
+    "tok_s": 42.62,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 28672,
+    "rep": 1
+   }
+  ]
+ }
+}

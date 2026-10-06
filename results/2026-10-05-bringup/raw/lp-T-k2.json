@@ -1,0 +1,18 @@
+{
+ "tag": "T-k2",
+ "runs": [
+  {
+   "n": 30802,
+   "hash": "3e4d311dc6ec",
+   "sum": -22752.2291,
+   "secs": 70.3
+  },
+  {
+   "n": 30802,
+   "hash": "3e4d311dc6ec",
+   "sum": -22752.2291,
+   "secs": 70.3
+  }
+ ],
+ "reproducible": true
+}

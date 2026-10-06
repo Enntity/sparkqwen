@@ -1,0 +1,18 @@
+{
+ "tag": "T-hc-nospec",
+ "runs": [
+  {
+   "n": 30802,
+   "hash": "3e4d311dc6ec",
+   "sum": -22752.2291,
+   "secs": 69.6
+  },
+  {
+   "n": 30802,
+   "hash": "3e4d311dc6ec",
+   "sum": -22752.2291,
+   "secs": 69.9
+  }
+ ],
+ "reproducible": true
+}

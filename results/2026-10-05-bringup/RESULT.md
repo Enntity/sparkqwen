@@ -71,3 +71,47 @@ the memory for them); prefix-cache retention across conversations; prefill
 
 Raw receipts: `raw/` (bench JSON, logprob hashes and per-token dumps, nsys
 tables, probe JSONL, the scripts that produced them).
+
+## Update 2026-10-06: integration head d88f39c3 (all exact unless marked)
+
+Engine branch `sparkqwen/int-20261005` (Enntity/atlas, local) now carries: MTP depth <= 3 with an
+adaptive ladder, reduced/NVFP4 draft head and confidence stop; bit-exact verify at K <= 4
+(`ATLAS_QWEN4EXP_EXACT_VERIFY`, proven on the pair: 3,655 rows, 0 differ) so speculation also runs
+inside `<think>`; exact multi-sequence batching (`ATLAS_QWEN4EXP_BATCH_FAST`, C8 check 3,583 rows,
+0 differ); piecewise graphs incl. K=4/batched verify and wide runs; vectorized mHC up to 8 rows;
+faster MoE row kernels; exact prefill kernels + sequence-parallel prefill (prompt logprobs identical);
+min_tokens accounting fixes; vLLM-compatible `ignore_eos`.
+
+### sparkDash protocol (MiaAI-Lab, MIT; thinking off, temperature 0, 400 forced tokens, ignore_eos)
+Raw: `raw/sd-SDie.json`. Env: `raw/gw.list` (FP8 GDN projections opt-in, everything else exact).
+
+| | structured | prose | code | json |
+|---|---|---|---|---|
+| C1 | **83.5** | **60.0** | **72.4** | **74.8** |
+| C2 aggregate | 62.7 | 57.5 | 58.8 | 58.6 |
+| C4 aggregate | 96.0 | 85.6 | 84.9 | 90.2 |
+| C8 aggregate | 123.7 | 112.7 | 109.2 | 124.4 |
+
+Published comparison (their harness numbers, not re-run here): MiaAI-Lab dual-Spark vLLM v0.30
+lane x1 prose/code/structured 59.2 / 66.6 / 76.0, x8 216.4 / 313.6 / 258.5. C1 is now at or above
+the best published dual-Spark recipe; C8 is 2-3x behind and is the open problem (per-row small
+kernels + idle are ~46% of the C8 step: `raw/nsys-c8-86d99eeb.txt`).
+
+Quality probe on this config: 40/40 arithmetic, 12/12 two-hop needles.
+
+### Prefill (cold TTFT, raw/bench-P*.json)
+| | 2K | 8K | 16K | 29K |
+|---|---|---|---|---|
+| Atlas main, 1 GB10 | 1.50 | 5.43 | 10.53 | 19.43 |
+| TP2 exact, start of campaign | 1.19 | 4.51 | 9.02 | 16.61 |
+| exact prefill kernels + SP (`PSP`) | 0.94 | 3.15 | 6.22 | 11.33 |
+| + QSA TC2R (TP1 numerics past the bound, `PSPt`) | 0.94 | 2.69 | 5.12 | 9.19 |
+
+### Lessons recorded
+- cuBLASLt picks split-K differently in 13.0 (runtime image) and 13.1 (03 host): verify exactness
+  inside the builder container, never on the host.
+- The "(stream i/n)" suffix in sparkDash structured prompts makes the model output only part of the
+  count; without `ignore_eos`, Atlas's min_tokens discard semantics then under-report structured
+  concurrency. Not a prefix-cache bug (reproduced identically on Atlas main).
+- Batched speculation at C>=4 loses (per-row MoE cost); `ATLAS_MTP_MAX_SEQS=1` stays.
+- PDL crashed one C8 run (cause not yet found); kept off.

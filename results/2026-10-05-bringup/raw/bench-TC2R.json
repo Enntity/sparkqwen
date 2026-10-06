@@ -1,0 +1,96 @@
+{
+ "arm": "TC2R",
+ "date": "2026-10-05 19:53:42",
+ "cells": {
+  "prefill": [
+   {
+    "ttft": 0.918,
+    "wall": 1.346,
+    "out": 16,
+    "prompt": 2022,
+    "cached": 32,
+    "tok_s": 35.05,
+    "text_head": "The user asks which shelf holds Entry 3. Let me look at Entry ",
+    "size": 2048,
+    "rep": 0
+   },
+   {
+    "ttft": 0.925,
+    "wall": 1.273,
+    "out": 16,
+    "prompt": 2023,
+    "cached": 32,
+    "tok_s": 43.17,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 2048,
+    "rep": 1
+   },
+   {
+    "ttft": 3.027,
+    "wall": 3.397,
+    "out": 16,
+    "prompt": 8170,
+    "cached": 32,
+    "tok_s": 40.52,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 8192,
+    "rep": 0
+   },
+   {
+    "ttft": 3.007,
+    "wall": 3.455,
+    "out": 16,
+    "prompt": 8169,
+    "cached": 32,
+    "tok_s": 33.46,
+    "text_head": "The user asks which shelf holds Entry 3. Let me look at Entry ",
+    "size": 8192,
+    "rep": 1
+   },
+   {
+    "ttft": 5.807,
+    "wall": 6.176,
+    "out": 16,
+    "prompt": 16390,
+    "cached": 32,
+    "tok_s": 40.7,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 16384,
+    "rep": 0
+   },
+   {
+    "ttft": 5.751,
+    "wall": 6.15,
+    "out": 16,
+    "prompt": 16408,
+    "cached": 32,
+    "tok_s": 37.62,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 16384,
+    "rep": 1
+   },
+   {
+    "ttft": 10.404,
+    "wall": 10.721,
+    "out": 16,
+    "prompt": 28809,
+    "cached": 32,
+    "tok_s": 47.26,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 28672,
+    "rep": 0
+   },
+   {
+    "ttft": 10.494,
+    "wall": 10.963,
+    "out": 16,
+    "prompt": 28819,
+    "cached": 32,
+    "tok_s": 31.98,
+    "text_head": "The user asks which shelf holds Entry 3. Let me look at Entry ",
+    "size": 28672,
+    "rep": 1
+   }
+  ]
+ }
+}

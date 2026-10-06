@@ -1,0 +1,80 @@
+== nsys-hcmtp up after 44 s; MemAvailable 11 / 15 GiB
+C1: 64 tokens in 2.63s = 24.3 tok/s aggregate (under nsys)
+C4: 256 tokens in 6.11s = 41.9 tok/s aggregate (under nsys)
+C1: 128 tokens in 5.01s = 25.5 tok/s aggregate (under nsys)
+C4: 512 tokens in 11.26s = 45.5 tok/s aggregate (under nsys)
+=== C1 rank0
+steps 129.0 step 38.7 ms idle 4.9 ms launches/step 1133
+  class small(<60us marginal)     11.32 ms/step   805.3 launches/step  mean   14.1 us
+  class other-large               16.27 ms/step    85.3 launches/step  mean  190.7 us
+  class moe                        6.24 ms/step   242.2 launches/step  mean   25.7 us
+ 14.15 ms   71.9/st   196.9 us  dense_gemv_bf16
+  3.48 ms   95.5/st    36.4 us  hc_pre_down_vec
+  3.27 ms   95.5/st    34.2 us  hc_pre_finish_vec
+  3.11 ms   47.3/st    65.9 us  moe_expert_gate_up_shared
+  1.96 ms   96.0/st    20.4 us  rdma_oneshot_bf16
+  1.68 ms   47.3/st    35.6 us  moe_expert_silu_down_shared
+  0.61 ms   59.1/st    10.4 us  w4a16_gemv_sw
+  0.51 ms    2.6/st   198.9 us  dense_gemm_bf16_pipelined
+  0.50 ms   11.8/st    42.2 us  w4a16_gemv_qg
+  0.50 ms   35.4/st    14.0 us  gated_delta_rule_decode_f32
+  0.48 ms    0.7/st   649.0 us  moe_w4a16_fused_gate_up_t_k64
+  0.39 ms   95.5/st     4.1 us  hc_pre_stage_vec
+  0.31 ms   47.3/st     6.6 us  moe_topk_softmax
+  0.27 ms    0.7/st   367.2 us  w4a16_gemm
+  0.26 ms    5.2/st    49.9 us  Kernel2
+  0.26 ms    0.7/st   347.0 us  moe_w4a16_grouped_gemm_ptrtable_t_k64
+  0.22 ms   96.0/st     2.3 us  hc_post_vec
+  0.21 ms   48.0/st     4.5 us  moe_batched_blend
+  0.20 ms   11.8/st    17.2 us  kernel
+  0.19 ms    2.2/st    85.3 us  w4a16_gemm_t
+  0.18 ms   11.8/st    15.2 us  paged_decode_attn
+  0.17 ms   35.4/st     4.9 us  dense_gemv_ba_gates
+  0.15 ms   47.3/st     3.1 us  moe_weighted_sum_blend
+  0.13 ms   35.4/st     3.7 us  causal_conv1d_update_l2norm_f32
+=== C4 rank0
+steps 516.0 step 21.6 ms idle 3.3 ms launches/step 692
+  class small(<60us marginal)      4.89 ms/step   417.7 launches/step  mean   11.7 us
+  class other-large                8.08 ms/step    32.9 launches/step  mean  245.3 us
+  class moe                        5.35 ms/step   241.5 launches/step  mean   22.2 us
+  3.41 ms    0.2/st 13762.0 us  dense_gemm_bf16
+  2.78 ms   23.1/st   120.3 us  Kernel2
+  2.40 ms   47.0/st    51.1 us  moe_expert_gate_up_shared
+  1.53 ms   47.0/st    32.6 us  moe_expert_silu_down_shared
+  1.52 ms   60.5/st    25.2 us  rdma_oneshot_bf16
+  1.03 ms   24.1/st    42.7 us  hc_pre_down_vec
+  0.98 ms   24.1/st    40.8 us  hc_pre_finish_vec
+  0.65 ms   35.4/st    18.4 us  gated_delta_rule_decode_f32
+  0.52 ms    2.6/st   202.1 us  dense_gemm_bf16_pipelined
+  0.46 ms    0.7/st   618.9 us  moe_w4a16_fused_gate_up_t_k64
+  0.31 ms   47.0/st     6.6 us  moe_topk_softmax
+  0.27 ms    0.7/st   368.8 us  w4a16_gemm
+  0.26 ms   47.0/st     5.4 us  w4a16_gemv_sw
+  0.25 ms    0.7/st   338.3 us  moe_w4a16_grouped_gemm_ptrtable_t_k64
+  0.22 ms   47.9/st     4.5 us  moe_batched_blend
+  0.19 ms    8.8/st    22.2 us  w4a16_gemv_batch4_os
+  0.19 ms    2.2/st    86.3 us  w4a16_gemm_t
+  0.16 ms   11.8/st    13.6 us  kernel
+  0.13 ms   47.0/st     2.7 us  moe_weighted_sum_blend
+  0.11 ms   24.1/st     4.6 us  hc_pre_stage_vec
+  0.11 ms   35.4/st     3.0 us  causal_conv1d_update_l2norm_f32
+  0.10 ms   34.1/st     3.1 us  hc_post_vec
+  0.10 ms   35.4/st     2.9 us  dense_gemv_ba_gates
+  0.08 ms    2.9/st    28.7 us  w4a16_gemv_batch4
+=== C1 rank1
+steps 129.0 step 38.7 ms idle 5.0 ms launches/step 1133
+  class small(<60us marginal)     11.33 ms/step   804.8 launches/step  mean   14.1 us
+  class other-large               16.12 ms/step    85.7 launches/step  mean  188.0 us
+  class moe                        6.24 ms/step   242.2 launches/step  mean   25.8 us
+ 14.14 ms   71.9/st   196.7 us  dense_gemv_bf16
+  3.45 ms   95.5/st    36.1 us  hc_pre_down_vec
+  3.27 ms   95.5/st    34.2 us  hc_pre_finish_vec
+  3.10 ms   47.3/st    65.6 us  moe_expert_gate_up_shared
+  1.89 ms   96.0/st    19.7 us  rdma_oneshot_bf16
+  1.71 ms   47.3/st    36.1 us  moe_expert_silu_down_shared
+  0.62 ms   59.1/st    10.5 us  w4a16_gemv_sw
+  0.50 ms   11.8/st    42.6 us  w4a16_gemv_qg
+  0.50 ms    2.6/st   196.0 us  dense_gemm_bf16_pipelined
+  0.48 ms    0.7/st   648.8 us  moe_w4a16_fused_gate_up_t_k64
+  0.48 ms   35.4/st    13.4 us  gated_delta_rule_decode_f32
+  0.39 ms   95.5/st     4.1 us  hc_pre_stage_vec

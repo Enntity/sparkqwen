@@ -1,0 +1,257 @@
+{
+ "arm": "BF",
+ "date": "2026-10-05 18:18:29",
+ "cells": {
+  "decode": [
+   {
+    "ttft": 0.329,
+    "wall": 9.282,
+    "out": 384,
+    "prompt": 69,
+    "cached": 32,
+    "tok_s": 42.78,
+    "text_head": "The user wants a calm, detailed essay about lighthouse staffing and maintenance ",
+    "kind": "prose",
+    "rep": 0
+   },
+   {
+    "ttft": 0.309,
+    "wall": 8.262,
+    "out": 384,
+    "prompt": 69,
+    "cached": 64,
+    "tok_s": 48.16,
+    "text_head": "The user wants a calm, detailed essay about lighthouse staffing and maintenance ",
+    "kind": "prose",
+    "rep": 1
+   },
+   {
+    "ttft": 0.307,
+    "wall": 8.398,
+    "out": 384,
+    "prompt": 69,
+    "cached": 64,
+    "tok_s": 47.34,
+    "text_head": "The user wants a calm, detailed essay about lighthouse staffing and maintenance ",
+    "kind": "prose",
+    "rep": 2
+   },
+   {
+    "ttft": 0.31,
+    "wall": 8.498,
+    "out": 384,
+    "prompt": 65,
+    "cached": 32,
+    "tok_s": 46.78,
+    "text_head": "The user wants a Python module that implements an LRU cache with:\n1. TTL (Time-T",
+    "kind": "code",
+    "rep": 0
+   },
+   {
+    "ttft": 0.299,
+    "wall": 7.595,
+    "out": 384,
+    "prompt": 65,
+    "cached": 64,
+    "tok_s": 52.5,
+    "text_head": "The user wants a Python module that implements an LRU cache with:\n1. TTL (Time-T",
+    "kind": "code",
+    "rep": 1
+   },
+   {
+    "ttft": 0.299,
+    "wall": 7.701,
+    "out": 384,
+    "prompt": 65,
+    "cached": 64,
+    "tok_s": 51.74,
+    "text_head": "The user wants a Python module that implements an LRU cache with:\n1. TTL (Time-T",
+    "kind": "code",
+    "rep": 2
+   },
+   {
+    "ttft": 0.332,
+    "wall": 8.334,
+    "out": 384,
+    "prompt": 77,
+    "cached": 32,
+    "tok_s": 47.87,
+    "text_head": "The user wants a JSON array of 12 fictional library books. Each object needs: ti",
+    "kind": "json",
+    "rep": 0
+   },
+   {
+    "ttft": 0.317,
+    "wall": 7.549,
+    "out": 384,
+    "prompt": 77,
+    "cached": 64,
+    "tok_s": 52.96,
+    "text_head": "The user wants a JSON array of 12 fictional library books. Each object needs: ti",
+    "kind": "json",
+    "rep": 1
+   },
+   {
+    "ttft": 0.32,
+    "wall": 7.71,
+    "out": 384,
+    "prompt": 77,
+    "cached": 64,
+    "tok_s": 51.83,
+    "text_head": "The user wants a JSON array of 12 fictional library books. Each object needs: ti",
+    "kind": "json",
+    "rep": 2
+   }
+  ],
+  "conc": [
+   {
+    "c": 1,
+    "rep": 0,
+    "wall": 5.88,
+    "tokens": 256,
+    "agg_tok_s": 43.52,
+    "per_stream_tok_s": [
+     45.88
+    ],
+    "ttft": [
+     0.324
+    ]
+   },
+   {
+    "c": 1,
+    "rep": 1,
+    "wall": 6.17,
+    "tokens": 256,
+    "agg_tok_s": 41.48,
+    "per_stream_tok_s": [
+     43.58
+    ],
+    "ttft": [
+     0.32
+    ]
+   },
+   {
+    "c": 2,
+    "rep": 0,
+    "wall": 9.74,
+    "tokens": 512,
+    "agg_tok_s": 52.57,
+    "per_stream_tok_s": [
+     27.17,
+     28.08
+    ],
+    "ttft": [
+     0.317,
+     0.658
+    ]
+   },
+   {
+    "c": 2,
+    "rep": 1,
+    "wall": 9.8,
+    "tokens": 512,
+    "agg_tok_s": 52.23,
+    "per_stream_tok_s": [
+     26.95,
+     27.9
+    ],
+    "ttft": [
+     0.339,
+     0.659
+    ]
+   },
+   {
+    "c": 4,
+    "rep": 0,
+    "wall": 14.01,
+    "tokens": 1024,
+    "agg_tok_s": 73.08,
+    "per_stream_tok_s": [
+     18.81,
+     19.71,
+     19.26,
+     20.22
+    ],
+    "ttft": [
+     0.386,
+     1.073,
+     0.762,
+     1.395
+    ]
+   },
+   {
+    "c": 4,
+    "rep": 1,
+    "wall": 13.82,
+    "tokens": 1024,
+    "agg_tok_s": 74.1,
+    "per_stream_tok_s": [
+     19.41,
+     18.96,
+     19.87,
+     20.38
+    ],
+    "ttft": [
+     0.631,
+     0.313,
+     0.984,
+     1.303
+    ]
+   },
+   {
+    "c": 8,
+    "rep": 0,
+    "wall": 22.45,
+    "tokens": 2048,
+    "agg_tok_s": 91.21,
+    "per_stream_tok_s": [
+     11.58,
+     12.26,
+     12.45,
+     11.73,
+     11.89,
+     12.08,
+     12.65,
+     12.85
+    ],
+    "ttft": [
+     0.321,
+     1.642,
+     1.964,
+     0.693,
+     1.009,
+     1.334,
+     2.285,
+     2.595
+    ]
+   },
+   {
+    "c": 8,
+    "rep": 1,
+    "wall": 22.43,
+    "tokens": 2048,
+    "agg_tok_s": 91.31,
+    "per_stream_tok_s": [
+     11.72,
+     12.26,
+     11.9,
+     11.6,
+     12.45,
+     12.08,
+     12.67,
+     12.85
+    ],
+    "ttft": [
+     0.676,
+     1.617,
+     0.993,
+     0.332,
+     1.924,
+     1.312,
+     2.277,
+     2.589
+    ]
+   }
+  ]
+ }
+}

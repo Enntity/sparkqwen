@@ -1,0 +1,347 @@
+{
+ "arm": "B2",
+ "date": "2026-10-05 20:27:24",
+ "cells": {
+  "decode": [
+   {
+    "ttft": 0.295,
+    "wall": 8.101,
+    "out": 376,
+    "prompt": 69,
+    "cached": 32,
+    "tok_s": 48.04,
+    "text_head": "The user wants a calm, detailed essay about lighthouse staffing and maintenance ",
+    "kind": "prose",
+    "rep": 0
+   },
+   {
+    "ttft": 0.274,
+    "wall": 7.437,
+    "out": 376,
+    "prompt": 69,
+    "cached": 64,
+    "tok_s": 52.35,
+    "text_head": "The user wants a calm, detailed essay about lighthouse staffing and maintenance ",
+    "kind": "prose",
+    "rep": 1
+   },
+   {
+    "ttft": 0.272,
+    "wall": 7.509,
+    "out": 376,
+    "prompt": 69,
+    "cached": 64,
+    "tok_s": 51.82,
+    "text_head": "The user wants a calm, detailed essay about lighthouse staffing and maintenance ",
+    "kind": "prose",
+    "rep": 2
+   },
+   {
+    "ttft": 0.265,
+    "wall": 7.244,
+    "out": 384,
+    "prompt": 65,
+    "cached": 32,
+    "tok_s": 54.88,
+    "text_head": "The user wants a Python module that implements an LRU cache with:\n1. TTL (Time-T",
+    "kind": "code",
+    "rep": 0
+   },
+   {
+    "ttft": 0.288,
+    "wall": 6.61,
+    "out": 384,
+    "prompt": 65,
+    "cached": 64,
+    "tok_s": 60.58,
+    "text_head": "The user wants a Python module that implements an LRU cache with:\n1. TTL (Time-T",
+    "kind": "code",
+    "rep": 1
+   },
+   {
+    "ttft": 0.263,
+    "wall": 6.859,
+    "out": 384,
+    "prompt": 65,
+    "cached": 64,
+    "tok_s": 58.07,
+    "text_head": "The user wants a Python module that implements an LRU cache with:\n1. TTL (Time-T",
+    "kind": "code",
+    "rep": 2
+   },
+   {
+    "ttft": 0.294,
+    "wall": 7.508,
+    "out": 384,
+    "prompt": 77,
+    "cached": 32,
+    "tok_s": 53.1,
+    "text_head": "The user wants a JSON array of 12 fictional library books. Each object needs: ti",
+    "kind": "json",
+    "rep": 0
+   },
+   {
+    "ttft": 0.282,
+    "wall": 7.089,
+    "out": 384,
+    "prompt": 77,
+    "cached": 64,
+    "tok_s": 56.26,
+    "text_head": "The user wants a JSON array of 12 fictional library books. Each object needs: ti",
+    "kind": "json",
+    "rep": 1
+   },
+   {
+    "ttft": 0.284,
+    "wall": 6.876,
+    "out": 384,
+    "prompt": 77,
+    "cached": 64,
+    "tok_s": 58.11,
+    "text_head": "The user wants a JSON array of 12 fictional library books. Each object needs: ti",
+    "kind": "json",
+    "rep": 2
+   }
+  ],
+  "prefill": [
+   {
+    "ttft": 1.022,
+    "wall": 1.488,
+    "out": 16,
+    "prompt": 2022,
+    "cached": 32,
+    "tok_s": 32.2,
+    "text_head": "The user asks which shelf holds Entry 3. Let me look at Entry ",
+    "size": 2048,
+    "rep": 0
+   },
+   {
+    "ttft": 1.035,
+    "wall": 1.352,
+    "out": 16,
+    "prompt": 2023,
+    "cached": 32,
+    "tok_s": 47.26,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 2048,
+    "rep": 1
+   },
+   {
+    "ttft": 3.782,
+    "wall": 4.155,
+    "out": 16,
+    "prompt": 8170,
+    "cached": 32,
+    "tok_s": 40.25,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 8192,
+    "rep": 0
+   },
+   {
+    "ttft": 3.743,
+    "wall": 4.077,
+    "out": 16,
+    "prompt": 8169,
+    "cached": 32,
+    "tok_s": 44.83,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 8192,
+    "rep": 1
+   },
+   {
+    "ttft": 7.489,
+    "wall": 7.821,
+    "out": 16,
+    "prompt": 16390,
+    "cached": 32,
+    "tok_s": 45.22,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 16384,
+    "rep": 0
+   },
+   {
+    "ttft": 7.495,
+    "wall": 7.842,
+    "out": 16,
+    "prompt": 16408,
+    "cached": 32,
+    "tok_s": 43.29,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 16384,
+    "rep": 1
+   },
+   {
+    "ttft": 13.761,
+    "wall": 14.178,
+    "out": 16,
+    "prompt": 28809,
+    "cached": 32,
+    "tok_s": 35.95,
+    "text_head": "The user asks which shelf holds Entry 3. Let me look at Entry ",
+    "size": 28672,
+    "rep": 0
+   },
+   {
+    "ttft": 13.689,
+    "wall": 14.034,
+    "out": 16,
+    "prompt": 28819,
+    "cached": 32,
+    "tok_s": 43.48,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 28672,
+    "rep": 1
+   }
+  ],
+  "conc": [
+   {
+    "c": 1,
+    "rep": 0,
+    "wall": 5.44,
+    "tokens": 251,
+    "agg_tok_s": 46.11,
+    "per_stream_tok_s": [
+     48.53
+    ],
+    "ttft": [
+     0.29
+    ]
+   },
+   {
+    "c": 1,
+    "rep": 1,
+    "wall": 5.82,
+    "tokens": 256,
+    "agg_tok_s": 44.0,
+    "per_stream_tok_s": [
+     46.07
+    ],
+    "ttft": [
+     0.283
+    ]
+   },
+   {
+    "c": 2,
+    "rep": 0,
+    "wall": 9.82,
+    "tokens": 512,
+    "agg_tok_s": 52.13,
+    "per_stream_tok_s": [
+     26.84,
+     27.63
+    ],
+    "ttft": [
+     0.282,
+     0.593
+    ]
+   },
+   {
+    "c": 2,
+    "rep": 1,
+    "wall": 9.65,
+    "tokens": 512,
+    "agg_tok_s": 53.03,
+    "per_stream_tok_s": [
+     28.02,
+     27.18
+    ],
+    "ttft": [
+     0.549,
+     0.271
+    ]
+   },
+   {
+    "c": 4,
+    "rep": 0,
+    "wall": 13.84,
+    "tokens": 1024,
+    "agg_tok_s": 73.96,
+    "per_stream_tok_s": [
+     18.88,
+     19.27,
+     19.66,
+     20.1
+    ],
+    "ttft": [
+     0.283,
+     0.55,
+     0.872,
+     1.156
+    ]
+   },
+   {
+    "c": 4,
+    "rep": 1,
+    "wall": 13.55,
+    "tokens": 1024,
+    "agg_tok_s": 75.58,
+    "per_stream_tok_s": [
+     19.32,
+     19.68,
+     20.11,
+     20.59
+    ],
+    "ttft": [
+     0.283,
+     0.588,
+     0.867,
+     1.155
+    ]
+   },
+   {
+    "c": 8,
+    "rep": 0,
+    "wall": 22.17,
+    "tokens": 2048,
+    "agg_tok_s": 92.4,
+    "per_stream_tok_s": [
+     11.72,
+     12.67,
+     12.16,
+     11.84,
+     12.0,
+     12.86,
+     12.5,
+     12.32
+    ],
+    "ttft": [
+     0.292,
+     2.026,
+     1.186,
+     0.621,
+     0.899,
+     2.315,
+     1.75,
+     1.459
+    ]
+   },
+   {
+    "c": 8,
+    "rep": 1,
+    "wall": 22.25,
+    "tokens": 2048,
+    "agg_tok_s": 92.05,
+    "per_stream_tok_s": [
+     11.78,
+     11.67,
+     12.61,
+     11.94,
+     12.27,
+     12.44,
+     12.11,
+     12.78
+    ],
+    "ttft": [
+     0.605,
+     0.292,
+     2.014,
+     0.886,
+     1.444,
+     1.733,
+     1.171,
+     2.292
+    ]
+   }
+  ]
+ }
+}

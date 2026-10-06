@@ -1,0 +1,161 @@
+{
+ "tag": "C8w",
+ "date": "2026-10-06T05:10:24.388Z",
+ "protocol": "sparkDash decode bench (MiaAI-Lab, MIT)",
+ "max": 400,
+ "waves": [
+  {
+   "type": "prose",
+   "c": 1,
+   "medianTps": 60.2,
+   "aggregateTps": 60.2,
+   "medianTtftMs": 244.3,
+   "perStream": [
+    60.2
+   ]
+  },
+  {
+   "type": "prose",
+   "c": 2,
+   "medianTps": 28.67,
+   "aggregateTps": 56.67,
+   "medianTtftMs": 401.6,
+   "perStream": [
+    28.41,
+    28.94
+   ]
+  },
+  {
+   "type": "prose",
+   "c": 4,
+   "medianTps": 21.54,
+   "aggregateTps": 84.12,
+   "medianTtftMs": 713.8,
+   "perStream": [
+    21.09,
+    21.37,
+    21.71,
+    22.09
+   ]
+  },
+  {
+   "type": "prose",
+   "c": 8,
+   "medianTps": 14.53,
+   "aggregateTps": 112.38,
+   "medianTtftMs": 1217.2,
+   "perStream": [
+    14.32,
+    14.47,
+    14.22,
+    14.09,
+    14.74,
+    14.6,
+    15.03,
+    14.88
+   ]
+  },
+  {
+   "type": "code",
+   "c": 1,
+   "medianTps": 76.51,
+   "aggregateTps": 76.51,
+   "medianTtftMs": 282.9,
+   "perStream": [
+    76.51
+   ]
+  },
+  {
+   "type": "code",
+   "c": 2,
+   "medianTps": 29.72,
+   "aggregateTps": 58.84,
+   "medianTtftMs": 416.2,
+   "perStream": [
+    29.42,
+    30.02
+   ]
+  },
+  {
+   "type": "code",
+   "c": 4,
+   "medianTps": 21.71,
+   "aggregateTps": 84.86,
+   "medianTtftMs": 708.3,
+   "perStream": [
+    21.29,
+    21.55,
+    21.88,
+    22.21
+   ]
+  },
+  {
+   "type": "code",
+   "c": 8,
+   "medianTps": 14.18,
+   "aggregateTps": 109.65,
+   "medianTtftMs": 1253.1,
+   "perStream": [
+    14,
+    13.75,
+    14.25,
+    13.87,
+    14.12,
+    14.39,
+    14.53,
+    14.67
+   ]
+  },
+  {
+   "type": "json",
+   "c": 1,
+   "medianTps": 69.62,
+   "aggregateTps": 69.62,
+   "medianTtftMs": 273.4,
+   "perStream": [
+    69.62
+   ]
+  },
+  {
+   "type": "json",
+   "c": 2,
+   "medianTps": 29.67,
+   "aggregateTps": 58.62,
+   "medianTtftMs": 415.1,
+   "perStream": [
+    29.4,
+    29.95
+   ]
+  },
+  {
+   "type": "json",
+   "c": 4,
+   "medianTps": 23.12,
+   "aggregateTps": 90.24,
+   "medianTtftMs": 670,
+   "perStream": [
+    22.63,
+    23.28,
+    22.97,
+    23.63
+   ]
+  },
+  {
+   "type": "json",
+   "c": 8,
+   "medianTps": 16.15,
+   "aggregateTps": 124.51,
+   "medianTtftMs": 1208.6,
+   "perStream": [
+    15.74,
+    15.9,
+    16.07,
+    15.61,
+    16.24,
+    16.41,
+    16.58,
+    16.76
+   ]
+  }
+ ]
+}

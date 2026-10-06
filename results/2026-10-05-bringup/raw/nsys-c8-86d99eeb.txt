@@ -1,0 +1,44 @@
+steps 1032.0 step 11.7 ms idle 2.1 ms launches/step 404
+  class small(<60us marginal)      3.33 ms/step   271.1 launches/step  mean   12.3 us
+  class other-large                5.02 ms/step    25.0 launches/step  mean  200.6 us
+  class moe                        1.28 ms/step   108.3 launches/step  mean   11.8 us
+  1.84 ms    6.0/st   308.3 us  qwen4exp_moe_rows_gate_up
+  0.82 ms    6.0/st   137.7 us  qwen4exp_moe_rows_silu_down
+  0.76 ms    8.9/st    86.0 us  w8a16_gemv_batch16
+  0.73 ms   35.5/st    20.7 us  gated_delta_rule_decode_f32
+  0.64 ms   11.9/st    53.4 us  hc_pre_finish_vec8
+  0.56 ms   13.6/st    40.8 us  rdma_oneshot_bf16
+  0.55 ms    2.9/st   187.1 us  dense_gemm_bf16_pipelined
+  0.53 ms   11.9/st    44.5 us  hc_pre_down_vec8
+  0.48 ms    0.7/st   639.4 us  moe_q38_gate_up_silu
+  0.34 ms    0.1/st  2718.4 us  dense_gemv_bf16_batchm
+  0.30 ms   47.3/st     6.5 us  moe_topk_softmax
+  0.26 ms    5.2/st    49.9 us  Kernel2
+  0.25 ms    0.7/st   336.9 us  moe_q38_down
+  0.18 ms   10.3/st    17.4 us  w4a16_gemv_batch8
+  0.15 ms   11.8/st    12.5 us  kernel
+  0.14 ms    0.4/st   367.7 us  w4a16_gemm
+  0.12 ms    3.0/st    40.1 us  w4a16_gemv_qg_batch4
+  0.12 ms   47.3/st     2.5 us  moe_weighted_sum_blend
+  0.10 ms   35.5/st     2.7 us  causal_conv1d_update_l2norm_f32
+  0.08 ms   12.0/st     7.1 us  hc_pre_stage_vec
+  0.08 ms   35.5/st     2.4 us  dense_gemv_ba_gates
+  0.05 ms   35.5/st     1.5 us  gated_rms_norm_f32_input_sigmoid
+  0.05 ms    0.7/st    71.3 us  moe_q38_dense_gate_up_silu
+  0.05 ms   13.4/st     3.9 us  hc_post_vec
+  0.05 ms    0.5/st   101.7 us  fp8_fp8_gemm_ldmab
+  0.04 ms    0.0/st  5389.7 us  dense_gemv_bf16
+  0.04 ms    1.0/st    41.2 us  ple_gate
+  0.03 ms    6.7/st     5.2 us  moe_batched_blend
+  0.03 ms    0.3/st   104.4 us  fp8_fp8_gemm_t
+  0.03 ms    1.5/st    17.5 us  paged_decode_attn
+  0.02 ms    1.5/st    12.3 us  hc_pre_mix
+  0.02 ms    1.5/st    11.6 us  hc_pre_stage_bf16
+  0.02 ms    3.2/st     4.9 us  qsa_block_pool
+  0.01 ms    0.7/st    19.8 us  moe_q38_dense_down
+  0.01 ms    0.1/st   279.7 us  ncclDevKernel_Broadcast_RING
+  0.01 ms    0.6/st    24.7 us  gated_delta_rule_chunk_delta_h_pipe_dv64
+  0.01 ms    6.0/st     2.2 us  qwen4exp_moe_rows_plan
+  0.01 ms    0.6/st    20.5 us  gated_delta_rule_recompute_wu
+  0.01 ms    0.7/st    11.2 us  moe_sort_by_expert
+  0.01 ms    1.0/st     7.6 us  ple_conv

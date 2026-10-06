@@ -1,0 +1,96 @@
+{
+ "arm": "P3t",
+ "date": "2026-10-05 21:03:34",
+ "cells": {
+  "prefill": [
+   {
+    "ttft": 0.925,
+    "wall": 1.351,
+    "out": 16,
+    "prompt": 2022,
+    "cached": 32,
+    "tok_s": 35.19,
+    "text_head": "The user asks which shelf holds Entry 3. Let me look at Entry ",
+    "size": 2048,
+    "rep": 0
+   },
+   {
+    "ttft": 0.935,
+    "wall": 1.279,
+    "out": 16,
+    "prompt": 2023,
+    "cached": 32,
+    "tok_s": 43.68,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 2048,
+    "rep": 1
+   },
+   {
+    "ttft": 3.043,
+    "wall": 3.472,
+    "out": 16,
+    "prompt": 8170,
+    "cached": 32,
+    "tok_s": 34.93,
+    "text_head": "The user asks which shelf holds Entry 3. Let me look at Entry ",
+    "size": 8192,
+    "rep": 0
+   },
+   {
+    "ttft": 3.041,
+    "wall": 3.46,
+    "out": 16,
+    "prompt": 8169,
+    "cached": 32,
+    "tok_s": 35.76,
+    "text_head": "The user asks which shelf holds Entry 3. Let me look at Entry ",
+    "size": 8192,
+    "rep": 1
+   },
+   {
+    "ttft": 5.844,
+    "wall": 6.214,
+    "out": 16,
+    "prompt": 16390,
+    "cached": 32,
+    "tok_s": 40.64,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 16384,
+    "rep": 0
+   },
+   {
+    "ttft": 5.805,
+    "wall": 6.112,
+    "out": 16,
+    "prompt": 16408,
+    "cached": 32,
+    "tok_s": 48.96,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 16384,
+    "rep": 1
+   },
+   {
+    "ttft": 10.443,
+    "wall": 10.764,
+    "out": 16,
+    "prompt": 28809,
+    "cached": 32,
+    "tok_s": 46.64,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 28672,
+    "rep": 0
+   },
+   {
+    "ttft": 10.566,
+    "wall": 11.024,
+    "out": 16,
+    "prompt": 28819,
+    "cached": 32,
+    "tok_s": 32.75,
+    "text_head": "The user asks which shelf holds Entry 3. Let me look at Entry ",
+    "size": 28672,
+    "rep": 1
+   }
+  ]
+ }
+}
