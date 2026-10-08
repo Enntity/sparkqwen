@@ -40,7 +40,7 @@ with MiaAI-Lab's dual-Spark settings. Receipts and caveats:
 | RigMark cold 16K-token prefill | **4,049 tok/s** | 3,516 tok/s |
 | RigMark end-to-end concurrency, C1 / C2 / C4 / C8 | 61.6 / 97.5 / 165.6 / 261.1 tok/s | 57.1 / 99.0 / 163.9 / 255.0 |
 | RigMark output gates | 8/9 (one greedy code run loops) | **9/9** |
-| Cold prompt 2K / 8K / 16K / 28K: time to first token | 0.73 / 2.10 / 4.17 / 7.48 s | 16K: 4.59 s |
+| Cold prompt 2K / 8K / 16K / 28K: time to first token | 0.73 / 2.10 / 4.17 / 7.48 s | 16K: 4.60 s |
 | 77K-token needle: time to first token, decode | **21.1 s, 58.4 tok/s** (`4x262k`); 21.5 s, 50.6 tok/s (`8x262k`) | 22.3 s, 50.6 tok/s (8 x 262K) |
 | Agent follow-up turns, 4 concurrent conversations: median time to first token | 0.47 s | **0.33 s** |
 | KV pool, each at its recipe's memory setting | **3.2-3.4M tokens** (util 0.88) | 1.5M tokens (util 0.80) |
@@ -49,8 +49,9 @@ with MiaAI-Lab's dual-Spark settings. Receipts and caveats:
 vLLM ranges are two runs on different days (2026-10-06 and 2026-10-08);
 SparkQwen's eight-stream code and JSON fall inside them. Bold marks a clear
 lead. Every option in the default profile is exact: greedy output with
-speculative decoding, with concurrent requests and with prefix-cache hits is
-identical to serial decode without them (8/8 prompts with thinking on). Two
+speculative decoding, with up to eight concurrent requests and with
+prefix-cache hits of ~4.4K tokens is identical to one-at-a-time decode with
+speculation and the cache off (8/8 prompts with thinking on, in each case). Two
 Sparks do not give bit-identical output to one GPU (BF16 rounding of the
 tensor-parallel sums; see [docs/LIMITATIONS.md](docs/LIMITATIONS.md)). These
 are single-session measurements on our pair, not a guarantee for yours.

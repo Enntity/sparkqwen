@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # launch.sh RANK [nsys]  -- render of MiaAI-Lab dual-Spark start-v030.sh (.env.sample defaults)
-# for the <rank0-host>/02 pair. Differences from start.sh: per-node NCCL GID index (3 on both since a 2026-10-08 power cycle; 02 was 4 before),
+# for our pair. Differences from start.sh: per-node NCCL GID index (3 on both since a 2026-10-08 power cycle; rank1 was 4 before),
 # model passed as the local snapshot path (no refs/main in our cache), fresh vllm cache dir.
 set -euo pipefail
 RANK=$1; MODE=${2:-plain}

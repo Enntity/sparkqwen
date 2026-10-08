@@ -8,7 +8,7 @@ What to know before relying on SparkQwen.
 - No SparkQwen image is published; `./start.sh` builds one from the pinned
   engine (a cold build takes 30-60 minutes). The recipe ran end to end from a
   clean clone on our pair and reproduced the release gates
-  (`results/2026-10-08-rc15`, From a clean clone), with the checkpoint
+  (`results/2026-10-08-rc15`, first paragraph), with the checkpoint
   already in place; the download path itself was not exercised in that run.
 
 ## Scope of the measurements
@@ -20,18 +20,19 @@ What to know before relying on SparkQwen.
   MTP head, 47K-token draft vocabulary, TP2 with expert parallel, util 0.80).
   We did not tune vLLM beyond that recipe; its launch script is in
   `results/2026-10-08-rc15/raw/vllm/launch.sh`.
-- The quality probe scored 40/40 and 12/12 on every RC15 profile. A
+- The quality probe scored 40/40 and 12/12 through the recipe image on
+  `8x32k` and `4x262k`, and on the development binary with the `8x262k`
+  settings. A
   single-GPU run of the probe, for reference, is still owed.
 
 ## Throughput at concurrency
 
 - At eight streams, sparkDash code and JSON are level with vLLM on the same
   pair (297 and 333 tok/s aggregate, inside vLLM's 291-307 and 331-339 over
-  two runs); structured and prose are ahead. Code does not lead because the
-  C8 step is bound by the bytes of the distinct experts a wave touches (the
-  MoE kernel is at that access pattern's ceiling) and speculation accepts
-  fewer code tokens per verify (3.65 against vLLM's 3.73). RigMark's
-  end-to-end concurrency is within 4% of vLLM's at every level (C2 slightly
+  two runs); structured and prose are ahead. At eight streams the decode
+  step is bound by the bytes of the distinct experts a wave touches, and our
+  MoE kernel is at that access pattern's ceiling. RigMark's end-to-end
+  concurrency is 8% ahead of vLLM's at C1 and within 3% at C2-C8 (C2 slightly
   behind).
 - Follow-up turns of concurrent agent conversations start in 0.47 s median
   (vLLM: 0.33 s); first turns are faster than vLLM's.
@@ -51,8 +52,9 @@ What to know before relying on SparkQwen.
 ## Long context
 
 - `4x262k` and `8x262k` were qualified on the pair: a correct 77K-token needle
-  (21 s cold, 58 tok/s decode), a 0.2 s warm follow-up turn, and four
-  concurrent 100K prompts all answered with the pair serving afterwards. When
+  (21 s cold; 58 tok/s decode on `4x262k`, 51 on `8x262k`), a 0.2 s warm
+  follow-up turn, and four concurrent 100K prompts all answered with the pair
+  serving afterwards. When
   requests overcommit the pool they wait for room, so their time to first
   token grows (41-117 s in that test; vLLM's was 32-118 s).
   `bench/long_probe.py` is the probe.
@@ -68,10 +70,13 @@ What to know before relying on SparkQwen.
 - **Exact** here means: an option gives the same greedy tokens on and off.
   With RC15's default profile, speculative decoding gives the same text as
   serial decode, concurrency gives the same text as one request at a time,
-  and a prefix-cache hit gives the same text as computing the prompt
-  (8 prompts with thinking on, at one and four requests: 8/8 identical in
-  each comparison). Prefill is row- and chunk-invariant, so cached KV is
-  bit-identical to recomputed KV.
+  and a prefix-cache hit gives the same text as computing the prompt: 8
+  prompts with thinking on, at one, four and eight requests, plain and behind
+  a cached ~4.4K-token prefix, were 8/8 identical to one-at-a-time decode with
+  speculation and the cache off (`results/2026-10-08-rc15`, Exactness). The
+  prefill kernels are built to be row- and chunk-invariant so that cached
+  state matches recomputed state; the receipts check the resulting tokens,
+  not the cached bytes. Eight short prompts are a sample, not a proof.
 - Two option families set a new numerics baseline rather than reproducing
   the old one: tensor-core MoE and mHC decode (`MOE_TC`, `HC_MMA`). They are
   row-invariant, so the exactness above holds with them on; their output is
@@ -105,6 +110,10 @@ What to know before relying on SparkQwen.
 ## Operations
 
 - The API has no authentication and listens only on rank 0's loopback.
+- The two ranks talk over the cable with no authentication: the engine's
+  rendezvous port (29510) and its RDMA control channel listen on the cable's
+  address. Use a private point-to-point link, as the requirements describe,
+  or firewall those ports to the peer.
 - GB10 memory is shared with the host, and a host that runs out of it can hang
   instead of killing a process. Each rank's container is capped at 114 GiB,
   and the engine aborts loading if free memory drops below 4,096 MB. We also run a host watchdog
@@ -126,6 +135,15 @@ the shipped profiles' measured behavior.
 - `ATLAS_QWEN4EXP_LMHEAD_SPLIT_VERIFY` sizes its staging from the
   `ATLAS_QWEN4EXP_MTP_DEPTH` environment variable rather than the resolved
   depth.
+- Text inside `install/` that the RC15 image was built from is partly stale,
+  and is left as is so that the image tag still names the measured tree:
+  the `4x262k` profile's note quotes the 2026-10-06 pool (307K tokens; it is
+  now 3.35M), and `serve.py` and `start-node.sh` still describe `QSA_TC2R` as
+  an opt-in with different numerics (it is the default now, and the switch
+  changes nothing).
+- The image build installs rustup with `curl | sh`, and `./start.sh download`
+  installs `huggingface_hub` with pip into an unpinned `python:3.12-slim`;
+  neither is checked against a hash yet.
 - The startup parity check between ranks does not yet cover
   `ATLAS_QWEN4EXP_SNAPSHOT_AUX_MB`, and preflight does not use the resolved
   SSM cache slot count.

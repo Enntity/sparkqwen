@@ -14,8 +14,7 @@ claim.
   `sparkqwen/*` branch. Then update the pin in `install/atlas-source.json`
   (commit and tree together) and `docs/ENGINE.md`. Never push to Atlas-Inf.
 - This repository holds accepted work only. Plans, porting logs, WIP and
-  host-specific notes go to the private `sparkglm-research` repository under
-  `notes/sparkqwen/`. Keep host names, user names, private addresses and home
+  host-specific notes go to a private notes repository. Keep host names, user names, private addresses and home
   paths out of everything here except the unedited receipts in
   `results/*/raw/`.
 - A performance claim needs raw receipts and `SHA256SUMS` under `results/`,

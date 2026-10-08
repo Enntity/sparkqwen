@@ -1,0 +1,9 @@
+[1m== image ghcr.io/enntity/atlas-sparkqwen:3b8fb8cba87d[0m
+[1m== start rank 1 on <rank1-cable-ip>, then rank 0 here (leader <rank0-cable-ip>, profile <home>/sparkqwen-rc15/receipts/exact/8x32k-ref-nocache-nospec.json)[0m
+f7b9ef0302f247493caeddd7b5677664335ea9ef4c8f35e29283b8aec5568be3
+started atlas-sparkqwen-rank1 (rank 1); follow with: docker logs -f atlas-sparkqwen-rank1
+a6d7bc1b4f55c71c5a31e6103ec0e462f22a25cccf1f1305504cd959bc207344
+started atlas-sparkqwen-rank0 (rank 0); follow with: docker logs -f atlas-sparkqwen-rank0
+[1m== loading (a few minutes; the first start also compiles CUDA kernels)[0m
+[1m== ready: http://127.0.0.1:8893/v1 model qwen3.8-flash-next-atlas[0m
+smoke: 17*23 = 391

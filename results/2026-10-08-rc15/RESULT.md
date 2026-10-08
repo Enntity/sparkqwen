@@ -45,7 +45,7 @@ tokens (`min_tokens` + `ignore_eos`), aggregate tok/s across streams
 RC15 rows: `raw/recipe/sd-RECIPE.json`, `sd-RECIPE8L.json`. vLLM C1 and C8:
 `raw/vllm/sd-VLLM.json` (2026-10-06); C2, C4 and the second C8 row:
 `raw/vllm/rerun/sd-VLLMr.json` (2026-10-08, the same settings; its C1 is
-77.7 / 62.1 / 71.3 / 65.8). vLLM's two C8 runs differ by up to 5%; RC15's
+77.7 / 62.1 / 71.3 / 65.8). vLLM's two C8 runs differ by up to 6%; RC15's
 code and JSON fall inside that range, structured and prose above it. Median
 time to first token at C8 is 268-373 ms for RC15 and 215-506 ms for vLLM.
 
@@ -65,7 +65,8 @@ including KV memory and token counts, is in `metadata-*.json` beside them).
 | Concurrency, C1 / C2 / C4 / C8 aggregate | 61.6 / 97.5 / 165.6 / 261.1 tok/s | 57.1 / 99.0 / 163.9 / 255.0 tok/s |
 
 Concurrency here is RigMark's end-to-end short-code workload (256 tokens per
-agent, prefill included); the two engines are within 4% at every level. The
+agent, prefill included): RC15 is 8% ahead at C1, and the two engines are
+within 3% at C2-C8. The
 failed code gate is one greedy run that falls into repeating `0, 0, 0`
 in a Go test table and is cut off (docs/LIMITATIONS.md, Behavior).
 
@@ -74,7 +75,7 @@ in a Go test table and is cut off (docs/LIMITATIONS.md, Behavior).
 - Cold time to first token (`bench/sq_bench.py`, median of 2,
   `raw/recipe/bench-RECIPE.json`): 0.73 s at 2K, 2.10 s at 8K, 4.17 s at 16K,
   7.48 s at 28K tokens. The previous pin measured 0.94 / 3.10 / 6.17 / 11.30 s.
-  vLLM at 16K: 4.59 s, 3,480 tok/s with our TTFT script (`raw/vllm/ttft16k.log`),
+  vLLM at 16K: 4.60 s, 3,480 tok/s with our TTFT script (`raw/vllm/ttft16k.log`),
   3,516 tok/s in RigMark.
 - Warm turn (the same 8K or 20K conversation plus one message): 0.16-0.24 s
   to first token.
@@ -84,13 +85,24 @@ in a Go test table and is cut off (docs/LIMITATIONS.md, Behavior).
 
 ## Exactness
 
-8 prompts, thinking on, greedy, 320 tokens (`raw/dev/e2e_eq.py`,
-`e2e_c1.py`). References: the development binary with speculation and prefix
-caching off (`raw/dev/e2e-R15n*.json`).
+8 prompts, thinking on (reasoning effort low), greedy, 320 tokens
+(`bench/greedy_eq.py`, `raw/recipe/exact/`). The reference is the recipe
+image with a copy of the `8x32k` profile without prefix caching and
+speculation, one request at a time
+(`raw/recipe/exact/8x32k-ref-nocache-nospec.json`). Against it, the default
+profile (speculation and prefix caching on):
 
-- Recipe image, default profile (speculation and prefix caching on), at four
-  concurrent requests and at one: 8/8 identical to the references
-  (`raw/recipe/exactness.out`).
+| | 1 at a time | 4 at a time | 8 at a time |
+|---|---|---|---|
+| Plain prompts (32-64 cached template tokens) | 8/8 identical | 8/8 identical | 8/8 identical |
+| Behind a shared ~4.4K-token prefix, every request a cache hit (4,448-4,480 cached tokens) | 8/8 identical | 8/8 identical | 8/8 identical |
+
+The reference's texts are also identical to the release gates' references
+(`raw/dev/e2e-R15n*.json`, the same eight prompts: hashes 8199ce ... 1c6136).
+Earlier checks of the same build:
+
+- Recipe image, default profile, at four concurrent requests and at one:
+  8/8 identical to the development references (`raw/recipe/exactness.out`).
 - Development binary: speculation on vs off, 8/8 at four and at one; prefix
   caching on vs off, 8/8 (`raw/dev/round_rc15.out`).
 - Concurrency crash gates (bursts of 6, 8 and 70 requests, first-token parity
@@ -134,8 +146,8 @@ The pool varies by a few hundred tokens between starts (3,260,656 for the
 `8x32k` start RigMark measured). A KV token costs 12 KiB per rank (12
 full-attention layers, one BF16 KV head of 256 per rank) plus 768 B of QSA
 indexer state; the 36 Gated DeltaNet layers keep fixed-size recurrent state
-instead. The 2026-10-06 pin held about 818K (`8x32k`) and 385K (`4x262k`)
-tokens in the same memory: prefill MoE now reads the checkpoint's own weight
+instead. Earlier engines held about 818K (`8x32k`, the bring-up) and 385K
+(`4x262k`, the 2026-10-06 recipe) tokens in the same memory: prefill MoE now reads the checkpoint's own weight
 planes instead of a 31.6 GiB duplicate. vLLM at util 0.80 holds 1.49 million
 tokens.
 
@@ -154,14 +166,16 @@ cycle of the pair the second Spark's RoCE v2 IPv4 GID moved from index 4 to
 loaded the Hugging Face snapshot fab0aecb, whose safetensors index and file
 sizes equal the pinned fc694b54; its `config.json` differs in one module's
 `quant_algo` label. The patched `mtp.py` and the draft vocabulary are MiaAI-Lab's and are
-not copied here. The 2026-10-06 receipts are in `raw/vllm/`; the 2026-10-08
+not copied here. The 2026-10-06 receipts are in `raw/vllm/` (with that
+start's server log, `run1-rank0.log`: a 1,498,965-token KV pool); the 2026-10-08
 rerun is in `raw/vllm/rerun/` with its server log, where this start's KV
 pool is 1,485,741 tokens (24.14 GiB per worker).
 
 ## Files
 
-Host names, cable addresses, user names and home paths in `raw/` are replaced
-with placeholders (`<rank0-host>`, `<rank0-cable-ip>`, `<home>`); the files
-are otherwise as written. The development round scripts (`raw/dev/round_*.sh`)
+Host names, cable addresses, user names and absolute home paths in `raw/` are
+replaced with placeholders (`<rank0-host>`, `<rank0-cable-ip>`, `<home>`);
+paths relative to a home directory (`~/...`) are kept. The files are
+otherwise as written. The development round scripts (`raw/dev/round_*.sh`)
 call launch helpers that are not part of this repository; they record what
 ran. `SHA256SUMS` covers every file in `raw/`.

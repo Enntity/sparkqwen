@@ -3,7 +3,7 @@
 """greedy_eq.py run TAG [CONC] [--prefix] | compare A B -- exactness of greedy text.
 
 run: 8 greedy chat completions (thinking low, 320 tokens), CONC at a time (default 4), and writes
-./greedy-TAG.json with each text and its cached prompt tokens. --prefix puts one shared ~3K-token
+./greedy-TAG.json with each text and its cached prompt tokens. --prefix puts one shared ~4.4K-token
 document in front of every prompt and sends a 1-token warmup with it first, so with prefix caching
 on every measured request restores cached KV and recurrent state instead of computing the prefix.
 compare: per prompt, whether the texts of two runs match and where they first differ.

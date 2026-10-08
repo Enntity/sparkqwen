@@ -53,12 +53,24 @@ We ran it at commit 40fabca with this command; the metadata files are in
 ## Exactness
 
 Greedy text with thinking on must not depend on speculation, concurrency or
-the prefix cache. `raw/dev/e2e_eq.py` sends 8 prompts four at a time and
-`raw/dev/e2e_c1.py` one at a time; both save the texts and `compare` reports
-how many match. Take references from a server started with speculation and
-prefix caching off (a profile file without `--speculative` and
-`--enable-prefix-caching`), then run the same scripts against the default
-profile and compare.
+the prefix cache. Take references from a server started with a copy of the
+profile without `--enable-prefix-caching`, `--speculative` and
+`--num-drafts` (`raw/recipe/exact/8x32k-ref-nocache-nospec.json`; the file must
+exist at the same path on both Sparks), then compare the default profile:
+
+```sh
+cd bench
+python3 greedy_eq.py run ref 1              # on the reference server
+python3 greedy_eq.py run refp 1 --prefix    # the same prompts behind a shared ~4.4K-token prefix
+# restart with the default profile, then:
+python3 greedy_eq.py run c8 8               # eight at a time
+python3 greedy_eq.py run c8p 8 --prefix     # eight at a time, every request a prefix-cache hit
+python3 greedy_eq.py compare ref c8
+python3 greedy_eq.py compare refp c8p
+```
+
+`--prefix` sends a warmup first and records each request's cached tokens, so
+the receipt shows the cache was hit.
 
 To check that a single engine option is exact, start the engine with and
 without it and compare prompt logprobs:
@@ -88,7 +100,9 @@ python3 long_probe.py exhaust        # four concurrent ~100K prompts: must queue
 
 ## vLLM on the same pair
 
-`raw/vllm/launch.sh` starts vLLM v0.30.0 with the settings of MiaAI-Lab's
+`raw/vllm/launch.sh` (it listens on `0.0.0.0:8888` without authentication,
+as the recipe it renders does; run it only on a private network) starts vLLM
+v0.30.0 with the settings of MiaAI-Lab's
 dual-Spark `start-v030.sh` (its `.env.sample` defaults). It mounts the
 patched `mtp.py` and the draft vocabulary from that repository, which are not
 copied here. `sd_bench.mjs` runs against it unchanged with

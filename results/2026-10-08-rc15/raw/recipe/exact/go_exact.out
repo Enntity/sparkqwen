@@ -1,0 +1,16 @@
+ca1d13f bench: greedy_eq.py, a portable exactness check with real prefix-cache hits; start.sh: quote worker commands
+REF1 C1 plain ['8199ce', 'eb1ff8', 'd731b4', '13de3d', 'a5bed8', 'e112d3', '9f8c77', '1c6136'] cached [0, 0, 0, 0, 0, 0, 0, 0]
+REFP1 C1 prefix ['c64f80', '6a73de', 'df4462', '64fd24', '2423f4', '7b35e9', 'be281c', 'fccb7a'] cached [0, 0, 0, 0, 0, 0, 0, 0]
+D1 C1 plain ['8199ce', 'eb1ff8', 'd731b4', '13de3d', 'a5bed8', 'e112d3', '9f8c77', '1c6136'] cached [32, 32, 32, 32, 32, 32, 32, 32]
+D4 C4 plain ['8199ce', 'eb1ff8', 'd731b4', '13de3d', 'a5bed8', 'e112d3', '9f8c77', '1c6136'] cached [64, 48, 64, 48, 48, 48, 48, 48]
+D8 C8 plain ['8199ce', 'eb1ff8', 'd731b4', '13de3d', 'a5bed8', 'e112d3', '9f8c77', '1c6136'] cached [64, 48, 64, 48, 48, 48, 48, 48]
+DP1 C1 prefix ['c64f80', '6a73de', 'df4462', '64fd24', '2423f4', '7b35e9', 'be281c', 'fccb7a'] cached [4448, 4448, 4448, 4448, 4448, 4448, 4448, 4448]
+DP4 C4 prefix ['c64f80', '6a73de', 'df4462', '64fd24', '2423f4', '7b35e9', 'be281c', 'fccb7a'] cached [4480, 4480, 4480, 4480, 4480, 4480, 4480, 4480]
+DP8 C8 prefix ['c64f80', '6a73de', 'df4462', '64fd24', '2423f4', '7b35e9', 'be281c', 'fccb7a'] cached [4480, 4480, 4480, 4480, 4480, 4480, 4480, 4480]
+REF1 vs D1: 8/8 identical
+REF1 vs D4: 8/8 identical
+REF1 vs D8: 8/8 identical
+REFP1 vs DP1: 8/8 identical
+REFP1 vs DP4: 8/8 identical
+REFP1 vs DP8: 8/8 identical
+EDONE
