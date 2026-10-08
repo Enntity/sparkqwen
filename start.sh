@@ -12,6 +12,7 @@ set -euo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")"
 if [[ -f .env ]]; then set -a; . ./.env; set +a; fi
 : "${WORKER:?set WORKER in .env to the ssh destination of the other Spark (see .env.example)}"
+[[ $WORKER != -* ]] || { echo "WORKER must be an ssh destination, not an option: $WORKER" >&2; exit 2; }
 MODEL_ROOT=${MODEL_ROOT:-$HOME/models/sparkqwen}
 PROFILE=${PROFILE:-8x32k}
 FABRIC_HCA=${FABRIC_HCA:-rocep1s0f0}
@@ -22,9 +23,10 @@ API=http://127.0.0.1:8893
 NAME=atlas-sparkqwen-rank
 
 say() { printf '\033[1m== %s\033[0m\n' "$*"; }
-on_worker() { ssh -o BatchMode=yes "$WORKER" "$@"; }
+# Run a command on the worker; ssh joins its arguments into one shell line, so quote each.
+on_worker() { ssh -o BatchMode=yes "$WORKER" "$(printf '%q ' "$@")"; }
 # Run a local script on the worker with safely quoted arguments.
-script_on_worker() { local script=$1; shift; on_worker "bash -s -- $(printf '%q ' "$@")" < "$script"; }
+script_on_worker() { local script=$1; shift; on_worker bash -s -- "$@" < "$script"; }
 has_image() { docker image inspect "$IMAGE" >/dev/null 2>&1; }
 
 # No SparkQwen image is published yet, so the default is a local build.
