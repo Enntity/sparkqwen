@@ -14,7 +14,7 @@ HERE = Path(__file__).resolve().parent
 spec = importlib.util.spec_from_file_location('atlas_serve', HERE/'serve.py')
 serve = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(serve)
-PROFILES = ('8x32k', '4x262k')
+PROFILES = ('8x32k', '4x262k', '8x262k')
 SHA = re.compile(r'[0-9a-f]{40}')
 
 
@@ -54,11 +54,17 @@ class LaunchContract(unittest.TestCase):
                 serve.profile_path({'SPARKQWEN_PROFILE': bad}, HERE)
 
     def test_profiles_share_everything_but_their_size(self):
+        # The long-context profiles drop only the QSA spare-buffer cap: its buffers sit outside
+        # the KV budget and scale with context.
         size = ('--max-seq-len=', '--max-num-seqs=', '--max-batch-size=')
-        a, b = (load_profile(name) for name in PROFILES)
-        self.assertEqual(a['environment'], b['environment'])
-        self.assertEqual([x for x in a['server_argv'] if not x.startswith(size)],
-                         [x for x in b['server_argv'] if not x.startswith(size)])
+        profiles = [load_profile(name) for name in PROFILES]
+        base = profiles[0]
+        for other in profiles[1:]:
+            env = dict(base['environment'])
+            env.pop('ATLAS_QWEN4EXP_QSA_SPARE_MAX')
+            self.assertEqual(env, other['environment'])
+            self.assertEqual([x for x in base['server_argv'] if not x.startswith(size)],
+                             [x for x in other['server_argv'] if not x.startswith(size)])
 
     def test_profiles_serve_bf16_kv_with_prefix_caching_and_mtp(self):
         for name in PROFILES:
@@ -68,7 +74,7 @@ class LaunchContract(unittest.TestCase):
                 self.assertIn('--kv-cache-dtype=bf16', argv)
                 self.assertIn('--enable-prefix-caching', argv)
                 self.assertIn('--speculative', argv)
-                self.assertIn('--num-drafts=3', argv)
+                self.assertIn('--num-drafts=7', argv)
                 self.assertIn('--gpu-memory-utilization=0.88', argv)
                 self.assertIn('--oom-guard-mb=4096', argv)
                 self.assertIn('--max-prefill-tokens=16384', argv)
@@ -82,22 +88,37 @@ class LaunchContract(unittest.TestCase):
                  'ATLAS_QWEN4EXP_DECODE_GRAPH_WIDE', 'ATLAS_QWEN4EXP_HC_FAST',
                  'ATLAS_QWEN4EXP_LMHEAD_SPLIT', 'ATLAS_QWEN4EXP_LMHEAD_BATCHM',
                  'ATLAS_QWEN4EXP_EXACT_VERIFY', 'ATLAS_QWEN4EXP_MOE_FAST', 'ATLAS_QWEN4EXP_DECODE_FUSE',
-                 'ATLAS_QWEN4EXP_BATCH_FAST', 'ATLAS_QWEN4EXP_BATCH_SMALL', 'ATLAS_MTP_SINGLE_DEPTH_ADAPT', 'ATLAS_MTP_MAX_SEQS',
+                 'ATLAS_QWEN4EXP_BATCH_FAST', 'ATLAS_QWEN4EXP_BATCH_SMALL', 'ATLAS_MTP_SINGLE_DEPTH_ADAPT',
                  'ATLAS_QWEN4EXP_DRAFT_HEAD_NVFP4', 'ATLAS_QWEN4EXP_PREFILL_MOE',
-                 'ATLAS_QWEN4EXP_PREFILL_GDN', 'ATLAS_QWEN4EXP_PREFILL_GDN_DV', 'ATLAS_QWEN4EXP_PREFILL_QSA_SCORE',
+                 'ATLAS_QWEN4EXP_PREFILL_GDN', 'ATLAS_QWEN4EXP_PREFILL_QSA_SCORE',
                  'ATLAS_QWEN4EXP_PREFILL_HC', 'ATLAS_QWEN4EXP_PREFILL_SP', 'ATLAS_RDMA_ALLREDUCE',
-                 'ATLAS_RDMA_ONESHOT', 'ATLAS_RDMA_PAIR_CHAIN', 'ATLAS_GLM_CMD_RDMA')
-        # Batched speculation lost at four or more streams; PDL crashed one C8 run.
-        held_back = ('ATLAS_QWEN4EXP_FP8_GDN', 'ATLAS_QWEN4EXP_PREFILL_QSA_TC2R', 'ATLAS_QWEN4EXP_PDL',
-                     'ATLAS_PDL', 'ATLAS_MTP_SPEC_THINK', 'ATLAS_QWEN4EXP_VERIFY_PROF',
-                     'ATLAS_MTP_TIMING', 'ATLAS_DECODE_BATCH_LOG')
+                 'ATLAS_RDMA_ONESHOT', 'ATLAS_RDMA_PAIR_CHAIN', 'ATLAS_GLM_CMD_RDMA',
+                 # RC15: exact batched speculation and exact prefix caching.
+                 'ATLAS_MTP_DYNAMIC_DEPTH', 'ATLAS_QWEN4EXP_MTP_KV_KEEP', 'ATLAS_QWEN4EXP_EXACT_DEFER',
+                 'ATLAS_QWEN4EXP_PREFILL_ROWINV', 'ATLAS_QWEN4EXP_PREFILL_MULTI',
+                 'ATLAS_QWEN4EXP_PREFILL_MULTI_CACHED', 'ATLAS_QWEN4EXP_PREFILL_MOE_NODUP',
+                 'ATLAS_QWEN4EXP_FINISH_LEAF', 'ATLAS_QWEN4EXP_QSA_TOPK_WIDE', 'ATLAS_QWEN4EXP_QSA_DECODE_ROWS',
+                 'ATLAS_QWEN4EXP_MOE_TC', 'ATLAS_QWEN4EXP_MOE_NO_CLAMP', 'ATLAS_QWEN4EXP_HC_MMA',
+                 'ATLAS_QWEN4EXP_LMHEAD_SPLIT_VERIFY', 'ATLAS_QWEN4EXP_ROWS32_TILE', 'ATLAS_QWEN4EXP_W4_ROWS',
+                 'ATLAS_QWEN4EXP_W4_ROWS_WIDE', 'ATLAS_QWEN4EXP_GDN_COMMIT_FUSE',
+                 'ATLAS_QWEN4EXP_QSA_COMMIT_TABLE', 'ATLAS_MTP_DFLASH_CTX_SCOPED', 'ATLAS_QWEN4EXP_EOS_BAN',
+                 'ATLAS_CONTENT_LOOP_WATCHDOG', 'ATLAS_NO_MTP_DCUT')
+        # Lossy or unproven options stay opt-in; diagnostics never ship in a profile.
+        held_back = ('ATLAS_QWEN4EXP_FP8_GDN', 'ATLAS_QWEN4EXP_PDL', 'ATLAS_PDL', 'ATLAS_MTP_SPEC_THINK',
+                     'ATLAS_QWEN4EXP_VERIFY_PROF', 'ATLAS_MTP_TIMING', 'ATLAS_DECODE_BATCH_LOG',
+                     'ATLAS_QWEN4EXP_PREFILL_MOE_BF16', 'ATLAS_QWEN4EXP_PREFILL_BF16_PROJ',
+                     'ATLAS_QWEN4EXP_SNAPSHOT_SLOTS', 'ATLAS_QWEN4EXP_PC_BRANCH', 'ATLAS_QWEN4EXP_DENSE_CKPT',
+                     'ATLAS_MTP_STEP_TRACE', 'ATLAS_MTP_ACCEPT_DEBUG', 'ATLAS_PREFILL_HOST_TIMING',
+                     'ATLAS_GLM_WARM_TRACE', 'ATLAS_QWEN4EXP_MOE_ROUTE_DUMP', 'ATLAS_QWEN4EXP_PREFILL_GDN_DV')
         for name in PROFILES:
             env = load_profile(name)['environment']
             with self.subTest(profile=name):
                 for key in exact:
                     self.assertEqual(env.get(key), '1', key)
-                self.assertEqual(env.get('ATLAS_QWEN4EXP_MTP_DEPTH'), '3')
-                self.assertEqual(env.get('ATLAS_QWEN4EXP_MTP_CONFIDENCE'), '0.6')
+                self.assertEqual(env.get('ATLAS_QWEN4EXP_MTP_DEPTH'), '7')
+                self.assertEqual(env.get('ATLAS_MTP_MAX_SEQS'), '8')
+                self.assertEqual(env.get('ATLAS_CONTENT_LOOP_MIN_REPEATS'), '32')
+                self.assertNotIn('ATLAS_QWEN4EXP_MTP_CONFIDENCE', env)
                 self.assertEqual(env.get('ATLAS_EP_PROTOCOL'), 'v2')
                 for key in held_back:
                     self.assertNotIn(key, env)

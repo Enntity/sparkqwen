@@ -10,7 +10,7 @@ usage() {
   cat >&2 <<'EOF'
 usage: start-node.sh --rank 0|1 --leader-address IP --model-root DIR --image TAG
                      [--fabric-interface IFACE] [--fabric-hca rocep1s0f0]
-                     [--profile 8x32k|4x262k|FILE] [--gpu-memory-utilization 0.80-0.95]
+                     [--profile 8x32k|4x262k|8x262k|FILE] [--gpu-memory-utilization 0.80-0.95]
                      [--fp8-gdn] [--qsa-tc2r] [--cuda-cache DIR] [--name NAME]
 
   --leader-address   rank 0's IPv4 address on the direct Spark-to-Spark fabric

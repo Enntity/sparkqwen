@@ -1,7 +1,7 @@
 {
  "schema": "sparkqwen.atlas-install-profile/v1",
  "status": "validated",
- "note": "Up to eight requests of up to 32K tokens: the concurrency and benchmark profile. RC15 profile (2026-10-09): exact speculation (spec == serial) and exact prefix caching (cache-on == cache-off); tensor-core MoE/mHC; no-duplicate prefill MoE (31.6 GiB freed for KV); batched C8 speculation with multi-prompt prefill; long-context QSA decode; prompt-tail checkpoints. Gates: results/2026-10-09-rc15.",
+ "note": "Up to eight requests of up to 262K tokens: long-context serving with concurrency (the no-duplicate MoE leaves a ~3.2M-token KV pool). RC15 profile (2026-10-09): exact speculation (spec == serial) and exact prefix caching (cache-on == cache-off); tensor-core MoE/mHC; no-duplicate prefill MoE (31.6 GiB freed for KV); batched C8 speculation with multi-prompt prefill; long-context QSA decode; prompt-tail checkpoints. Gates: results/2026-10-09-rc15.",
  "environment": {
   "ATLAS_EP_PROTOCOL": "v2",
   "ATLAS_RDMA_ALLREDUCE": "1",
@@ -71,7 +71,6 @@
   "ATLAS_QWEN4EXP_MOE_NO_CLAMP": "1",
   "ATLAS_QWEN4EXP_HC_STAGE_FIT": "1",
   "ATLAS_QWEN4EXP_HC_MMA": "1",
-  "ATLAS_QWEN4EXP_QSA_SPARE_MAX": "288",
   "ATLAS_QWEN4EXP_PREFILL_ROWINV": "1",
   "ATLAS_QWEN4EXP_GDN_COMMIT_FUSE": "1",
   "ATLAS_QWEN4EXP_QSA_COMMIT_TABLE": "1",
@@ -132,6 +131,6 @@
   "--num-drafts=7",
   "--max-num-seqs=8",
   "--max-batch-size=8",
-  "--max-seq-len=32768"
+  "--max-seq-len=262144"
  ]
 }
