@@ -115,3 +115,8 @@ Quality probe on this config: 40/40 arithmetic, 12/12 two-hop needles.
   concurrency. Not a prefix-cache bug (reproduced identically on Atlas main).
 - Batched speculation at C>=4 loses (per-row MoE cost); `ATLAS_MTP_MAX_SEQS=1` stays.
 - PDL crashed one C8 run (cause not yet found); kept off.
+
+### Files
+Host names, cable addresses and home paths in `raw/` were replaced with placeholders
+(`<rank0-host>`, `<rank0-cable-ip>`, `<home>`) before publication, and `SHA256SUMS` was
+regenerated over the redacted files; they are otherwise as written.

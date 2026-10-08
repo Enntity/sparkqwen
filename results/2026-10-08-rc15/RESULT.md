@@ -11,9 +11,9 @@ commit (build-time tests passed) and served the default `8x32k` profile
 (`raw/recipe/`). `PROFILE=4x262k` and `PROFILE=8x262k` were then started the
 same way. Checkpoint `nvidia/Qwen3.8-Flash-Next-NVFP4` @ fc694b54.
 Single-session measurements on our pair, not a guarantee. The RigMark
-metadata names the recipe commit as 1128418: that is its hash before host
-names were scrubbed from this repository's history for publication; the
-`install/` tree is unchanged.
+metadata names the recipe commit as 1128418: that was its hash before host
+names were scrubbed from this repository's history for publication, and it
+is a816077 in the published history, with the same `install/` tree.
 
 The release gates ran first on a binary built from the same commit by our
 development scripts (`raw/dev/`, environment `raw/dev/rc15.list`); the recipe

@@ -76,7 +76,7 @@ and 12/12 on both arms (`raw/qprobe-*.jsonl`).
 
 ## From a clean clone
 
-`git clone` of this repository at 1f15595 on one Spark, `.env` with `WORKER`
+`git clone` of this repository at b6211e8 on one Spark, `.env` with `WORKER`
 and `MODEL_ROOT` (the pinned checkpoint revision was already on both Sparks,
 so the download step was skipped), then `./start.sh`: it built
 `ghcr.io/enntity/atlas-sparkqwen:e8ea13c4816b` from the pinned engine commit
@@ -98,8 +98,12 @@ ranks with the `8x32k` profile and answered the smoke test
 
 The first clean-clone attempt failed at the build-time tests (the image
 copied one of the four engine test configs that atlas-core's test binary
-includes); 1f15595 fixed it.
+includes); b6211e8 fixed it.
 
 Host addresses, user names and home paths in `raw/*.out` and
 `raw/recipe/*` are replaced with placeholders; the files are otherwise as
 written.
+
+Commit hashes of this repository cited here are those of its published
+history (host names were scrubbed from it before publication, which changed
+every hash; 1f15595 before that is b6211e8).
