@@ -2,7 +2,7 @@
   "schema": "sparkqwen.atlas-engine-source/v2",
   "note": "The Atlas engine is built from the public Enntity/atlas fork at this exact commit; build.sh refuses any other tree.",
   "repository": "https://github.com/Enntity/atlas.git",
-  "branch": "sparkqwen/atlas-20261009-rc15",
+  "branch": "sparkqwen/atlas-20261008-rc15",
   "commit": "de4386b4471811216e8157023be33bd62734278d",
   "tree": "5f06ba8ec93b60f9e866cfcc8098e9ffb6855bf5",
   "layers": {
@@ -18,7 +18,7 @@
       "note": "The Qwen3.8-Flash-Next series in PR order: Atlas-Inf's unmerged Flash-Next fixes, TP=EP=2 for qwen4_exp, MTP at TP2, piecewise decode graphs, exact decode, verify, batching and prefill kernels, and the opt-in FP8 GDN projections and TC2R QSA prefill (docs/ENGINE.md). Also: rank-agreed Marconi restore depth in every multi-rank world (a TP2 prefix-cache deadlock fix), agreed KV-exhaustion refusals in decode/verify instead of a dead pair, and the long-context memory work (one-layer drafter KV, on-demand QSA carry, sliding raw-key window) that takes the 262K x 4 KV pool from 106K to 307K tokens at util 0.88."
     },
     "sparkqwen_only": {
-      "branch": "sparkqwen/atlas-20261009-rc15",
+      "branch": "sparkqwen/atlas-20261008-rc15",
       "commit": "de4386b4471811216e8157023be33bd62734278d",
       "note": "SparkQwen release RC15 on top of the 2026-10-06 series (3322e221): exact batched speculation (spec == serial) and exact prefix caching (row-invariant prefill); tensor-core MoE and mHC decode; no-duplicate N-major prefill MoE (31.6 GiB freed for KV); multi-prompt prefill (incl. from a cached prefix); long-context QSA decode (device top-k past 64K); prompt-tail checkpoints; verify LM-head vocab split; register-tiled 32-row and persistent NVFP4 verify/draft kernels; deferred GDN commit; batched MTP bootstrap; content-loop watchdog; min_tokens end-token ban. Every option is behind an ATLAS_* switch, set by the install profiles."
     }

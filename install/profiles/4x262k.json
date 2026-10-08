@@ -1,7 +1,7 @@
 {
  "schema": "sparkqwen.atlas-install-profile/v1",
  "status": "validated",
- "note": "Up to four requests of up to 256K tokens. Qualified on the pair (docs/LIMITATIONS.md, Long context): 307K-token KV pool at util 0.88, KV exhaustion handled without losing the pair. RC15 profile (2026-10-09): exact speculation (spec == serial) and exact prefix caching (cache-on == cache-off); tensor-core MoE/mHC; no-duplicate prefill MoE (31.6 GiB freed for KV); batched C8 speculation with multi-prompt prefill; long-context QSA decode; prompt-tail checkpoints. Gates: results/2026-10-09-rc15.",
+ "note": "Up to four requests of up to 256K tokens. Qualified on the pair (docs/LIMITATIONS.md, Long context): 307K-token KV pool at util 0.88, KV exhaustion handled without losing the pair. RC15 profile (2026-10-08): exact speculation (spec == serial) and exact prefix caching (cache-on == cache-off); tensor-core MoE/mHC; no-duplicate prefill MoE (31.6 GiB freed for KV); batched C8 speculation with multi-prompt prefill; long-context QSA decode; prompt-tail checkpoints. Gates: results/2026-10-08-rc15.",
  "environment": {
   "ATLAS_EP_PROTOCOL": "v2",
   "ATLAS_RDMA_ALLREDUCE": "1",
