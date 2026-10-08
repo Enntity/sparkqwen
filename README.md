@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/assets/banner.png" alt="SparkQwen: Qwen3.8-Flash-Next on two DGX Sparks" width="100%">
+</p>
+
 # SparkQwen
 
 Qwen3.8-Flash-Next on two NVIDIA DGX Sparks, served by the
