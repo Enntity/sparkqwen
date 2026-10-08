@@ -1,0 +1,65 @@
+## 8x32k (default profile)
+RCPs1 done 8
+R15n4 vs RCPs4: 8/8 identical
+R15n1 vs RCPs1: 8/8 identical
+R15s4 vs RCPs4: 8/8 identical
+R15s1 vs RCPs1: 8/8 identical
+alive after: ok
+vision-pad burst: 8/8 ok 
+wide burst of 70: 70/70 ok 
+first-token parity, one-at-a-time vs burst: 8/8 equal
+cache-hit parity, 64-token cached prefix (warm ok): burst vs one-at-a-time 8/8 equal
+cache-hit parity, 320-token cached prefix (warm ok): burst vs one-at-a-time 8/8 equal
+alive after: ok
+PASS
+structured C1: median 101.9 tok/s, aggregate 101.9, TTFT 130.8 ms
+structured C8: median 49.56 tok/s, aggregate 389.63, TTFT 268.2 ms
+prose C1: median 72.74 tok/s, aggregate 72.74, TTFT 137.9 ms
+prose C8: median 33.62 tok/s, aggregate 261.13, TTFT 283 ms
+code C1: median 94.23 tok/s, aggregate 94.23, TTFT 151.6 ms
+code C8: median 38.78 tok/s, aggregate 297.11, TTFT 372.7 ms
+json C1: median 84.93 tok/s, aggregate 84.93, TTFT 143 ms
+json C8: median 42.11 tok/s, aggregate 333.14, TTFT 341.7 ms
+RECIPE arith: 40/40
+RECIPE needle: 12/12
+warm 20480 1 20571 20528 0.24
+warm 20480 2 20622 20560 0.175
+warm 20480 3 20670 20608 0.192
+warm 20480 4 20718 20656 0.188
+warm 20480 5 20766 20704 0.183
+wrote bench-RECIPE.json
+RECIPE: correct 20/20; turn-0 TTFT [6.1, 8.08, 9.99, 11.91]; turns 1+ TTFT median 0.48 max 0.71
+│  ▲  8/9 BASIC OUTPUT GATES PASSED — DO NOT HEADLINE                                      │
+│  WORKLOAD       DECODE EST.      LAST OUTPUT          RANGE          BASIC GATE          │
+│  CODE              84.6 tok/s      19.9s last     83.3–86.6     ✗ 2/3                    │
+│  PROSE             51.7 tok/s      24.3s last     49.7–54.0     ✓ 3/3                    │
+│  STRUCTURED*       98.8 tok/s       6.3s last     96.5–101.2    ✓ 3/3                    │
+│  16K PREFILL   cold 4,049 tok/s  •  immediate replay 78,006 tok/s                        │
+│  SHORT CODE • END-TO-END • 256-TOKEN CAP PER AGENT                                       │
+│  AGGREGATE   C1 61.6  •  C2 97.5  •  C4 165.6  •  C8 261.1 tok/s                         │
+## 4x262k
+needle {'prompt': 77463, 'ttft': 21.1, 'n': 81, 'tps': 58.4, 'ans': '40639565'} ok True
+follow-up {'prompt': 77501, 'ttft': 0.3, 'n': 433, 'tps': 49.5, 'error': None}
+needle {'prompt': 77463, 'ttft': 0.2, 'n': 81, 'tps': 60.2, 'ans': '40639565'} ok True
+follow-up {'prompt': 77501, 'ttft': 0.2, 'n': 433, 'tps': 51.6, 'error': None}
+exhaust {'prompt': 100863, 'ttft': 91.2, 'n': 85, 'tps': 3.1, 'ans': '60723746'} ok True
+exhaust {'prompt': 100863, 'ttft': 41.0, 'n': 85, 'tps': 1.1, 'ans': '21998280'} ok True
+exhaust {'prompt': 100863, 'ttft': 66.1, 'n': 85, 'tps': 1.6, 'ans': '84858220'} ok True
+exhaust {'prompt': 100863, 'ttft': 116.4, 'n': 84, 'tps': 40.0, 'ans': '16923662'} ok True
+RECIPEL arith: 40/40
+RECIPEL needle: 12/12
+## 8x262k
+needle {'prompt': 77463, 'ttft': 21.5, 'n': 81, 'tps': 50.6, 'ans': '40639565'} ok True
+follow-up {'prompt': 77501, 'ttft': 0.2, 'n': 433, 'tps': 49.5, 'error': None}
+exhaust {'prompt': 100863, 'ttft': 91.3, 'n': 85, 'tps': 3.1, 'ans': '60723746'} ok True
+exhaust {'prompt': 100863, 'ttft': 41.0, 'n': 85, 'tps': 1.1, 'ans': '21998280'} ok True
+exhaust {'prompt': 100863, 'ttft': 116.6, 'n': 85, 'tps': 39.5, 'ans': '84858220'} ok True
+exhaust {'prompt': 100863, 'ttft': 66.1, 'n': 84, 'tps': 1.6, 'ans': '16923662'} ok True
+RECIPE8L: correct 20/20; turn-0 TTFT [5.99, 7.87, 9.76, 11.68]; turns 1+ TTFT median 0.56 max 0.79
+structured C8: median 49.39 tok/s, aggregate 387.79, TTFT 289.2 ms
+prose C8: median 33.1 tok/s, aggregate 256.94, TTFT 284.4 ms
+code C8: median 38.33 tok/s, aggregate 293.63, TTFT 403.9 ms
+json C8: median 41.92 tok/s, aggregate 331.47, TTFT 352.6 ms
+free: Mem:             121         109           4           0           9          12
+cp: cannot stat '/e2e-RCPs*.json': No such file or directory
+DONE

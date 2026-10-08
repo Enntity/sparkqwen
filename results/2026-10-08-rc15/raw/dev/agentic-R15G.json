@@ -1,0 +1,142 @@
+[
+ {
+  "conv": 0,
+  "turn": 0,
+  "ttft": 9.81,
+  "cached": 16384,
+  "ok": true
+ },
+ {
+  "conv": 0,
+  "turn": 1,
+  "ttft": 0.71,
+  "cached": 22464,
+  "ok": true
+ },
+ {
+  "conv": 0,
+  "turn": 2,
+  "ttft": 0.72,
+  "cached": 22512,
+  "ok": true
+ },
+ {
+  "conv": 0,
+  "turn": 3,
+  "ttft": 0.46,
+  "cached": 22544,
+  "ok": true
+ },
+ {
+  "conv": 0,
+  "turn": 4,
+  "ttft": 0.48,
+  "cached": 22592,
+  "ok": true
+ },
+ {
+  "conv": 1,
+  "turn": 0,
+  "ttft": 6.07,
+  "cached": 16,
+  "ok": true
+ },
+ {
+  "conv": 1,
+  "turn": 1,
+  "ttft": 0.62,
+  "cached": 22464,
+  "ok": true
+ },
+ {
+  "conv": 1,
+  "turn": 2,
+  "ttft": 0.51,
+  "cached": 22512,
+  "ok": true
+ },
+ {
+  "conv": 1,
+  "turn": 3,
+  "ttft": 0.31,
+  "cached": 22544,
+  "ok": true
+ },
+ {
+  "conv": 1,
+  "turn": 4,
+  "ttft": 0.34,
+  "cached": 22592,
+  "ok": true
+ },
+ {
+  "conv": 2,
+  "turn": 0,
+  "ttft": 11.7,
+  "cached": 16384,
+  "ok": true
+ },
+ {
+  "conv": 2,
+  "turn": 1,
+  "ttft": 0.71,
+  "cached": 22464,
+  "ok": true
+ },
+ {
+  "conv": 2,
+  "turn": 2,
+  "ttft": 0.8,
+  "cached": 22512,
+  "ok": true
+ },
+ {
+  "conv": 2,
+  "turn": 3,
+  "ttft": 0.59,
+  "cached": 22544,
+  "ok": true
+ },
+ {
+  "conv": 2,
+  "turn": 4,
+  "ttft": 0.32,
+  "cached": 22592,
+  "ok": true
+ },
+ {
+  "conv": 3,
+  "turn": 0,
+  "ttft": 7.93,
+  "cached": 16384,
+  "ok": true
+ },
+ {
+  "conv": 3,
+  "turn": 1,
+  "ttft": 0.36,
+  "cached": 22464,
+  "ok": true
+ },
+ {
+  "conv": 3,
+  "turn": 2,
+  "ttft": 0.31,
+  "cached": 22512,
+  "ok": true
+ },
+ {
+  "conv": 3,
+  "turn": 3,
+  "ttft": 0.3,
+  "cached": 22544,
+  "ok": true
+ },
+ {
+  "conv": 3,
+  "turn": 4,
+  "ttft": 0.33,
+  "cached": 22592,
+  "ok": true
+ }
+]

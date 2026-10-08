@@ -1,0 +1,4 @@
+8x32k: 3260112 max KV tokens MemAvailable:   16200312 kB
+4x262k: 3354912 max KV tokens MemAvailable:   14657672 kB
+8x262k: 3187056 max KV tokens MemAvailable:   14554968 kB
+KDONE

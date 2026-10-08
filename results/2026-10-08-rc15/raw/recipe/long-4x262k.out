@@ -1,0 +1,8 @@
+needle {'prompt': 77463, 'ttft': 21.1, 'n': 81, 'tps': 58.4, 'ans': '40639565'} ok True
+follow-up {'prompt': 77501, 'ttft': 0.3, 'n': 433, 'tps': 49.5, 'error': None}
+needle {'prompt': 77463, 'ttft': 0.2, 'n': 81, 'tps': 60.2, 'ans': '40639565'} ok True
+follow-up {'prompt': 77501, 'ttft': 0.2, 'n': 433, 'tps': 51.6, 'error': None}
+exhaust {'prompt': 100863, 'ttft': 91.2, 'n': 85, 'tps': 3.1, 'ans': '60723746'} ok True
+exhaust {'prompt': 100863, 'ttft': 41.0, 'n': 85, 'tps': 1.1, 'ans': '21998280'} ok True
+exhaust {'prompt': 100863, 'ttft': 66.1, 'n': 85, 'tps': 1.6, 'ans': '84858220'} ok True
+exhaust {'prompt': 100863, 'ttft': 116.4, 'n': 84, 'tps': 40.0, 'ans': '16923662'} ok True

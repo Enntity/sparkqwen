@@ -1,0 +1,2 @@
+needle {'prompt': 77463, 'cached': 77376, 'ttft': 0.3, 'n': 70, 'tps': 66.0, 'ans': '40639565'} ok True
+follow-up {'prompt': 77501, 'cached': 77376, 'ttft': 0.3, 'n': 458, 'tps': 44.9, 'error': None}

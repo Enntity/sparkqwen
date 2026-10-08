@@ -1,0 +1,4 @@
+exhaust {'prompt': 100863, 'cached': 0, 'ttft': 32.0, 'n': 84, 'tps': 1.5, 'ans': '60723746'} ok True
+exhaust {'prompt': 100863, 'cached': 0, 'ttft': 117.9, 'n': 84, 'tps': 64.8, 'ans': '21998280'} ok True
+exhaust {'prompt': 100863, 'cached': 0, 'ttft': 91.6, 'n': 80, 'tps': 2.9, 'ans': '84858220'} ok True
+exhaust {'prompt': 100863, 'cached': 0, 'ttft': 60.8, 'n': 84, 'tps': 1.6, 'ans': '16923662'} ok True

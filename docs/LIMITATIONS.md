@@ -7,33 +7,35 @@ What to know before relying on SparkQwen.
 
 - No SparkQwen image is published; `./start.sh` builds one from the pinned
   engine (a cold build takes 30-60 minutes). The recipe ran end to end from a
-  clean clone on our pair and reproduced the published numbers
-  (`results/2026-10-06-pinned`, From a clean clone), with the checkpoint
+  clean clone on our pair and reproduced the release gates
+  (`results/2026-10-08-rc15`, From a clean clone), with the checkpoint
   already in place; the download path itself was not exercised in that run.
 
 ## Scope of the measurements
 
 - We tested one pair of DGX Sparks on one 200G cable, in single sessions.
   Other firmware, drivers, cables or cooling may give different numbers.
-- The published comparison figures in the README are other people's results
-  on their hardware and harness. We did not re-run them.
-- The README's numbers are the default profile on the pinned engine, every
-  option exact (`results/2026-10-06-pinned`); the `FP8_GDN` row is the lossy
-  opt-in. The bring-up bundle's headline numbers had that opt-in on.
-- The quality probe scored 40/40 and 12/12 on the default profile and on the
-  FP8 GDN opt-in (`results/2026-10-06-pinned`). A single-GPU run of the probe,
-  for reference, is still owed.
+- The vLLM figures in the README were measured on the same pair with vLLM
+  v0.30.0 and the settings of MiaAI-Lab's dual-Spark `start-v030.sh` (patched
+  MTP head, 47K-token draft vocabulary, TP2 with expert parallel, util 0.80).
+  We did not tune vLLM beyond that recipe; its launch script is in
+  `results/2026-10-08-rc15/raw/vllm/launch.sh`.
+- The quality probe scored 40/40 and 12/12 on every RC15 profile. A
+  single-GPU run of the probe, for reference, is still owed.
 
 ## Throughput at concurrency
 
-- Aggregate throughput at eight streams is 2–3x behind the best published
-  dual-Spark vLLM recipe (MiaAI-Lab's: 216.4 / 313.6 / 258.5 tok/s prose /
-  code / structured at x8, against our 112.7 / 109.2 / 123.7 at C8). Per-row
-  small kernels and idle time are about 46% of our C8 step. This is the open
-  problem.
-- Batched speculation loses at four or more streams (per-row MoE cost), so
-  the profiles speculate for one sequence at a time (`ATLAS_MTP_MAX_SEQS=1`).
-- PDL crashed one C8 run; the cause is not yet known and it stays off.
+- At eight streams, sparkDash code and JSON are level with vLLM on the same
+  pair (297 and 333 tok/s aggregate, inside vLLM's 291-307 and 331-339 over
+  two runs); structured and prose are ahead. Code does not lead because the
+  C8 step is bound by the bytes of the distinct experts a wave touches (the
+  MoE kernel is at that access pattern's ceiling) and speculation accepts
+  fewer code tokens per verify (3.65 against vLLM's 3.73). RigMark's
+  end-to-end concurrency is within 4% of vLLM's at every level (C2 slightly
+  behind).
+- Follow-up turns of concurrent agent conversations start in 0.47 s median
+  (vLLM: 0.33 s); first turns are faster than vLLM's.
+- PDL crashed one C8 run in an earlier series; it stays off.
 
 ## Two Sparks, BF16 KV
 
@@ -42,66 +44,42 @@ What to know before relying on SparkQwen.
   about 19–23 tok/s and 32K practical context, and SparkQwen's work targets
   the pair.
 - FP8 KV cache is not supported: the QSA sparse-attention indexer requires
-  BF16 KV. Both profiles use `--kv-cache-dtype bf16`. At 0.88 memory
-  utilization and 32K maximum length the pair holds about 818K KV tokens.
+  BF16 KV. All profiles use `--kv-cache-dtype bf16`. Prefill MoE reads the
+  checkpoint's own weight planes, so at util 0.88 the pair holds about
+  3.2 million KV tokens (vLLM on the same pair at util 0.80: 1.5 million).
 
 ## Long context
 
-- The `4x262k` profile was qualified on the pair with the pinned series'
-  long-context commits: a 307K-token KV pool at util 0.88 (106K before), about
-  12 GiB MemAvailable after boot, a correct 77K-token needle and warm
-  follow-up turn (0.6 s TTFT), prompt logprobs identical to the previous
-  binary, and four concurrent 100K prompts (more than the pool holds) all
-  answered while the pair kept serving. Overcommitted requests wait for room,
-  so their time to first token grows (47-154 s in that test).
-  Through the recipe image with the profile's default options the pool is
-  384,720 tokens. `bench/long_probe.py` is the probe.
+- `4x262k` and `8x262k` were qualified on the pair: a correct 77K-token needle
+  (21 s cold, 58 tok/s decode), a 0.2 s warm follow-up turn, and four
+  concurrent 100K prompts all answered with the pair serving afterwards. When
+  requests overcommit the pool they wait for room, so their time to first
+  token grows (41-117 s in that test; vLLM's was 32-118 s).
+  `bench/long_probe.py` is the probe.
 - Prefix caching restores the recurrent state with the PLE n-gram history and
-  QSA key state, so a conversation's follow-up turns start in about 0.5 s
-  (`bench/agentic_probe.py`: 8 conversations over a shared 22K-token system
-  prompt, 32/32 correct). New conversations that arrive together and share a
-  long prompt prefix do not yet share its computation: each restores the
-  nearest checkpoint (the 16K chunk boundary) and replays the rest, about
-  3 s apart, so eight of them took 15-36 s to their first token.
+  QSA key state, and checkpoints the end of each prompt, so a conversation's
+  follow-up turns start in about 0.5 s (`bench/agentic_probe.py`). New
+  conversations that arrive together and share a long prompt prefix do not
+  yet share its computation, so their first turns queue (6-12 s for four
+  conversations over a shared ~20K-token system prompt).
 
 ## Numerics
 
-- **Greedy text is not yet independent of speculation and concurrency.**
-  The verify and batching kernels are exact (each row's logits are bitwise
-  serial decode's), but the scheduler's token selection is not: inside the
-  reasoning block, plain decode breaks an exact top-1 tie toward the higher
-  token id on the host while verify and the GPU argmax pick the lower one,
-  and verify evaluates the reasoning-budget and end-of-thinking rules for a
-  whole draft span with the state from before the span. Measured on the pair
-  with thinking on (8 prompts, prefix caching off): speculation on vs off at
-  one request, 0/8 identical texts; one request vs four, without
-  speculation, 0/8 identical. Quality is unaffected in our probes (40/40 and
-  12/12 with speculation on); the claim that options give the same output on
-  and off holds for logits, not yet for the selected tokens. A fix (one tie
-  rule, per-position reasoning state shared by decode and verify) is in
-  progress.
-- **Prefix caching makes output depend on what is in the cache.** With
-  prefix caching off, greedy output is identical across requests and server
-  restarts. With it on (both profiles), a request that hits cached KV reuses
-  keys and values another request computed in a prefill pass of a different
-  length and chunk shape; prefill kernels are not row-invariant, so those
-  values are not bit-identical to computing them in this request's own pass,
-  and which entries exist depends on earlier traffic and its timing. Outputs
-  then differ where the next token is nearly tied: one 160-token greedy probe
-  gave three different completions (cache off; cache on in two states).
-  "Exact" in these docs means each option gives bitwise the same logits on
-  and off for the same request history (token selection: see above). vLLM's
-  prefix caching has the same property outside its batch-invariant mode.
-- Two-Spark (TP2) output is not bit-identical to single-GPU output. Below the
-  QSA bound the mean prompt-logprob difference is 0.026 nats; the rest is BF16
-  rounding of the tensor-parallel partial sums (96 reductions per token).
-  For scale, one GPU against itself with a different prefill chunking drifts
-  by 0.011–0.027 nats past 4,096 tokens: QSA's top-k selection amplifies small
-  differences.
-- Every TP2 configuration reproduces its own prompt-logprob hash across runs
-  in one server start.
-- `QSA_TC2R=1` gives single-GPU numerics past the QSA bound, so it is not
-  bit-identical to the default two-Spark path. `FP8_GDN=1` changes outputs.
+- **Exact** here means: an option gives the same greedy tokens on and off.
+  With RC15's default profile, speculative decoding gives the same text as
+  serial decode, concurrency gives the same text as one request at a time,
+  and a prefix-cache hit gives the same text as computing the prompt
+  (8 prompts with thinking on, at one and four requests: 8/8 identical in
+  each comparison). Prefill is row- and chunk-invariant, so cached KV is
+  bit-identical to recomputed KV.
+- Two option families set a new numerics baseline rather than reproducing
+  the old one: tensor-core MoE and mHC decode (`MOE_TC`, `HC_MMA`). They are
+  row-invariant, so the exactness above holds with them on; their output is
+  not bit-identical to builds without them.
+- Two-Spark (TP2) output is not bit-identical to single-GPU output: BF16
+  rounding of the tensor-parallel partial sums (96 reductions per token),
+  amplified by QSA's top-k selection past 4,096 tokens.
+- `FP8_GDN=1` changes outputs, and has not been measured with RC15.
 - cuBLASLt chooses split-K differently in CUDA 13.0 (the runtime image) and
   13.1. Exactness checks are only meaningful inside the image's CUDA version.
 
@@ -109,6 +87,14 @@ What to know before relying on SparkQwen.
 
 - The profiles default `reasoning_effort` to `low`. Requests can override it
   through `chat_template_kwargs`.
+- **Greedy decoding can loop.** The checkpoint's `generation_config.json`
+  samples (temperature 1.0, top-p 0.95, top-k 20). At temperature 0, as
+  benchmarks run it, the model can fall into a repetition attractor: in
+  RigMark's code workload, one of three greedy runs starts repeating
+  `0, 0, 0` in a Go test table and is cut off (finish reason `length`), so
+  that gate scores 2/3.
+  vLLM on the same pair, with different rounding, passed it 3/3. Use the
+  model's sampling settings for real work.
 - Tool calling is not configured: the profiles set no tool-call parser, and
   tool use has not been tested.
 - Structured output, images and video have not been tested with this model.
@@ -129,3 +115,17 @@ What to know before relying on SparkQwen.
   (an image build, `docker load`, the checkpoint copy) can make it size the KV
   pool too large. Let the host settle for a minute or two first.
 - The image is built for arm64 and SM121 (GB10) only.
+
+## Known issues in RC15
+
+Found in the release review and deferred to the next release; none affects
+the shipped profiles' measured behavior.
+
+- `ATLAS_QWEN4EXP_ROWS32_TILE` has no fallback if its kernel fails to
+  launch (the NVFP4 row kernels do).
+- `ATLAS_QWEN4EXP_LMHEAD_SPLIT_VERIFY` sizes its staging from the
+  `ATLAS_QWEN4EXP_MTP_DEPTH` environment variable rather than the resolved
+  depth.
+- The startup parity check between ranks does not yet cover
+  `ATLAS_QWEN4EXP_SNAPSHOT_AUX_MB`, and preflight does not use the resolved
+  SSM cache slot count.

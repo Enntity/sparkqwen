@@ -1,0 +1,8 @@
+alive after: ok
+vision-pad burst: 8/8 ok 
+wide burst of 70: 70/70 ok 
+first-token parity, one-at-a-time vs burst: 8/8 equal
+cache-hit parity, 64-token cached prefix (warm ok): burst vs one-at-a-time 8/8 equal
+cache-hit parity, 320-token cached prefix (warm ok): burst vs one-at-a-time 8/8 equal
+alive after: ok
+PASS

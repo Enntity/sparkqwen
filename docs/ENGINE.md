@@ -7,9 +7,10 @@ pinned in [`install/atlas-source.json`](../install/atlas-source.json), for the
 kernel target `qwen3.8-flash-next` (model type `qwen4_exp`).
 [`install/build.sh`](../install/build.sh) refuses any other tree.
 
-The pin is `sparkqwen/atlas-20261006-longctx` at 3322e221, cut from the
-integration branch the bring-up was measured on. Its prompt logprobs match the
-measured integration binary bit for bit on the pair (1K, 6K and 20K prompts).
+The pin is `sparkqwen/atlas-20261008-rc15` at de4386b4 (release candidate 15),
+which adds SparkQwen-only work on top of the 2026-10-06 Qwen series
+(3322e221). It passed the gates in
+[results/2026-10-08-rc15](../results/2026-10-08-rc15/RESULT.md).
 
 ## Layers
 
@@ -29,7 +30,8 @@ each on top of the one before:
    and stay off for `qwen4_exp`.
 3. **The Qwen3.8-Flash-Next series** (`upstream/qwen38-flash-next-*`), in the
    order we intend to propose it upstream. Listed below.
-4. **SparkQwen-only commits.** None yet.
+4. **SparkQwen-only commits** on `sparkqwen/atlas-<date>-<name>`. Listed
+   below, after the Qwen series.
 
 ## Qwen3.8-Flash-Next series
 
@@ -66,10 +68,39 @@ where noted:
 | Prefill kernels for MoE, Gated DeltaNet, the QSA scorer and mHC; sequence-parallel prefill across both Sparks | `ATLAS_QWEN4EXP_PREFILL_MOE`, `_GDN`, `_QSA_SCORE`, `_HC`, `_SP` |
 | `min_tokens` accounting fixes and vLLM-compatible `ignore_eos` | always |
 | **Opt-in, lossy:** FP8 Gated DeltaNet projections | `ATLAS_QWEN4EXP_FP8_GDN` (`FP8_GDN=1`) |
-| **Opt-in:** tensor-core QSA prefill, single-GPU numerics past the QSA bound | `ATLAS_QWEN4EXP_PREFILL_QSA_TC2R` (`QSA_TC2R=1`) |
+| Tensor-core QSA prefill (an opt-in until RC15 made it the two-Spark default; `=0` falls back) | `ATLAS_QWEN4EXP_PREFILL_QSA_TC2R` |
 
 Measurements of these, with receipts:
 [results/2026-10-05-bringup](../results/2026-10-05-bringup/RESULT.md).
+
+## SparkQwen-only commits (RC15)
+
+Each is behind a default-off `ATLAS_*` switch that the shipped profiles turn
+on ([`install/profiles/`](../install/profiles/) lists them all). Exact means
+the same tokens with the option on and off; two options change the numerics
+baseline itself (noted) and were gated on quality and on the exactness
+checks below, which they keep.
+
+| Change | Switch |
+|---|---|
+| Speculation commits the tokens plain greedy decode commits: one tie rule (lowest index) on host and GPU, per-position reasoning state, tool state replayed in verify | always |
+| Batched speculation across up to eight sequences with exact verify windows of up to eight rows; dynamic draft depth up to 7; one batched forward per MTP step | `ATLAS_MTP_MAX_SEQS`, `ATLAS_MTP_DYNAMIC_DEPTH`, `ATLAS_QWEN4EXP_MTP_DEPTH` |
+| Row- and chunk-invariant prefill, so a prefix-cache hit gives the tokens the uncached request gives | `ATLAS_QWEN4EXP_PREFILL_ROWINV` |
+| Routed MoE and mHC decode on tensor cores, row-invariant (new numerics baseline) | `ATLAS_QWEN4EXP_MOE_TC`, `_HC_MMA`, `_MOE_NO_CLAMP` |
+| Prefill MoE on the checkpoint's own weight planes, without the K-major duplicate (31.6 GiB returned to the KV pool) | `ATLAS_QWEN4EXP_PREFILL_MOE_NODUP` |
+| Several short prompts, including ones that hit a cached prefix, in one prefill forward | `ATLAS_QWEN4EXP_PREFILL_MULTI`, `_PREFILL_MULTI_CACHED` |
+| Long-context QSA decode: device top-k past 64K, row-batched decode | `ATLAS_QWEN4EXP_QSA_TOPK_WIDE`, `_QSA_DECODE_ROWS` |
+| Prompt-tail and mid-chunk prefix-cache checkpoints, so a follow-up turn restores at the end of the last prompt | `ATLAS_QWEN4EXP_FINISH_LEAF`, `_PREFILL_MIDCHUNK_CKPT` |
+| Verify kernels: vocab-split LM head for the verify rows, register-tiled 32-row BF16 GEMV, persistent NVFP4 rows for the draft head and wide verify GEMVs | `ATLAS_QWEN4EXP_LMHEAD_SPLIT_VERIFY`, `_ROWS32_TILE`, `_W4_ROWS`, `_W4_ROWS_WIDE` |
+| Prefill kernels: bit-identical FP8 q/k/v, BA and MoE GEMMs; pipelined sequence-parallel reduce-scatters and all-gathers; grouped tile order for the PLE projections | `ATLAS_QWEN4EXP_PREFILL_FP8_W2`, `_BA_ROWS`, `_MOE_W2`, `_SP_PIPE`, `_SP_RS_PIPE`, `_PREFILL_GEMM_RASTER` |
+| Deferred and fused Gated DeltaNet and QSA commits after verify | `ATLAS_QWEN4EXP_EXACT_DEFER`, `_GDN_COMMIT_FUSE`, `_QSA_COMMIT_TABLE` |
+| MTP bootstrap no longer serialized behind the context-commit levers | `ATLAS_MTP_DFLASH_CTX_SCOPED` |
+| `min_tokens` end-token ban at the target pick and in drafts | `ATLAS_QWEN4EXP_EOS_BAN` |
+
+The profiles also arm Atlas's own content-loop watchdog with a threshold of
+32 (`ATLAS_CONTENT_LOOP_WATCHDOG`, `ATLAS_CONTENT_LOOP_MIN_REPEATS`): it ends a
+response whose tail repeats a 2-64 token pattern 32 times back to back. A
+request's `repetition_detection` object overrides it.
 
 ## Changing the engine
 

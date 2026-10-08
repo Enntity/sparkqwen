@@ -5,17 +5,14 @@ Run the drivers in [`bench/`](../bench/) on rank 0 against the running engine
 ([bench/README.md](../bench/README.md) says what each measures). Run one
 workload at a time, with nothing else using the pair, after one warmup pass.
 
-The published numbers and their raw receipts are in
-[`results/2026-10-05-bringup/`](../results/2026-10-05-bringup/RESULT.md). The
-receipts also hold the exact environment list of each arm (`raw/*.list`) and
-the scripts that produced them.
+The README's numbers and their raw receipts are in
+[`results/2026-10-08-rc15/`](../results/2026-10-08-rc15/RESULT.md): `raw/recipe/`
+from the recipe's own image, `raw/dev/` from the release gates (with each
+arm's exact environment, `raw/dev/*.list`), and `raw/vllm/` from vLLM on the
+same pair. Everything below runs with the default profile and no opt-ins
+unless it says otherwise.
 
-## sparkDash decode (README headline)
-
-The README's sparkDash rows were measured with the FP8 GDN opt-in on and
-without sequence-parallel prefill; `raw/gw.list` is the exact environment. To
-come closest with the recipe, set `FP8_GDN=1` in `.env` and rerun
-`./start.sh`.
+## sparkDash decode
 
 ```sh
 git clone https://github.com/MiaAI-Lab/sparkDash.git ../sparkDash
@@ -23,7 +20,7 @@ cd bench
 node sd_bench.mjs mine structured,prose,code,json 1,2,4,8
 ```
 
-Compare `sd-mine.json` with `raw/sd-SDie.json`.
+Compare `sd-mine.json` with `raw/recipe/sd-RECIPE.json`.
 
 ## Quality probe
 
@@ -37,18 +34,34 @@ python3 quality_probe.py mine 4      # 40 arithmetic, 12 two-hop needles over ~2
 ```sh
 cd bench
 python3 sq_bench.py mine prefill     # cold TTFT at ~2K, 8K, 16K and 28K tokens
-python3 sq_bench.py mine decode conc warm
+python3 sq_bench.py mine decode warm
 ```
 
-The README's prefill rows (`raw/bench-PSP.json`, `raw/bench-PSPt.json`) were
-measured with the exact prefill kernels and sequence-parallel prefill, which
-the default profile carries, and with the FP8 GDN opt-in on
-(`raw/best3sp.list`); `PSPt` adds `QSA_TC2R=1` (`raw/best3spt.list`).
+## RigMark
+
+[RigMark](https://github.com/alexellis/rigmark) (MIT) runs three decode
+workloads with output gates, a cold 16K prefill and end-to-end concurrency.
+We ran it at commit 40fabca with this command; the metadata files are in
+`raw/recipe/` and `raw/vllm/rerun/`:
+
+```sh
+./rigmark run --base-url http://127.0.0.1:8893 --model auto --metadata metadata.json \
+  --runs 3 --prefill-runs 2 --prefill-depths 16384 --concurrency 1,2,4,8 --concurrency-runs 1 \
+  --extra-body '{"chat_template_kwargs":{"reasoning_effort":"low"}}' --output rigmark.json
+```
 
 ## Exactness
 
-To check that an engine option is exact, start the engine with and without
-it and compare:
+Greedy text with thinking on must not depend on speculation, concurrency or
+the prefix cache. `raw/dev/e2e_eq.py` sends 8 prompts four at a time and
+`raw/dev/e2e_c1.py` one at a time; both save the texts and `compare` reports
+how many match. Take references from a server started with speculation and
+prefix caching off (a profile file without `--speculative` and
+`--enable-prefix-caching`), then run the same scripts against the default
+profile and compare.
+
+To check that a single engine option is exact, start the engine with and
+without it and compare prompt logprobs:
 
 ```sh
 cd bench
@@ -68,9 +81,18 @@ variables.
 ```sh
 cd bench
 python3 agentic_probe.py mine 4 5    # 4 conversations sharing a ~20K system prompt, 5 turns each
-# with PROFILE=4x262k:
+# with PROFILE=4x262k or 8x262k:
 python3 long_probe.py needle         # ~77K needle, then a warm follow-up
 python3 long_probe.py exhaust        # four concurrent ~100K prompts: must queue, not fail
 ```
 
-These two are not in the published bundle yet.
+## vLLM on the same pair
+
+`raw/vllm/launch.sh` starts vLLM v0.30.0 with the settings of MiaAI-Lab's
+dual-Spark `start-v030.sh` (its `.env.sample` defaults). It mounts the
+patched `mtp.py` and the draft vocabulary from that repository, which are not
+copied here. `sd_bench.mjs` runs against it unchanged with
+`SQ_URL=http://127.0.0.1:8888 SQ_MODEL=qwen3.8-flash-next`. The long-context
+and agent probes in `raw/vllm/longctx/` are `bench/`'s, adapted to vLLM's port,
+model name and `reasoning` stream field (they also record its cached-token
+count); `raw/vllm/ttft16k.py` measured its 16K prefill.

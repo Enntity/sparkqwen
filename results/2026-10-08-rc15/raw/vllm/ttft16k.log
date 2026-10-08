@@ -1,0 +1,3 @@
+prompt_tokens=15987 ttft=4.606s total=4.606s prefill_tok_s=3471
+prompt_tokens=15946 ttft=4.573s total=4.573s prefill_tok_s=3487
+prompt_tokens=16004 ttft=4.595s total=4.595s prefill_tok_s=3483

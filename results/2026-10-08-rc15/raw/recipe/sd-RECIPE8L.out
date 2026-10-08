@@ -1,0 +1,4 @@
+structured C8: median 49.39 tok/s, aggregate 387.79, TTFT 289.2 ms
+prose C8: median 33.1 tok/s, aggregate 256.94, TTFT 284.4 ms
+code C8: median 38.33 tok/s, aggregate 293.63, TTFT 403.9 ms
+json C8: median 41.92 tok/s, aggregate 331.47, TTFT 352.6 ms

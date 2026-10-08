@@ -1,0 +1,18 @@
+{
+ "tag": "VLLMW",
+ "date": "2026-10-08T21:39:42.385Z",
+ "protocol": "sparkDash decode bench (MiaAI-Lab, MIT)",
+ "max": 400,
+ "waves": [
+  {
+   "type": "structured",
+   "c": 1,
+   "medianTps": 77.16,
+   "aggregateTps": 77.16,
+   "medianTtftMs": 145.8,
+   "perStream": [
+    77.16
+   ]
+  }
+ ]
+}

@@ -1,0 +1,8 @@
+2026-10-08T21:47:49.442314Z  INFO spark::main_modules::serve_phases::kv_cache: Prefill config: ssm_prefill_chunk=16384, args.max_prefill_tokens=16384, prefill_budget=16384, max_batch_tokens=16388
+2026-10-08T21:48:27.921666Z  INFO spark_model::model::ssm_pool: SSM MTP pools (8 intermediates + checkpoints): 2286 MB
+2026-10-08T21:48:27.921676Z  INFO spark_model::model::ssm_pool: SSM state pool: 4 slots × 36 layers = 227 MB
+2026-10-08T21:48:27.921683Z  INFO spark_model::model::ssm_pools: SSM decode-rollback ring: SKIPPED (speculative decode active) — the ring's save/rollback path only runs on plain decode with watchdogs enabled. Saves 1.9 GB (4 seqs x 8 slots x full SSM blob). If plain-decode loop re-steer is ever reached it fail-opens to decline; ATLAS_SSM_DECODE_RING=1 force-restores the ring.
+2026-10-08T21:48:27.968391Z  INFO spark_model::model::ssm_snapshot: SSM snapshot pool: Marconi 24 slots (1363 MB), decode-rollback 0 slots × 4 seqs (0 MB), 36 layers
+2026-10-08T21:48:27.972590Z  INFO spark_model::factory::build: KV cache: 121.7 GB total × 88% util = 107.1 GB budget; 61.6 GB pre-KV + 4.7 GB reserve → 40.8 GB for KV (incl. 2.4 GB for 768 B/token of per-sequence indexer state) → 209682 blocks × 16 tok/block = 3354912 max KV tokens
+2026-10-08T21:48:29.300346Z  INFO spark_runtime::kv_cache::paged_impl: KV cache: 209682 blocks × 12 layers = 38.4 GB total
+2026-10-08T21:48:29.379522Z  INFO spark_runtime::kv_cache::paged_impl: KV cache: 16385 blocks × 13 layers = 0.5 GB total

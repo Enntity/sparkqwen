@@ -1,0 +1,16 @@
+structured C1: median 77.69 tok/s, aggregate 77.69, TTFT 140.1 ms
+structured C2: median 67.39 tok/s, aggregate 129.6, TTFT 380.7 ms
+structured C4: median 58.41 tok/s, aggregate 230.53, TTFT 206.7 ms
+structured C8: median 47.6 tok/s, aggregate 361.68, TTFT 418.9 ms
+prose C1: median 62.12 tok/s, aggregate 62.12, TTFT 135.1 ms
+prose C2: median 49.41 tok/s, aggregate 95.93, TTFT 193.7 ms
+prose C4: median 39.18 tok/s, aggregate 148.22, TTFT 202.9 ms
+prose C8: median 31.38 tok/s, aggregate 241.19, TTFT 215.3 ms
+code C1: median 71.34 tok/s, aggregate 71.34, TTFT 201.4 ms
+code C2: median 62.14 tok/s, aggregate 120.89, TTFT 213.8 ms
+code C4: median 49.7 tok/s, aggregate 190.84, TTFT 331.2 ms
+code C8: median 38.41 tok/s, aggregate 290.8, TTFT 506.1 ms
+json C1: median 65.82 tok/s, aggregate 65.82, TTFT 156.2 ms
+json C2: median 59.74 tok/s, aggregate 115.67, TTFT 263.8 ms
+json C4: median 51.52 tok/s, aggregate 201.18, TTFT 220.6 ms
+json C8: median 43.49 tok/s, aggregate 338.65, TTFT 256.8 ms

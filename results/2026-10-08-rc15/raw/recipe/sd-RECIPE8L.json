@@ -1,0 +1,76 @@
+{
+ "tag": "RECIPE8L",
+ "date": "2026-10-08T21:13:14.384Z",
+ "protocol": "sparkDash decode bench (MiaAI-Lab, MIT)",
+ "max": 400,
+ "waves": [
+  {
+   "type": "structured",
+   "c": 8,
+   "medianTps": 49.39,
+   "aggregateTps": 387.79,
+   "medianTtftMs": 289.2,
+   "perStream": [
+    50,
+    49.39,
+    49.39,
+    50,
+    48.48,
+    48.85,
+    49.39,
+    49.39
+   ]
+  },
+  {
+   "type": "prose",
+   "c": 8,
+   "medianTps": 33.1,
+   "aggregateTps": 256.94,
+   "medianTtftMs": 284.4,
+   "perStream": [
+    32.87,
+    32.12,
+    33.34,
+    33.86,
+    33.33,
+    34.17,
+    32.25,
+    32.87
+   ]
+  },
+  {
+   "type": "code",
+   "c": 8,
+   "medianTps": 38.33,
+   "aggregateTps": 293.63,
+   "medianTtftMs": 403.9,
+   "perStream": [
+    39.71,
+    39.3,
+    39.3,
+    38.04,
+    38.33,
+    36.7,
+    38.33,
+    38.33
+   ]
+  },
+  {
+   "type": "json",
+   "c": 8,
+   "medianTps": 41.92,
+   "aggregateTps": 331.47,
+   "medianTtftMs": 352.6,
+   "perStream": [
+    42.1,
+    43.53,
+    44,
+    43.54,
+    41.74,
+    41.43,
+    41.43,
+    41.74
+   ]
+  }
+ ]
+}

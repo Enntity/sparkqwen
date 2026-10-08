@@ -16,39 +16,44 @@ cp .env.example .env      # set WORKER to the other Spark's ssh destination
 ./start.sh
 ```
 
-**Status: early.** The engine is pinned
+**Status: release candidate 15.** The engine is pinned
 ([`install/atlas-source.json`](install/atlas-source.json): Enntity/atlas
-`sparkqwen/atlas-20261006-longctx` at 3322e221). `./start.sh` from a clean
+`sparkqwen/atlas-20261008-rc15` at de4386b4). `./start.sh` from a clean
 clone built the image, served the pair and reproduced the numbers below on
 our Sparks; no image is published yet, so the first start builds one
 ([docs/LIMITATIONS.md](docs/LIMITATIONS.md)).
 
 ## What it does
 
-Measured on two DGX Sparks joined by one 200G cable with the pinned engine
-and the default profile. Receipts and caveats:
-[2026-10-06-pinned](results/2026-10-06-pinned/RESULT.md) (earlier:
+Measured on two DGX Sparks joined by one 200G cable, through the recipe's own
+image with the default profile, and against vLLM v0.30 run on the same pair
+with MiaAI-Lab's dual-Spark settings. Receipts and caveats:
+[2026-10-08-rc15](results/2026-10-08-rc15/RESULT.md) (earlier:
+[2026-10-06-pinned](results/2026-10-06-pinned/RESULT.md),
 [bring-up](results/2026-10-05-bringup/RESULT.md)).
 
-| Workload | SparkQwen (Atlas, two Sparks) | Reference |
+| Workload | SparkQwen (Atlas, two Sparks) | vLLM v0.30, same pair |
 |---|---|---|
-| sparkDash decode, one stream: structured / prose / code / JSON (thinking off, 400 tokens) | **81.5 / 60.1 / 77.3 / 71.8 tok/s** | MiaAI-Lab dual-Spark vLLM recipe (published, their harness): structured / prose / code 76.0 / 59.2 / 66.6 |
-| The same with the lossy `FP8_GDN` opt-in | 89.1 / 65.0 / 77.9 / 80.7 tok/s | |
-| sparkDash aggregate, 4 streams | 91.6 / 83.5 / 83.5 / 88.1 tok/s | |
-| sparkDash aggregate, 8 streams | 128.5 / 115.4 / 112.7 / 121.8 tok/s | MiaAI-Lab (published): structured / prose / code 258.5 / 216.4 / 313.6. **We are about 2x behind here.** |
-| Cold prompt 2K / 8K / 16K / 28K: time to first token | **0.94 / 3.10 / 6.17 / 11.30 s** | Atlas-Inf `main` on one GB10: 1.50 / 5.43 / 10.53 / 19.43 s |
+| sparkDash decode, one stream: structured / prose / code / JSON (thinking off, 400 tokens) | **101.9 / 72.7 / 94.2 / 84.9 tok/s** | 77.3-77.7 / 61.0-62.1 / 71.3-72.2 / 65.8-66.4 |
+| sparkDash aggregate, 8 streams | **389.6 / 261.1** / 297.1 / 333.1 tok/s | 361.7-376.3 / 237.9-241.2 / 290.8-307.0 / 331.1-338.6 |
+| RigMark decode estimate: code / prose / structured | **84.6 / 51.7 / 98.8 tok/s** | 68.0 / 44.4 / 76.0 |
+| RigMark cold 16K-token prefill | **4,049 tok/s** | 3,516 tok/s |
+| RigMark end-to-end concurrency, C1 / C2 / C4 / C8 | 61.6 / 97.5 / 165.6 / 261.1 tok/s | 57.1 / 99.0 / 163.9 / 255.0 |
+| RigMark output gates | 8/9 (one greedy code run loops) | **9/9** |
+| Cold prompt 2K / 8K / 16K / 28K: time to first token | 0.73 / 2.10 / 4.17 / 7.48 s | 16K: 4.59 s |
+| 77K-token needle: time to first token, decode | **21.1 s, 58.4 tok/s** (`4x262k`); 21.5 s, 50.6 tok/s (`8x262k`) | 22.3 s, 50.6 tok/s (8 x 262K) |
+| Agent follow-up turns, 4 concurrent conversations: median time to first token | 0.47 s | **0.33 s** |
+| KV pool, each at its recipe's memory setting | **3.2-3.4M tokens** (util 0.88) | 1.5M tokens (util 0.80) |
 | Quality probe: arithmetic / two-hop 24K needle | 40/40 · 12/12 | |
-| Long context (`4x262k`) | 307K-token KV pool; 77K needle and follow-up correct; KV exhaustion handled without losing the pair | |
 
-Every kernel-level option in the default profile is exact: per-row logits
-are bitwise the same on or off, and the pinned engine's prompt logprobs match
-the build the bring-up measured bit for bit. Token selection is not yet: with
-thinking on, greedy text with speculative decoding differs from text without
-it, and plain decode differs between one and several concurrent requests
-([docs/LIMITATIONS.md](docs/LIMITATIONS.md), Numerics); a fix is in progress. Two Sparks do not give bit-identical output to one GPU
-(BF16 rounding of the tensor-parallel sums; see
-[docs/LIMITATIONS.md](docs/LIMITATIONS.md)). These are single-session
-measurements on our pair, not a guarantee for yours.
+vLLM ranges are two runs on different days (2026-10-06 and 2026-10-08);
+SparkQwen's eight-stream code and JSON fall inside them. Bold marks a clear
+lead. Every option in the default profile is exact: greedy output with
+speculative decoding, with concurrent requests and with prefix-cache hits is
+identical to serial decode without them (8/8 prompts with thinking on). Two
+Sparks do not give bit-identical output to one GPU (BF16 rounding of the
+tensor-parallel sums; see [docs/LIMITATIONS.md](docs/LIMITATIONS.md)). These
+are single-session measurements on our pair, not a guarantee for yours.
 
 ## Requirements
 
@@ -105,24 +110,33 @@ images are not configured or tested yet.
 
 - `8x32k` (default): up to eight requests with up to 32K context each. All
   requests share one BF16 KV pool that also holds the prefix cache: about
-  818K tokens at the default `GPU_MEMORY_UTILIZATION` of 0.88.
-- `4x262k`: up to four requests with up to 256K context each. **Pending
-  validation**: long-context capacity, exactness and memory headroom have
-  not been qualified on the pair.
+  3.26M tokens at the default `GPU_MEMORY_UTILIZATION` of 0.88.
+- `4x262k`: up to four requests with up to 256K context each (3.35M-token pool).
+- `8x262k`: up to eight requests with up to 256K context each, from the same
+  shared pool (3.19M tokens). Requests that together need more than the pool
+  wait for room.
+
+The greedy settings above are for measurement. For real work use the
+model's sampling settings (`generation_config.json`: temperature 1.0,
+top-p 0.95, top-k 20); greedy decoding can loop
+([docs/LIMITATIONS.md](docs/LIMITATIONS.md), Behavior).
 
 ## Opt-ins
 
-Both are off by default. Add them to `.env` and rerun `./start.sh`; set 0 or
-delete the line to roll back.
+One, off by default. Add it to `.env` and rerun `./start.sh`; set 0 or delete
+the line to roll back.
 
 ```sh
-FP8_GDN=1    # FP8 Gated DeltaNet projections: faster decode, lossy (not bit-exact)
-QSA_TC2R=1   # tensor-core QSA prefill: 29K cold prompt 11.3 s -> 9.2 s on our pair,
-             # with single-GPU numerics past the QSA bound instead of the two-Spark path's
+FP8_GDN=1    # FP8 Gated DeltaNet projections: lossy (not bit-exact)
 ```
 
-`FP8_GDN=1` scored 40/40 and 12/12 on our quality probe, but its outputs
-differ from the default. Check it on your own workload before relying on it.
+`FP8_GDN=1` made one-stream decode 1-12% faster, depending on the prompt, and
+scored 40/40 and 12/12 on our quality probe with the 2026-10-06 engine, but
+its outputs differ from the default, and it has not been measured with RC15.
+Check it on your own workload before relying on it.
+
+`QSA_TC2R=1` is still accepted but changes nothing since RC15: the
+tensor-core QSA prefill it selected is now the two-Spark default.
 
 ## Reproduce our numbers
 
@@ -148,15 +162,20 @@ built from four layers ([docs/ENGINE.md](docs/ENGINE.md)):
    after review: two-Spark tensor and expert parallelism for `qwen4_exp`, MTP
    at two Sparks, decode graphs, exact verify, batching and prefill kernels,
    and a few fixes picked from Atlas-Inf branches not yet on its `main`.
-4. SparkQwen-only commits (none yet).
+4. SparkQwen-only commits: exact batched speculation and exact prefix
+   caching, tensor-core MoE and mHC decode, prefill MoE without a weight
+   duplicate, multi-prompt prefill, long-context QSA decode and faster verify
+   and prefill kernels, each behind a switch the profiles set.
 
 ## Credits
 
 Measurement: the decode-bench protocol of
 [sparkDash](https://github.com/MiaAI-Lab/sparkDash) by MiaAI-Lab (MIT), whose
-prompts `bench/sd_bench.mjs` imports from your own checkout, and MiaAI-Lab's
-published dual-Spark figures. The engine's Flash-Next fixes from Atlas-Inf
-name their origin commits in [docs/ENGINE.md](docs/ENGINE.md).
+prompts `bench/sd_bench.mjs` imports from your own checkout;
+[RigMark](https://github.com/alexellis/rigmark) by Alex Ellis (MIT); and
+MiaAI-Lab's dual-Spark vLLM recipe, whose settings our vLLM baseline uses.
+The engine's Flash-Next fixes from Atlas-Inf name their origin commits in
+[docs/ENGINE.md](docs/ENGINE.md).
 
 ## License
 
