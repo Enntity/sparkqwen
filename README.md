@@ -108,8 +108,13 @@ curl -s http://127.0.0.1:8893/v1/chat/completions -H 'Content-Type: application/
 ```
 
 Streaming is supported. Reasoning defaults to `reasoning_effort: low`; set it
-per request in `chat_template_kwargs`. Tool calling, structured output and
-images are not configured or tested yet.
+per request in `chat_template_kwargs`. Requests that leave sampling unset get
+the model card's settings for their mode: temperature 1.0, top-p 0.95,
+top-k 20 with thinking on; 0.7, 0.80, 20 with thinking off; and the tools row
+(0.7, 0.80, 20, presence penalty 1.5) when the request carries tools. Tool
+calls (OpenAI `tools`) are parsed in the checkpoint's own XML call format
+(Atlas's `qwen3_coder` parser) but have not been tested end to end yet;
+structured output and images have not been tested.
 
 **Profiles** (`PROFILE` in `.env`):
 
@@ -121,10 +126,9 @@ images are not configured or tested yet.
   shared pool (3.19M tokens). Requests that together need more than the pool
   wait for room.
 
-The greedy settings above are for measurement. For real work use the
-model's sampling settings (`generation_config.json`: temperature 1.0,
-top-p 0.95, top-k 20); greedy decoding can loop
-([docs/LIMITATIONS.md](docs/LIMITATIONS.md), Behavior).
+The greedy settings above are for measurement. For real work leave sampling
+unset (the defaults above) or use the model card's values; greedy decoding can
+loop ([docs/LIMITATIONS.md](docs/LIMITATIONS.md), Behavior).
 
 ## Opt-ins
 

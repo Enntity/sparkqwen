@@ -92,16 +92,21 @@ What to know before relying on SparkQwen.
 
 - The profiles default `reasoning_effort` to `low`. Requests can override it
   through `chat_template_kwargs`.
-- **Greedy decoding can loop.** The checkpoint's `generation_config.json`
-  samples (temperature 1.0, top-p 0.95, top-k 20). At temperature 0, as
+- **Greedy decoding can loop.** The model card recommends sampling
+  (temperature 1.0, top-p 0.95, top-k 20 with thinking; 0.7, 0.80, 20 without),
+  and requests that leave sampling unset get those. At temperature 0, as
   benchmarks run it, the model can fall into a repetition attractor: in
   RigMark's code workload, one of three greedy runs starts repeating
   `0, 0, 0` in a Go test table and is cut off (finish reason `length`), so
   that gate scores 2/3.
   vLLM on the same pair, with different rounding, passed it 3/3. Use the
   model's sampling settings for real work.
-- Tool calling is not configured: the profiles set no tool-call parser, and
-  tool use has not been tested.
+- The card's presence penalty of 1.5 for thinking-off requests is applied only
+  to requests that carry tools: on a long single-file coding answer it
+  suppressed every token already written. A request can still set it.
+- Tool calling is configured in the engine for this model (the checkpoint's
+  `<tool_call><function=…><parameter=…>` format, Atlas's `qwen3_coder`
+  parser) but has not been tested end to end on the pair.
 - Structured output, images and video have not been tested with this model.
 - In sparkDash's structured prompts, a "(stream i/n)" suffix makes the model
   emit only part of the requested count. Without `ignore_eos`, `min_tokens`
