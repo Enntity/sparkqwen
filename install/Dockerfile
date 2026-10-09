@@ -7,8 +7,14 @@ RUN apt-get update -qq && apt-get install -y -qq --no-install-recommends --allow
     git ca-certificates build-essential python3 curl pkg-config cmake libclang-dev \
     libibverbs-dev librdmacm-dev libnccl2=2.31.2-1+cuda13.3 libnccl-dev=2.31.2-1+cuda13.3 && \
     rm -rf /var/lib/apt/lists/*
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
-    sh -s -- -y --profile minimal --default-toolchain 1.93.1
+# rustup-init at a pinned release, checked against its published SHA-256
+# before it runs (the image is arm64 only).
+ARG RUSTUP_VERSION=1.29.1
+ARG RUSTUP_SHA256=15f6e4ce9f583b929c996c91562bad6d4454f3281de858b02cdfdef615fac433
+RUN curl --proto '=https' --tlsv1.2 -sSfLo /tmp/rustup-init \
+      "https://static.rust-lang.org/rustup/archive/${RUSTUP_VERSION}/aarch64-unknown-linux-gnu/rustup-init" && \
+    echo "${RUSTUP_SHA256}  /tmp/rustup-init" | sha256sum -c - && chmod +x /tmp/rustup-init && \
+    /tmp/rustup-init -y --profile minimal --default-toolchain 1.93.1 && rm /tmp/rustup-init
 ENV PATH="/root/.cargo/bin:${PATH}"
 ENV RUSTUP_TOOLCHAIN=1.93.1 CUDA_HOME=/usr/local/cuda CUTLASS_HOME=/opt/cutlass
 ENV LIBRARY_PATH=/usr/local/cuda/lib64/stubs

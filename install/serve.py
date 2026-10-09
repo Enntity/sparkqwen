@@ -47,15 +47,13 @@ def fabric_hcas(value, sysfs=Path('/sys/class/infiniband')):
     return hcas
 
 
-# Off by default. Each is measured but not bit-exact against the option off;
-# see docs/LIMITATIONS.md before switching one on.
+# Off by default. Measured but not bit-exact against the option off; see
+# docs/LIMITATIONS.md before switching it on. (QSA_TC2R, tensor-core QSA
+# prefill, was the second until the engine made it the two-Spark default.)
 OPT_INS = {
     # FP8 projections for the Gated DeltaNet layers (lossy: quality probe 40/40
     # and 12/12 on our pair, but outputs differ from BF16).
     'SPARKQWEN_FP8_GDN': {'ATLAS_QWEN4EXP_FP8_GDN': '1'},
-    # Tensor-core QSA prefill: faster long prefill with single-GPU numerics past
-    # the QSA bound, not bit-identical to the two-Spark path.
-    'SPARKQWEN_QSA_TC2R': {'ATLAS_QWEN4EXP_PREFILL_QSA_TC2R': '1'},
 }
 
 

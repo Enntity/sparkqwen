@@ -144,8 +144,8 @@ scored 40/40 and 12/12 on our quality probe with the 2026-10-06 engine, but
 its outputs differ from the default, and it has not been measured with RC15.
 Check it on your own workload before relying on it.
 
-`QSA_TC2R=1` is still accepted but changes nothing since RC15: the
-tensor-core QSA prefill it selected is now the two-Spark default.
+`QSA_TC2R` is gone: the tensor-core QSA prefill it selected became the
+two-Spark default in RC15, and a leftover `QSA_TC2R=1` in `.env` is ignored.
 
 ## Reproduce our numbers
 

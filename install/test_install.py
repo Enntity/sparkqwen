@@ -146,13 +146,13 @@ class LaunchContract(unittest.TestCase):
                     with self.assertRaises(ValueError):
                         serve.launch(dict(self.environment, **{switch: bad}), self.profile)
         self.assertEqual(serve.OPT_INS['SPARKQWEN_FP8_GDN'], {'ATLAS_QWEN4EXP_FP8_GDN': '1'})
-        self.assertEqual(serve.OPT_INS['SPARKQWEN_QSA_TC2R'], {'ATLAS_QWEN4EXP_PREFILL_QSA_TC2R': '1'})
+        self.assertEqual(set(serve.OPT_INS), {'SPARKQWEN_FP8_GDN'})
 
     def test_env_example_leaves_the_opt_ins_off(self):
         lines = (HERE.parent/'.env.example').read_text().splitlines()
-        for key in ('FP8_GDN', 'QSA_TC2R'):
-            self.assertIn(f'#{key}=1', lines)
-            self.assertFalse([l for l in lines if l.startswith(key)])
+        self.assertIn('#FP8_GDN=1', lines)
+        self.assertFalse([l for l in lines if l.startswith('FP8_GDN')])
+        self.assertFalse([l for l in lines if 'QSA_TC2R' in l])
 
     def test_gpu_memory_utilization_override(self):
         argv, _ = serve.launch(dict(self.environment, SPARKQWEN_GPU_MEMORY_UTILIZATION='0.91'), self.profile)
@@ -235,14 +235,15 @@ class StartNode(unittest.TestCase):
                 self.assertIn(f'-e MODEL_PATH={ckpt} ', cmd)
                 self.assertIn(f'-e NODE_RANK={rank} ', cmd)
                 self.assertIn('-e SPARKQWEN_PROFILE=8x32k ', cmd)
-                self.assertIn('-e SPARKQWEN_FP8_GDN=0 -e SPARKQWEN_QSA_TC2R=0 ', cmd)
+                self.assertIn('-e SPARKQWEN_FP8_GDN=0 ', cmd)
+                self.assertNotIn('QSA_TC2R', cmd)
                 self.assertTrue(cmd.endswith(' img'))
 
     def test_opt_ins_and_profile_reach_the_container(self):
-        run, docker_run = self.start('0', '--fp8-gdn', '--qsa-tc2r', '--profile', '4x262k',
+        run, docker_run = self.start('0', '--fp8-gdn', '--profile', '4x262k',
                                      '--gpu-memory-utilization', '0.90')
         self.assertEqual(run.returncode, 0, run.stderr)
-        self.assertIn('-e SPARKQWEN_FP8_GDN=1 -e SPARKQWEN_QSA_TC2R=1 ', docker_run[0])
+        self.assertIn('-e SPARKQWEN_FP8_GDN=1 ', docker_run[0])
         self.assertIn('-e SPARKQWEN_PROFILE=4x262k ', docker_run[0])
         self.assertIn('-e SPARKQWEN_GPU_MEMORY_UTILIZATION=0.90 ', docker_run[0])
 

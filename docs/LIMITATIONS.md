@@ -140,15 +140,6 @@ the shipped profiles' measured behavior.
 - `ATLAS_QWEN4EXP_LMHEAD_SPLIT_VERIFY` sizes its staging from the
   `ATLAS_QWEN4EXP_MTP_DEPTH` environment variable rather than the resolved
   depth.
-- Text inside `install/` that the RC15 image was built from is partly stale,
-  and is left as is so that the image tag still names the measured tree:
-  the `4x262k` profile's note quotes the 2026-10-06 pool (307K tokens; it is
-  now 3.35M), and `serve.py` and `start-node.sh` still describe `QSA_TC2R` as
-  an opt-in with different numerics (it is the default now, and the switch
-  changes nothing).
-- The image build installs rustup with `curl | sh`, and `./start.sh download`
-  installs `huggingface_hub` with pip into an unpinned `python:3.12-slim`;
-  neither is checked against a hash yet.
 - The startup parity check between ranks does not yet cover
   `ATLAS_QWEN4EXP_SNAPSHOT_AUX_MB`, and preflight does not use the resolved
   SSM cache slot count.

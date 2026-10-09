@@ -50,8 +50,11 @@ hf_download() {  # repo revision dir; uses a throwaway container when hf is not 
   if command -v hf >/dev/null; then
     hf download "$1" --revision "$2" --local-dir "$3"
   else
+    # The image by digest and every package by hash (install/hf-requirements.txt).
     docker run --rm --user "$(id -u):$(id -g)" -e HOME=/tmp -e HF_TOKEN -v "$MODEL_ROOT:$MODEL_ROOT" \
-      python:3.12-slim sh -c 'pip install -q --disable-pip-version-check --target /tmp/hf huggingface_hub==0.35.3 &&
+      -v "$PWD/install/hf-requirements.txt:/hf-requirements.txt:ro" \
+      python:3.12-slim@sha256:05cda9777409a9c3ffddd94a4c476b79f0769a0b4857f0c7ed9226b6800b0d6f \
+      sh -c 'pip install -q --disable-pip-version-check --require-hashes --target /tmp/hf -r /hf-requirements.txt &&
         PYTHONPATH=/tmp/hf /tmp/hf/bin/hf download "$0" --revision "$1" --local-dir "$2"' "$1" "$2" "$3"
   fi
 }
@@ -103,7 +106,6 @@ serve() {
           --profile "$PROFILE" --fabric-hca "$FABRIC_HCA" ${FABRIC_INTERFACE:+--fabric-interface "$FABRIC_INTERFACE"}
           ${GPU_MEMORY_UTILIZATION:+--gpu-memory-utilization "$GPU_MEMORY_UTILIZATION"})
   switch FP8_GDN --fp8-gdn
-  switch QSA_TC2R --qsa-tc2r
   say "start rank 1 on $WORKER, then rank 0 here (leader $address, profile $PROFILE)"
   stop
   script_on_worker install/start-node.sh --rank 1 "${common[@]}"

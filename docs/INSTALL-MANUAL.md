@@ -71,10 +71,8 @@ starts reuse it. Run one warmup pass before measuring.
 **Profiles.** `--profile 4x262k` or `--profile 8x262k` selects a long-context profile. A path to a JSON file runs your own profile. Use the same profile
 on both ranks.
 
-**Opt-ins.** `--fp8-gdn` (lossy FP8 Gated DeltaNet projections) and
-`--qsa-tc2r` (faster long prefill with single-GPU numerics past the QSA bound)
-are off by default. Use the same ones on both ranks; see
-[LIMITATIONS.md](LIMITATIONS.md).
+**Opt-in.** `--fp8-gdn` (lossy FP8 Gated DeltaNet projections) is off by
+default. Use it on both ranks or neither; see [LIMITATIONS.md](LIMITATIONS.md).
 
 **Memory share.** `--gpu-memory-utilization` (0.80–0.95) on both ranks
 overrides the profiles' 0.88, the only value we have measured.

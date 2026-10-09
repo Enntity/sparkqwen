@@ -11,7 +11,7 @@ usage() {
 usage: start-node.sh --rank 0|1 --leader-address IP --model-root DIR --image TAG
                      [--fabric-interface IFACE] [--fabric-hca rocep1s0f0]
                      [--profile 8x32k|4x262k|8x262k|FILE] [--gpu-memory-utilization 0.80-0.95]
-                     [--fp8-gdn] [--qsa-tc2r] [--cuda-cache DIR] [--name NAME]
+                     [--fp8-gdn] [--cuda-cache DIR] [--name NAME]
 
   --leader-address   rank 0's IPv4 address on the direct Spark-to-Spark fabric
   --model-root       directory holding nvidia--Qwen3.8-Flash-Next-NVFP4
@@ -24,14 +24,12 @@ usage: start-node.sh --rank 0|1 --leader-address IP --model-root DIR --image TAG
                      the profile's 0.88)
   --fp8-gdn          opt-in, lossy: FP8 Gated DeltaNet projections (faster
                      decode, not bit-exact); use it on both ranks
-  --qsa-tc2r         opt-in: tensor-core QSA prefill (faster long prefill with
-                     single-GPU numerics past the QSA bound); use it on both ranks
   --cuda-cache       persistent CUDA JIT cache (default: ~/.cache/atlas-cuda)
 EOF
   exit 2
 }
 rank="" leader="" iface="" model_root="" image="" hca=rocep1s0f0
-cache="$HOME/.cache/atlas-cuda" name="" profile=8x32k util="" fp8_gdn=0 qsa_tc2r=0
+cache="$HOME/.cache/atlas-cuda" name="" profile=8x32k util="" fp8_gdn=0
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --rank) rank=$2; shift 2 ;;
@@ -45,7 +43,6 @@ while [[ $# -gt 0 ]]; do
     --profile) profile=$2; shift 2 ;;
     --gpu-memory-utilization) util=$2; shift 2 ;;
     --fp8-gdn) fp8_gdn=1; shift ;;
-    --qsa-tc2r) qsa_tc2r=1; shift ;;
     *) usage ;;
   esac
 done
@@ -83,7 +80,7 @@ docker run -d --name "$name" --restart no --network host --ipc host \
   -e FABRIC_INTERFACE="$iface" -e FABRIC_HCA="$hca" -e MODEL_PATH="$checkpoint" \
   -e SERVED_MODEL_NAME=qwen3.8-flash-next-atlas -e SPARKQWEN_PROFILE="$profile" \
   ${util:+-e SPARKQWEN_GPU_MEMORY_UTILIZATION="$util"} \
-  -e SPARKQWEN_FP8_GDN="$fp8_gdn" -e SPARKQWEN_QSA_TC2R="$qsa_tc2r" \
+  -e SPARKQWEN_FP8_GDN="$fp8_gdn" \
   -e NCCL_SOCKET_IFNAME="$iface" -e GLOO_SOCKET_IFNAME="$iface" \
   -e HF_HUB_OFFLINE=1 -e TRANSFORMERS_OFFLINE=1 \
   -e CUDA_CACHE_PATH=/atlas-cuda-cache -e CUDA_CACHE_MAXSIZE=4294967296 \
