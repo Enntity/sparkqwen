@@ -73,6 +73,8 @@ What to know before relying on SparkQwen.
 
 ## Running beside sidecars
 
+[Observation and exact source/image identity](../results/2026-10-13-shared-host/RESULT.md).
+
 - The sidecar arrangement (`.env.sidecars.example`: `8x262k` at
   `GPU_MEMORY_UTILIZATION=0.70` on both ranks) is the recipe on a smaller
   memory share, so other services fit on the same Sparks. The measured pair

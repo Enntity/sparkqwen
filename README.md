@@ -22,14 +22,14 @@ cp .env.example .env      # set WORKER to the other Spark's ssh destination
 
 **Status: release candidate 16.** The engine is pinned
 ([`install/atlas-source.json`](install/atlas-source.json): Enntity/atlas
-`fix/sparkqwen-rc16-refusal-content` at 1c72e586). `./start.sh` from a clean
+`sparkqwen/atlas-20261013-sidecars` at 84e7c734). `./start.sh` from a clean
 clone built the image, served the pair and reproduced the numbers below on
 our Sparks. The image is published, so `./start.sh` pulls it
 (`ghcr.io/enntity/atlas-sparkqwen:656234c336af`) rather than compiling.
 
 This README describes RC16: install tree `656234c336af` and the Atlas engine
 pinned in [`install/atlas-source.json`](install/atlas-source.json),
-`fix/sparkqwen-rc16-refusal-content` at `1c72e586` (tree `3e7cb66c`). The engine
+`sparkqwen/atlas-20261013-sidecars` at `84e7c734` (tree `80d871d6`). The engine
 uses an Atlas-Inf `main` base at `4405bce3`; the Enntity release and
 contribution branches are published separately from Atlas-Inf `main`.
 

@@ -7,7 +7,7 @@ pinned in [`install/atlas-source.json`](../install/atlas-source.json), for the
 kernel target `qwen3.8-flash-next` (model type `qwen4_exp`).
 [`install/build.sh`](../install/build.sh) refuses any other tree.
 
-The pin is `fix/sparkqwen-rc16-refusal-content` at 1c72e586 (release candidate
+The pin is `sparkqwen/atlas-20261013-sidecars` at 84e7c734 (release candidate
 16, refreshed),
 which adds SparkQwen-only work on top of the 2026-10-06 Qwen series
 (3322e221). The original RC16 engine passed the gates in
@@ -16,8 +16,8 @@ which adds SparkQwen-only work on top of the 2026-10-06 Qwen series
 
 The release is based on Atlas-Inf `main` at `4405bce3`. Its Qwen contribution
 series is published on `upstream/qwen38-flash-next-20261006` at `3322e221`;
-the complete RC16 engine is on `fix/sparkqwen-rc16-refusal-content` at
-`1c72e586` (tree `3e7cb66c`; RC15: `sparkqwen/atlas-20261008-rc15` at
+the complete RC16 engine is on `sparkqwen/atlas-20261013-sidecars` at
+`84e7c734` (tree `80d871d6`; RC15: `sparkqwen/atlas-20261008-rc15` at
 `de4386b4`).
 These are pinned Enntity snapshots, separate from current Atlas-Inf `main`.
 
@@ -114,6 +114,9 @@ The profiles also arm Atlas's own content-loop watchdog with a threshold of
 response whose tail repeats a 2-64 token pattern 32 times back to back, once
 steering has been spent. A request's `repetition_detection` object overrides
 the threshold.
+
+The maintenance pin also accepts `.weight_packed` projections in the namespace
+audit (Enntity/atlas PR1); missing routed-expert layers still fail clearly.
 
 ## Changing the engine
 
