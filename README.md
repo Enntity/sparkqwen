@@ -33,7 +33,7 @@ The throughput and exactness results below are historical RC16 measurements
 (engine `1c43247d`, install tree `656234c336af`), not a rerun of that benchmark
 suite on the maintenance image. See [reproduction instructions](docs/REPRODUCE.md)
 and the separate [0.70 sidecar observation](results/2026-10-13-shared-host/RESULT.md)
-for their exact source and image identities.
+for their exact source and image identities. The [maintenance qualification](results/2026-10-13-maintenance/RESULT.md) records the new image’s live canaries and sidecar checks.
 
 ## What it does
 

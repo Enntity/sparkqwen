@@ -1,0 +1,84 @@
+{
+  "_comment": "SPDX-License-Identifier: AGPL-3.0-only",
+  "schema": "sparkqwen.maintenance-qualification/v1",
+  "image": "ghcr.io/enntity/atlas-sparkqwen@sha256:ea6a2df03adfc8802a1baf6ab1d4b55c69dd76588f36bfd5d189781500e75830",
+  "installTree": "b151fbe840a15b735f08026c2bf521edac9ce96e",
+  "engineCommit": "84e7c734bbb70850bd2f65b0bf9e68ab8f8bac22",
+  "configuration": {
+    "ranks": 2,
+    "profile": "8x262k",
+    "gpuMemoryUtilization": 0.7,
+    "fabric": "explicit dual-domain port-1 rails on both ranks",
+    "kvTokensShared": 1393920
+  },
+  "checks": {
+    "installerTests": 30,
+    "namespaceTests": 7,
+    "nativeRefusalTests": 32,
+    "nativeStreamingTests": 43,
+    "anonymousImageManifest": true,
+    "blocking": {
+      "content": "I'm sorry, but I cannot find your parcel. Here are the replacement instructions.",
+      "refusal": "I'm sorry, but I cannot find your parcel.",
+      "model": "qwen3.8-flash-next-atlas",
+      "usage": {
+        "prompt_tokens": 42,
+        "completion_tokens": 18,
+        "total_tokens": 60,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 127.772358,
+        "response_token/s": 49.115675867453255
+      }
+    },
+    "streaming": {
+      "content": "I'm sorry, but I cannot find your parcel. Here are the replacement instructions.",
+      "refusal": "I'm sorry, but I cannot find your parcel."
+    },
+    "gateway": {
+      "model": "enntity-presence",
+      "content": "I'm sorry, but I cannot find your parcel. Here are the replacement instructions."
+    },
+    "embedding": {
+      "dimensions": 2560,
+      "model": "Qwen/Qwen3-Embedding-4B"
+    },
+    "imageGeneration": {
+      "size": "1024x1024",
+      "bytes": 1184229,
+      "elapsedMs": 11123
+    }
+  },
+  "observation": {
+    "samples": 18,
+    "bothRuntimeClientsActiveSamples": 18,
+    "minimumAvailableGiB": {
+      "leader": 14.151756286621094,
+      "worker": 20.146053314208984
+    },
+    "admissionLimit": 4,
+    "engineSequenceLimit": 8,
+    "completedRuntimeRequests": 3,
+    "allCompletedHttp200": true,
+    "maximumQueueWaitMs": 1,
+    "containerRestartsAtActivation": [
+      0,
+      0
+    ]
+  },
+  "limits": [
+    "Operational canaries and a bounded observation, not a full RC16 benchmark rerun.",
+    "Two real Runtime clients overlapped throughout the observation; this is not a four- or eight-stream stress test.",
+    "KV capacity is host-state dependent. Historical pre-maintenance observation reported 1351648 tokens.",
+    "The alternative packed checkpoint has namespace regression coverage, not a full model-load qualification in this run.",
+    "Atlas fork CI has inherited file-cap, typo, CUDA-stub and CLA configuration failures; targeted and native release gates passed."
+  ]
+}
