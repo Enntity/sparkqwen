@@ -6,6 +6,7 @@ import json
 import os
 from pathlib import Path
 import re
+import sys
 
 
 def fabric_hcas(value, sysfs=Path('/sys/class/infiniband'), siblings=True):
@@ -33,6 +34,26 @@ def fabric_hcas(value, sysfs=Path('/sys/class/infiniband'), siblings=True):
         except OSError:
             return False
 
+    def usable(dev):
+        """An IPv4 RoCE v2 GID, which is what NCCL needs on this rail. A rail can be
+        ACTIVE with no address on its netdev, and the engine then fails to initialize
+        NCCL instead of running on the rail that does have one."""
+        port = sysfs/dev/'ports'/'1'
+        try:
+            entries = sorted(port.glob('gids/*'), key=lambda g: int(g.name))
+        except OSError:
+            return False
+        for g in entries:
+            try:
+                if not g.read_text().strip().startswith('0000:0000:0000:0000:0000:ffff:'):
+                    continue
+                kind = (port/'gid_attrs'/'types'/g.name).read_text().strip()
+            except OSError:
+                continue
+            if 'RoCE v2' in kind:
+                return True
+        return False
+
     hcas = list(names)
     if not siblings:
         return hcas
@@ -46,6 +67,10 @@ def fabric_hcas(value, sysfs=Path('/sys/class/infiniband'), siblings=True):
             sibling = pci(dev)
             if (dev not in hcas and sibling and ':' in sibling and sibling != addr
                     and sibling.split(':', 1)[1] == slot and active(dev)):
+                if not usable(dev):
+                    print(f'fabric: skipping {dev}, no IPv4 RoCE v2 GID '
+                          f'(give its netdev an address to use both rails)', file=sys.stderr)
+                    continue
                 hcas.append(dev)
     return hcas
 

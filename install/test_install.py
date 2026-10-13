@@ -22,6 +22,26 @@ def load_profile(name):
     return json.loads(serve.profile_path({'SPARKQWEN_PROFILE': name}, HERE).read_text())
 
 
+def _write_gid(dev, index, gid, kind):
+    port = dev/'ports'/'1'
+    (port/'gids').mkdir(parents=True, exist_ok=True)
+    (port/'gid_attrs'/'types').mkdir(parents=True, exist_ok=True)
+    (port/'gids'/str(index)).write_text(gid + '\n')
+    (port/'gid_attrs'/'types'/str(index)).write_text(kind + '\n')
+
+
+def _rocev2_gid(dev):
+    """A rail whose netdev has an IPv4 address: link-local v1, then the IPv4 RoCE v2 GID."""
+    _write_gid(dev, 0, 'fe80:0000:0000:0000:0000:0000:0000:0001', 'IB/RoCE v1')
+    _write_gid(dev, 1, '0000:0000:0000:0000:0000:ffff:c0a8:0101', 'RoCE v2')
+
+
+def _link_local_gid(dev):
+    """A rail that is up but unaddressed: link-local only, no IPv4 RoCE v2 GID."""
+    _write_gid(dev, 0, 'fe80:0000:0000:0000:0000:0000:0000:0002', 'IB/RoCE v1')
+    _write_gid(dev, 1, 'fe80:0000:0000:0000:0000:0000:0000:0002', 'RoCE v2')
+
+
 class LaunchContract(unittest.TestCase):
     def setUp(self):
         self.profile = json.loads(serve.profile_path({}, HERE).read_text())
@@ -221,6 +241,7 @@ class LaunchContract(unittest.TestCase):
                 (root/dev/'ports'/'1').mkdir(parents=True)
                 (root/dev/'ports'/'1'/'state').write_text(state + '\n')
                 (root/dev/'device').symlink_to(pci/addr)
+                _rocev2_gid(root/dev)
             self.assertEqual(serve.fabric_hcas('rocep1s0f0', root), ['rocep1s0f0', 'roceP2p1s0f0'])
             self.assertEqual(serve.fabric_hcas('rocep1s0f1', root), ['rocep1s0f1'])
             self.assertEqual(serve.fabric_hcas('rocep1s0f0,roceP2p1s0f0', root),
@@ -232,6 +253,26 @@ class LaunchContract(unittest.TestCase):
         for bad in ('', 'a0,', 'a0,b1\nX=1', 'a0;b1', 'a0:1', 'a0,a0'):
             with self.subTest(hca=bad), self.assertRaises(ValueError):
                 serve.launch(dict(self.environment, FABRIC_HCA=bad), self.profile)
+
+    def test_fabric_hca_skips_a_sibling_without_an_ipv4_rocev2_gid(self):
+        # A rail can be ACTIVE while its netdev carries no address, so it has no IPv4
+        # RoCE v2 GID and NCCL cannot use it. Fall back to the rail that does have one
+        # instead of failing to initialize NCCL after a full weight load.
+        with tempfile.TemporaryDirectory() as root:
+            root = Path(root)
+            pci = root/'pci'
+            for dev, addr in [('rocep1s0f0', '0000:01:00.0'),
+                              ('roceP2p1s0f0', '0002:01:00.0')]:
+                (pci/addr).mkdir(parents=True)
+                (root/dev/'ports'/'1').mkdir(parents=True)
+                (root/dev/'ports'/'1'/'state').write_text('4: ACTIVE\n')
+                (root/dev/'device').symlink_to(pci/addr)
+            _rocev2_gid(root/'rocep1s0f0')
+            _link_local_gid(root/'roceP2p1s0f0')
+            self.assertEqual(serve.fabric_hcas('rocep1s0f0', root), ['rocep1s0f0'])
+            # an explicitly requested rail is never dropped
+            self.assertEqual(serve.fabric_hcas('rocep1s0f0,roceP2p1s0f0', root),
+                             ['rocep1s0f0', 'roceP2p1s0f0'])
 
     def test_invalid_cluster_configuration_fails_before_process_launch(self):
         for key, value in [('NODE_RANK', '2'), ('MASTER_ADDR', 'not-an-address'),
