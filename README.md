@@ -20,18 +20,20 @@ cp .env.example .env      # set WORKER to the other Spark's ssh destination
 ./start.sh
 ```
 
-**Status: release candidate 16.** The engine is pinned
-([`install/atlas-source.json`](install/atlas-source.json): Enntity/atlas
-`sparkqwen/atlas-20261010-rc16` at 1c43247d). `./start.sh` from a clean
-clone built the image, served the pair and reproduced the numbers below on
-our Sparks. The image is published, so `./start.sh` pulls it
-(`ghcr.io/enntity/atlas-sparkqwen:656234c336af`) rather than compiling.
+**Status: RC16 maintenance release.** The engine is pinned in
+[`install/atlas-source.json`](install/atlas-source.json) to Enntity/atlas
+`sparkqwen/atlas-20261013-sidecars` at `84e7c734` (tree `80d871d6`). The
+matching image is `ghcr.io/enntity/atlas-sparkqwen:b151fbe840a1`.
+This release adds a copyable [TP2 sidecar setup](.env.sidecars.example),
+per-node fabric selection, and fixes for blocking chat content and packed
+checkpoint detection. The engine uses an Atlas-Inf `main` base at `4405bce3`;
+Enntity's release branches are published separately from Atlas-Inf `main`.
 
-This README describes RC16: install tree `656234c336af` and the Atlas engine
-pinned in [`install/atlas-source.json`](install/atlas-source.json),
-`sparkqwen/atlas-20261010-rc16` at `1c43247d` (tree `59cace5a`). The engine
-uses an Atlas-Inf `main` base at `4405bce3`; the Enntity release and
-contribution branches are published separately from Atlas-Inf `main`.
+The throughput and exactness results below are historical RC16 measurements
+(engine `1c43247d`, install tree `656234c336af`), not a rerun of that benchmark
+suite on the maintenance image. See [reproduction instructions](docs/REPRODUCE.md)
+and the separate [0.70 sidecar observation](results/2026-10-13-shared-host/RESULT.md)
+for their exact source and image identities. The [maintenance qualification](results/2026-10-13-maintenance/RESULT.md) records the new image’s live canaries and sidecar checks.
 
 ## What it does
 
@@ -78,8 +80,9 @@ are single-session measurements on our pair, not a guarantee for yours.
   Spark you run `./start.sh` on to the other one, whose user can run `docker`.
 - About 135 GB free on each Spark for the checkpoint (124 GiB). It is
   downloaded once and copied to the other Spark over the cable.
-- Nothing else using the GPUs' memory. GB10 memory is shared with the host,
-  and the engine uses most of it.
+- The default 0.88 allocation expects the pair to serve Qwen alone. To leave
+  room for other services, use the [0.70 sidecar example](.env.sidecars.example)
+  and size those services against the available host memory.
 
 ## What `./start.sh` does
 
@@ -87,7 +90,7 @@ Run it on the Spark that will serve the API (rank 0). Each step is skipped when
 already done, so rerunning it just restarts the engine.
 
 1. **Image.** Pulls `ghcr.io/enntity/atlas-sparkqwen:<tag>`, where the tag is
-   the git tree of [`install/`](install/) (the release tree `656234c336af`),
+   the git tree of [`install/`](install/) (the release tree `b151fbe840a1`),
    so the image always matches your checkout. If that tag is not published
    (an edited `install/`, or `PULL=0` in `.env`), it builds the image from
    source instead ([`install/build.sh`](install/build.sh): Atlas at the commit
@@ -138,6 +141,15 @@ XML call format (Atlas's `qwen3_coder` parser); `bench/tool_probe.py` passes
 Each profile sets a concurrency limit and a per-request context limit. All
 requests and the prefix cache draw on one shared pool; requests that together
 need more tokens than the pool holds wait for room.
+
+**Sharing the Sparks with sidecars.** To run the engine beside other services,
+use the copyable [`.env.sidecars.example`](.env.sidecars.example): the measured
+arrangement is `8x262k` at `GPU_MEMORY_UTILIZATION=0.70` on **both** ranks
+(a mismatched share mis-sizes the one shared KV pool). At 0.70 the measured
+pair held 1,351,648 shared KV tokens on the limiting rank (~1.35M); 0.72 is an
+estimate only and has not been qualified. What fits is host-dependent. The
+sidecars are separate installations; `./start.sh` does not install them
+([docs/LIMITATIONS.md](docs/LIMITATIONS.md), Running beside sidecars).
 
 The greedy settings above are for measurement. For real work leave sampling
 unset (the defaults above) or use the model card's values; greedy decoding can

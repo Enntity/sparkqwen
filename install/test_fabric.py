@@ -114,3 +114,56 @@ class Fabric(unittest.TestCase):
             self.assertNotEqual(result.returncode,0)
             self.assertIn('missing or down',result.stderr)
             self.assertFalse((root/'DOCKER_CALLED').exists())
+
+    def test_sidecar_env_reaches_both_real_rank_launchers(self):
+        # Fake host inventory, transport and Docker; retain .env parsing,
+        # common argument construction and both real start-node.sh calls.
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            shutil.copytree(ROOT/'install', root/'install')
+            shutil.copy(ROOT/'fabric.py', root/'fabric.py')
+            text = (ROOT/'start.sh').read_text()
+            start = text.index('fabric_ports() {')
+            end = text.index('\npick_fabric()', start)
+            text = text[:start]+"fabric_ports() { echo 'left nic0 192.0.2.1/24'; }\n"+text[end:]
+            text = text.replace('case ${1:-up} in', 'build() { :; }\ndownload() { :; }\ncase ${1:-up} in')
+            (root/'start.sh').write_text(text)
+            (root/'.env').write_text((ROOT/'.env.sidecars.example').read_text())
+            models = root/'models'; checkpoint = models/'nvidia--Qwen3.8-Flash-Next-NVFP4'
+            checkpoint.mkdir(parents=True)
+            for name in ('config.json', 'model.safetensors.index.json'):
+                (checkpoint/name).write_text('{}')
+            sysfs = root/'sysfs'
+            for dev, nic in [('left', 'nic0'), ('right', 'nic1')]:
+                (sysfs/dev/'device/net'/nic).mkdir(parents=True)
+                (sysfs/dev/'ports/1').mkdir(parents=True)
+                (sysfs/dev/'ports/1/state').write_text('4: ACTIVE')
+            bindir = root/'bin'; bindir.mkdir()
+            scripts = {
+                'ssh': '''#!/bin/bash
+shift 3
+if [[ "$*" == 'bash -s'* && "$*" != *--rank* ]]; then
+  cat >/dev/null
+  echo 'right nic1 192.0.2.2/24'
+else
+  bash -c "$*"
+fi
+''',
+                'docker': '#!/bin/bash\nprintf "%s\\n" "$*" >> "$DOCKER_CALLS"\n',
+                'curl': '#!/bin/sh\nprintf \'%s\\n\' \'{"choices":[{"message":{"content":"391"}}]}\'\n'
+            }
+            for name, body in scripts.items():
+                path = bindir/name; path.write_text(body); path.chmod(0o755)
+            env = {k:v for k,v in os.environ.items() if 'FABRIC' not in k and k != 'LEADER_ADDRESS'}
+            env.update(PATH=f'{bindir}:{os.environ["PATH"]}', MODEL_ROOT=str(models),
+                       IMAGE='test-image', FABRIC_SYSFS=str(sysfs), HOME=str(root),
+                       DOCKER_CALLS=str(root/'docker.log'))
+            result = subprocess.run(['bash', str(root/'start.sh')], env=env, capture_output=True, text=True)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            calls = [line for line in (root/'docker.log').read_text().splitlines() if line.startswith('run ')]
+            self.assertEqual(len(calls), 2)
+            for rank, call in zip(('1', '0'), calls):
+                self.assertIn(f'NODE_RANK={rank}', call)
+                self.assertIn('SPARKQWEN_PROFILE=8x262k', call)
+                self.assertIn('SPARKQWEN_GPU_MEMORY_UTILIZATION=0.70', call)
+                self.assertIn('FABRIC_SIBLINGS=0', call)

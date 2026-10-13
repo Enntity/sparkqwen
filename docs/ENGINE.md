@@ -7,16 +7,18 @@ pinned in [`install/atlas-source.json`](../install/atlas-source.json), for the
 kernel target `qwen3.8-flash-next` (model type `qwen4_exp`).
 [`install/build.sh`](../install/build.sh) refuses any other tree.
 
-The pin is `sparkqwen/atlas-20261010-rc16` at 1c43247d (release candidate 16),
+The pin is `sparkqwen/atlas-20261013-sidecars` at 84e7c734 (release candidate
+16, refreshed),
 which adds SparkQwen-only work on top of the 2026-10-06 Qwen series
-(3322e221). It passed the gates in
+(3322e221). The original RC16 engine passed the gates in
 [results/2026-10-10-rc16](../results/2026-10-10-rc16/RESULT.md) (RC15:
 [results/2026-10-08-rc15](../results/2026-10-08-rc15/RESULT.md)).
 
 The release is based on Atlas-Inf `main` at `4405bce3`. Its Qwen contribution
 series is published on `upstream/qwen38-flash-next-20261006` at `3322e221`;
-the complete RC16 engine is on `sparkqwen/atlas-20261010-rc16` at `1c43247d`
-(RC15: `sparkqwen/atlas-20261008-rc15` at `de4386b4`).
+the complete RC16 engine is on `sparkqwen/atlas-20261013-sidecars` at
+`84e7c734` (tree `80d871d6`; RC15: `sparkqwen/atlas-20261008-rc15` at
+`de4386b4`).
 These are pinned Enntity snapshots, separate from current Atlas-Inf `main`.
 
 ## Layers
@@ -105,12 +107,16 @@ checks below, which they keep.
 | `min_tokens` end-token ban at the target pick and in drafts | `ATLAS_QWEN4EXP_EOS_BAN` |
 | **RC16:** content-loop steering: after a tail the content-loop watchdog would end, the next pick skips the cycle's continuation token (up to 3 times a request), the same rule at every pick so speculation still commits serial decode's tokens; changes output only where a loop forms | `ATLAS_LOOP_STEER`, `ATLAS_LOOP_STEER_MAX` |
 | **RC16:** a Poolside-format stream holds a call's header until the call validates (GLM; not this model's parser) | always |
+| **Maintenance:** blocking chat replies preserve their full text alongside refusal metadata after a refusal-prefix match; classifier behavior is unchanged ([Atlas-Inf issue172](https://github.com/Atlas-Inf/atlas/issues/172)) | always |
 
 The profiles also arm Atlas's own content-loop watchdog with a threshold of
 32 (`ATLAS_CONTENT_LOOP_WATCHDOG`, `ATLAS_CONTENT_LOOP_MIN_REPEATS`): it ends a
 response whose tail repeats a 2-64 token pattern 32 times back to back, once
 steering has been spent. A request's `repetition_detection` object overrides
 the threshold.
+
+The maintenance pin also accepts `.weight_packed` projections in the namespace
+audit (Enntity/atlas PR1); missing routed-expert layers still fail clearly.
 
 ## Changing the engine
 

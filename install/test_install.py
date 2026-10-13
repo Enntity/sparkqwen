@@ -22,6 +22,26 @@ def load_profile(name):
     return json.loads(serve.profile_path({'SPARKQWEN_PROFILE': name}, HERE).read_text())
 
 
+def _write_gid(dev, index, gid, kind):
+    port = dev/'ports'/'1'
+    (port/'gids').mkdir(parents=True, exist_ok=True)
+    (port/'gid_attrs'/'types').mkdir(parents=True, exist_ok=True)
+    (port/'gids'/str(index)).write_text(gid + '\n')
+    (port/'gid_attrs'/'types'/str(index)).write_text(kind + '\n')
+
+
+def _rocev2_gid(dev):
+    """A rail whose netdev has an IPv4 address: link-local v1, then the IPv4 RoCE v2 GID."""
+    _write_gid(dev, 0, 'fe80:0000:0000:0000:0000:0000:0000:0001', 'IB/RoCE v1')
+    _write_gid(dev, 1, '0000:0000:0000:0000:0000:ffff:c0a8:0101', 'RoCE v2')
+
+
+def _link_local_gid(dev):
+    """A rail that is up but unaddressed: link-local only, no IPv4 RoCE v2 GID."""
+    _write_gid(dev, 0, 'fe80:0000:0000:0000:0000:0000:0000:0002', 'IB/RoCE v1')
+    _write_gid(dev, 1, 'fe80:0000:0000:0000:0000:0000:0000:0002', 'RoCE v2')
+
+
 class LaunchContract(unittest.TestCase):
     def setUp(self):
         self.profile = json.loads(serve.profile_path({}, HERE).read_text())
@@ -169,6 +189,34 @@ class LaunchContract(unittest.TestCase):
             with self.subTest(util=bad), self.assertRaises(ValueError):
                 serve.launch(dict(self.environment, SPARKQWEN_GPU_MEMORY_UTILIZATION=bad), self.profile)
 
+    def test_sidecars_example_override_reaches_the_engine_on_both_ranks(self):
+        # The sidecar share must survive launch() too: one
+        # --gpu-memory-utilization that replaces the profile's 0.88, equal on
+        # both ranks, with the 8x262k size limits intact.
+        for rank in ('0', '1'):
+            argv, _ = serve.launch(dict(self.environment, NODE_RANK=rank,
+                                        SPARKQWEN_GPU_MEMORY_UTILIZATION='0.70'),
+                                   load_profile('8x262k'))
+            with self.subTest(rank=rank):
+                self.assertIn('--gpu-memory-utilization=0.70', argv)
+                self.assertNotIn('--gpu-memory-utilization=0.88', argv)
+                self.assertEqual(sum(a.startswith('--gpu-memory-utilization=') for a in argv), 1)
+                self.assertIn('--max-seq-len=262144', argv)
+                self.assertIn('--max-num-seqs=8', argv)
+
+    def test_defaults_stay_at_88_when_the_sidecar_file_is_not_used(self):
+        # The default .env.example is unchanged: neither PROFILE nor the
+        # utilization override is live there, and the shipped profiles still
+        # carry 0.88.
+        env_example = (HERE.parent/'.env.example').read_text().splitlines()
+        self.assertFalse([l for l in env_example if l.startswith('PROFILE=')])
+        self.assertFalse([l for l in env_example if 'GPU_MEMORY_UTILIZATION=' in l
+                          and not l.startswith('#')])
+        for name in PROFILES:
+            argv, _ = serve.launch(self.environment, load_profile(name))
+            with self.subTest(profile=name):
+                self.assertIn('--gpu-memory-utilization=0.88', argv)
+
     def test_missing_hca_fails_and_explicit_rails_are_exact(self):
         missing = dict(self.environment)
         missing.pop('FABRIC_HCA', None)
@@ -193,6 +241,7 @@ class LaunchContract(unittest.TestCase):
                 (root/dev/'ports'/'1').mkdir(parents=True)
                 (root/dev/'ports'/'1'/'state').write_text(state + '\n')
                 (root/dev/'device').symlink_to(pci/addr)
+                _rocev2_gid(root/dev)
             self.assertEqual(serve.fabric_hcas('rocep1s0f0', root), ['rocep1s0f0', 'roceP2p1s0f0'])
             self.assertEqual(serve.fabric_hcas('rocep1s0f1', root), ['rocep1s0f1'])
             self.assertEqual(serve.fabric_hcas('rocep1s0f0,roceP2p1s0f0', root),
@@ -204,6 +253,26 @@ class LaunchContract(unittest.TestCase):
         for bad in ('', 'a0,', 'a0,b1\nX=1', 'a0;b1', 'a0:1', 'a0,a0'):
             with self.subTest(hca=bad), self.assertRaises(ValueError):
                 serve.launch(dict(self.environment, FABRIC_HCA=bad), self.profile)
+
+    def test_fabric_hca_skips_a_sibling_without_an_ipv4_rocev2_gid(self):
+        # A rail can be ACTIVE while its netdev carries no address, so it has no IPv4
+        # RoCE v2 GID and NCCL cannot use it. Fall back to the rail that does have one
+        # instead of failing to initialize NCCL after a full weight load.
+        with tempfile.TemporaryDirectory() as root:
+            root = Path(root)
+            pci = root/'pci'
+            for dev, addr in [('rocep1s0f0', '0000:01:00.0'),
+                              ('roceP2p1s0f0', '0002:01:00.0')]:
+                (pci/addr).mkdir(parents=True)
+                (root/dev/'ports'/'1').mkdir(parents=True)
+                (root/dev/'ports'/'1'/'state').write_text('4: ACTIVE\n')
+                (root/dev/'device').symlink_to(pci/addr)
+            _rocev2_gid(root/'rocep1s0f0')
+            _link_local_gid(root/'roceP2p1s0f0')
+            self.assertEqual(serve.fabric_hcas('rocep1s0f0', root), ['rocep1s0f0'])
+            # an explicitly requested rail is never dropped
+            self.assertEqual(serve.fabric_hcas('rocep1s0f0,roceP2p1s0f0', root),
+                             ['rocep1s0f0', 'roceP2p1s0f0'])
 
     def test_invalid_cluster_configuration_fails_before_process_launch(self):
         for key, value in [('NODE_RANK', '2'), ('MASTER_ADDR', 'not-an-address'),
@@ -267,6 +336,21 @@ class StartNode(unittest.TestCase):
         self.assertIn('-e SPARKQWEN_FP8_GDN=1 ', docker_run[0])
         self.assertIn('-e SPARKQWEN_PROFILE=4x262k ', docker_run[0])
         self.assertIn('-e SPARKQWEN_GPU_MEMORY_UTILIZATION=0.90 ', docker_run[0])
+
+    def test_sidecars_example_reaches_both_ranks_with_a_matching_share(self):
+        # The measured sidecar arrangement is 8x262k at 0.70 on BOTH ranks; a
+        # rank that takes a different share would mis-size the shared KV pool.
+        sidecars = ([line for line in (HERE.parent/'.env.sidecars.example').read_text().splitlines()
+                     if line and not line.startswith('#')])
+        self.assertEqual(sidecars, ['WORKER=you@worker.example', 'PROFILE=8x262k',
+                                    'GPU_MEMORY_UTILIZATION=0.70'])
+        for rank in ('0', '1'):
+            run, docker_run = self.start(rank, '--profile', '8x262k',
+                                         '--gpu-memory-utilization', '0.70')
+            self.assertEqual(run.returncode, 0, run.stderr)
+            with self.subTest(rank=rank):
+                self.assertIn('-e SPARKQWEN_PROFILE=8x262k ', docker_run[0])
+                self.assertIn('-e SPARKQWEN_GPU_MEMORY_UTILIZATION=0.70 ', docker_run[0])
 
     def test_refuses_an_incomplete_checkpoint_or_bad_arguments(self):
         (self.checkpoint/'model.safetensors.index.json').unlink()

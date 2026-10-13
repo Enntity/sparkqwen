@@ -1,0 +1,59 @@
+{
+  "schema": "sparkqwen.shared-host-observation/v1",
+  "date": "2026-10-13",
+  "source_commit": "0cf2436de5211b41edf4d92071180c75cec31dd8",
+  "engine_commit": "1c43247d93ca050f02cb67b0603e88edfe3d92a5",
+  "image": "ghcr.io/enntity/atlas-sparkqwen@sha256:63fcc9f8f87a3963aba91f0a5dbf2c1cf5efa1d809c4ab1b52bd5853979e73ed",
+  "hardware": "2x DGX Spark GB10, TP=EP=2",
+  "profile": "8x262k",
+  "gpu_memory_utilization": 0.7,
+  "kv_tokens_limiting_rank": 1351648,
+  "rank_memory_total_kib": 127598832,
+  "sidecars": {
+    "leader": [
+      "Qwen3-Embedding-4B bfloat16,8192 context,0.11 vLLM utilization",
+      "two Runtime clients"
+    ],
+    "worker": [
+      "Qwen-Image-2.1-Turbo-NVFP4 on demand"
+    ]
+  },
+  "concurrency_observation": {
+    "duration_seconds": 86.664,
+    "samples": 18,
+    "overlap_samples": 18,
+    "active_qwen_requests": 3,
+    "successful_presence_completions": 3,
+    "presence_queue_wait_ms": [
+      0,
+      0,
+      0
+    ],
+    "first_content_ms": [
+      963,
+      943,
+      1290
+    ],
+    "minimum_available_gib": {
+      "leader": 14.677230834960938,
+      "worker": 20.751049041748047
+    },
+    "request_errors": 0,
+    "oom_kills": 0,
+    "container_restarts": 0,
+    "observed_swap_in_out": 0
+  },
+  "separate_image_generation_observation": {
+    "size": "1024x1024",
+    "elapsed_ms": 32574,
+    "output_bytes": 1015867,
+    "minimum_worker_available_gib": 20.952770233154297
+  },
+  "limits": [
+    "Capacity and headroom depend on checkpoint, installed services, and host state.",
+    "Three naturally overlapping calls observed; not an eight-request full-context stress test.",
+    "Image generation was a separate co-residency observation, not the same concurrency window.",
+    "The 0.72 setting has not been qualified.",
+    "These measurements predate the refusal-content and checkpoint-probe maintenance fixes."
+  ]
+}

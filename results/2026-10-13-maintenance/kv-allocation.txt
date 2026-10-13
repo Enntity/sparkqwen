@@ -1,0 +1,4 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+rank 0: 2026-10-13T09:54:46.276669Z  INFO spark_model::factory::build: KV cache: 121.7 GB total × 70% util = 85.2 GB budget; 63.5 GB pre-KV + 4.7 GB reserve → 16.9 GB for KV (incl. 1.0 GB for 768 B/token of per-sequence indexer state) → 87120 blocks × 16 tok/block = 1393920 max KV tokens
+rank 1: 2026-10-13T09:54:45.250788Z  INFO spark_model::factory::build: KV cache: 121.7 GB total × 70% util = 85.2 GB budget; 61.7 GB pre-KV + 4.7 GB reserve → 18.8 GB for KV (incl. 1.1 GB for 768 B/token of per-sequence indexer state) → 96568 blocks × 16 tok/block = 1545088 max KV tokens
+rank 1: 2026-10-13T09:54:46.281812Z  INFO spark_model::factory::build::glm: KV cache: rank 1 fits 96568 blocks; all ranks agree on 87120
