@@ -6,7 +6,7 @@ time. Run steps 1–3 on **both** Sparks with the same `MODEL_ROOT`.
 
 | Component | Pin |
 |---|---|
-| Engine | [`Enntity/atlas`](https://github.com/Enntity/atlas), `sparkqwen/atlas-20261010-rc16` at 1c43247d ([`install/atlas-source.json`](../install/atlas-source.json), [docs/ENGINE.md](ENGINE.md)) |
+| Engine | [`Enntity/atlas`](https://github.com/Enntity/atlas), `fix/sparkqwen-rc16-refusal-content` at 1c72e586 ([`install/atlas-source.json`](../install/atlas-source.json), [docs/ENGINE.md](ENGINE.md)) |
 | Model | [`nvidia/Qwen3.8-Flash-Next-NVFP4`](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-NVFP4) @ `fc694b54fb0174e0913e6adf86691ef85a4ead47` ([`install/checkpoint.json`](../install/checkpoint.json)) |
 | Build dependencies | CUTLASS `cf064d2e`, NCCL 2.31.2, Rust 1.93.1, CUDA 13.0 |
 | Profiles | [`install/profiles/`](../install/profiles/): `8x32k` (default), `4x262k` and `8x262k` (long context) |
@@ -83,9 +83,35 @@ default. Use the same setting on both ranks; see
 the two-Spark default since RC15.
 
 **Memory share.** `--gpu-memory-utilization` (two decimals, 0.70–0.95) on both
-ranks overrides the profiles' 0.88, the only value we have measured. A lower
-share reserves host and service memory but shrinks the shared KV token pool;
-the published context and concurrency measurements do not establish capacity at lower settings.
+ranks overrides the profiles' default 0.88. The sidecar configuration below
+uses 0.70; a lower share leaves memory for other services and shrinks the shared
+KV pool. The default-profile benchmarks do not establish capacity at other settings.
+
+## Running beside sidecars at util 0.70
+
+When other services share each Spark, give the engine a smaller memory share
+so the sidecars fit. `.env.sidecars.example` is the measured arrangement; copy
+it over `.env` and edit `WORKER`:
+
+```sh
+git clone https://github.com/Enntity/sparkqwen.git
+cd sparkqwen
+cp .env.sidecars.example .env      # edit WORKER to the other Spark's ssh destination
+./start.sh fabric                  # read-only fabric preflight on both hosts
+./start.sh
+```
+
+It sets `PROFILE=8x262k` and `GPU_MEMORY_UTILIZATION=0.70` on **both** ranks:
+the pair uses a common KV capacity, so keep its configuration consistent. The profile still advertises eight requests x 256K context, but the
+pool is shared, not 8x256K guaranteed (see [LIMITATIONS.md](LIMITATIONS.md),
+Long context). At 0.70 the measured pair reported 1,351,648 shared KV tokens
+on the limiting rank (~1.35M). 0.72 is an estimate only and has not been
+qualified. What fits is host-dependent: a lower share reserves host and
+service memory but shrinks the pool, and GB10 hosts can hang when memory runs
+out, so keep several GB free.
+
+The sidecars themselves are separate installations maintained outside this
+repository; `./start.sh` neither installs nor manages them.
 
 **Stopping.** `docker rm -f atlas-sparkqwen-rank0` (and `-rank1`).
 

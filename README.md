@@ -22,14 +22,14 @@ cp .env.example .env      # set WORKER to the other Spark's ssh destination
 
 **Status: release candidate 16.** The engine is pinned
 ([`install/atlas-source.json`](install/atlas-source.json): Enntity/atlas
-`sparkqwen/atlas-20261010-rc16` at 1c43247d). `./start.sh` from a clean
+`fix/sparkqwen-rc16-refusal-content` at 1c72e586). `./start.sh` from a clean
 clone built the image, served the pair and reproduced the numbers below on
 our Sparks. The image is published, so `./start.sh` pulls it
 (`ghcr.io/enntity/atlas-sparkqwen:656234c336af`) rather than compiling.
 
 This README describes RC16: install tree `656234c336af` and the Atlas engine
 pinned in [`install/atlas-source.json`](install/atlas-source.json),
-`sparkqwen/atlas-20261010-rc16` at `1c43247d` (tree `59cace5a`). The engine
+`fix/sparkqwen-rc16-refusal-content` at `1c72e586` (tree `3e7cb66c`). The engine
 uses an Atlas-Inf `main` base at `4405bce3`; the Enntity release and
 contribution branches are published separately from Atlas-Inf `main`.
 
@@ -138,6 +138,15 @@ XML call format (Atlas's `qwen3_coder` parser); `bench/tool_probe.py` passes
 Each profile sets a concurrency limit and a per-request context limit. All
 requests and the prefix cache draw on one shared pool; requests that together
 need more tokens than the pool holds wait for room.
+
+**Sharing the Sparks with sidecars.** To run the engine beside other services,
+use the copyable [`.env.sidecars.example`](.env.sidecars.example): the measured
+arrangement is `8x262k` at `GPU_MEMORY_UTILIZATION=0.70` on **both** ranks
+(a mismatched share mis-sizes the one shared KV pool). At 0.70 the measured
+pair held 1,351,648 shared KV tokens on the limiting rank (~1.35M); 0.72 is an
+estimate only and has not been qualified. What fits is host-dependent. The
+sidecars are separate installations; `./start.sh` does not install them
+([docs/LIMITATIONS.md](docs/LIMITATIONS.md), Running beside sidecars).
 
 The greedy settings above are for measurement. For real work leave sampling
 unset (the defaults above) or use the model card's values; greedy decoding can

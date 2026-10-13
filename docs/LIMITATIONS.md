@@ -66,6 +66,28 @@ What to know before relying on SparkQwen.
   conversations that arrive together and share a long prompt prefix do not
   yet share its computation, so their first turns queue (6-12 s for four
   conversations over a shared ~20K-token system prompt).
+- Every profile, `8x262k` included, draws all requests and the prefix cache
+  from one shared KV pool. `8x262k` is a concurrency and per-request context
+  limit, not eight reserved 256K slots: eight requests that together need
+  more than the pool holds wait for room.
+
+## Running beside sidecars
+
+- The sidecar arrangement (`.env.sidecars.example`: `8x262k` at
+  `GPU_MEMORY_UTILIZATION=0.70` on both ranks) is the recipe on a smaller
+  memory share, so other services fit on the same Sparks. The measured pair
+  reported 1,351,648 shared KV tokens on the limiting rank (~1.35M) with a
+  real workload overlapping two entity requests and one OMP stream at 0.70
+  (zero queueing; min 14.7 / 20.8 GiB available on the two ranks), and a
+  separate image-generation canary (1024x1024 with Qwen) left 20.95 GiB
+  minimum available on the worker. 0.72 is an estimate only and has not been
+  qualified.
+- What fits is host-dependent. A lower share reserves host and service memory
+  but shrinks the shared KV pool; GB10 hosts can hang when unified memory runs
+  out, so keep several GB free and treat the 0.70 numbers as specific to the
+  measured hosts.
+- The sidecars are separate installations maintained outside this repository.
+  `./start.sh` neither installs nor manages them.
 
 ## Numerics
 

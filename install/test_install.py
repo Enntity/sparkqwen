@@ -169,6 +169,34 @@ class LaunchContract(unittest.TestCase):
             with self.subTest(util=bad), self.assertRaises(ValueError):
                 serve.launch(dict(self.environment, SPARKQWEN_GPU_MEMORY_UTILIZATION=bad), self.profile)
 
+    def test_sidecars_example_override_reaches_the_engine_on_both_ranks(self):
+        # The sidecar share must survive launch() too: one
+        # --gpu-memory-utilization that replaces the profile's 0.88, equal on
+        # both ranks, with the 8x262k size limits intact.
+        for rank in ('0', '1'):
+            argv, _ = serve.launch(dict(self.environment, NODE_RANK=rank,
+                                        SPARKQWEN_GPU_MEMORY_UTILIZATION='0.70'),
+                                   load_profile('8x262k'))
+            with self.subTest(rank=rank):
+                self.assertIn('--gpu-memory-utilization=0.70', argv)
+                self.assertNotIn('--gpu-memory-utilization=0.88', argv)
+                self.assertEqual(sum(a.startswith('--gpu-memory-utilization=') for a in argv), 1)
+                self.assertIn('--max-seq-len=262144', argv)
+                self.assertIn('--max-num-seqs=8', argv)
+
+    def test_defaults_stay_at_88_when_the_sidecar_file_is_not_used(self):
+        # The default .env.example is unchanged: neither PROFILE nor the
+        # utilization override is live there, and the shipped profiles still
+        # carry 0.88.
+        env_example = (HERE.parent/'.env.example').read_text().splitlines()
+        self.assertFalse([l for l in env_example if l.startswith('PROFILE=')])
+        self.assertFalse([l for l in env_example if 'GPU_MEMORY_UTILIZATION=' in l
+                          and not l.startswith('#')])
+        for name in PROFILES:
+            argv, _ = serve.launch(self.environment, load_profile(name))
+            with self.subTest(profile=name):
+                self.assertIn('--gpu-memory-utilization=0.88', argv)
+
     def test_missing_hca_fails_and_explicit_rails_are_exact(self):
         missing = dict(self.environment)
         missing.pop('FABRIC_HCA', None)
@@ -267,6 +295,21 @@ class StartNode(unittest.TestCase):
         self.assertIn('-e SPARKQWEN_FP8_GDN=1 ', docker_run[0])
         self.assertIn('-e SPARKQWEN_PROFILE=4x262k ', docker_run[0])
         self.assertIn('-e SPARKQWEN_GPU_MEMORY_UTILIZATION=0.90 ', docker_run[0])
+
+    def test_sidecars_example_reaches_both_ranks_with_a_matching_share(self):
+        # The measured sidecar arrangement is 8x262k at 0.70 on BOTH ranks; a
+        # rank that takes a different share would mis-size the shared KV pool.
+        sidecars = ([line for line in (HERE.parent/'.env.sidecars.example').read_text().splitlines()
+                     if line and not line.startswith('#')])
+        self.assertEqual(sidecars, ['WORKER=you@worker.example', 'PROFILE=8x262k',
+                                    'GPU_MEMORY_UTILIZATION=0.70'])
+        for rank in ('0', '1'):
+            run, docker_run = self.start(rank, '--profile', '8x262k',
+                                         '--gpu-memory-utilization', '0.70')
+            self.assertEqual(run.returncode, 0, run.stderr)
+            with self.subTest(rank=rank):
+                self.assertIn('-e SPARKQWEN_PROFILE=8x262k ', docker_run[0])
+                self.assertIn('-e SPARKQWEN_GPU_MEMORY_UTILIZATION=0.70 ', docker_run[0])
 
     def test_refuses_an_incomplete_checkpoint_or_bad_arguments(self):
         (self.checkpoint/'model.safetensors.index.json').unlink()
