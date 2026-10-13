@@ -51,7 +51,8 @@ RUN --mount=type=cache,target=/build/target,id=atlas-cargo-target-sparkqwen,shar
     set -eu; for check in atlas-core:qwen4_exp_ spark-server:scheduler::lifecycle_tests \
         spark-server:scheduler::admission:: spark-server:cancellation_tests \
         spark-server:disconnect_prefill_tests spark-server:buffered_disconnect_ \
-        spark-server:refusal spark-server:api::chat_stream spark-server:tool_parser::; do \
+        spark-server:refusal spark-server:api::chat_stream spark-server:tool_parser:: \
+        spark-runtime:radix_tree:: spark-model:block_mgmt::tails::tests; do \
       crate=${check%%:*}; filter=${check#*:}; \
       if [ "$crate" = spark-server ]; then target="--bin spark"; else target="--lib"; fi; \
       LD_LIBRARY_PATH=/opt/cuda-stubs:/usr/local/cuda/lib64 \
