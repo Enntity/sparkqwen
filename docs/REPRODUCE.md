@@ -11,9 +11,10 @@ from the recipe's own image (the round that produced them is
 `raw/dev/round_rc16.sh`) and `raw/dev/` from the release gate. vLLM on the
 same pair is in
 [`results/2026-10-08-rc15/raw/vllm/`](../results/2026-10-08-rc15/RESULT.md).
-The recipe image uses install tree `656234c336af` and the engine pin in
-`install/atlas-source.json`. Use a checkout with those same pins and settings
-when reproducing the release. Everything below runs with the default profile
+The historical RC16 recipe image uses install tree `656234c336af` and Atlas
+engine `1c43247d93ca050f02cb67b0603e88edfe3d92a5`. Check out SparkQwen
+commit `bde3af6` to reproduce those pins and settings; the current maintenance
+release pins a newer engine. Everything below runs with the default profile
 and no opt-ins unless it says otherwise.
 
 ## sparkDash decode

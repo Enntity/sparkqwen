@@ -5,15 +5,20 @@ What to know before relying on SparkQwen.
 
 ## Installation
 
-- The published image (`ghcr.io/enntity/atlas-sparkqwen:656234c336af`) is
+- The published image (`ghcr.io/enntity/atlas-sparkqwen:b151fbe840a1`) is
   arm64 for GB10 only; `PULL=0` builds the same tree from source (30-60
-  minutes cold). The recipe ran end to end from a
-  clean clone on our pair and reproduced the release gates
+  minutes cold). The historical RC16 recipe (install tree
+  `656234c336af`, engine `1c43247d`) ran end to end from a clean clone
+  on our pair and reproduced its release gates
   (`results/2026-10-10-rc16`, first paragraph), with the checkpoint already
   in place. The download step was checked separately: it fetched the pinned
   checkpoint (124 GiB) byte-identical to ours.
 
 ## Scope of the measurements
+
+The throughput, quality and exactness results below come from the historical
+RC16 receipts, not a full benchmark rerun on the maintenance image. The 0.70
+sidecar observation records its own source and image identity.
 
 - We tested one pair of DGX Sparks on one 200G cable, in single sessions.
   Other firmware, drivers, cables or cooling may give different numbers.
