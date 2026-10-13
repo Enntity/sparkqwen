@@ -100,11 +100,12 @@ def launch(environ, profile):
     env['ATLAS_RDMA_RAILS'] = env['NCCL_IB_HCA']
     args = [str(arg).replace('${model}', model) for arg in profile['server_argv']]
     # A dedicated pair can give the KV pool more of the unified memory than the
-    # shipped default leaves free.
+    # shipped default leaves free; a lower share reserves host/service memory
+    # but shrinks the shared KV token pool. No context or concurrency promise.
     util = environ.get('SPARKQWEN_GPU_MEMORY_UTILIZATION')
     if util:
-        if not re.fullmatch(r'0\.(8[0-9]|9[0-5])', util):
-            raise ValueError('SPARKQWEN_GPU_MEMORY_UTILIZATION must be 0.80 to 0.95')
+        if not re.fullmatch(r'0\.(7[0-9]|8[0-9]|9[0-5])', util):
+            raise ValueError('SPARKQWEN_GPU_MEMORY_UTILIZATION must be 0.70 to 0.95')
         args = [f'--gpu-memory-utilization={util}' if a.startswith('--gpu-memory-utilization=') else a
                 for a in args]
     name = environ.get('SERVED_MODEL_NAME', 'qwen3.8-flash-next-atlas')

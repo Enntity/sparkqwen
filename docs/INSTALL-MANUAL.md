@@ -82,8 +82,10 @@ default. Use the same setting on both ranks; see
 `--qsa-tc2r` was removed in RC16: the tensor-core QSA prefill it selected is
 the two-Spark default since RC15.
 
-**Memory share.** `--gpu-memory-utilization` (0.80–0.95) on both ranks
-overrides the profiles' 0.88, the only value we have measured.
+**Memory share.** `--gpu-memory-utilization` (two decimals, 0.70–0.95) on both
+ranks overrides the profiles' 0.88, the only value we have measured. A lower
+share reserves host and service memory but shrinks the shared KV token pool;
+the published context and concurrency measurements do not establish capacity at lower settings.
 
 **Stopping.** `docker rm -f atlas-sparkqwen-rank0` (and `-rank1`).
 

@@ -10,7 +10,7 @@ usage() {
   cat >&2 <<'EOF'
 usage: start-node.sh --rank 0|1 --leader-address IP --model-root DIR --image TAG
                      [--fabric-interface IFACE] [--fabric-hca DEVICE[,DEVICE...]]
-                     [--profile 8x32k|4x262k|8x262k|FILE] [--gpu-memory-utilization 0.80-0.95]
+                     [--profile 8x32k|4x262k|8x262k|FILE] [--gpu-memory-utilization 0.70-0.95]
                      [--fp8-gdn] [--cuda-cache DIR] [--name NAME]
 
   --leader-address   rank 0's IPv4 address on the direct Spark-to-Spark fabric
@@ -20,8 +20,10 @@ usage: start-node.sh --rank 0|1 --leader-address IP --model-root DIR --image TAG
                      interface of the first --fabric-hca; otherwise required)
   --profile          a profile shipped in the image (default 8x32k) or a JSON
                      file of your own; use the same one on both ranks
-  --gpu-memory-utilization  share of unified memory for the engine (default:
-                     the profile's 0.88)
+  --gpu-memory-utilization  share of unified memory for the engine, two
+                     decimals from 0.70 to 0.95 (default: the profile's 0.88).
+                     A lower share reserves host/service memory but shrinks the
+                     shared KV token pool; no context or concurrency promise.
   --fp8-gdn          opt-in, lossy: FP8 Gated DeltaNet projections (faster
                      decode, not bit-exact); use it on both ranks
   --cuda-cache       persistent CUDA JIT cache (default: ~/.cache/atlas-cuda)

@@ -161,7 +161,11 @@ class LaunchContract(unittest.TestCase):
         argv, _ = serve.launch(dict(self.environment, SPARKQWEN_GPU_MEMORY_UTILIZATION='0.91'), self.profile)
         self.assertIn('--gpu-memory-utilization=0.91', argv)
         self.assertEqual(sum(a.startswith('--gpu-memory-utilization=') for a in argv), 1)
-        for bad in ('0.99', '1', '0.5', '0.9 ', '0.93x'):
+        for good in ('0.70', '0.80'):
+            with self.subTest(util=good):
+                argv, _ = serve.launch(dict(self.environment, SPARKQWEN_GPU_MEMORY_UTILIZATION=good), self.profile)
+                self.assertIn(f'--gpu-memory-utilization={good}', argv)
+        for bad in ('0.69', '0.96', '0.99', '1', '0.5', '0.9 ', '0.93x'):
             with self.subTest(util=bad), self.assertRaises(ValueError):
                 serve.launch(dict(self.environment, SPARKQWEN_GPU_MEMORY_UTILIZATION=bad), self.profile)
 
