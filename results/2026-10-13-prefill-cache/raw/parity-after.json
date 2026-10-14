@@ -1,0 +1,173 @@
+{
+  "tag": "after",
+  "at": "2026-10-13T23:19:29.491Z",
+  "cases": [
+    {
+      "name": "json",
+      "ids": [
+        90,
+        198,
+        220,
+        328,
+        2738,
+        763,
+        328,
+        547,
+        487,
+        198,
+        220,
+        328,
+        82,
+        39507,
+        763,
+        498,
+        16,
+        11,
+        220,
+        19,
+        11,
+        220,
+        24,
+        11,
+        220,
+        16,
+        21,
+        11,
+        220,
+        17,
+        20,
+        60,
+        198,
+        92
+      ],
+      "text": "{\n  \"status\": \"ok\",\n  \"squares\": [1, 4, 9, 16, 25]\n}",
+      "usage": {
+        "prompt_tokens": 43,
+        "completion_tokens": 35,
+        "total_tokens": 78,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 24,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 152.557245,
+        "response_token/s": 78.70282048316272
+      },
+      "finish": "stop"
+    },
+    {
+      "name": "code",
+      "ids": [
+        71093,
+        12305,
+        198,
+        727,
+        43364,
+        2784,
+        11,
+        292,
+        1590,
+        198,
+        262,
+        1345,
+        292,
+        25,
+        198,
+        285,
+        264,
+        11,
+        292,
+        283,
+        292,
+        11,
+        264,
+        984,
+        292,
+        198,
+        262,
+        460,
+        264,
+        198,
+        71093
+      ],
+      "text": "```python\ndef gcd(a, b):\n    while b:\n        a, b = b, a % b\n    return a\n```",
+      "usage": {
+        "prompt_tokens": 31,
+        "completion_tokens": 32,
+        "total_tokens": 63,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 22,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 116.494012,
+        "response_token/s": 79.98794772566747
+      },
+      "finish": "stop"
+    },
+    {
+      "name": "long",
+      "ids": [
+        37,
+        16,
+        18
+      ],
+      "text": "F13",
+      "usage": {
+        "prompt_tokens": 28786,
+        "completion_tokens": 4,
+        "total_tokens": 28790,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 1,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7202.997093999999,
+        "response_token/s": 32.78751376283213
+      },
+      "finish": "stop"
+    },
+    {
+      "name": "long-warm",
+      "ids": [
+        37,
+        16,
+        18
+      ],
+      "text": "F13",
+      "usage": {
+        "prompt_tokens": 28786,
+        "completion_tokens": 4,
+        "total_tokens": 28790,
+        "prompt_tokens_details": {
+          "cached_tokens": 28784,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 1,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 178.829293,
+        "response_token/s": 38.246762296831285
+      },
+      "finish": "stop"
+    }
+  ]
+}

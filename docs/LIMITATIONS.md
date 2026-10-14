@@ -5,7 +5,7 @@ What to know before relying on SparkQwen.
 
 ## Installation
 
-- The published image (`ghcr.io/enntity/atlas-sparkqwen:b151fbe840a1`) is
+- The published image (`ghcr.io/enntity/atlas-sparkqwen:a678dfce7c4c`) is
   arm64 for GB10 only; `PULL=0` builds the same tree from source (30-60
   minutes cold). The historical RC16 recipe (install tree
   `656234c336af`, engine `1c43247d`) ran end to end from a clean clone
