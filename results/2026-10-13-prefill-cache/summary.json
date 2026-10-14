@@ -1,0 +1,164 @@
+{
+  "cacheFillBefore": {
+    "first8ms": 7260.613084875002,
+    "last8ms": 7862.254660125,
+    "last8BackendMs": 7525.721343125,
+    "cachedTokens": [
+      32
+    ],
+    "promptTokens": [
+      28819,
+      28820
+    ]
+  },
+  "cacheFillAfter": {
+    "first8ms": 7325.645304375,
+    "last8ms": 7323.803473,
+    "last8BackendMs": 7276.2993165,
+    "cachedTokens": [
+      32
+    ],
+    "promptTokens": [
+      28818,
+      28819
+    ]
+  },
+  "fullCacheImprovementPercent": 6.848559483272176,
+  "prefillMatrix": {
+    "2048": {
+      "beforeSeconds": 0.781,
+      "afterSeconds": 0.7705,
+      "beforePromptTokens": [
+        2022,
+        2023
+      ],
+      "afterPromptTokens": [
+        2022,
+        2023
+      ]
+    },
+    "8192": {
+      "beforeSeconds": 2.253,
+      "afterSeconds": 2.1415,
+      "beforePromptTokens": [
+        8170,
+        8169
+      ],
+      "afterPromptTokens": [
+        8170,
+        8169
+      ]
+    },
+    "16384": {
+      "beforeSeconds": 4.446,
+      "afterSeconds": 4.112,
+      "beforePromptTokens": [
+        16390,
+        16408
+      ],
+      "afterPromptTokens": [
+        16390,
+        16408
+      ]
+    },
+    "28672": {
+      "beforeSeconds": 7.7675,
+      "afterSeconds": 7.2955000000000005,
+      "beforePromptTokens": [
+        28809,
+        28819
+      ],
+      "afterPromptTokens": [
+        28809,
+        28819
+      ]
+    }
+  },
+  "exactTokenFixtures": [
+    {
+      "case": "json",
+      "tokenIds": 34,
+      "exactMatch": true
+    },
+    {
+      "case": "code",
+      "tokenIds": 31,
+      "exactMatch": true
+    },
+    {
+      "case": "long",
+      "tokenIds": 3,
+      "exactMatch": true
+    },
+    {
+      "case": "long-warm",
+      "tokenIds": 3,
+      "exactMatch": true
+    }
+  ],
+  "tools": {
+    "single": "1/1",
+    "typed": "1/1",
+    "parallel": "1/1",
+    "followup": "1/1",
+    "no_tool": "1/1",
+    "choice_none": "1/1",
+    "stream": "1/1"
+  },
+  "structuredDecode": {
+    "1": {
+      "type": "structured",
+      "c": 1,
+      "medianTps": 103.39,
+      "aggregateTps": 103.39,
+      "medianTtftMs": 156,
+      "perStream": [
+        103.39
+      ]
+    },
+    "8": {
+      "type": "structured",
+      "c": 8,
+      "medianTps": 49.05,
+      "aggregateTps": 370.09,
+      "medianTtftMs": 520.4,
+      "perStream": [
+        48.63,
+        49.05,
+        49.05,
+        49.61,
+        48.14,
+        48.52,
+        49.05,
+        49.05
+      ]
+    }
+  },
+  "directStructuredC8": {
+    "type": "structured",
+    "c": 8,
+    "medianTps": 49.25,
+    "aggregateTps": 386.75,
+    "medianTtftMs": 279.5,
+    "perStream": [
+      49.85,
+      49.25,
+      49.25,
+      49.85,
+      48.35,
+      48.72,
+      49.25,
+      49.25
+    ]
+  },
+  "identity": {
+    "image": "atlas-sparkqwen:prefill-885a28ee5daf",
+    "imageId": "sha256:19464250e461620289df1a762c7773e91a1a3be3770fee4796128811d0216d40",
+    "engineCommit": "f4e87f42977c79ebca9ea5889ce0ab3ea3e65b4a",
+    "engineTree": "34aa2bf1e2ad62904e07b1e5221374ba14d3461c",
+    "installTree": "885a28ee5daff4207aeee37985441b23ee162334",
+    "published": false,
+    "baseImage": "ghcr.io/enntity/atlas-sparkqwen@sha256:ea6a2df03adfc8802a1baf6ab1d4b55c69dd76588f36bfd5d189781500e75830"
+  },
+  "note": "Original candidate measurements on one TP2 GB10 pair; candidate identity is retained separately from the eventual release image. All repetitions are preserved in accompanying receipts. 48 distinct approximately 28K prompts per arm; all report 32 cached tokens. No full release suite rerun."
+}

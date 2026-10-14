@@ -1,0 +1,66 @@
+{
+  "_comment": "SPDX-License-Identifier: AGPL-3.0-only",
+  "description": "Focused debug CPU microbenchmark on macOS, real RadixTree eviction versus independent literal old scan; one fixture per topology and version. CPU-only evidence, not GPU throughput. Candidate before f4e87f42, after bff9a2be.",
+  "samples": [
+    {
+      "stage": "before",
+      "nodes": 80000,
+      "conversations": 20000,
+      "depth": 4,
+      "calls": 128,
+      "candidateMedianNs": 1964334,
+      "literalOldScanMedianNs": 678250,
+      "candidateTotalNs": 253617752,
+      "literalOldScanTotalNs": 87631300
+    },
+    {
+      "stage": "before",
+      "nodes": 80000,
+      "conversations": 20,
+      "depth": 4000,
+      "calls": 128,
+      "candidateMedianNs": 1018708,
+      "literalOldScanMedianNs": 629458,
+      "candidateTotalNs": 132569169,
+      "literalOldScanTotalNs": 82692379
+    },
+    {
+      "stage": "after",
+      "nodes": 80000,
+      "conversations": 20000,
+      "depth": 4,
+      "calls": 128,
+      "candidateMedianNs": 652292,
+      "literalOldScanMedianNs": 686459,
+      "candidateTotalNs": 85056290,
+      "literalOldScanTotalNs": 88906955
+    },
+    {
+      "stage": "after",
+      "nodes": 80000,
+      "conversations": 20,
+      "depth": 4000,
+      "calls": 128,
+      "candidateMedianNs": 619458,
+      "literalOldScanMedianNs": 626042,
+      "candidateTotalNs": 80362716,
+      "literalOldScanTotalNs": 82133659
+    }
+  ],
+  "bulkAfter": {
+    "nodes": 80000,
+    "reclaimed": 1800,
+    "candidateMs": 5.314792,
+    "literalOldScanMs": 1222.02175,
+    "repetitions": 1,
+    "exactVictims": true
+  },
+  "rawReceipts": [
+    "raw/evict-one-before-20000.log",
+    "raw/evict-one-before-20.log",
+    "raw/evict-one-20000.log",
+    "raw/evict-one-20.log",
+    "raw/bulk-after-fastpath.log"
+  ],
+  "singleBlockProbeSource": "raw/evict-one-probe-test.rs"
+}

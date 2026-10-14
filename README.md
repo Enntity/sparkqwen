@@ -20,20 +20,26 @@ cp .env.example .env      # set WORKER to the other Spark's ssh destination
 ./start.sh
 ```
 
-**Status: RC16 maintenance release.** The engine is pinned in
+**Status: RC16 prefill-cache maintenance release.** The engine is pinned in
 [`install/atlas-source.json`](install/atlas-source.json) to Enntity/atlas
-`sparkqwen/atlas-20261013-sidecars` at `84e7c734` (tree `80d871d6`). The
-matching image is `ghcr.io/enntity/atlas-sparkqwen:b151fbe840a1`.
-This release adds a copyable [TP2 sidecar setup](.env.sidecars.example),
-per-node fabric selection, and fixes for blocking chat content and packed
-checkpoint detection. The engine uses an Atlas-Inf `main` base at `4405bce3`;
-Enntity's release branches are published separately from Atlas-Inf `main`.
+`sparkqwen/atlas-20261013-prefill` at `fcf9735f` (tree `64c4b6db`).
+The matching image is `ghcr.io/enntity/atlas-sparkqwen:a678dfce7c4c`.
+Its tag is the committed `install/` tree; `start.sh` pulls it by default.
+
+This release reduces CPU work when the prefix cache fills up. It retains the
+[0.70 TP2 sidecar setup](.env.sidecars.example), profiles, per-node fabric
+selection, blocking chat content fix and packed checkpoint detection.
+[Prefill-cache measurements and qualification](results/2026-10-13-prefill-cache/RESULT.md)
+include the same-pair before/after receipts and the limits of this maintenance
+release. The engine uses an Atlas-Inf `main` base at `4405bce3`; Enntity's
+release branches are published separately from Atlas-Inf `main`.
 
 The throughput and exactness results below are historical RC16 measurements
 (engine `1c43247d`, install tree `656234c336af`), not a rerun of that benchmark
-suite on the maintenance image. See [reproduction instructions](docs/REPRODUCE.md)
-and the separate [0.70 sidecar observation](results/2026-10-13-shared-host/RESULT.md)
-for their exact source and image identities. The [maintenance qualification](results/2026-10-13-maintenance/RESULT.md) records the new image’s live canaries and sidecar checks.
+suite on this maintenance image. See [reproduction instructions](docs/REPRODUCE.md),
+the [0.70 sidecar observation](results/2026-10-13-shared-host/RESULT.md), and
+[earlier maintenance qualification](results/2026-10-13-maintenance/RESULT.md)
+for those exact source and image identities.
 
 ## What it does
 
@@ -90,7 +96,7 @@ Run it on the Spark that will serve the API (rank 0). Each step is skipped when
 already done, so rerunning it just restarts the engine.
 
 1. **Image.** Pulls `ghcr.io/enntity/atlas-sparkqwen:<tag>`, where the tag is
-   the git tree of [`install/`](install/) (the release tree `b151fbe840a1`),
+   the git tree of [`install/`](install/) (the release tree `a678dfce7c4c`),
    so the image always matches your checkout. If that tag is not published
    (an edited `install/`, or `PULL=0` in `.env`), it builds the image from
    source instead ([`install/build.sh`](install/build.sh): Atlas at the commit

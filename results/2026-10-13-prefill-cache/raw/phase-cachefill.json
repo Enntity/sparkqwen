@@ -1,0 +1,1927 @@
+{
+  "tag": "cachefill",
+  "mode": "gateway",
+  "at": "2026-10-13T22:22:44.101Z",
+  "cells": [
+    {
+      "rep": 0,
+      "arm": "gateway",
+      "headersMs": 54.41066599999999,
+      "firstChunkMs": 54.542922000000004,
+      "ttftMs": 7240.718937,
+      "lastMs": 7553.677578,
+      "usage": {
+        "prompt_tokens": 28819,
+        "completion_tokens": 16,
+        "total_tokens": 28835,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 8,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7183.157416,
+        "response_token/s": 47.90542151435865
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4220",
+          "purpose": "cachefill-0-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7553,
+          "firstContentMs": 7236,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 1,
+      "arm": "gateway",
+      "headersMs": 46.679102999999486,
+      "firstChunkMs": 46.7515029999995,
+      "ttftMs": 7296.340221999999,
+      "lastMs": 7562.056177999999,
+      "usage": {
+        "prompt_tokens": 28819,
+        "completion_tokens": 16,
+        "total_tokens": 28835,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7246.47388,
+        "response_token/s": 56.43512350072429
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4221",
+          "purpose": "cachefill-1-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7562,
+          "firstContentMs": 7293,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 2,
+      "arm": "gateway",
+      "headersMs": 45.908337999999276,
+      "firstChunkMs": 45.97921700000006,
+      "ttftMs": 7239.353738,
+      "lastMs": 7504.480462999998,
+      "usage": {
+        "prompt_tokens": 28819,
+        "completion_tokens": 16,
+        "total_tokens": 28835,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7189.567555,
+        "response_token/s": 56.49403190267696
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4224",
+          "purpose": "cachefill-2-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7506,
+          "firstContentMs": 7237,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 3,
+      "arm": "gateway",
+      "headersMs": 41.260957999998936,
+      "firstChunkMs": 41.43250999999873,
+      "ttftMs": 7250.4070820000015,
+      "lastMs": 7518.036135999999,
+      "usage": {
+        "prompt_tokens": 28819,
+        "completion_tokens": 16,
+        "total_tokens": 28835,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7205.443974,
+        "response_token/s": 55.90993758885487
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4225",
+          "purpose": "cachefill-3-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7518,
+          "firstContentMs": 7247,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 4,
+      "arm": "gateway",
+      "headersMs": 43.997589999999036,
+      "firstChunkMs": 44.0693339999998,
+      "ttftMs": 7264.81552,
+      "lastMs": 7532.429215,
+      "usage": {
+        "prompt_tokens": 28819,
+        "completion_tokens": 16,
+        "total_tokens": 28835,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7216.210502,
+        "response_token/s": 55.85147487287571
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4227",
+          "purpose": "cachefill-4-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7533,
+          "firstContentMs": 7262,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 5,
+      "arm": "gateway",
+      "headersMs": 42.445018999998865,
+      "firstChunkMs": 42.49903500000073,
+      "ttftMs": 7262.099911000005,
+      "lastMs": 7580.1502980000005,
+      "usage": {
+        "prompt_tokens": 28819,
+        "completion_tokens": 16,
+        "total_tokens": 28835,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 8,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7215.336551,
+        "response_token/s": 47.00783238235444
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4228",
+          "purpose": "cachefill-5-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7602,
+          "firstContentMs": 7259,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 6,
+      "arm": "gateway",
+      "headersMs": 41.87798100000509,
+      "firstChunkMs": 41.928092000001925,
+      "ttftMs": 7259.923627000004,
+      "lastMs": 7524.704992999999,
+      "usage": {
+        "prompt_tokens": 28819,
+        "completion_tokens": 16,
+        "total_tokens": 28835,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7213.807883,
+        "response_token/s": 56.51879576260954
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4229",
+          "purpose": "cachefill-6-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7526,
+          "firstContentMs": 7258,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 7,
+      "arm": "gateway",
+      "headersMs": 41.79143599999952,
+      "firstChunkMs": 41.91041199999745,
+      "ttftMs": 7271.245642000002,
+      "lastMs": 7538.633129000002,
+      "usage": {
+        "prompt_tokens": 28819,
+        "completion_tokens": 16,
+        "total_tokens": 28835,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7225.7509359999995,
+        "response_token/s": 56.02191726795302
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4230",
+          "purpose": "cachefill-7-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7540,
+          "firstContentMs": 7269,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 8,
+      "arm": "gateway",
+      "headersMs": 40.53332799999771,
+      "firstChunkMs": 40.6462229999961,
+      "ttftMs": 7274.716415000003,
+      "lastMs": 7540.164242999992,
+      "usage": {
+        "prompt_tokens": 28819,
+        "completion_tokens": 16,
+        "total_tokens": 28835,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7229.709723,
+        "response_token/s": 56.32124708157379
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4231",
+          "purpose": "cachefill-8-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7541,
+          "firstContentMs": 7271,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 9,
+      "arm": "gateway",
+      "headersMs": 43.60176700000011,
+      "firstChunkMs": 43.7161189999897,
+      "ttftMs": 7274.9040289999975,
+      "lastMs": 7542.838506,
+      "usage": {
+        "prompt_tokens": 28819,
+        "completion_tokens": 16,
+        "total_tokens": 28835,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7227.425281000001,
+        "response_token/s": 55.83926638878094
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4232",
+          "purpose": "cachefill-9-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7544,
+          "firstContentMs": 7272,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 10,
+      "arm": "gateway",
+      "headersMs": 42.332010999991326,
+      "firstChunkMs": 42.42885899999237,
+      "ttftMs": 7286.100189999997,
+      "lastMs": 7553.654251999993,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7239.612526,
+        "response_token/s": 55.96436967962827
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4233",
+          "purpose": "cachefill-10-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7555,
+          "firstContentMs": 7284,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 11,
+      "arm": "gateway",
+      "headersMs": 39.77840200001083,
+      "firstChunkMs": 39.94134600000689,
+      "ttftMs": 7268.371453,
+      "lastMs": 7536.79690500001,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7224.665862,
+        "response_token/s": 55.76974566698262
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4234",
+          "purpose": "cachefill-11-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7537,
+          "firstContentMs": 7266,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 12,
+      "arm": "gateway",
+      "headersMs": 41.03330999999889,
+      "firstChunkMs": 41.14875000000757,
+      "ttftMs": 7279.963899000009,
+      "lastMs": 7546.15066900001,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7234.318538,
+        "response_token/s": 56.03248476580399
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4236",
+          "purpose": "cachefill-12-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7547,
+          "firstContentMs": 7277,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 13,
+      "arm": "gateway",
+      "headersMs": 46.34216000000015,
+      "firstChunkMs": 46.42435200000182,
+      "ttftMs": 7289.088416999992,
+      "lastMs": 7555.537922000003,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7237.91747,
+        "response_token/s": 56.019530469840504
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4237",
+          "purpose": "cachefill-13-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7557,
+          "firstContentMs": 7286,
+          "queueWaitMs": 1
+        }
+      ]
+    },
+    {
+      "rep": 14,
+      "arm": "gateway",
+      "headersMs": 39.93998599999759,
+      "firstChunkMs": 40.03091400000267,
+      "ttftMs": 7283.225344000006,
+      "lastMs": 7553.409686999992,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7238.239405,
+        "response_token/s": 55.222690765073345
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4239",
+          "purpose": "cachefill-14-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7555,
+          "firstContentMs": 7281,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 15,
+      "arm": "gateway",
+      "headersMs": 40.8005589999957,
+      "firstChunkMs": 40.88750299999083,
+      "ttftMs": 7278.081418999995,
+      "lastMs": 7543.748089999994,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7233.156087,
+        "response_token/s": 56.2425520800408
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4240",
+          "purpose": "cachefill-15-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7545,
+          "firstContentMs": 7276,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 16,
+      "arm": "gateway",
+      "headersMs": 45.181173999997554,
+      "firstChunkMs": 45.291892999986885,
+      "ttftMs": 7292.777986999994,
+      "lastMs": 7560.851273999986,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7244.085767,
+        "response_token/s": 55.68743577846468
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4242",
+          "purpose": "cachefill-16-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7562,
+          "firstContentMs": 7290,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 17,
+      "arm": "gateway",
+      "headersMs": 45.42045300001337,
+      "firstChunkMs": 45.527141000013216,
+      "ttftMs": 7272.71254800001,
+      "lastMs": 7539.609423000016,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7224.447558999999,
+        "response_token/s": 56.15025706972726
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4243",
+          "purpose": "cachefill-17-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7540,
+          "firstContentMs": 7270,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 18,
+      "arm": "gateway",
+      "headersMs": 41.77084700000705,
+      "firstChunkMs": 41.818461999995634,
+      "ttftMs": 7279.866107999987,
+      "lastMs": 7596.199007999996,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 8,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7234.025784,
+        "response_token/s": 47.29337567519767
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4244",
+          "purpose": "cachefill-18-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7598,
+          "firstContentMs": 7278,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 19,
+      "arm": "gateway",
+      "headersMs": 38.17498500001966,
+      "firstChunkMs": 38.2700720000139,
+      "ttftMs": 7281.426723000011,
+      "lastMs": 7548.377421000012,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7238.554583,
+        "response_token/s": 55.942851021110876
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4245",
+          "purpose": "cachefill-19-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7550,
+          "firstContentMs": 7279,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 20,
+      "arm": "gateway",
+      "headersMs": 46.68497699999716,
+      "firstChunkMs": 46.758224999997765,
+      "ttftMs": 7281.63662200002,
+      "lastMs": 7593.466558000015,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 8,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7230.432441,
+        "response_token/s": 47.951433253954534
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4246",
+          "purpose": "cachefill-20-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7594,
+          "firstContentMs": 7279,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 21,
+      "arm": "gateway",
+      "headersMs": 41.467296000017086,
+      "firstChunkMs": 41.55608000000939,
+      "ttftMs": 7285.381583000009,
+      "lastMs": 7598.40345100002,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 8,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7240.378089,
+        "response_token/s": 47.88225898078692
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4247",
+          "purpose": "cachefill-21-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7600,
+          "firstContentMs": 7284,
+          "queueWaitMs": 1
+        }
+      ]
+    },
+    {
+      "rep": 22,
+      "arm": "gateway",
+      "headersMs": 41.86243000000832,
+      "firstChunkMs": 42.01209299999755,
+      "ttftMs": 7299.619154999993,
+      "lastMs": 7567.236619000003,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7253.900815,
+        "response_token/s": 56.01169341933887
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4248",
+          "purpose": "cachefill-22-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7568,
+          "firstContentMs": 7297,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 23,
+      "arm": "gateway",
+      "headersMs": 40.62576100000297,
+      "firstChunkMs": 40.798720999999205,
+      "ttftMs": 7349.333830999996,
+      "lastMs": 7660.631511999993,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 8,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7304.969695,
+        "response_token/s": 48.110595559394596
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4249",
+          "purpose": "cachefill-23-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7662,
+          "firstContentMs": 7347,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 24,
+      "arm": "gateway",
+      "headersMs": 41.26926299999468,
+      "firstChunkMs": 41.35647900000913,
+      "ttftMs": 7283.852164000011,
+      "lastMs": 7630.19482199999,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7236.858228,
+        "response_token/s": 55.72329277956778
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4253",
+          "purpose": "cachefill-24-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7628,
+          "firstContentMs": 7281,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 25,
+      "arm": "gateway",
+      "headersMs": 57.781314000021666,
+      "firstChunkMs": 57.84550600001239,
+      "ttftMs": 7288.811554000014,
+      "lastMs": 7562.163289999997,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7227.273131,
+        "response_token/s": 56.500379808736504
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4258",
+          "purpose": "cachefill-25-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7560,
+          "firstContentMs": 7286,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 26,
+      "arm": "gateway",
+      "headersMs": 55.10946599999443,
+      "firstChunkMs": 55.17140200000722,
+      "ttftMs": 7298.4281159999955,
+      "lastMs": 7566.01140399999,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7239.72818,
+        "response_token/s": 55.933125281497425
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4264",
+          "purpose": "cachefill-26-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7567,
+          "firstContentMs": 7296,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 27,
+      "arm": "gateway",
+      "headersMs": 51.88784199999645,
+      "firstChunkMs": 51.93704200000502,
+      "ttftMs": 7296.904723999993,
+      "lastMs": 7563.198462,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7241.06454,
+        "response_token/s": 56.16999181472156
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4269",
+          "purpose": "cachefill-27-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7566,
+          "firstContentMs": 7295,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 28,
+      "arm": "gateway",
+      "headersMs": 52.86606400000164,
+      "firstChunkMs": 52.905008000001544,
+      "ttftMs": 7301.6678269999975,
+      "lastMs": 7616.395913999993,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 8,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7245.139277,
+        "response_token/s": 47.61316988658981
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4275",
+          "purpose": "cachefill-28-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7618,
+          "firstContentMs": 7300,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 29,
+      "arm": "gateway",
+      "headersMs": 53.13252700000885,
+      "firstChunkMs": 53.259247000009054,
+      "ttftMs": 7300.106113999995,
+      "lastMs": 7613.655211999983,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 8,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7243.360925,
+        "response_token/s": 47.759431692564746
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4280",
+          "purpose": "cachefill-29-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7615,
+          "firstContentMs": 7297,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 30,
+      "arm": "gateway",
+      "headersMs": 50.81901300000027,
+      "firstChunkMs": 50.92723699999624,
+      "ttftMs": 7283.469835999975,
+      "lastMs": 7596.142199999973,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 8,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7228.943361,
+        "response_token/s": 47.949743758487344
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4282",
+          "purpose": "cachefill-30-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7597,
+          "firstContentMs": 7281,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 31,
+      "arm": "gateway",
+      "headersMs": 52.74225700000534,
+      "firstChunkMs": 52.85784000001149,
+      "ttftMs": 7304.358766999998,
+      "lastMs": 7569.065166000015,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7247.671002,
+        "response_token/s": 56.44635535008998
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4287",
+          "purpose": "cachefill-31-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7571,
+          "firstContentMs": 7302,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 32,
+      "arm": "gateway",
+      "headersMs": 50.45671100000618,
+      "firstChunkMs": 50.56829500000458,
+      "ttftMs": 7292.231501000002,
+      "lastMs": 7558.646038000006,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7237.856129,
+        "response_token/s": 56.20125384247973
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4288",
+          "purpose": "cachefill-32-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7560,
+          "firstContentMs": 7290,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 33,
+      "arm": "gateway",
+      "headersMs": 55.46232900000177,
+      "firstChunkMs": 55.590136999991955,
+      "ttftMs": 7287.684692999988,
+      "lastMs": 7558.596434000006,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7227.409097,
+        "response_token/s": 55.19103085700733
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4289",
+          "purpose": "cachefill-33-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7560,
+          "firstContentMs": 7285,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 34,
+      "arm": "gateway",
+      "headersMs": 50.61866199999349,
+      "firstChunkMs": 50.70206899999175,
+      "ttftMs": 7345.159267999959,
+      "lastMs": 7613.083641000005,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7290.660296999999,
+        "response_token/s": 55.9496823171443
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4293",
+          "purpose": "cachefill-34-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7614,
+          "firstContentMs": 7343,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 35,
+      "arm": "gateway",
+      "headersMs": 53.37954999995418,
+      "firstChunkMs": 53.508861999958754,
+      "ttftMs": 7310.020063999982,
+      "lastMs": 7578.557682999992,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7252.76982,
+        "response_token/s": 55.798064068311774
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4295",
+          "purpose": "cachefill-35-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7579,
+          "firstContentMs": 7307,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 36,
+      "arm": "gateway",
+      "headersMs": 56.97296500002267,
+      "firstChunkMs": 57.06978100002743,
+      "ttftMs": 7322.266347000026,
+      "lastMs": 7590.857630000042,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7262.126799,
+        "response_token/s": 55.85151646473663
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4296",
+          "purpose": "cachefill-36-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7592,
+          "firstContentMs": 7320,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 37,
+      "arm": "gateway",
+      "headersMs": 54.89135399996303,
+      "firstChunkMs": 54.97761000000173,
+      "ttftMs": 7311.925650999998,
+      "lastMs": 7579.531336999964,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7253.130388,
+        "response_token/s": 55.921718541516846
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4300",
+          "purpose": "cachefill-37-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7581,
+          "firstContentMs": 7310,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 38,
+      "arm": "gateway",
+      "headersMs": 56.79354099999182,
+      "firstChunkMs": 56.84798800002318,
+      "ttftMs": 7513.451945000037,
+      "lastMs": 7779.481891000003,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7395.405132,
+        "response_token/s": 56.34455757738776
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4302",
+          "purpose": "cachefill-38-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 7780,
+          "firstContentMs": 7511,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 39,
+      "arm": "gateway",
+      "headersMs": 52.72774499998195,
+      "firstChunkMs": 52.78071999998065,
+      "ttftMs": 7794.433288,
+      "lastMs": 8059.348211999983,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7456.793441000001,
+        "response_token/s": 56.34372814391571
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4307",
+          "purpose": "cachefill-39-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 8062,
+          "firstContentMs": 7793,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 40,
+      "arm": "gateway",
+      "headersMs": 55.827431999961846,
+      "firstChunkMs": 55.890535999962594,
+      "ttftMs": 7805.682196999958,
+      "lastMs": 8151.528452999948,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 8,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7466.841329,
+        "response_token/s": 48.07054386923602
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4309",
+          "purpose": "cachefill-40-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 8151,
+          "firstContentMs": 7804,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 41,
+      "arm": "gateway",
+      "headersMs": 50.57269400003133,
+      "firstChunkMs": 50.62325400003465,
+      "ttftMs": 7868.219477000006,
+      "lastMs": 8137.180038999999,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7533.672487000001,
+        "response_token/s": 55.62422634117723
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4311",
+          "purpose": "cachefill-41-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 8139,
+          "firstContentMs": 7865,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 42,
+      "arm": "gateway",
+      "headersMs": 52.98684700002195,
+      "firstChunkMs": 53.03963100002147,
+      "ttftMs": 7892.689358000003,
+      "lastMs": 8160.569890999992,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7555.400135,
+        "response_token/s": 55.84766053870764
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4314",
+          "purpose": "cachefill-42-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 8162,
+          "firstContentMs": 7890,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 43,
+      "arm": "gateway",
+      "headersMs": 53.250751000014134,
+      "firstChunkMs": 53.333757999993395,
+      "ttftMs": 7956.571740000043,
+      "lastMs": 8224.272513000004,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7617.283563,
+        "response_token/s": 55.92010764307569
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4316",
+          "purpose": "cachefill-43-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 8225,
+          "firstContentMs": 7954,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 44,
+      "arm": "gateway",
+      "headersMs": 49.6361850000103,
+      "firstChunkMs": 49.68191200000001,
+      "ttftMs": 7846.147349999985,
+      "lastMs": 8114.351817000017,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7511.688775,
+        "response_token/s": 55.84817953867237
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4320",
+          "purpose": "cachefill-44-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 8116,
+          "firstContentMs": 7844,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 45,
+      "arm": "gateway",
+      "headersMs": 53.62209299998358,
+      "firstChunkMs": 53.69110100000398,
+      "ttftMs": 7847.101104000001,
+      "lastMs": 8116.2571519999765,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7509.127515,
+        "response_token/s": 55.89680888620935
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4321",
+          "purpose": "cachefill-45-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 8117,
+          "firstContentMs": 7845,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 46,
+      "arm": "gateway",
+      "headersMs": 51.862673999974504,
+      "firstChunkMs": 51.921281999966595,
+      "ttftMs": 7847.769097999961,
+      "lastMs": 8116.06356499996,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7511.4927849999995,
+        "response_token/s": 55.62654017141986
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4322",
+          "purpose": "cachefill-46-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 8118,
+          "firstContentMs": 7846,
+          "queueWaitMs": 0
+        }
+      ]
+    },
+    {
+      "rep": 47,
+      "arm": "gateway",
+      "headersMs": 49.76237599999877,
+      "firstChunkMs": 49.8168880000012,
+      "ttftMs": 7833.85695700004,
+      "lastMs": 8105.71282200003,
+      "usage": {
+        "prompt_tokens": 28820,
+        "completion_tokens": 16,
+        "total_tokens": 28836,
+        "prompt_tokens_details": {
+          "cached_tokens": 32,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 15,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 9,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 7500.264156,
+        "response_token/s": 55.11463682790603
+      },
+      "outputHead": "The user is asking which shelf holds Entry 3. Let me look at the",
+      "observation": [],
+      "error": null,
+      "receipt": [
+        {
+          "id": "conn_4323",
+          "purpose": "cachefill-47-gateway",
+          "resolvedModel": "qwen3.8-flash-next-atlas",
+          "node": null,
+          "status": 200,
+          "durationMs": 8107,
+          "firstContentMs": 7832,
+          "queueWaitMs": 0
+        }
+      ]
+    }
+  ]
+}

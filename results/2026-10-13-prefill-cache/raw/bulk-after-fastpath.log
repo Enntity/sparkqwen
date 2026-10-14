@@ -1,0 +1,10 @@
+   Compiling spark-runtime v1.0.0-beta-preview (/Users/jmac/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-prefill-20261013/crates/spark-runtime)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.95s
+     Running unittests src/lib.rs (target/debug/deps/spark_runtime-bda251d8c7f4b6dc)
+
+running 1 test
+evict(1800) over 80000 nodes: heap 5.314792ms vs literal scan 1.22202175s (229.9x)
+test radix_tree::tests::evict_scan::bench_evict_large_tree_vs_literal_scan ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 408 filtered out; finished in 1.60s
+

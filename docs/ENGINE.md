@@ -7,7 +7,7 @@ pinned in [`install/atlas-source.json`](../install/atlas-source.json), for the
 kernel target `qwen3.8-flash-next` (model type `qwen4_exp`).
 [`install/build.sh`](../install/build.sh) refuses any other tree.
 
-The pin is `sparkqwen/atlas-20261013-sidecars` at 84e7c734 (release candidate
+The pin is `sparkqwen/atlas-20261013-prefill` at fcf9735f (release candidate
 16, refreshed),
 which adds SparkQwen-only work on top of the 2026-10-06 Qwen series
 (3322e221). The original RC16 engine passed the gates in
@@ -16,8 +16,8 @@ which adds SparkQwen-only work on top of the 2026-10-06 Qwen series
 
 The release is based on Atlas-Inf `main` at `4405bce3`. Its Qwen contribution
 series is published on `upstream/qwen38-flash-next-20261006` at `3322e221`;
-the complete RC16 engine is on `sparkqwen/atlas-20261013-sidecars` at
-`84e7c734` (tree `80d871d6`; RC15: `sparkqwen/atlas-20261008-rc15` at
+the complete RC16 engine is on `sparkqwen/atlas-20261013-prefill` at
+`fcf9735f` (tree `64c4b6db`; RC15: `sparkqwen/atlas-20261008-rc15` at
 `de4386b4`).
 These are pinned Enntity snapshots, separate from current Atlas-Inf `main`.
 
@@ -117,6 +117,21 @@ the threshold.
 
 The maintenance pin also accepts `.weight_packed` projections in the namespace
 audit (Enntity/atlas PR1); missing routed-expert layers still fail clearly.
+
+## Prefill-cache maintenance
+
+The engine batches non-NVMe cache eviction for contiguous prefill. It scans
+eligible leaves once, then selects victims from a heap in the same
+`(last_access, node_id)` order as the previous code. It reclaims exactly the
+allocation shortfall; blocks still referenced by active sequences keep the
+existing allocation fallback. Single-block eviction retains the original
+linear victim search, avoiding heap setup in decode. NVMe spill is separate,
+and sharded latent pools retain per-position allocation.
+
+This changes CPU cache bookkeeping, with no changes to model weights or
+numeric kernels. The [maintenance receipts](../results/2026-10-13-prefill-cache/RESULT.md)
+separate the measured prefill candidate from the final single-block review
+correction and record the qualification limits.
 
 ## Changing the engine
 

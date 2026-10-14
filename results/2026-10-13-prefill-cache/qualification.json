@@ -1,0 +1,126 @@
+{
+  "_comment": "SPDX-License-Identifier: AGPL-3.0-only",
+  "schema": "sparkqwen.prefill-maintenance-qualification/v1",
+  "engine": {
+    "repository": "https://github.com/Enntity/atlas",
+    "branch": "sparkqwen/atlas-20261013-prefill",
+    "commit": "fcf9735f4fd1fc4d962feb104e03d2157e832a41",
+    "tree": "64c4b6db142197c5c4efb46f703e32a180c65ec2"
+  },
+  "productBuildCommit": "21b6fe05b08ea2495c71aae3e52fcb654b7d6aea",
+  "installTree": "a678dfce7c4c329e5c0297b2aec8577b2adce3f2",
+  "image": {
+    "tag": "ghcr.io/enntity/atlas-sparkqwen:a678dfce7c4c",
+    "reference": "ghcr.io/enntity/atlas-sparkqwen@sha256:ac3a5c7da4841cacc810755da01b074b8216224409d7937a19dcfced569b72f0",
+    "localImageId": "sha256:ac3a5c7da4841cacc810755da01b074b8216224409d7937a19dcfced569b72f0",
+    "binarySHA256": "d0e5d15c24c2d16a2f1e46e9b4351fb3d2baf9e44427ed13f8ced5fc90de5f91",
+    "architecture": "arm64",
+    "os": "linux",
+    "anonymousManifestVerified": true
+  },
+  "nativeBuild": {
+    "success": true,
+    "runtimeCuda": "13.0",
+    "rust": "1.93.1",
+    "elapsedSeconds": 663.5195507500321,
+    "cargoBuildJobs": 2,
+    "testGates": [
+      {
+        "filter": "atlas-core:qwen4_exp_",
+        "passed": 22,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "filter": "spark-server:scheduler::lifecycle_tests",
+        "passed": 13,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "filter": "spark-server:scheduler::admission::",
+        "passed": 11,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "filter": "spark-server:cancellation_tests",
+        "passed": 10,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "filter": "spark-server:disconnect_prefill_tests",
+        "passed": 2,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "filter": "spark-server:buffered_disconnect_",
+        "passed": 5,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "filter": "spark-server:refusal",
+        "passed": 32,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "filter": "spark-server:api::chat_stream",
+        "passed": 43,
+        "failed": 0,
+        "ignored": 0
+      },
+      {
+        "filter": "spark-server:tool_parser::",
+        "passed": 176,
+        "failed": 0,
+        "ignored": 1
+      },
+      {
+        "filter": "spark-runtime:radix_tree::",
+        "passed": 131,
+        "failed": 0,
+        "ignored": 1
+      },
+      {
+        "filter": "spark-model:block_mgmt::tails::tests",
+        "passed": 8,
+        "failed": 0,
+        "ignored": 0
+      }
+    ],
+    "note": "CPU-only regressions compiled and run inside the official Linux/CUDA image build; filters can overlap."
+  },
+  "focusedLocalChecks": {
+    "radixTestsPassed": 131,
+    "radixIgnoredBenchmark": 1,
+    "installerTestsPassed": 30,
+    "independentSourceReview": "No remaining blocking correctness or safety findings."
+  },
+  "qualifiedLiveCandidate": {
+    "engineCommit": "f4e87f42977c79ebca9ea5889ce0ab3ea3e65b4a",
+    "binarySHA256": "f786d9ba16f942bec8075c1ea474d937dfe729f4e3788c000a9ded5cbb2c4eac",
+    "scope": "Same-pair saturation sequence and full-cache matrix, exact token fixtures, tool-call fixtures and 77K needle described in RESULT.md."
+  },
+  "releaseDeltaFromLiveCandidate": {
+    "runtime": "Restore original single-block victim scan and share leaf unlinking; bulk eviction algorithm unchanged.",
+    "tests": "Shared-parent differential regression and test-only divisibility lint correction.",
+    "runtimeAssetsByteIdentical": true,
+    "binaryByteIdentical": false
+  },
+  "limits": [
+    "No full RC16 benchmark rerun.",
+    "No full 262144-token context retest.",
+    "No model loaded from the final published image in this maintenance publication; live GPU evidence belongs to the identified prefill candidate.",
+    "No decode throughput improvement claimed."
+  ],
+  "atlasCi": {
+    "clippy": "passed",
+    "format": "passed",
+    "licenseHeaders": "passed",
+    "inheritedFailures": "Typos and file-cap failures affect unchanged files; workspace tests, coverage and benchmark gate cannot link two existing cuBLAS stub symbols; fork CLA signatures branch is missing. See engine PR4."
+  }
+}

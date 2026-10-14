@@ -1,0 +1,10 @@
+
+running 1 test
+EVICT_ONE nodes=80000 conversations=20000 depth=4 calls=128 heap_median_ns=652292 scan_median_ns=686459 heap_sum_ns=85056290 scan_sum_ns=88906955
+test radix_tree::tests::evict_scan::bench_evict_large_tree_vs_literal_scan ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 408 filtered out; finished in 0.54s
+
+   Compiling spark-runtime v1.0.0-beta-preview (/Users/jmac/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-prefill-20261013/crates/spark-runtime)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.90s
+     Running unittests src/lib.rs (target/debug/deps/spark_runtime-bda251d8c7f4b6dc)

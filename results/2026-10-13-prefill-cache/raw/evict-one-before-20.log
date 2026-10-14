@@ -1,0 +1,9 @@
+
+running 1 test
+EVICT_ONE nodes=80000 conversations=20 depth=4000 calls=128 heap_median_ns=1018708 scan_median_ns=629458 heap_sum_ns=132569169 scan_sum_ns=82692379
+test radix_tree::tests::evict_scan::bench_evict_large_tree_vs_literal_scan ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 407 filtered out; finished in 0.49s
+
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.08s
+     Running unittests src/lib.rs (target/debug/deps/spark_runtime-bda251d8c7f4b6dc)
