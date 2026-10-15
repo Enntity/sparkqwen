@@ -1,0 +1,23 @@
+{
+ "tag": "qvcold2",
+ "conv": "qv",
+ "turn": 2,
+ "cold": {
+  "ttft": 22.96,
+  "wall": 23.01,
+  "text": "Red",
+  "prompt_tokens": 75114,
+  "completion_tokens": 2,
+  "cached": 0,
+  "equal_to_warm": true
+ },
+ "warm": {
+  "ttft": 0.36,
+  "wall": 0.4,
+  "text": "Red",
+  "prompt_tokens": 75114,
+  "completion_tokens": 2,
+  "cached": 75072,
+  "messages": 4
+ }
+}

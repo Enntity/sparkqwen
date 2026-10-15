@@ -1,0 +1,25 @@
+{
+ "tag": "qvm0",
+ "results": {
+  "B_green_triangle": {
+   "ttft": 1.62,
+   "wall": 10.87,
+   "text": "green triangle",
+   "prompt_tokens": 240,
+   "completion_tokens": 3,
+   "cached": 0,
+   "done_at": 1792083410.8555555
+  },
+  "A_blue_square": {
+   "ttft": 15.57,
+   "wall": 15.67,
+   "text": "blue square",
+   "prompt_tokens": 52711,
+   "completion_tokens": 3,
+   "cached": 0,
+   "done_at": 1792083412.6525073
+  }
+ },
+ "a_correct": true,
+ "b_correct": true
+}

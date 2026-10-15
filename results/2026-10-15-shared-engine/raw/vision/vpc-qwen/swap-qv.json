@@ -1,0 +1,45 @@
+{
+ "tag": "qv",
+ "results": {
+  "order_PQ": {
+   "ttft": 0.52,
+   "wall": 0.75,
+   "text": "first: red circle; second: blue square",
+   "prompt_tokens": 458,
+   "completion_tokens": 10,
+   "cached": 16
+  },
+  "order_QP": {
+   "ttft": 0.51,
+   "wall": 0.69,
+   "text": "first: blue square; second: red circle",
+   "prompt_tokens": 458,
+   "completion_tokens": 10,
+   "cached": 208
+  },
+  "single_P": {
+   "ttft": 0.98,
+   "wall": 1.07,
+   "text": "red circle",
+   "prompt_tokens": 2338,
+   "completion_tokens": 3,
+   "cached": 208
+  },
+  "single_R": {
+   "ttft": 0.98,
+   "wall": 1.07,
+   "text": "green triangle",
+   "prompt_tokens": 2338,
+   "completion_tokens": 3,
+   "cached": 208
+  },
+  "single_P_again": {
+   "ttft": 0.16,
+   "wall": 0.24,
+   "text": "red circle",
+   "prompt_tokens": 2338,
+   "completion_tokens": 3,
+   "cached": 2336
+  }
+ }
+}

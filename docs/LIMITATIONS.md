@@ -146,7 +146,9 @@ sidecar observation records its own source and image identity.
   on the pair (single, typed, parallel, follow-up, no-tool, `tool_choice:
   none`, streamed); real agent clients with large tool sets have not been
   measured yet.
-- Structured output, images and video have not been tested with this model.
+- Structured output and video have not been tested with this model. Images
+  pass the race, conversation, swap and cached-versus-cold checks in
+  [results/2026-10-15-shared-engine](../results/2026-10-15-shared-engine/RESULT.md).
 - In sparkDash's structured prompts, a "(stream i/n)" suffix makes the model
   emit only part of the requested count. Without `ignore_eos`, `min_tokens`
   discard semantics then under-report structured throughput at concurrency.
