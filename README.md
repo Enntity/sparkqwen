@@ -22,7 +22,7 @@ cp .env.example .env      # set WORKER to the other Spark's ssh destination
 
 **Status: shared-engine release.** The engine is pinned in
 [`install/atlas-source.json`](install/atlas-source.json) to Enntity/atlas
-`sparkqwen/atlas-20261015-shared` at `b914c5e1` (tree `a966cba6`): the RC16
+`sparkqwen/atlas-20261015-vision` at `1954e759` (tree `8011ff9e`): the RC16
 prefill-cache engine on the engine layer SparkQwen now shares with
 [SparkGLM](https://github.com/Enntity/sparkglm).
 The matching image is `ghcr.io/enntity/atlas-sparkqwen:9a0df5f1474a`.
