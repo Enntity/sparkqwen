@@ -20,18 +20,21 @@ cp .env.example .env      # set WORKER to the other Spark's ssh destination
 ./start.sh
 ```
 
-**Status: RC16 prefill-cache maintenance release.** The engine is pinned in
+**Status: shared-engine release.** The engine is pinned in
 [`install/atlas-source.json`](install/atlas-source.json) to Enntity/atlas
-`sparkqwen/atlas-20261013-prefill` at `fcf9735f` (tree `64c4b6db`).
-The matching image is `ghcr.io/enntity/atlas-sparkqwen:a678dfce7c4c`.
+`sparkqwen/atlas-20261015-shared` at `b914c5e1` (tree `a966cba6`): the RC16
+prefill-cache engine on the engine layer SparkQwen now shares with
+[SparkGLM](https://github.com/Enntity/sparkglm).
+The matching image is `ghcr.io/enntity/atlas-sparkqwen:9a0df5f1474a`.
 Its tag is the committed `install/` tree; `start.sh` pulls it by default.
 
-This release reduces CPU work when the prefix cache fills up. It retains the
-[0.70 TP2 sidecar setup](.env.sidecars.example), profiles, per-node fabric
-selection, blocking chat content fix and packed checkpoint detection.
-[Prefill-cache measurements and qualification](results/2026-10-13-prefill-cache/RESULT.md)
-include the same-pair before/after receipts and the limits of this maintenance
-release. The engine uses an Atlas-Inf `main` base at `4405bce3`; Enntity's
+This release changes where the engine comes from, not what it does: prompt
+logprobs, decode, prefill, concurrency and warm-cache measurements match the
+prefill-cache release on the same pair
+([results/2026-10-15-shared-engine](results/2026-10-15-shared-engine/RESULT.md)).
+It retains the [0.70 TP2 sidecar setup](.env.sidecars.example), profiles,
+per-node fabric selection, blocking chat content fix and packed checkpoint
+detection. The engine uses an Atlas-Inf `main` base at `7ffd183f`; Enntity's
 release branches are published separately from Atlas-Inf `main`.
 
 The throughput and exactness results below are historical RC16 measurements
@@ -96,7 +99,7 @@ Run it on the Spark that will serve the API (rank 0). Each step is skipped when
 already done, so rerunning it just restarts the engine.
 
 1. **Image.** Pulls `ghcr.io/enntity/atlas-sparkqwen:<tag>`, where the tag is
-   the git tree of [`install/`](install/) (the release tree `a678dfce7c4c`),
+   the git tree of [`install/`](install/) (the release tree `9a0df5f1474a`),
    so the image always matches your checkout. If that tag is not published
    (an edited `install/`, or `PULL=0` in `.env`), it builds the image from
    source instead ([`install/build.sh`](install/build.sh): Atlas at the commit
