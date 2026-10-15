@@ -1,4 +1,4 @@
-96613c7cfd6b270f421ddb10fe322c5738de1655f13b5f37819c29bda4121b13  ./RESULT.md
+1d26ea86e81c0ba26340e9b21bf236f0eccce558533ff357ad79851339ecc81f  ./RESULT.md
 10c9113fa0f5a1787ba73444622fb84c1ece8cc98796f2f658a03874fcc9a8ea  ./raw/ab-run2.log
 e60b2a4bad1dd2d06a4b1f430ec66604c64453c2bd951f58086bcd169c935df6  ./raw/ab_up.sh
 39ed66a634cb5a1aebcd87fca74e881ea26a1616a02e64b78b5beb8275ba4a95  ./raw/bench-qwen-new.json
@@ -21,6 +21,14 @@ dc38223965e2ec17e3534303a10b69fffcb27dc962c7dea35b69466d5a166563  ./raw/release/
 7efaec51fab730f05827eaeacaaade95dc872258af1d2121c9bfc39d107e6cab  ./raw/release/rel_up.sh
 cddd8f4ce8d202154cf8cb4ca775ce196e6308e17281431e32dee5765b6e4ad4  ./raw/run2.log
 354014e6ac8bd29efb3d7c4a9dbcbbce4eb59d255b4c6366033058bc2e36ef6d  ./raw/sq_bench.py
+5eb6cf49aa27dab1b9fb49721efc684ce2cdbfdb83179bee202825ce77c83866  ./raw/vision-uncapped/metadata-vis-qrpu.json
+bcd7f370c97340bb5960389d45091c64cb2c49040e5015515bc3c8f4f216a801  ./raw/vision-uncapped/metadata-vis-qrvu.json
+256dd6e68f4b057d6f8a7329716f7bb5baf75d94490d10f640bb83f6bf6afde5  ./raw/vision-uncapped/rig-qrpu.json
+bb54db6ca1e1355eb4d5e5b97579cc018698cec911e4e9441a80507ae89690f8  ./raw/vision-uncapped/rig-qrpu.log
+61842a2cd101a561716c966723a1780db35e7872e5cdf8c8625705b1951c52c0  ./raw/vision-uncapped/rig-qrvu.json
+f52d16f9125382370225c091fbf329dfbaf40f11695bceb781badf4e7829b6ef  ./raw/vision-uncapped/rig-qrvu.log
+5ab50b871c1787675a4d587b36b950b0831b9a74c099c0000df7286a3a74fcbd  ./raw/vision-uncapped/vis-rig.out
+8dfe53aca5ff1a4f89c01ffe8e15b45cc8b7c987b716b0fa1358be2dfb590c67  ./raw/vision-uncapped/vis_rig.sh
 ff9d3002a11b3f6fb39cdef12f5999244411e6947d533c7e6583706473d64cf0  ./raw/vision/bench-qwen-qv.json
 d8989a2ef32257072a00ca180da8294d0a6aea21bda85bfdd810b9d1e6cec784  ./raw/vision/chain.sh
 84e48bbcc9410371a49649989d9ebce3234332b2289986337d8853d0de203579  ./raw/vision/lp-qwen-qv.json

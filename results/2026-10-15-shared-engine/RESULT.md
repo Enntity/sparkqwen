@@ -143,24 +143,27 @@ SparkQwen-only commit fix them:
 ## RigMark
 
 [RigMark](https://github.com/alexellis/rigmark) (MIT) at 40fabca with RC16's
-settings and command line (profile `8x32k` at 0.88; `raw/vision/vis_run.sh`,
-`rig_qwen`). The release image and the production image ran back to back on
-ennspark01/02. The README's figures are RC16's, measured on 2026-10-10,
-before the pair's GPU clock cap (`nvidia-smi -lgc 300,2200`, since
-2026-10-13). No later release published RigMark.
+settings and command line (profile `8x32k` at 0.88; `rig_qwen` in
+`raw/vision/vis_run.sh`). The release image and the production image ran back
+to back on ennspark01/02, once with the pair's GPU clock cap lifted for the
+run (`CLOCKS=uncapped`, `raw/vision-uncapped/vis_rig.sh`; the README's RC16
+figures predate the cap, which ennspark01/02 have had since 2026-10-13) and
+once capped, as the pair serves. No release after RC16 published RigMark.
 
-| | This release | Production `a678dfce7c4c`, same pair today | README: RC16 (2026-10-10, uncapped) |
-|---|---:|---:|---:|
-| Output gates | 9/9 | 9/9 | 9/9 |
-| Decode estimate, code / prose / structured, tok/s (median of 3) | 85.1 / 50.7 / 96.3 | 80.7 / 50.9 / 94.5 | 86.6 / 51.8 / 98.9 |
-| 16K cold prefill, tok/s | 3,818 | 3,778 | 4,043 |
-| Concurrency, C1 / C2 / C4 / C8, tok/s | 58.2 / 103.5 / 164.2 / 256.0 | 61.0 / 98.0 / 161.3 / 249.2 | 61.7 / 98.6 / 166.2 / 260.1 |
-| KV pool, tokens | 3,262,160 | 3,257,488 | 3,265,104 |
+| | This release, uncapped | Production `a678dfce7c4c`, uncapped | README: RC16 (2026-10-10) | This release, capped | Production, capped |
+|---|---:|---:|---:|---:|---:|
+| Output gates | 9/9 | 9/9 | 9/9 | 9/9 | 9/9 |
+| Decode estimate, code / prose / structured, tok/s (median of 3) | 85.0 / 50.2 / 96.5 | 85.8 / 52.4 / 95.3 | 86.6 / 51.8 / 98.9 | 85.1 / 50.7 / 96.3 | 80.7 / 50.9 / 94.5 |
+| 16K cold prefill, tok/s | 4,008 | 3,988 | 4,043 | 3,818 | 3,778 |
+| Concurrency, C1 / C2 / C4 / C8, tok/s | 60.0 / 105.3 / 167.5 / 254.7 | 60.3 / 101.9 / 174.8 / 266.8 | 61.7 / 98.6 / 166.2 / 260.1 | 58.2 / 103.5 / 164.2 / 256.0 | 61.0 / 98.0 / 161.3 / 249.2 |
+| KV pool, tokens | 3,251,072 | 3,267,296 | 3,265,104 | 3,262,160 | 3,257,488 |
 
 RigMark samples, so its decode and concurrency rows are not equal-text
-comparisons. Code decode ranged 83.6–86.4 tok/s here and 80.2–84.2 on
-production. The 16K prefill is 1% above production today; RC16's 6% higher
-figure predates the clock cap.
+comparisons, and each concurrency level is one run: the release led
+production at C8 capped (256.0 against 249.2) and trailed it uncapped (254.7
+against 266.8). Uncapped, 16K prefill is within 1% of RC16 and of production,
+and the decode rows fall inside each other's ranges (code 84.1–86.2 tok/s
+here, 82.2–87.0 on production).
 
 ## Receipts
 
@@ -168,5 +171,6 @@ figure predates the clock cap.
 logs (`ab-run2.log` covers production and the first new build, `run2.log` the
 second) and every JSON result. `raw/release/` holds the first release
 candidate's build log, scripts and smoke receipts; `raw/vision/` holds the
-release image's (vision gates, `sq_bench`, RigMark `rig-qrv` and production
-`rig-qrp`, with the appliance metadata each declared).
+release image's (vision gates, `sq_bench`, capped RigMark `rig-qrv` and
+production `rig-qrp`, with the appliance metadata each declared);
+`raw/vision-uncapped/` holds the uncapped RigMark runs (`rig-qrvu`, `rig-qrpu`).
