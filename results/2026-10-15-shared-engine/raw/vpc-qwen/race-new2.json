@@ -1,0 +1,25 @@
+{
+ "tag": "new2",
+ "results": {
+  "B_green_triangle": {
+   "ttft": 2.96,
+   "wall": 12.39,
+   "text": "green triangle",
+   "prompt_tokens": 240,
+   "completion_tokens": 3,
+   "cached": 0,
+   "done_at": 1792052090.7000725
+  },
+  "A_blue_square": {
+   "ttft": 16.98,
+   "wall": 17.07,
+   "text": "Green triangle",
+   "prompt_tokens": 52711,
+   "completion_tokens": 3,
+   "cached": 0,
+   "done_at": 1792052092.3791559
+  }
+ },
+ "a_correct": false,
+ "b_correct": true
+}

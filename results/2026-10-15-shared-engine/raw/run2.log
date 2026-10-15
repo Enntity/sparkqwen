@@ -1,0 +1,70 @@
+##### start 2026-10-15T01:02:30-07:00
+== sparkglm prodfill: MemAvailable 115 / 114 GiB; image ghcr.io/enntity/atlas-sparkglm@sha256:94b837ef3ea7b3f54c158ce568e611405b1bd167edd56c734d8e90d2d6291cb6
+== prodfill up in 118 s: 146214 blocks × 16 tok/block = 2339424 max KV tokens 
+   engine: sparkglm/atlas-20261014-vpc 289cefbc  MemAvailable 4 / 4 GiB
+-- fill check (four 204K sessions)
+session 0 turn 3 1.13 204383 204352 True
+{"tag": "glm-prodfill", "correct": 12, "n": 12, "prompt_tokens_max": 204383, "wall_s": 331.3}
+   min MemAvailable rank0 kB during fill: 01:10:01 4013744
+== sparkqwen new2: MemAvailable 116 / 116 GiB; image ghcr.io/enntity/atlas-sparkqwen:1ff653c945cd
+== new2 up in 43 s: 83219 blocks × 16 tok/block = 1331504 max KV tokens 
+   engine: sparkqwen/atlas-shared-20261014 c394ce7c  MemAvailable 34 / 36 GiB
+-- prompt-logprob hash
+REPRODUCIBLE qwen-new2
+hash ['8713a659d5d3', '8713a659d5d3']
+-- sq_bench
+decode prose 0 0.205 52.38 384
+decode prose 1 0.176 54.76 384
+decode prose 2 0.172 54.65 384
+decode code 0 0.159 67.24 384
+decode code 1 0.17 70.1 384
+decode code 2 0.156 68.78 384
+decode json 0 0.184 61.76 384
+decode json 1 0.165 63.6 384
+decode json 2 0.168 63.47 384
+prefill 2048 0 2022 0.789
+prefill 2048 1 2023 0.753
+prefill 8192 0 8170 2.194
+prefill 8192 1 8169 2.24
+prefill 16384 0 16390 4.387
+prefill 16384 1 16408 4.442
+prefill 28672 0 28809 7.722
+prefill 28672 1 28819 7.753
+conc 1 0 50.98
+conc 1 1 48.7
+conc 2 0 86.27
+conc 2 1 83.27
+conc 4 0 130.09
+conc 4 1 127.15
+warm 8192 0 8162 32 2.19
+warm 8192 1 8191 8160 0.204
+warm 8192 2 8239 8176 0.197
+warm 8192 3 8286 8224 0.177
+warm 8192 4 8333 8272 0.17
+warm 8192 5 8380 8320 0.19
+warm 20480 0 20542 32 5.527
+warm 20480 1 20571 20528 0.225
+warm 20480 2 20622 20560 0.179
+warm 20480 3 20670 20608 0.205
+warm 20480 4 20718 20656 0.203
+warm 20480 5 20766 20704 0.203
+wrote ~/sparkqwen-dev/bench-qwen-new2.json
+-- vision gate (images were never tested on SparkQwen)
+B_green_triangle: ttft 2.96 s, prompt 240, cached 0: 'green triangle'
+A_blue_square: ttft 16.98 s, prompt 52711, cached 0: 'Green triangle'
+race: A WRONG, B correct
+  File "/usr/lib/python3.12/urllib/request.py", line 1373, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/urllib/request.py", line 1347, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno 111] Connection refused>
+  File "/usr/lib/python3.12/urllib/request.py", line 1373, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/urllib/request.py", line 1347, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno 111] Connection refused>
+-- min MemAvailable rank0 kB: 01:15:05 35563728
+-- log scan: rank0 panics 0 errors 2; rank1 panics 0 errors 1; memguard: 2026-10-15T00:55:29-07:00 killed atlas-sparkglm-rank0 at MemAvailable=1027344kB
+##### done 2026-10-15T01:15:09-07:00
