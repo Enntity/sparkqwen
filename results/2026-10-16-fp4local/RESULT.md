@@ -80,7 +80,7 @@ ran the shared-engine release image unchanged.
 | Cold 16K-token prefill (tok/s) | 4,161 | 4,010 | 4,043 |
 | End-to-end concurrency C1 / C2 / C4 / C8 (tok/s) | 68.0 / 112.5 / 178.5 / 273.0 | 59.6 / 110.0 / 162.9 / 273.3 | 61.7 / 98.6 / 166.2 / 260.1 |
 
-Same-day files: `rig-fp4l-w2-u` (FP4-Local, receipt `36c879d9…`) and
+Same-day files: `rig-fp4l-w2-u` (FP4-Local, receipt `28b2853a…`) and
 `rig-fp4l-base-u` (NVFP4). `rig-fp4l-n1-u` is an intermediate FP4-Local
 engine with BF16 prefill: decode 97.0 / 56.4 / 105.8, prefill 3,846, and C1
 / C2 / C4 / C8 67.9 / 118.0 / 194.8 / 285.6. RigMark runs each concurrency
@@ -117,7 +117,7 @@ answered its smoke question (`start-8x32k.log`). On that image, `8x32k` at
 | RigMark C1 / C2 / C4 / C8 | 69.5 / 110.4 / 188.4 / 290.3 tok/s |
 | KV pool | 3,419,600 tokens (`8x262k` at 0.88: 3,354,240) |
 
-The RigMark card is `rigmark-FP4L.card.txt` (JSON receipt `42a2d01d…`). The
+The RigMark card is `rigmark-FP4L.card.txt` (JSON receipt `8dc6144a…`). The
 checkpoint was already on disk, so this run did not exercise a fresh download.
 
 ## Quality and exactness
@@ -154,6 +154,18 @@ All on the final engine unless noted (`raw/gates/`):
   matches its host reference, but the race, conversation and caching gates
   have not run.
 - A broad accuracy suite head to head against the NVFP4 checkpoint.
+
+## Receipt metadata correction
+
+The FP4-Local RigMark receipts (`rigmark-FP4L`, `rig-fp4l-w2-u`, `rig-fp4l-n1-u`)
+were first written from the RC16 metadata template, so their `run.appliance`
+fields named the NVFP4 checkpoint (`fc694b54`) and RC16's KV pool. On
+2026-10-16 those fields were corrected to FP4-Local (`b9ce18a6`), each run's
+own KV pool and prefill path, and the cards re-rendered with `rigmark report`.
+Every measurement, output hash and gate is unchanged; only the JSON hash on
+each card changed (`42a2d01d…` → `8dc6144a…`, `36c879d9…` → `28b2853a…`,
+`74ce0c20…` → `e53dd333…`). `rig-fp4l-base-u` was an NVFP4 run and is
+unchanged.
 
 ## Found on the way
 

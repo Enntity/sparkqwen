@@ -20,7 +20,7 @@
 │  AGGREGATE   C1 68.0  •  C2 112.5  •  C4 178.5  •  C8 273.0 tok/s                        │
 │  C8 OUTPUT STATE   normal stop 0/8  •  visible 8/8  •  reasoning may be included         │
 ├─ RECEIPT ────────────────────────────────────────────────────────────────────────────────┤
-│  JSON       sha256:36c879d9e13e1fb9…                                                     │
+│  JSON       sha256:28b2853afa0aad23…                                                     │
 │  SHARE THE CARD • LINK THE JSON RECEIPT • #RIGMARK                                       │
 │  github.com/alexellis/rigmark                                                            │
 ╰──────────────────────────────────────────────────────────────────────────────────────────╯
