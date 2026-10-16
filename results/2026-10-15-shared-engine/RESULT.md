@@ -140,6 +140,27 @@ SparkQwen-only commit fix them:
 - No panics or errors on either rank in the gate, swap-replay and RigMark
   runs; the containment run logs only its failed requests.
 
+## Speed: same prompts, production against this release
+
+RigMark samples, so a single run per cell moves by several percent. The
+deciding check is same-prompt and uncapped, alternating production
+`a678dfce7c4c` and this release on fresh starts (`8x32k` at 0.88; ennspark01/02;
+`raw/abab-uncapped/`, every run's summary in `ab-r1.out`):
+- `sq_bench` decode: three kinds × three runs, 384 tokens each.
+- RigMark concurrency at 1/2/4/8 streams, two rounds.
+
+| Start | Decode, prose / code / JSON, tok/s | Concurrency 1 / 2 / 4 / 8, tok/s |
+|---|---:|---:|
+| Production 1 | 55.54 / 70.86 / 65.20 | 60.6 / 99.9 / 165.6 / 257.2 |
+| This release 1 | 55.67 / 71.32 / 65.51 | 61.4 / 104.1 / 164.6 / 256.5 |
+| Production 2 | 55.71 / 71.15 / 65.46 | 60.9 / 100.5 / 166.3 / 257.6 |
+| This release 2 | 55.53 / 71.22 / 65.33 | 61.2 / 104.7 / 164.8 / 256.8 |
+
+The two engines are equal within 0.5% on decode. On concurrency they are equal
+within the spread, except two streams, where the release is about 4% ahead.
+The harness reused its arm counter, so each image's second run overwrote the
+first one's JSON. `ab-r1.out` keeps every run's numbers.
+
 ## RigMark
 
 [RigMark](https://github.com/alexellis/rigmark) (MIT) at 40fabca with RC16's
