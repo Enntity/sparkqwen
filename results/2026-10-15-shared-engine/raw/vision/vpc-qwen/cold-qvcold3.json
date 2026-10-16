@@ -1,0 +1,23 @@
+{
+ "tag": "qvcold3",
+ "conv": "qv",
+ "turn": 3,
+ "cold": {
+  "ttft": 23.85,
+  "wall": 24.84,
+  "text": "The screenshot displays a solid red circle centered on a plain white background. The shape is simple and uniform, with no additional details or text visible.\n\nOne Rust file from the codebase is `crates/spark-model/src/model/block_mgmt.rs`.",
+  "prompt_tokens": 75146,
+  "completion_tokens": 51,
+  "cached": 0,
+  "equal_to_warm": true
+ },
+ "warm": {
+  "ttft": 0.26,
+  "wall": 1.23,
+  "text": "The screenshot displays a solid red circle centered on a plain white background. The shape is simple and uniform, with no additional details or text visible.\n\nOne Rust file from the codebase is `crates/spark-model/src/model/block_mgmt.rs`.",
+  "prompt_tokens": 75146,
+  "completion_tokens": 51,
+  "cached": 75104,
+  "messages": 6
+ }
+}

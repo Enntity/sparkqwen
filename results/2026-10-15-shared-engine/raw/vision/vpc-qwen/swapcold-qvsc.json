@@ -1,0 +1,24 @@
+{
+ "tag": "qvsc",
+ "swap": "qv",
+ "results": {
+  "order_QP": {
+   "ttft": 0.58,
+   "wall": 0.79,
+   "text": "first: blue square; second: red circle",
+   "prompt_tokens": 458,
+   "completion_tokens": 10,
+   "cached": 0,
+   "equal_to_warm": true
+  },
+  "single_R": {
+   "ttft": 1.2,
+   "wall": 1.29,
+   "text": "green triangle",
+   "prompt_tokens": 2338,
+   "completion_tokens": 3,
+   "cached": 16,
+   "equal_to_warm": true
+  }
+ }
+}

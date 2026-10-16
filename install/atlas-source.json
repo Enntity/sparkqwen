@@ -2,25 +2,25 @@
   "schema": "sparkqwen.atlas-engine-source/v2",
   "note": "The Atlas engine is built from the public Enntity/atlas fork at this exact commit; build.sh refuses any other tree.",
   "repository": "https://github.com/Enntity/atlas.git",
-  "branch": "sparkqwen/atlas-20261013-prefill",
-  "commit": "fcf9735f4fd1fc4d962feb104e03d2157e832a41",
-  "tree": "64c4b6db142197c5c4efb46f703e32a180c65ec2",
+  "branch": "sparkqwen/atlas-20261015-vision",
+  "commit": "1954e7596070bc3cf662f15295fe7c5e0427ac13",
+  "tree": "8011ff9e51b0dcd71be5920bb20e473c269f8139",
   "layers": {
-    "atlas_inf_main_base": "4405bce359714672c57944fafd8aef9df35de524",
+    "atlas_inf_main_base": "7ffd183f210708d5b1afba1e046049f14ad498c7",
     "glm_upstream_series": {
-      "branch": "upstream/glm53-flash-20261005-rebase",
-      "commit": "6251db8ef9b130a37fbc2c2310fe030883f5eb30",
-      "note": "SparkGLM's upstream GLM-5.3-Flash series, which the Qwen series stacks on: generic serving, scheduler, grammar, prefix-cache and RDMA pair-communication work. Its GLM-only paths are gated by model type or kernel target and stay off for qwen4_exp."
+      "branch": "upstream/atlas-shared-20261015-vision",
+      "commit": "236beb9043ff9c901d716cbd7a1996c4172778da",
+      "note": "The GLM-5.3-Flash series inside the shared engine layer (port, RC4 commits): the generic serving, scheduler, grammar, prefix-cache and RDMA pair-communication work; its GLM-only paths are gated by model type or kernel target and stay off for qwen4_exp."
     },
     "upstream_candidate": {
-      "branch": "upstream/qwen38-flash-next-20261006",
-      "commit": "3322e22109ec002f7efb32ff23fcf87840e19508",
-      "note": "The Qwen3.8-Flash-Next series in PR order: Atlas-Inf's unmerged Flash-Next fixes, TP=EP=2 for qwen4_exp, MTP at TP2, piecewise decode graphs, exact decode, verify, batching and prefill kernels, and the opt-in FP8 GDN projections and TC2R QSA prefill (docs/ENGINE.md). Also: rank-agreed Marconi restore depth in every multi-rank world (a TP2 prefix-cache deadlock fix), rank-agreed KV-exhaustion refusals in decode/verify instead of a dead pair (the refusal keeps its full blocking content alongside the refusal metadata and does not weaken the classifier; Atlas-Inf issue 172), and the long-context memory work (one-layer drafter KV, on-demand QSA carry, sliding raw-key window) that takes the 262K x 4 KV pool from 106K to 307K tokens at util 0.88."
+      "branch": "upstream/atlas-shared-20261015-vision",
+      "commit": "a94648109f3c9a9a739e6cdf3d9630acaf45bac8",
+      "note": "The shared Spark engine layer (SparkGLM builds on it too): the GLM series, the Qwen3.8-Flash-Next series (476e2208), the model-independent RC16 commits (speculation == serial with one lowest-index tie rule, shared-prefix admission, loop steering, prefill burst, step trace), the refusal-content fix, batched prefix-cache eviction, the shared vision fixes (every tower encodes per chunk into per-sequence state, vision layout errors fail only their request, MRoPE positions from the whole prompt, vision markup in message text encodes as text) and the vision prefix cache for every tower and the shared-engine fixes."
     },
     "sparkqwen_only": {
-      "branch": "sparkqwen/atlas-20261013-prefill",
-      "commit": "fcf9735f4fd1fc4d962feb104e03d2157e832a41",
-      "note": "SparkQwen release RC16 on top of the 2026-10-06 series (3322e221): exact batched speculation (spec == serial) and exact prefix caching (row-invariant prefill); tensor-core MoE and mHC decode; no-duplicate N-major prefill MoE (31.6 GiB freed for KV); multi-prompt prefill (incl. from a cached prefix); long-context QSA decode (device top-k past 64K); prompt-tail checkpoints; verify LM-head vocab split; register-tiled 32-row and persistent NVFP4 verify/draft kernels; deferred GDN commit; batched MTP bootstrap; content-loop watchdog; min_tokens end-token ban. Every option is behind an ATLAS_* switch, set by the install profiles. RC16 adds content-loop steering (ATLAS_LOOP_STEER: the pick after a loop tail skips the cycle's continuation instead of the watchdog cutting the response) and holds a Poolside call's stream header until the call validates. Maintenance: preserve full blocking chat text alongside refusal metadata (Atlas-Inf issue172); recognize compressed-tensors .weight_packed projections during namespace audit. CPU regressions cover both. Prefill-cache maintenance: bulk non-NVMe eviction keeps exact LRU order using one candidate heap, and contiguous non-sharded prefill reclaims its exact shortfall once. Single-block decode eviction keeps the original allocation-free victim scan. NVMe spill and sharded allocation paths retain their prior behavior."
+      "branch": "sparkqwen/atlas-20261015-vision",
+      "commit": "1954e7596070bc3cf662f15295fe7c5e0427ac13",
+      "note": "The SparkQwen-only RC15/RC16 commits on the shared layer, every one behind an ATLAS_* switch set by the install profiles; the tree is the RC16 prefill-cache release (fcf9735f) plus the shared layer's newer work, its RC16 merge resolutions restored and every commit compiling, plus in-pass checkpoints of vision prompts registered under their content key."
     }
   },
   "kernel_target": "qwen3.8-flash-next",

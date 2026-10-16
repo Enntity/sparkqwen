@@ -7,27 +7,27 @@ pinned in [`install/atlas-source.json`](../install/atlas-source.json), for the
 kernel target `qwen3.8-flash-next` (model type `qwen4_exp`).
 [`install/build.sh`](../install/build.sh) refuses any other tree.
 
-The pin is `sparkqwen/atlas-20261013-prefill` at fcf9735f (release candidate
-16, refreshed),
-which adds SparkQwen-only work on top of the 2026-10-06 Qwen series
-(3322e221). The original RC16 engine passed the gates in
-[results/2026-10-10-rc16](../results/2026-10-10-rc16/RESULT.md) (RC15:
-[results/2026-10-08-rc15](../results/2026-10-08-rc15/RESULT.md)).
+The pin is the release tag `sparkqwen/atlas-20261015-vision` at 1954e759 (tree `8011ff9e`): the RC16
+prefill-cache release on the engine layer SparkQwen now shares with
+[SparkGLM](https://github.com/Enntity/sparkglm). The prompt logprobs and the
+decode, prefill, concurrency and warm-cache measurements match the previous
+pin ([results/2026-10-15-shared-engine](../results/2026-10-15-shared-engine/RESULT.md));
+the RC16 gates are in [results/2026-10-10-rc16](../results/2026-10-10-rc16/RESULT.md).
 
-The release is based on Atlas-Inf `main` at `4405bce3`. Its Qwen contribution
-series is published on `upstream/qwen38-flash-next-20261006` at `3322e221`;
-the complete RC16 engine is on `sparkqwen/atlas-20261013-prefill` at
-`fcf9735f` (tree `64c4b6db`; RC15: `sparkqwen/atlas-20261008-rc15` at
-`de4386b4`).
-These are pinned Enntity snapshots, separate from current Atlas-Inf `main`.
+The shared layer is `upstream/atlas-shared-20261015-vision` at `a9464810`, on Atlas-Inf `main` at
+`7ffd183f`. These are pinned Enntity snapshots, separate from current
+Atlas-Inf `main`. `Enntity/atlas` keeps one branch per layer: `spark-shared`,
+which SparkGLM builds on too, and `sparkqwen` on top of it; each release is a
+tag ([branch and release index](https://github.com/Enntity/atlas/blob/enntity/releases/docs/PUBLISHED_RELEASES.md)).
 
 ## Layers
 
-The pinned branch `sparkqwen/atlas-<date>-<name>` is built from four layers,
-each on top of the one before:
+The pinned tag `sparkqwen/atlas-<date>-<name>` is built from four layers,
+each on top of the one before; the second and third, and the model-independent RC16 commits,
+form the shared layer `upstream/atlas-shared-20261015-vision`:
 
-1. **Atlas-Inf `main` at `4405bce3`.**
-2. **SparkGLM's upstream GLM-5.3-Flash series** (`upstream/glm53-flash-*`,
+1. **Atlas-Inf `main` at `7ffd183f`.**
+2. **SparkGLM's upstream GLM-5.3-Flash series** (tags `upstream/glm53-flash-*`,
    the series [SparkGLM](https://github.com/Enntity/sparkglm) intends to
    propose to Atlas-Inf). It carries the model-independent work: prefill FIFO
    and SRPT ordering, disconnect retirement, strict structured output with
@@ -82,7 +82,11 @@ where noted:
 Measurements of these, with receipts:
 [results/2026-10-05-bringup](../results/2026-10-05-bringup/RESULT.md).
 
-## SparkQwen-only commits (RC15, RC16)
+## RC15 and RC16 commits
+
+The model-independent ones (the speculation, tie-rule, loop-steering,
+Poolside-stream and refusal rows, and the prefill-cache maintenance) are in the
+shared layer, so SparkGLM runs them too; the rest are SparkQwen-only.
 
 Each is behind a default-off `ATLAS_*` switch that the shipped profiles turn
 on ([`install/profiles/`](../install/profiles/) lists them all). Exact means
@@ -136,6 +140,6 @@ correction and record the qualification limits.
 ## Changing the engine
 
 Engine changes go to `Enntity/atlas` first: upstream-worthy work on a focused
-branch cut from Atlas-Inf `main`, then into the Qwen series; SparkQwen-only
-work on the `sparkqwen/*` branch. Then update the pin, and the profiles if a
-switch changes.
+branch cut from Atlas-Inf `main`, then into the `spark-shared` branch;
+SparkQwen-only work on the `sparkqwen` branch, rebased onto `spark-shared`.
+Tag the release, then update the pin, and the profiles if a switch changes.

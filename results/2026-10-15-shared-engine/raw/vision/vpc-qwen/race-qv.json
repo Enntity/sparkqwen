@@ -1,0 +1,25 @@
+{
+ "tag": "qv",
+ "results": {
+  "A_red_circle": {
+   "ttft": 1.81,
+   "wall": 1.9,
+   "text": "Red circle",
+   "prompt_tokens": 52711,
+   "completion_tokens": 3,
+   "cached": 52480,
+   "done_at": 1792083053.4487915
+  },
+  "B_blue_square": {
+   "ttft": 0.35,
+   "wall": 0.43,
+   "text": "blue square",
+   "prompt_tokens": 240,
+   "completion_tokens": 3,
+   "cached": 16,
+   "done_at": 1792083054.97967
+  }
+ },
+ "a_correct": true,
+ "b_correct": true
+}

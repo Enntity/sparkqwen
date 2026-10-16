@@ -1,0 +1,107 @@
+{
+ "arm": "qwen-qprod",
+ "date": "2026-10-15 08:38:45",
+ "cells": {
+  "decode": [
+   {
+    "ttft": 0.221,
+    "wall": 7.581,
+    "out": 384,
+    "prompt": 69,
+    "cached": 0,
+    "tok_s": 52.03,
+    "text_head": "The user wants a calm, detailed essay about lighthouse staffing and maintenance ",
+    "kind": "prose",
+    "rep": 0
+   },
+   {
+    "ttft": 0.17,
+    "wall": 7.192,
+    "out": 384,
+    "prompt": 69,
+    "cached": 64,
+    "tok_s": 54.54,
+    "text_head": "The user wants a calm, detailed essay about lighthouse staffing and maintenance ",
+    "kind": "prose",
+    "rep": 1
+   },
+   {
+    "ttft": 0.186,
+    "wall": 7.188,
+    "out": 384,
+    "prompt": 69,
+    "cached": 64,
+    "tok_s": 54.7,
+    "text_head": "The user wants a calm, detailed essay about lighthouse staffing and maintenance ",
+    "kind": "prose",
+    "rep": 2
+   },
+   {
+    "ttft": 0.156,
+    "wall": 5.854,
+    "out": 384,
+    "prompt": 65,
+    "cached": 32,
+    "tok_s": 67.22,
+    "text_head": "The user wants a Python module that implements an LRU cache with:\n1. TTL (Time-T",
+    "kind": "code",
+    "rep": 0
+   },
+   {
+    "ttft": 0.162,
+    "wall": 5.613,
+    "out": 384,
+    "prompt": 65,
+    "cached": 64,
+    "tok_s": 70.26,
+    "text_head": "The user wants a Python module that implements an LRU cache with:\n1. TTL (Time-T",
+    "kind": "code",
+    "rep": 1
+   },
+   {
+    "ttft": 0.157,
+    "wall": 5.623,
+    "out": 384,
+    "prompt": 65,
+    "cached": 64,
+    "tok_s": 70.07,
+    "text_head": "The user wants a Python module that implements an LRU cache with:\n1. TTL (Time-T",
+    "kind": "code",
+    "rep": 2
+   },
+   {
+    "ttft": 0.168,
+    "wall": 6.284,
+    "out": 384,
+    "prompt": 77,
+    "cached": 32,
+    "tok_s": 62.63,
+    "text_head": "The user wants a JSON array of 12 fictional library books. Each object needs: ti",
+    "kind": "json",
+    "rep": 0
+   },
+   {
+    "ttft": 0.166,
+    "wall": 6.083,
+    "out": 384,
+    "prompt": 77,
+    "cached": 64,
+    "tok_s": 64.72,
+    "text_head": "The user wants a JSON array of 12 fictional library books. Each object needs: ti",
+    "kind": "json",
+    "rep": 1
+   },
+   {
+    "ttft": 0.166,
+    "wall": 6.087,
+    "out": 384,
+    "prompt": 77,
+    "cached": 64,
+    "tok_s": 64.69,
+    "text_head": "The user wants a JSON array of 12 fictional library books. Each object needs: ti",
+    "kind": "json",
+    "rep": 2
+   }
+  ]
+ }
+}

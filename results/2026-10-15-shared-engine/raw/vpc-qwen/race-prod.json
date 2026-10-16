@@ -1,0 +1,25 @@
+{
+ "tag": "prod",
+ "results": {
+  "B_green_triangle": {
+   "ttft": 2.91,
+   "wall": 12.13,
+   "text": "green triangle",
+   "prompt_tokens": 240,
+   "completion_tokens": 3,
+   "cached": 0,
+   "done_at": 1792048871.6585078
+  },
+  "A_blue_square": {
+   "ttft": 16.72,
+   "wall": 16.81,
+   "text": "Green triangle",
+   "prompt_tokens": 52711,
+   "completion_tokens": 3,
+   "cached": 0,
+   "done_at": 1792048873.343099
+  }
+ },
+ "a_correct": false,
+ "b_correct": true
+}

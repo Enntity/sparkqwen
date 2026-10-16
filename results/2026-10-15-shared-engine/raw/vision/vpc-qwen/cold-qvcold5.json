@@ -1,0 +1,23 @@
+{
+ "tag": "qvcold5",
+ "conv": "qv",
+ "turn": 5,
+ "cold": {
+  "ttft": 22.98,
+  "wall": 23.47,
+  "text": "A solid red circle is centered on a plain white background. The image contains no text, borders, or other graphical elements.",
+  "prompt_tokens": 75245,
+  "completion_tokens": 26,
+  "cached": 0,
+  "equal_to_warm": true
+ },
+ "warm": {
+  "ttft": 0.25,
+  "wall": 0.72,
+  "text": "A solid red circle is centered on a plain white background. The image contains no text, borders, or other graphical elements.",
+  "prompt_tokens": 75245,
+  "completion_tokens": 26,
+  "cached": 75216,
+  "messages": 10
+ }
+}

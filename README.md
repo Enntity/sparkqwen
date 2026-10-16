@@ -20,19 +20,24 @@ cp .env.example .env      # set WORKER to the other Spark's ssh destination
 ./start.sh
 ```
 
-**Status: RC16 prefill-cache maintenance release.** The engine is pinned in
+**Status: shared-engine release.** The engine is pinned in
 [`install/atlas-source.json`](install/atlas-source.json) to Enntity/atlas
-`sparkqwen/atlas-20261013-prefill` at `fcf9735f` (tree `64c4b6db`).
-The matching image is `ghcr.io/enntity/atlas-sparkqwen:a678dfce7c4c`.
+`sparkqwen/atlas-20261015-vision` at `1954e759` (tree `8011ff9e`): the RC16
+prefill-cache engine on the engine layer SparkQwen now shares with
+[SparkGLM](https://github.com/Enntity/sparkglm).
+The matching image is `ghcr.io/enntity/atlas-sparkqwen:4e29c8c22671`.
 Its tag is the committed `install/` tree; `start.sh` pulls it by default.
 
-This release reduces CPU work when the prefix cache fills up. It retains the
-[0.70 TP2 sidecar setup](.env.sidecars.example), profiles, per-node fabric
-selection, blocking chat content fix and packed checkpoint detection.
-[Prefill-cache measurements and qualification](results/2026-10-13-prefill-cache/RESULT.md)
-include the same-pair before/after receipts and the limits of this maintenance
-release. The engine uses an Atlas-Inf `main` base at `4405bce3`; Enntity's
-release branches are published separately from Atlas-Inf `main`.
+This release changes where the engine comes from and makes image prompts
+work. Prompt logprobs, decode, prefill, concurrency and warm-cache
+measurements match the prefill-cache release on the same pair. Image prompts
+now answer correctly when they interleave, a malformed one fails alone instead
+of taking down the pair, and image conversations use the prefix cache
+([results/2026-10-15-shared-engine](results/2026-10-15-shared-engine/RESULT.md)).
+It retains the [0.70 TP2 sidecar setup](.env.sidecars.example), profiles,
+per-node fabric selection, blocking chat content fix and packed checkpoint
+detection. The engine uses an Atlas-Inf `main` base at `7ffd183f`; Enntity's
+releases are tags in `Enntity/atlas`, separate from Atlas-Inf `main`.
 
 The throughput and exactness results below are historical RC16 measurements
 (engine `1c43247d`, install tree `656234c336af`), not a rerun of that benchmark
@@ -96,7 +101,7 @@ Run it on the Spark that will serve the API (rank 0). Each step is skipped when
 already done, so rerunning it just restarts the engine.
 
 1. **Image.** Pulls `ghcr.io/enntity/atlas-sparkqwen:<tag>`, where the tag is
-   the git tree of [`install/`](install/) (the release tree `a678dfce7c4c`),
+   the git tree of [`install/`](install/) (the release tree `4e29c8c22671`),
    so the image always matches your checkout. If that tag is not published
    (an edited `install/`, or `PULL=0` in `.env`), it builds the image from
    source instead ([`install/build.sh`](install/build.sh): Atlas at the commit
@@ -132,7 +137,9 @@ top-k 20 with thinking on; 0.7, 0.80, 20 with thinking off; and the tools row
 (0.7, 0.80, 20, presence penalty 1.5) when the request carries tools. Tool
 calls (OpenAI `tools`, streaming included) are parsed in the checkpoint's own
 XML call format (Atlas's `qwen3_coder` parser); `bench/tool_probe.py` passes
-35/35. Structured output and images have not been tested.
+35/35. Images pass the race, conversation, swap and cached-versus-cold checks
+in [results/2026-10-15-shared-engine](results/2026-10-15-shared-engine/RESULT.md);
+structured output and video have not been tested.
 
 **Profiles** (`PROFILE` in `.env`):
 
