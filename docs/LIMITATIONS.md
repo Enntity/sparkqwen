@@ -23,7 +23,8 @@ What to know before relying on SparkQwen.
 
 The FP4-Local results (`results/2026-10-16-fp4local`) were measured on the
 final engine as a development binary on the previous release's image, with GPU
-clocks uncapped; the image built from this checkout has not run them. Not
+clocks uncapped; the release image built from this checkout then reproduced
+the prompt logprobs, tool calling and RigMark (`raw/recipe/`). Not
 rerun on FP4-Local: sparkDash, the 77K-token needle, concurrent agent
 conversations, the `4x262k` profile, the 0.70 sidecar share and image
 prompts. Results below that cite RC16 or vLLM were measured on the NVFP4

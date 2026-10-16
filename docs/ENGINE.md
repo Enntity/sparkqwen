@@ -7,7 +7,7 @@ pinned in [`install/atlas-source.json`](../install/atlas-source.json), for the
 kernel target `qwen3.8-flash-next` (model type `qwen4_exp`).
 [`install/build.sh`](../install/build.sh) refuses any other tree.
 
-The pin is the release tag `sparkqwen/atlas-20261016-fp4local` at a8976e86 (tree `6a37ba6b`): the
+The pin is the release tag `sparkqwen/atlas-20261016-fp4local` at 9f64bf6b (tree `af5fbb42`): the
 shared-engine release (`sparkqwen/atlas-20261015-vision`, 1954e759) plus the
 [FP4-Local series](#fp4-local-series), which loads and serves NVIDIA's
 FP4-Local checkpoint ([results/2026-10-16-fp4local](../results/2026-10-16-fp4local/RESULT.md)).
@@ -140,7 +140,8 @@ correction and record the qualification limits.
 
 ## FP4-Local series
 
-Fifty-four commits on top of the shared-engine release. Those marked `shared:`
+Fifty-five commits on top of the shared-engine release (the last only moves
+a unit test's fixture read to run time, so a release build compiles it). Those marked `shared:`
 in their subject are model-independent and are candidates for the shared
 layer; until they move, they sit in the `sparkqwen` layer. Every path below
 turns on only when the checkpoint is FP4-Local, detected from its tensors; the

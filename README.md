@@ -31,11 +31,11 @@ MXFP8, where the NVFP4 release kept them BF16. The engine reads those MXFP8
 bytes directly when it decodes and runs prefill as MXFP8 W8A8, which is how
 NVIDIA's own serving recipe runs this checkpoint. The engine is pinned in
 [`install/atlas-source.json`](install/atlas-source.json) to Enntity/atlas
-`sparkqwen/atlas-20261016-fp4local` at `a8976e86` (tree `6a37ba6b`): the
+`sparkqwen/atlas-20261016-fp4local` at `9f64bf6b` (tree `af5fbb42`): the
 shared-engine release plus the FP4-Local series ([docs/ENGINE.md](docs/ENGINE.md)).
 The engine still loads the NVFP4 checkpoint unchanged; see
 [Choosing a checkpoint](#choosing-a-checkpoint). The image for this release,
-`ghcr.io/enntity/atlas-sparkqwen:20e4882e2aca`, is not published yet; until
+`ghcr.io/enntity/atlas-sparkqwen:4618128c570b`, is not published yet; until
 it is, `./start.sh` builds it from source (30–60 minutes cold).
 
 ## What it does
@@ -53,15 +53,21 @@ and [2026-10-10-rc16](results/2026-10-10-rc16/RESULT.md).
 | RigMark output gates | 9/9 | 9/9 |
 | Cold prompt 2K / 8K / 16K / 28K: time to first token | **0.69 / 2.00 / 3.97 / 7.06 s** | 0.73 / 2.08 / 4.11 / 7.32 |
 | Follow-up turn in an 8K / 20K conversation: time to first token | 0.16-0.19 / 0.17-0.21 s | |
-| KV pool at the default 0.88 (`8x32k`) | **3.44M tokens** | 3.26M |
+| KV pool at the default 0.88 (`8x32k`) | **3.42M tokens** | 3.26M |
 | Checkpoint download | **95 GiB** | 124 GiB |
 | Quality probe: arithmetic / two-hop 24K needle | 40/40 · 12/12 | 40/40 · 12/12 |
 | Tool calling (`bench/tool_probe.py`, 7 cases) | 21/21 (3 runs each) | 35/35 (5 runs each) |
 
-The FP4-Local column is the final engine (`a8976e86`) as a dev binary on the
-release image of the previous engine; the image for this checkout's
-`install/` tree has not been through the full benchmark suite yet
-([LIMITATIONS](docs/LIMITATIONS.md#scope-of-the-measurements)). Not yet rerun
+The FP4-Local column was measured with the engine as a dev binary
+(`a8976e86`; the release commit `9f64bf6b` changes only a unit test). The
+release image that `./start.sh` built from this checkout then reproduced it:
+the same prompt logprobs bit for bit, tool calling 21/21, and RigMark 9/9 at
+96.5 / 57.1 / 104.4 tok/s decode, 4,190 tok/s cold 16K prefill and
+69.5 / 110.4 / 188.4 / 290.3 tok/s at C1 / C2 / C4 / C8. The full RigMark
+cards: [FP4-Local, release image](results/2026-10-16-fp4local/raw/recipe/rigmark-FP4L.card.txt),
+[FP4-Local, final dev run](results/2026-10-16-fp4local/raw/rigmark/rig-fp4l-w2-u.card.txt)
+and [RC16 on NVFP4](results/2026-10-10-rc16/raw/recipe/rigmark-RC16.card.txt),
+each beside its JSON receipt. Not yet rerun
 on FP4-Local: sparkDash, the 77K-token needle, concurrent agent
 conversations, the `4x262k` profile and image prompts. Every option in the
 default profile is exact: greedy output with speculative decoding, with up to
@@ -139,7 +145,7 @@ Run it on the Spark that will serve the API (rank 0). Each step is skipped when
 already done, so rerunning it just restarts the engine.
 
 1. **Image.** Pulls `ghcr.io/enntity/atlas-sparkqwen:<tag>`, where the tag is
-   the git tree of [`install/`](install/) (the release tree `20e4882e2aca`),
+   the git tree of [`install/`](install/) (the release tree `4618128c570b`),
    so the image always matches your checkout. If that tag is not published
    (an edited `install/`, or `PULL=0` in `.env`), it builds the image from
    source instead ([`install/build.sh`](install/build.sh): Atlas at the commit
@@ -187,7 +193,7 @@ output and video have not been tested.
 **Profiles** (`PROFILE` in `.env`):
 
 - `8x32k` (default): up to eight requests of up to 32K context each, from one
-  shared BF16 KV pool: about 3.44M tokens at the default
+  shared BF16 KV pool: about 3.42M tokens at the default
   `GPU_MEMORY_UTILIZATION` of 0.88.
 - `4x262k`: up to four requests of up to 256K context each, from the same
   pool (not yet measured with FP4-Local; 3.35M tokens with NVFP4).
@@ -258,13 +264,14 @@ built from four layers ([docs/ENGINE.md](docs/ENGINE.md)):
 4. SparkQwen-only commits: exact batched speculation and exact prefix
    caching, tensor-core MoE and mHC decode, prefill MoE without a weight
    duplicate, multi-prompt prefill, long-context QSA decode and faster verify
-   and prefill kernels, each behind a switch the profiles set.
-5. The FP4-Local series: a lossless decoder for the checkpoint's compressed
-   NVFP4 block scales, MXFP8 decode straight from the checkpoint's bytes,
-   W8A8 MXFP8 prefill through cuBLASLt (in-order kernels only, so prefill stays
-   row-invariant and prefix caching stays exact), the NVFP4 PLE table read
-   through a checksummed packed copy, and native NVFP4 MTP experts. It turns
-   on by itself when the checkpoint is FP4-Local; the NVFP4 path is unchanged.
+   and prefill kernels, each behind a switch the profiles set. Since this
+   release they include the FP4-Local series: a lossless decoder for the
+   checkpoint's compressed NVFP4 block scales, MXFP8 decode straight from the
+   checkpoint's bytes, W8A8 MXFP8 prefill through cuBLASLt (in-order kernels
+   only, so prefill stays row-invariant and prefix caching stays exact), the
+   NVFP4 PLE table read through a checksummed packed copy, and native NVFP4
+   MTP experts. The series turns on by itself when the checkpoint is
+   FP4-Local; the NVFP4 path is unchanged.
 
 ## Credits
 

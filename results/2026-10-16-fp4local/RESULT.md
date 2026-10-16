@@ -5,7 +5,7 @@ The default checkpoint is now NVIDIA's
 [`nvidia/Qwen3.8-Flash-Next-FP4-Local`](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local)
 at `b9ce18a6` (95.1 GiB), replacing `nvidia/Qwen3.8-Flash-Next-NVFP4` at
 `fc694b54` (123.6 GiB). The engine is `sparkqwen/atlas-20261016-fp4local` at
-`a8976e86` (tree `6a37ba6b`): the shared-engine release (`1954e759`) plus 54
+`9f64bf6b` (tree `af5fbb42`): the shared-engine release (`1954e759`) plus 55
 commits that load the new checkpoint as published and serve it faster. The
 NVFP4 checkpoint still loads unchanged (identical prompt logprobs).
 
@@ -67,8 +67,9 @@ checkpoint every path is the one the shared-engine release ran.
 Two GB10 Sparks on one 200G cable, GPU clocks uncapped, `8x32k` profile at
 0.88, one session each. The FP4-Local arm ran the final engine (`a8976e86`)
 as a dev binary on the shared-engine image (`4e29c8c22671`), so the RigMark
-receipts' `serving_image` field names that image; the image built from this
-checkout's `install/` tree has not run these benchmarks yet. Same-day NVFP4
+receipts' `serving_image` field names that image. The release commit
+`9f64bf6b` differs from `a8976e86` only in how one unit test reads its
+fixture; the release image was measured afterwards (below). Same-day NVFP4
 ran the shared-engine release image unchanged.
 
 **RigMark** (`raw/rigmark/`, cards and JSON receipts; every gate 9/9):
@@ -98,7 +99,26 @@ prefill; the eight-agent aggregate is level.
 | Follow-up turns in an 8K / 20K conversation | 0.16–0.19 / 0.17–0.21 s |
 | Aggregate decode, 1 / 2 / 4 / 8 streams | 58.8 / 100.1 / 143.9 / 212.6 tok/s |
 
-**KV pool:** 3.44M tokens (`8x32k`) at 0.88, against 3.26M with NVFP4.
+**KV pool:** 3.44M tokens (`8x32k`) at 0.88 with the dev binary and 3.42M
+with the release image, against 3.26M with NVFP4.
+
+**Release image** (`raw/recipe/`): `./start.sh` in a fresh clone of this
+checkout built `ghcr.io/enntity/atlas-sparkqwen:4618128c570b` from source
+(engine `9f64bf6b`; the build-time tests passed), started both ranks and
+answered its smoke question (`start-8x32k.log`). On that image, `8x32k` at
+0.88, GPU clocks uncapped:
+
+| Check | Result |
+|---|---|
+| Prompt logprobs, 30,802 tokens, two runs | `798fc6cc2641` both times: the dev binary's W8A8 hash (`lp-FP4L.json`) |
+| `bench/tool_probe.py`, 7 cases x 3 | 21/21 (`tools-FP4L-8x32k.json`) |
+| RigMark decode estimate, code / prose / structured | 96.5 / 57.1 / 104.4 tok/s, gates 9/9 |
+| RigMark cold 16K-token prefill | 4,190 tok/s |
+| RigMark C1 / C2 / C4 / C8 | 69.5 / 110.4 / 188.4 / 290.3 tok/s |
+| KV pool | 3,419,600 tokens (`8x262k` at 0.88: 3,354,240) |
+
+The RigMark card is `rigmark-FP4L.card.txt` (JSON receipt `42a2d01d…`). The
+checkpoint was already on disk, so this run did not exercise a fresh download.
 
 ## Quality and exactness
 
@@ -126,8 +146,8 @@ All on the final engine unless noted (`raw/gates/`):
 
 ## Not covered
 
-- The image built from this checkout's `install/` tree: build, release gates
-  and RigMark on it are still to run.
+- A fresh checkpoint download through `./start.sh` (the release-image run
+  found a verified copy) and a cold image build with an empty cache.
 - sparkDash, the 77K-token needle, concurrent agent conversations, the
   `4x262k` profile and the `0.70` sidecar share with FP4-Local.
 - Image prompts with FP4-Local's MXFP8/NVFP4 vision tower: the tower loads and

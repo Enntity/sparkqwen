@@ -1,4 +1,4 @@
-81b86da734a0b15133c6591615466a74bfa324c673ab6d23602438a639a6cf2d  ./RESULT.md
+e556ac9c25d36bf472613ca85c9ba1b5428270d98ae1693f865592234b0b352e  ./RESULT.md
 d4963b9ce4d3e49bd69b7ffbd0b884849ca682b9db23266d8446b5b2aa8493b5  ./raw/bench/bench-w2.json
 d2900fa8222148b81d9a60427d380da5a0cc5776bead54e70e5f2e62772d57af  ./raw/bench/lp-w2.json
 8fc6c6e7bcdacc163a602916888a259bf2eda7387a1f23f65f5652d0bacf1fdc  ./raw/gates/greedy-w1-c1.json
@@ -14,6 +14,12 @@ f53ee826c5990eb39ac650cb0894888d57c2d7be0e94a6a9e7717ddd3bbeeab1  ./raw/gates/lp
 5f6680c2cdaefd35d8468ec4cf618031142fe09bc93b89518482057ed53dc6aa  ./raw/gates/nll-w1-w8a8.json
 7164477aff35ba9d32e5442c611e7a70de322ec6f04917463b65a32c4f86646a  ./raw/gates/qprobe-w1.jsonl
 4bbf2c81b423cc4bf15820e7630be026a94aafcfd2c0ca0a76b30513c9a4aec4  ./raw/gates/tools-w1.json
+db9d0706a3be9b76beee8896ed25195ed808666c25b09d0505c17d75bd05d69a  ./raw/recipe/lp-FP4L.json
+2cc5bea1222b81627932316fc6c8bcbb98dc944f076a90b85c58abdf31fac717  ./raw/recipe/rigmark-FP4L.card.txt
+42a2d01d51e952987adbb3fabdadfef9f46dfae724ebd809e694be78ca5b32e3  ./raw/recipe/rigmark-FP4L.json
+b0c35b1e80c79709820c847086147e8bb6f616d681e13c2c2b4470ef5aa7b43a  ./raw/recipe/rigmark-FP4L.log
+a1c19165d9eb2e944d08bc4f2a43fd663e27f381b3e2274bcf3cdaf6bb6d1590  ./raw/recipe/start-8x32k.log
+294a5b6cb290a137bebb797e04119a92ef27670ad8aa41753ad7670de24dad0d  ./raw/recipe/tools-FP4L-8x32k.json
 ca6a52f6058409d3804062972cf316f6dd2368005b539f659e74091a66372c95  ./raw/rigmark/rig-fp4l-base-u.card.txt
 1c88ba7d5e153804932e418a64605e67d51699499419f7216b96305d36fdc770  ./raw/rigmark/rig-fp4l-base-u.json
 a8eeb9299b0a3593a664418405b1429d153456b691acf678e42fd7913bf24180  ./raw/rigmark/rig-fp4l-base-u.log
