@@ -51,7 +51,14 @@ requires you to offer them your modified source.
 ## Model
 
 No weights are distributed here. `./start.sh` downloads
-[`nvidia/Qwen3.8-Flash-Next-NVFP4`](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-NVFP4)
-from its publisher, under the terms on its model card (the NVIDIA Open Model
-License). Read the model card before use, and before redistributing anything
-derived from it.
+[`nvidia/Qwen3.8-Flash-Next-FP4-Local`](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local)
+from its publisher, under the terms on its model card: the NVIDIA Open Model
+Agreement, with the Qwen3.8-Flash-Next base model under the Qwen Community
+License 1.0. The NVFP4 checkpoint the earlier releases downloaded,
+[`nvidia/Qwen3.8-Flash-Next-NVFP4`](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-NVFP4),
+is under the NVIDIA Open Model License. Read the model card before use, and
+before redistributing anything derived from it.
+
+The packed PLE table the engine writes to `~/.cache/atlas-ple` is derived from
+the checkpoint's weights; it stays on your Sparks and falls under the same
+terms.

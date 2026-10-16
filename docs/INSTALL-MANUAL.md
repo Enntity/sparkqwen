@@ -6,8 +6,8 @@ time. Run steps 1–3 on **both** Sparks with the same `MODEL_ROOT`.
 
 | Component | Pin |
 |---|---|
-| Engine | [`Enntity/atlas`](https://github.com/Enntity/atlas), `sparkqwen/atlas-20261015-vision` at 1954e759 ([`install/atlas-source.json`](../install/atlas-source.json), [docs/ENGINE.md](ENGINE.md)) |
-| Model | [`nvidia/Qwen3.8-Flash-Next-NVFP4`](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-NVFP4) @ `fc694b54fb0174e0913e6adf86691ef85a4ead47` ([`install/checkpoint.json`](../install/checkpoint.json)) |
+| Engine | [`Enntity/atlas`](https://github.com/Enntity/atlas), `sparkqwen/atlas-20261016-fp4local` at a8976e86 ([`install/atlas-source.json`](../install/atlas-source.json), [docs/ENGINE.md](ENGINE.md)) |
+| Model | [`nvidia/Qwen3.8-Flash-Next-FP4-Local`](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local) @ `b9ce18a6887e18c089fdea8509a33e63429a3300` ([`install/checkpoint.json`](../install/checkpoint.json)); the engine also loads [`nvidia/Qwen3.8-Flash-Next-NVFP4`](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-NVFP4) @ `fc694b54fb0174e0913e6adf86691ef85a4ead47` |
 | Build dependencies | CUTLASS `cf064d2e`, NCCL 2.31.2, Rust 1.93.1, CUDA 13.0 |
 | Profiles | [`install/profiles/`](../install/profiles/): `8x32k` (default), `4x262k` and `8x262k` (long context) |
 
@@ -42,13 +42,20 @@ Keep models off the Spark while it builds.
 
 ```sh
 export MODEL_ROOT=$HOME/models/sparkqwen     # the same absolute path on both Sparks
-hf download nvidia/Qwen3.8-Flash-Next-NVFP4 --revision fc694b54fb0174e0913e6adf86691ef85a4ead47 \
-  --local-dir "$MODEL_ROOT/nvidia--Qwen3.8-Flash-Next-NVFP4"
+hf download nvidia/Qwen3.8-Flash-Next-FP4-Local --revision b9ce18a6887e18c089fdea8509a33e63429a3300 \
+  --local-dir "$MODEL_ROOT/nvidia--Qwen3.8-Flash-Next-FP4-Local"
 ```
 
-It is about 124 GiB. Instead of downloading twice, you can copy the directory
+It is about 95 GiB. Instead of downloading twice, you can copy the directory
 to the other Spark with `rsync -a` over the direct cable. Atlas loads it as
-published; nothing is converted.
+published; nothing is converted. On its first start each rank also writes a
+packed copy of the PLE n-gram table, 31 GB, to `--ple-cache` (default
+`~/.cache/atlas-ple`), so leave room for it; later starts check it and reuse it.
+
+To serve the NVFP4 checkpoint instead, download
+`nvidia/Qwen3.8-Flash-Next-NVFP4` at `fc694b54fb0174e0913e6adf86691ef85a4ead47`
+into `$MODEL_ROOT/nvidia--Qwen3.8-Flash-Next-NVFP4` and pass
+`--checkpoint nvidia--Qwen3.8-Flash-Next-NVFP4` to both ranks below.
 
 ## 4. Start the pair, worker first
 
@@ -69,15 +76,16 @@ until curl -sf http://127.0.0.1:8893/health; do sleep 10; done
 ```
 
 **Loading and warmup.** The first start fills the CUDA kernel cache
-(`~/.cache/atlas-cuda`), and so do the first requests of each shape; later
-starts reuse it. Run one warmup pass before measuring.
+(`~/.cache/atlas-cuda`) and, with FP4-Local, the packed PLE table
+(`~/.cache/atlas-ple`, about a minute); the first requests of each shape also
+compile kernels. Later starts reuse both. Run one warmup pass before measuring.
 
 **Profiles.** `--profile 4x262k` or `--profile 8x262k` selects a long-context profile. A path to a JSON file runs your own profile. Use the same profile
 on both ranks.
 
-**Opt-in.** `--fp8-gdn` (lossy FP8 Gated DeltaNet projections) is off by
-default. Use the same setting on both ranks; see
-[LIMITATIONS.md](LIMITATIONS.md).
+**Opt-in.** `--fp8-gdn` (lossy FP8 Gated DeltaNet projections, NVFP4
+checkpoint only; the engine refuses it with FP4-Local) is off by default. Use
+the same setting on both ranks; see [LIMITATIONS.md](LIMITATIONS.md).
 
 `--qsa-tc2r` was removed in RC16: the tensor-core QSA prefill it selected is
 the two-Spark default since RC15.

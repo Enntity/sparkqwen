@@ -1,0 +1,18 @@
+{
+ "tag": "w1-bf16",
+ "runs": [
+  {
+   "n": 30802,
+   "hash": "4cfbf0e6b1ad",
+   "sum": -21810.5057,
+   "secs": 37.9
+  },
+  {
+   "n": 30802,
+   "hash": "4cfbf0e6b1ad",
+   "sum": -21810.5057,
+   "secs": 37.7
+  }
+ ],
+ "reproducible": true
+}

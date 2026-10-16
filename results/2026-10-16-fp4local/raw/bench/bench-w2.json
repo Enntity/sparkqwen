@@ -1,0 +1,481 @@
+{
+ "arm": "w2",
+ "date": "2026-10-15 23:19:12",
+ "cells": {
+  "decode": [
+   {
+    "ttft": 0.192,
+    "wall": 6.791,
+    "out": 384,
+    "prompt": 69,
+    "cached": 0,
+    "tok_s": 58.04,
+    "text_head": "The user wants a calm, detailed essay about lighthouse staffing and maintenance ",
+    "kind": "prose",
+    "rep": 0
+   },
+   {
+    "ttft": 0.153,
+    "wall": 6.463,
+    "out": 384,
+    "prompt": 69,
+    "cached": 64,
+    "tok_s": 60.7,
+    "text_head": "The user wants a calm, detailed essay about lighthouse staffing and maintenance ",
+    "kind": "prose",
+    "rep": 1
+   },
+   {
+    "ttft": 0.156,
+    "wall": 6.473,
+    "out": 384,
+    "prompt": 69,
+    "cached": 64,
+    "tok_s": 60.63,
+    "text_head": "The user wants a calm, detailed essay about lighthouse staffing and maintenance ",
+    "kind": "prose",
+    "rep": 2
+   },
+   {
+    "ttft": 0.144,
+    "wall": 5.033,
+    "out": 384,
+    "prompt": 65,
+    "cached": 32,
+    "tok_s": 78.34,
+    "text_head": "The user wants a Python module that implements an LRU cache with:\n1. TTL (Time-T",
+    "kind": "code",
+    "rep": 0
+   },
+   {
+    "ttft": 0.149,
+    "wall": 4.812,
+    "out": 384,
+    "prompt": 65,
+    "cached": 64,
+    "tok_s": 82.14,
+    "text_head": "The user wants a Python module that implements an LRU cache with:\n1. TTL (Time-T",
+    "kind": "code",
+    "rep": 1
+   },
+   {
+    "ttft": 0.148,
+    "wall": 4.824,
+    "out": 384,
+    "prompt": 65,
+    "cached": 64,
+    "tok_s": 81.9,
+    "text_head": "The user wants a Python module that implements an LRU cache with:\n1. TTL (Time-T",
+    "kind": "code",
+    "rep": 2
+   },
+   {
+    "ttft": 0.155,
+    "wall": 5.153,
+    "out": 384,
+    "prompt": 77,
+    "cached": 32,
+    "tok_s": 76.63,
+    "text_head": "The user wants a JSON array of 12 fictional library books. Each book needs: titl",
+    "kind": "json",
+    "rep": 0
+   },
+   {
+    "ttft": 0.151,
+    "wall": 4.942,
+    "out": 384,
+    "prompt": 77,
+    "cached": 64,
+    "tok_s": 79.93,
+    "text_head": "The user wants a JSON array of 12 fictional library books. Each book needs: titl",
+    "kind": "json",
+    "rep": 1
+   },
+   {
+    "ttft": 0.151,
+    "wall": 4.956,
+    "out": 384,
+    "prompt": 77,
+    "cached": 64,
+    "tok_s": 79.7,
+    "text_head": "The user wants a JSON array of 12 fictional library books. Each book needs: titl",
+    "kind": "json",
+    "rep": 2
+   }
+  ],
+  "prefill": [
+   {
+    "ttft": 0.7,
+    "wall": 0.991,
+    "out": 16,
+    "prompt": 2022,
+    "cached": 32,
+    "tok_s": 51.54,
+    "text_head": "The user asks which shelf holds Entry 3. Looking at the data:\n\n",
+    "size": 2048,
+    "rep": 0
+   },
+   {
+    "ttft": 0.68,
+    "wall": 0.97,
+    "out": 16,
+    "prompt": 2023,
+    "cached": 32,
+    "tok_s": 51.78,
+    "text_head": "The user asks which shelf holds Entry 3. Looking at the data:\n\n",
+    "size": 2048,
+    "rep": 1
+   },
+   {
+    "ttft": 1.999,
+    "wall": 2.28,
+    "out": 16,
+    "prompt": 8170,
+    "cached": 32,
+    "tok_s": 53.26,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 8192,
+    "rep": 0
+   },
+   {
+    "ttft": 2.003,
+    "wall": 2.25,
+    "out": 16,
+    "prompt": 8169,
+    "cached": 32,
+    "tok_s": 60.64,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 8192,
+    "rep": 1
+   },
+   {
+    "ttft": 3.936,
+    "wall": 4.183,
+    "out": 16,
+    "prompt": 16390,
+    "cached": 32,
+    "tok_s": 60.71,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 16384,
+    "rep": 0
+   },
+   {
+    "ttft": 4.003,
+    "wall": 4.251,
+    "out": 16,
+    "prompt": 16408,
+    "cached": 32,
+    "tok_s": 60.46,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 16384,
+    "rep": 1
+   },
+   {
+    "ttft": 7.056,
+    "wall": 7.305,
+    "out": 16,
+    "prompt": 28809,
+    "cached": 32,
+    "tok_s": 60.2,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 28672,
+    "rep": 0
+   },
+   {
+    "ttft": 7.058,
+    "wall": 7.303,
+    "out": 16,
+    "prompt": 28819,
+    "cached": 32,
+    "tok_s": 61.1,
+    "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+    "size": 28672,
+    "rep": 1
+   }
+  ],
+  "conc": [
+   {
+    "c": 1,
+    "rep": 0,
+    "wall": 4.48,
+    "tokens": 256,
+    "agg_tok_s": 57.19,
+    "per_stream_tok_s": [
+     59.2
+    ],
+    "ttft": [
+     0.168
+    ]
+   },
+   {
+    "c": 1,
+    "rep": 1,
+    "wall": 4.24,
+    "tokens": 256,
+    "agg_tok_s": 60.36,
+    "per_stream_tok_s": [
+     62.41
+    ],
+    "ttft": [
+     0.155
+    ]
+   },
+   {
+    "c": 2,
+    "rep": 0,
+    "wall": 5.16,
+    "tokens": 512,
+    "agg_tok_s": 99.31,
+    "per_stream_tok_s": [
+     51.38,
+     62.56
+    ],
+    "ttft": [
+     0.192,
+     0.191
+    ]
+   },
+   {
+    "c": 2,
+    "rep": 1,
+    "wall": 5.08,
+    "tokens": 512,
+    "agg_tok_s": 100.87,
+    "per_stream_tok_s": [
+     52.2,
+     61.01
+    ],
+    "ttft": [
+     0.19,
+     0.19
+    ]
+   },
+   {
+    "c": 4,
+    "rep": 0,
+    "wall": 7.07,
+    "tokens": 1024,
+    "agg_tok_s": 144.91,
+    "per_stream_tok_s": [
+     37.7,
+     45.94,
+     42.59,
+     37.45
+    ],
+    "ttft": [
+     0.257,
+     0.257,
+     0.257,
+     0.256
+    ]
+   },
+   {
+    "c": 4,
+    "rep": 1,
+    "wall": 7.17,
+    "tokens": 1024,
+    "agg_tok_s": 142.82,
+    "per_stream_tok_s": [
+     38.2,
+     44.91,
+     42.11,
+     36.85
+    ],
+    "ttft": [
+     0.25,
+     0.25,
+     0.25,
+     0.248
+    ]
+   },
+   {
+    "c": 8,
+    "rep": 0,
+    "wall": 9.64,
+    "tokens": 2048,
+    "agg_tok_s": 212.54,
+    "per_stream_tok_s": [
+     27.73,
+     33.85,
+     31.12,
+     27.55,
+     31.12,
+     29.63,
+     27.91,
+     31.14
+    ],
+    "ttft": [
+     0.377,
+     0.377,
+     0.376,
+     0.376,
+     0.375,
+     0.376,
+     0.375,
+     0.374
+    ]
+   },
+   {
+    "c": 8,
+    "rep": 1,
+    "wall": 9.63,
+    "tokens": 2048,
+    "agg_tok_s": 212.56,
+    "per_stream_tok_s": [
+     28.36,
+     33.11,
+     30.79,
+     27.53,
+     32.17,
+     31.42,
+     28.02,
+     30.79
+    ],
+    "ttft": [
+     0.371,
+     0.37,
+     0.37,
+     0.37,
+     0.369,
+     0.368,
+     0.369,
+     0.368
+    ]
+   }
+  ],
+  "warm": [
+   {
+    "ttft": 2.001,
+    "wall": 2.302,
+    "out": 20,
+    "prompt": 8162,
+    "cached": 32,
+    "tok_s": 63.22,
+    "text_head": "The user wants me to read the registry and reply only with \"OK\".\n\n\nOK",
+    "size": 8192,
+    "turn": 0
+   },
+   {
+    "ttft": 0.188,
+    "wall": 0.978,
+    "out": 48,
+    "prompt": 8191,
+    "cached": 8160,
+    "tok_s": 59.52,
+    "text_head": "The user is asking about Entry 3 from the registry. Let me look it up.\n\nEntry 3:",
+    "size": 8192,
+    "turn": 1
+   },
+   {
+    "ttft": 0.189,
+    "wall": 0.921,
+    "out": 48,
+    "prompt": 8242,
+    "cached": 8176,
+    "tok_s": 64.17,
+    "text_head": "The user is asking about Entry 10 from the registry. Let me look it up.\n\nEntry 1",
+    "size": 8192,
+    "turn": 2
+   },
+   {
+    "ttft": 0.166,
+    "wall": 0.984,
+    "out": 48,
+    "prompt": 8293,
+    "cached": 8240,
+    "tok_s": 57.47,
+    "text_head": "The user is asking about Entry 17 from the registry. Let me look it up.\n\nEntry 1",
+    "size": 8192,
+    "turn": 3
+   },
+   {
+    "ttft": 0.163,
+    "wall": 0.936,
+    "out": 48,
+    "prompt": 8344,
+    "cached": 8288,
+    "tok_s": 60.8,
+    "text_head": "The user is asking about Entry 24 from the registry. Let me look it up.\n\nEntry 2",
+    "size": 8192,
+    "turn": 4
+   },
+   {
+    "ttft": 0.157,
+    "wall": 1.022,
+    "out": 48,
+    "prompt": 8395,
+    "cached": 8336,
+    "tok_s": 54.36,
+    "text_head": "The user is asking about Entry 31 from the registry. Let me look it up.\n\nEntry 3",
+    "size": 8192,
+    "turn": 5
+   },
+   {
+    "ttft": 5.056,
+    "wall": 5.981,
+    "out": 48,
+    "prompt": 20542,
+    "cached": 32,
+    "tok_s": 50.8,
+    "text_head": "The user wants me to read through the registry of entries and simply reply \"OK\".",
+    "size": 20480,
+    "turn": 0
+   },
+   {
+    "ttft": 0.206,
+    "wall": 1.057,
+    "out": 48,
+    "prompt": 20571,
+    "cached": 20528,
+    "tok_s": 55.27,
+    "text_head": "The user is asking about Entry 3 from the registry. Let me look it up.\n\nEntry 3:",
+    "size": 20480,
+    "turn": 1
+   },
+   {
+    "ttft": 0.168,
+    "wall": 0.986,
+    "out": 48,
+    "prompt": 20622,
+    "cached": 20560,
+    "tok_s": 57.52,
+    "text_head": "The user is asking about Entry 10 from the registry. Let me look it up.\n\nEntry 1",
+    "size": 20480,
+    "turn": 2
+   },
+   {
+    "ttft": 0.196,
+    "wall": 1.01,
+    "out": 48,
+    "prompt": 20673,
+    "cached": 20608,
+    "tok_s": 57.77,
+    "text_head": "The user is asking about Entry 17 from the registry. Let me look it up.\n\nEntry 1",
+    "size": 20480,
+    "turn": 3
+   },
+   {
+    "ttft": 0.189,
+    "wall": 1.05,
+    "out": 48,
+    "prompt": 20724,
+    "cached": 20672,
+    "tok_s": 54.57,
+    "text_head": "The user is asking about Entry 24 from the registry. Let me look it up.\n\nEntry 2",
+    "size": 20480,
+    "turn": 4
+   },
+   {
+    "ttft": 0.187,
+    "wall": 0.995,
+    "out": 48,
+    "prompt": 20775,
+    "cached": 20720,
+    "tok_s": 58.13,
+    "text_head": "The user is asking about Entry 31 from the registry. Let me look it up.\n\nEntry 3",
+    "size": 20480,
+    "turn": 5
+   }
+  ]
+ }
+}

@@ -127,7 +127,7 @@ switch() {  # NAME FLAG: append FLAG to common when the .env switch NAME is 1
 serve() {
   local common address
   address=$ip0
-  common=(--leader-address "$address" --model-root "$MODEL_ROOT" --image "$IMAGE"
+  common=(--leader-address "$address" --model-root "$MODEL_ROOT" --checkpoint "${CHECKPOINT_REPO/\//--}" --image "$IMAGE"
           --profile "$PROFILE"
           ${GPU_MEMORY_UTILIZATION:+--gpu-memory-utilization "$GPU_MEMORY_UTILIZATION"})
   switch FP8_GDN --fp8-gdn
@@ -153,7 +153,13 @@ serve() {
 
 if [[ ${1:-up} == fabric ]]; then pick_fabric; exit; fi
 if [[ ${1:-up} == up ]]; then pick_fabric; fi
-read -r CHECKPOINT_REPO CHECKPOINT_REVISION < <(python3 -c 'import json,sys; m=json.load(open(sys.argv[1])); print(m["repository"], m["revision"])' install/checkpoint.json)
+# .env may name another checkpoint (both values or neither); the image stays the same.
+if [[ -n ${CHECKPOINT_REPO:-} || -n ${CHECKPOINT_REVISION:-} ]]; then
+  [[ ${CHECKPOINT_REPO:-} =~ ^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$ && ${CHECKPOINT_REVISION:-} =~ ^[0-9a-f]{40}$ ]] ||
+    { echo 'set both CHECKPOINT_REPO (owner/name) and CHECKPOINT_REVISION (a 40-hex commit) in .env, or neither' >&2; exit 2; }
+else
+  read -r CHECKPOINT_REPO CHECKPOINT_REVISION < <(python3 -c 'import json,sys; m=json.load(open(sys.argv[1])); print(m["repository"], m["revision"])' install/checkpoint.json)
+fi
 IMAGE=${IMAGE:-$(install/build.sh --tag)}
 mkdir -p "$MODEL_ROOT"; MODEL_ROOT=$(realpath "$MODEL_ROOT")
 case ${1:-up} in

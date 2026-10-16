@@ -5,17 +5,31 @@ Run the drivers in [`bench/`](../bench/) on rank 0 against the running engine
 ([bench/README.md](../bench/README.md) says what each measures). Run one
 workload at a time, with nothing else using the pair, after one warmup pass.
 
-The README's numbers and their raw receipts are in
+The README's FP4-Local numbers and their raw receipts are in
+[`results/2026-10-16-fp4local/`](../results/2026-10-16-fp4local/RESULT.md)
+(RigMark cards and JSON receipts, `sq_bench`, the quality, tool, exactness,
+prompt-logprob and NLL gates). They were measured with GPU clocks uncapped.
+The RC16 numbers on the NVFP4 checkpoint they are compared with are in
 [`results/2026-10-10-rc16/`](../results/2026-10-10-rc16/RESULT.md): `raw/recipe/`
 from the recipe's own image (the round that produced them is
 `raw/dev/round_rc16.sh`) and `raw/dev/` from the release gate. vLLM on the
-same pair is in
+same pair, on the NVFP4 checkpoint, is in
 [`results/2026-10-08-rc15/raw/vllm/`](../results/2026-10-08-rc15/RESULT.md).
 The historical RC16 recipe image uses install tree `656234c336af` and Atlas
 engine `1c43247d93ca050f02cb67b0603e88edfe3d92a5`. Check out SparkQwen
-commit `bde3af6` to reproduce those pins and settings; the current maintenance
-release pins a newer engine. Everything below runs with the default profile
-and no opt-ins unless it says otherwise.
+commit `bde3af6` to reproduce those pins and settings. Everything below runs
+with the default profile and no opt-ins unless it says otherwise.
+
+To compare W8A8 prefill with exact BF16 prefill on FP4-Local, run the same
+probe on two servers, the second from a profile file that adds
+`"ATLAS_QWEN4EXP_PREFILL_W8A8": "0"`:
+
+```sh
+cd bench
+python3 nll_probe.py w8a8              # default profile
+python3 nll_probe.py bf16              # PROFILE=/path/to/profile-with-w8a8-off.json
+python3 nll_probe.py compare bf16 w8a8
+```
 
 ## sparkDash decode
 

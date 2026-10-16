@@ -19,6 +19,12 @@ sparkDash (MIT, https://github.com/MiaAI-Lab/sparkDash) and imports its
 prompts from a local checkout at run time; no sparkDash code or text is
 included in this repository.
 
-Model weights are not distributed in this repository. The checkpoint
-nvidia/Qwen3.8-Flash-Next-NVFP4 remains under its publisher's license; see
+Model weights are not distributed in this repository. The checkpoints
+nvidia/Qwen3.8-Flash-Next-FP4-Local (the default) and
+nvidia/Qwen3.8-Flash-Next-NVFP4 remain under their publisher's licenses; see
 docs/LICENSING.md.
+
+The engine's NVFP4-CSF scale decoder and MXFP8 activation quantization follow
+the formats published in vLLM (Apache-2.0), FlashInfer's b12x (Apache-2.0) and
+NVIDIA Model Optimizer (Apache-2.0); see the engine's source for the
+attributions.
