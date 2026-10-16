@@ -3,8 +3,8 @@
   "note": "The Atlas engine is built from the public Enntity/atlas fork at this exact commit; build.sh refuses any other tree.",
   "repository": "https://github.com/Enntity/atlas.git",
   "branch": "sparkqwen/atlas-20261016-fp4local",
-  "commit": "a8976e86bdb4644de27ab4c686d2481e6861a609",
-  "tree": "6a37ba6b3293c8deba4e82eb7ee72399d9a15e48",
+  "commit": "9f64bf6bd0c3553fe6213a472fd94c39e7e8e842",
+  "tree": "af5fbb42f8fed6603dd00707cc07ade4f7bbed64",
   "layers": {
     "atlas_inf_main_base": "7ffd183f210708d5b1afba1e046049f14ad498c7",
     "glm_upstream_series": {
@@ -19,7 +19,7 @@
     },
     "sparkqwen_only": {
       "branch": "sparkqwen/atlas-20261016-fp4local",
-      "commit": "a8976e86bdb4644de27ab4c686d2481e6861a609",
+      "commit": "9f64bf6bd0c3553fe6213a472fd94c39e7e8e842",
       "note": "The SparkQwen layer (sparkqwen/atlas-20261015-vision, 1954e759) plus the FP4-Local series: the lossless NVFP4-CSF scale decoder, exact MXFP8 -> BF16 loading, MXFP8 decode twins for the Gated DeltaNet and attention projections, W8A8 MXFP8 prefill through cuBLASLt (block-scaled, in-order kernels only, row-invariant), the packed NVFP4 PLE n-gram table with checksummed reuse, native NVFP4 MTP experts and the ViT's W4A16 linears. Commits marked `shared:` are model-independent and are candidates for the shared layer; they sit in this layer until it moves."
     }
   },
