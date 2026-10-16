@@ -37,7 +37,7 @@ of taking down the pair, and image conversations use the prefix cache
 It retains the [0.70 TP2 sidecar setup](.env.sidecars.example), profiles,
 per-node fabric selection, blocking chat content fix and packed checkpoint
 detection. The engine uses an Atlas-Inf `main` base at `7ffd183f`; Enntity's
-release branches are published separately from Atlas-Inf `main`.
+releases are tags in `Enntity/atlas`, separate from Atlas-Inf `main`.
 
 The throughput and exactness results below are historical RC16 measurements
 (engine `1c43247d`, install tree `656234c336af`), not a rerun of that benchmark
