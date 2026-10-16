@@ -7,11 +7,12 @@ pinned in [`install/atlas-source.json`](../install/atlas-source.json), for the
 kernel target `qwen3.8-flash-next` (model type `qwen4_exp`).
 [`install/build.sh`](../install/build.sh) refuses any other tree.
 
-The pin is the release tag `sparkqwen/atlas-20261015-vision` at 1954e759 (tree `8011ff9e`): the RC16
-prefill-cache release on the engine layer SparkQwen now shares with
-[SparkGLM](https://github.com/Enntity/sparkglm). The prompt logprobs and the
-decode, prefill, concurrency and warm-cache measurements match the previous
-pin ([results/2026-10-15-shared-engine](../results/2026-10-15-shared-engine/RESULT.md));
+The pin is the release tag `sparkqwen/atlas-20261016-fp4local` at 9f64bf6b (tree `af5fbb42`): the
+shared-engine release (`sparkqwen/atlas-20261015-vision`, 1954e759) plus the
+[FP4-Local series](#fp4-local-series), which loads and serves NVIDIA's
+FP4-Local checkpoint ([results/2026-10-16-fp4local](../results/2026-10-16-fp4local/RESULT.md)).
+With the NVFP4 checkpoint the engine behaves as the shared-engine release did
+(identical prompt logprobs; [results/2026-10-15-shared-engine](../results/2026-10-15-shared-engine/RESULT.md));
 the RC16 gates are in [results/2026-10-10-rc16](../results/2026-10-10-rc16/RESULT.md).
 
 The shared layer is `upstream/atlas-shared-20261015-vision` at `a9464810`, on Atlas-Inf `main` at
@@ -136,6 +137,28 @@ This changes CPU cache bookkeeping, with no changes to model weights or
 numeric kernels. The [maintenance receipts](../results/2026-10-13-prefill-cache/RESULT.md)
 separate the measured prefill candidate from the final single-block review
 correction and record the qualification limits.
+
+## FP4-Local series
+
+Fifty-five commits on top of the shared-engine release (the last only moves
+a unit test's fixture read to run time, so a release build compiles it). Those marked `shared:`
+in their subject are model-independent and are candidates for the shared
+layer; until they move, they sit in the `sparkqwen` layer. Every path below
+turns on only when the checkpoint is FP4-Local, detected from its tensors; the
+NVFP4 checkpoint loads exactly as before.
+
+| Mechanism | Switch (default) |
+|---|---|
+| Lossless decoder for NVFP4 block scales stored as CSF (`*.nvfp4_csf_fixed` + `*.nvfp4_csf_exceptions`), checked against each weight's shape | always |
+| MXFP8 → BF16 expansion of the checkpoint's MXFP8 projections, exact | always |
+| Gated DeltaNet and attention decode read the checkpoint's MXFP8 bytes (row-invariant tensor-core GEMVs, BF16 activations) | `ATLAS_QWEN4EXP_MXFP8_DECODE` (on; `0` decodes the BF16 copy) |
+| W8A8 MXFP8 prefill: cuBLASLt block-scaled FP8 GEMMs, kernels limited to in-order (row-invariant) ones and tuned per row bucket at load, activations quantized by ModelOpt's rule, fused into the mHC collapse for the Gated DeltaNet input; frees the BF16 copies | `ATLAS_QWEN4EXP_PREFILL_W8A8` (on; `0` keeps exact BF16 prefill) |
+| NVFP4 PLE n-gram table read through a packed row file with per-chunk CRC32 checks and source identity; one NVMe read per row | `ATLAS_PLE_PACKED_DIR` (the profiles set `/atlas-ple`); `ATLAS_PLE_PACKED_VERIFY=full` checks every chunk on open |
+| Native NVFP4 MTP experts; the ViT's W4A16 linears expanded to BF16; FP32 norms rounded to BF16 | always |
+
+The decode GEMVs reuse GLM's MXFP8 kernels; the CSF codec and the MXFP8
+activation rounding follow vLLM's and NVIDIA Model Optimizer's published
+formats (attributions in the engine source).
 
 ## Changing the engine
 

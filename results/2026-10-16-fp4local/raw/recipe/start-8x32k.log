@@ -1,0 +1,15 @@
+== start.sh 07:56:42
+== fabric: rocep1s0f0,roceP2p1s0f0 (enp1s0f0np0, <rank0-cable-ip>) here; rocep1s0f0,roceP2p1s0f0 (enp1s0f0np0, <rank1-cable-ip>) on <rank1-cable-ip>
+== image ghcr.io/enntity/atlas-sparkqwen:4618128c570b
+== start rank 1 on <rank1-cable-ip>, then rank 0 here (leader <rank0-cable-ip>, profile 8x32k)
+started atlas-sparkqwen-rank1 (rank 1); follow with: docker logs -f atlas-sparkqwen-rank1
+started atlas-sparkqwen-rank0 (rank 0); follow with: docker logs -f atlas-sparkqwen-rank0
+== loading (a few minutes; the first start also compiles CUDA kernels)
+== ready: http://127.0.0.1:8893/v1 model qwen3.8-flash-next-atlas
+smoke: 17*23 = 391
+
+real	0m44.406s
+user	0m0.417s
+sys	0m0.157s
+3419600 max KV tokens
+engine sparkqwen/atlas-20261016-fp4local 9f64bf6b

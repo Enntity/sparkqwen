@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 """CPU tests for peer selection and preflight without touching a real host."""
+import json
 import importlib.util
 import os
 from pathlib import Path
@@ -115,9 +116,10 @@ class Fabric(unittest.TestCase):
             self.assertIn('missing or down',result.stderr)
             self.assertFalse((root/'DOCKER_CALLED').exists())
 
-    def test_sidecar_env_reaches_both_real_rank_launchers(self):
-        # Fake host inventory, transport and Docker; retain .env parsing,
-        # common argument construction and both real start-node.sh calls.
+    def run_start(self, env_text, repo):
+        """start.sh with a fake host inventory, transport and Docker, keeping .env
+        parsing, common argument construction and both real start-node.sh calls.
+        Returns the result and the two `docker run` lines."""
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             shutil.copytree(ROOT/'install', root/'install')
@@ -128,8 +130,9 @@ class Fabric(unittest.TestCase):
             text = text[:start]+"fabric_ports() { echo 'left nic0 192.0.2.1/24'; }\n"+text[end:]
             text = text.replace('case ${1:-up} in', 'build() { :; }\ndownload() { :; }\ncase ${1:-up} in')
             (root/'start.sh').write_text(text)
-            (root/'.env').write_text((ROOT/'.env.sidecars.example').read_text())
-            models = root/'models'; checkpoint = models/'nvidia--Qwen3.8-Flash-Next-NVFP4'
+            (root/'.env').write_text(env_text)
+            models = root/'models'
+            checkpoint = models/repo.replace('/', '--')
             checkpoint.mkdir(parents=True)
             for name in ('config.json', 'model.safetensors.index.json'):
                 (checkpoint/name).write_text('{}')
@@ -159,11 +162,40 @@ fi
                        IMAGE='test-image', FABRIC_SYSFS=str(sysfs), HOME=str(root),
                        DOCKER_CALLS=str(root/'docker.log'))
             result = subprocess.run(['bash', str(root/'start.sh')], env=env, capture_output=True, text=True)
-            self.assertEqual(result.returncode, 0, result.stderr)
-            calls = [line for line in (root/'docker.log').read_text().splitlines() if line.startswith('run ')]
-            self.assertEqual(len(calls), 2)
-            for rank, call in zip(('1', '0'), calls):
-                self.assertIn(f'NODE_RANK={rank}', call)
-                self.assertIn('SPARKQWEN_PROFILE=8x262k', call)
-                self.assertIn('SPARKQWEN_GPU_MEMORY_UTILIZATION=0.70', call)
-                self.assertIn('FABRIC_SIBLINGS=0', call)
+            log = root/'docker.log'
+            calls = [line for line in log.read_text().splitlines() if line.startswith('run ')] if log.exists() else []
+            return result, calls
+
+    def test_sidecar_env_reaches_both_real_rank_launchers(self):
+        pin = json.loads((ROOT/'install/checkpoint.json').read_text())['repository']
+        result, calls = self.run_start((ROOT/'.env.sidecars.example').read_text(), pin)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(len(calls), 2)
+        for rank, call in zip(('1', '0'), calls):
+            self.assertIn(f'NODE_RANK={rank}', call)
+            self.assertIn('SPARKQWEN_PROFILE=8x262k', call)
+            self.assertIn('SPARKQWEN_GPU_MEMORY_UTILIZATION=0.70', call)
+            self.assertIn('FABRIC_SIBLINGS=0', call)
+
+
+class CheckpointOverride(unittest.TestCase):
+    run_start = Fabric.run_start
+
+    def test_env_can_serve_the_nvfp4_checkpoint_on_the_same_image(self):
+        nvfp4 = 'nvidia/Qwen3.8-Flash-Next-NVFP4'
+        env = ('WORKER=you@worker.example\nCHECKPOINT_REPO=' + nvfp4 +
+               '\nCHECKPOINT_REVISION=fc694b54fb0174e0913e6adf86691ef85a4ead47\n')
+        result, calls = self.run_start(env, nvfp4)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(len(calls), 2)
+        for call in calls:
+            self.assertIn('MODEL_PATH=', call)
+            self.assertIn('nvidia--Qwen3.8-Flash-Next-NVFP4', call)
+            self.assertNotIn('FP4-Local', call)
+
+    def test_half_an_override_is_refused(self):
+        env = 'WORKER=you@worker.example\nCHECKPOINT_REPO=nvidia/Qwen3.8-Flash-Next-NVFP4\n'
+        result, calls = self.run_start(env, 'nvidia/Qwen3.8-Flash-Next-NVFP4')
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('CHECKPOINT_REVISION', result.stderr)
+        self.assertEqual(calls, [])

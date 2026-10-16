@@ -5,9 +5,14 @@ What to know before relying on SparkQwen.
 
 ## Installation
 
-- The published image (`ghcr.io/enntity/atlas-sparkqwen:a678dfce7c4c`) is
-  arm64 for GB10 only; `PULL=0` builds the same tree from source (30-60
-  minutes cold). The historical RC16 recipe (install tree
+- The image for this release's `install/` tree is not published yet; until
+  it is, `./start.sh` builds it from source (30-60 minutes cold). Published
+  images are arm64 for GB10 only. The previous release's image is
+  `ghcr.io/enntity/atlas-sparkqwen:4e29c8c22671`.
+- The FP4-Local checkpoint is 95 GiB, and each Spark also keeps a 31 GB packed
+  copy of its PLE table in `~/.cache/atlas-ple`. The first start writes it
+  (about a minute) and needs that much free disk; later starts check
+  sampled chunks and reuse it. The historical RC16 recipe (install tree
   `656234c336af`, engine `1c43247d`) ran end to end from a clean clone
   on our pair and reproduced its release gates
   (`results/2026-10-10-rc16`, first paragraph), with the checkpoint already
@@ -16,13 +21,19 @@ What to know before relying on SparkQwen.
 
 ## Scope of the measurements
 
-The throughput, quality and exactness results below come from the historical
-RC16 receipts, not a full benchmark rerun on the maintenance image. The 0.70
-sidecar observation records its own source and image identity.
+The FP4-Local results (`results/2026-10-16-fp4local`) were measured on the
+final engine as a development binary on the previous release's image, with GPU
+clocks uncapped; the release image built from this checkout then reproduced
+the prompt logprobs, tool calling and RigMark (`raw/recipe/`). Not
+rerun on FP4-Local: sparkDash, the 77K-token needle, concurrent agent
+conversations, the `4x262k` profile, the 0.70 sidecar share and image
+prompts. Results below that cite RC16 or vLLM were measured on the NVFP4
+checkpoint. The 0.70 sidecar observation records its own source and image
+identity.
 
 - We tested one pair of DGX Sparks on one 200G cable, in single sessions.
   Other firmware, drivers, cables or cooling may give different numbers.
-- The vLLM figures in the README were measured on the same pair with vLLM
+- The vLLM figures in earlier results were measured on the NVFP4 checkpoint, on the same pair with vLLM
   v0.30.0 and the settings of MiaAI-Lab's dual-Spark `start-v030.sh` (patched
   MTP head, 47K-token draft vocabulary, TP2 with expert parallel, util 0.80).
   We did not tune vLLM beyond that recipe; its launch script is in
@@ -34,7 +45,7 @@ sidecar observation records its own source and image identity.
 
 ## Throughput at concurrency
 
-- At eight streams, sparkDash code and JSON are level with vLLM on the same
+- On the NVFP4 checkpoint (RC16), at eight streams, sparkDash code and JSON are level with vLLM on the same
   pair (297 and 333 tok/s aggregate, inside vLLM's 291-307 and 331-339 over
   two runs); structured and prose are ahead. At eight streams the decode
   step is bound by the bytes of the distinct experts a wave touches, and our
@@ -54,7 +65,8 @@ sidecar observation records its own source and image identity.
 - FP8 KV cache is not supported: the QSA sparse-attention indexer requires
   BF16 KV. All profiles use `--kv-cache-dtype bf16`. Prefill MoE reads the
   checkpoint's own weight planes, so at util 0.88 the pair holds about
-  3.2 million KV tokens (vLLM on the same pair at util 0.80: 1.5 million).
+  3.4 million KV tokens with FP4-Local (3.2 million with the NVFP4
+  checkpoint; vLLM on the same pair at util 0.80: 1.5 million).
 
 ## Long context
 
@@ -115,7 +127,16 @@ sidecar observation records its own source and image identity.
 - Two-Spark (TP2) output is not bit-identical to single-GPU output: BF16
   rounding of the tensor-parallel partial sums (96 reductions per token),
   amplified by QSA's top-k selection past 4,096 tokens.
-- `FP8_GDN=1` changes outputs, and has not been measured with RC15 or RC16.
+- With FP4-Local, prefill runs W8A8: activations are quantized to MXFP8 per
+  32 values (ModelOpt's format, as NVIDIA's serving recipe runs it), while
+  decode multiplies the same MXFP8 weights by BF16 activations. Prompt tokens
+  and generated tokens therefore go through different arithmetic. Exactness as
+  defined above still holds (the prefill kernels stay row-invariant; 8/8 in
+  `results/2026-10-16-fp4local`), and teacher-forced NLL rose 0.18% against
+  exact BF16 prefill. `ATLAS_QWEN4EXP_PREFILL_W8A8=0` in a profile file
+  restores BF16 prefill, about 8% slower at 16K (3,846 against 4,161 tok/s).
+- `FP8_GDN=1` (NVFP4 checkpoint only) changes outputs, and has not been
+  measured with RC15 or later.
 - cuBLASLt chooses split-K differently in CUDA 13.0 (the runtime image) and
   13.1. Exactness checks are only meaningful inside the image's CUDA version.
 

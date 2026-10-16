@@ -143,6 +143,9 @@ class LaunchContract(unittest.TestCase):
                 self.assertEqual(env.get('ATLAS_LOOP_STEER'), '1')
                 self.assertNotIn('ATLAS_QWEN4EXP_MTP_CONFIDENCE', env)
                 self.assertEqual(env.get('ATLAS_EP_PROTOCOL'), 'v2')
+                # FP4-Local's NVFP4 PLE table is read through a packed copy in
+                # the per-node cache start-node.sh mounts at /atlas-ple.
+                self.assertEqual(env.get('ATLAS_PLE_PACKED_DIR'), '/atlas-ple')
                 for key in held_back:
                     self.assertNotIn(key, env)
 
@@ -306,7 +309,7 @@ class StartNode(unittest.TestCase):
         run = subprocess.run(
             ['bash', str(HERE/'start-node.sh'), '--rank', rank, '--leader-address', '192.0.2.1',
              '--model-root', str(self.root/'models'), '--image', 'img', '--fabric-interface', 'enp1s0f0np0',
-             '--cuda-cache', str(self.root/'cuda'), *extra],
+             '--cuda-cache', str(self.root/'cuda'), '--ple-cache', str(self.root/'ple'), *extra],
             capture_output=True, text=True, env=dict(os.environ, PATH=f'{self.bin}:{os.environ["PATH"]}', FABRIC_SYSFS=str(self.sysfs)))
         lines = log.read_text().splitlines() if log.exists() else []
         return run, [line for line in lines if line.startswith('run ')]
@@ -323,11 +326,32 @@ class StartNode(unittest.TestCase):
                 self.assertIn('--memory 114g ', cmd)
                 self.assertIn(f'--mount type=bind,src={ckpt},dst={ckpt},readonly ', cmd)
                 self.assertIn(f'-e MODEL_PATH={ckpt} ', cmd)
+                # The packed PLE n-gram table is written once per node and kept.
+                self.assertIn(f'--mount type=bind,src={(self.root/"ple").resolve()},dst=/atlas-ple ', cmd)
+                self.assertTrue((self.root/'ple').is_dir())
                 self.assertIn(f'-e NODE_RANK={rank} ', cmd)
                 self.assertIn('-e SPARKQWEN_PROFILE=8x32k ', cmd)
                 self.assertIn('-e SPARKQWEN_FP8_GDN=0 ', cmd)
                 self.assertNotIn('QSA_TC2R', cmd)
                 self.assertTrue(cmd.endswith(' img'))
+
+    def test_default_checkpoint_is_the_pinned_one_and_can_be_overridden(self):
+        # start.sh passes the pinned checkpoint's directory; the default, used
+        # when start-node.sh runs by hand, names the same pin.
+        text = (HERE/'start-node.sh').read_text()
+        self.assertIn(f'checkpoint_name={self.checkpoint.name}\n', text)
+        old = self.root/'models'/'nvidia--Qwen3.8-Flash-Next-NVFP4'
+        old.mkdir()
+        for name in ('config.json', 'model.safetensors.index.json'):
+            (old/name).touch()
+        run, docker_run = self.start('0', '--checkpoint', old.name)
+        self.assertEqual(run.returncode, 0, run.stderr)
+        self.assertIn(f'-e MODEL_PATH={old.resolve()} ', docker_run[0])
+        for bad in ('../models', 'a/b', ''):
+            run, docker_run = self.start('0', '--checkpoint', bad)
+            with self.subTest(bad=bad):
+                self.assertNotEqual(run.returncode, 0)
+                self.assertEqual(docker_run, [])
 
     def test_opt_ins_and_profile_reach_the_container(self):
         run, docker_run = self.start('0', '--fp8-gdn', '--profile', '4x262k',
