@@ -7,12 +7,14 @@ pinned in [`install/atlas-source.json`](../install/atlas-source.json), for the
 kernel target `qwen3.8-flash-next` (model type `qwen4_exp`).
 [`install/build.sh`](../install/build.sh) refuses any other tree.
 
-The pin is the release tag `sparkqwen/atlas-20261016-drafter` at 1aa8d99f (tree `a04c2e03`): the
+The pin is the release tag `sparkqwen/atlas-20261017-vision` at 92dd5435 (tree `34e71b7b`): the
 shared-engine release (`sparkqwen/atlas-20261015-vision`, 1954e759), the
 [FP4-Local series](#fp4-local-series), which loads and serves NVIDIA's
 FP4-Local checkpoint ([results/2026-10-16-fp4local](../results/2026-10-16-fp4local/RESULT.md)),
-and the [drafter series](#drafter-series) on top of it
-([results/2026-10-16-drafter](../results/2026-10-16-drafter/RESULT.md)).
+the [drafter series](#drafter-series) on top of it
+([results/2026-10-16-drafter](../results/2026-10-16-drafter/RESULT.md)) and
+the [vision admission series](#vision-admission-series)
+([results/2026-10-17-vision](../results/2026-10-17-vision/RESULT.md)).
 With the NVFP4 checkpoint the engine behaves as the shared-engine release did
 (identical prompt logprobs; [results/2026-10-15-shared-engine](../results/2026-10-15-shared-engine/RESULT.md));
 the RC16 gates are in [results/2026-10-10-rc16](../results/2026-10-10-rc16/RESULT.md).
@@ -184,6 +186,25 @@ every switch off the engine behaves as the FP4-Local release did, byte for byte.
 The drafter fixes follow how vLLM's and TensorFold's Qwen3.8-Flash-Next MTP
 speculators keep the drafter's context (the target's streams for the prompt and
 every committed token); no code was taken from either.
+
+## Vision admission series
+
+Twenty commits on top of the drafter release (`sparkqwen/atlas-20261016-drafter`,
+1aa8d99f), for [issue #10](https://github.com/Enntity/sparkqwen/issues/10).
+Most are marked `shared:`: they are model-independent and sit in the
+`sparkqwen` layer until the shared layer moves (GLM's admitted image sizes
+are kept as they were). Text requests are unaffected (identical greedy output and
+prompt logprobs).
+
+| Mechanism | Setting |
+|---|---|
+| The Qwen encoder's output window holds one prefill chunk's images (it held one encoder batch, so more than one 2048x2048 image's rows in a request failed); each chunk encodes only the images it computes, and warm multi-chunk prompts splice their own rows (a chunk could splice a cached image's rows in place of the next image's) | always (24,584 rows, 120 MiB a GPU, at 16K chunks) |
+| Admission from image headers before any decode or GPU work: a request over its limit gets 400 `vision_input_too_large`; one that would exceed the in-flight budget gets 503 `vision_capacity_busy` with `Retry-After: 2`; a request is admitted whole | `--vision-max-request-rows` (default half the budget, 32,768), `--vision-max-inflight-rows` (65,536) |
+| Header probes read the EXIF orientation; an image decodes to at most 640 MiB, at most two decodes over 192 MiB at once (videos too) | always |
+| Qwen images are resized only past the encoder bound (an image that fit encodes as before) | always |
+| A sequence's pixels and budget are released at the end of its prefill, on every path | always |
+| On two Sparks the worker waits for the head's encode as an idle receive | always |
+| Every encoded image re-encoded alone and compared byte for byte (a diagnostic; one extra encode per image) | `ATLAS_VISION_CHECK_ROWS` (off) |
 
 ## Changing the engine
 

@@ -1,0 +1,23 @@
+{
+ "tag": "relc9",
+ "results": [
+  {
+   "case": "c9-chat",
+   "status": 400,
+   "secs": 0.02,
+   "body": "{\"error\":{\"message\":\"vision input too large: the first 9 of 9 images already need 36864 vision tokens, more than the 32768 this server accepts per request; send fewer or smaller images\",\"type\":\"invalid_request_error\",\"param\":\"messages\",\"code\":\"vision_input_too_large\",\"hint\":null}}"
+  },
+  {
+   "case": "c9-chat-stream",
+   "status": 400,
+   "secs": 0.0,
+   "body": "{\"error\":{\"message\":\"vision input too large: the first 9 of 9 images already need 36864 vision tokens, more than the 32768 this server accepts per request; send fewer or smaller images\",\"type\":\"invalid_request_error\",\"param\":\"messages\",\"code\":\"vision_input_too_large\",\"hint\":null}}"
+  },
+  {
+   "case": "c9-messages",
+   "status": 400,
+   "secs": 0.01,
+   "body": "{\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"vision input too large: the first 9 of 9 images already need 36864 vision tokens, more than the 32768 this server accepts per request; send fewer or smaller images\"}}"
+  }
+ ]
+}

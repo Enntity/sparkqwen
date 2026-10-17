@@ -1,0 +1,115 @@
+-- clocks (uncapped): cap 01 inactive 02 inactive; 01 3003 MHz, 2418 MHz
+##### old (release image) 05:12:17
+== sparkqwen visold: MemAvailable 117 / 116 GiB; image ghcr.io/enntity/atlas-sparkqwen:f399caa2fb5e
+== visold up in 43 s: 209553 blocks × 16 tok/block = 3352848 max KV tokens 
+   engine: sparkqwen/atlas-20261016-drafter 1aa8d99f  MemAvailable 13 / 15 GiB
+exact 1024sq: HTTP 200/200 warm==cold True :: 'red circle'
+exact 1920x1080: HTTP 200/200 warm==cold True :: 'red ellipse'
+exact 1337x5293: HTTP 200/200 warm==cold True :: 'red oval'
+exact 3x1024sq: HTTP 200/200 warm==cold True :: 'red circle\nblue square\ngreen triangle'
+rank0 old: errors 0  nccl-waits 3
+rank1 old: errors 0  nccl-waits 2
+INFO spark_model::factory::build: KV cache: 121.7 GB total × 88% util = 107.1 GB budget; 61.6 GB pre-KV + 4.7 GB reserve → 40.8 GB for KV (incl. 2.4 GB for 768 B/token of per-sequence indexer state) → 20955
+WARN spark_model::layers::vision_encoder::enc_impl::init: Vision encoder capacity 16384 patches (2048x2048 px) — the resolved area bound wanted 65536 patches, clamped: the ViT score matrix is O(patches^2) and 
+##### new, ATLAS_VISION_CHECK_ROWS=1 05:13:58
+== sparkqwen vischeck: MemAvailable 117 / 116 GiB; image ghcr.io/enntity/atlas-sparkqwen:f399caa2fb5e
+== vischeck up in 38 s: 208715 blocks × 16 tok/block = 3339440 max KV tokens 
+   engine: sparkqwen/atlas-20261016-drafter 1aa8d99f  MemAvailable 13 / 15 GiB
+seq-a5: HTTP 200 235.2s order_ok=True :: 'Based on the images provided, here are the shapes listed in order:\n\n- red circle\n- blue square\n- green triangle\n- orange circle\n- purple square'
+seq-b16680: HTTP 200 40.1s order_ok=False :: 'Based on the images provided, here are the shapes listed in order:\n\n- red circle\n- blue square\n- green triangle\n- orange circle\n- purple rectangle'
+seq-d8: HTTP 200 196.0s order_ok=True :: 'red circle\nblue square\ngreen triangle\norange circle\npurple square\nblack triangle\nyellow circle\npink square'
+labels cold: HTTP 200 40.6s order_ok=True :: 'Based on the images provided, here is the list of shapes in order:\n\n- red circle\n- blue square\n- green triangle\n- orange circle\n- purple square\n- black triangle\n- yellow circle\n- pink square'
+labels warm: HTTP 200 40.6s order_ok=True :: 'Based on the images provided, here is the list of shapes in order:\n\n- red circle\n- blue square\n- green triangle\n- orange circle\n- purple square\n- black triangle\n- yellow circle\n- pink square'
+hostile 50x8000^2: HTTP 400 1 ms :: '{"error":{"message":"Image decode error: image decode failed","type":"invalid_request_error","param":null,"code":null,"hint":null}}'
+hostile 16384^2 RGBA16: HTTP 400 0 ms :: '{"error":{"message":"Image decode error: image decode failed","type":"invalid_request_error","param":null,"code":null,"hint":null}}'
+rotated 6000x4000 EXIF=6: HTTP 200 39.3s :: 'The image shows a **red triangle** that points **up**.'
+big 12000x9000: HTTP 200 42.2s :: 'red circle'
+bigx8 12000x9000: statuses [200, 200, 200, 200, 200, 200, 200, 200] secs [329.1, 329.1, 329.1, 329.1, 329.1, 329.1, 329.1, 329.1] rank0 host MemAvailable dip 2.64 GiB
+rank0 check: errors 0  nccl-waits 3
+rank1 check: errors 0  nccl-waits 2
+INFO spark_model::factory::build: KV cache: 121.7 GB total × 88% util = 107.1 GB budget; 61.8 GB pre-KV + 4.7 GB reserve → 40.6 GB for KV (incl. 2.4 GB for 768 B/token of per-sequence indexer state) → 20871
+INFO spark_model::layers::vision_encoder::enc_impl::init: Vision output window 24584 rows (120 MiB) for prefill chunks of up to 16392 tokens
+WARN spark_model::layers::vision_encoder::enc_impl::init: Vision encoder capacity 16384 patches (2048x2048 px) — the resolved area bound wanted 65536 patches, clamped: the ViT score matrix is O(patches^2) and 
+##### new 05:31:00
+== sparkqwen visnew: MemAvailable 117 / 116 GiB; image ghcr.io/enntity/atlas-sparkqwen:f399caa2fb5e
+== visnew up in 37 s: 208849 blocks × 16 tok/block = 3341584 max KV tokens 
+   engine: sparkqwen/atlas-20261016-drafter 1aa8d99f  MemAvailable 13 / 15 GiB
+seq-a5: HTTP 200 121.1s order_ok=True :: 'Based on the images provided, here are the shapes listed in order:\n\n- red circle\n- blue square\n- green triangle\n- orange circle\n- purple square'
+seq-b16680: HTTP 200 20.8s order_ok=False :: 'Based on the images provided, here are the shapes listed in order:\n\n- red circle\n- blue square\n- green triangle\n- orange circle\n- purple rectangle'
+seq-d8: HTTP 200 100.6s order_ok=True :: 'red circle\nblue square\ngreen triangle\norange circle\npurple square\nblack triangle\nyellow circle\npink square'
+labels cold: HTTP 200 21.6s order_ok=True :: 'Based on the images provided, here is the list of shapes in order:\n\n- red circle\n- blue square\n- green triangle\n- orange circle\n- purple square\n- black triangle\n- yellow circle\n- pink square'
+labels warm: HTTP 200 21.7s order_ok=True :: 'Based on the images provided, here is the list of shapes in order:\n\n- red circle\n- blue square\n- green triangle\n- orange circle\n- purple square\n- black triangle\n- yellow circle\n- pink square'
+atomic x8: statuses [200, 200, 503, 503, 503, 503, 503, 503] retry-after ['2'] :: '{"error":{"message":"vision capacity is busy; retry shortly","type":"server_error","param":null,"code":"vision_capacity_busy","hint":null}}'
+atomic after idle: HTTP 200 21.5s
+exact 1024sq: HTTP 200/200 warm==cold True :: 'red circle'
+exact 1920x1080: HTTP 200/200 warm==cold True :: 'red ellipse'
+exact 1337x5293: HTTP 200/200 warm==cold True :: 'red oval'
+exact 3x1024sq: HTTP 200/200 warm==cold True :: 'red circle\nblue square\ngreen triangle'
+exact 1024sq: old==new True  (200/200)
+exact 1024sq-warm: old==new True  (200/200)
+exact 1920x1080: old==new True  (200/200)
+exact 1920x1080-warm: old==new True  (200/200)
+exact 1337x5293: old==new True  (200/200)
+exact 1337x5293-warm: old==new True  (200/200)
+exact 3x1024sq: old==new True  (200/200)
+exact 3x1024sq-warm: old==new True  (200/200)
+-- vision gates
+-- vpc race2
+B_green_triangle: ttft 2.47 s, prompt 240, cached 0: 'green triangle'
+A_blue_square: ttft 15.49 s, prompt 52711, cached 0: 'blue square'
+race: A correct, B correct
+-- vpc race
+A_red_circle: ttft 1.68 s, prompt 52711, cached 52480: 'red circle'
+B_blue_square: ttft 0.32 s, prompt 240, cached 16: 'blue square'
+race: A correct, B correct
+-- vpc conv
+turn 2: ttft 0.33 s, prompt 75111, cached 75072: 'Red.'
+turn 3: ttft 0.26 s, prompt 75144, cached 75104: 'The screenshot shows a solid red circle centered on a plain white background. The shape is perfectly round wit'
+turn 4: ttft 0.33 s, prompt 75221, cached 75136: 'Apple.'
+turn 5: ttft 0.24 s, prompt 75247, cached 75216: 'The image displays a single, solid red circle positioned in the center of a white background. It is a simple g'
+-- vpc swap
+order_QP: ttft 0.48 s, prompt 458, cached 208: 'first: blue square; second: red circle'
+single_P: ttft 0.92 s, prompt 2338, cached 208: 'red circle'
+single_R: ttft 0.93 s, prompt 2338, cached 208: 'green triangle'
+single_P_again: ttft 0.15 s, prompt 2338, cached 2336: 'red circle'
+-- text: lp
+REPRODUCIBLE vis2
+hash ['798fc6cc2641', '798fc6cc2641']
+-- text: greedy vs drafter release refs
+vis-c1 vs rel-c1: vis-c1 vs rel-c1: 8/8 identical
+vis-c4 vs rel-c4: vis-c4 vs rel-c4: 8/8 identical
+vis-c8 vs rel-c8: vis-c8 vs rel-c8: 8/8 identical
+vis-c8p vs rel-c8p: vis-c8p vs rel-c8p: 8/8 identical
+-- text: decode
+decode prose 2 0.151 62.46 384
+decode code 2 0.141 91.88 384
+decode json 2 0.155 87.3 384
+rank0 new: errors 0  nccl-waits 3
+rank1 new: errors 0  nccl-waits 2
+INFO spark_model::factory::build: KV cache: 121.7 GB total × 88% util = 107.1 GB budget; 61.8 GB pre-KV + 4.7 GB reserve → 40.6 GB for KV (incl. 2.4 GB for 768 B/token of per-sequence indexer state) → 20884
+INFO spark_model::layers::vision_encoder::enc_impl::init: Vision output window 24584 rows (120 MiB) for prefill chunks of up to 16392 tokens
+WARN spark_model::layers::vision_encoder::enc_impl::init: Vision encoder capacity 16384 patches (2048x2048 px) — the resolved area bound wanted 65536 patches, clamped: the ViT score matrix is O(patches^2) and 
+##### new, small in-flight budget (--vision-max-inflight-rows=16384) 05:42:42
+== sparkqwen visbudget: MemAvailable 117 / 116 GiB; image ghcr.io/enntity/atlas-sparkqwen:f399caa2fb5e
+== visbudget up in 38 s: 208232 blocks × 16 tok/block = 3331712 max KV tokens 
+   engine: sparkqwen/atlas-20261016-drafter 1aa8d99f  MemAvailable 13 / 15 GiB
+blocking chat x2: statuses [200, 200] secs [60.0, 60.1]
+blocking chat x3: statuses [200, 200, 503] secs [39.0, 39.1, 0.0]
+blocking responses x2: statuses [200, 200] secs [61.8, 61.5]
+blocking responses x3: statuses [200, 200, 503] secs [40.5, 0.0, 40.7]
+blocking messages x2: statuses [200, 200] secs [40.9, 40.7]
+blocking messages x3: statuses [200, 200, 503] secs [40.4, 40.8, 0.0]
+rank0 budget: errors 0  nccl-waits 3
+rank1 budget: errors 0  nccl-waits 2
+INFO spark_model::factory::build: KV cache: 121.7 GB total × 88% util = 107.1 GB budget; 61.9 GB pre-KV + 4.7 GB reserve → 40.5 GB for KV (incl. 2.4 GB for 768 B/token of per-sequence indexer state) → 20823
+INFO spark_model::layers::vision_encoder::enc_impl::init: Vision output window 24584 rows (120 MiB) for prefill chunks of up to 16392 tokens
+WARN spark_model::layers::vision_encoder::enc_impl::init: Vision encoder capacity 16384 patches (2048x2048 px) — the resolved area bound wanted 65536 patches, clamped: the ViT score matrix is O(patches^2) and 
+##### GPU unit tests 05:48:23
+test binary: ~/atlas-upstream-cache/rel-target-atlas-fp4l-vision/release/deps/spark_model-926d3299fb936d99
+test layers::vision_encoder::qwen_passes_gpu_tests::qwen_passes_gpu_every_image_gets_its_alone_rows ... per-image passes == each image alone; window 24580
+test layers::vision_encoder::qwen_passes_gpu_tests::qwen_passes_gpu_packing_is_per_image_neutral ... packed item 0: == (0 differing bytes)
+packed item 1: == (0 differing bytes)
+packed item 2: == (0 differing bytes)
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 2056 filtered out; finished in 329.64s
+##### done 05:53:54
+-- clocks (restored): cap 01 active 02 active; 01 3003 MHz, 2418 MHz
