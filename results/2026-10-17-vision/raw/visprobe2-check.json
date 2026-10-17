@@ -1,0 +1,79 @@
+{
+ "tag": "check",
+ "results": [
+  {
+   "case": "seq-a5",
+   "status": 200,
+   "secs": 235.24,
+   "order_ok": true,
+   "text": "Based on the images provided, here are the shapes listed in order:\n\n- red circle\n- blue square\n- green triangle\n- orange circle\n- purple square"
+  },
+  {
+   "case": "seq-b16680",
+   "status": 200,
+   "secs": 40.11,
+   "order_ok": false,
+   "text": "Based on the images provided, here are the shapes listed in order:\n\n- red circle\n- blue square\n- green triangle\n- orange circle\n- purple rectangle"
+  },
+  {
+   "case": "seq-d8",
+   "status": 200,
+   "secs": 196.01,
+   "order_ok": true,
+   "text": "red circle\nblue square\ngreen triangle\norange circle\npurple square\nblack triangle\nyellow circle\npink square"
+  },
+  {
+   "case": "labels-cold",
+   "status": 200,
+   "secs": 40.65,
+   "order_ok": true,
+   "text": "Based on the images provided, here is the list of shapes in order:\n\n- red circle\n- blue square\n- green triangle\n- orange circle\n- purple square\n- black triangle\n- yellow circle\n- pink square"
+  },
+  {
+   "case": "labels-warm",
+   "status": 200,
+   "secs": 40.65,
+   "order_ok": true,
+   "text": "Based on the images provided, here is the list of shapes in order:\n\n- red circle\n- blue square\n- green triangle\n- orange circle\n- purple square\n- black triangle\n- yellow circle\n- pink square"
+  },
+  {
+   "case": "hostile2",
+   "many": [
+    400,
+    0.001,
+    "{\"error\":{\"message\":\"Image decode error: image decode failed\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null,\"hint\":null}}"
+   ],
+   "rgba16": [
+    400,
+    0.0,
+    "{\"error\":{\"message\":\"Image decode error: image decode failed\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":null,\"hint\":null}}"
+   ]
+  },
+  {
+   "case": "rotated",
+   "status": 200,
+   "secs": 39.3,
+   "text": "The image shows a **red triangle** that points **up**."
+  },
+  {
+   "case": "big",
+   "status": 200,
+   "secs": 42.2,
+   "text": "red circle"
+  },
+  {
+   "case": "bigx8",
+   "statuses": [
+    200,
+    200,
+    200,
+    200,
+    200,
+    200,
+    200,
+    200
+   ],
+   "mem_dip_gib": 2.64
+  }
+ ]
+}

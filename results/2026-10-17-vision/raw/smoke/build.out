@@ -1,0 +1,5 @@
+== tag ghcr.io/enntity/atlas-sparkqwen:3b2deea3d187 05:54:30
+== built ghcr.io/enntity/atlas-sparkqwen:3b2deea3d187 in 460 s
+== smoke 06:02:25
+== sparkqwen visrel: MemAvailable 114 / 113 GiB; image ghcr.io/enntity/atlas-sparkqwen:3b2deea3d187
+== visrel up in 43 s: 217172 blocks × 16 tok/block = 3474752 max KV tokens 

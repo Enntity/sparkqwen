@@ -1,0 +1,62 @@
+{
+ "tag": "new",
+ "results": [
+  {
+   "case": "seq-a5",
+   "status": 200,
+   "secs": 121.07,
+   "order_ok": true,
+   "text": "Based on the images provided, here are the shapes listed in order:\n\n- red circle\n- blue square\n- green triangle\n- orange circle\n- purple square"
+  },
+  {
+   "case": "seq-b16680",
+   "status": 200,
+   "secs": 20.81,
+   "order_ok": false,
+   "text": "Based on the images provided, here are the shapes listed in order:\n\n- red circle\n- blue square\n- green triangle\n- orange circle\n- purple rectangle"
+  },
+  {
+   "case": "seq-d8",
+   "status": 200,
+   "secs": 100.6,
+   "order_ok": true,
+   "text": "red circle\nblue square\ngreen triangle\norange circle\npurple square\nblack triangle\nyellow circle\npink square"
+  },
+  {
+   "case": "labels-cold",
+   "status": 200,
+   "secs": 21.64,
+   "order_ok": true,
+   "text": "Based on the images provided, here is the list of shapes in order:\n\n- red circle\n- blue square\n- green triangle\n- orange circle\n- purple square\n- black triangle\n- yellow circle\n- pink square"
+  },
+  {
+   "case": "labels-warm",
+   "status": 200,
+   "secs": 21.65,
+   "order_ok": true,
+   "text": "Based on the images provided, here is the list of shapes in order:\n\n- red circle\n- blue square\n- green triangle\n- orange circle\n- purple square\n- black triangle\n- yellow circle\n- pink square"
+  },
+  {
+   "case": "atomic",
+   "statuses": [
+    503,
+    503,
+    503,
+    200,
+    200,
+    503,
+    503,
+    503
+   ],
+   "retry_after": [
+    "2",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2"
+   ],
+   "after_idle": 200
+  }
+ ]
+}

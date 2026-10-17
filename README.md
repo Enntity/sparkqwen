@@ -35,18 +35,22 @@ MXFP8, where the NVFP4 release kept them BF16. The engine reads those MXFP8
 bytes directly when it decodes and runs prefill as MXFP8 W8A8, which is how
 NVIDIA's own serving recipe runs this checkpoint. The engine is pinned in
 [`install/atlas-source.json`](install/atlas-source.json) to Enntity/atlas
-`sparkqwen/atlas-20261016-drafter` at `1aa8d99f` (tree `a04c2e03`): the
-shared-engine release plus the FP4-Local and drafter series ([docs/ENGINE.md](docs/ENGINE.md)).
+`sparkqwen/atlas-20261017-vision` at `92dd5435` (tree `34e71b7b`): the
+shared-engine release plus the FP4-Local, drafter and vision admission series
+([docs/ENGINE.md](docs/ENGINE.md)).
 The engine still loads the NVFP4 checkpoint unchanged; see
 [Choosing a checkpoint](#choosing-a-checkpoint). The image for this release,
-`ghcr.io/enntity/atlas-sparkqwen:f399caa2fb5e`, is not published yet; until
+`ghcr.io/enntity/atlas-sparkqwen:3b2deea3d187`, is not published yet; until
 it is, `./start.sh` builds it from source (30–60 minutes cold).
 
 ## What it does
 
 Measured on two DGX Sparks joined by one 200G cable with GPU clocks
 uncapped, through the image `./start.sh` built from this checkout, against
-the FP4-Local release on the same pair the same day. Receipts and caveats:
+the FP4-Local release on the same pair the same day. The vision admission
+release changed only image requests (text output is byte-identical; see
+[2026-10-17-vision](results/2026-10-17-vision/RESULT.md)), so these numbers
+are the drafter release's. Receipts and caveats:
 [2026-10-16-drafter](results/2026-10-16-drafter/RESULT.md) and
 [2026-10-16-fp4local](results/2026-10-16-fp4local/RESULT.md).
 
@@ -77,8 +81,8 @@ greedy output with speculative decoding, the new drafter context, up to eight
 concurrent requests and prefix-cache hits of ~4.4K tokens is identical to
 one-at-a-time decode with speculation and the cache off (8/8 prompts with
 thinking on, in each case), and the prompt logprobs are the FP4-Local
-release's. Not yet rerun on this release: the 77K-token needle, the `4x262k`
-profile and image prompts. Two Sparks do not give bit-identical output to one
+release's. Not yet rerun on this release: the 77K-token needle and the
+`4x262k` profile (image prompts: [2026-10-17-vision](results/2026-10-17-vision/RESULT.md)). Two Sparks do not give bit-identical output to one
 GPU (BF16 rounding of the tensor-parallel sums; see
 [docs/LIMITATIONS.md](docs/LIMITATIONS.md)). These are single-session
 measurements on our pair, not a guarantee for yours.
@@ -191,8 +195,13 @@ XML call format (Atlas's `qwen3_coder` parser); `bench/tool_probe.py` passes
 every case. With the NVFP4 checkpoint, images pass the race, conversation,
 swap and cached-versus-cold checks in
 [results/2026-10-15-shared-engine](results/2026-10-15-shared-engine/RESULT.md);
-FP4-Local stores its vision tower differently (MXFP8 attention, NVFP4 MLP,
-loaded exactly) and image prompts have not been rerun on it. Structured
+on FP4-Local (MXFP8 attention, NVFP4 MLP, loaded exactly) the race,
+conversation and swap checks pass, and a request may carry up to eight 2048x2048 images or 32,768 vision
+tokens ([results/2026-10-17-vision](results/2026-10-17-vision/RESULT.md)).
+Larger requests get an HTTP 400 `vision_input_too_large`; when the server's
+in-flight image budget (65,536 vision tokens) is full, an HTTP 503
+`vision_capacity_busy` with `Retry-After: 2`. Both limits are server flags
+(`--vision-max-request-rows`, `--vision-max-inflight-rows`). Structured
 output and video have not been tested.
 
 **Profiles** (`PROFILE` in `.env`):

@@ -1,0 +1,34 @@
+{
+ "1024sq": {
+  "status": 200,
+  "text": "red circle"
+ },
+ "1024sq-warm": {
+  "status": 200,
+  "text": "red circle"
+ },
+ "1920x1080": {
+  "status": 200,
+  "text": "red ellipse"
+ },
+ "1920x1080-warm": {
+  "status": 200,
+  "text": "red ellipse"
+ },
+ "1337x5293": {
+  "status": 200,
+  "text": "red oval"
+ },
+ "1337x5293-warm": {
+  "status": 200,
+  "text": "red oval"
+ },
+ "3x1024sq": {
+  "status": 200,
+  "text": "red circle\nblue square\ngreen triangle"
+ },
+ "3x1024sq-warm": {
+  "status": 200,
+  "text": "red circle\nblue square\ngreen triangle"
+ }
+}

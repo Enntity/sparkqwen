@@ -1,0 +1,8 @@
+c9-chat: HTTP 400 0.0s :: '{"error":{"message":"vision input too large: the first 9 of 9 images already need 36864 vision tokens, more than the 32768 this server accepts per request; send fewer or sma
+c9-chat-stream: HTTP 400 0.0s :: '{"error":{"message":"vision input too large: the first 9 of 9 images already need 36864 vision tokens, more than the 32768 this server accepts per request; send fewer
+c9-messages: HTTP 400 0.0s :: '{"type":"error","error":{"type":"invalid_request_error","message":"vision input too large: the first 9 of 9 images already need 36864 vision tokens, more than the 32768 
+REPRODUCIBLE rel
+hash ['798fc6cc2641']
+rank0 errors 0
+rel exact 1024sq: HTTP 200 1.9s == drafter release: True
+rel exact 3x1024sq: HTTP 200 4.9s == drafter release: True

@@ -1,0 +1,77 @@
+{
+ "tag": "budget",
+ "results": [
+  {
+   "case": "blocking-chat-x2",
+   "statuses": [
+    200,
+    200
+   ],
+   "secs": [
+    60.0,
+    60.1
+   ]
+  },
+  {
+   "case": "blocking-chat-x3",
+   "statuses": [
+    200,
+    200,
+    503
+   ],
+   "secs": [
+    39.0,
+    39.1,
+    0.0
+   ]
+  },
+  {
+   "case": "blocking-responses-x2",
+   "statuses": [
+    200,
+    200
+   ],
+   "secs": [
+    61.8,
+    61.5
+   ]
+  },
+  {
+   "case": "blocking-responses-x3",
+   "statuses": [
+    200,
+    503,
+    200
+   ],
+   "secs": [
+    40.5,
+    0.0,
+    40.7
+   ]
+  },
+  {
+   "case": "blocking-messages-x2",
+   "statuses": [
+    200,
+    200
+   ],
+   "secs": [
+    40.9,
+    40.7
+   ]
+  },
+  {
+   "case": "blocking-messages-x3",
+   "statuses": [
+    200,
+    200,
+    503
+   ],
+   "secs": [
+    40.4,
+    40.8,
+    0.0
+   ]
+  }
+ ]
+}
