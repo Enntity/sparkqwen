@@ -1,0 +1,8082 @@
+{
+  "schema": 1,
+  "model": "qwen3.8-flash-next-atlas",
+  "streams": 4,
+  "max_tokens": 400,
+  "prompt_style": "field-guide",
+  "prompt_salt": "rel-1-1792216092296367327",
+  "cache_salt": null,
+  "prompt_tokens_target": 16384,
+  "stagger_ms": 1000,
+  "recipe_label": "",
+  "engine_commit": "",
+  "wall_s": 30.592082,
+  "total_completion_tokens": 1600,
+  "aggregate_decode_tok_s": 61.539916,
+  "requests": [
+    {
+      "index": 0,
+      "label": "SYSTEMS",
+      "subject": "distributed systems engineering",
+      "scheduled_s": 0.002044,
+      "first_token_s": 4.657695,
+      "ttft_s": 4.655651,
+      "ended_s": 30.40058,
+      "completion_tokens": 400,
+      "prompt_tokens": 18097,
+      "decode_tok_s": 15.499428,
+      "token_count_method": "final_usage_weighted_by_delta_chars",
+      "events": [
+        {
+          "t": 4.657695,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 4.690148,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 8.646554,
+          "text": " CAP",
+          "tokens": 1
+        },
+        {
+          "t": 8.646576,
+          "text": " theorem",
+          "tokens": 2
+        },
+        {
+          "t": 8.646595,
+          "text": " states",
+          "tokens": 2
+        },
+        {
+          "t": 9.412256,
+          "text": " consistency",
+          "tokens": 2
+        },
+        {
+          "t": 13.382799,
+          "text": ",",
+          "tokens": 0
+        },
+        {
+          "t": 13.382842,
+          "text": " availability",
+          "tokens": 3
+        },
+        {
+          "t": 14.162556,
+          "text": ",",
+          "tokens": 0
+        },
+        {
+          "t": 14.162578,
+          "text": " and",
+          "tokens": 1
+        },
+        {
+          "t": 14.162589,
+          "text": " partition",
+          "tokens": 2
+        },
+        {
+          "t": 18.135964,
+          "text": " tolerance",
+          "tokens": 2
+        },
+        {
+          "t": 18.135993,
+          "text": " are",
+          "tokens": 1
+        },
+        {
+          "t": 18.961449,
+          "text": " mutually",
+          "tokens": 2
+        },
+        {
+          "t": 18.961487,
+          "text": " exclusive",
+          "tokens": 2
+        },
+        {
+          "t": 18.961496,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 18.961505,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 19.039528,
+          "text": "2",
+          "tokens": 0
+        },
+        {
+          "t": 19.039546,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 19.039552,
+          "text": " PAC",
+          "tokens": 1
+        },
+        {
+          "t": 19.122364,
+          "text": "EL",
+          "tokens": 1
+        },
+        {
+          "t": 19.199343,
+          "text": "C",
+          "tokens": 0
+        },
+        {
+          "t": 19.199373,
+          "text": " extends",
+          "tokens": 2
+        },
+        {
+          "t": 19.283294,
+          "text": " CAP",
+          "tokens": 0
+        },
+        {
+          "t": 19.283314,
+          "text": " by",
+          "tokens": 1
+        },
+        {
+          "t": 19.359495,
+          "text": " addressing",
+          "tokens": 2
+        },
+        {
+          "t": 19.359514,
+          "text": " latency",
+          "tokens": 2
+        },
+        {
+          "t": 19.436523,
+          "text": " trade",
+          "tokens": 1
+        },
+        {
+          "t": 19.513976,
+          "text": "-offs",
+          "tokens": 1
+        },
+        {
+          "t": 19.593768,
+          "text": " during",
+          "tokens": 2
+        },
+        {
+          "t": 19.593791,
+          "text": " normal",
+          "tokens": 1
+        },
+        {
+          "t": 19.593798,
+          "text": " operation",
+          "tokens": 3
+        },
+        {
+          "t": 19.670906,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 19.670942,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 19.670958,
+          "text": "3",
+          "tokens": 0
+        },
+        {
+          "t": 19.670969,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 19.747851,
+          "text": " Qu",
+          "tokens": 1
+        },
+        {
+          "t": 19.82425,
+          "text": "orum",
+          "tokens": 1
+        },
+        {
+          "t": 19.824267,
+          "text": " systems",
+          "tokens": 2
+        },
+        {
+          "t": 19.904249,
+          "text": " require",
+          "tokens": 1
+        },
+        {
+          "t": 19.904271,
+          "text": " majority",
+          "tokens": 2
+        },
+        {
+          "t": 19.986646,
+          "text": " agreement",
+          "tokens": 3
+        },
+        {
+          "t": 20.064755,
+          "text": " for",
+          "tokens": 0
+        },
+        {
+          "t": 20.064773,
+          "text": " write",
+          "tokens": 2
+        },
+        {
+          "t": 20.145136,
+          "text": " operations",
+          "tokens": 2
+        },
+        {
+          "t": 20.145157,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 20.145165,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 20.14518,
+          "text": "4",
+          "tokens": 1
+        },
+        {
+          "t": 20.223786,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 20.223819,
+          "text": " Read",
+          "tokens": 1
+        },
+        {
+          "t": 20.302755,
+          "text": " qu",
+          "tokens": 1
+        },
+        {
+          "t": 20.383517,
+          "text": "or",
+          "tokens": 0
+        },
+        {
+          "t": 20.383542,
+          "text": "ums",
+          "tokens": 1
+        },
+        {
+          "t": 20.383556,
+          "text": " must",
+          "tokens": 1
+        },
+        {
+          "t": 20.466667,
+          "text": " intersect",
+          "tokens": 2
+        },
+        {
+          "t": 20.466709,
+          "text": " with",
+          "tokens": 1
+        },
+        {
+          "t": 20.466724,
+          "text": " write",
+          "tokens": 1
+        },
+        {
+          "t": 20.466736,
+          "text": " qu",
+          "tokens": 1
+        },
+        {
+          "t": 20.548659,
+          "text": "or",
+          "tokens": 0
+        },
+        {
+          "t": 20.548687,
+          "text": "ums",
+          "tokens": 1
+        },
+        {
+          "t": 20.5487,
+          "text": " to",
+          "tokens": 1
+        },
+        {
+          "t": 20.548713,
+          "text": " ensure",
+          "tokens": 1
+        },
+        {
+          "t": 20.630208,
+          "text": " consistency",
+          "tokens": 3
+        },
+        {
+          "t": 20.630238,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 20.630253,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 20.630265,
+          "text": "5",
+          "tokens": 0
+        },
+        {
+          "t": 20.709009,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 20.709029,
+          "text": " Vector",
+          "tokens": 1
+        },
+        {
+          "t": 20.786132,
+          "text": " clocks",
+          "tokens": 2
+        },
+        {
+          "t": 20.786172,
+          "text": " track",
+          "tokens": 1
+        },
+        {
+          "t": 20.864535,
+          "text": " causal",
+          "tokens": 1
+        },
+        {
+          "t": 20.864554,
+          "text": " ordering",
+          "tokens": 2
+        },
+        {
+          "t": 20.94073,
+          "text": " in",
+          "tokens": 1
+        },
+        {
+          "t": 20.940751,
+          "text": " distributed",
+          "tokens": 3
+        },
+        {
+          "t": 20.940758,
+          "text": " systems",
+          "tokens": 1
+        },
+        {
+          "t": 20.940765,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 21.016228,
+          "text": "\n",
+          "tokens": 1
+        },
+        {
+          "t": 21.016261,
+          "text": "6",
+          "tokens": 0
+        },
+        {
+          "t": 21.016275,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 21.016286,
+          "text": " Lam",
+          "tokens": 1
+        },
+        {
+          "t": 21.095458,
+          "text": "port",
+          "tokens": 1
+        },
+        {
+          "t": 21.095506,
+          "text": " timestamps",
+          "tokens": 2
+        },
+        {
+          "t": 21.17127,
+          "text": " provide",
+          "tokens": 2
+        },
+        {
+          "t": 21.171289,
+          "text": " logical",
+          "tokens": 2
+        },
+        {
+          "t": 21.171304,
+          "text": " ordering",
+          "tokens": 2
+        },
+        {
+          "t": 21.253253,
+          "text": " but",
+          "tokens": 0
+        },
+        {
+          "t": 21.335951,
+          "text": " not",
+          "tokens": 1
+        },
+        {
+          "t": 21.33599,
+          "text": " caus",
+          "tokens": 1
+        },
+        {
+          "t": 21.416115,
+          "text": "ality",
+          "tokens": 1
+        },
+        {
+          "t": 21.416148,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 21.416162,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 21.416174,
+          "text": "7",
+          "tokens": 0
+        },
+        {
+          "t": 21.496339,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 21.496365,
+          "text": " Hybrid",
+          "tokens": 2
+        },
+        {
+          "t": 21.572782,
+          "text": " Logical",
+          "tokens": 2
+        },
+        {
+          "t": 21.648198,
+          "text": " Clock",
+          "tokens": 1
+        },
+        {
+          "t": 21.648225,
+          "text": "s",
+          "tokens": 0
+        },
+        {
+          "t": 21.648238,
+          "text": " combine",
+          "tokens": 2
+        },
+        {
+          "t": 21.728618,
+          "text": " physical",
+          "tokens": 2
+        },
+        {
+          "t": 21.728644,
+          "text": " and",
+          "tokens": 1
+        },
+        {
+          "t": 21.72865,
+          "text": " logical",
+          "tokens": 1
+        },
+        {
+          "t": 21.728656,
+          "text": " time",
+          "tokens": 1
+        },
+        {
+          "t": 21.807414,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 21.807445,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 21.807453,
+          "text": "8",
+          "tokens": 0
+        },
+        {
+          "t": 21.807459,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 21.884327,
+          "text": " Cons",
+          "tokens": 1
+        },
+        {
+          "t": 21.960794,
+          "text": "ensus",
+          "tokens": 1
+        },
+        {
+          "t": 21.96081,
+          "text": " algorithms",
+          "tokens": 3
+        },
+        {
+          "t": 21.960817,
+          "text": " solve",
+          "tokens": 1
+        },
+        {
+          "t": 22.039514,
+          "text": " the",
+          "tokens": 1
+        },
+        {
+          "t": 22.118442,
+          "text": " agreement",
+          "tokens": 2
+        },
+        {
+          "t": 22.118458,
+          "text": " problem",
+          "tokens": 2
+        },
+        {
+          "t": 22.118465,
+          "text": " in",
+          "tokens": 0
+        },
+        {
+          "t": 22.118471,
+          "text": " asynchronous",
+          "tokens": 3
+        },
+        {
+          "t": 22.193636,
+          "text": " networks",
+          "tokens": 2
+        },
+        {
+          "t": 22.272305,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 22.27233,
+          "text": "\n",
+          "tokens": 1
+        },
+        {
+          "t": 22.272338,
+          "text": "9",
+          "tokens": 0
+        },
+        {
+          "t": 22.272344,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 22.353576,
+          "text": " Pax",
+          "tokens": 1
+        },
+        {
+          "t": 22.353593,
+          "text": "os",
+          "tokens": 0
+        },
+        {
+          "t": 22.35361,
+          "text": " is",
+          "tokens": 1
+        },
+        {
+          "t": 22.353615,
+          "text": " a",
+          "tokens": 0
+        },
+        {
+          "t": 22.430821,
+          "text": " foundational",
+          "tokens": 3
+        },
+        {
+          "t": 22.430836,
+          "text": " consensus",
+          "tokens": 2
+        },
+        {
+          "t": 22.430842,
+          "text": " protocol",
+          "tokens": 2
+        },
+        {
+          "t": 22.511358,
+          "text": " for",
+          "tokens": 1
+        },
+        {
+          "t": 22.588747,
+          "text": " fault",
+          "tokens": 1
+        },
+        {
+          "t": 22.673234,
+          "text": " tolerance",
+          "tokens": 2
+        },
+        {
+          "t": 22.673286,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 22.673302,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 22.673314,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 22.748659,
+          "text": "0",
+          "tokens": 0
+        },
+        {
+          "t": 22.74868,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 22.748687,
+          "text": " Ra",
+          "tokens": 0
+        },
+        {
+          "t": 22.748693,
+          "text": "ft",
+          "tokens": 1
+        },
+        {
+          "t": 22.829245,
+          "text": " simpl",
+          "tokens": 1
+        },
+        {
+          "t": 22.829264,
+          "text": "ifies",
+          "tokens": 1
+        },
+        {
+          "t": 22.829272,
+          "text": " Pax",
+          "tokens": 1
+        },
+        {
+          "t": 22.829277,
+          "text": "os",
+          "tokens": 0
+        },
+        {
+          "t": 22.908349,
+          "text": " by",
+          "tokens": 1
+        },
+        {
+          "t": 22.908367,
+          "text": " elect",
+          "tokens": 1
+        },
+        {
+          "t": 22.984672,
+          "text": "ing",
+          "tokens": 1
+        },
+        {
+          "t": 22.984699,
+          "text": " a",
+          "tokens": 0
+        },
+        {
+          "t": 23.062314,
+          "text": " single",
+          "tokens": 2
+        },
+        {
+          "t": 23.062344,
+          "text": " leader",
+          "tokens": 1
+        },
+        {
+          "t": 23.062351,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 23.141369,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 23.141392,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 23.141399,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 23.141404,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 23.21735,
+          "text": " Leader",
+          "tokens": 2
+        },
+        {
+          "t": 23.21737,
+          "text": " election",
+          "tokens": 2
+        },
+        {
+          "t": 23.217376,
+          "text": " ensures",
+          "tokens": 2
+        },
+        {
+          "t": 23.296207,
+          "text": " a",
+          "tokens": 0
+        },
+        {
+          "t": 23.372661,
+          "text": " single",
+          "tokens": 1
+        },
+        {
+          "t": 23.372677,
+          "text": " point",
+          "tokens": 2
+        },
+        {
+          "t": 23.372684,
+          "text": " of",
+          "tokens": 0
+        },
+        {
+          "t": 23.37269,
+          "text": " coordination",
+          "tokens": 3
+        },
+        {
+          "t": 23.453504,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 23.453518,
+          "text": "\n",
+          "tokens": 1
+        },
+        {
+          "t": 23.453527,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 23.453532,
+          "text": "2",
+          "tokens": 0
+        },
+        {
+          "t": 23.531822,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 23.531837,
+          "text": " Heart",
+          "tokens": 2
+        },
+        {
+          "t": 23.610469,
+          "text": "be",
+          "tokens": 0
+        },
+        {
+          "t": 23.610491,
+          "text": "ats",
+          "tokens": 1
+        },
+        {
+          "t": 23.610498,
+          "text": " detect",
+          "tokens": 1
+        },
+        {
+          "t": 23.688886,
+          "text": " node",
+          "tokens": 1
+        },
+        {
+          "t": 23.768701,
+          "text": " failures",
+          "tokens": 2
+        },
+        {
+          "t": 23.84758,
+          "text": " in",
+          "tokens": 1
+        },
+        {
+          "t": 23.928557,
+          "text": " leader",
+          "tokens": 1
+        },
+        {
+          "t": 24.006516,
+          "text": "-based",
+          "tokens": 2
+        },
+        {
+          "t": 24.006532,
+          "text": " systems",
+          "tokens": 1
+        },
+        {
+          "t": 24.00654,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 24.006546,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 24.079877,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 24.079894,
+          "text": "3",
+          "tokens": 0
+        },
+        {
+          "t": 24.079901,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 24.079907,
+          "text": " Lease",
+          "tokens": 2
+        },
+        {
+          "t": 24.158439,
+          "text": " mechanisms",
+          "tokens": 2
+        },
+        {
+          "t": 24.237874,
+          "text": " prevent",
+          "tokens": 2
+        },
+        {
+          "t": 24.317688,
+          "text": " split",
+          "tokens": 1
+        },
+        {
+          "t": 24.394145,
+          "text": "-br",
+          "tokens": 1
+        },
+        {
+          "t": 24.394162,
+          "text": "ain",
+          "tokens": 0
+        },
+        {
+          "t": 24.394169,
+          "text": " scenarios",
+          "tokens": 3
+        },
+        {
+          "t": 24.474696,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 24.474715,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 24.474722,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 24.474727,
+          "text": "4",
+          "tokens": 0
+        },
+        {
+          "t": 24.553245,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 24.553266,
+          "text": " F",
+          "tokens": 0
+        },
+        {
+          "t": 24.629605,
+          "text": "encing",
+          "tokens": 1
+        },
+        {
+          "t": 24.629623,
+          "text": " tokens",
+          "tokens": 2
+        },
+        {
+          "t": 24.711012,
+          "text": " invalidate",
+          "tokens": 2
+        },
+        {
+          "t": 24.711043,
+          "text": " stale",
+          "tokens": 1
+        },
+        {
+          "t": 24.711057,
+          "text": " leader",
+          "tokens": 2
+        },
+        {
+          "t": 24.788155,
+          "text": " claims",
+          "tokens": 1
+        },
+        {
+          "t": 24.867684,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 24.867712,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 24.867753,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 24.867766,
+          "text": "5",
+          "tokens": 0
+        },
+        {
+          "t": 24.946122,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 24.946139,
+          "text": " Two",
+          "tokens": 0
+        },
+        {
+          "t": 25.027649,
+          "text": "-phase",
+          "tokens": 2
+        },
+        {
+          "t": 25.027678,
+          "text": " commit",
+          "tokens": 1
+        },
+        {
+          "t": 25.027693,
+          "text": " ensures",
+          "tokens": 2
+        },
+        {
+          "t": 25.104556,
+          "text": " atomic",
+          "tokens": 1
+        },
+        {
+          "t": 25.104578,
+          "text": " transactions",
+          "tokens": 3
+        },
+        {
+          "t": 25.182347,
+          "text": " across",
+          "tokens": 2
+        },
+        {
+          "t": 25.182386,
+          "text": " nodes",
+          "tokens": 1
+        },
+        {
+          "t": 25.261408,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 25.261436,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 25.261443,
+          "text": "1",
+          "tokens": 1
+        },
+        {
+          "t": 25.261449,
+          "text": "6",
+          "tokens": 0
+        },
+        {
+          "t": 25.340045,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 25.340067,
+          "text": " Three",
+          "tokens": 1
+        },
+        {
+          "t": 25.340075,
+          "text": "-phase",
+          "tokens": 2
+        },
+        {
+          "t": 25.34008,
+          "text": " commit",
+          "tokens": 1
+        },
+        {
+          "t": 25.413695,
+          "text": " reduces",
+          "tokens": 2
+        },
+        {
+          "t": 25.413729,
+          "text": " blocking",
+          "tokens": 2
+        },
+        {
+          "t": 25.413743,
+          "text": " in",
+          "tokens": 0
+        },
+        {
+          "t": 25.490989,
+          "text": " ",
+          "tokens": 1
+        },
+        {
+          "t": 25.571722,
+          "text": "2",
+          "tokens": 0
+        },
+        {
+          "t": 25.571752,
+          "text": "PC",
+          "tokens": 0
+        },
+        {
+          "t": 25.571775,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 25.571788,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 25.647081,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 25.647103,
+          "text": "7",
+          "tokens": 0
+        },
+        {
+          "t": 25.647118,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 25.64713,
+          "text": " Distributed",
+          "tokens": 3
+        },
+        {
+          "t": 25.722618,
+          "text": " transactions",
+          "tokens": 3
+        },
+        {
+          "t": 25.72266,
+          "text": " suffer",
+          "tokens": 1
+        },
+        {
+          "t": 25.804043,
+          "text": " from",
+          "tokens": 1
+        },
+        {
+          "t": 25.804072,
+          "text": " high",
+          "tokens": 1
+        },
+        {
+          "t": 25.88405,
+          "text": " latency",
+          "tokens": 2
+        },
+        {
+          "t": 25.884079,
+          "text": " and",
+          "tokens": 1
+        },
+        {
+          "t": 25.963548,
+          "text": " coordination",
+          "tokens": 3
+        },
+        {
+          "t": 25.963575,
+          "text": " overhead",
+          "tokens": 2
+        },
+        {
+          "t": 25.963592,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 25.963615,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 26.04248,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 26.042522,
+          "text": "8",
+          "tokens": 1
+        },
+        {
+          "t": 26.042536,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 26.042548,
+          "text": " Saga",
+          "tokens": 1
+        },
+        {
+          "t": 26.12205,
+          "text": " pattern",
+          "tokens": 2
+        },
+        {
+          "t": 26.122078,
+          "text": " manages",
+          "tokens": 1
+        },
+        {
+          "t": 26.201742,
+          "text": " long",
+          "tokens": 1
+        },
+        {
+          "t": 26.201771,
+          "text": "-running",
+          "tokens": 2
+        },
+        {
+          "t": 26.280608,
+          "text": " transactions",
+          "tokens": 3
+        },
+        {
+          "t": 26.280633,
+          "text": " via",
+          "tokens": 1
+        },
+        {
+          "t": 26.280647,
+          "text": " compens",
+          "tokens": 1
+        },
+        {
+          "t": 26.359116,
+          "text": "ating",
+          "tokens": 2
+        },
+        {
+          "t": 26.359162,
+          "text": " actions",
+          "tokens": 1
+        },
+        {
+          "t": 26.359178,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 26.35919,
+          "text": "\n",
+          "tokens": 1
+        },
+        {
+          "t": 26.439054,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 26.439085,
+          "text": "9",
+          "tokens": 0
+        },
+        {
+          "t": 26.439099,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 26.439111,
+          "text": " Event",
+          "tokens": 2
+        },
+        {
+          "t": 26.520572,
+          "text": "ual",
+          "tokens": 0
+        },
+        {
+          "t": 26.596232,
+          "text": " consistency",
+          "tokens": 3
+        },
+        {
+          "t": 26.596257,
+          "text": " allows",
+          "tokens": 1
+        },
+        {
+          "t": 26.682082,
+          "text": " temporary",
+          "tokens": 3
+        },
+        {
+          "t": 26.758744,
+          "text": " divergence",
+          "tokens": 2
+        },
+        {
+          "t": 26.758771,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 26.758786,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 26.758798,
+          "text": "2",
+          "tokens": 1
+        },
+        {
+          "t": 26.840196,
+          "text": "0",
+          "tokens": 0
+        },
+        {
+          "t": 26.840232,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 26.840248,
+          "text": " Strong",
+          "tokens": 1
+        },
+        {
+          "t": 26.84026,
+          "text": " consistency",
+          "tokens": 3
+        },
+        {
+          "t": 26.918866,
+          "text": " requires",
+          "tokens": 2
+        },
+        {
+          "t": 27.001015,
+          "text": " linear",
+          "tokens": 1
+        },
+        {
+          "t": 27.078515,
+          "text": "iz",
+          "tokens": 1
+        },
+        {
+          "t": 27.1565,
+          "text": "ability",
+          "tokens": 1
+        },
+        {
+          "t": 27.15654,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 27.156555,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 27.156567,
+          "text": "2",
+          "tokens": 0
+        },
+        {
+          "t": 27.234219,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 27.234248,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 27.234262,
+          "text": " Linear",
+          "tokens": 2
+        },
+        {
+          "t": 27.312613,
+          "text": "iz",
+          "tokens": 0
+        },
+        {
+          "t": 27.312647,
+          "text": "ability",
+          "tokens": 2
+        },
+        {
+          "t": 27.312661,
+          "text": " ensures",
+          "tokens": 2
+        },
+        {
+          "t": 27.39114,
+          "text": " operations",
+          "tokens": 2
+        },
+        {
+          "t": 27.469012,
+          "text": " appear",
+          "tokens": 2
+        },
+        {
+          "t": 27.469043,
+          "text": " to",
+          "tokens": 0
+        },
+        {
+          "t": 27.469056,
+          "text": " occur",
+          "tokens": 1
+        },
+        {
+          "t": 27.546343,
+          "text": " instant",
+          "tokens": 2
+        },
+        {
+          "t": 27.626079,
+          "text": "aneously",
+          "tokens": 2
+        },
+        {
+          "t": 27.626096,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 27.626122,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 27.626128,
+          "text": "2",
+          "tokens": 1
+        },
+        {
+          "t": 27.706347,
+          "text": "2",
+          "tokens": 0
+        },
+        {
+          "t": 27.706375,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 27.706383,
+          "text": " Sequential",
+          "tokens": 2
+        },
+        {
+          "t": 27.706389,
+          "text": " consistency",
+          "tokens": 3
+        },
+        {
+          "t": 27.78217,
+          "text": " preserves",
+          "tokens": 2
+        },
+        {
+          "t": 27.856766,
+          "text": " program",
+          "tokens": 2
+        },
+        {
+          "t": 27.93772,
+          "text": " order",
+          "tokens": 1
+        },
+        {
+          "t": 27.937745,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 27.937753,
+          "text": "\n",
+          "tokens": 1
+        },
+        {
+          "t": 27.937759,
+          "text": "2",
+          "tokens": 0
+        },
+        {
+          "t": 28.016426,
+          "text": "3",
+          "tokens": 0
+        },
+        {
+          "t": 28.016467,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 28.016484,
+          "text": " C",
+          "tokens": 1
+        },
+        {
+          "t": 28.016495,
+          "text": "ausal",
+          "tokens": 1
+        },
+        {
+          "t": 28.093127,
+          "text": " consistency",
+          "tokens": 2
+        },
+        {
+          "t": 28.093159,
+          "text": " respects",
+          "tokens": 2
+        },
+        {
+          "t": 28.170913,
+          "text": " caus",
+          "tokens": 1
+        },
+        {
+          "t": 28.249662,
+          "text": "ality",
+          "tokens": 1
+        },
+        {
+          "t": 28.249692,
+          "text": " between",
+          "tokens": 2
+        },
+        {
+          "t": 28.249707,
+          "text": " operations",
+          "tokens": 2
+        },
+        {
+          "t": 28.329512,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 28.329539,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 28.329553,
+          "text": "2",
+          "tokens": 0
+        },
+        {
+          "t": 28.329565,
+          "text": "4",
+          "tokens": 0
+        },
+        {
+          "t": 28.405222,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 28.405251,
+          "text": " Read",
+          "tokens": 2
+        },
+        {
+          "t": 28.48342,
+          "text": "-your",
+          "tokens": 1
+        },
+        {
+          "t": 28.483446,
+          "text": "-w",
+          "tokens": 0
+        },
+        {
+          "t": 28.483461,
+          "text": "rites",
+          "tokens": 1
+        },
+        {
+          "t": 28.483473,
+          "text": " consistency",
+          "tokens": 3
+        },
+        {
+          "t": 28.564023,
+          "text": " guarantees",
+          "tokens": 2
+        },
+        {
+          "t": 28.564052,
+          "text": " reading",
+          "tokens": 2
+        },
+        {
+          "t": 28.642176,
+          "text": " own",
+          "tokens": 1
+        },
+        {
+          "t": 28.717552,
+          "text": " updates",
+          "tokens": 1
+        },
+        {
+          "t": 28.797302,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 28.797332,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 28.797347,
+          "text": "2",
+          "tokens": 0
+        },
+        {
+          "t": 28.797359,
+          "text": "5",
+          "tokens": 0
+        },
+        {
+          "t": 28.875543,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 28.87558,
+          "text": " Mon",
+          "tokens": 1
+        },
+        {
+          "t": 28.875594,
+          "text": "ot",
+          "tokens": 1
+        },
+        {
+          "t": 28.875606,
+          "text": "onic",
+          "tokens": 1
+        },
+        {
+          "t": 28.958033,
+          "text": " reads",
+          "tokens": 1
+        },
+        {
+          "t": 28.958059,
+          "text": " prevent",
+          "tokens": 2
+        },
+        {
+          "t": 29.039165,
+          "text": " seeing",
+          "tokens": 1
+        },
+        {
+          "t": 29.039189,
+          "text": " older",
+          "tokens": 1
+        },
+        {
+          "t": 29.117098,
+          "text": " data",
+          "tokens": 1
+        },
+        {
+          "t": 29.117129,
+          "text": " after",
+          "tokens": 2
+        },
+        {
+          "t": 29.184632,
+          "text": " newer",
+          "tokens": 1
+        },
+        {
+          "t": 29.184667,
+          "text": " data",
+          "tokens": 1
+        },
+        {
+          "t": 29.253774,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 29.253803,
+          "text": "\n",
+          "tokens": 1
+        },
+        {
+          "t": 29.253817,
+          "text": "2",
+          "tokens": 0
+        },
+        {
+          "t": 29.253829,
+          "text": "6",
+          "tokens": 0
+        },
+        {
+          "t": 29.320631,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 29.320654,
+          "text": " G",
+          "tokens": 1
+        },
+        {
+          "t": 29.377396,
+          "text": "ossip",
+          "tokens": 1
+        },
+        {
+          "t": 29.377423,
+          "text": " protocols",
+          "tokens": 2
+        },
+        {
+          "t": 29.37743,
+          "text": " disse",
+          "tokens": 1
+        },
+        {
+          "t": 29.432943,
+          "text": "minate",
+          "tokens": 1
+        },
+        {
+          "t": 29.432959,
+          "text": " information",
+          "tokens": 3
+        },
+        {
+          "t": 29.487692,
+          "text": " via",
+          "tokens": 1
+        },
+        {
+          "t": 29.487721,
+          "text": " random",
+          "tokens": 1
+        },
+        {
+          "t": 29.487728,
+          "text": " peer",
+          "tokens": 1
+        },
+        {
+          "t": 29.542191,
+          "text": " selection",
+          "tokens": 3
+        },
+        {
+          "t": 29.600424,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 29.600452,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 29.600467,
+          "text": "2",
+          "tokens": 0
+        },
+        {
+          "t": 29.600472,
+          "text": "7",
+          "tokens": 0
+        },
+        {
+          "t": 29.65735,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 29.657378,
+          "text": " Anti",
+          "tokens": 1
+        },
+        {
+          "t": 29.713624,
+          "text": "-",
+          "tokens": 0
+        },
+        {
+          "t": 29.713642,
+          "text": "entropy",
+          "tokens": 1
+        },
+        {
+          "t": 29.713649,
+          "text": " repairs",
+          "tokens": 2
+        },
+        {
+          "t": 29.771206,
+          "text": " data",
+          "tokens": 1
+        },
+        {
+          "t": 29.829534,
+          "text": " inconsistencies",
+          "tokens": 4
+        },
+        {
+          "t": 29.829554,
+          "text": " in",
+          "tokens": 0
+        },
+        {
+          "t": 29.887958,
+          "text": " gossip",
+          "tokens": 2
+        },
+        {
+          "t": 29.887975,
+          "text": " systems",
+          "tokens": 2
+        },
+        {
+          "t": 29.943151,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 29.943178,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 29.943192,
+          "text": "2",
+          "tokens": 0
+        },
+        {
+          "t": 29.943204,
+          "text": "8",
+          "tokens": 0
+        },
+        {
+          "t": 29.997675,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 29.997702,
+          "text": " Mer",
+          "tokens": 1
+        },
+        {
+          "t": 29.997709,
+          "text": "kle",
+          "tokens": 0
+        },
+        {
+          "t": 29.997715,
+          "text": " trees",
+          "tokens": 1
+        },
+        {
+          "t": 30.05555,
+          "text": " efficiently",
+          "tokens": 3
+        },
+        {
+          "t": 30.112187,
+          "text": " detect",
+          "tokens": 2
+        },
+        {
+          "t": 30.167693,
+          "text": " data",
+          "tokens": 1
+        },
+        {
+          "t": 30.167728,
+          "text": " divergence",
+          "tokens": 2
+        },
+        {
+          "t": 30.167738,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 30.167745,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 30.222075,
+          "text": "2",
+          "tokens": 1
+        },
+        {
+          "t": 30.222094,
+          "text": "9",
+          "tokens": 0
+        },
+        {
+          "t": 30.222108,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 30.222114,
+          "text": " Cons",
+          "tokens": 1
+        },
+        {
+          "t": 30.274529,
+          "text": "istent",
+          "tokens": 1
+        },
+        {
+          "t": 30.274562,
+          "text": " hashing",
+          "tokens": 2
+        },
+        {
+          "t": 30.274569,
+          "text": " distributes",
+          "tokens": 3
+        },
+        {
+          "t": 30.327805,
+          "text": " keys",
+          "tokens": 1
+        },
+        {
+          "t": 30.327834,
+          "text": " across",
+          "tokens": 1
+        },
+        {
+          "t": 30.327848,
+          "text": " nodes",
+          "tokens": 2
+        },
+        {
+          "t": 30.327859,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 30.389089,
+          "text": "\n",
+          "tokens": 0
+        }
+      ],
+      "error": null
+    },
+    {
+      "index": 1,
+      "label": "SPACE",
+      "subject": "surprising facts about the solar system",
+      "scheduled_s": 1.000077,
+      "first_token_s": 9.366488,
+      "ttft_s": 8.366411,
+      "ended_s": 29.048816,
+      "completion_tokens": 400,
+      "prompt_tokens": 18100,
+      "decode_tok_s": 20.271992,
+      "token_count_method": "final_usage_weighted_by_delta_chars",
+      "events": [
+        {
+          "t": 9.366488,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 9.412472,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 13.383043,
+          "text": " The",
+          "tokens": 1
+        },
+        {
+          "t": 13.383064,
+          "text": " Sun",
+          "tokens": 1
+        },
+        {
+          "t": 13.383071,
+          "text": " contains",
+          "tokens": 2
+        },
+        {
+          "t": 14.16283,
+          "text": " ",
+          "tokens": 0
+        },
+        {
+          "t": 14.16285,
+          "text": "9",
+          "tokens": 1
+        },
+        {
+          "t": 14.162858,
+          "text": "9",
+          "tokens": 0
+        },
+        {
+          "t": 14.162863,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 18.136188,
+          "text": "8",
+          "tokens": 0
+        },
+        {
+          "t": 18.136219,
+          "text": "6",
+          "tokens": 1
+        },
+        {
+          "t": 18.136234,
+          "text": "%",
+          "tokens": 0
+        },
+        {
+          "t": 18.136246,
+          "text": " of",
+          "tokens": 1
+        },
+        {
+          "t": 18.962276,
+          "text": " the",
+          "tokens": 1
+        },
+        {
+          "t": 18.962305,
+          "text": " solar",
+          "tokens": 1
+        },
+        {
+          "t": 18.962312,
+          "text": " system",
+          "tokens": 2
+        },
+        {
+          "t": 18.962318,
+          "text": "'s",
+          "tokens": 1
+        },
+        {
+          "t": 19.039383,
+          "text": " total",
+          "tokens": 1
+        },
+        {
+          "t": 19.122538,
+          "text": " mass",
+          "tokens": 2
+        },
+        {
+          "t": 19.122558,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 19.122565,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 19.122571,
+          "text": "2",
+          "tokens": 1
+        },
+        {
+          "t": 19.199666,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 19.199693,
+          "text": " Jupiter",
+          "tokens": 2
+        },
+        {
+          "t": 19.199707,
+          "text": " is",
+          "tokens": 1
+        },
+        {
+          "t": 19.282839,
+          "text": " so",
+          "tokens": 1
+        },
+        {
+          "t": 19.282863,
+          "text": " massive",
+          "tokens": 2
+        },
+        {
+          "t": 19.282871,
+          "text": " that",
+          "tokens": 1
+        },
+        {
+          "t": 19.282876,
+          "text": " it",
+          "tokens": 1
+        },
+        {
+          "t": 19.359236,
+          "text": " could",
+          "tokens": 1
+        },
+        {
+          "t": 19.359264,
+          "text": " fit",
+          "tokens": 2
+        },
+        {
+          "t": 19.359278,
+          "text": " all",
+          "tokens": 1
+        },
+        {
+          "t": 19.436943,
+          "text": " other",
+          "tokens": 1
+        },
+        {
+          "t": 19.436963,
+          "text": " planets",
+          "tokens": 2
+        },
+        {
+          "t": 19.514156,
+          "text": " inside",
+          "tokens": 2
+        },
+        {
+          "t": 19.594003,
+          "text": " it",
+          "tokens": 1
+        },
+        {
+          "t": 19.594034,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 19.594042,
+          "text": "\n",
+          "tokens": 1
+        },
+        {
+          "t": 19.594048,
+          "text": "3",
+          "tokens": 0
+        },
+        {
+          "t": 19.671381,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 19.671408,
+          "text": " A",
+          "tokens": 1
+        },
+        {
+          "t": 19.747923,
+          "text": " day",
+          "tokens": 1
+        },
+        {
+          "t": 19.747945,
+          "text": " on",
+          "tokens": 0
+        },
+        {
+          "t": 19.747952,
+          "text": " Venus",
+          "tokens": 2
+        },
+        {
+          "t": 19.747958,
+          "text": " is",
+          "tokens": 1
+        },
+        {
+          "t": 19.824147,
+          "text": " longer",
+          "tokens": 2
+        },
+        {
+          "t": 19.824173,
+          "text": " than",
+          "tokens": 1
+        },
+        {
+          "t": 19.824199,
+          "text": " its",
+          "tokens": 1
+        },
+        {
+          "t": 19.824211,
+          "text": " year",
+          "tokens": 1
+        },
+        {
+          "t": 19.904322,
+          "text": " due",
+          "tokens": 2
+        },
+        {
+          "t": 19.986571,
+          "text": " to",
+          "tokens": 0
+        },
+        {
+          "t": 19.986598,
+          "text": " slow",
+          "tokens": 2
+        },
+        {
+          "t": 20.065208,
+          "text": " rotation",
+          "tokens": 2
+        },
+        {
+          "t": 20.065244,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 20.065259,
+          "text": "\n",
+          "tokens": 1
+        },
+        {
+          "t": 20.06527,
+          "text": "4",
+          "tokens": 0
+        },
+        {
+          "t": 20.14536,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 20.14538,
+          "text": " Venus",
+          "tokens": 2
+        },
+        {
+          "t": 20.145388,
+          "text": " rotates",
+          "tokens": 2
+        },
+        {
+          "t": 20.145394,
+          "text": " clockwise",
+          "tokens": 3
+        },
+        {
+          "t": 20.224104,
+          "text": ",",
+          "tokens": 0
+        },
+        {
+          "t": 20.224122,
+          "text": " opposite",
+          "tokens": 2
+        },
+        {
+          "t": 20.303008,
+          "text": " to",
+          "tokens": 1
+        },
+        {
+          "t": 20.303032,
+          "text": " most",
+          "tokens": 1
+        },
+        {
+          "t": 20.30304,
+          "text": " planets",
+          "tokens": 3
+        },
+        {
+          "t": 20.303046,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 20.3833,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 20.383331,
+          "text": "5",
+          "tokens": 0
+        },
+        {
+          "t": 20.383345,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 20.383357,
+          "text": " Mercury",
+          "tokens": 2
+        },
+        {
+          "t": 20.467203,
+          "text": " has",
+          "tokens": 1
+        },
+        {
+          "t": 20.54893,
+          "text": " the",
+          "tokens": 1
+        },
+        {
+          "t": 20.548961,
+          "text": " most",
+          "tokens": 1
+        },
+        {
+          "t": 20.630318,
+          "text": " eccentric",
+          "tokens": 3
+        },
+        {
+          "t": 20.710168,
+          "text": " orbit",
+          "tokens": 1
+        },
+        {
+          "t": 20.710198,
+          "text": " of",
+          "tokens": 1
+        },
+        {
+          "t": 20.710212,
+          "text": " all",
+          "tokens": 1
+        },
+        {
+          "t": 20.786485,
+          "text": " planets",
+          "tokens": 2
+        },
+        {
+          "t": 20.786511,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 20.786526,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 20.786538,
+          "text": "6",
+          "tokens": 0
+        },
+        {
+          "t": 20.864271,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 20.864305,
+          "text": " Mercury",
+          "tokens": 2
+        },
+        {
+          "t": 20.940822,
+          "text": " experiences",
+          "tokens": 3
+        },
+        {
+          "t": 21.016605,
+          "text": " extreme",
+          "tokens": 2
+        },
+        {
+          "t": 21.016629,
+          "text": " temperature",
+          "tokens": 3
+        },
+        {
+          "t": 21.016643,
+          "text": " swings",
+          "tokens": 2
+        },
+        {
+          "t": 21.016654,
+          "text": " from",
+          "tokens": 1
+        },
+        {
+          "t": 21.095608,
+          "text": " ",
+          "tokens": 1
+        },
+        {
+          "t": 21.171159,
+          "text": "4",
+          "tokens": 0
+        },
+        {
+          "t": 21.171178,
+          "text": "3",
+          "tokens": 0
+        },
+        {
+          "t": 21.171185,
+          "text": "0",
+          "tokens": 1
+        },
+        {
+          "t": 21.171193,
+          "text": "\u00b0C",
+          "tokens": 0
+        },
+        {
+          "t": 21.253341,
+          "text": " to",
+          "tokens": 1
+        },
+        {
+          "t": 21.253359,
+          "text": " -",
+          "tokens": 1
+        },
+        {
+          "t": 21.336033,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 21.336046,
+          "text": "8",
+          "tokens": 0
+        },
+        {
+          "t": 21.336052,
+          "text": "0",
+          "tokens": 0
+        },
+        {
+          "t": 21.33606,
+          "text": "\u00b0C",
+          "tokens": 1
+        },
+        {
+          "t": 21.416425,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 21.416448,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 21.416458,
+          "text": "7",
+          "tokens": 0
+        },
+        {
+          "t": 21.416464,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 21.49611,
+          "text": " Mars",
+          "tokens": 2
+        },
+        {
+          "t": 21.496125,
+          "text": " has",
+          "tokens": 1
+        },
+        {
+          "t": 21.496132,
+          "text": " the",
+          "tokens": 1
+        },
+        {
+          "t": 21.496138,
+          "text": " tallest",
+          "tokens": 2
+        },
+        {
+          "t": 21.572864,
+          "text": " volcano",
+          "tokens": 2
+        },
+        {
+          "t": 21.572882,
+          "text": " in",
+          "tokens": 1
+        },
+        {
+          "t": 21.5729,
+          "text": " the",
+          "tokens": 1
+        },
+        {
+          "t": 21.572906,
+          "text": " solar",
+          "tokens": 2
+        },
+        {
+          "t": 21.648559,
+          "text": " system",
+          "tokens": 1
+        },
+        {
+          "t": 21.648576,
+          "text": ",",
+          "tokens": 1
+        },
+        {
+          "t": 21.648582,
+          "text": " Olympus",
+          "tokens": 2
+        },
+        {
+          "t": 21.728358,
+          "text": " Mons",
+          "tokens": 1
+        },
+        {
+          "t": 21.728382,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 21.728391,
+          "text": "\n",
+          "tokens": 1
+        },
+        {
+          "t": 21.728397,
+          "text": "8",
+          "tokens": 0
+        },
+        {
+          "t": 21.807546,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 21.807564,
+          "text": " Olympus",
+          "tokens": 2
+        },
+        {
+          "t": 21.884632,
+          "text": " Mons",
+          "tokens": 2
+        },
+        {
+          "t": 21.884647,
+          "text": " is",
+          "tokens": 1
+        },
+        {
+          "t": 21.884653,
+          "text": " nearly",
+          "tokens": 1
+        },
+        {
+          "t": 21.884659,
+          "text": " three",
+          "tokens": 2
+        },
+        {
+          "t": 21.960862,
+          "text": " times",
+          "tokens": 2
+        },
+        {
+          "t": 21.960877,
+          "text": " the",
+          "tokens": 1
+        },
+        {
+          "t": 21.960884,
+          "text": " height",
+          "tokens": 2
+        },
+        {
+          "t": 21.96091,
+          "text": " of",
+          "tokens": 0
+        },
+        {
+          "t": 22.039754,
+          "text": " Mount",
+          "tokens": 2
+        },
+        {
+          "t": 22.039779,
+          "text": " Everest",
+          "tokens": 2
+        },
+        {
+          "t": 22.039787,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 22.039793,
+          "text": "\n",
+          "tokens": 1
+        },
+        {
+          "t": 22.118615,
+          "text": "9",
+          "tokens": 0
+        },
+        {
+          "t": 22.118639,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 22.118744,
+          "text": " Mars",
+          "tokens": 1
+        },
+        {
+          "t": 22.11875,
+          "text": " has",
+          "tokens": 2
+        },
+        {
+          "t": 22.193965,
+          "text": " the",
+          "tokens": 1
+        },
+        {
+          "t": 22.272541,
+          "text": " largest",
+          "tokens": 2
+        },
+        {
+          "t": 22.272557,
+          "text": " canyon",
+          "tokens": 2
+        },
+        {
+          "t": 22.272563,
+          "text": " system",
+          "tokens": 1
+        },
+        {
+          "t": 22.353812,
+          "text": ",",
+          "tokens": 1
+        },
+        {
+          "t": 22.353838,
+          "text": " Val",
+          "tokens": 1
+        },
+        {
+          "t": 22.353854,
+          "text": "les",
+          "tokens": 1
+        },
+        {
+          "t": 22.35386,
+          "text": " Mar",
+          "tokens": 1
+        },
+        {
+          "t": 22.43089,
+          "text": "iner",
+          "tokens": 1
+        },
+        {
+          "t": 22.430907,
+          "text": "is",
+          "tokens": 0
+        },
+        {
+          "t": 22.430914,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 22.43092,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 22.511585,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 22.51161,
+          "text": "0",
+          "tokens": 0
+        },
+        {
+          "t": 22.511618,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 22.511624,
+          "text": " Val",
+          "tokens": 1
+        },
+        {
+          "t": 22.588968,
+          "text": "les",
+          "tokens": 1
+        },
+        {
+          "t": 22.589012,
+          "text": " Mar",
+          "tokens": 1
+        },
+        {
+          "t": 22.58902,
+          "text": "iner",
+          "tokens": 1
+        },
+        {
+          "t": 22.589025,
+          "text": "is",
+          "tokens": 0
+        },
+        {
+          "t": 22.67343,
+          "text": " is",
+          "tokens": 1
+        },
+        {
+          "t": 22.673449,
+          "text": " ten",
+          "tokens": 1
+        },
+        {
+          "t": 22.748765,
+          "text": " times",
+          "tokens": 2
+        },
+        {
+          "t": 22.748803,
+          "text": " longer",
+          "tokens": 2
+        },
+        {
+          "t": 22.829453,
+          "text": " than",
+          "tokens": 1
+        },
+        {
+          "t": 22.829509,
+          "text": " the",
+          "tokens": 1
+        },
+        {
+          "t": 22.829524,
+          "text": " Grand",
+          "tokens": 2
+        },
+        {
+          "t": 22.829536,
+          "text": " Canyon",
+          "tokens": 1
+        },
+        {
+          "t": 22.908629,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 22.908657,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 22.908672,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 22.908683,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 22.984859,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 22.984886,
+          "text": " Saturn",
+          "tokens": 2
+        },
+        {
+          "t": 23.062557,
+          "text": "'s",
+          "tokens": 0
+        },
+        {
+          "t": 23.062591,
+          "text": " density",
+          "tokens": 2
+        },
+        {
+          "t": 23.141799,
+          "text": " is",
+          "tokens": 1
+        },
+        {
+          "t": 23.141826,
+          "text": " less",
+          "tokens": 1
+        },
+        {
+          "t": 23.14184,
+          "text": " than",
+          "tokens": 2
+        },
+        {
+          "t": 23.141852,
+          "text": " water",
+          "tokens": 1
+        },
+        {
+          "t": 23.217676,
+          "text": ";",
+          "tokens": 1
+        },
+        {
+          "t": 23.296425,
+          "text": " it",
+          "tokens": 0
+        },
+        {
+          "t": 23.296453,
+          "text": " would",
+          "tokens": 2
+        },
+        {
+          "t": 23.296467,
+          "text": " float",
+          "tokens": 2
+        },
+        {
+          "t": 23.296478,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 23.372755,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 23.372787,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 23.372801,
+          "text": "2",
+          "tokens": 1
+        },
+        {
+          "t": 23.372813,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 23.453695,
+          "text": " Saturn",
+          "tokens": 2
+        },
+        {
+          "t": 23.45372,
+          "text": "'s",
+          "tokens": 0
+        },
+        {
+          "t": 23.453733,
+          "text": " rings",
+          "tokens": 2
+        },
+        {
+          "t": 23.453753,
+          "text": " are",
+          "tokens": 1
+        },
+        {
+          "t": 23.532122,
+          "text": " mostly",
+          "tokens": 2
+        },
+        {
+          "t": 23.532145,
+          "text": " made",
+          "tokens": 1
+        },
+        {
+          "t": 23.53216,
+          "text": " of",
+          "tokens": 1
+        },
+        {
+          "t": 23.532171,
+          "text": " ice",
+          "tokens": 1
+        },
+        {
+          "t": 23.610925,
+          "text": " particles",
+          "tokens": 3
+        },
+        {
+          "t": 23.689264,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 23.689294,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 23.689308,
+          "text": "1",
+          "tokens": 1
+        },
+        {
+          "t": 23.689319,
+          "text": "3",
+          "tokens": 0
+        },
+        {
+          "t": 23.769005,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 23.769037,
+          "text": " Saturn",
+          "tokens": 2
+        },
+        {
+          "t": 23.848017,
+          "text": "'s",
+          "tokens": 1
+        },
+        {
+          "t": 23.848044,
+          "text": " rings",
+          "tokens": 1
+        },
+        {
+          "t": 23.848058,
+          "text": " are",
+          "tokens": 1
+        },
+        {
+          "t": 23.84807,
+          "text": " surprisingly",
+          "tokens": 4
+        },
+        {
+          "t": 23.928288,
+          "text": " thin",
+          "tokens": 1
+        },
+        {
+          "t": 23.928314,
+          "text": ",",
+          "tokens": 0
+        },
+        {
+          "t": 24.006452,
+          "text": " often",
+          "tokens": 2
+        },
+        {
+          "t": 24.079958,
+          "text": " less",
+          "tokens": 1
+        },
+        {
+          "t": 24.15875,
+          "text": " than",
+          "tokens": 2
+        },
+        {
+          "t": 24.158775,
+          "text": " a",
+          "tokens": 0
+        },
+        {
+          "t": 24.23814,
+          "text": " kilometer",
+          "tokens": 3
+        },
+        {
+          "t": 24.317932,
+          "text": " thick",
+          "tokens": 1
+        },
+        {
+          "t": 24.317959,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 24.317996,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 24.318012,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 24.393874,
+          "text": "4",
+          "tokens": 0
+        },
+        {
+          "t": 24.393901,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 24.393914,
+          "text": " Uran",
+          "tokens": 1
+        },
+        {
+          "t": 24.393926,
+          "text": "us",
+          "tokens": 1
+        },
+        {
+          "t": 24.474935,
+          "text": " rotates",
+          "tokens": 2
+        },
+        {
+          "t": 24.474964,
+          "text": " on",
+          "tokens": 1
+        },
+        {
+          "t": 24.474978,
+          "text": " its",
+          "tokens": 1
+        },
+        {
+          "t": 24.475008,
+          "text": " side",
+          "tokens": 1
+        },
+        {
+          "t": 24.553418,
+          "text": " with",
+          "tokens": 1
+        },
+        {
+          "t": 24.629866,
+          "text": " an",
+          "tokens": 1
+        },
+        {
+          "t": 24.629901,
+          "text": " axial",
+          "tokens": 2
+        },
+        {
+          "t": 24.629916,
+          "text": " tilt",
+          "tokens": 1
+        },
+        {
+          "t": 24.629927,
+          "text": " of",
+          "tokens": 1
+        },
+        {
+          "t": 24.711359,
+          "text": " ",
+          "tokens": 0
+        },
+        {
+          "t": 24.711385,
+          "text": "9",
+          "tokens": 0
+        },
+        {
+          "t": 24.711398,
+          "text": "8",
+          "tokens": 1
+        },
+        {
+          "t": 24.71142,
+          "text": " degrees",
+          "tokens": 2
+        },
+        {
+          "t": 24.788411,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 24.788441,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 24.788456,
+          "text": "1",
+          "tokens": 1
+        },
+        {
+          "t": 24.788468,
+          "text": "5",
+          "tokens": 0
+        },
+        {
+          "t": 24.868268,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 24.868296,
+          "text": " Uran",
+          "tokens": 1
+        },
+        {
+          "t": 24.86831,
+          "text": "us",
+          "tokens": 1
+        },
+        {
+          "t": 24.868321,
+          "text": " is",
+          "tokens": 1
+        },
+        {
+          "t": 24.946496,
+          "text": " the",
+          "tokens": 1
+        },
+        {
+          "t": 24.946522,
+          "text": " col",
+          "tokens": 1
+        },
+        {
+          "t": 24.946536,
+          "text": "dest",
+          "tokens": 1
+        },
+        {
+          "t": 24.946548,
+          "text": " planet",
+          "tokens": 2
+        },
+        {
+          "t": 25.027495,
+          "text": ",",
+          "tokens": 0
+        },
+        {
+          "t": 25.104621,
+          "text": " despite",
+          "tokens": 2
+        },
+        {
+          "t": 25.182432,
+          "text": " not",
+          "tokens": 1
+        },
+        {
+          "t": 25.261896,
+          "text": " being",
+          "tokens": 2
+        },
+        {
+          "t": 25.261911,
+          "text": " the",
+          "tokens": 1
+        },
+        {
+          "t": 25.340137,
+          "text": " far",
+          "tokens": 1
+        },
+        {
+          "t": 25.340175,
+          "text": "thest",
+          "tokens": 1
+        },
+        {
+          "t": 25.340184,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 25.34019,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 25.413815,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 25.41383,
+          "text": "6",
+          "tokens": 0
+        },
+        {
+          "t": 25.413837,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 25.413843,
+          "text": " Neptune",
+          "tokens": 2
+        },
+        {
+          "t": 25.491044,
+          "text": " has",
+          "tokens": 1
+        },
+        {
+          "t": 25.491059,
+          "text": " the",
+          "tokens": 1
+        },
+        {
+          "t": 25.571972,
+          "text": " fastest",
+          "tokens": 2
+        },
+        {
+          "t": 25.572006,
+          "text": " winds",
+          "tokens": 2
+        },
+        {
+          "t": 25.572013,
+          "text": " in",
+          "tokens": 1
+        },
+        {
+          "t": 25.572019,
+          "text": " the",
+          "tokens": 1
+        },
+        {
+          "t": 25.647007,
+          "text": " solar",
+          "tokens": 1
+        },
+        {
+          "t": 25.647022,
+          "text": " system",
+          "tokens": 2
+        },
+        {
+          "t": 25.64703,
+          "text": ",",
+          "tokens": 0
+        },
+        {
+          "t": 25.647036,
+          "text": " up",
+          "tokens": 1
+        },
+        {
+          "t": 25.723243,
+          "text": " to",
+          "tokens": 1
+        },
+        {
+          "t": 25.723269,
+          "text": " ",
+          "tokens": 0
+        },
+        {
+          "t": 25.723285,
+          "text": "2",
+          "tokens": 0
+        },
+        {
+          "t": 25.723296,
+          "text": ",",
+          "tokens": 1
+        },
+        {
+          "t": 25.804305,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 25.80433,
+          "text": "0",
+          "tokens": 0
+        },
+        {
+          "t": 25.804337,
+          "text": "0",
+          "tokens": 1
+        },
+        {
+          "t": 25.804343,
+          "text": " km",
+          "tokens": 0
+        },
+        {
+          "t": 25.884347,
+          "text": "/h",
+          "tokens": 1
+        },
+        {
+          "t": 25.884378,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 25.884449,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 25.884461,
+          "text": "1",
+          "tokens": 1
+        },
+        {
+          "t": 25.963707,
+          "text": "7",
+          "tokens": 0
+        },
+        {
+          "t": 25.963735,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 25.963743,
+          "text": " Neptune",
+          "tokens": 2
+        },
+        {
+          "t": 25.963748,
+          "text": " was",
+          "tokens": 1
+        },
+        {
+          "t": 26.042618,
+          "text": " discovered",
+          "tokens": 3
+        },
+        {
+          "t": 26.042636,
+          "text": " through",
+          "tokens": 3
+        },
+        {
+          "t": 26.122822,
+          "text": " mathematical",
+          "tokens": 3
+        },
+        {
+          "t": 26.12285,
+          "text": " prediction",
+          "tokens": 3
+        },
+        {
+          "t": 26.122878,
+          "text": ",",
+          "tokens": 0
+        },
+        {
+          "t": 26.202089,
+          "text": " not",
+          "tokens": 1
+        },
+        {
+          "t": 26.202118,
+          "text": " observation",
+          "tokens": 3
+        },
+        {
+          "t": 26.202132,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 26.202157,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 26.280722,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 26.280737,
+          "text": "8",
+          "tokens": 1
+        },
+        {
+          "t": 26.280744,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 26.28075,
+          "text": " Pluto",
+          "tokens": 1
+        },
+        {
+          "t": 26.359548,
+          "text": " was",
+          "tokens": 1
+        },
+        {
+          "t": 26.438928,
+          "text": " re",
+          "tokens": 1
+        },
+        {
+          "t": 26.438953,
+          "text": "classified",
+          "tokens": 3
+        },
+        {
+          "t": 26.438961,
+          "text": " as",
+          "tokens": 1
+        },
+        {
+          "t": 26.438967,
+          "text": " a",
+          "tokens": 0
+        },
+        {
+          "t": 26.520975,
+          "text": " dwarf",
+          "tokens": 2
+        },
+        {
+          "t": 26.520996,
+          "text": " planet",
+          "tokens": 2
+        },
+        {
+          "t": 26.521003,
+          "text": " in",
+          "tokens": 1
+        },
+        {
+          "t": 26.521009,
+          "text": " ",
+          "tokens": 0
+        },
+        {
+          "t": 26.596528,
+          "text": "2",
+          "tokens": 0
+        },
+        {
+          "t": 26.596544,
+          "text": "0",
+          "tokens": 0
+        },
+        {
+          "t": 26.596551,
+          "text": "0",
+          "tokens": 1
+        },
+        {
+          "t": 26.596556,
+          "text": "6",
+          "tokens": 0
+        },
+        {
+          "t": 26.682509,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 26.682538,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 26.682553,
+          "text": "1",
+          "tokens": 1
+        },
+        {
+          "t": 26.682564,
+          "text": "9",
+          "tokens": 0
+        },
+        {
+          "t": 26.759301,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 26.759325,
+          "text": " Pluto",
+          "tokens": 2
+        },
+        {
+          "t": 26.759332,
+          "text": " has",
+          "tokens": 1
+        },
+        {
+          "t": 26.759338,
+          "text": " a",
+          "tokens": 0
+        },
+        {
+          "t": 26.84047,
+          "text": " heart",
+          "tokens": 2
+        },
+        {
+          "t": 26.840493,
+          "text": "-shaped",
+          "tokens": 2
+        },
+        {
+          "t": 26.8405,
+          "text": " nitrogen",
+          "tokens": 2
+        },
+        {
+          "t": 26.840505,
+          "text": " ice",
+          "tokens": 1
+        },
+        {
+          "t": 26.918955,
+          "text": " glacier",
+          "tokens": 3
+        },
+        {
+          "t": 26.918971,
+          "text": " called",
+          "tokens": 1
+        },
+        {
+          "t": 27.000913,
+          "text": " Sputnik",
+          "tokens": 3
+        },
+        {
+          "t": 27.078413,
+          "text": " Plan",
+          "tokens": 1
+        },
+        {
+          "t": 27.078439,
+          "text": "itia",
+          "tokens": 1
+        },
+        {
+          "t": 27.078447,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 27.078453,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 27.156658,
+          "text": "2",
+          "tokens": 1
+        },
+        {
+          "t": 27.156685,
+          "text": "0",
+          "tokens": 0
+        },
+        {
+          "t": 27.156698,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 27.15671,
+          "text": " Pluto",
+          "tokens": 2
+        },
+        {
+          "t": 27.234468,
+          "text": "'s",
+          "tokens": 0
+        },
+        {
+          "t": 27.234497,
+          "text": " moon",
+          "tokens": 2
+        },
+        {
+          "t": 27.23451,
+          "text": " Char",
+          "tokens": 1
+        },
+        {
+          "t": 27.312518,
+          "text": "on",
+          "tokens": 1
+        },
+        {
+          "t": 27.312535,
+          "text": " is",
+          "tokens": 0
+        },
+        {
+          "t": 27.312542,
+          "text": " so",
+          "tokens": 1
+        },
+        {
+          "t": 27.391317,
+          "text": " large",
+          "tokens": 2
+        },
+        {
+          "t": 27.391332,
+          "text": " it",
+          "tokens": 1
+        },
+        {
+          "t": 27.469141,
+          "text": " is",
+          "tokens": 0
+        },
+        {
+          "t": 27.469157,
+          "text": " sometimes",
+          "tokens": 3
+        },
+        {
+          "t": 27.546455,
+          "text": " considered",
+          "tokens": 3
+        },
+        {
+          "t": 27.626233,
+          "text": " a",
+          "tokens": 1
+        },
+        {
+          "t": 27.626264,
+          "text": " binary",
+          "tokens": 1
+        },
+        {
+          "t": 27.62628,
+          "text": " system",
+          "tokens": 2
+        },
+        {
+          "t": 27.626293,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 27.706589,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 27.706619,
+          "text": "2",
+          "tokens": 0
+        },
+        {
+          "t": 27.706633,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 27.706645,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 27.782284,
+          "text": " The",
+          "tokens": 1
+        },
+        {
+          "t": 27.782321,
+          "text": " Moon",
+          "tokens": 1
+        },
+        {
+          "t": 27.782336,
+          "text": " is",
+          "tokens": 1
+        },
+        {
+          "t": 27.857129,
+          "text": " moving",
+          "tokens": 2
+        },
+        {
+          "t": 27.937503,
+          "text": " away",
+          "tokens": 1
+        },
+        {
+          "t": 27.937522,
+          "text": " from",
+          "tokens": 1
+        },
+        {
+          "t": 27.93753,
+          "text": " Earth",
+          "tokens": 2
+        },
+        {
+          "t": 28.015704,
+          "text": " by",
+          "tokens": 1
+        },
+        {
+          "t": 28.093243,
+          "text": " about",
+          "tokens": 1
+        },
+        {
+          "t": 28.093262,
+          "text": " ",
+          "tokens": 1
+        },
+        {
+          "t": 28.093269,
+          "text": "3",
+          "tokens": 0
+        },
+        {
+          "t": 28.093275,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 28.171019,
+          "text": "8",
+          "tokens": 0
+        },
+        {
+          "t": 28.17106,
+          "text": " cm",
+          "tokens": 1
+        },
+        {
+          "t": 28.171067,
+          "text": " per",
+          "tokens": 1
+        },
+        {
+          "t": 28.249853,
+          "text": " year",
+          "tokens": 2
+        },
+        {
+          "t": 28.24987,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 28.249878,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 28.249884,
+          "text": "2",
+          "tokens": 0
+        },
+        {
+          "t": 28.329658,
+          "text": "2",
+          "tokens": 1
+        },
+        {
+          "t": 28.329681,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 28.329688,
+          "text": " The",
+          "tokens": 1
+        },
+        {
+          "t": 28.329693,
+          "text": " Moon",
+          "tokens": 1
+        },
+        {
+          "t": 28.405329,
+          "text": " is",
+          "tokens": 1
+        },
+        {
+          "t": 28.405345,
+          "text": " the",
+          "tokens": 1
+        },
+        {
+          "t": 28.405351,
+          "text": " fifth",
+          "tokens": 2
+        },
+        {
+          "t": 28.483214,
+          "text": "-largest",
+          "tokens": 2
+        },
+        {
+          "t": 28.483229,
+          "text": " moon",
+          "tokens": 1
+        },
+        {
+          "t": 28.483239,
+          "text": " in",
+          "tokens": 1
+        },
+        {
+          "t": 28.483244,
+          "text": " the",
+          "tokens": 1
+        },
+        {
+          "t": 28.564345,
+          "text": " solar",
+          "tokens": 2
+        },
+        {
+          "t": 28.564361,
+          "text": " system",
+          "tokens": 2
+        },
+        {
+          "t": 28.564368,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 28.564374,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 28.642283,
+          "text": "2",
+          "tokens": 1
+        },
+        {
+          "t": 28.6423,
+          "text": "3",
+          "tokens": 0
+        },
+        {
+          "t": 28.642307,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 28.642313,
+          "text": " There",
+          "tokens": 2
+        },
+        {
+          "t": 28.717703,
+          "text": " are",
+          "tokens": 1
+        },
+        {
+          "t": 28.71772,
+          "text": " more",
+          "tokens": 1
+        },
+        {
+          "t": 28.797437,
+          "text": " moons",
+          "tokens": 2
+        },
+        {
+          "t": 28.797462,
+          "text": " in",
+          "tokens": 0
+        },
+        {
+          "t": 28.875845,
+          "text": " the",
+          "tokens": 2
+        },
+        {
+          "t": 28.875863,
+          "text": " solar",
+          "tokens": 1
+        },
+        {
+          "t": 28.87587,
+          "text": " system",
+          "tokens": 2
+        },
+        {
+          "t": 28.875875,
+          "text": " than",
+          "tokens": 1
+        },
+        {
+          "t": 28.957642,
+          "text": " planets",
+          "tokens": 2
+        },
+        {
+          "t": 29.03891,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 29.038943,
+          "text": "\n",
+          "tokens": 0
+        }
+      ],
+      "error": null
+    },
+    {
+      "index": 2,
+      "label": "OCEAN",
+      "subject": "deep-ocean science and exploration",
+      "scheduled_s": 2.000188,
+      "first_token_s": 14.104725,
+      "ttft_s": 12.104537,
+      "ended_s": 29.262183,
+      "completion_tokens": 400,
+      "prompt_tokens": 18100,
+      "decode_tok_s": 26.323675,
+      "token_count_method": "final_usage_weighted_by_delta_chars",
+      "events": [
+        {
+          "t": 14.104725,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 14.163047,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 18.136419,
+          "text": " The",
+          "tokens": 1
+        },
+        {
+          "t": 18.136448,
+          "text": " had",
+          "tokens": 1
+        },
+        {
+          "t": 18.962672,
+          "text": "al",
+          "tokens": 1
+        },
+        {
+          "t": 18.962712,
+          "text": " zone",
+          "tokens": 1
+        },
+        {
+          "t": 18.962719,
+          "text": " begins",
+          "tokens": 2
+        },
+        {
+          "t": 19.039449,
+          "text": " at",
+          "tokens": 1
+        },
+        {
+          "t": 19.122101,
+          "text": " ",
+          "tokens": 0
+        },
+        {
+          "t": 19.122136,
+          "text": "6",
+          "tokens": 1
+        },
+        {
+          "t": 19.12215,
+          "text": ",",
+          "tokens": 0
+        },
+        {
+          "t": 19.122163,
+          "text": "0",
+          "tokens": 0
+        },
+        {
+          "t": 19.199433,
+          "text": "0",
+          "tokens": 1
+        },
+        {
+          "t": 19.199458,
+          "text": "0",
+          "tokens": 0
+        },
+        {
+          "t": 19.199464,
+          "text": " meters",
+          "tokens": 2
+        },
+        {
+          "t": 19.19947,
+          "text": " depth",
+          "tokens": 2
+        },
+        {
+          "t": 19.283204,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 19.283225,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 19.283232,
+          "text": "2",
+          "tokens": 1
+        },
+        {
+          "t": 19.283238,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 19.359442,
+          "text": " Hydro",
+          "tokens": 2
+        },
+        {
+          "t": 19.436595,
+          "text": "thermal",
+          "tokens": 2
+        },
+        {
+          "t": 19.436615,
+          "text": " vents",
+          "tokens": 2
+        },
+        {
+          "t": 19.436622,
+          "text": " support",
+          "tokens": 2
+        },
+        {
+          "t": 19.514216,
+          "text": " chem",
+          "tokens": 1
+        },
+        {
+          "t": 19.514233,
+          "text": "os",
+          "tokens": 1
+        },
+        {
+          "t": 19.51424,
+          "text": "yn",
+          "tokens": 1
+        },
+        {
+          "t": 19.593855,
+          "text": "thetic",
+          "tokens": 1
+        },
+        {
+          "t": 19.593877,
+          "text": " ecosystems",
+          "tokens": 4
+        },
+        {
+          "t": 19.593885,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 19.593891,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 19.671269,
+          "text": "3",
+          "tokens": 1
+        },
+        {
+          "t": 19.671288,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 19.671295,
+          "text": " Black",
+          "tokens": 2
+        },
+        {
+          "t": 19.6713,
+          "text": " smokers",
+          "tokens": 2
+        },
+        {
+          "t": 19.748024,
+          "text": " emit",
+          "tokens": 1
+        },
+        {
+          "t": 19.748058,
+          "text": " super",
+          "tokens": 2
+        },
+        {
+          "t": 19.824606,
+          "text": "he",
+          "tokens": 1
+        },
+        {
+          "t": 19.824638,
+          "text": "ated",
+          "tokens": 1
+        },
+        {
+          "t": 19.824653,
+          "text": " mineral",
+          "tokens": 2
+        },
+        {
+          "t": 19.904522,
+          "text": "-rich",
+          "tokens": 2
+        },
+        {
+          "t": 19.904552,
+          "text": " fluids",
+          "tokens": 2
+        },
+        {
+          "t": 19.9871,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 19.987127,
+          "text": "\n",
+          "tokens": 1
+        },
+        {
+          "t": 19.987141,
+          "text": "4",
+          "tokens": 0
+        },
+        {
+          "t": 19.987153,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 20.06486,
+          "text": " White",
+          "tokens": 2
+        },
+        {
+          "t": 20.064887,
+          "text": " smokers",
+          "tokens": 2
+        },
+        {
+          "t": 20.064893,
+          "text": " release",
+          "tokens": 3
+        },
+        {
+          "t": 20.146321,
+          "text": " cooler",
+          "tokens": 2
+        },
+        {
+          "t": 20.146356,
+          "text": ",",
+          "tokens": 0
+        },
+        {
+          "t": 20.14637,
+          "text": " bar",
+          "tokens": 1
+        },
+        {
+          "t": 20.224022,
+          "text": "ium",
+          "tokens": 1
+        },
+        {
+          "t": 20.22404,
+          "text": "-rich",
+          "tokens": 2
+        },
+        {
+          "t": 20.224046,
+          "text": " fluids",
+          "tokens": 2
+        },
+        {
+          "t": 20.224052,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 20.302851,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 20.302893,
+          "text": "5",
+          "tokens": 1
+        },
+        {
+          "t": 20.302908,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 20.30292,
+          "text": " Giant",
+          "tokens": 2
+        },
+        {
+          "t": 20.383189,
+          "text": " tube",
+          "tokens": 1
+        },
+        {
+          "t": 20.38321,
+          "text": " worms",
+          "tokens": 2
+        },
+        {
+          "t": 20.383217,
+          "text": " lack",
+          "tokens": 1
+        },
+        {
+          "t": 20.467149,
+          "text": " mouths",
+          "tokens": 3
+        },
+        {
+          "t": 20.549252,
+          "text": " and",
+          "tokens": 1
+        },
+        {
+          "t": 20.549271,
+          "text": " stomach",
+          "tokens": 2
+        },
+        {
+          "t": 20.630505,
+          "text": "s",
+          "tokens": 0
+        },
+        {
+          "t": 20.630529,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 20.630544,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 20.630555,
+          "text": "6",
+          "tokens": 0
+        },
+        {
+          "t": 20.708594,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 20.708622,
+          "text": " Tube",
+          "tokens": 1
+        },
+        {
+          "t": 20.786334,
+          "text": " worms",
+          "tokens": 2
+        },
+        {
+          "t": 20.786363,
+          "text": " rely",
+          "tokens": 1
+        },
+        {
+          "t": 20.786377,
+          "text": " on",
+          "tokens": 1
+        },
+        {
+          "t": 20.786388,
+          "text": " symb",
+          "tokens": 2
+        },
+        {
+          "t": 20.863669,
+          "text": "iotic",
+          "tokens": 1
+        },
+        {
+          "t": 20.863688,
+          "text": " sulfur",
+          "tokens": 2
+        },
+        {
+          "t": 20.941184,
+          "text": "-",
+          "tokens": 1
+        },
+        {
+          "t": 20.941211,
+          "text": "oxid",
+          "tokens": 1
+        },
+        {
+          "t": 20.941224,
+          "text": "izing",
+          "tokens": 1
+        },
+        {
+          "t": 20.941236,
+          "text": " bacteria",
+          "tokens": 3
+        },
+        {
+          "t": 21.016493,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 21.016529,
+          "text": "\n",
+          "tokens": 1
+        },
+        {
+          "t": 21.016543,
+          "text": "7",
+          "tokens": 0
+        },
+        {
+          "t": 21.016554,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 21.095786,
+          "text": " The",
+          "tokens": 1
+        },
+        {
+          "t": 21.095812,
+          "text": " Mariana",
+          "tokens": 3
+        },
+        {
+          "t": 21.170716,
+          "text": " T",
+          "tokens": 0
+        },
+        {
+          "t": 21.17075,
+          "text": "rench",
+          "tokens": 2
+        },
+        {
+          "t": 21.170784,
+          "text": " is",
+          "tokens": 1
+        },
+        {
+          "t": 21.170796,
+          "text": " the",
+          "tokens": 1
+        },
+        {
+          "t": 21.25366,
+          "text": " deepest",
+          "tokens": 2
+        },
+        {
+          "t": 21.253687,
+          "text": " ocean",
+          "tokens": 2
+        },
+        {
+          "t": 21.336899,
+          "text": "ic",
+          "tokens": 1
+        },
+        {
+          "t": 21.416325,
+          "text": " trench",
+          "tokens": 2
+        },
+        {
+          "t": 21.495852,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 21.49588,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 21.495894,
+          "text": "8",
+          "tokens": 1
+        },
+        {
+          "t": 21.495905,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 21.573776,
+          "text": " Challenger",
+          "tokens": 3
+        },
+        {
+          "t": 21.573807,
+          "text": " Deep",
+          "tokens": 2
+        },
+        {
+          "t": 21.573821,
+          "text": " reaches",
+          "tokens": 2
+        },
+        {
+          "t": 21.648377,
+          "text": " nearly",
+          "tokens": 2
+        },
+        {
+          "t": 21.728504,
+          "text": " ",
+          "tokens": 0
+        },
+        {
+          "t": 21.728533,
+          "text": "1",
+          "tokens": 1
+        },
+        {
+          "t": 21.728547,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 21.807726,
+          "text": ",",
+          "tokens": 0
+        },
+        {
+          "t": 21.807758,
+          "text": "0",
+          "tokens": 1
+        },
+        {
+          "t": 21.807774,
+          "text": "0",
+          "tokens": 0
+        },
+        {
+          "t": 21.807785,
+          "text": "0",
+          "tokens": 0
+        },
+        {
+          "t": 21.884526,
+          "text": " meters",
+          "tokens": 2
+        },
+        {
+          "t": 21.884556,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 21.884571,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 21.884583,
+          "text": "9",
+          "tokens": 0
+        },
+        {
+          "t": 21.961041,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 21.961076,
+          "text": " Pressure",
+          "tokens": 3
+        },
+        {
+          "t": 22.039926,
+          "text": " at",
+          "tokens": 1
+        },
+        {
+          "t": 22.039953,
+          "text": " Challenger",
+          "tokens": 3
+        },
+        {
+          "t": 22.118796,
+          "text": " Deep",
+          "tokens": 2
+        },
+        {
+          "t": 22.11882,
+          "text": " exceeds",
+          "tokens": 2
+        },
+        {
+          "t": 22.118835,
+          "text": " ",
+          "tokens": 0
+        },
+        {
+          "t": 22.118846,
+          "text": "1",
+          "tokens": 1
+        },
+        {
+          "t": 22.193871,
+          "text": ",",
+          "tokens": 0
+        },
+        {
+          "t": 22.193896,
+          "text": "0",
+          "tokens": 0
+        },
+        {
+          "t": 22.193909,
+          "text": "0",
+          "tokens": 1
+        },
+        {
+          "t": 22.193921,
+          "text": "0",
+          "tokens": 0
+        },
+        {
+          "t": 22.272434,
+          "text": " atmos",
+          "tokens": 2
+        },
+        {
+          "t": 22.27246,
+          "text": "pheres",
+          "tokens": 1
+        },
+        {
+          "t": 22.272475,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 22.272487,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 22.353922,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 22.353949,
+          "text": "0",
+          "tokens": 1
+        },
+        {
+          "t": 22.353963,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 22.353975,
+          "text": " Deep",
+          "tokens": 1
+        },
+        {
+          "t": 22.430702,
+          "text": "-se",
+          "tokens": 1
+        },
+        {
+          "t": 22.43073,
+          "text": "a",
+          "tokens": 1
+        },
+        {
+          "t": 22.430744,
+          "text": " fish",
+          "tokens": 1
+        },
+        {
+          "t": 22.511793,
+          "text": " often",
+          "tokens": 2
+        },
+        {
+          "t": 22.51182,
+          "text": " lack",
+          "tokens": 1
+        },
+        {
+          "t": 22.589086,
+          "text": " swim",
+          "tokens": 2
+        },
+        {
+          "t": 22.67361,
+          "text": " bl",
+          "tokens": 1
+        },
+        {
+          "t": 22.67364,
+          "text": "adders",
+          "tokens": 2
+        },
+        {
+          "t": 22.673654,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 22.673666,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 22.749135,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 22.749164,
+          "text": "1",
+          "tokens": 1
+        },
+        {
+          "t": 22.749179,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 22.749191,
+          "text": " Bi",
+          "tokens": 1
+        },
+        {
+          "t": 22.829584,
+          "text": "olum",
+          "tokens": 1
+        },
+        {
+          "t": 22.82961,
+          "text": "ines",
+          "tokens": 1
+        },
+        {
+          "t": 22.829623,
+          "text": "cence",
+          "tokens": 2
+        },
+        {
+          "t": 22.829635,
+          "text": " is",
+          "tokens": 1
+        },
+        {
+          "t": 22.908434,
+          "text": " common",
+          "tokens": 2
+        },
+        {
+          "t": 22.908463,
+          "text": " in",
+          "tokens": 1
+        },
+        {
+          "t": 22.908478,
+          "text": " the",
+          "tokens": 1
+        },
+        {
+          "t": 22.908489,
+          "text": " mes",
+          "tokens": 1
+        },
+        {
+          "t": 22.984991,
+          "text": "op",
+          "tokens": 1
+        },
+        {
+          "t": 22.985017,
+          "text": "el",
+          "tokens": 0
+        },
+        {
+          "t": 22.98503,
+          "text": "agic",
+          "tokens": 1
+        },
+        {
+          "t": 22.985042,
+          "text": " zone",
+          "tokens": 2
+        },
+        {
+          "t": 23.062763,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 23.062791,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 23.062805,
+          "text": "1",
+          "tokens": 1
+        },
+        {
+          "t": 23.062816,
+          "text": "2",
+          "tokens": 0
+        },
+        {
+          "t": 23.141075,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 23.141108,
+          "text": " Lantern",
+          "tokens": 3
+        },
+        {
+          "t": 23.217587,
+          "text": "fish",
+          "tokens": 1
+        },
+        {
+          "t": 23.217614,
+          "text": " use",
+          "tokens": 1
+        },
+        {
+          "t": 23.29653,
+          "text": " phot",
+          "tokens": 2
+        },
+        {
+          "t": 23.37297,
+          "text": "oph",
+          "tokens": 0
+        },
+        {
+          "t": 23.373006,
+          "text": "ores",
+          "tokens": 2
+        },
+        {
+          "t": 23.37302,
+          "text": " for",
+          "tokens": 1
+        },
+        {
+          "t": 23.453855,
+          "text": " counter",
+          "tokens": 2
+        },
+        {
+          "t": 23.45388,
+          "text": "-",
+          "tokens": 1
+        },
+        {
+          "t": 23.453894,
+          "text": "illum",
+          "tokens": 1
+        },
+        {
+          "t": 23.453906,
+          "text": "ination",
+          "tokens": 2
+        },
+        {
+          "t": 23.531565,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 23.53161,
+          "text": "\n",
+          "tokens": 1
+        },
+        {
+          "t": 23.531624,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 23.531636,
+          "text": "3",
+          "tokens": 0
+        },
+        {
+          "t": 23.611164,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 23.611192,
+          "text": " The",
+          "tokens": 1
+        },
+        {
+          "t": 23.611206,
+          "text": " twilight",
+          "tokens": 2
+        },
+        {
+          "t": 23.68942,
+          "text": " zone",
+          "tokens": 2
+        },
+        {
+          "t": 23.689447,
+          "text": " spans",
+          "tokens": 2
+        },
+        {
+          "t": 23.768907,
+          "text": " ",
+          "tokens": 0
+        },
+        {
+          "t": 23.768936,
+          "text": "2",
+          "tokens": 0
+        },
+        {
+          "t": 23.847823,
+          "text": "0",
+          "tokens": 1
+        },
+        {
+          "t": 23.847848,
+          "text": "0",
+          "tokens": 0
+        },
+        {
+          "t": 23.847862,
+          "text": " to",
+          "tokens": 1
+        },
+        {
+          "t": 23.847874,
+          "text": " ",
+          "tokens": 0
+        },
+        {
+          "t": 23.928119,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 23.928147,
+          "text": ",",
+          "tokens": 1
+        },
+        {
+          "t": 23.928161,
+          "text": "0",
+          "tokens": 0
+        },
+        {
+          "t": 23.928187,
+          "text": "0",
+          "tokens": 0
+        },
+        {
+          "t": 24.006593,
+          "text": "0",
+          "tokens": 1
+        },
+        {
+          "t": 24.006617,
+          "text": " meters",
+          "tokens": 2
+        },
+        {
+          "t": 24.00663,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 24.006642,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 24.08007,
+          "text": "1",
+          "tokens": 1
+        },
+        {
+          "t": 24.08011,
+          "text": "4",
+          "tokens": 0
+        },
+        {
+          "t": 24.080124,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 24.080135,
+          "text": " The",
+          "tokens": 1
+        },
+        {
+          "t": 24.158654,
+          "text": " midnight",
+          "tokens": 3
+        },
+        {
+          "t": 24.158682,
+          "text": " zone",
+          "tokens": 2
+        },
+        {
+          "t": 24.158696,
+          "text": " begins",
+          "tokens": 2
+        },
+        {
+          "t": 24.238074,
+          "text": " below",
+          "tokens": 1
+        },
+        {
+          "t": 24.317826,
+          "text": " ",
+          "tokens": 1
+        },
+        {
+          "t": 24.31785,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 24.317864,
+          "text": ",",
+          "tokens": 0
+        },
+        {
+          "t": 24.317876,
+          "text": "0",
+          "tokens": 1
+        },
+        {
+          "t": 24.394379,
+          "text": "0",
+          "tokens": 0
+        },
+        {
+          "t": 24.394413,
+          "text": "0",
+          "tokens": 0
+        },
+        {
+          "t": 24.394432,
+          "text": " meters",
+          "tokens": 2
+        },
+        {
+          "t": 24.394452,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 24.4752,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 24.475233,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 24.475247,
+          "text": "5",
+          "tokens": 0
+        },
+        {
+          "t": 24.475259,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 24.55354,
+          "text": " Abyss",
+          "tokens": 2
+        },
+        {
+          "t": 24.553565,
+          "text": "al",
+          "tokens": 0
+        },
+        {
+          "t": 24.553579,
+          "text": " plains",
+          "tokens": 2
+        },
+        {
+          "t": 24.630073,
+          "text": " cover",
+          "tokens": 2
+        },
+        {
+          "t": 24.710878,
+          "text": " over",
+          "tokens": 1
+        },
+        {
+          "t": 24.788537,
+          "text": " ",
+          "tokens": 1
+        },
+        {
+          "t": 24.788565,
+          "text": "5",
+          "tokens": 0
+        },
+        {
+          "t": 24.78858,
+          "text": "0",
+          "tokens": 0
+        },
+        {
+          "t": 24.788592,
+          "text": "%",
+          "tokens": 1
+        },
+        {
+          "t": 24.868045,
+          "text": " of",
+          "tokens": 1
+        },
+        {
+          "t": 24.868073,
+          "text": " Earth",
+          "tokens": 1
+        },
+        {
+          "t": 24.946752,
+          "text": "'s",
+          "tokens": 1
+        },
+        {
+          "t": 24.94678,
+          "text": " surface",
+          "tokens": 2
+        },
+        {
+          "t": 24.946797,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 24.946809,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 25.027347,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 25.027375,
+          "text": "6",
+          "tokens": 0
+        },
+        {
+          "t": 25.027389,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 25.02741,
+          "text": " Abyss",
+          "tokens": 2
+        },
+        {
+          "t": 25.10501,
+          "text": "al",
+          "tokens": 0
+        },
+        {
+          "t": 25.10505,
+          "text": " plains",
+          "tokens": 2
+        },
+        {
+          "t": 25.182546,
+          "text": " are",
+          "tokens": 1
+        },
+        {
+          "t": 25.182574,
+          "text": " the",
+          "tokens": 2
+        },
+        {
+          "t": 25.261808,
+          "text": " flatt",
+          "tokens": 1
+        },
+        {
+          "t": 25.261837,
+          "text": "est",
+          "tokens": 1
+        },
+        {
+          "t": 25.261851,
+          "text": " regions",
+          "tokens": 3
+        },
+        {
+          "t": 25.340335,
+          "text": " on",
+          "tokens": 1
+        },
+        {
+          "t": 25.340366,
+          "text": " Earth",
+          "tokens": 1
+        },
+        {
+          "t": 25.34038,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 25.340392,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 25.413968,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 25.414007,
+          "text": "7",
+          "tokens": 1
+        },
+        {
+          "t": 25.414022,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 25.414034,
+          "text": " Sed",
+          "tokens": 1
+        },
+        {
+          "t": 25.490891,
+          "text": "iment",
+          "tokens": 1
+        },
+        {
+          "t": 25.490916,
+          "text": "ation",
+          "tokens": 2
+        },
+        {
+          "t": 25.572067,
+          "text": " rates",
+          "tokens": 2
+        },
+        {
+          "t": 25.646819,
+          "text": " in",
+          "tokens": 1
+        },
+        {
+          "t": 25.64685,
+          "text": " abyss",
+          "tokens": 1
+        },
+        {
+          "t": 25.723015,
+          "text": "al",
+          "tokens": 1
+        },
+        {
+          "t": 25.72306,
+          "text": " zones",
+          "tokens": 2
+        },
+        {
+          "t": 25.723074,
+          "text": " are",
+          "tokens": 1
+        },
+        {
+          "t": 25.723086,
+          "text": " extremely",
+          "tokens": 3
+        },
+        {
+          "t": 25.804399,
+          "text": " slow",
+          "tokens": 1
+        },
+        {
+          "t": 25.804428,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 25.804442,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 25.804454,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 25.884226,
+          "text": "8",
+          "tokens": 1
+        },
+        {
+          "t": 25.884251,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 25.884266,
+          "text": " M",
+          "tokens": 1
+        },
+        {
+          "t": 25.963865,
+          "text": "anganese",
+          "tokens": 2
+        },
+        {
+          "t": 25.963893,
+          "text": " nod",
+          "tokens": 1
+        },
+        {
+          "t": 25.963906,
+          "text": "ules",
+          "tokens": 1
+        },
+        {
+          "t": 25.963918,
+          "text": " form",
+          "tokens": 2
+        },
+        {
+          "t": 26.042852,
+          "text": " on",
+          "tokens": 1
+        },
+        {
+          "t": 26.042879,
+          "text": " the",
+          "tokens": 1
+        },
+        {
+          "t": 26.042893,
+          "text": " abyss",
+          "tokens": 2
+        },
+        {
+          "t": 26.122328,
+          "text": "al",
+          "tokens": 0
+        },
+        {
+          "t": 26.122355,
+          "text": " floor",
+          "tokens": 2
+        },
+        {
+          "t": 26.122371,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 26.122383,
+          "text": "\n",
+          "tokens": 1
+        },
+        {
+          "t": 26.202228,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 26.202268,
+          "text": "9",
+          "tokens": 0
+        },
+        {
+          "t": 26.202283,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 26.202294,
+          "text": " N",
+          "tokens": 0
+        },
+        {
+          "t": 26.280487,
+          "text": "od",
+          "tokens": 1
+        },
+        {
+          "t": 26.280518,
+          "text": "ules",
+          "tokens": 1
+        },
+        {
+          "t": 26.280532,
+          "text": " grow",
+          "tokens": 1
+        },
+        {
+          "t": 26.280543,
+          "text": " only",
+          "tokens": 2
+        },
+        {
+          "t": 26.359332,
+          "text": " mill",
+          "tokens": 1
+        },
+        {
+          "t": 26.359358,
+          "text": "imeters",
+          "tokens": 2
+        },
+        {
+          "t": 26.359372,
+          "text": " per",
+          "tokens": 2
+        },
+        {
+          "t": 26.359383,
+          "text": " million",
+          "tokens": 2
+        },
+        {
+          "t": 26.438651,
+          "text": " years",
+          "tokens": 2
+        },
+        {
+          "t": 26.438681,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 26.438696,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 26.438708,
+          "text": "2",
+          "tokens": 1
+        },
+        {
+          "t": 26.520869,
+          "text": "0",
+          "tokens": 0
+        },
+        {
+          "t": 26.520894,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 26.520908,
+          "text": " Hydro",
+          "tokens": 2
+        },
+        {
+          "t": 26.596128,
+          "text": "thermal",
+          "tokens": 2
+        },
+        {
+          "t": 26.596155,
+          "text": " vents",
+          "tokens": 2
+        },
+        {
+          "t": 26.596169,
+          "text": " were",
+          "tokens": 1
+        },
+        {
+          "t": 26.682273,
+          "text": " discovered",
+          "tokens": 4
+        },
+        {
+          "t": 26.75904,
+          "text": " in",
+          "tokens": 1
+        },
+        {
+          "t": 26.759067,
+          "text": " ",
+          "tokens": 0
+        },
+        {
+          "t": 26.759081,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 26.759112,
+          "text": "9",
+          "tokens": 0
+        },
+        {
+          "t": 26.840604,
+          "text": "7",
+          "tokens": 1
+        },
+        {
+          "t": 26.840633,
+          "text": "7",
+          "tokens": 0
+        },
+        {
+          "t": 26.840648,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 26.84066,
+          "text": "\n",
+          "tokens": 1
+        },
+        {
+          "t": 26.918719,
+          "text": "2",
+          "tokens": 0
+        },
+        {
+          "t": 26.918755,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 26.91877,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 26.918782,
+          "text": " Vent",
+          "tokens": 1
+        },
+        {
+          "t": 27.001082,
+          "text": " fields",
+          "tokens": 2
+        },
+        {
+          "t": 27.078741,
+          "text": " are",
+          "tokens": 1
+        },
+        {
+          "t": 27.078771,
+          "text": " located",
+          "tokens": 3
+        },
+        {
+          "t": 27.156757,
+          "text": " along",
+          "tokens": 1
+        },
+        {
+          "t": 27.234092,
+          "text": " mid",
+          "tokens": 2
+        },
+        {
+          "t": 27.23412,
+          "text": "-o",
+          "tokens": 0
+        },
+        {
+          "t": 27.234134,
+          "text": "cean",
+          "tokens": 1
+        },
+        {
+          "t": 27.234145,
+          "text": " rid",
+          "tokens": 2
+        },
+        {
+          "t": 27.312262,
+          "text": "ges",
+          "tokens": 0
+        },
+        {
+          "t": 27.312296,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 27.312312,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 27.312324,
+          "text": "2",
+          "tokens": 0
+        },
+        {
+          "t": 27.391388,
+          "text": "2",
+          "tokens": 1
+        },
+        {
+          "t": 27.391413,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 27.391427,
+          "text": " The",
+          "tokens": 1
+        },
+        {
+          "t": 27.391439,
+          "text": " Mid",
+          "tokens": 1
+        },
+        {
+          "t": 27.469369,
+          "text": "-",
+          "tokens": 1
+        },
+        {
+          "t": 27.469396,
+          "text": "Atlantic",
+          "tokens": 2
+        },
+        {
+          "t": 27.46941,
+          "text": " Ridge",
+          "tokens": 2
+        },
+        {
+          "t": 27.469422,
+          "text": " is",
+          "tokens": 1
+        },
+        {
+          "t": 27.546606,
+          "text": " a",
+          "tokens": 0
+        },
+        {
+          "t": 27.54663,
+          "text": " diver",
+          "tokens": 2
+        },
+        {
+          "t": 27.62597,
+          "text": "gent",
+          "tokens": 1
+        },
+        {
+          "t": 27.626012,
+          "text": " plate",
+          "tokens": 2
+        },
+        {
+          "t": 27.706208,
+          "text": " boundary",
+          "tokens": 3
+        },
+        {
+          "t": 27.70624,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 27.706255,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 27.706267,
+          "text": "2",
+          "tokens": 1
+        },
+        {
+          "t": 27.782515,
+          "text": "3",
+          "tokens": 0
+        },
+        {
+          "t": 27.782541,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 27.782554,
+          "text": " Se",
+          "tokens": 1
+        },
+        {
+          "t": 27.857078,
+          "text": "amount",
+          "tokens": 2
+        },
+        {
+          "t": 27.937813,
+          "text": "s",
+          "tokens": 0
+        },
+        {
+          "t": 27.937851,
+          "text": " are",
+          "tokens": 1
+        },
+        {
+          "t": 27.937867,
+          "text": " underwater",
+          "tokens": 4
+        },
+        {
+          "t": 28.015583,
+          "text": " volcanic",
+          "tokens": 2
+        },
+        {
+          "t": 28.015605,
+          "text": " mountains",
+          "tokens": 3
+        },
+        {
+          "t": 28.015621,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 28.015634,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 28.093384,
+          "text": "2",
+          "tokens": 0
+        },
+        {
+          "t": 28.093409,
+          "text": "4",
+          "tokens": 0
+        },
+        {
+          "t": 28.093423,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 28.093435,
+          "text": " Guy",
+          "tokens": 1
+        },
+        {
+          "t": 28.171174,
+          "text": "ots",
+          "tokens": 1
+        },
+        {
+          "t": 28.171199,
+          "text": " are",
+          "tokens": 1
+        },
+        {
+          "t": 28.24994,
+          "text": " flat",
+          "tokens": 2
+        },
+        {
+          "t": 28.249974,
+          "text": "-t",
+          "tokens": 0
+        },
+        {
+          "t": 28.249999,
+          "text": "opped",
+          "tokens": 2
+        },
+        {
+          "t": 28.25001,
+          "text": " se",
+          "tokens": 0
+        },
+        {
+          "t": 28.329825,
+          "text": "amount",
+          "tokens": 2
+        },
+        {
+          "t": 28.329857,
+          "text": "s",
+          "tokens": 1
+        },
+        {
+          "t": 28.329871,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 28.329883,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 28.405599,
+          "text": "2",
+          "tokens": 0
+        },
+        {
+          "t": 28.405624,
+          "text": "5",
+          "tokens": 1
+        },
+        {
+          "t": 28.405638,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 28.40565,
+          "text": " Coral",
+          "tokens": 2
+        },
+        {
+          "t": 28.483031,
+          "text": " reefs",
+          "tokens": 2
+        },
+        {
+          "t": 28.483057,
+          "text": " can",
+          "tokens": 1
+        },
+        {
+          "t": 28.56425,
+          "text": " exist",
+          "tokens": 2
+        },
+        {
+          "t": 28.564275,
+          "text": " in",
+          "tokens": 0
+        },
+        {
+          "t": 28.564297,
+          "text": " deep",
+          "tokens": 2
+        },
+        {
+          "t": 28.641935,
+          "text": ",",
+          "tokens": 0
+        },
+        {
+          "t": 28.717768,
+          "text": " cold",
+          "tokens": 2
+        },
+        {
+          "t": 28.717795,
+          "text": " waters",
+          "tokens": 2
+        },
+        {
+          "t": 28.71781,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 28.717823,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 28.797629,
+          "text": "2",
+          "tokens": 1
+        },
+        {
+          "t": 28.797658,
+          "text": "6",
+          "tokens": 0
+        },
+        {
+          "t": 28.797672,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 28.797683,
+          "text": " L",
+          "tokens": 1
+        },
+        {
+          "t": 28.8761,
+          "text": "oph",
+          "tokens": 1
+        },
+        {
+          "t": 28.876143,
+          "text": "elia",
+          "tokens": 1
+        },
+        {
+          "t": 28.957524,
+          "text": " pert",
+          "tokens": 1
+        },
+        {
+          "t": 28.957558,
+          "text": "usa",
+          "tokens": 1
+        },
+        {
+          "t": 29.039536,
+          "text": " is",
+          "tokens": 1
+        },
+        {
+          "t": 29.039561,
+          "text": " a",
+          "tokens": 1
+        },
+        {
+          "t": 29.039575,
+          "text": " common",
+          "tokens": 2
+        },
+        {
+          "t": 29.117357,
+          "text": " deep",
+          "tokens": 1
+        },
+        {
+          "t": 29.185068,
+          "text": "-se",
+          "tokens": 1
+        },
+        {
+          "t": 29.185094,
+          "text": "a",
+          "tokens": 1
+        },
+        {
+          "t": 29.185108,
+          "text": " coral",
+          "tokens": 1
+        },
+        {
+          "t": 29.185121,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 29.253901,
+          "text": "\n",
+          "tokens": 0
+        }
+      ],
+      "error": null
+    },
+    {
+      "index": 3,
+      "label": "ROBOTICS",
+      "subject": "practical robotics and embodied AI",
+      "scheduled_s": 3.000498,
+      "first_token_s": 18.891888,
+      "ttft_s": 15.89139,
+      "ended_s": 30.592082,
+      "completion_tokens": 400,
+      "prompt_tokens": 18099,
+      "decode_tok_s": 34.101999,
+      "token_count_method": "final_usage_weighted_by_delta_chars",
+      "events": [
+        {
+          "t": 18.891888,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 18.962441,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 19.039198,
+          "text": " Act",
+          "tokens": 1
+        },
+        {
+          "t": 19.122416,
+          "text": "uator",
+          "tokens": 1
+        },
+        {
+          "t": 19.122437,
+          "text": " torque",
+          "tokens": 2
+        },
+        {
+          "t": 19.199888,
+          "text": " density",
+          "tokens": 2
+        },
+        {
+          "t": 19.282976,
+          "text": " determines",
+          "tokens": 2
+        },
+        {
+          "t": 19.359337,
+          "text": " payload",
+          "tokens": 2
+        },
+        {
+          "t": 19.436708,
+          "text": " capacity",
+          "tokens": 2
+        },
+        {
+          "t": 19.436728,
+          "text": " relative",
+          "tokens": 2
+        },
+        {
+          "t": 19.513777,
+          "text": " to",
+          "tokens": 1
+        },
+        {
+          "t": 19.51381,
+          "text": " weight",
+          "tokens": 1
+        },
+        {
+          "t": 19.593487,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 19.593516,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 19.59353,
+          "text": "2",
+          "tokens": 1
+        },
+        {
+          "t": 19.593542,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 19.671169,
+          "text": " In",
+          "tokens": 1
+        },
+        {
+          "t": 19.671194,
+          "text": "verse",
+          "tokens": 1
+        },
+        {
+          "t": 19.748313,
+          "text": " kin",
+          "tokens": 1
+        },
+        {
+          "t": 19.748341,
+          "text": "ematics",
+          "tokens": 1
+        },
+        {
+          "t": 19.748354,
+          "text": " solves",
+          "tokens": 2
+        },
+        {
+          "t": 19.824069,
+          "text": " joint",
+          "tokens": 1
+        },
+        {
+          "t": 19.904105,
+          "text": " angles",
+          "tokens": 2
+        },
+        {
+          "t": 19.904131,
+          "text": " for",
+          "tokens": 0
+        },
+        {
+          "t": 19.904145,
+          "text": " desired",
+          "tokens": 2
+        },
+        {
+          "t": 19.986334,
+          "text": " end",
+          "tokens": 1
+        },
+        {
+          "t": 19.986361,
+          "text": "-eff",
+          "tokens": 1
+        },
+        {
+          "t": 19.986374,
+          "text": "ector",
+          "tokens": 1
+        },
+        {
+          "t": 19.986386,
+          "text": " poses",
+          "tokens": 1
+        },
+        {
+          "t": 20.064949,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 20.064978,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 20.065008,
+          "text": "3",
+          "tokens": 0
+        },
+        {
+          "t": 20.065036,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 20.146021,
+          "text": " Forward",
+          "tokens": 2
+        },
+        {
+          "t": 20.146049,
+          "text": " kin",
+          "tokens": 1
+        },
+        {
+          "t": 20.146056,
+          "text": "ematics",
+          "tokens": 1
+        },
+        {
+          "t": 20.146061,
+          "text": " maps",
+          "tokens": 1
+        },
+        {
+          "t": 20.223931,
+          "text": " joint",
+          "tokens": 2
+        },
+        {
+          "t": 20.223959,
+          "text": " configurations",
+          "tokens": 3
+        },
+        {
+          "t": 20.303158,
+          "text": " to",
+          "tokens": 1
+        },
+        {
+          "t": 20.303187,
+          "text": " Cartesian",
+          "tokens": 2
+        },
+        {
+          "t": 20.383067,
+          "text": " space",
+          "tokens": 1
+        },
+        {
+          "t": 20.466951,
+          "text": " positions",
+          "tokens": 2
+        },
+        {
+          "t": 20.549181,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 20.549201,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 20.549208,
+          "text": "4",
+          "tokens": 0
+        },
+        {
+          "t": 20.549213,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 20.63041,
+          "text": " PID",
+          "tokens": 1
+        },
+        {
+          "t": 20.630429,
+          "text": " controllers",
+          "tokens": 3
+        },
+        {
+          "t": 20.70944,
+          "text": " remain",
+          "tokens": 1
+        },
+        {
+          "t": 20.786701,
+          "text": " the",
+          "tokens": 1
+        },
+        {
+          "t": 20.786718,
+          "text": " baseline",
+          "tokens": 2
+        },
+        {
+          "t": 20.863432,
+          "text": " for",
+          "tokens": 1
+        },
+        {
+          "t": 20.863473,
+          "text": " most",
+          "tokens": 1
+        },
+        {
+          "t": 20.863487,
+          "text": " servo",
+          "tokens": 2
+        },
+        {
+          "t": 20.941015,
+          "text": " motor",
+          "tokens": 1
+        },
+        {
+          "t": 21.016413,
+          "text": " regulation",
+          "tokens": 2
+        },
+        {
+          "t": 21.095684,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 21.095711,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 21.095725,
+          "text": "5",
+          "tokens": 0
+        },
+        {
+          "t": 21.095736,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 21.170908,
+          "text": " Imp",
+          "tokens": 1
+        },
+        {
+          "t": 21.170932,
+          "text": "ed",
+          "tokens": 1
+        },
+        {
+          "t": 21.170945,
+          "text": "ance",
+          "tokens": 0
+        },
+        {
+          "t": 21.170956,
+          "text": " control",
+          "tokens": 2
+        },
+        {
+          "t": 21.253541,
+          "text": " regulates",
+          "tokens": 2
+        },
+        {
+          "t": 21.335493,
+          "text": " force",
+          "tokens": 2
+        },
+        {
+          "t": 21.335513,
+          "text": " and",
+          "tokens": 1
+        },
+        {
+          "t": 21.335529,
+          "text": " position",
+          "tokens": 2
+        },
+        {
+          "t": 21.416241,
+          "text": " simultaneously",
+          "tokens": 3
+        },
+        {
+          "t": 21.496182,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 21.573085,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 21.573108,
+          "text": "6",
+          "tokens": 0
+        },
+        {
+          "t": 21.573115,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 21.57312,
+          "text": " Ad",
+          "tokens": 0
+        },
+        {
+          "t": 21.648453,
+          "text": "mitt",
+          "tokens": 1
+        },
+        {
+          "t": 21.64848,
+          "text": "ance",
+          "tokens": 1
+        },
+        {
+          "t": 21.648495,
+          "text": " control",
+          "tokens": 2
+        },
+        {
+          "t": 21.648507,
+          "text": " adjusts",
+          "tokens": 2
+        },
+        {
+          "t": 21.728766,
+          "text": " motion",
+          "tokens": 1
+        },
+        {
+          "t": 21.807614,
+          "text": " based",
+          "tokens": 1
+        },
+        {
+          "t": 21.807653,
+          "text": " on",
+          "tokens": 1
+        },
+        {
+          "t": 21.807667,
+          "text": " measured",
+          "tokens": 2
+        },
+        {
+          "t": 21.884404,
+          "text": " external",
+          "tokens": 2
+        },
+        {
+          "t": 21.884429,
+          "text": " forces",
+          "tokens": 2
+        },
+        {
+          "t": 21.884445,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 21.884457,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 21.961273,
+          "text": "7",
+          "tokens": 0
+        },
+        {
+          "t": 21.961303,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 21.961317,
+          "text": " Li",
+          "tokens": 0
+        },
+        {
+          "t": 21.961329,
+          "text": "D",
+          "tokens": 0
+        },
+        {
+          "t": 22.039846,
+          "text": "AR",
+          "tokens": 1
+        },
+        {
+          "t": 22.039874,
+          "text": " provides",
+          "tokens": 2
+        },
+        {
+          "t": 22.118523,
+          "text": " precise",
+          "tokens": 2
+        },
+        {
+          "t": 22.193753,
+          "text": " ",
+          "tokens": 0
+        },
+        {
+          "t": 22.193797,
+          "text": "3",
+          "tokens": 0
+        },
+        {
+          "t": 22.193811,
+          "text": "D",
+          "tokens": 0
+        },
+        {
+          "t": 22.193823,
+          "text": " point",
+          "tokens": 2
+        },
+        {
+          "t": 22.27261,
+          "text": " clouds",
+          "tokens": 1
+        },
+        {
+          "t": 22.272636,
+          "text": " for",
+          "tokens": 1
+        },
+        {
+          "t": 22.27265,
+          "text": " environmental",
+          "tokens": 3
+        },
+        {
+          "t": 22.353679,
+          "text": " mapping",
+          "tokens": 2
+        },
+        {
+          "t": 22.35371,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 22.353726,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 22.353738,
+          "text": "8",
+          "tokens": 0
+        },
+        {
+          "t": 22.43099,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 22.431016,
+          "text": " Stereo",
+          "tokens": 1
+        },
+        {
+          "t": 22.511501,
+          "text": " vision",
+          "tokens": 2
+        },
+        {
+          "t": 22.588828,
+          "text": " estimates",
+          "tokens": 2
+        },
+        {
+          "t": 22.673522,
+          "text": " depth",
+          "tokens": 1
+        },
+        {
+          "t": 22.673552,
+          "text": " via",
+          "tokens": 1
+        },
+        {
+          "t": 22.749022,
+          "text": " triang",
+          "tokens": 2
+        },
+        {
+          "t": 22.749049,
+          "text": "ulation",
+          "tokens": 1
+        },
+        {
+          "t": 22.749056,
+          "text": " of",
+          "tokens": 1
+        },
+        {
+          "t": 22.829368,
+          "text": " matched",
+          "tokens": 2
+        },
+        {
+          "t": 22.908569,
+          "text": " features",
+          "tokens": 2
+        },
+        {
+          "t": 22.98512,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 22.985138,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 22.985145,
+          "text": "9",
+          "tokens": 0
+        },
+        {
+          "t": 22.98515,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 23.062681,
+          "text": " RGB",
+          "tokens": 0
+        },
+        {
+          "t": 23.0627,
+          "text": "-D",
+          "tokens": 1
+        },
+        {
+          "t": 23.062707,
+          "text": " cameras",
+          "tokens": 2
+        },
+        {
+          "t": 23.062712,
+          "text": " combine",
+          "tokens": 1
+        },
+        {
+          "t": 23.141309,
+          "text": " color",
+          "tokens": 2
+        },
+        {
+          "t": 23.217472,
+          "text": " imagery",
+          "tokens": 1
+        },
+        {
+          "t": 23.217489,
+          "text": " with",
+          "tokens": 2
+        },
+        {
+          "t": 23.217496,
+          "text": " depth",
+          "tokens": 1
+        },
+        {
+          "t": 23.217501,
+          "text": " sensor",
+          "tokens": 1
+        },
+        {
+          "t": 23.296338,
+          "text": " data",
+          "tokens": 2
+        },
+        {
+          "t": 23.296358,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 23.296365,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 23.296371,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 23.3729,
+          "text": "0",
+          "tokens": 0
+        },
+        {
+          "t": 23.372917,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 23.372924,
+          "text": " IM",
+          "tokens": 0
+        },
+        {
+          "t": 23.453807,
+          "text": "Us",
+          "tokens": 1
+        },
+        {
+          "t": 23.532017,
+          "text": " measure",
+          "tokens": 1
+        },
+        {
+          "t": 23.611038,
+          "text": " angular",
+          "tokens": 2
+        },
+        {
+          "t": 23.611058,
+          "text": " velocity",
+          "tokens": 2
+        },
+        {
+          "t": 23.611066,
+          "text": " and",
+          "tokens": 1
+        },
+        {
+          "t": 23.611071,
+          "text": " linear",
+          "tokens": 2
+        },
+        {
+          "t": 23.689132,
+          "text": " acceleration",
+          "tokens": 2
+        },
+        {
+          "t": 23.689158,
+          "text": " for",
+          "tokens": 1
+        },
+        {
+          "t": 23.689165,
+          "text": " state",
+          "tokens": 2
+        },
+        {
+          "t": 23.768817,
+          "text": " estimation",
+          "tokens": 2
+        },
+        {
+          "t": 23.768839,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 23.768846,
+          "text": "\n",
+          "tokens": 1
+        },
+        {
+          "t": 23.768852,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 23.847935,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 23.847951,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 23.847957,
+          "text": " Kal",
+          "tokens": 1
+        },
+        {
+          "t": 23.928398,
+          "text": "man",
+          "tokens": 1
+        },
+        {
+          "t": 23.928414,
+          "text": " filters",
+          "tokens": 2
+        },
+        {
+          "t": 23.92842,
+          "text": " fuse",
+          "tokens": 1
+        },
+        {
+          "t": 24.006678,
+          "text": " noisy",
+          "tokens": 1
+        },
+        {
+          "t": 24.080184,
+          "text": " sensor",
+          "tokens": 1
+        },
+        {
+          "t": 24.080199,
+          "text": " data",
+          "tokens": 2
+        },
+        {
+          "t": 24.080206,
+          "text": " for",
+          "tokens": 0
+        },
+        {
+          "t": 24.158562,
+          "text": " optimal",
+          "tokens": 2
+        },
+        {
+          "t": 24.158581,
+          "text": " state",
+          "tokens": 2
+        },
+        {
+          "t": 24.158588,
+          "text": " estimation",
+          "tokens": 2
+        },
+        {
+          "t": 24.158601,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 24.237986,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 24.238006,
+          "text": "1",
+          "tokens": 1
+        },
+        {
+          "t": 24.238013,
+          "text": "2",
+          "tokens": 0
+        },
+        {
+          "t": 24.238018,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 24.317773,
+          "text": " Particle",
+          "tokens": 2
+        },
+        {
+          "t": 24.394276,
+          "text": " filters",
+          "tokens": 2
+        },
+        {
+          "t": 24.394293,
+          "text": " handle",
+          "tokens": 1
+        },
+        {
+          "t": 24.475112,
+          "text": " non",
+          "tokens": 1
+        },
+        {
+          "t": 24.47514,
+          "text": "-linear",
+          "tokens": 2
+        },
+        {
+          "t": 24.553487,
+          "text": ",",
+          "tokens": 0
+        },
+        {
+          "t": 24.629975,
+          "text": " non",
+          "tokens": 1
+        },
+        {
+          "t": 24.630009,
+          "text": "-G",
+          "tokens": 0
+        },
+        {
+          "t": 24.630016,
+          "text": "aussian",
+          "tokens": 2
+        },
+        {
+          "t": 24.630022,
+          "text": " localization",
+          "tokens": 3
+        },
+        {
+          "t": 24.711272,
+          "text": " problems",
+          "tokens": 2
+        },
+        {
+          "t": 24.71129,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 24.7113,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 24.711306,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 24.788284,
+          "text": "3",
+          "tokens": 1
+        },
+        {
+          "t": 24.788313,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 24.788328,
+          "text": " SL",
+          "tokens": 0
+        },
+        {
+          "t": 24.78834,
+          "text": "AM",
+          "tokens": 1
+        },
+        {
+          "t": 24.867889,
+          "text": " algorithms",
+          "tokens": 2
+        },
+        {
+          "t": 24.946304,
+          "text": " simultaneously",
+          "tokens": 4
+        },
+        {
+          "t": 24.946337,
+          "text": " map",
+          "tokens": 0
+        },
+        {
+          "t": 24.946351,
+          "text": " environments",
+          "tokens": 3
+        },
+        {
+          "t": 25.027229,
+          "text": " and",
+          "tokens": 1
+        },
+        {
+          "t": 25.027249,
+          "text": " localize",
+          "tokens": 2
+        },
+        {
+          "t": 25.104847,
+          "text": " robots",
+          "tokens": 2
+        },
+        {
+          "t": 25.182746,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 25.182766,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 25.182772,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 25.182778,
+          "text": "4",
+          "tokens": 1
+        },
+        {
+          "t": 25.261953,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 25.261968,
+          "text": " Graph",
+          "tokens": 1
+        },
+        {
+          "t": 25.261975,
+          "text": "-based",
+          "tokens": 1
+        },
+        {
+          "t": 25.340462,
+          "text": " SL",
+          "tokens": 1
+        },
+        {
+          "t": 25.340477,
+          "text": "AM",
+          "tokens": 1
+        },
+        {
+          "t": 25.340484,
+          "text": " optim",
+          "tokens": 1
+        },
+        {
+          "t": 25.413888,
+          "text": "izes",
+          "tokens": 1
+        },
+        {
+          "t": 25.413905,
+          "text": " pose",
+          "tokens": 1
+        },
+        {
+          "t": 25.413911,
+          "text": " graphs",
+          "tokens": 1
+        },
+        {
+          "t": 25.491092,
+          "text": " for",
+          "tokens": 1
+        },
+        {
+          "t": 25.571874,
+          "text": " global",
+          "tokens": 2
+        },
+        {
+          "t": 25.5719,
+          "text": " consistency",
+          "tokens": 2
+        },
+        {
+          "t": 25.571908,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 25.571914,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 25.646902,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 25.646917,
+          "text": "5",
+          "tokens": 0
+        },
+        {
+          "t": 25.646924,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 25.646929,
+          "text": " Visual",
+          "tokens": 1
+        },
+        {
+          "t": 25.722746,
+          "text": " od",
+          "tokens": 1
+        },
+        {
+          "t": 25.722767,
+          "text": "ometry",
+          "tokens": 1
+        },
+        {
+          "t": 25.722774,
+          "text": " estimates",
+          "tokens": 2
+        },
+        {
+          "t": 25.804609,
+          "text": " motion",
+          "tokens": 2
+        },
+        {
+          "t": 25.883837,
+          "text": " from",
+          "tokens": 1
+        },
+        {
+          "t": 25.883858,
+          "text": " sequential",
+          "tokens": 2
+        },
+        {
+          "t": 25.964067,
+          "text": " camera",
+          "tokens": 2
+        },
+        {
+          "t": 25.964084,
+          "text": " frames",
+          "tokens": 1
+        },
+        {
+          "t": 26.043092,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 26.043121,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 26.043135,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 26.043146,
+          "text": "6",
+          "tokens": 0
+        },
+        {
+          "t": 26.122601,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 26.122626,
+          "text": " Li",
+          "tokens": 1
+        },
+        {
+          "t": 26.122641,
+          "text": "D",
+          "tokens": 0
+        },
+        {
+          "t": 26.122647,
+          "text": "AR",
+          "tokens": 1
+        },
+        {
+          "t": 26.201846,
+          "text": " od",
+          "tokens": 0
+        },
+        {
+          "t": 26.201866,
+          "text": "ometry",
+          "tokens": 2
+        },
+        {
+          "t": 26.201873,
+          "text": " tracks",
+          "tokens": 1
+        },
+        {
+          "t": 26.280801,
+          "text": " motion",
+          "tokens": 2
+        },
+        {
+          "t": 26.280817,
+          "text": " using",
+          "tokens": 1
+        },
+        {
+          "t": 26.359458,
+          "text": " laser",
+          "tokens": 2
+        },
+        {
+          "t": 26.438492,
+          "text": " scan",
+          "tokens": 1
+        },
+        {
+          "t": 26.438511,
+          "text": " matching",
+          "tokens": 2
+        },
+        {
+          "t": 26.520674,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 26.520691,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 26.520698,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 26.520703,
+          "text": "7",
+          "tokens": 0
+        },
+        {
+          "t": 26.596319,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 26.596335,
+          "text": " ROS",
+          "tokens": 1
+        },
+        {
+          "t": 26.682185,
+          "text": " ",
+          "tokens": 0
+        },
+        {
+          "t": 26.758895,
+          "text": "2",
+          "tokens": 0
+        },
+        {
+          "t": 26.758932,
+          "text": " provides",
+          "tokens": 2
+        },
+        {
+          "t": 26.758947,
+          "text": " middleware",
+          "tokens": 2
+        },
+        {
+          "t": 26.840822,
+          "text": " for",
+          "tokens": 1
+        },
+        {
+          "t": 26.840848,
+          "text": " distributed",
+          "tokens": 3
+        },
+        {
+          "t": 26.919049,
+          "text": " robotic",
+          "tokens": 2
+        },
+        {
+          "t": 27.000765,
+          "text": " communication",
+          "tokens": 3
+        },
+        {
+          "t": 27.000795,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 27.000821,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 27.000833,
+          "text": "1",
+          "tokens": 0
+        },
+        {
+          "t": 27.078628,
+          "text": "8",
+          "tokens": 1
+        },
+        {
+          "t": 27.078645,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 27.078652,
+          "text": " DDS",
+          "tokens": 1
+        },
+        {
+          "t": 27.156837,
+          "text": " ensures",
+          "tokens": 1
+        },
+        {
+          "t": 27.233859,
+          "text": " real",
+          "tokens": 2
+        },
+        {
+          "t": 27.23389,
+          "text": "-time",
+          "tokens": 1
+        },
+        {
+          "t": 27.233903,
+          "text": ",",
+          "tokens": 0
+        },
+        {
+          "t": 27.312379,
+          "text": " reliable",
+          "tokens": 2
+        },
+        {
+          "t": 27.312403,
+          "text": " data",
+          "tokens": 1
+        },
+        {
+          "t": 27.312417,
+          "text": " exchange",
+          "tokens": 2
+        },
+        {
+          "t": 27.391253,
+          "text": " in",
+          "tokens": 1
+        },
+        {
+          "t": 27.391279,
+          "text": " ROS",
+          "tokens": 1
+        },
+        {
+          "t": 27.469221,
+          "text": " ",
+          "tokens": 0
+        },
+        {
+          "t": 27.469286,
+          "text": "2",
+          "tokens": 0
+        },
+        {
+          "t": 27.469302,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 27.469315,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 27.546511,
+          "text": "1",
+          "tokens": 1
+        },
+        {
+          "t": 27.546536,
+          "text": "9",
+          "tokens": 0
+        },
+        {
+          "t": 27.546549,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 27.546561,
+          "text": " UR",
+          "tokens": 1
+        },
+        {
+          "t": 27.626498,
+          "text": "DF",
+          "tokens": 0
+        },
+        {
+          "t": 27.626524,
+          "text": " defines",
+          "tokens": 2
+        },
+        {
+          "t": 27.706434,
+          "text": " robot",
+          "tokens": 1
+        },
+        {
+          "t": 27.70645,
+          "text": " geometry",
+          "tokens": 2
+        },
+        {
+          "t": 27.782731,
+          "text": ",",
+          "tokens": 0
+        },
+        {
+          "t": 27.782756,
+          "text": " joints",
+          "tokens": 2
+        },
+        {
+          "t": 27.856843,
+          "text": ",",
+          "tokens": 0
+        },
+        {
+          "t": 27.856876,
+          "text": " and",
+          "tokens": 1
+        },
+        {
+          "t": 27.856891,
+          "text": " physical",
+          "tokens": 2
+        },
+        {
+          "t": 27.937596,
+          "text": " properties",
+          "tokens": 2
+        },
+        {
+          "t": 27.937623,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 27.937641,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 27.937653,
+          "text": "2",
+          "tokens": 0
+        },
+        {
+          "t": 28.015491,
+          "text": "0",
+          "tokens": 0
+        },
+        {
+          "t": 28.015517,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 28.01553,
+          "text": " S",
+          "tokens": 0
+        },
+        {
+          "t": 28.093315,
+          "text": "DF",
+          "tokens": 0
+        },
+        {
+          "t": 28.093333,
+          "text": " describes",
+          "tokens": 3
+        },
+        {
+          "t": 28.171115,
+          "text": " simulation",
+          "tokens": 2
+        },
+        {
+          "t": 28.24979,
+          "text": " environments",
+          "tokens": 3
+        },
+        {
+          "t": 28.249807,
+          "text": " and",
+          "tokens": 1
+        },
+        {
+          "t": 28.329755,
+          "text": " robot",
+          "tokens": 1
+        },
+        {
+          "t": 28.405514,
+          "text": " models",
+          "tokens": 2
+        },
+        {
+          "t": 28.483127,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 28.483141,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 28.483148,
+          "text": "2",
+          "tokens": 0
+        },
+        {
+          "t": 28.483154,
+          "text": "1",
+          "tokens": 1
+        },
+        {
+          "t": 28.564135,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 28.56418,
+          "text": " G",
+          "tokens": 0
+        },
+        {
+          "t": 28.564188,
+          "text": "aze",
+          "tokens": 1
+        },
+        {
+          "t": 28.564193,
+          "text": "bo",
+          "tokens": 0
+        },
+        {
+          "t": 28.642222,
+          "text": " sim",
+          "tokens": 1
+        },
+        {
+          "t": 28.642236,
+          "text": "ulates",
+          "tokens": 2
+        },
+        {
+          "t": 28.642242,
+          "text": " physics",
+          "tokens": 1
+        },
+        {
+          "t": 28.717648,
+          "text": ",",
+          "tokens": 0
+        },
+        {
+          "t": 28.717665,
+          "text": " sensors",
+          "tokens": 2
+        },
+        {
+          "t": 28.797522,
+          "text": ",",
+          "tokens": 0
+        },
+        {
+          "t": 28.797546,
+          "text": " and",
+          "tokens": 1
+        },
+        {
+          "t": 28.797553,
+          "text": " robot",
+          "tokens": 2
+        },
+        {
+          "t": 28.875703,
+          "text": " dynamics",
+          "tokens": 2
+        },
+        {
+          "t": 28.87573,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 28.875737,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 28.875743,
+          "text": "2",
+          "tokens": 0
+        },
+        {
+          "t": 28.957852,
+          "text": "2",
+          "tokens": 1
+        },
+        {
+          "t": 28.957878,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 28.957892,
+          "text": " Isaac",
+          "tokens": 1
+        },
+        {
+          "t": 28.957904,
+          "text": " Sim",
+          "tokens": 1
+        },
+        {
+          "t": 29.039308,
+          "text": " offers",
+          "tokens": 1
+        },
+        {
+          "t": 29.039352,
+          "text": " high",
+          "tokens": 2
+        },
+        {
+          "t": 29.039367,
+          "text": "-f",
+          "tokens": 0
+        },
+        {
+          "t": 29.039378,
+          "text": "idelity",
+          "tokens": 2
+        },
+        {
+          "t": 29.117182,
+          "text": " GPU",
+          "tokens": 0
+        },
+        {
+          "t": 29.184883,
+          "text": "-ac",
+          "tokens": 1
+        },
+        {
+          "t": 29.18491,
+          "text": "celer",
+          "tokens": 1
+        },
+        {
+          "t": 29.253691,
+          "text": "ated",
+          "tokens": 1
+        },
+        {
+          "t": 29.253721,
+          "text": " robotics",
+          "tokens": 2
+        },
+        {
+          "t": 29.320748,
+          "text": " simulation",
+          "tokens": 2
+        },
+        {
+          "t": 29.320775,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 29.320789,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 29.3208,
+          "text": "2",
+          "tokens": 0
+        },
+        {
+          "t": 29.377482,
+          "text": "3",
+          "tokens": 0
+        },
+        {
+          "t": 29.377508,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 29.377522,
+          "text": " Mu",
+          "tokens": 0
+        },
+        {
+          "t": 29.433027,
+          "text": "Jo",
+          "tokens": 1
+        },
+        {
+          "t": 29.433058,
+          "text": "Co",
+          "tokens": 0
+        },
+        {
+          "t": 29.433071,
+          "text": " exc",
+          "tokens": 1
+        },
+        {
+          "t": 29.487856,
+          "text": "els",
+          "tokens": 1
+        },
+        {
+          "t": 29.487889,
+          "text": " at",
+          "tokens": 0
+        },
+        {
+          "t": 29.487903,
+          "text": " contact",
+          "tokens": 2
+        },
+        {
+          "t": 29.542088,
+          "text": "-rich",
+          "tokens": 1
+        },
+        {
+          "t": 29.542116,
+          "text": " dynamics",
+          "tokens": 2
+        },
+        {
+          "t": 29.600645,
+          "text": " and",
+          "tokens": 1
+        },
+        {
+          "t": 29.600672,
+          "text": " control",
+          "tokens": 2
+        },
+        {
+          "t": 29.657447,
+          "text": " research",
+          "tokens": 2
+        },
+        {
+          "t": 29.713754,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 29.713789,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 29.713804,
+          "text": "2",
+          "tokens": 0
+        },
+        {
+          "t": 29.713816,
+          "text": "4",
+          "tokens": 1
+        },
+        {
+          "t": 29.77131,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 29.771337,
+          "text": " Py",
+          "tokens": 1
+        },
+        {
+          "t": 29.771351,
+          "text": "Bullet",
+          "tokens": 1
+        },
+        {
+          "t": 29.771363,
+          "text": " provides",
+          "tokens": 2
+        },
+        {
+          "t": 29.829609,
+          "text": " open",
+          "tokens": 1
+        },
+        {
+          "t": 29.829647,
+          "text": "-source",
+          "tokens": 1
+        },
+        {
+          "t": 29.829662,
+          "text": " physics",
+          "tokens": 2
+        },
+        {
+          "t": 29.829674,
+          "text": " simulation",
+          "tokens": 3
+        },
+        {
+          "t": 29.887848,
+          "text": " for",
+          "tokens": 1
+        },
+        {
+          "t": 29.887879,
+          "text": " robotics",
+          "tokens": 1
+        },
+        {
+          "t": 29.887893,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 29.887906,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 29.943005,
+          "text": "2",
+          "tokens": 0
+        },
+        {
+          "t": 29.943046,
+          "text": "5",
+          "tokens": 0
+        },
+        {
+          "t": 29.94306,
+          "text": ".",
+          "tokens": 1
+        },
+        {
+          "t": 29.943072,
+          "text": " Rein",
+          "tokens": 1
+        },
+        {
+          "t": 29.997805,
+          "text": "forcement",
+          "tokens": 2
+        },
+        {
+          "t": 29.997832,
+          "text": " learning",
+          "tokens": 2
+        },
+        {
+          "t": 29.997846,
+          "text": " trains",
+          "tokens": 1
+        },
+        {
+          "t": 30.055661,
+          "text": " policies",
+          "tokens": 2
+        },
+        {
+          "t": 30.055707,
+          "text": " through",
+          "tokens": 2
+        },
+        {
+          "t": 30.055722,
+          "text": " trial",
+          "tokens": 1
+        },
+        {
+          "t": 30.055735,
+          "text": "-and",
+          "tokens": 1
+        },
+        {
+          "t": 30.112365,
+          "text": "-error",
+          "tokens": 1
+        },
+        {
+          "t": 30.112397,
+          "text": " rewards",
+          "tokens": 2
+        },
+        {
+          "t": 30.168222,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 30.168251,
+          "text": "\n",
+          "tokens": 1
+        },
+        {
+          "t": 30.168264,
+          "text": "2",
+          "tokens": 0
+        },
+        {
+          "t": 30.168276,
+          "text": "6",
+          "tokens": 0
+        },
+        {
+          "t": 30.222584,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 30.222611,
+          "text": " I",
+          "tokens": 1
+        },
+        {
+          "t": 30.274628,
+          "text": "mit",
+          "tokens": 0
+        },
+        {
+          "t": 30.274657,
+          "text": "ation",
+          "tokens": 2
+        },
+        {
+          "t": 30.274671,
+          "text": " learning",
+          "tokens": 1
+        },
+        {
+          "t": 30.274683,
+          "text": " mim",
+          "tokens": 1
+        },
+        {
+          "t": 30.327677,
+          "text": "ics",
+          "tokens": 1
+        },
+        {
+          "t": 30.32771,
+          "text": " expert",
+          "tokens": 2
+        },
+        {
+          "t": 30.389167,
+          "text": " demonstrations",
+          "tokens": 3
+        },
+        {
+          "t": 30.389193,
+          "text": " for",
+          "tokens": 1
+        },
+        {
+          "t": 30.454018,
+          "text": " policy",
+          "tokens": 1
+        },
+        {
+          "t": 30.499585,
+          "text": " acquisition",
+          "tokens": 3
+        },
+        {
+          "t": 30.544634,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 30.544669,
+          "text": "\n",
+          "tokens": 0
+        },
+        {
+          "t": 30.544685,
+          "text": "2",
+          "tokens": 1
+        },
+        {
+          "t": 30.544696,
+          "text": "7",
+          "tokens": 0
+        },
+        {
+          "t": 30.589351,
+          "text": ".",
+          "tokens": 0
+        },
+        {
+          "t": 30.589376,
+          "text": " Behavior",
+          "tokens": 2
+        }
+      ],
+      "error": null
+    }
+  ]
+}

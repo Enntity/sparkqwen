@@ -1,0 +1,9 @@
+== start.sh 22:33:56 image ghcr.io/enntity/atlas-sparkqwen:f399caa2fb5e
+== ready: http://127.0.0.1:8893/v1 model qwen3.8-flash-next-atlas
+smoke: 17*23 = 391
+
+real	0m44.258s
+user	0m0.420s
+sys	0m0.138s
+3543120 max KV tokens
+engine sparkqwen/atlas-20261016-drafter 1aa8d99f
