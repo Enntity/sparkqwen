@@ -7,10 +7,12 @@ pinned in [`install/atlas-source.json`](../install/atlas-source.json), for the
 kernel target `qwen3.8-flash-next` (model type `qwen4_exp`).
 [`install/build.sh`](../install/build.sh) refuses any other tree.
 
-The pin is the release tag `sparkqwen/atlas-20261016-fp4local` at 9f64bf6b (tree `af5fbb42`): the
-shared-engine release (`sparkqwen/atlas-20261015-vision`, 1954e759) plus the
+The pin is the release tag `sparkqwen/atlas-20261016-drafter` at 1aa8d99f (tree `a04c2e03`): the
+shared-engine release (`sparkqwen/atlas-20261015-vision`, 1954e759), the
 [FP4-Local series](#fp4-local-series), which loads and serves NVIDIA's
-FP4-Local checkpoint ([results/2026-10-16-fp4local](../results/2026-10-16-fp4local/RESULT.md)).
+FP4-Local checkpoint ([results/2026-10-16-fp4local](../results/2026-10-16-fp4local/RESULT.md)),
+and the [drafter series](#drafter-series) on top of it
+([results/2026-10-16-drafter](../results/2026-10-16-drafter/RESULT.md)).
 With the NVFP4 checkpoint the engine behaves as the shared-engine release did
 (identical prompt logprobs; [results/2026-10-15-shared-engine](../results/2026-10-15-shared-engine/RESULT.md));
 the RC16 gates are in [results/2026-10-10-rc16](../results/2026-10-10-rc16/RESULT.md).
@@ -159,6 +161,29 @@ NVFP4 checkpoint loads exactly as before.
 The decode GEMVs reuse GLM's MXFP8 kernels; the CSF codec and the MXFP8
 activation rounding follow vLLM's and NVIDIA Model Optimizer's published
 formats (attributions in the engine source).
+
+## Drafter series
+
+Thirty-six commits on top of the FP4-Local release (`sparkqwen/atlas-20261016-fp4local`,
+9f64bf6b). Commits marked `shared:` are model-independent; they sit in the
+`sparkqwen` layer until the shared layer moves. Every switch below is off in the
+engine and on in the shipped profiles unless the table says otherwise. With
+every switch off the engine behaves as the FP4-Local release did, byte for byte.
+
+| Mechanism | Switch (profiles) |
+|---|---|
+| The MTP drafter's attention KV holds the target's own rows: after each verify the accepted rows are rewritten from the target's verified streams (it kept rows computed from its own chained drafts), through a K/V-only row pass | `ATLAS_QWEN4EXP_MTP_ABSORB` (on) |
+| The drafter's KV over the prompt, filled at the end of prefill from the target's streams (a restored prefix-cache span stays unfilled; the pool grows by one window a speculating sequence) | `ATLAS_QWEN4EXP_MTP_PREFILL=<rows>` (16384) |
+| The drafter's MoE router in BF16 (the target's stays NVFP4) | `ATLAS_QWEN4EXP_MTP_BF16_ROUTER` (on) |
+| The dynamic draft depth decides every N verifies instead of 48, so a reply reaches deep drafts sooner; an optional starting ceiling | `ATLAS_MTP_DEEP_WINDOW=16` (on); `ATLAS_MTP_DEEP_START` (off) |
+| A newly admitted prompt longer than one prefill chunk queues its first chunk behind the prefills in flight instead of running it at admission; on two Sparks the worker gets that chunk's command when it runs. Prompts that fit one chunk still run at admission | `ATLAS_PREFILL_QUEUE_FIRST_CHUNK` (on) |
+| Copy drafts (prompt and reply lookup) in place of the MTP head's propose on the exact-verify lane | `ATLAS_QWEN_COPY_DRAFTS` (off: no gain under the 8-row verify cap) |
+| Drafter-only BF16 attention; a flat `pre_fc_norm_hidden` | `ATLAS_QWEN4EXP_MTP_BF16_ATTN`, `ATLAS_QWEN4EXP_MTP_FLAT_NORM` (off: slower, and worse, measured) |
+| W8A8 review hardening: per-bucket MXFP8 kernels only on the (cuBLASLt, N, K) shapes the sweep verified, in-order kernels with split-K 0 or 1, a retune after a refused kernel, install errors that say how to load without W8A8, bounds checks | always (prefill numerics unchanged: same prompt logprobs) |
+
+The drafter fixes follow how vLLM's and TensorFold's Qwen3.8-Flash-Next MTP
+speculators keep the drafter's context (the target's streams for the prompt and
+every committed token); no code was taken from either.
 
 ## Changing the engine
 

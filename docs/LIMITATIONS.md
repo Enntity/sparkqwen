@@ -21,13 +21,14 @@ What to know before relying on SparkQwen.
 
 ## Scope of the measurements
 
-The FP4-Local results (`results/2026-10-16-fp4local`) were measured on the
-final engine as a development binary on the previous release's image, with GPU
-clocks uncapped; the release image built from this checkout then reproduced
-the prompt logprobs, tool calling and RigMark (`raw/recipe/`). Not
-rerun on FP4-Local: sparkDash, the 77K-token needle, concurrent agent
-conversations, the `4x262k` profile, the 0.70 sidecar share and image
-prompts. Results below that cite RC16 or vLLM were measured on the NVFP4
+The drafter release's results (`results/2026-10-16-drafter`) were measured
+through the release image built from this checkout, with GPU clocks uncapped;
+its FP4-Local baseline is `results/2026-10-16-fp4local`. Not rerun on this
+release: the 77K-token needle, the `4x262k` profile, the 0.70 sidecar share
+and image prompts. The staggered-arrival rows come from a harness that is not
+in this repo (their JSON receipts are). The drafter's prompt pass covers only
+the part of a prompt that was computed: a span restored from the prefix cache
+has no target rows to give it, so the drafter does not see that span. Results below that cite RC16 or vLLM were measured on the NVFP4
 checkpoint. The 0.70 sidecar observation records its own source and image
 identity.
 

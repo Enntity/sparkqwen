@@ -21,7 +21,11 @@ cp .env.example .env      # set WORKER to the other Spark's ssh destination
 ./start.sh
 ```
 
-**Status: FP4-Local release.** The default download is now
+**Status: drafter release.** The speculative drafter now sees the real
+context, which makes its deeper drafts land: RigMark code +17% and structured
++22% over the FP4-Local release, with prose level; long prompts arriving
+together no longer share a delayed first token
+([results/2026-10-16-drafter](results/2026-10-16-drafter/RESULT.md)). The default download is
 [`nvidia/Qwen3.8-Flash-Next-FP4-Local`](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local)
 (95 GiB, pinned in [`install/checkpoint.json`](install/checkpoint.json)), not
 the 124 GiB `nvidia/Qwen3.8-Flash-Next-NVFP4` the earlier releases used.
@@ -31,50 +35,51 @@ MXFP8, where the NVFP4 release kept them BF16. The engine reads those MXFP8
 bytes directly when it decodes and runs prefill as MXFP8 W8A8, which is how
 NVIDIA's own serving recipe runs this checkpoint. The engine is pinned in
 [`install/atlas-source.json`](install/atlas-source.json) to Enntity/atlas
-`sparkqwen/atlas-20261016-fp4local` at `9f64bf6b` (tree `af5fbb42`): the
-shared-engine release plus the FP4-Local series ([docs/ENGINE.md](docs/ENGINE.md)).
+`sparkqwen/atlas-20261016-drafter` at `1aa8d99f` (tree `a04c2e03`): the
+shared-engine release plus the FP4-Local and drafter series ([docs/ENGINE.md](docs/ENGINE.md)).
 The engine still loads the NVFP4 checkpoint unchanged; see
 [Choosing a checkpoint](#choosing-a-checkpoint). The image for this release,
-`ghcr.io/enntity/atlas-sparkqwen:4618128c570b`, is not published yet; until
+`ghcr.io/enntity/atlas-sparkqwen:f399caa2fb5e`, is not published yet; until
 it is, `./start.sh` builds it from source (30–60 minutes cold).
 
 ## What it does
 
 Measured on two DGX Sparks joined by one 200G cable with GPU clocks
-uncapped, against our published RC16 numbers on the NVFP4 checkpoint.
-Receipts and caveats: [2026-10-16-fp4local](results/2026-10-16-fp4local/RESULT.md)
-and [2026-10-10-rc16](results/2026-10-10-rc16/RESULT.md).
+uncapped, through the image `./start.sh` built from this checkout, against
+the FP4-Local release on the same pair the same day. Receipts and caveats:
+[2026-10-16-drafter](results/2026-10-16-drafter/RESULT.md) and
+[2026-10-16-fp4local](results/2026-10-16-fp4local/RESULT.md).
 
-| Workload | FP4-Local (this release) | RC16 on NVFP4 |
+| Workload | This release | FP4-Local release |
 |---|---|---|
-| RigMark decode estimate: code / prose / structured | **96.7 / 57.2 / 106.0 tok/s** | 86.6 / 51.8 / 98.9 |
-| RigMark cold 16K-token prefill | **4,161 tok/s** | 4,043 |
-| RigMark end-to-end concurrency, C1 / C2 / C4 / C8 | **68.0 / 112.5 / 178.5 / 273.0 tok/s** | 61.7 / 98.6 / 166.2 / 260.1 |
+| RigMark decode estimate: code / prose / structured | **112.7 / 56.9 / 127.5 tok/s** | 96.5 / 57.1 / 104.4 |
+| RigMark cold 16K-token prefill | 4,127 tok/s | 4,190 |
+| RigMark end-to-end concurrency, C1 / C2 / C4 / C8 | 72.4 / 121.4 / 186.7 / 278.8 tok/s | 69.5 / 110.4 / 188.4 / 290.3 |
 | RigMark output gates | 9/9 | 9/9 |
-| Cold prompt 2K / 8K / 16K / 28K: time to first token | **0.69 / 2.00 / 3.97 / 7.06 s** | 0.73 / 2.08 / 4.11 / 7.32 |
-| Follow-up turn in an 8K / 20K conversation: time to first token | 0.16-0.19 / 0.17-0.21 s | |
-| KV pool at the default 0.88 (`8x32k`) | **3.42M tokens** | 3.26M |
-| Checkpoint download | **95 GiB** | 124 GiB |
+| sparkDash one stream: structured / prose / code / JSON | **134.0 / 85.4 / 108.3 / 109.3 tok/s** | 111.9 / 81.8 / 101.5 / 95.7 |
+| Four ~18K prompts arriving 1 s apart: time to first token | **4.7 / 8.4 / 12.1 / 15.8 s** | 16.2 / 15.9 / 15.7 / 15.4 |
+| Four new conversations on one ~20K system prompt: first turn | **5.8 / 6.1 / 6.4 / 6.7 s** | 5.8 / 7.6 / 9.5 / 11.3 |
+| Cold prompt 2K / 8K / 16K / 28K: time to first token | 0.72 / 2.04 / 4.02 / 7.08 s | 0.71 / 2.00 / 3.95 / 7.03 |
+| Follow-up turn in an 8K / 20K conversation: time to first token | 0.16-0.19 / 0.17-0.21 s | 0.16-0.19 / 0.17-0.21 |
+| KV pool at the default 0.88 (`8x32k`) | 3.54M tokens | 3.42M |
+| Checkpoint download | 95 GiB | 95 GiB |
 | Quality probe: arithmetic / two-hop 24K needle | 40/40 · 12/12 | 40/40 · 12/12 |
-| Tool calling (`bench/tool_probe.py`, 7 cases) | 21/21 (3 runs each) | 35/35 (5 runs each) |
+| Tool calling (`bench/tool_probe.py`, 7 cases) | 21/21 (3 runs each) | 21/21 |
 
-The FP4-Local column was measured with the engine as a dev binary
-(`a8976e86`; the release commit `9f64bf6b` changes only a unit test). The
-release image that `./start.sh` built from this checkout then reproduced it:
-the same prompt logprobs bit for bit, tool calling 21/21, and RigMark 9/9 at
-96.5 / 57.1 / 104.4 tok/s decode, 4,190 tok/s cold 16K prefill and
-69.5 / 110.4 / 188.4 / 290.3 tok/s at C1 / C2 / C4 / C8. The full RigMark
-cards: [FP4-Local, release image](results/2026-10-16-fp4local/raw/recipe/rigmark-FP4L.card.txt),
-[FP4-Local, final dev run](results/2026-10-16-fp4local/raw/rigmark/rig-fp4l-w2-u.card.txt)
+RigMark runs each concurrency cell once, so treat single cells as ±10%:
+sparkDash's eight-stream aggregate, which runs every workload, is level to
++5% (424 / 300 / 327 / 368 tok/s structured / prose / code / JSON). The full
+RigMark cards: [this release](results/2026-10-16-drafter/raw/recipe/rigmark-DRAFTER.card.txt),
+[FP4-Local release](results/2026-10-16-fp4local/raw/recipe/rigmark-FP4L.card.txt)
 and [RC16 on NVFP4](results/2026-10-10-rc16/raw/recipe/rigmark-RC16.card.txt),
-each beside its JSON receipt. Not yet rerun
-on FP4-Local: sparkDash, the 77K-token needle, concurrent agent
-conversations, the `4x262k` profile and image prompts. Every option in the
-default profile is exact: greedy output with speculative decoding, with up to
-eight concurrent requests and with prefix-cache hits of ~4.4K tokens is
-identical to one-at-a-time decode with speculation and the cache off (8/8
-prompts with thinking on, in each case). Two Sparks do not give bit-identical
-output to one GPU (BF16 rounding of the tensor-parallel sums; see
+each beside its JSON receipt. Every option in the default profile is exact:
+greedy output with speculative decoding, the new drafter context, up to eight
+concurrent requests and prefix-cache hits of ~4.4K tokens is identical to
+one-at-a-time decode with speculation and the cache off (8/8 prompts with
+thinking on, in each case), and the prompt logprobs are the FP4-Local
+release's. Not yet rerun on this release: the 77K-token needle, the `4x262k`
+profile and image prompts. Two Sparks do not give bit-identical output to one
+GPU (BF16 rounding of the tensor-parallel sums; see
 [docs/LIMITATIONS.md](docs/LIMITATIONS.md)). These are single-session
 measurements on our pair, not a guarantee for yours.
 
@@ -271,7 +276,10 @@ built from four layers ([docs/ENGINE.md](docs/ENGINE.md)):
    only, so prefill stays row-invariant and prefix caching stays exact), the
    NVFP4 PLE table read through a checksummed packed copy, and native NVFP4
    MTP experts. The series turns on by itself when the checkpoint is
-   FP4-Local; the NVFP4 path is unchanged.
+   FP4-Local; the NVFP4 path is unchanged. The drafter series then gives the
+   MTP drafter the target's own rows for the prompt and every verified token,
+   a BF16 drafter router and a faster depth decision, and queues a long
+   prompt's first prefill chunk behind the prefills in flight.
 
 ## Credits
 
