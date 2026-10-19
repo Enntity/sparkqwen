@@ -47,7 +47,6 @@
   "ATLAS_PREFILL_QUEUE_FIRST_CHUNK": "1",
   "ATLAS_QWEN4EXP_MTP_ABSORB": "1",
   "ATLAS_QWEN4EXP_MTP_PREFILL": "16384",
-  "ATLAS_QWEN4EXP_MTP_BF16_ROUTER": "1",
   "ATLAS_MTP_DEEP_WINDOW": "16",
   "ATLAS_MTP_MAX_SEQS": "8",
   "ATLAS_MTP_GATE_FORCE": "1",
@@ -68,9 +67,6 @@
   "ATLAS_QWEN4EXP_EXACT_DEFER": "1",
   "ATLAS_QWEN4EXP_QSA_KEY_ONLY": "1",
   "ATLAS_QWEN4EXP_QSA_COMMIT_ROWS": "1",
-  "ATLAS_CONTENT_LOOP_WATCHDOG": "1",
-  "ATLAS_CONTENT_LOOP_MIN_REPEATS": "32",
-  "ATLAS_LOOP_STEER": "1",
   "ATLAS_QWEN4EXP_FINISH_LEAF": "1",
   "ATLAS_QWEN4EXP_QSA_TOPK_WIDE": "1",
   "ATLAS_QWEN4EXP_QSA_DECODE_ROWS": "1",
@@ -134,11 +130,11 @@
   "--max-prefill-tokens=16384",
   "--fast-load-prefetch-shards",
   "--no-tui",
-  "--default-chat-template-kwargs={\"reasoning_effort\":\"low\"}",
   "--speculative",
   "--num-drafts=7",
   "--max-num-seqs=8",
   "--max-batch-size=8",
-  "--max-seq-len=32768"
+  "--max-seq-len=32768",
+  "--tool-max-tokens=32768"
  ]
 }

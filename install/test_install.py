@@ -76,7 +76,7 @@ class LaunchContract(unittest.TestCase):
     def test_profiles_share_everything_but_their_size(self):
         # The long-context profiles drop only the QSA spare-buffer cap: its buffers sit outside
         # the KV budget and scale with context.
-        size = ('--max-seq-len=', '--max-num-seqs=', '--max-batch-size=')
+        size = ('--max-seq-len=', '--max-num-seqs=', '--max-batch-size=', '--tool-max-tokens=')
         profiles = [load_profile(name) for name in PROFILES]
         base = profiles[0]
         for other in profiles[1:]:
@@ -98,7 +98,11 @@ class LaunchContract(unittest.TestCase):
                 self.assertIn('--gpu-memory-utilization=0.88', argv)
                 self.assertIn('--oom-guard-mb=4096', argv)
                 self.assertIn('--max-prefill-tokens=16384', argv)
-                self.assertIn('--default-chat-template-kwargs={"reasoning_effort":"low"}', argv)
+                # The checkpoint's chat template decides the default reasoning
+                # effort (xhigh), as NVIDIA's reference engine; no server budget.
+                self.assertFalse(any(a.startswith('--default-chat-template-kwargs') for a in argv))
+                seq = next(a for a in argv if a.startswith('--max-seq-len=')).split('=')[1]
+                self.assertIn(f'--tool-max-tokens={seq}', argv)
                 self.assertFalse(any('${' in a for a in argv))
 
     def test_profiles_enable_only_exact_engine_options(self):
@@ -122,14 +126,18 @@ class LaunchContract(unittest.TestCase):
                  'ATLAS_QWEN4EXP_LMHEAD_SPLIT_VERIFY', 'ATLAS_QWEN4EXP_ROWS32_TILE', 'ATLAS_QWEN4EXP_W4_ROWS',
                  'ATLAS_QWEN4EXP_W4_ROWS_WIDE', 'ATLAS_QWEN4EXP_GDN_COMMIT_FUSE',
                  'ATLAS_QWEN4EXP_QSA_COMMIT_TABLE', 'ATLAS_MTP_DFLASH_CTX_SCOPED', 'ATLAS_QWEN4EXP_EOS_BAN',
-                 'ATLAS_CONTENT_LOOP_WATCHDOG', 'ATLAS_NO_MTP_DCUT')
+                 'ATLAS_NO_MTP_DCUT')
         # Lossy or unproven options stay opt-in; diagnostics never ship in a profile.
         held_back = ('ATLAS_QWEN4EXP_FP8_GDN', 'ATLAS_QWEN4EXP_PDL', 'ATLAS_PDL', 'ATLAS_MTP_SPEC_THINK',
                      'ATLAS_QWEN4EXP_VERIFY_PROF', 'ATLAS_MTP_TIMING', 'ATLAS_DECODE_BATCH_LOG',
                      'ATLAS_QWEN4EXP_PREFILL_MOE_BF16', 'ATLAS_QWEN4EXP_PREFILL_BF16_PROJ',
                      'ATLAS_QWEN4EXP_SNAPSHOT_SLOTS', 'ATLAS_QWEN4EXP_PC_BRANCH', 'ATLAS_QWEN4EXP_DENSE_CKPT',
                      'ATLAS_MTP_STEP_TRACE', 'ATLAS_MTP_ACCEPT_DEBUG', 'ATLAS_PREFILL_HOST_TIMING',
-                     'ATLAS_GLM_WARM_TRACE', 'ATLAS_QWEN4EXP_MOE_ROUTE_DUMP', 'ATLAS_QWEN4EXP_PREFILL_GDN_DV')
+                     'ATLAS_GLM_WARM_TRACE', 'ATLAS_QWEN4EXP_MOE_ROUTE_DUMP', 'ATLAS_QWEN4EXP_PREFILL_GDN_DV',
+                     # The reference engine has no output heuristics: they stay off.
+                     'ATLAS_CONTENT_LOOP_WATCHDOG', 'ATLAS_CONTENT_LOOP_MIN_REPEATS', 'ATLAS_LOOP_STEER',
+                     # Removed engine switch (the router is BF16 everywhere).
+                     'ATLAS_QWEN4EXP_MTP_BF16_ROUTER')
         for name in PROFILES:
             env = load_profile(name)['environment']
             with self.subTest(profile=name):
@@ -137,10 +145,6 @@ class LaunchContract(unittest.TestCase):
                     self.assertEqual(env.get(key), '1', key)
                 self.assertEqual(env.get('ATLAS_QWEN4EXP_MTP_DEPTH'), '7')
                 self.assertEqual(env.get('ATLAS_MTP_MAX_SEQS'), '8')
-                self.assertEqual(env.get('ATLAS_CONTENT_LOOP_MIN_REPEATS'), '32')
-                # RC16: changes output only where the content-loop watchdog would
-                # otherwise cut the response (exact everywhere else).
-                self.assertEqual(env.get('ATLAS_LOOP_STEER'), '1')
                 self.assertNotIn('ATLAS_QWEN4EXP_MTP_CONFIDENCE', env)
                 self.assertEqual(env.get('ATLAS_EP_PROTOCOL'), 'v2')
                 # FP4-Local's NVFP4 PLE table is read through a packed copy in
