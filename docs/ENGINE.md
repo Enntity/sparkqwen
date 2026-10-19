@@ -7,17 +7,23 @@ pinned in [`install/atlas-source.json`](../install/atlas-source.json), for the
 kernel target `qwen3.8-flash-next` (model type `qwen4_exp`).
 [`install/build.sh`](../install/build.sh) refuses any other tree.
 
-The pin is the release tag `sparkqwen/atlas-20261017-vision` at 92dd5435 (tree `34e71b7b`): the
-shared-engine release (`sparkqwen/atlas-20261015-vision`, 1954e759), the
-[FP4-Local series](#fp4-local-series), which loads and serves NVIDIA's
-FP4-Local checkpoint ([results/2026-10-16-fp4local](../results/2026-10-16-fp4local/RESULT.md)),
-the [drafter series](#drafter-series) on top of it
-([results/2026-10-16-drafter](../results/2026-10-16-drafter/RESULT.md)) and
-the [vision admission series](#vision-admission-series)
-([results/2026-10-17-vision](../results/2026-10-17-vision/RESULT.md)).
-With the NVFP4 checkpoint the engine behaves as the shared-engine release did
-(identical prompt logprobs; [results/2026-10-15-shared-engine](../results/2026-10-15-shared-engine/RESULT.md));
-the RC16 gates are in [results/2026-10-10-rc16](../results/2026-10-10-rc16/RESULT.md).
+The current fidelity candidate pins `sparkqwen/fidelity-rc-20261019` at `77ed3fca`
+(tree `9ba3b6d1`). It includes the fidelity fixes, checkpoint reasoning
+policy, and the shared-expert tensor-parallel split. Final-image quality and
+matched performance qualification are pending; this source pin is not a release
+receipt.
+
+The earlier `sparkqwen/atlas-20261017-vision` release at `92dd5435` built on the
+shared-engine release (`sparkqwen/atlas-20261015-vision`, `1954e759`), the
+[FP4-Local series](#fp4-local-series), the [drafter series](#drafter-series),
+and the [vision admission series](#vision-admission-series). Its dated receipts
+remain in [FP4-Local](../results/2026-10-16-fp4local/RESULT.md),
+[drafter](../results/2026-10-16-drafter/RESULT.md), and
+[vision](../results/2026-10-17-vision/RESULT.md).
+The earlier NVFP4 prompt-logprob comparison is recorded in
+[shared-engine results](../results/2026-10-15-shared-engine/RESULT.md), and the
+RC16 gates in [RC16 results](../results/2026-10-10-rc16/RESULT.md). Those historical
+results do not qualify the current candidate.
 
 The shared layer is `upstream/atlas-shared-20261015-vision` at `a9464810`, on Atlas-Inf `main` at
 `7ffd183f`. These are pinned Enntity snapshots, separate from current
@@ -27,7 +33,7 @@ tag ([branch and release index](https://github.com/Enntity/atlas/blob/enntity/re
 
 ## Layers
 
-The pinned tag `sparkqwen/atlas-<date>-<name>` is built from four layers,
+The historical `sparkqwen/atlas-<date>-<name>` release tags use four layers,
 each on top of the one before; the second and third, and the model-independent RC16 commits,
 form the shared layer `upstream/atlas-shared-20261015-vision`:
 

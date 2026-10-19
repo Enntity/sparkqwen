@@ -403,7 +403,7 @@ class EnginePin(unittest.TestCase):
         self.assertEqual(pin['schema'], 'sparkqwen.atlas-engine-source/v2')
         self.assertEqual(pin['repository'], 'https://github.com/Enntity/atlas.git')
         self.assertEqual((pin['kernel_target'], pin['model_type']), ('qwen3.8-flash-next', 'qwen4_exp'))
-        self.assertTrue(pin['branch'].startswith('sparkqwen/atlas-'))
+        self.assertTrue(pin['branch'].startswith(('sparkqwen/atlas-', 'sparkqwen/fidelity-rc-')))
         layers = pin['layers']
         commits = [pin['commit'], pin['tree'], layers['atlas_inf_main_base']] + [
             layers[k]['commit'] for k in ('glm_upstream_series', 'upstream_candidate', 'sparkqwen_only')]
@@ -412,6 +412,14 @@ class EnginePin(unittest.TestCase):
             # A half-filled pin is a mistake: either the series is cut or it is not.
             self.assertTrue(value == 'PENDING' if pending else SHA.fullmatch(value), value)
         self.assertEqual(pending, pin['branch'].endswith('-PENDING'))
+
+    def test_fidelity_candidate_docs_match_source_identity(self):
+        pin = self.pin
+        self.assertTrue(pin['branch'].startswith('sparkqwen/fidelity-rc-'))
+        docs = (HERE.parent/'docs/ENGINE.md').read_text()
+        self.assertIn(f"`{pin['branch']}`", docs)
+        self.assertIn(f"`{pin['commit'][:8]}`", docs)
+        self.assertIn(f"`{pin['tree'][:8]}`", docs)
 
     def test_build_refuses_a_pending_pin(self):
         with tempfile.TemporaryDirectory() as root:
