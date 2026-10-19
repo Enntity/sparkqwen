@@ -144,33 +144,27 @@ identity.
 
 ## Behavior
 
-- The profiles default `reasoning_effort` to `low`. Requests can override it
-  through `chat_template_kwargs`.
-- **Greedy decoding can loop, and the profiles steer off loops.** The model
-  card recommends sampling (temperature 1.0, top-p 0.95, top-k 20 with
-  thinking; 0.7, 0.80, 20 without), and requests that leave sampling unset get
-  those. At temperature 0, as benchmarks run it, the model can fall into a
-  repetition attractor (RC15 lost one of RigMark's code gates to a Go test
-  table of `0, 0, 0, ...`). With content-loop steering (`ATLAS_LOOP_STEER`,
-  on in every profile), once the output's tail repeats a 2-64 token pattern
-  32 times, the next pick may not take the token that continues it; the run
-  of repeats stays in the output and the model continues from there (the
-  RigMark run now writes its 32 zeros and finishes the table). After three
-  steers in one request, a further loop ends the response as before
-  (finish reason `length`). Legitimately repetitive output longer than the
-  threshold (a 40-element zero array) is steered too. A request's
-  `repetition_detection` object sets the threshold; a profile without
-  `ATLAS_LOOP_STEER` restores RC15's behavior.
-- The card's presence penalty of 1.5 for thinking-off requests is applied only
-  to requests that carry tools: on a long single-file coding answer it
-  suppressed every token already written. A request can still set it.
+- Omitted `reasoning_effort` uses the checkpoint template's `xhigh` default.
+  Requests can select `low` or `medium` through `chat_template_kwargs`. The
+  profiles impose no separate thinking budget; completion-token limits still
+  apply to the request.
+- **Greedy decoding can loop.** When sampling is unset, all modes, including
+  requests with tools, use the checkpoint generation settings: temperature
+  1.0, top-p 0.95, top-k 20. Min-p and top-n-sigma filtering are off. The
+  candidate disables content-loop steering, thinking and content watchdogs,
+  and stream repetition guards. Request completion-token limits still apply.
+  Older RC16 results that used loop steering describe that earlier configuration.
+- Presence and frequency penalties default to 0 and repetition penalty to 1,
+  including requests with tools. Clients may set explicit penalties. The older
+  tools-only presence penalty of 1.5 is no longer a default.
 - Tool calling uses the checkpoint's `<tool_call><function=…><parameter=…>`
-  format (Atlas's `qwen3_coder` parser). `bench/tool_probe.py` passes 35/35
-  on the pair (single, typed, parallel, follow-up, no-tool, `tool_choice:
-  none`, streamed); real agent clients with large tool sets have not been
-  measured yet.
-- Structured output and video have not been tested with this model. Images
-  pass the race, conversation, swap and cached-versus-cold checks in
+  format (Atlas's `qwen3_coder` parser), without extra tool-result hints,
+  tool-call logit steering, or a separate cap on prose between calls. Earlier
+  pair testing passed 35/35 `bench/tool_probe.py` cases. Final-image tool and
+  schema gates remain pending for this candidate; real agent clients with
+  large tool sets have not been measured yet.
+- Video has not been tested with this model. Historical image results cover
+  race, conversation, swap and cached-versus-cold checks in
   [results/2026-10-15-shared-engine](../results/2026-10-15-shared-engine/RESULT.md).
 - In sparkDash's structured prompts, a "(stream i/n)" suffix makes the model
   emit only part of the requested count. Without `ignore_eos`, `min_tokens`

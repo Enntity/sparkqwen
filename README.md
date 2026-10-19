@@ -185,14 +185,20 @@ curl -s http://127.0.0.1:8893/v1/chat/completions -H 'Content-Type: application/
   "messages": [{"role": "user", "content": "Write a haiku about two small computers."}]}'
 ```
 
-Streaming is supported. Reasoning defaults to `reasoning_effort: low`; set it
-per request in `chat_template_kwargs`. Requests that leave sampling unset get
-the model card's settings for their mode: temperature 1.0, top-p 0.95,
-top-k 20 with thinking on; 0.7, 0.80, 20 with thinking off; and the tools row
-(0.7, 0.80, 20, presence penalty 1.5) when the request carries tools. Tool
-calls (OpenAI `tools`, streaming included) are parsed in the checkpoint's own
-XML call format (Atlas's `qwen3_coder` parser); `bench/tool_probe.py` passes
-every case. With the NVFP4 checkpoint, images pass the race, conversation,
+Streaming is supported. When `reasoning_effort` is omitted, the checkpoint
+template selects `xhigh`. Set `low` or `medium` per request in
+`chat_template_kwargs` when desired. The profiles impose no separate thinking
+budget; the request's completion-token limit still applies. Requests that leave
+sampling unset use the checkpoint's generation settings in every mode,
+including requests with tools: temperature 1.0, top-p 0.95, top-k 20. Presence
+and frequency penalties default to 0, repetition penalty to 1, and min-p and
+top-n-sigma filtering are off. Explicit request values override these defaults.
+Tool calls (OpenAI `tools`, streaming included) are parsed in the checkpoint's
+XML call format (Atlas's `qwen3_coder` parser). The candidate uses the
+checkpoint's tool template without extra tool-result hints, tool-call logit
+steering, or a separate cap on prose between tool calls. The final-image tool
+and schema gates remain pending for this candidate. With the NVFP4 checkpoint,
+images pass the race, conversation,
 swap and cached-versus-cold checks in
 [results/2026-10-15-shared-engine](results/2026-10-15-shared-engine/RESULT.md);
 on FP4-Local (MXFP8 attention, NVFP4 MLP, loaded exactly) the race,

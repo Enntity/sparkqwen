@@ -60,7 +60,7 @@ class LaunchContract(unittest.TestCase):
             self.assertEqual(env['NCCL_SOCKET_IFNAME'], self.environment['FABRIC_INTERFACE'])
             self.assertNotIn('NCCL_IB_GID_INDEX', env)
 
-    def test_default_profile_is_the_measured_concurrency_profile(self):
+    def test_default_profile_sizes_and_status_are_admissible(self):
         self.assertEqual(serve.profile_path({}, HERE), HERE/'profiles'/'8x32k.json')
         argv, _ = serve.launch(self.environment, self.profile)
         for arg in ('--max-seq-len=32768', '--max-num-seqs=8', '--max-batch-size=8'):
@@ -68,7 +68,8 @@ class LaunchContract(unittest.TestCase):
         long_argv, _ = serve.launch(self.environment, load_profile('4x262k'))
         for arg in ('--max-seq-len=262144', '--max-num-seqs=4', '--max-batch-size=4'):
             self.assertIn(arg, long_argv)
-        self.assertEqual(load_profile('4x262k')['status'], 'validated')
+        for name in PROFILES:
+            self.assertIn(load_profile(name)['status'], ('candidate', 'validated'))
         for bad in ('../x', '', 'a/b', '.hidden'):
             with self.subTest(name=bad), self.assertRaises(ValueError):
                 serve.profile_path({'SPARKQWEN_PROFILE': bad}, HERE)

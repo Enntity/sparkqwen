@@ -1,7 +1,7 @@
 {
  "schema": "sparkqwen.atlas-install-profile/v1",
- "status": "validated",
- "note": "Up to eight requests of up to 32K tokens: the concurrency and benchmark profile. RC16 profile (2026-10-10): exact speculation (spec == serial) and exact prefix caching (cache-on == cache-off); tensor-core MoE/mHC; no-duplicate prefill MoE (31.6 GiB freed for KV); batched C8 speculation with multi-prompt prefill; long-context QSA decode; prompt-tail checkpoints; content-loop steering. Gates: results/2026-10-10-rc16.",
+ "status": "candidate",
+ "note": "2026-10-19 fidelity candidate; final-image qualification pending. Configured limits: eight concurrent requests and 32,768 tokens per request. Preserves checkpoint reasoning and sampling defaults; content-loop and tool-call steering and repetition watchdogs are disabled. Historical RC16 evidence (2026-10-10, results/2026-10-10-rc16) covers the earlier profile and engine, including loop steering, and does not qualify this candidate.",
  "environment": {
   "ATLAS_EP_PROTOCOL": "v2",
   "ATLAS_RDMA_ALLREDUCE": "1",
