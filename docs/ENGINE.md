@@ -7,11 +7,16 @@ pinned in [`install/atlas-source.json`](../install/atlas-source.json), for the
 kernel target `qwen3.8-flash-next` (model type `qwen4_exp`).
 [`install/build.sh`](../install/build.sh) refuses any other tree.
 
-The current fidelity candidate pins `sparkqwen/fidelity-rc-20261019` at `77ed3fca`
-(tree `9ba3b6d1`). It includes the fidelity fixes, checkpoint reasoning
+The current fidelity candidate pins `sparkqwen/fidelity-rc-20261019` at `ce3825d4`
+(tree `b31ef03e`). It includes the fidelity fixes, checkpoint reasoning
 policy, and the shared-expert tensor-parallel split. Final-image quality and
 matched performance qualification are pending; this source pin is not a release
 receipt.
+
+The candidate also fixes speculative returned scores under logit bias and
+history penalties. Requested scores use the serial processed distribution;
+unsupported speculative scoring paths use a supported verification or serial
+path. First-prefill-token logit-bias support remains an inherited limitation.
 
 The earlier `sparkqwen/atlas-20261017-vision` release at `92dd5435` built on the
 shared-engine release (`sparkqwen/atlas-20261015-vision`, `1954e759`), the
