@@ -45,10 +45,12 @@ successful components, original failures and evaluator corrections.
 
 ## Installation
 
-- The image for this release's `install/` tree is not published yet; until
-  it is, `./start.sh` builds it from source (30-60 minutes cold). Published
-  images are arm64 for GB10 only. The previous release's image is
-  `ghcr.io/enntity/atlas-sparkqwen:4e29c8c22671`.
+- The current image is published as
+  `ghcr.io/enntity/atlas-sparkqwen:70890529ba64`, with anonymously verified
+  digest `sha256:a0cebe89737898692964d3923477bef293a4ebde9dd32e27202697c54f763c9d`.
+  `./start.sh` uses the image for the pinned `install/` tree and can build
+  from the published source pin if needed. Images are arm64 for GB10 only;
+  publication does not turn the full quality gate above into a pass.
 - The FP4-Local checkpoint is 95 GiB, and each Spark also keeps a 31 GB packed
   copy of its PLE table in `~/.cache/atlas-ple`. The first start writes it
   (about a minute) and needs that much free disk; later starts check
@@ -169,14 +171,26 @@ identity.
 - Two-Spark (TP2) output is not bit-identical to single-GPU output: BF16
   rounding of the tensor-parallel partial sums (96 reductions per token),
   amplified by QSA's top-k selection past 4,096 tokens.
-- With FP4-Local, prefill runs W8A8: activations are quantized to MXFP8 per
-  32 values (ModelOpt's format, as NVIDIA's serving recipe runs it), while
-  decode multiplies the same MXFP8 weights by BF16 activations. Prompt tokens
-  and generated tokens therefore go through different arithmetic. Exactness as
-  defined above still holds (the prefill kernels stay row-invariant; 8/8 in
-  `results/2026-10-16-fp4local`), and teacher-forced NLL rose 0.18% against
-  exact BF16 prefill. `ATLAS_QWEN4EXP_PREFILL_W8A8=0` in a profile file
-  restores BF16 prefill, about 8% slower at 16K (3,846 against 4,161 tok/s).
+- In engine `63bebfa6`, FP4-Local uses several precision paths. Calibrated
+  routed-MoE prefill uses native NVFP4 weights and activations (W4A4);
+  routed decode/verify uses NVFP4 weights with BF16 activations. GDN/QSA
+  MXFP8 projections and the MXFP8 shared expert use W8A8 prefill and BF16
+  decode activations. The shared expert retains the checkpoint's MXFP8
+  weights and splits its intermediate dimension across the two ranks;
+  the target router retains BF16. Earlier loaders re-quantized the shared
+  expert and target router to NVFP4. Prompt and generated tokens therefore
+  still use different arithmetic. `ATLAS_QWEN4EXP_PREFILL_W8A8=0` changes
+  the MXFP8 projection/shared-expert path; it does not disable routed W4A4
+  prefill. The current NLL gap and exactness scope are stated above.
+- The historical 2026-10-16 FP4-Local release recorded 8/8 exactness checks,
+  a 0.18% teacher-forced NLL increase against its exact BF16 prefill control,
+  and 4,161 versus 3,846 tok/s at 16K with its W8A8 option on versus off
+  (`results/2026-10-16-fp4local`). Those measurements do not qualify the
+  current routed-MoE or shared-expert implementation.
+- FP4-Local's F32 HC and PLE norm weights are still rounded to BF16 at load
+  time. Keeping the shared expert's original MXFP8 weights does not preserve
+  every checkpoint tensor's precision. A matched TP1 validation of this
+  release remains outstanding.
 - `FP8_GDN=1` (NVFP4 checkpoint only) changes outputs, and has not been
   measured with RC15 or later.
 - cuBLASLt chooses split-K differently in CUDA 13.0 (the runtime image) and
