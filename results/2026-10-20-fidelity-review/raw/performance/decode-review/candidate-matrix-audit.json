@@ -1,0 +1,312 @@
+[
+  {
+    "done": true,
+    "ended_unix": 1792463024.7693386,
+    "finish_reasons": [
+      "length"
+    ],
+    "max_tokens": 400,
+    "min_tokens": 400,
+    "ok": true,
+    "request_sha256": "2684bde5dc68be5e0a02ae1ac453be12f84c32d317c0de01b8d1ed297103e7a2",
+    "started_unix": 1792463013.4225278,
+    "stream": true,
+    "url": "http://127.0.0.1:8893/v1/chat/completions",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": 324,
+        "audio_tokens": 0,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": 0
+      },
+      "prompt_tokens": 32768,
+      "prompt_tokens_details": {
+        "audio_tokens": 0,
+        "cached_tokens": 16
+      },
+      "response_token/s": 101.26511893745828,
+      "time_to_first_token_ms": 7363.487426,
+      "total_tokens": 33168
+    }
+  },
+  {
+    "done": true,
+    "ended_unix": 1792463084.7628496,
+    "finish_reasons": [
+      "length"
+    ],
+    "max_tokens": 400,
+    "min_tokens": 400,
+    "ok": true,
+    "request_sha256": "319e2a332ed56b1ac43d764bf664c73a757341cee5acdd550c1f1d22546a302e",
+    "started_unix": 1792463062.4332995,
+    "stream": true,
+    "url": "http://127.0.0.1:8893/v1/chat/completions",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": 297,
+        "audio_tokens": 0,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": 0
+      },
+      "prompt_tokens": 16384,
+      "prompt_tokens_details": {
+        "audio_tokens": 0,
+        "cached_tokens": 16
+      },
+      "response_token/s": 21.35096412316204,
+      "time_to_first_token_ms": 3612.297177,
+      "total_tokens": 16784
+    }
+  },
+  {
+    "done": true,
+    "ended_unix": 1792463084.8423913,
+    "finish_reasons": [
+      "length"
+    ],
+    "max_tokens": 400,
+    "min_tokens": 400,
+    "ok": true,
+    "request_sha256": "383f6ee43877867f7aef2c04dbbcce23b496bb8240a6a6195bf6d71f66863393",
+    "started_unix": 1792463064.4326446,
+    "stream": true,
+    "url": "http://127.0.0.1:8893/v1/chat/completions",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": 297,
+        "audio_tokens": 0,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": 0
+      },
+      "prompt_tokens": 16384,
+      "prompt_tokens_details": {
+        "audio_tokens": 0,
+        "cached_tokens": 16
+      },
+      "response_token/s": 34.741091198078465,
+      "time_to_first_token_ms": 3624.301753,
+      "total_tokens": 16784
+    }
+  },
+  {
+    "done": true,
+    "ended_unix": 1792463084.915781,
+    "finish_reasons": [
+      "length"
+    ],
+    "max_tokens": 400,
+    "min_tokens": 400,
+    "ok": true,
+    "request_sha256": "1afde834321da46a31858d9d624b14cb9473fef26c9c620572f2beda7113c5b1",
+    "started_unix": 1792463065.432985,
+    "stream": true,
+    "url": "http://127.0.0.1:8893/v1/chat/completions",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": 296,
+        "audio_tokens": 0,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": 0
+      },
+      "prompt_tokens": 16384,
+      "prompt_tokens_details": {
+        "audio_tokens": 0,
+        "cached_tokens": 16
+      },
+      "response_token/s": 50.28527466458506,
+      "time_to_first_token_ms": 3625.050068,
+      "total_tokens": 16784
+    }
+  },
+  {
+    "done": true,
+    "ended_unix": 1792463085.3044648,
+    "finish_reasons": [
+      "length"
+    ],
+    "max_tokens": 400,
+    "min_tokens": 400,
+    "ok": true,
+    "request_sha256": "b1e1e8efed19044bebdf89ec09e910308ef76f50d49d91f890a062a1236a123c",
+    "started_unix": 1792463063.432975,
+    "stream": true,
+    "url": "http://127.0.0.1:8893/v1/chat/completions",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": 289,
+        "audio_tokens": 0,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": 0
+      },
+      "prompt_tokens": 16384,
+      "prompt_tokens_details": {
+        "audio_tokens": 0,
+        "cached_tokens": 16
+      },
+      "response_token/s": 25.62167731968052,
+      "time_to_first_token_ms": 3619.4665170000003,
+      "total_tokens": 16784
+    }
+  },
+  {
+    "done": true,
+    "ended_unix": 1792463038.4094994,
+    "finish_reasons": [
+      "length"
+    ],
+    "max_tokens": 400,
+    "min_tokens": 400,
+    "ok": true,
+    "request_sha256": "74ece7ab78ed9925ff9446a4ea64c7bef7f1091859f9f9f9038adb8ee9a1052f",
+    "started_unix": 1792463025.7693412,
+    "stream": true,
+    "url": "http://127.0.0.1:8893/v1/chat/completions",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": 313,
+        "audio_tokens": 0,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": 0
+      },
+      "prompt_tokens": 16384,
+      "prompt_tokens_details": {
+        "audio_tokens": 0,
+        "cached_tokens": 16
+      },
+      "response_token/s": 44.32007702593902,
+      "time_to_first_token_ms": 3610.6548639999996,
+      "total_tokens": 16784
+    }
+  },
+  {
+    "done": true,
+    "ended_unix": 1792463038.5714762,
+    "finish_reasons": [
+      "length"
+    ],
+    "max_tokens": 400,
+    "min_tokens": 400,
+    "ok": true,
+    "request_sha256": "c4db1a584569aaecf5cae40ba2bee71837c090011f1e1d1d83abdbc1a2cf186b",
+    "started_unix": 1792463026.7693753,
+    "stream": true,
+    "url": "http://127.0.0.1:8893/v1/chat/completions",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": 311,
+        "audio_tokens": 0,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": 0
+      },
+      "prompt_tokens": 16384,
+      "prompt_tokens_details": {
+        "audio_tokens": 0,
+        "cached_tokens": 16
+      },
+      "response_token/s": 72.4705694016216,
+      "time_to_first_token_ms": 3620.1972969999997,
+      "total_tokens": 16784
+    }
+  },
+  {
+    "done": true,
+    "ended_unix": 1792463060.6550088,
+    "finish_reasons": [
+      "length"
+    ],
+    "max_tokens": 400,
+    "min_tokens": 400,
+    "ok": true,
+    "request_sha256": "281f613cf5787cf03a8d8cc0b578b77dde9a7432750cb493a4d0962a13feebf0",
+    "started_unix": 1792463040.2939563,
+    "stream": true,
+    "url": "http://127.0.0.1:8893/v1/chat/completions",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": 307,
+        "audio_tokens": 0,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": 0
+      },
+      "prompt_tokens": 32768,
+      "prompt_tokens_details": {
+        "audio_tokens": 0,
+        "cached_tokens": 16
+      },
+      "response_token/s": 30.757072554781498,
+      "time_to_first_token_ms": 7346.370363,
+      "total_tokens": 33168
+    }
+  },
+  {
+    "done": true,
+    "ended_unix": 1792463060.7643697,
+    "finish_reasons": [
+      "length"
+    ],
+    "max_tokens": 400,
+    "min_tokens": 400,
+    "ok": true,
+    "request_sha256": "52a451b549a2058f470bdeea2fd13ac51da3d39b1d8f43839f6f1fa80f0be24d",
+    "started_unix": 1792463041.2942019,
+    "stream": true,
+    "url": "http://127.0.0.1:8893/v1/chat/completions",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": 307,
+        "audio_tokens": 0,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": 0
+      },
+      "prompt_tokens": 32768,
+      "prompt_tokens_details": {
+        "audio_tokens": 0,
+        "cached_tokens": 16
+      },
+      "response_token/s": 70.48829700532893,
+      "time_to_first_token_ms": 11230.895908,
+      "total_tokens": 33168
+    }
+  },
+  {
+    "done": true,
+    "ended_unix": 1792463012.3776958,
+    "finish_reasons": [
+      "length"
+    ],
+    "max_tokens": 400,
+    "min_tokens": 400,
+    "ok": true,
+    "request_sha256": "08b7fa95e3350771ede45b4a41dcc7235a54fdf92adc07950690ac5b0291e856",
+    "started_unix": 1792463004.9449506,
+    "stream": true,
+    "url": "http://127.0.0.1:8893/v1/chat/completions",
+    "usage": {
+      "completion_tokens": 400,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": 334,
+        "audio_tokens": 0,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": 0
+      },
+      "prompt_tokens": 16384,
+      "prompt_tokens_details": {
+        "audio_tokens": 0,
+        "cached_tokens": 0
+      },
+      "response_token/s": 105.56223633256909,
+      "time_to_first_token_ms": 3627.498599,
+      "total_tokens": 16784
+    }
+  }
+]
