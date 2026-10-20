@@ -7,8 +7,8 @@ pinned in [`install/atlas-source.json`](../install/atlas-source.json), for the
 kernel target `qwen3.8-flash-next` (model type `qwen4_exp`).
 [`install/build.sh`](../install/build.sh) refuses any other tree.
 
-The current fidelity candidate pins `sparkqwen/fidelity-rc-20261019` at `b854ea9e`
-(tree `e7709aa5`). It includes the fidelity fixes, checkpoint reasoning
+The current fidelity candidate pins `sparkqwen/fidelity-rc-20261019` at `f52a45bf`
+(tree `003232c3`). It includes the fidelity fixes, checkpoint reasoning
 policy, and the shared-expert tensor-parallel split. Final-image quality and
 matched performance qualification are pending; this source pin is not a release
 receipt.
@@ -227,3 +227,5 @@ Engine changes go to `Enntity/atlas` first: upstream-worthy work on a focused
 branch cut from Atlas-Inf `main`, then into the `spark-shared` branch;
 SparkQwen-only work on the `sparkqwen` branch, rebased onto `spark-shared`.
 Tag the release, then update the pin, and the profiles if a switch changes.
+
+Single and batched bootstrap decode also report scores from the processed row used for token selection. First-prefill-token bias support is unchanged; the first returned score may be null. Exact-image serial/speculative score qualification remains required.
