@@ -1,0 +1,26 @@
+{
+  "environment": {
+    "ATLAS_CONTENT_LOOP_WATCHDOG": {
+      "baseline": "1",
+      "candidate": null
+    },
+    "ATLAS_CONTENT_LOOP_MIN_REPEATS": {
+      "baseline": "32",
+      "candidate": null
+    },
+    "ATLAS_QWEN4EXP_MTP_BF16_ROUTER": {
+      "baseline": "1",
+      "candidate": null
+    },
+    "ATLAS_LOOP_STEER": {
+      "baseline": "1",
+      "candidate": null
+    }
+  },
+  "argv_removed": [
+    "--default-chat-template-kwargs={\"reasoning_effort\":\"low\"}"
+  ],
+  "argv_added": [
+    "--tool-max-tokens=32768"
+  ]
+}
