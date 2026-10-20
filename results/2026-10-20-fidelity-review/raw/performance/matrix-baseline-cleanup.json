@@ -1,0 +1,9 @@
+{
+  "cache_policy": "owned image/checkpoint PLE retained for next profile; no prior cache/model files modified",
+  "cleanup_errors": [],
+  "error": null,
+  "leases_released": false,
+  "mode": "performance",
+  "quality_review_required": false,
+  "status": "pass"
+}

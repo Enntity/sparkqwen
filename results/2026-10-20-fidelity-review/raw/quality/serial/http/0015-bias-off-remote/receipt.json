@@ -1,0 +1,28 @@
+{
+  "finished_ns": 1792458324125553000,
+  "number": 15,
+  "path": "/v1/completions",
+  "protocol_error": null,
+  "request_sha256": "276da7a811cb3c20e42001e97fc5ee37920fdc2b8ce0e27daddaad980198a621",
+  "response_headers": {
+    "access-control-allow-origin": "*",
+    "connection": "close",
+    "content-type": "application/json",
+    "date": "Tue, 20 Oct 2026 01:05:24 GMT",
+    "openai-organization": "atlas-local",
+    "openai-processing-ms": "626",
+    "openai-version": "2026-01-01",
+    "transfer-encoding": "chunked",
+    "x-ratelimit-limit-requests": "1000000",
+    "x-ratelimit-limit-tokens": "1000000000",
+    "x-ratelimit-remaining-requests": "999999",
+    "x-ratelimit-remaining-tokens": "999999999",
+    "x-ratelimit-reset-requests": "0s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_b127e1cc-ceb4-47bb-917a-d0d14e1b7f34"
+  },
+  "response_sha256": "474efadd70d34119acea40d0b953b0e1f5a21bc691a88ce2108bfb9504beece2",
+  "stage": "bias-off-remote",
+  "started_ns": 1792458323483031000,
+  "status": 200
+}

@@ -1,0 +1,18 @@
+{
+  "finished_ns": 1792457967114434000,
+  "number": 52,
+  "path": "/metrics",
+  "protocol_error": null,
+  "request_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "response_headers": {
+    "access-control-allow-origin": "*",
+    "connection": "close",
+    "content-type": "text/plain; version=0.0.4; charset=utf-8",
+    "date": "Tue, 20 Oct 2026 00:59:27 GMT",
+    "transfer-encoding": "chunked"
+  },
+  "response_sha256": "bba8bb4125c1ab4cebfb4ae5aca5d3ad38883c377ebb218bdc85e6248ab1a339",
+  "stage": "bias-on-remote-before",
+  "started_ns": 1792457966779887000,
+  "status": 200
+}

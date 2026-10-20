@@ -51,7 +51,7 @@ RUN --mount=type=cache,target=/build/target,id=atlas-cargo-target-sparkqwen,shar
     set -eu; for check in atlas-core:qwen4_exp_ spark-server:scheduler::lifecycle_tests \
         spark-server:scheduler::admission:: spark-server:cancellation_tests \
         spark-server:disconnect_prefill_tests spark-server:buffered_disconnect_ \
-        spark-server:refusal spark-server:api::chat_stream spark-server:tool_parser:: \
+        spark-server:verify_pipeline_helper::scored::tests spark-server:prediction_usage spark-server:bootstrap_score spark-server:unscored_logprob_admission spark-server:batched_logprob_read_failure_aborts_every_advanced_member spark-server:refusal spark-server:api::chat_stream spark-server:tool_parser:: \
         spark-runtime:radix_tree:: spark-model:block_mgmt::tails::tests; do \
       crate=${check%%:*}; filter=${check#*:}; \
       if [ "$crate" = spark-server ]; then target="--bin spark"; else target="--lib"; fi; \
@@ -62,6 +62,12 @@ RUN --mount=type=cache,target=/build/target,id=atlas-cargo-target-sparkqwen,shar
       cat /tmp/atlas-check.log; \
       grep -E 'test result: ok. [1-9][0-9]* passed;' /tmp/atlas-check.log; \
     done
+
+# Run the workspace lint gate with the same pinned Rust compiler as the image.
+RUN --mount=type=cache,target=/build/target,id=atlas-cargo-target-sparkqwen,sharing=shared \
+    rustup component add clippy --toolchain 1.93.1 && \
+    ATLAS_SKIP_BUILD=1 CUDARC_CUDA_VERSION=13000 \
+    cargo clippy --locked --workspace --tests -j "$BUILD_JOBS"
 
 FROM nvidia/cuda:13.0.0-runtime-ubuntu24.04@sha256:95318efecfd68ab3d109da5277863257b06137c84f34a87f38de970d5cd035d3
 RUN apt-get update -qq && apt-get install -y -qq --no-install-recommends --allow-change-held-packages \

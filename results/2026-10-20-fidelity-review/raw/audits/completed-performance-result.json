@@ -1,0 +1,9 @@
+{
+  "complete": true,
+  "main_reused": true,
+  "main_streams_per_arm": 183,
+  "matrix_streams_per_arm": 10,
+  "generic_request_warning_retained": true,
+  "full_quality_pass": false,
+  "release_qualified": false
+}

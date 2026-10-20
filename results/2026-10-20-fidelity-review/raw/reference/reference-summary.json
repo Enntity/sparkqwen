@@ -1,0 +1,110 @@
+{
+  "canonical_ids": {
+    "count": 27034,
+    "compact_json_sha256": "a28f25b5d5564bbe42fd47799788317bbb7bfb586e133c2d9ab7af7ad947203c",
+    "file_sha256": "b5dd3f1e407106a56b8e9cc1210b05d9ece0ac9d0e65d3bd4758d8851c7afedd"
+  },
+  "reference_a4": {
+    "nll_prompt_only": 1.025549691813632,
+    "scored_positions": [
+      1,
+      27033
+    ],
+    "all_positions_finite": true,
+    "ids_match": true,
+    "generated_logprob_excluded": [
+      -0.4882294237613678
+    ]
+  },
+  "atlas47b_a16": {
+    "nll_prompt_only_assuming_n": 1.0483494261723671,
+    "ids_recorded": false,
+    "strict_pair_comparison": "not established",
+    "first_decoded_token_string_difference": {
+      "position": 2207,
+      "reference": "",
+      "atlas": "�"
+    }
+  },
+  "canonical_trace_interval_rank0": {
+    "from_line": 508,
+    "through_line": 513,
+    "events": [
+      {
+        "a4_enabled": true,
+        "calibrated": true,
+        "capturing": false,
+        "hook": "_execution_parts",
+        "parts": [
+          [
+            0,
+            4096,
+            true
+          ]
+        ],
+        "pid": 282,
+        "time_ns": 1792444643597145661,
+        "tokens": 4096
+      },
+      {
+        "activation_amax": false,
+        "capacity": 4096,
+        "capturing": false,
+        "fits_buffers": true,
+        "force": true,
+        "has_route_map": false,
+        "hook": "select_a4",
+        "launches_exist": true,
+        "pid": 282,
+        "router_weight_on_input": false,
+        "selected_a4": true,
+        "terms": 1,
+        "time_ns": 1792444643597229599,
+        "tokens": 4096
+      },
+      {
+        "a4_enabled": true,
+        "calibrated": true,
+        "capturing": false,
+        "hook": "_execution_parts",
+        "parts": [
+          [
+            0,
+            2458,
+            true
+          ]
+        ],
+        "pid": 282,
+        "time_ns": 1792444653191534252,
+        "tokens": 2458
+      },
+      {
+        "activation_amax": false,
+        "capacity": 4096,
+        "capturing": false,
+        "fits_buffers": true,
+        "force": true,
+        "has_route_map": false,
+        "hook": "select_a4",
+        "launches_exist": true,
+        "pid": 282,
+        "router_weight_on_input": false,
+        "selected_a4": true,
+        "terms": 1,
+        "time_ns": 1792444653191625422,
+        "tokens": 2458
+      }
+    ],
+    "scope": "Deduplicated Python launch signatures inside canonical request interval, not every layer/kernel instance or graph replay."
+  },
+  "reference_configuration": {
+    "prefill_a4": "Observed selected_a4=true for canonical prompt on both ranks",
+    "lm_head": "MXFP8 BF16-activation main-head setting in launch; additional NVFP4 head log during later 3-shard MTP loading",
+    "kv_cache_dtype": "fp8",
+    "dtype": "bfloat16",
+    "quantization": "modelopt_mixed",
+    "tp": 2,
+    "max_num_batched_tokens": 4096,
+    "oracle": "Not full BF16; remaining score gap is not by itself a defect attribution."
+  }
+}

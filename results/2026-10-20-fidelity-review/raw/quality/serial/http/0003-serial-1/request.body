@@ -1,0 +1,1 @@
+{"chat_template_kwargs": {"reasoning_effort": "low"}, "max_tokens": 320, "messages": [{"content": "Explain how sourdough starter cultures work, as plain paragraphs for a home baker.", "role": "user"}], "model": "qwen3.8-flash-next-atlas", "temperature": 0}

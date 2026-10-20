@@ -1,0 +1,1 @@
+{"chat_template_kwargs": {"reasoning_effort": "low"}, "max_tokens": 320, "messages": [{"content": "Return a JSON object describing three fictional planets with name, radius_km, moons and atmosphere.", "role": "user"}], "model": "qwen3.8-flash-next-atlas", "temperature": 0}

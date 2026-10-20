@@ -1,0 +1,5 @@
+{
+  "returncode": 0,
+  "stdout": "[{\"port\": 8893, \"bound\": false, \"errno\": 98}, {\"port\": 8894, \"bound\": true}, {\"port\": 29510, \"bound\": true}]\n",
+  "stderr": ""
+}

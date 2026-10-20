@@ -1,0 +1,1 @@
+{"chat_template_kwargs": {"reasoning_effort": "low"}, "max_tokens": 320, "messages": [{"content": "List ten practical tips for reducing household energy use, each with a one-sentence reason.", "role": "user"}], "model": "qwen3.8-flash-next-atlas", "temperature": 0}

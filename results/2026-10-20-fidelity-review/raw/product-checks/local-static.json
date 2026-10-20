@@ -1,0 +1,40 @@
+{
+  "required_checks_passed": true,
+  "utc": "2026-10-20T02:38:35.811932+00:00",
+  "workflow": ".github/workflows/static.yml",
+  "python": "Python 3.14.6",
+  "steps": [
+    {
+      "step": "launch-contract",
+      "returncode": 0
+    },
+    {
+      "step": "shell",
+      "returncode": 0
+    },
+    {
+      "step": "compile",
+      "returncode": 0
+    },
+    {
+      "step": "node",
+      "returncode": 0
+    }
+  ],
+  "json_and_pin": true,
+  "result_directories": {
+    "2026-10-05-bringup": 144,
+    "2026-10-06-pinned": 31,
+    "2026-10-08-rc15": 97,
+    "2026-10-10-rc16": 50,
+    "2026-10-13-maintenance": 3,
+    "2026-10-13-prefill-cache": 19,
+    "2026-10-13-shared-host": 2,
+    "2026-10-15-shared-engine": 67,
+    "2026-10-16-drafter": 26,
+    "2026-10-16-fp4local": 31,
+    "2026-10-17-vision": 19,
+    "2026-10-20-fidelity-review": 685
+  },
+  "install_tree": "70890529ba64dede889814f99f21b3c9a981d9bc"
+}

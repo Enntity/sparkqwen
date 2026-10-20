@@ -1,0 +1,18 @@
+{
+  "finished_ns": 1792459165957651000,
+  "number": 1,
+  "path": "/health",
+  "protocol_error": null,
+  "request_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "response_headers": {
+    "access-control-allow-origin": "*",
+    "connection": "close",
+    "content-type": "application/json",
+    "date": "Tue, 20 Oct 2026 01:19:26 GMT",
+    "transfer-encoding": "chunked"
+  },
+  "response_sha256": "bd00a764d5427be6f57f581212df6406606a67691a3b3ff11f637ba8ab04e501",
+  "stage": "preflight",
+  "started_ns": 1792459165942816000,
+  "status": 200
+}

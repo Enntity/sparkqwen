@@ -1,0 +1,76 @@
+{
+  "shipped41": {
+    "path": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-final-quality-review-708-dispatch/historical-needle-shipped-low.jsonl",
+    "sha256": "11aa5305f91bb9137d60a2e5003fdc4e699aab8780070d0e9cf803fb21ceb74d",
+    "total": 60,
+    "correct": 60,
+    "case50": [
+      {
+        "tag": "sq-shipped-low",
+        "rows": 4800,
+        "depth": 0.367,
+        "b_pos": 0.38,
+        "ok": true,
+        "answer": "52590382",
+        "out": "52590382"
+      }
+    ],
+    "misses": []
+  },
+  "fix1_42": {
+    "path": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-component-admission-r1-results/historical-needle-fix1-low.jsonl",
+    "sha256": "ba02746d87e0d51fdb3d5c474a9781f2c47fa4a30ee5914cac667d3af73b5fe6",
+    "total": 60,
+    "correct": 59,
+    "case50": [
+      {
+        "tag": "sq-fix1-low",
+        "rows": 4800,
+        "depth": 0.367,
+        "b_pos": 0.38,
+        "ok": false,
+        "answer": "52590382",
+        "out": "50828308"
+      }
+    ],
+    "misses": [
+      {
+        "tag": "sq-fix1-low",
+        "rows": 4800,
+        "depth": 0.367,
+        "b_pos": 0.38,
+        "ok": false,
+        "answer": "52590382",
+        "out": "50828308"
+      }
+    ]
+  },
+  "vllm32": {
+    "path": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-component-admission-r1-results/historical-needle-vllmref-low.jsonl",
+    "sha256": "9842a4ca26440bb629a5b7f7b838fdf56f609873d447333ce9c120d07479ce6a",
+    "total": 60,
+    "correct": 59,
+    "case50": [
+      {
+        "tag": "vllmref-low",
+        "rows": 4800,
+        "depth": 0.367,
+        "b_pos": 0.38,
+        "ok": false,
+        "answer": "52590382",
+        "out": "\n\n87384785"
+      }
+    ],
+    "misses": [
+      {
+        "tag": "vllmref-low",
+        "rows": 4800,
+        "depth": 0.367,
+        "b_pos": 0.38,
+        "ok": false,
+        "answer": "52590382",
+        "out": "\n\n87384785"
+      }
+    ]
+  }
+}

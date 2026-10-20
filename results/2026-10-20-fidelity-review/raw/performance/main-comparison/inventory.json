@@ -1,0 +1,1177 @@
+{
+  "Qwen published main/baseline": {
+    "root": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator",
+    "files": {
+      "clocks-restored-r0.txt": {
+        "bytes": 92,
+        "sha256": "c4b3fc8ff0521b96a3fe21bc7909dfaf1c921aad1c2ceba30bf8d3a46848ef58",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/clocks-restored-r0.txt"
+      },
+      "clocks-restored-r1.txt": {
+        "bytes": 92,
+        "sha256": "bb54bdd856533fa872afeabf46adeeadf238dc63092e92b21f905944b84acb73",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/clocks-restored-r1.txt"
+      },
+      "expected-identity.json": {
+        "bytes": 1173,
+        "sha256": "88322767334dcb78c5a7f4d4a203ecc78d8304f7787640d124dc2ee01d6d3ed9",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/expected-identity.json"
+      },
+      "fabric-identity.json": {
+        "bytes": 121,
+        "sha256": "5741091b6353a31445a5bc3fe13c6f630495fd4e26c0da60c3f78180cb59bb39",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/fabric-identity.json"
+      },
+      "health-before.json": {
+        "bytes": 53,
+        "sha256": "bd00a764d5427be6f57f581212df6406606a67691a3b3ff11f637ba8ab04e501",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/health-before.json"
+      },
+      "identity-after.json": {
+        "bytes": 63286,
+        "sha256": "b521ce584155a1dabd46b5cc998016f1e4993544f22699a64c13aa0bf55a8ede",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/identity-after.json"
+      },
+      "identity-before.json": {
+        "bytes": 63286,
+        "sha256": "dce0facbb2f5ecaf7e708a76e52fe1cc91e7bfa498930c2e31b1c0e48e04dab1",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/identity-before.json"
+      },
+      "image-before-r0.json": {
+        "bytes": 6312,
+        "sha256": "024a99092cf83865abab81c4ff7205e761028185e2c85dc9794c86659ed4fa86",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/image-before-r0.json"
+      },
+      "image-before-r1.json": {
+        "bytes": 6312,
+        "sha256": "2af7ce49252eb87b2ffc438a28e2c5e7b5a262526c7242e728b4e975c0794d3a",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/image-before-r1.json"
+      },
+      "input.json": {
+        "bytes": 7337,
+        "sha256": "feb2e0cd848e2063d0b150dc2b78ef15165a896a7524149d36697865e4eebb8b",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/input.json"
+      },
+      "launch-plan.json": {
+        "bytes": 1655,
+        "sha256": "44d0704c87d9d0738956c84568f5a281c9e19e5d9f69a167c25ee957b6bdb027",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/launch-plan.json"
+      },
+      "launch-r0.json": {
+        "bytes": 1001,
+        "sha256": "530d54ab830c20cc782eb22267368258f6429be2aa36618537b8218fc7122da8",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/launch-r0.json"
+      },
+      "launch-r0.log": {
+        "bytes": 189,
+        "sha256": "124b53a31e896eb82d764e44b5e9d4815fff0b05a1bc0cce29670233f303026c",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/launch-r0.log"
+      },
+      "launch-r1.json": {
+        "bytes": 1001,
+        "sha256": "1cb8910517294cc26a047b7333a7eb9f4f951a89a314777ac57ca5ff0e6e2bf8",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/launch-r1.json"
+      },
+      "launch-r1.log": {
+        "bytes": 189,
+        "sha256": "a395ee3f5cfd5839f9b3293569d237dad1437a6797eed15f1bd52f8bd89df7b9",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/launch-r1.log"
+      },
+      "performance-config.json": {
+        "bytes": 5652,
+        "sha256": "a8fb87266c09d8dd49b050fc7811a0a077e5d308fdbfa2e544989b2881d80cba",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/performance-config.json"
+      },
+      "performance-driver.log": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/performance-driver.log"
+      },
+      "preflight-r0.json": {
+        "bytes": 2009,
+        "sha256": "dbdc58bf7c285b9aeef539db88f74c6cfcdd302d485752701dd318afe2edfd53",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/preflight-r0.json"
+      },
+      "preflight-r1.json": {
+        "bytes": 1917,
+        "sha256": "6f6837a5dcd8f66a5b370fe9f9a5a56b5b2e1e9d393fba205243cc11834ba03b",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/preflight-r1.json"
+      },
+      "rank0-archive/SHA256SUMS.json": {
+        "bytes": 715,
+        "sha256": "853eb2882f5a8f5520e5ff6c770705dbbeb10c8fd54b798506a38bb1386fada5",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/SHA256SUMS.json"
+      },
+      "rank0-archive/cache-files.json": {
+        "bytes": 177,
+        "sha256": "d674ca989c3dd2df07e57d16c1746712fca617c78e4e3d6b289558678cecc5d5",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/cache-files.json"
+      },
+      "rank0-archive/container.log": {
+        "bytes": 2008902,
+        "sha256": "25f05094e45876192fae61fb812d05877a0326df21c6938d733acfb483cbeafe",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/container.log"
+      },
+      "rank0-archive/image.json": {
+        "bytes": 7114,
+        "sha256": "f33954c6f620f4bd323aa5808faab52ec2e92258ae8554db4ebae9ab09ddc57f",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/image.json"
+      },
+      "rank0-archive/inspect.json": {
+        "bytes": 11497,
+        "sha256": "b32fff061feb725aeaafb0bb6b215f5251dcc68dfe6e64f19773b297e7c117a3",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/inspect.json"
+      },
+      "rank0-archive/performance-result.json": {
+        "bytes": 822,
+        "sha256": "0731f446ea836bcd6273b0dc62ee004cccbf5736424adcf54df7840154057616",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance-result.json"
+      },
+      "rank0-archive/performance.tar": {
+        "bytes": 4474880,
+        "sha256": "dc2ba8bba932b0f1dda5a63ff12f54d4652cb6a3e4f024571391b01989d39cec",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar"
+      },
+      "rank0-archive/ple-ownership.json": {
+        "bytes": 377,
+        "sha256": "0b83b6bb723fd6b6b186939347ad8da5f4da198828a66aa8f65959e91458e562",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/ple-ownership.json"
+      },
+      "rank0-archive/transfer.json": {
+        "bytes": 138,
+        "sha256": "3cedc24eaf3487e2e3ce12d213bec2774a0f17c1b19967aa69c41fb0b1fcae2d",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/transfer.json"
+      },
+      "rank0-archive-verified.json": {
+        "bytes": 213,
+        "sha256": "842aa23b8d02e72113e6f430150b5511d092baa76bc6b0d504d880982992ddfd",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive-verified.json"
+      },
+      "rank0-cleanup.json": {
+        "bytes": 216,
+        "sha256": "7356d51c881bb728bed288683ffecb1a802d6c1bb7545e06ff6d5a0677d30654",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-cleanup.json"
+      },
+      "rank1-archive/SHA256SUMS.json": {
+        "bytes": 442,
+        "sha256": "20763937438d2d4eb112814c9e1090d6444e9462ec2c8691071481dca29b7243",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank1-archive/SHA256SUMS.json"
+      },
+      "rank1-archive/cache-files.json": {
+        "bytes": 177,
+        "sha256": "d674ca989c3dd2df07e57d16c1746712fca617c78e4e3d6b289558678cecc5d5",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank1-archive/cache-files.json"
+      },
+      "rank1-archive/container.log": {
+        "bytes": 1149362,
+        "sha256": "3e59dd2ee0f485e042ea2299b72592defcafcdf70a382d3f4c100448e83f1a12",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank1-archive/container.log"
+      },
+      "rank1-archive/image.json": {
+        "bytes": 7114,
+        "sha256": "b0037affdb3a1b790aaa0a542ea0ed8895c4067f6bffef0eb49ec0ca8c9e0657",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank1-archive/image.json"
+      },
+      "rank1-archive/inspect.json": {
+        "bytes": 11498,
+        "sha256": "3e51b4e7a7b1865c2c996a10be73d29c756a5d18326806e609ee2b17593bf355",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank1-archive/inspect.json"
+      },
+      "rank1-archive/ple-ownership.json": {
+        "bytes": 377,
+        "sha256": "0b83b6bb723fd6b6b186939347ad8da5f4da198828a66aa8f65959e91458e562",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank1-archive/ple-ownership.json"
+      },
+      "rank1-archive-verified.json": {
+        "bytes": 213,
+        "sha256": "5768e0bc8389365dd378bb08bf99cde7ebfecc0a4f794a7343cdad75b33758a0",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank1-archive-verified.json"
+      },
+      "rank1-cleanup.json": {
+        "bytes": 216,
+        "sha256": "1c9eeab595f53273d8f5411943186b104f303e00e787c3f29900145b6556a4f0",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank1-cleanup.json"
+      },
+      "renew-r-5316de16-1792455344379551000.json": {
+        "bytes": 460,
+        "sha256": "fafc8d46661004d86218633203118131aa790cf0fdd2180a26efa728bd12c617",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/renew-r-5316de16-1792455344379551000.json"
+      },
+      "renew-r-5316de16-1792455358003649000.json": {
+        "bytes": 460,
+        "sha256": "9bad5fa4a6fb936c22a98e4581d1faa96d9999fd69cf6d9675e807a00a740eab",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/renew-r-5316de16-1792455358003649000.json"
+      },
+      "renew-r-5316de16-1792455425438994000.json": {
+        "bytes": 460,
+        "sha256": "9473d5b0e8c96c85ca28e0319899650047665e411f6a375acb8e888163d9bdb2",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/renew-r-5316de16-1792455425438994000.json"
+      },
+      "renew-r-5316de16-1792455501077171000.json": {
+        "bytes": 460,
+        "sha256": "7d576f3ced460ab1bccc4d742bee95d07ddfa29e5db52716e6c2fc67c004bd28",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/renew-r-5316de16-1792455501077171000.json"
+      },
+      "renew-r-5316de16-1792455563405854000.json": {
+        "bytes": 460,
+        "sha256": "13ff2144fe26c54175947406df8c0f6283767ebeb3e4b0cb3cb3666a12a754c4",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/renew-r-5316de16-1792455563405854000.json"
+      },
+      "renew-r-5316de16-1792455626820171000.json": {
+        "bytes": 460,
+        "sha256": "d03d2896e8245e20ef0ff6c335a23f2de37a1aea45858ebd24bb9514e1f12103",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/renew-r-5316de16-1792455626820171000.json"
+      },
+      "renew-r-5316de16-1792455691176096000.json": {
+        "bytes": 460,
+        "sha256": "ebf74f122033faa97411bafd7509d62006d0168d5bc29a61077d16871144cc8e",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/renew-r-5316de16-1792455691176096000.json"
+      },
+      "renew-r-5316de16-1792455754644314000.json": {
+        "bytes": 460,
+        "sha256": "0945b3807504da22e798fb52a852629cbe98dbf671127f7f2bda9dd330fc9312",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/renew-r-5316de16-1792455754644314000.json"
+      },
+      "renew-r-5316de16-1792455817061782000.json": {
+        "bytes": 460,
+        "sha256": "77296878a8283e5a2f14e21973f505c8dea0f793388b28a25723f0d1b377a712",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/renew-r-5316de16-1792455817061782000.json"
+      },
+      "renew-r-5316de16-1792455879640169000.json": {
+        "bytes": 460,
+        "sha256": "a05d99a42860920e743d43df156054a07b88f2653e75b4b499dc6265b4ea2c99",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/renew-r-5316de16-1792455879640169000.json"
+      },
+      "renew-r-5316de16-1792455943615451000.json": {
+        "bytes": 460,
+        "sha256": "6b22662dc3d538d6a63e02808eb01a1a5c1e1d4dde63d6d3647d20535bf0bdca",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/renew-r-5316de16-1792455943615451000.json"
+      },
+      "renew-r-5316de16-1792456006754960000.json": {
+        "bytes": 460,
+        "sha256": "46160b9098640000bef1b80aa03ba00c40053ae7d3b1beaaed54ceee4663750d",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/renew-r-5316de16-1792456006754960000.json"
+      },
+      "result.json": {
+        "bytes": 264,
+        "sha256": "ed8ae2c25f01e557fb702d1ce408d8ea328653d36224943b8d19f71f0f95b290",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/result.json"
+      },
+      "schedule-1792455343086038000.json": {
+        "bytes": 29553,
+        "sha256": "f1251b38a2555491c944e99ae58e05ee3369dca22210c6fee79f97b2a6aa11c2",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/schedule-1792455343086038000.json"
+      },
+      "schedule-1792455353799395000.json": {
+        "bytes": 29565,
+        "sha256": "c604e1300479714d936b6f13ef51d4b86743bac54c0b24ac58d47293bdc46cbf",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/schedule-1792455353799395000.json"
+      },
+      "schedule-1792455355554714000.json": {
+        "bytes": 29565,
+        "sha256": "2e7502635e470b7bafd3b73156f20363982a26db323944ac5eefe81c534db0e5",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/schedule-1792455355554714000.json"
+      },
+      "schedule-1792455357451253000.json": {
+        "bytes": 29565,
+        "sha256": "597c049c2ea61d4efa96ec90bfe66c793458d84b0dd756325bda4480ea6fdbc0",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/schedule-1792455357451253000.json"
+      },
+      "schedule-1792455424762082000.json": {
+        "bytes": 29225,
+        "sha256": "7909e4e9d38a1b5b001573d4b0b528422d939b9a5e4b5a219030cc868e57109d",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/schedule-1792455424762082000.json"
+      },
+      "schedule-1792455500528438000.json": {
+        "bytes": 29043,
+        "sha256": "e8accb4ee24b8a0d69a29421fb5e71c1574c8c60c28654704f2374f9a5781d05",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/schedule-1792455500528438000.json"
+      },
+      "schedule-1792455562850783000.json": {
+        "bytes": 28824,
+        "sha256": "8c5a26838824a728a97665fd0af2feb53334d74a5d95ea8ec5f67f0257871347",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/schedule-1792455562850783000.json"
+      },
+      "schedule-1792455625979756000.json": {
+        "bytes": 28702,
+        "sha256": "ae4bf1fc99c4672ccb9b109e75638e9ab03eac0f02fecd0898aa0ab36f74f291",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/schedule-1792455625979756000.json"
+      },
+      "schedule-1792455689900762000.json": {
+        "bytes": 28329,
+        "sha256": "d684dd9fa8cda8e2351af405468d7c311e45240252f1251c59ac553884c7fc71",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/schedule-1792455689900762000.json"
+      },
+      "schedule-1792455754079791000.json": {
+        "bytes": 28176,
+        "sha256": "7dc6b53c45cf4766487134e834ebd1e07e9f2566c7ede31d92d8fe5e34462e1b",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/schedule-1792455754079791000.json"
+      },
+      "schedule-1792455816514468000.json": {
+        "bytes": 27973,
+        "sha256": "df0968ed5a8fdeca9a081db5ad141c5f8324f240151778044131a72976fee675",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/schedule-1792455816514468000.json"
+      },
+      "schedule-1792455879112839000.json": {
+        "bytes": 27868,
+        "sha256": "48a2983473a7141e2e56a0e9ce8b0382cbf4007440943b6139802e05bc92415a",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/schedule-1792455879112839000.json"
+      },
+      "schedule-1792455942384371000.json": {
+        "bytes": 27654,
+        "sha256": "bdaa480fbfc4af31fe2bb00394525f5958d9894e73a9daa186ebdde2bbe11760",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/schedule-1792455942384371000.json"
+      },
+      "schedule-1792456006202890000.json": {
+        "bytes": 27429,
+        "sha256": "96fd73f8b9a291a545a9609247fdbe7718f01395adad52e6f8d928943b7dda71",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/schedule-1792456006202890000.json"
+      },
+      "schedule-renewed-1792455345461500000.json": {
+        "bytes": 29553,
+        "sha256": "c3dbaf538e17a43bf1264703ab7d3df288d50bb3c720b9efd78a65373274d42b",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/schedule-renewed-1792455345461500000.json"
+      },
+      "schedule-renewed-1792455358592843000.json": {
+        "bytes": 29566,
+        "sha256": "bc5c6ed535ff62485af15d53ffebafc3c793a7b1c5abb55785904d8a0124b3d4",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/schedule-renewed-1792455358592843000.json"
+      },
+      "schedule-renewed-1792455425998392000.json": {
+        "bytes": 29225,
+        "sha256": "b49c146b7a17d2a17324587b4720c46403b789b289f79fa9ae90d3a9514f4cea",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/schedule-renewed-1792455425998392000.json"
+      },
+      "schedule-renewed-1792455501568449000.json": {
+        "bytes": 29043,
+        "sha256": "7e8038895e11e99599049e05ea7fc233942411a569a5c1561d42308a6855f37e",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/schedule-renewed-1792455501568449000.json"
+      },
+      "schedule-renewed-1792455563948697000.json": {
+        "bytes": 28824,
+        "sha256": "013b16a9688e64cb3c97616497b91a2228b54def7944737e3eb194aa20d32b62",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/schedule-renewed-1792455563948697000.json"
+      },
+      "schedule-renewed-1792455627650676000.json": {
+        "bytes": 28702,
+        "sha256": "1b09dc11c0bdcad65d034295a1cb0fbf4a6b9419a48f10123c614350f584c4e1",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/schedule-renewed-1792455627650676000.json"
+      },
+      "schedule-renewed-1792455692196123000.json": {
+        "bytes": 28329,
+        "sha256": "e8679d82ab1e6a7aaaeb0b25c50de9779590e39ab2ead2ca41e4d9a7cb241ac6",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/schedule-renewed-1792455692196123000.json"
+      },
+      "schedule-renewed-1792455755172100000.json": {
+        "bytes": 28176,
+        "sha256": "b20b8ac231eda544fba3e388d048aa8fd76a80d4845b1935e8014e887a22a678",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/schedule-renewed-1792455755172100000.json"
+      },
+      "schedule-renewed-1792455817607037000.json": {
+        "bytes": 27973,
+        "sha256": "e1dce1d5bedea4f774389daed8373a40983e805b9b3cb06fa8f9344fee332d41",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/schedule-renewed-1792455817607037000.json"
+      },
+      "schedule-renewed-1792455880207249000.json": {
+        "bytes": 27868,
+        "sha256": "4a69dc18da4e7221c5e0a7987f6029e3635df71be332ab875632585ff96aa3f1",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/schedule-renewed-1792455880207249000.json"
+      },
+      "schedule-renewed-1792455944598330000.json": {
+        "bytes": 27654,
+        "sha256": "62f9f151435c33d67398194c4552c83b3717801d05bfda3ffa98838e4d05c910",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/schedule-renewed-1792455944598330000.json"
+      },
+      "schedule-renewed-1792456007296979000.json": {
+        "bytes": 27429,
+        "sha256": "e90e2b00ec435c22e6b656a5784f625723617952a7fc322a87527ded88ba47a5",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/schedule-renewed-1792456007296979000.json"
+      },
+      "rank0-archive/performance.tar::performance/config.json": {
+        "bytes": 5652,
+        "sha256": "a8fb87266c09d8dd49b050fc7811a0a077e5d308fdbfa2e544989b2881d80cba",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/config.json"
+      },
+      "rank0-archive/performance.tar::performance/suite-passed.json": {
+        "bytes": 624,
+        "sha256": "005438ed0ce915e481f4b136cfa1c560d6a063a784e0ec167aa4f9ec52d9de58",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/suite-passed.json"
+      },
+      "rank0-archive/performance.tar::performance/clock-restoration.json": {
+        "bytes": 71,
+        "sha256": "cdc4759414ca2cf4f9c0b43fa3f0a35e0f7f8053c199b8c18e01bef624d2626f",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/clock-restoration.json"
+      },
+      "rank0-archive/performance.tar::performance/before-identity.json": {
+        "bytes": 486,
+        "sha256": "5174374ef7121b06a2a923fb85aa9fd2047298c03483ce0cb44360c18c6c3b86",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/before-identity.json"
+      },
+      "rank0-archive/performance.tar::performance/post-uncap-clocks.json": {
+        "bytes": 198,
+        "sha256": "0226177ff925c00a336419e5f4643243f647a5fdafad2b46d14e96c60d385426",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/post-uncap-clocks.json"
+      },
+      "rank0-archive/performance.tar::performance/after-identity.json": {
+        "bytes": 490,
+        "sha256": "cd70b8bb210ecf30174f04d921c482dd4bb5456be46cff8a0f11b7b2c5e1511a",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/after-identity.json"
+      },
+      "rank0-archive/performance.tar::performance/harness-sha256.json": {
+        "bytes": 6874,
+        "sha256": "37375546134645ad26b72aacf78791641dbed27a32b70550028ceb81aee0dd92",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/harness-sha256.json"
+      },
+      "rank0-archive/performance.tar::performance/runner-sha256.json": {
+        "bytes": 792,
+        "sha256": "52b7087cffdfb535575bcf4ae17b4bb7674ca677b240fdf29da11ed8794e7d1a",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/runner-sha256.json"
+      },
+      "rank0-archive/performance.tar::performance/before-rank0/profile.json": {
+        "bytes": 5364,
+        "sha256": "d0754014f85062ebf3bed827bbfdc9921b71869717637a7399673326021ac33b",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/before-rank0/profile.json"
+      },
+      "rank0-archive/performance.tar::performance/before-rank0/nvidia-smi.txt": {
+        "bytes": 14214,
+        "sha256": "c95667bdba4882dc78a462c3b3f6984c27814385a1a0cf845af9a4e446248db3",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/before-rank0/nvidia-smi.txt"
+      },
+      "rank0-archive/performance.tar::performance/before-rank0/container.json": {
+        "bytes": 14353,
+        "sha256": "59100acc7b5f8980c70f3698d7dfad347558b0821dd6d7c72ea59439082c8ee2",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/before-rank0/container.json"
+      },
+      "rank0-archive/performance.tar::performance/before-rank1/profile.json": {
+        "bytes": 5364,
+        "sha256": "d0754014f85062ebf3bed827bbfdc9921b71869717637a7399673326021ac33b",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/before-rank1/profile.json"
+      },
+      "rank0-archive/performance.tar::performance/before-rank1/nvidia-smi.txt": {
+        "bytes": 13602,
+        "sha256": "55b4da451f21621b8fa4ac8bffe6e101d21fe22f15bdc3b87cb6299f3809e38b",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/before-rank1/nvidia-smi.txt"
+      },
+      "rank0-archive/performance.tar::performance/before-rank1/container.json": {
+        "bytes": 14354,
+        "sha256": "e7a3252b48bd7cbe42a9830e3a0edf110b180cd5b0863c3a184881e34d605908",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/before-rank1/container.json"
+      },
+      "rank0-archive/performance.tar::performance/post-uncap-rank0/nvidia-smi.txt": {
+        "bytes": 14215,
+        "sha256": "70a276505eeb54f7ae3b02c1d361ddbe57d344cce1f37a3ab12a2b0fbfc9adc2",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/post-uncap-rank0/nvidia-smi.txt"
+      },
+      "rank0-archive/performance.tar::performance/post-uncap-rank1/nvidia-smi.txt": {
+        "bytes": 13603,
+        "sha256": "dde8cc807c22b61e5e2d54d97622b1e2341ccf339bae1c80d3fbf355fd5ef74c",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/post-uncap-rank1/nvidia-smi.txt"
+      },
+      "rank0-archive/performance.tar::performance/after-rank0/profile.json": {
+        "bytes": 5364,
+        "sha256": "d0754014f85062ebf3bed827bbfdc9921b71869717637a7399673326021ac33b",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/after-rank0/profile.json"
+      },
+      "rank0-archive/performance.tar::performance/after-rank0/nvidia-smi.txt": {
+        "bytes": 14216,
+        "sha256": "51d398a420b733c43755bb4a08ece6e00970e059147c71cb7485698f29345d70",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/after-rank0/nvidia-smi.txt"
+      },
+      "rank0-archive/performance.tar::performance/after-rank0/container.json": {
+        "bytes": 14353,
+        "sha256": "59100acc7b5f8980c70f3698d7dfad347558b0821dd6d7c72ea59439082c8ee2",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/after-rank0/container.json"
+      },
+      "rank0-archive/performance.tar::performance/after-rank1/profile.json": {
+        "bytes": 5364,
+        "sha256": "d0754014f85062ebf3bed827bbfdc9921b71869717637a7399673326021ac33b",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/after-rank1/profile.json"
+      },
+      "rank0-archive/performance.tar::performance/after-rank1/nvidia-smi.txt": {
+        "bytes": 13603,
+        "sha256": "35e0d1bbb5b160a10123b9e3e617b5a278692de79fd9a3e7f67dfa66849bda58",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/after-rank1/nvidia-smi.txt"
+      },
+      "rank0-archive/performance.tar::performance/after-rank1/container.json": {
+        "bytes": 14354,
+        "sha256": "e7a3252b48bd7cbe42a9830e3a0edf110b180cd5b0863c3a184881e34d605908",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/after-rank1/container.json"
+      },
+      "rank0-archive/performance.tar::performance/commands.json": {
+        "bytes": 4535,
+        "sha256": "26ecf8d6954c8da6584186a840c148230a7d2f6025b89aa8c6c47748b535072f",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/commands.json"
+      },
+      "rank0-archive/performance.tar::performance/rigmark.json": {
+        "bytes": 74567,
+        "sha256": "849de77e330a235381252a18824ae0aa2938cf6d3f4944b5b9fd378fdf945561",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/rigmark.json"
+      },
+      "rank0-archive/performance.tar::performance/rigmark.audit.jsonl": {
+        "bytes": 19267,
+        "sha256": "7a606e5dbd6a6ad8e77ce6c760eaa86ea4965ecc9bb5e532c0b060cd108e3395",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/rigmark.audit.jsonl"
+      },
+      "rank0-archive/performance.tar::performance/bench-baseline.json": {
+        "bytes": 9378,
+        "sha256": "0ac535bede98e2a7f3d2fb654058d245dae0488264322d2aa1e2df4c9329d4e9",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/bench-baseline.json"
+      },
+      "rank0-archive/performance.tar::performance/sq.audit.jsonl": {
+        "bytes": 40545,
+        "sha256": "df1562262a3fb1d11b3bc73ef0b2a6ff59e533ab36706ca10ddd1ec8ff7d234c",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/sq.audit.jsonl"
+      },
+      "rank0-archive/performance.tar::performance/sd-baseline.json": {
+        "bytes": 3018,
+        "sha256": "0f1f68d2c3f4aa9aa0d5cb9f6ad7b457bfb98731cbc477b18ff1f0d2722b97bc",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/sd-baseline.json"
+      },
+      "rank0-archive/performance.tar::performance/sd.audit.jsonl": {
+        "bytes": 38305,
+        "sha256": "d267f07f74acd01ceb6c3d74efe8751a9f7f020cf53f848b948b3f66b180a0e1",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/sd.audit.jsonl"
+      },
+      "rank0-archive/performance.tar::performance/agentic-baseline.json": {
+        "bytes": 1615,
+        "sha256": "d4d6b514d610dd22cfd6c809411025cd6f30663faec103ff06220f010a048c46",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/agentic-baseline.json"
+      },
+      "rank0-archive/performance.tar::performance/agentic.audit.jsonl": {
+        "bytes": 13832,
+        "sha256": "382286047a873687d1529da112c4ffc8be8775816a332deb1e825834d5f1c1b4",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/agentic.audit.jsonl"
+      },
+      "rank0-archive/performance.tar::performance/field-1.json": {
+        "bytes": 154243,
+        "sha256": "3e0badb1102dbd49f82ee09758d19bdfa6f7f162cee3f6c03e5796b2f0ec0823",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/field-1.json"
+      },
+      "rank0-archive/performance.tar::performance/field-1.audit.jsonl": {
+        "bytes": 2761,
+        "sha256": "9bfa64288f3cc6d06400bc040c68c59a3f7ea25391c4299b4a99558af4b57e13",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/field-1.audit.jsonl"
+      },
+      "rank0-archive/performance.tar::performance/field-2.json": {
+        "bytes": 154245,
+        "sha256": "4477ff0972e0aacfaebdea00e2eacc9c98380670e6c2f8f12c130df574061981",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/field-2.json"
+      },
+      "rank0-archive/performance.tar::performance/field-2.audit.jsonl": {
+        "bytes": 2775,
+        "sha256": "b685016793913770603c453e79727b469077599b23d6dcacaf9b4473172f062d",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/field-2.audit.jsonl"
+      },
+      "rank0-archive/performance.tar::performance/field-3.json": {
+        "bytes": 154329,
+        "sha256": "e77d89310a2963bbca08b7c9ad6a330af492dd5614e1785239a0bdc5f1902e90",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/field-3.json"
+      },
+      "rank0-archive/performance.tar::performance/field-3.audit.jsonl": {
+        "bytes": 2770,
+        "sha256": "b1b229fe07b742708d754272f143807b751609a1cc0751cfa01a5ec707892645",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar::performance/field-3.audit.jsonl"
+      }
+    }
+  },
+  "Qwen published main/candidate": {
+    "root": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator",
+    "files": {
+      "clocks-restored-r0.txt": {
+        "bytes": 92,
+        "sha256": "c4b3fc8ff0521b96a3fe21bc7909dfaf1c921aad1c2ceba30bf8d3a46848ef58",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/clocks-restored-r0.txt"
+      },
+      "clocks-restored-r1.txt": {
+        "bytes": 92,
+        "sha256": "c4b3fc8ff0521b96a3fe21bc7909dfaf1c921aad1c2ceba30bf8d3a46848ef58",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/clocks-restored-r1.txt"
+      },
+      "expected-identity.json": {
+        "bytes": 1173,
+        "sha256": "ff3582526bede700ed460e883d198a7387e3d976f2231c392b81bad2bccbf132",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/expected-identity.json"
+      },
+      "fabric-identity.json": {
+        "bytes": 121,
+        "sha256": "5741091b6353a31445a5bc3fe13c6f630495fd4e26c0da60c3f78180cb59bb39",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/fabric-identity.json"
+      },
+      "health-before.json": {
+        "bytes": 53,
+        "sha256": "bd00a764d5427be6f57f581212df6406606a67691a3b3ff11f637ba8ab04e501",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/health-before.json"
+      },
+      "identity-after.json": {
+        "bytes": 63762,
+        "sha256": "01b7c095b4b44086b6946ac634e8c2f0077ddbdc07bad245e4667505a08f217f",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/identity-after.json"
+      },
+      "identity-before.json": {
+        "bytes": 63762,
+        "sha256": "6ec0dfd6cfc9e436862b199d8cd52b4835d5d897fe37ca7ed3d24c246245ec59",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/identity-before.json"
+      },
+      "image-before-r0.json": {
+        "bytes": 6373,
+        "sha256": "d0c166cf6eed2a04eb9b3aab68bb54b7cab8f8aa13892deebcfc0d2fb19ca2c0",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/image-before-r0.json"
+      },
+      "image-before-r1.json": {
+        "bytes": 6373,
+        "sha256": "6246f895bd04d0e413144c72ab8e119310d5338a821324c73010418de901bbd0",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/image-before-r1.json"
+      },
+      "input.json": {
+        "bytes": 7650,
+        "sha256": "8a7c4af4f97410f2989868afa2fbcab7c0b9fe824b1d4323b871ecdd0850e60c",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/input.json"
+      },
+      "launch-plan.json": {
+        "bytes": 1655,
+        "sha256": "811dcf5443ca6375afd7dcea9e4f3d826c6f99d2b95b0d7aeebc36a79570ac27",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/launch-plan.json"
+      },
+      "launch-r0.json": {
+        "bytes": 1001,
+        "sha256": "afe824d67184bf94b140d7bed8f56f84fa681db6d24078ce058586f7a47c7926",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/launch-r0.json"
+      },
+      "launch-r0.log": {
+        "bytes": 189,
+        "sha256": "573e3b73ab2042c15d4d40011777a78620c9e83b19ec71e8726aed02215c7d5a",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/launch-r0.log"
+      },
+      "launch-r1.json": {
+        "bytes": 1001,
+        "sha256": "fed5bf09e1f5d6f807fd5b01e46ab2069a403d43a761494a8eaece0ae4475f1a",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/launch-r1.json"
+      },
+      "launch-r1.log": {
+        "bytes": 189,
+        "sha256": "9c36b3afeeac6ccf2ad39c97c9461134c720fe4a11db85b77b97a76f72369827",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/launch-r1.log"
+      },
+      "performance-config.json": {
+        "bytes": 5570,
+        "sha256": "ed5d1c94b5726801f376b3da964de6dd29994cb38b3289c776db43c891c6fd38",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/performance-config.json"
+      },
+      "performance-driver.log": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/performance-driver.log"
+      },
+      "preflight-r0.json": {
+        "bytes": 2009,
+        "sha256": "09ca96dccdfe33049d96026fed258cd27937c11e23aa30408261c7a6d4401694",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/preflight-r0.json"
+      },
+      "preflight-r1.json": {
+        "bytes": 1917,
+        "sha256": "5d7821583578d780c429bc0512793e9b3b19d97819499b5c32a1038d969914c9",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/preflight-r1.json"
+      },
+      "rank0-archive/SHA256SUMS.json": {
+        "bytes": 715,
+        "sha256": "2fdc57c4e76eeecd931a344a2cfd984e8a498e420e26f38b8d87afe8761c2ced",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/SHA256SUMS.json"
+      },
+      "rank0-archive/cache-files.json": {
+        "bytes": 177,
+        "sha256": "d674ca989c3dd2df07e57d16c1746712fca617c78e4e3d6b289558678cecc5d5",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/cache-files.json"
+      },
+      "rank0-archive/container.log": {
+        "bytes": 2016106,
+        "sha256": "9836c0b87494080e319b596d3612fd1473fb641d198993c3ee020409b0f45286",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/container.log"
+      },
+      "rank0-archive/image.json": {
+        "bytes": 7185,
+        "sha256": "332931b46133060e17dcfaad27b62cdc87ee36d697c3b4935c3a090eda0af110",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/image.json"
+      },
+      "rank0-archive/inspect.json": {
+        "bytes": 11564,
+        "sha256": "9062e38dba83b8dd1a127957d05794f34c812369d8dac5f158d6cf42f86388dd",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/inspect.json"
+      },
+      "rank0-archive/performance-result.json": {
+        "bytes": 822,
+        "sha256": "27eb39b587088b45322240299406a539c728a224c15f81ee5b7d46a5f744dbde",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance-result.json"
+      },
+      "rank0-archive/performance.tar": {
+        "bytes": 4505600,
+        "sha256": "a653b97657afc6121d2da2439ceca3d31fc797c8e45446ab3401b7cd573ba9fb",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar"
+      },
+      "rank0-archive/ple-ownership.json": {
+        "bytes": 377,
+        "sha256": "f98421961c87aaf593bd34992a16a2302d6745ec7f29b11641f815c7653bea21",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/ple-ownership.json"
+      },
+      "rank0-archive/transfer.json": {
+        "bytes": 138,
+        "sha256": "855a99031eed0b649e70ad11a7241623a93a14eea774313a48f99e905cfe5f94",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/transfer.json"
+      },
+      "rank0-archive-verified.json": {
+        "bytes": 213,
+        "sha256": "5a272b69320fd34595bba2b3c02441a03f9c45ef923cfc68e45d6e491163e739",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive-verified.json"
+      },
+      "rank0-cleanup.json": {
+        "bytes": 216,
+        "sha256": "6cbad887a2bc369ead5223024c21c021a4d67e335b27e74057fee7448475ec57",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-cleanup.json"
+      },
+      "rank1-archive/SHA256SUMS.json": {
+        "bytes": 442,
+        "sha256": "22ff5c8de55edb23166097118ea80bac58a947dd995ddef580e9864ad23a6860",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank1-archive/SHA256SUMS.json"
+      },
+      "rank1-archive/cache-files.json": {
+        "bytes": 177,
+        "sha256": "d674ca989c3dd2df07e57d16c1746712fca617c78e4e3d6b289558678cecc5d5",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank1-archive/cache-files.json"
+      },
+      "rank1-archive/container.log": {
+        "bytes": 1170758,
+        "sha256": "d3cf14d85d0b14a1a867bed012f95774cb171e8d3edac10ceb5c1bf932527a60",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank1-archive/container.log"
+      },
+      "rank1-archive/image.json": {
+        "bytes": 7185,
+        "sha256": "3a5490924eac42ca314142be440aec0bf8f3fd3f81dceb91145d7026d54523d5",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank1-archive/image.json"
+      },
+      "rank1-archive/inspect.json": {
+        "bytes": 11563,
+        "sha256": "1da985944872ea1d122da3e2e889fd911129aec7b9a6354eed1293209676bf28",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank1-archive/inspect.json"
+      },
+      "rank1-archive/ple-ownership.json": {
+        "bytes": 377,
+        "sha256": "f98421961c87aaf593bd34992a16a2302d6745ec7f29b11641f815c7653bea21",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank1-archive/ple-ownership.json"
+      },
+      "rank1-archive-verified.json": {
+        "bytes": 213,
+        "sha256": "870f15d5c3ec8ced279393b2fdf381661d7a90fb34045369628deb2d48663f18",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank1-archive-verified.json"
+      },
+      "rank1-cleanup.json": {
+        "bytes": 216,
+        "sha256": "d841dc8832d4aa58fbc4afeec346cf8162c83c53354e38468eacdbd6f4a30273",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank1-cleanup.json"
+      },
+      "renew-r-5316de16-1792462013195920000.json": {
+        "bytes": 460,
+        "sha256": "97f231efb94d2258eb14351b2064bc657baf447d53d82aad83153308b6aed6a8",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/renew-r-5316de16-1792462013195920000.json"
+      },
+      "renew-r-5316de16-1792462028141831000.json": {
+        "bytes": 460,
+        "sha256": "4307a8ec20feadf32d00ce98529ebcda4be6ee858a152021033e5baf2f3912d0",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/renew-r-5316de16-1792462028141831000.json"
+      },
+      "renew-r-5316de16-1792462092133283000.json": {
+        "bytes": 460,
+        "sha256": "2d2b36960a4e2717f17044a855df57b4b8311a90fb1a14b58722458a067c65eb",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/renew-r-5316de16-1792462092133283000.json"
+      },
+      "renew-r-5316de16-1792462156349428000.json": {
+        "bytes": 460,
+        "sha256": "80eabef42b58baca01ec08c818b9acc7ad51d10ec338b9dd27a8ffd0a1e4f2ba",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/renew-r-5316de16-1792462156349428000.json"
+      },
+      "renew-r-5316de16-1792462219742602000.json": {
+        "bytes": 460,
+        "sha256": "17d3ea99ff60a21ba933bb55c8dddee0f13f31b5832436c2f56d34aec1a3b310",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/renew-r-5316de16-1792462219742602000.json"
+      },
+      "renew-r-5316de16-1792462283563220000.json": {
+        "bytes": 460,
+        "sha256": "cebcebfc534849addf261b8bad2a547386bdf74cf9532559390cee018eeff00c",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/renew-r-5316de16-1792462283563220000.json"
+      },
+      "renew-r-5316de16-1792462346683159000.json": {
+        "bytes": 460,
+        "sha256": "ea7dad6f82b092470b9ab3e4dbf04ea29628ba4f44902d880b7d30c32aa663d2",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/renew-r-5316de16-1792462346683159000.json"
+      },
+      "renew-r-5316de16-1792462410124465000.json": {
+        "bytes": 460,
+        "sha256": "869a40bcd199c2186baa2c9d81f6dbfc068f55dc562649901a4f17fded88ea2d",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/renew-r-5316de16-1792462410124465000.json"
+      },
+      "renew-r-5316de16-1792462473446576000.json": {
+        "bytes": 460,
+        "sha256": "637efdb3c3ea6e563fb0c5a02fcd366d01ae786fa0ce9614f45e6e6094eab19d",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/renew-r-5316de16-1792462473446576000.json"
+      },
+      "renew-r-5316de16-1792462537700525000.json": {
+        "bytes": 460,
+        "sha256": "c8af3b942f66e77fb49b110297f2a08019683aece0da8b7dc02d260d51dadbcd",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/renew-r-5316de16-1792462537700525000.json"
+      },
+      "renew-r-5316de16-1792462600606873000.json": {
+        "bytes": 460,
+        "sha256": "7e175bc0e0583a6da7ffc7b31233f51136f5de66735a67a05adeae23be307d09",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/renew-r-5316de16-1792462600606873000.json"
+      },
+      "renew-r-5316de16-1792462664008964000.json": {
+        "bytes": 460,
+        "sha256": "509ace739aa263a9edf93be9c2d83801d0f533778c2ac51ae815403c278434ef",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/renew-r-5316de16-1792462664008964000.json"
+      },
+      "result.json": {
+        "bytes": 264,
+        "sha256": "ed8ae2c25f01e557fb702d1ce408d8ea328653d36224943b8d19f71f0f95b290",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/result.json"
+      },
+      "schedule-1792462012564635000.json": {
+        "bytes": 28038,
+        "sha256": "0718dc34ee0d329140acff5bde7b3d0e4d4e51609561e19f4e0168c756653597",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/schedule-1792462012564635000.json"
+      },
+      "schedule-1792462024028454000.json": {
+        "bytes": 27791,
+        "sha256": "9cae060d71ebf85c448617a42d28cb5fbfc9eac2f3338d3bd65d6a37b0d78b21",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/schedule-1792462024028454000.json"
+      },
+      "schedule-1792462025752993000.json": {
+        "bytes": 27792,
+        "sha256": "69883c2c3b3407a95fe5cb98bcb1fda88b62c983c7940b49c15cd7968eefd3bc",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/schedule-1792462025752993000.json"
+      },
+      "schedule-1792462027586632000.json": {
+        "bytes": 27792,
+        "sha256": "4fc10f63addbbb93b4d600811c3ba929eba557797c98bbd3fe23d0a1af02cd5b",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/schedule-1792462027586632000.json"
+      },
+      "schedule-1792462091437091000.json": {
+        "bytes": 28255,
+        "sha256": "24c1d59e9995bd330ae8bf9d749e929e1cf7254a9e03775f5c0ba5bc8e7e4a32",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/schedule-1792462091437091000.json"
+      },
+      "schedule-1792462155505546000.json": {
+        "bytes": 28021,
+        "sha256": "0d199c9a5c18b3b338b278cc5c391473d44a3078737f24c0d1432c07c331b9e7",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/schedule-1792462155505546000.json"
+      },
+      "schedule-1792462219044493000.json": {
+        "bytes": 28021,
+        "sha256": "26d7b0f22014a12d374c88877f945901ec009deb6ee3cccd0ce64ff2358c3fa3",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/schedule-1792462219044493000.json"
+      },
+      "schedule-1792462282986827000.json": {
+        "bytes": 28020,
+        "sha256": "4d8d3481aa00def3691e88836d12842a9dbd9a8d8ae9f0e2cf2c9f7476caf384",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/schedule-1792462282986827000.json"
+      },
+      "schedule-1792462345849976000.json": {
+        "bytes": 28019,
+        "sha256": "6a783b308c2670d848bd03e2399aff2ed9ec3b48513f4fad5a2663c6d57b043c",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/schedule-1792462345849976000.json"
+      },
+      "schedule-1792462409267712000.json": {
+        "bytes": 28018,
+        "sha256": "fb7d8dea9106e58d598d17e01dc1b01fde2b355a69cea64c0681d8e3f2cb306d",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/schedule-1792462409267712000.json"
+      },
+      "schedule-1792462472658438000.json": {
+        "bytes": 28017,
+        "sha256": "de458c62e1cb365c815fd94ddf772062ed9dd3378e625d1b05993f701656115d",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/schedule-1792462472658438000.json"
+      },
+      "schedule-1792462537036197000.json": {
+        "bytes": 28016,
+        "sha256": "8c9f671a2b06f870e16ddebb98a380fadd54102e570a2b4ceab04baea87433fa",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/schedule-1792462537036197000.json"
+      },
+      "schedule-1792462599944028000.json": {
+        "bytes": 28416,
+        "sha256": "f168c12123ada3ce1887414c9040449513ddec4bd5d347243fa5fa7566afcb74",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/schedule-1792462599944028000.json"
+      },
+      "schedule-1792462663140955000.json": {
+        "bytes": 28214,
+        "sha256": "32688071977c77108fcc45d50267c9c4630d2f7e44ee1eeb1c01bcb2d02e0e19",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/schedule-1792462663140955000.json"
+      },
+      "schedule-renewed-1792462014340782000.json": {
+        "bytes": 28038,
+        "sha256": "54fd09ec74ec735912727d894da8fac01c84cbdadd9f80840b5b52c265fc91f9",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/schedule-renewed-1792462014340782000.json"
+      },
+      "schedule-renewed-1792462028686262000.json": {
+        "bytes": 27792,
+        "sha256": "e5abd35edcb6d3edf4be5e9b74e725fe876c2a6c96ba3d30b5ca96bd0a71b2e4",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/schedule-renewed-1792462028686262000.json"
+      },
+      "schedule-renewed-1792462092761835000.json": {
+        "bytes": 28256,
+        "sha256": "5277f2d5fe97affcf4b8719368195479e0be03f475fd6c970ece3c373a804655",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/schedule-renewed-1792462092761835000.json"
+      },
+      "schedule-renewed-1792462157211082000.json": {
+        "bytes": 28021,
+        "sha256": "2dcc476a000801251229df1be43be1d098ea4e4fc3e9176c45e275a073bec934",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/schedule-renewed-1792462157211082000.json"
+      },
+      "schedule-renewed-1792462220628353000.json": {
+        "bytes": 28021,
+        "sha256": "c96bddf72f22930cd79cd60d8caf8ab71c34ff290ac7dea07c68e661c22a358f",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/schedule-renewed-1792462220628353000.json"
+      },
+      "schedule-renewed-1792462284140132000.json": {
+        "bytes": 28020,
+        "sha256": "4a8d9b07fa1eb66c1147c59f04cb320f910037b6585c1102524d2b2621a42975",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/schedule-renewed-1792462284140132000.json"
+      },
+      "schedule-renewed-1792462347407746000.json": {
+        "bytes": 28019,
+        "sha256": "4546cbaeeee14c42e36032fabeac16e8091941f7718ef2106d73a9648956b4d7",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/schedule-renewed-1792462347407746000.json"
+      },
+      "schedule-renewed-1792462411170674000.json": {
+        "bytes": 28018,
+        "sha256": "e1797bbb90b2f52fb4051e1457dd11b7b53c4bbcd45c28a1d4f4ae6e179d73d4",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/schedule-renewed-1792462411170674000.json"
+      },
+      "schedule-renewed-1792462474667658000.json": {
+        "bytes": 28017,
+        "sha256": "4955c061babd7d364233ef08c3b71a9285dde0603469e7dbef4b868b766f4e79",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/schedule-renewed-1792462474667658000.json"
+      },
+      "schedule-renewed-1792462538382834000.json": {
+        "bytes": 28016,
+        "sha256": "10a7bfd81269c6098b5b3cd5713401478ec3587490eac93584d21dd01633f450",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/schedule-renewed-1792462538382834000.json"
+      },
+      "schedule-renewed-1792462601277774000.json": {
+        "bytes": 28416,
+        "sha256": "b880075627b6e638dc28624cbaff043dfb3aa44c83e6562b70cc5c03066ff517",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/schedule-renewed-1792462601277774000.json"
+      },
+      "schedule-renewed-1792462664600787000.json": {
+        "bytes": 28214,
+        "sha256": "a81c86b5b41abf76a1d92c6b42fc7292e0cc4c79fa8c765c298e75df90acf1c9",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/schedule-renewed-1792462664600787000.json"
+      },
+      "vision-admission-preflight/expected-identity.json": {
+        "bytes": 1173,
+        "sha256": "8ece785799d1c8695546f0f5cbf2c610b8eb2910c642c6a2d0562cb7de5afaa4",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/vision-admission-preflight/expected-identity.json"
+      },
+      "vision-admission-preflight/receipt.json": {
+        "bytes": 290207,
+        "sha256": "55255e98408de64c01250f595c70ca058b4f1802ec22646c9b56d1d95a6310f6",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/vision-admission-preflight/receipt.json"
+      },
+      "vision-admission-preflight/request.body": {
+        "bytes": 7617,
+        "sha256": "5179e83383d6e0226600397ef1738a869db3c7949ed3dbf02845bca6b813db3b",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/vision-admission-preflight/request.body"
+      },
+      "vision-admission-preflight/response.body": {
+        "bytes": 282,
+        "sha256": "f40dc5008b0762b17553faa940a225170fc27f61beb3e4d02493cd786239bdb4",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/vision-admission-preflight/response.body"
+      },
+      "vision-admission-preflight/result.json": {
+        "bytes": 398,
+        "sha256": "f9f6a569145311148c896f8dbd83d0eaf54c7df4d1e719487f2e506be9144e95",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/vision-admission-preflight/result.json"
+      },
+      "rank0-archive/performance.tar::performance/config.json": {
+        "bytes": 5570,
+        "sha256": "ed5d1c94b5726801f376b3da964de6dd29994cb38b3289c776db43c891c6fd38",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/config.json"
+      },
+      "rank0-archive/performance.tar::performance/suite-passed.json": {
+        "bytes": 624,
+        "sha256": "31aba01d574bfcb23fbcb2596ac826623671a098cbcff32aba50eaafc332a44b",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/suite-passed.json"
+      },
+      "rank0-archive/performance.tar::performance/clock-restoration.json": {
+        "bytes": 71,
+        "sha256": "136cf3750b75505b828c4e5af070ee88573df959fe6288861fc6569660fb9c32",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/clock-restoration.json"
+      },
+      "rank0-archive/performance.tar::performance/before-identity.json": {
+        "bytes": 485,
+        "sha256": "0d5d51cb2d4784039f5cf74dbdc8a2d76e8b3e1fadbc15992a7f6897ea2459fc",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/before-identity.json"
+      },
+      "rank0-archive/performance.tar::performance/post-uncap-clocks.json": {
+        "bytes": 199,
+        "sha256": "7850c76c68d55095f8943da3da38f49b21d1fb073b6fa06b30ade97cc2065050",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/post-uncap-clocks.json"
+      },
+      "rank0-archive/performance.tar::performance/after-identity.json": {
+        "bytes": 489,
+        "sha256": "cdc8d9a90906cd0b17291e361ca68afc3dfd52aaa7ce114c461f6170de97685a",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/after-identity.json"
+      },
+      "rank0-archive/performance.tar::performance/harness-sha256.json": {
+        "bytes": 6874,
+        "sha256": "37375546134645ad26b72aacf78791641dbed27a32b70550028ceb81aee0dd92",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/harness-sha256.json"
+      },
+      "rank0-archive/performance.tar::performance/runner-sha256.json": {
+        "bytes": 792,
+        "sha256": "52b7087cffdfb535575bcf4ae17b4bb7674ca677b240fdf29da11ed8794e7d1a",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/runner-sha256.json"
+      },
+      "rank0-archive/performance.tar::performance/before-rank0/profile.json": {
+        "bytes": 5194,
+        "sha256": "5360066d46f9769cd096f82bf1272c9c26baf306547ae3fcc2e8a67f9d5f1fbc",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/before-rank0/profile.json"
+      },
+      "rank0-archive/performance.tar::performance/before-rank0/nvidia-smi.txt": {
+        "bytes": 14213,
+        "sha256": "ddb1a34326af29529df45d81012a41e09aec77dc6d1e2b42d68707439866e04a",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/before-rank0/nvidia-smi.txt"
+      },
+      "rank0-archive/performance.tar::performance/before-rank0/container.json": {
+        "bytes": 14430,
+        "sha256": "e59f0a22d828ca175d9a37d716b9293a34844429394754299ca209aa52cc7174",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/before-rank0/container.json"
+      },
+      "rank0-archive/performance.tar::performance/before-rank1/profile.json": {
+        "bytes": 5194,
+        "sha256": "5360066d46f9769cd096f82bf1272c9c26baf306547ae3fcc2e8a67f9d5f1fbc",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/before-rank1/profile.json"
+      },
+      "rank0-archive/performance.tar::performance/before-rank1/nvidia-smi.txt": {
+        "bytes": 13602,
+        "sha256": "cb32a45a37c85a1fd6fe192ba5193fddb792eb4d2bd03dc5c8100ec9ee3fe467",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/before-rank1/nvidia-smi.txt"
+      },
+      "rank0-archive/performance.tar::performance/before-rank1/container.json": {
+        "bytes": 14429,
+        "sha256": "7a9deafcc9f162cc47a1791a62d41fee1997ae1c82334c0a4ebc33d63a5d86d4",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/before-rank1/container.json"
+      },
+      "rank0-archive/performance.tar::performance/post-uncap-rank0/nvidia-smi.txt": {
+        "bytes": 14215,
+        "sha256": "5798f069ebcda8b086882a97a75b42b4953b8a7b59367ea34302463adf12bd37",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/post-uncap-rank0/nvidia-smi.txt"
+      },
+      "rank0-archive/performance.tar::performance/post-uncap-rank1/nvidia-smi.txt": {
+        "bytes": 13603,
+        "sha256": "1746c748cd858e9a55b800eb8616fbd21edb5951d985ff79ad542973e4adbc5e",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/post-uncap-rank1/nvidia-smi.txt"
+      },
+      "rank0-archive/performance.tar::performance/after-rank0/profile.json": {
+        "bytes": 5194,
+        "sha256": "5360066d46f9769cd096f82bf1272c9c26baf306547ae3fcc2e8a67f9d5f1fbc",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/after-rank0/profile.json"
+      },
+      "rank0-archive/performance.tar::performance/after-rank0/nvidia-smi.txt": {
+        "bytes": 14216,
+        "sha256": "f0f49524f2336e315496b7eade1f44100d669cb34987198df7430de3a0bd0809",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/after-rank0/nvidia-smi.txt"
+      },
+      "rank0-archive/performance.tar::performance/after-rank0/container.json": {
+        "bytes": 14430,
+        "sha256": "3b98fd499c1d8c80f444f139d8e70329938d6b015ce3311441f13d50a6fa3a83",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/after-rank0/container.json"
+      },
+      "rank0-archive/performance.tar::performance/after-rank1/profile.json": {
+        "bytes": 5194,
+        "sha256": "5360066d46f9769cd096f82bf1272c9c26baf306547ae3fcc2e8a67f9d5f1fbc",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/after-rank1/profile.json"
+      },
+      "rank0-archive/performance.tar::performance/after-rank1/nvidia-smi.txt": {
+        "bytes": 13604,
+        "sha256": "38ab1d531a2b6a183ebc9b21a352e7eee721e869bc97e1badeee2f8532bd62b6",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/after-rank1/nvidia-smi.txt"
+      },
+      "rank0-archive/performance.tar::performance/after-rank1/container.json": {
+        "bytes": 14429,
+        "sha256": "7a9deafcc9f162cc47a1791a62d41fee1997ae1c82334c0a4ebc33d63a5d86d4",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/after-rank1/container.json"
+      },
+      "rank0-archive/performance.tar::performance/commands.json": {
+        "bytes": 4541,
+        "sha256": "168ee32fca1997d63e47eb201c7b5d3feb3a25b649309bbeb48ac9159852f202",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/commands.json"
+      },
+      "rank0-archive/performance.tar::performance/rigmark.json": {
+        "bytes": 76878,
+        "sha256": "fdb9d63e258d645fa65740e9eecbd194f9469b0aaf3c640a22e7635b5799dc44",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/rigmark.json"
+      },
+      "rank0-archive/performance.tar::performance/rigmark.audit.jsonl": {
+        "bytes": 19262,
+        "sha256": "6fdb7f3bebdeb2ada8905c4ad9e4ba77907eea71cfba77ca512de907c9323649",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/rigmark.audit.jsonl"
+      },
+      "rank0-archive/performance.tar::performance/bench-candidate.json": {
+        "bytes": 9364,
+        "sha256": "e113ba6c16f56cbdffbf6ee040f4e7ee9df929d3f331d94129650be8fba62a46",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/bench-candidate.json"
+      },
+      "rank0-archive/performance.tar::performance/sq.audit.jsonl": {
+        "bytes": 40553,
+        "sha256": "f5ef19cf18a15faa32973ec1c9664c4cbdc4f928b853dcd566720da8c9c66908",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/sq.audit.jsonl"
+      },
+      "rank0-archive/performance.tar::performance/sd-candidate.json": {
+        "bytes": 3020,
+        "sha256": "4262b704ee580823f2f70b2dcce404a32734eba35efeb730d9d662328f3da068",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/sd-candidate.json"
+      },
+      "rank0-archive/performance.tar::performance/sd.audit.jsonl": {
+        "bytes": 38299,
+        "sha256": "c34771fe5e2d6a19a30914d432f64e44928e10a7a92f98d870e1756373b45bf6",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/sd.audit.jsonl"
+      },
+      "rank0-archive/performance.tar::performance/agentic-candidate.json": {
+        "bytes": 1617,
+        "sha256": "fc9db26e0696bc18f18e54acb2c65314451d0f83797c08232f40c962610c25cb",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/agentic-candidate.json"
+      },
+      "rank0-archive/performance.tar::performance/agentic.audit.jsonl": {
+        "bytes": 13800,
+        "sha256": "224be0775cccdcbcfeb97b5146b2d68f098b6090080366f75f2c474b5b6925fc",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/agentic.audit.jsonl"
+      },
+      "rank0-archive/performance.tar::performance/field-1.json": {
+        "bytes": 154104,
+        "sha256": "1bde028e797ae4072f853ea4219c60ecb07b85295243442351bfceaf8fb2f398",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/field-1.json"
+      },
+      "rank0-archive/performance.tar::performance/field-1.audit.jsonl": {
+        "bytes": 2766,
+        "sha256": "76defa9d62490502966e20177408188e4d5ecc2de34605a933b570f44ddafc9d",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/field-1.audit.jsonl"
+      },
+      "rank0-archive/performance.tar::performance/field-2.json": {
+        "bytes": 154241,
+        "sha256": "adf3ebe97592df616d3b46fb49c0dcd4039f51aa1914d04eba5df50631872fcf",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/field-2.json"
+      },
+      "rank0-archive/performance.tar::performance/field-2.audit.jsonl": {
+        "bytes": 2773,
+        "sha256": "4e7c0da85a1547ba804ce257cf19a827730609f3861a572e564a839ff7af7890",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/field-2.audit.jsonl"
+      },
+      "rank0-archive/performance.tar::performance/field-3.json": {
+        "bytes": 154273,
+        "sha256": "aca05de8a0cec34a3265500e0b263b39c28e49e5fd88906ca3c77136d9873035",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/field-3.json"
+      },
+      "rank0-archive/performance.tar::performance/field-3.audit.jsonl": {
+        "bytes": 2773,
+        "sha256": "2939478af362fef8e811d63258c5666505b0207d944324e6622a8eb578a85df9",
+        "location": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar::performance/field-3.audit.jsonl"
+      }
+    }
+  }
+}

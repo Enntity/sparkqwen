@@ -1,0 +1,11 @@
+{
+  "command.json": "afacd7f848b98eadbb7f5b0d24c34d03ddd15da49ba7b556853b92471a37a3f0",
+  "expected-identity.json": "c1ee92508303a3ebd7d16e19fc7801c6ea11b96797135347e4f56a2afee6c4e6",
+  "identity-before.json": "9f822fb5ea302ae108cfe3147477fcbd0b316f33f1b8e59d13b202e1c33f3967",
+  "receipt.json": "65e515a9cabc49e5bc173e838af4dbd8afeccbe6cfc8431eef95561f85b43dbc",
+  "request.body": "a99204cde4031bd706e0b1f5189624e0ed2a13938ce090692de4628d751db434",
+  "response.body": "d728a8d337a8c10b877be42b9c2995d0f422fbea5b68a4c80ee28161001bd0ab",
+  "result.json": "f52b9cd7c8264b17f1e8d386757387d35a2da75d5e2a2a4a854bb706e0bb520e",
+  "worker.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "worker.stdout": "23b48a6cc9fb229cae236ab1945a7a673696548b561bc87d68b1ac36c37d63f2"
+}

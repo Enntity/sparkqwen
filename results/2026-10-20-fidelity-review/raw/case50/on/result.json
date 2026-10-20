@@ -1,0 +1,49 @@
+{
+  "diagnostic_execution_status": "pass",
+  "full_quality_pass": false,
+  "measurement": {
+    "accepted_prediction_tokens": 60,
+    "cache_context": {
+      "fresh_serial_process": false,
+      "limit": "Equal cached-token counts do not prove equal cache contents; original miss was C4 and this replay is C1.",
+      "prefix_cache_enabled_on_both_ranks": true,
+      "prior_matrix_workload_in_same_process": true
+    },
+    "cached_prompt_tokens": 0,
+    "correct": false,
+    "decoded_fields": {
+      "completion_tokens": 93,
+      "content": "94207600",
+      "finish_reason": "stop",
+      "prompt_tokens": 163290,
+      "reasoning_content": "Let me find the key k880253 in Table A first.\n\nLooking through Table A for k880253...\n\nk880253 -> c085059\n\nNow let me find c085059 in Table B.\n\nc085059 = 94207600\n",
+      "tool_calls": null
+    },
+    "final_requests_total_metric": 11.0,
+    "full_usage": {
+      "completion_tokens": 93,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": 60,
+        "audio_tokens": 0,
+        "reasoning_tokens": 81,
+        "rejected_prediction_tokens": 0
+      },
+      "prompt_tokens": 163290,
+      "prompt_tokens_details": {
+        "audio_tokens": 0,
+        "cached_tokens": 0
+      },
+      "response_token/s": 58.76556165648332,
+      "time_to_first_token_ms": 48051.11393,
+      "total_tokens": 163383
+    },
+    "initial_active_metric": 0.0,
+    "initial_requests_total_metric": 10.0,
+    "mtp_fraction": 1.0,
+    "native_done": "2026-10-20T02:25:59.247265Z  INFO spark::scheduler::mtp_accept_debug: Done: 93 tokens (stop) 59.4 tok/s, TTFT=48051.1ms, serial=0.00 mtp=1.00 p1=0.781 mean_na=1.875 tok_step=2.875 regime_reprobes=0 depth=k4 depth_switches=0 acc=0.81,0.65,0.48,-,-,-,- surv=0.78,0.62,0.47,0.00,0.00,0.00,0.00",
+    "scope": "One C1 request; full decoded fields, no generated token-ID proof. Original miss occurred at C4; cache history differs.",
+    "serial_fraction": 0.0
+  },
+  "release_qualified": false,
+  "request_sha256": "a99204cde4031bd706e0b1f5189624e0ed2a13938ce090692de4628d751db434"
+}

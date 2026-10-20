@@ -1,0 +1,16 @@
+[
+  {
+    "case": "a5",
+    "order_ok": true,
+    "secs": 128.81,
+    "status": 200,
+    "text": "red circle\nblue square\ngreen triangle\norange circle\npurple square"
+  },
+  {
+    "case": "b16680",
+    "order_ok": false,
+    "secs": 21.88,
+    "status": 200,
+    "text": "red circle\nblue square\ngreen triangle\norange circle\npurple rectangle"
+  }
+]

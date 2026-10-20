@@ -1,0 +1,9 @@
+{
+  "complete": true,
+  "image": "ghcr.io/enntity/atlas-sparkqwen:70890529ba64",
+  "registry_digest": "sha256:a0cebe89737898692964d3923477bef293a4ebde9dd32e27202697c54f763c9d",
+  "anonymous": true,
+  "fresh_client_context": true,
+  "daemon_layer_cache_may_be_reused": true,
+  "owned_inspection_containers_removed": true
+}

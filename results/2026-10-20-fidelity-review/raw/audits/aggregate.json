@@ -1,0 +1,2231 @@
+{
+  "baseline_union": {
+    "after_active_metric": 0,
+    "exactly_one_done_matches_completion_count": 37,
+    "harness_failure": "native_view required initial active gauge0; baseline lazy_static metric is not registered before first request. Missing initial metric is preserved, not fabricated as an observed zero.",
+    "initial_active_metric": "absent",
+    "interpretation": "Retained baseline also chooses unrelated stocktool on exactbody. Candidate used actualuniongrammar/serialMTP0; baseline lacksuniongrammar and usedMTP1. Baselineprompt1077 vs candidate280 further confirms formatting/configuration differences. This establishes observed baseline failure, not identical execution or causal attribution.",
+    "metric_source_sha256": "125d6116158b71e80da29cfc34fc08cbc2a1f1344f6c278cae4f9f18bb383124",
+    "native_append_prefix_stable": true,
+    "native_container_identity_stable": true,
+    "native_done": "2026-10-20T01:14:11.082143Z  INFO spark::scheduler::mtp_accept_debug: Done: 37 tokens (stop) 40.9 tok/s, TTFT=601.4ms, serial=0.00 mtp=1.00 p1=0.800 mean_na=0.800 tok_step=1.800 regime_reprobes=0 depth=k2 depth_switches=0 acc=0.84,-,-,-,-,-,- surv=0.80,0.00,0.00,0.00,0.00,0.00,0.00",
+    "observed_tool_call": {
+      "arguments": "{\"ticker\":\"Oslo\"}",
+      "name": "get_stock_price"
+    },
+    "original_failed_summary_preserved": "work/qwen-baseline-union-r1/coordinator/quality/summary.json",
+    "original_quality_manifest_sha256": "4ad14c6095030b8ca592677595b567c3ba4c3b0c3ece6da51f707a2ecad9083c",
+    "release_qualified": false,
+    "request_sha256": "5d3bd84500927fff049ded2fd98dbd205c8d63c7d18e861c9ebf8009ac4dfbfd",
+    "semantic_pass": false,
+    "transport_errors": false
+  },
+  "carried_components": {
+    "carried_vision": {
+      "a5": {
+        "case": "a5",
+        "order_ok": true,
+        "secs": 128.81,
+        "status": 200,
+        "text": "red circle\nblue square\ngreen triangle\norange circle\npurple square"
+      },
+      "actual_canvas": [
+        256,
+        1184
+      ],
+      "actual_png_sha256": "1549a1d439b9f196d6483dfee46dab70878c802ea713f8cba45073013cc02adb",
+      "adjudicated_b16680_expected": "purple rectangle",
+      "b16680": {
+        "case": "b16680",
+        "order_ok": false,
+        "secs": 21.88,
+        "status": 200,
+        "text": "red circle\nblue square\ngreen triangle\norange circle\npurple rectangle"
+      },
+      "foreground_bounds": [
+        51,
+        236,
+        205,
+        948
+      ],
+      "foreground_dimensions": [
+        154,
+        712
+      ],
+      "legacy_grader_failure_preserved": true
+    },
+    "geometry_adjudication": "Frozen b16680 generator draws a rectangle on256x1184 canvas, preserving20%-80% bounds independently in x/y. The purple rectangle answer is geometrically correct; original order_okFalse expected mislabeled square and is preserved.",
+    "manifest_sha256": "8c072c8be25cc279b4078d3b20ac67f505850adffcfecfb6f935493923a9b079",
+    "prior_functional_status": "fail",
+    "prior_quality": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-dispatch-r1/quality/coordinator/quality",
+    "scope": "Carried exact-image components only; no previous full-suite success, no new claims for unrun stages",
+    "successful_prior_components": {
+      "biased_logprob_on": "Two16-token cases recorded with measured speculative dispatch; serial comparison pending",
+      "greedy_concurrency": "8/8 each; C1=C4=C8 and C1p=C4p",
+      "mtp_c1_dispatch": {
+        "accepted_prediction_tokens": [
+          193,
+          182,
+          223,
+          213,
+          200,
+          210,
+          206,
+          206
+        ],
+        "missing_serial_counter_scope": null,
+        "native_dispatch": null,
+        "serial": false,
+        "verify_counter_after": {},
+        "verify_counter_before": {},
+        "verify_counter_delta": 0
+      },
+      "tools": {
+        "choice_none": "3/3",
+        "followup": "3/3",
+        "no_tool": "3/3",
+        "parallel": "3/3",
+        "single": "3/3",
+        "stream": "3/3",
+        "typed": "3/3"
+      }
+    },
+    "union_request_sha256": "5d3bd84500927fff049ded2fd98dbd205c8d63c7d18e861c9ebf8009ac4dfbfd",
+    "union_response_sha256": "efcda31937afa1c3200f32f0c283b8fe2f44769cf94580b76b6f366f4e1c9fc5",
+    "unresolved_failure": "Schema-only returned exact Oslo7. Auto tool-or-JSON union called get_stock_price with tickerOSLO, a semantic failure despite structural allowance.",
+    "vision_prior_manifest_sha256": "b64225840b38f5d0ce225b04904038340b34eec519679a009a72a7cbd1e33d50",
+    "vision_prior_quality": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r1/remaining/coordinator/quality"
+  },
+  "full_quality_pass": false,
+  "identity": {
+    "binary_sha256": "4650c2f4551e3e65c08cad4c97dfd894b87741f7d99a1e8a60c5b15acc60810a",
+    "checkpoint_config_sha256": "b50dbc52a0c83b0cd2a44a372c1fb6b5e0e6827d22f2611c97d4d030f92f6b28",
+    "checkpoint_index_sha256": "5fa166bbb1cf25adda455117563efa72a2072272001f459eedece131ffc913e1",
+    "engine_commit": "63bebfa60d5086de9fc8cc07c21e5fbe38f3b742",
+    "engine_tree": "fa4e4817b804039076ba8e506dbd6d55bd453033",
+    "gpu_memory_utilization": null,
+    "image_id": "sha256:a0cebe89737898692964d3923477bef293a4ebde9dd32e27202697c54f763c9d",
+    "install_tree": "70890529ba64dede889814f99f21b3c9a981d9bc",
+    "model": "qwen3.8-flash-next-atlas",
+    "profile": "/opt/atlas/profiles/8x262k.json",
+    "profile_sha256": "225c23340d96e44bd1246e096b04ec49158c3e738ed30231a915183e60b1bd04"
+  },
+  "needle": {
+    "by_size": {
+      "1800": {
+        "correct": 15,
+        "total": 15
+      },
+      "3000": {
+        "correct": 15,
+        "total": 15
+      },
+      "4800": {
+        "correct": 14,
+        "total": 15
+      },
+      "900": {
+        "correct": 15,
+        "total": 15
+      }
+    },
+    "changed_cases": [
+      {
+        "answer": "52590382",
+        "b_pos": 0.38,
+        "depth": 0.367,
+        "ok": false,
+        "out": "94207600",
+        "rows": 4800,
+        "tag": "final-low"
+      }
+    ],
+    "correct": 59,
+    "historical_correct": 60,
+    "misses": [
+      {
+        "answer": "52590382",
+        "b_pos": 0.38,
+        "depth": 0.367,
+        "ok": false,
+        "out": "94207600",
+        "rows": 4800,
+        "tag": "final-low"
+      }
+    ],
+    "pairing_limit": "All 60 case metadata matched. Historical full HTTP prompts/bodies absent; old prompt-byte equivalence is not proven. Answer-containment scoring requires raw-response review; no automatic threshold.",
+    "raw_rows": [
+      {
+        "answer_only": true,
+        "case": [
+          900,
+          0.167,
+          0.768,
+          "85852150"
+        ],
+        "content": "85852150",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0007-needle",
+        "reasoning_content": "The user wants me to find the code for key k975947 in Table A, then find that code's value in Table B.\n\nFrom Table A:\nk975947 -> c675686\n\nFrom Table B:\nc675686 = 85852150\n",
+        "usage": {
+          "completion_tokens": 87,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 57,
+            "audio_tokens": 0,
+            "reasoning_tokens": 75,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 30690,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 5.027647220602866,
+          "time_to_first_token_ms": 11275.133200999999,
+          "total_tokens": 30777
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          900,
+          0.033,
+          0.828,
+          "10382229"
+        ],
+        "content": "10382229",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0008-needle",
+        "reasoning_content": "The user wants me to find the code for key k906592 in Table A, then find that code's value in Table B.\n\nFrom Table A:\nk906592 -> c884392\n\nFrom Table B:\nc884392 = 10382229\n",
+        "usage": {
+          "completion_tokens": 87,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 61,
+            "audio_tokens": 0,
+            "reasoning_tokens": 75,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 30690,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 44.616413765200406,
+          "time_to_first_token_ms": 26454.031703999997,
+          "total_tokens": 30777
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          900,
+          0.1,
+          0.832,
+          "29641454"
+        ],
+        "content": "29641454",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0009-needle",
+        "reasoning_content": "The user wants me to find the code for key k356652 in Table A, then find that code's value in Table B.\n\nLooking at Table A:\nk356652 -> c923471\n\nNow looking at Table B for c923471:\nc923471 = 29641454\n\nThe answer is 29641454.\n",
+        "usage": {
+          "completion_tokens": 112,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 78,
+            "audio_tokens": 0,
+            "reasoning_tokens": 100,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 30690,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          },
+          "response_token/s": 3.887308678746819,
+          "time_to_first_token_ms": 7507.0447890000005,
+          "total_tokens": 30802
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          900,
+          0.233,
+          0.864,
+          "52917357"
+        ],
+        "content": "52917357",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0010-needle",
+        "reasoning_content": "The user wants me to find the code for key k694443 in Table A, then find that code's value in Table B.\n\nFrom Table A:\nk694443 -> c335228\n\nFrom Table B:\nc335228 = 52917357\n",
+        "usage": {
+          "completion_tokens": 87,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 57,
+            "audio_tokens": 0,
+            "reasoning_tokens": 75,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 30690,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 6.404438088049241,
+          "time_to_first_token_ms": 18845.262372,
+          "total_tokens": 30777
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          900,
+          0.3,
+          0.944,
+          "88054827"
+        ],
+        "content": "88054827",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0011-needle",
+        "reasoning_content": "The user wants me to find the code for key k714025 in Table A, then find that code's value in Table B.\n\nFrom Table A:\nk714025 -> c561064\n\nFrom Table B:\nc561064 = 88054827\n",
+        "usage": {
+          "completion_tokens": 87,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 59,
+            "audio_tokens": 0,
+            "reasoning_tokens": 75,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 30690,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 3.528296831064341,
+          "time_to_first_token_ms": 7551.825079,
+          "total_tokens": 30777
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          900,
+          0.367,
+          0.823,
+          "56409884"
+        ],
+        "content": "56409884",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0012-needle",
+        "reasoning_content": "The user wants me to find the code for key k740615 in Table A, then find that code's value in Table B.\n\nLooking at Table A:\nk740615 -> c793607\n\nNow looking at Table B for c793607:\nc793607 = 56409884\n\nThe answer is 56409884.\n",
+        "usage": {
+          "completion_tokens": 112,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 77,
+            "audio_tokens": 0,
+            "reasoning_tokens": 100,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 30690,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 3.4199189629257045,
+          "time_to_first_token_ms": 11348.545123,
+          "total_tokens": 30802
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          900,
+          0.433,
+          0.87,
+          "68697282"
+        ],
+        "content": "68697282",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0013-needle",
+        "reasoning_content": "The user wants me to find the code for key k088714 in Table A, then find that code's value in Table B.\n\nLooking at Table A:\nk088714 -> c325993\n\nNow looking at Table B for c325993:\nc325993 = 68697282\n\nThe 8-digit value is 68697282.\n",
+        "usage": {
+          "completion_tokens": 115,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 79,
+            "audio_tokens": 0,
+            "reasoning_tokens": 103,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 30690,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 4.527751538278236,
+          "time_to_first_token_ms": 22655.279122,
+          "total_tokens": 30805
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          900,
+          0.5,
+          0.579,
+          "56085835"
+        ],
+        "content": "56085835",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0014-needle",
+        "reasoning_content": "The user wants me to find the code for key k105225 in Table A, then find that code's value in Table B.\n\nFrom Table A:\nk105225 -> c998187\n\nFrom Table B:\nc998187 = 56085835\n",
+        "usage": {
+          "completion_tokens": 87,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 59,
+            "audio_tokens": 0,
+            "reasoning_tokens": 75,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 30690,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 5.045726223286315,
+          "time_to_first_token_ms": 15067.349454000001,
+          "total_tokens": 30777
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          900,
+          0.567,
+          0.016,
+          "82198881"
+        ],
+        "content": "82198881",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0015-needle",
+        "reasoning_content": "The user wants me to find the code for key k831120 in Table A, then find that code's value in Table B.\n\nLooking at Table A:\nk831120 -> c424456\n\nNow looking at Table B for c424456:\nc424456 = 82198881\n\nSo the answer is 82198881.\n",
+        "usage": {
+          "completion_tokens": 113,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 77,
+            "audio_tokens": 0,
+            "reasoning_tokens": 101,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 30690,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 4.4442668751723255,
+          "time_to_first_token_ms": 7531.000720999999,
+          "total_tokens": 30803
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          900,
+          0.633,
+          0.612,
+          "88427461"
+        ],
+        "content": "88427461",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0016-needle",
+        "reasoning_content": "The user wants me to find the code for key k660818 in Table A, then find that code's value in Table B.\n\nLooking at Table A:\nk660818 -> c614093\n\nNow looking at Table B for c614093:\nc614093 = 88427461\n",
+        "usage": {
+          "completion_tokens": 98,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 68,
+            "audio_tokens": 0,
+            "reasoning_tokens": 86,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 30690,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 5.617541370868589,
+          "time_to_first_token_ms": 7533.283391,
+          "total_tokens": 30788
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          900,
+          0.7,
+          0.44,
+          "00030332"
+        ],
+        "content": "00030332",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0017-needle",
+        "reasoning_content": "The user wants me to find the code for key k388721 in Table A, then find that code's value in Table B.\n\nLooking in Table A for k388721:\nk388721 -> c957627\n\nNow looking in Table B for c957627:\nc957627 = 00030332\n\nThe 8-digit value is 00030332.\n",
+        "usage": {
+          "completion_tokens": 123,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 86,
+            "audio_tokens": 0,
+            "reasoning_tokens": 111,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 30690,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 4.833391354670548,
+          "time_to_first_token_ms": 7541.073394999999,
+          "total_tokens": 30813
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          900,
+          0.767,
+          0.607,
+          "75517914"
+        ],
+        "content": "75517914",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0018-needle",
+        "reasoning_content": "The user wants me to find the code for key k381670 in Table A, then find that code's value in Table B.\n\nLooking at Table A:\nk381670 -> c298071\n\nNow looking at Table B for c298071:\nc298071 = 75517914\n\nSo the answer is 75517914.\n",
+        "usage": {
+          "completion_tokens": 113,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 77,
+            "audio_tokens": 0,
+            "reasoning_tokens": 101,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 30690,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 4.4458185651034015,
+          "time_to_first_token_ms": 7531.892298,
+          "total_tokens": 30803
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          900,
+          0.833,
+          0.036,
+          "23469311"
+        ],
+        "content": "23469311",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0019-needle",
+        "reasoning_content": "The user wants me to find the code for key k809353 in Table A, then find that code's value in Table B.\n\nLooking at Table A:\nk809353 -> c851969\n\nNow looking at Table B for c851969:\nc851969 = 23469311\n\nThe 8-digit value is 23469311.\n",
+        "usage": {
+          "completion_tokens": 115,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 77,
+            "audio_tokens": 0,
+            "reasoning_tokens": 103,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 30690,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 2.792275115048715,
+          "time_to_first_token_ms": 7532.611174000001,
+          "total_tokens": 30805
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          900,
+          0.9,
+          0.956,
+          "95984342"
+        ],
+        "content": "95984342",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0020-needle",
+        "reasoning_content": "The user wants me to find the code for key k753866 in Table A, then find that code's value in Table B.\n\nLooking at Table A:\nk753866 -> c541761\n\nNow looking at Table B for c541761:\nc541761 = 95984342\n",
+        "usage": {
+          "completion_tokens": 98,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 66,
+            "audio_tokens": 0,
+            "reasoning_tokens": 86,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 30690,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 3.8472004584279964,
+          "time_to_first_token_ms": 11325.623107,
+          "total_tokens": 30788
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          900,
+          0.967,
+          0.49,
+          "56018428"
+        ],
+        "content": "56018428",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0021-needle",
+        "reasoning_content": "The user wants me to find the code for key k283085 in Table A, then find that code's value in Table B.\n\nLooking at Table A:\nk283085 -> c335369\n\nNow looking at Table B for c335369:\nc335369 = 56018428\n",
+        "usage": {
+          "completion_tokens": 98,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 67,
+            "audio_tokens": 0,
+            "reasoning_tokens": 86,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 30690,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 2.3862212130928135,
+          "time_to_first_token_ms": 7548.912866000001,
+          "total_tokens": 30788
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          1800,
+          0.033,
+          0.492,
+          "14002526"
+        ],
+        "content": "14002526",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0022-needle",
+        "reasoning_content": "The user wants me to find the code for key k940659 in Table A, then find that code's value in Table B.\n\nFrom Table A:\nk940659 -> c540342\n\nFrom Table B:\nc540342 = 14002526\n\nSo the answer is 14002526.\n",
+        "usage": {
+          "completion_tokens": 102,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 68,
+            "audio_tokens": 0,
+            "reasoning_tokens": 90,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 61290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 2.0852714131453585,
+          "time_to_first_token_ms": 15484.834714999999,
+          "total_tokens": 61392
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          1800,
+          0.1,
+          0.047,
+          "06483354"
+        ],
+        "content": "06483354",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0023-needle",
+        "reasoning_content": "The user wants me to find the code for key k243282 in Table A, then find that code's value in Table B.\n\nLooking at Table A:\nk243282 -> c366493\n\nNow looking at Table B for c366493:\nc366493 = 06483354\n\nThe 8-digit value is 06483354.\n",
+        "usage": {
+          "completion_tokens": 115,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 79,
+            "audio_tokens": 0,
+            "reasoning_tokens": 103,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 61290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 2.348145306612655,
+          "time_to_first_token_ms": 15522.1264,
+          "total_tokens": 61405
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          1800,
+          0.167,
+          0.711,
+          "97568825"
+        ],
+        "content": "97568825",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0024-needle",
+        "reasoning_content": "The user wants me to find the code for key k248528 in Table A, then find that code's value in Table B.\n\nLooking at Table A for k248528:\nk248528 -> c273909\n\nNow looking at Table B for c273909:\nc273909 = 97568825\n\nSo the answer is 97568825.\n",
+        "usage": {
+          "completion_tokens": 121,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 85,
+            "audio_tokens": 0,
+            "reasoning_tokens": 109,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 61290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 2.6550381055197487,
+          "time_to_first_token_ms": 18963.537573,
+          "total_tokens": 61411
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          1800,
+          0.233,
+          0.452,
+          "66939152"
+        ],
+        "content": "66939152",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0025-needle",
+        "reasoning_content": "The user wants me to find the code for key k274840 in Table A, then find that code's value in Table B.\n\nLooking at Table A:\nk274840 -> c114321\n\nNow looking at Table B for c114321:\nc114321 = 66939152\n",
+        "usage": {
+          "completion_tokens": 98,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 68,
+            "audio_tokens": 0,
+            "reasoning_tokens": 86,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 61290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 4.549359225088796,
+          "time_to_first_token_ms": 18939.045806,
+          "total_tokens": 61388
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          1800,
+          0.3,
+          0.373,
+          "38518884"
+        ],
+        "content": "38518884",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0026-needle",
+        "reasoning_content": "The user wants me to find the code for key k114435 in Table A, then find that code's value in Table B.\n\nLooking at Table A:\nk114435 -> c153208\n\nNow looking at Table B for c153208:\nc153208 = 38518884\n\nThe 8-digit value is 38518884.\n",
+        "usage": {
+          "completion_tokens": 115,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 80,
+            "audio_tokens": 0,
+            "reasoning_tokens": 103,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 61290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 2.349296750485501,
+          "time_to_first_token_ms": 15490.841491,
+          "total_tokens": 61405
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          1800,
+          0.367,
+          0.998,
+          "33080118"
+        ],
+        "content": "33080118",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0027-needle",
+        "reasoning_content": "Let me find the key k439113 in Table A first.\n\nLooking through Table A:\nk439113 -> c395410\n\nNow let me find c395410 in Table B:\nc395410 = 33080118\n",
+        "usage": {
+          "completion_tokens": 85,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 57,
+            "audio_tokens": 0,
+            "reasoning_tokens": 73,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 61290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 1.7530705657682157,
+          "time_to_first_token_ms": 15526.131494,
+          "total_tokens": 61375
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          1800,
+          0.433,
+          0.772,
+          "84291185"
+        ],
+        "content": "84291185",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0028-needle",
+        "reasoning_content": "The user wants me to find the code for key k429693 in Table A, then find that code's value in Table B.\n\nLooking at Table A:\nk429693 -> c452971\n\nNow looking at Table B for c452971:\nc452971 = 84291185\n",
+        "usage": {
+          "completion_tokens": 98,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 67,
+            "audio_tokens": 0,
+            "reasoning_tokens": 86,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 61290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 2.014118982539359,
+          "time_to_first_token_ms": 23219.534415,
+          "total_tokens": 61388
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          1800,
+          0.5,
+          0.956,
+          "34564315"
+        ],
+        "content": "34564315",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0029-needle",
+        "reasoning_content": "The user wants me to find the code for key k578747 in Table A, then find that code's value in Table B.\n\nLooking at Table A:\nk578747 -> c367973\n\nNow looking at Table B for c367973:\nc367973 = 34564315\n\nSo the answer is 34564315.\n",
+        "usage": {
+          "completion_tokens": 113,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 77,
+            "audio_tokens": 0,
+            "reasoning_tokens": 101,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 61290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 2.303113165402876,
+          "time_to_first_token_ms": 31042.127959999998,
+          "total_tokens": 61403
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          1800,
+          0.567,
+          0.86,
+          "44998321"
+        ],
+        "content": "44998321",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0030-needle",
+        "reasoning_content": "Let me find the key k100773 in Table A first.\n\nLooking through Table A:\nk100773 -> c077349\n\nNow I need to find c077349 in Table B:\nc077349 = 44998321\n\nSo the answer is 44998321.\n",
+        "usage": {
+          "completion_tokens": 101,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 70,
+            "audio_tokens": 0,
+            "reasoning_tokens": 89,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 61290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 2.0748030984441055,
+          "time_to_first_token_ms": 15502.434788,
+          "total_tokens": 61391
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          1800,
+          0.633,
+          0.758,
+          "45535022"
+        ],
+        "content": "45535022",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0031-needle",
+        "reasoning_content": "The user wants me to find the code for key k389376 in Table A, then find that code's value in Table B.\n\nLooking in Table A for k389376:\nk389376 -> c234508\n\nNow looking in Table B for c234508:\nc234508 = 45535022\n",
+        "usage": {
+          "completion_tokens": 106,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 75,
+            "audio_tokens": 0,
+            "reasoning_tokens": 94,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 61290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 2.176977477046753,
+          "time_to_first_token_ms": 15474.240914999998,
+          "total_tokens": 61396
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          1800,
+          0.7,
+          0.213,
+          "56132109"
+        ],
+        "content": "56132109",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0032-needle",
+        "reasoning_content": "The user wants me to find the code for key k797899 in Table A, then find that code's value in Table B.\n\nLooking in Table A for k797899:\nk797899 -> c334034\n\nNow looking in Table B for c334034:\nc334034 = 56132109\n",
+        "usage": {
+          "completion_tokens": 106,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 73,
+            "audio_tokens": 0,
+            "reasoning_tokens": 94,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 61290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 2.1712898689425386,
+          "time_to_first_token_ms": 15510.024219,
+          "total_tokens": 61396
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          1800,
+          0.767,
+          0.93,
+          "91770641"
+        ],
+        "content": "91770641",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0033-needle",
+        "reasoning_content": "The user wants me to find the code for key k131830 in Table A, then find that code's value in Table B.\n\nLooking at Table A:\nk131830 -> c126919\n\nNow looking at Table B for c126919:\nc126919 = 91770641\n\nSo the answer is 91770641.\n",
+        "usage": {
+          "completion_tokens": 113,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 78,
+            "audio_tokens": 0,
+            "reasoning_tokens": 101,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 61290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 2.307805617318396,
+          "time_to_first_token_ms": 15497.029987,
+          "total_tokens": 61403
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          1800,
+          0.833,
+          0.167,
+          "57554400"
+        ],
+        "content": "57554400",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0034-needle",
+        "reasoning_content": "The user wants me to find the code for key k926069 in Table A, then find that code's value in Table B.\n\nLooking at Table A:\nk926069 -> c843656\n\nNow looking at Table B for c843656:\nc843656 = 57554400\n\nThe answer is 57554400.\n",
+        "usage": {
+          "completion_tokens": 112,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 78,
+            "audio_tokens": 0,
+            "reasoning_tokens": 100,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 61290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 2.713008019670697,
+          "time_to_first_token_ms": 15495.361835000002,
+          "total_tokens": 61402
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          1800,
+          0.9,
+          0.535,
+          "30805752"
+        ],
+        "content": "30805752",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0035-needle",
+        "reasoning_content": "The user wants me to find the code for key k364519 in Table A, then find that code's value in Table B.\n\nLooking in Table A for k364519:\nk364519 -> c004762\n\nNow looking in Table B for c004762:\nc004762 = 30805752\n\nThe answer is 30805752.\n",
+        "usage": {
+          "completion_tokens": 120,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 84,
+            "audio_tokens": 0,
+            "reasoning_tokens": 108,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 61290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 1.607424614110454,
+          "time_to_first_token_ms": 15493.753044,
+          "total_tokens": 61410
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          1800,
+          0.967,
+          0.388,
+          "78965747"
+        ],
+        "content": "78965747",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0036-needle",
+        "reasoning_content": "The user wants me to find the code for key k364019 in Table A, then find that code's value in Table B.\n\nLooking at Table A for k364019:\nk364019 -> c001429\n\nNow looking at Table B for c001429:\nc001429 = 78965747\n\nThe answer is 78965747.\n",
+        "usage": {
+          "completion_tokens": 120,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 83,
+            "audio_tokens": 0,
+            "reasoning_tokens": 108,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 61290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 1.3699139491240884,
+          "time_to_first_token_ms": 15494.558925,
+          "total_tokens": 61410
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          3000,
+          0.033,
+          0.651,
+          "77140129"
+        ],
+        "content": "77140129",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0037-needle",
+        "reasoning_content": "The user wants me to find the code for key k988843 in Table A, then find that code's value in Table B.\n\nLooking at Table A:\nk988843 -> c091069\n\nNow looking at Table B for c091069:\nc091069 = 77140129\n\nSo the answer is 77140129.\n",
+        "usage": {
+          "completion_tokens": 113,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 79,
+            "audio_tokens": 0,
+            "reasoning_tokens": 101,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 102090,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 1.2916299828884326,
+          "time_to_first_token_ms": 28372.437782999998,
+          "total_tokens": 102203
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          3000,
+          0.1,
+          0.624,
+          "43414356"
+        ],
+        "content": "43414356",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0038-needle",
+        "reasoning_content": "The user wants me to find the code for key k090634 in Table A, then find that code's value in Table B.\n\nLooking at Table A:\nk090634 -> c049257\n\nNow looking at Table B for c049257:\nc049257 = 43414356\n\nSo the answer is 43414356.\n",
+        "usage": {
+          "completion_tokens": 113,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 81,
+            "audio_tokens": 0,
+            "reasoning_tokens": 101,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 102090,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 1.5907274046228383,
+          "time_to_first_token_ms": 44824.913045,
+          "total_tokens": 102203
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          3000,
+          0.167,
+          0.276,
+          "92381007"
+        ],
+        "content": "92381007",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0039-needle",
+        "reasoning_content": "The user wants me to find the code for key k237373 in Table A, then find that code's value in Table B.\n\nLooking at Table A for k237373:\nk237373 -> c882780\n\nNow looking at Table B for c882780:\nc882780 = 92381007\n",
+        "usage": {
+          "completion_tokens": 106,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 77,
+            "audio_tokens": 0,
+            "reasoning_tokens": 94,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 102090,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 1.5015482377433094,
+          "time_to_first_token_ms": 28483.55577,
+          "total_tokens": 102196
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          3000,
+          0.233,
+          0.59,
+          "36812869"
+        ],
+        "content": "36812869",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0040-needle",
+        "reasoning_content": "The user wants me to find the code for key k032221 in Table A, then find that code's value in Table B.\n\nLooking at Table A for k032221:\nk032221 -> c717191\n\nNow looking at Table B for c717191:\nc717191 = 36812869\n",
+        "usage": {
+          "completion_tokens": 106,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 77,
+            "audio_tokens": 0,
+            "reasoning_tokens": 94,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 102090,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 1.2525000483974966,
+          "time_to_first_token_ms": 28432.568031,
+          "total_tokens": 102196
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          3000,
+          0.3,
+          0.388,
+          "66459192"
+        ],
+        "content": "66459192",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0041-needle",
+        "reasoning_content": "The user wants me to find the code for key k910006 in Table A, then find that code's value in Table B.\n\nLooking at Table A:\nk910006 -> c639774\n\nNow looking at Table B for c639774:\nc639774 = 66459192\n",
+        "usage": {
+          "completion_tokens": 98,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 69,
+            "audio_tokens": 0,
+            "reasoning_tokens": 86,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 102090,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 1.1321893843001953,
+          "time_to_first_token_ms": 28272.638678,
+          "total_tokens": 102188
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          3000,
+          0.367,
+          0.191,
+          "49476037"
+        ],
+        "content": "49476037",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0042-needle",
+        "reasoning_content": "The user wants me to find the code for key k052539 in Table A, then find that code's value in Table B.\n\nLooking at Table A for k052539:\nk052539 -> c857947\n\nNow looking at Table B for c857947:\nc857947 = 49476037\n\nThe answer is 49476037.\n",
+        "usage": {
+          "completion_tokens": 120,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 86,
+            "audio_tokens": 0,
+            "reasoning_tokens": 108,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 102090,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 1.3820839428430227,
+          "time_to_first_token_ms": 39968.499613,
+          "total_tokens": 102210
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          3000,
+          0.433,
+          0.021,
+          "69770104"
+        ],
+        "content": "69770104",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0043-needle",
+        "reasoning_content": "The user wants me to find the code for key k260872 in Table A, then find that code's value in Table B.\n\nLooking at Table A:\nk260872 -> c076033\n\nNow looking at Table B for c076033:\nc076033 = 69770104\n",
+        "usage": {
+          "completion_tokens": 98,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 69,
+            "audio_tokens": 0,
+            "reasoning_tokens": 86,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 102090,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 1.6775111007492036,
+          "time_to_first_token_ms": 40072.891493999996,
+          "total_tokens": 102188
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          3000,
+          0.5,
+          0.275,
+          "78207611"
+        ],
+        "content": "78207611",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0044-needle",
+        "reasoning_content": "The user wants me to find the code for key k958679 in Table A, then find that code's value in Table B.\n\nLooking at Table A:\nk958679 -> c066813\n\nNow looking at Table B for c066813:\nc066813 = 78207611\n",
+        "usage": {
+          "completion_tokens": 98,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 71,
+            "audio_tokens": 0,
+            "reasoning_tokens": 86,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 102090,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 2.579474553087159,
+          "time_to_first_token_ms": 28249.16701,
+          "total_tokens": 102188
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          3000,
+          0.567,
+          0.132,
+          "98639918"
+        ],
+        "content": "98639918",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0045-needle",
+        "reasoning_content": "The user wants me to find the code for key k584425 in Table A, then find that code's value in Table B.\n\nLooking in Table A for k584425:\nk584425 -> c785677\n\nNow looking in Table B for c785677:\nc785677 = 98639918\n",
+        "usage": {
+          "completion_tokens": 106,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 78,
+            "audio_tokens": 0,
+            "reasoning_tokens": 94,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 102090,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 1.4208402664320627,
+          "time_to_first_token_ms": 28254.922211,
+          "total_tokens": 102196
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          3000,
+          0.633,
+          0.007,
+          "57917062"
+        ],
+        "content": "57917062",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0046-needle",
+        "reasoning_content": "Let me find the key k883023 in Table A first.\n\nLooking through Table A for k883023:\nk883023 -> c199236\n\nNow I need to find c199236 in Table B:\nc199236 = 57917062\n",
+        "usage": {
+          "completion_tokens": 94,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 66,
+            "audio_tokens": 0,
+            "reasoning_tokens": 82,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 102090,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 1.088616632661924,
+          "time_to_first_token_ms": 28163.821823,
+          "total_tokens": 102184
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          3000,
+          0.7,
+          0.057,
+          "39556398"
+        ],
+        "content": "39556398",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0047-needle",
+        "reasoning_content": "The user wants me to find the code for key k128279 in Table A, then find that code's value in Table B.\n\nLooking at Table A for k128279:\nk128279 -> c991234\n\nNow looking at Table B for c991234:\nc991234 = 39556398\n",
+        "usage": {
+          "completion_tokens": 106,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 76,
+            "audio_tokens": 0,
+            "reasoning_tokens": 94,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 102090,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 1.3321863616281866,
+          "time_to_first_token_ms": 52673.091725,
+          "total_tokens": 102196
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          3000,
+          0.767,
+          0.802,
+          "57704515"
+        ],
+        "content": "57704515",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0048-needle",
+        "reasoning_content": "Let me find the key k191760 in Table A first.\n\nLooking through Table A for k191760:\nk191760 -> c394459\n\nNow I need to find c394459 in Table B:\nc394459 = 57704515\n",
+        "usage": {
+          "completion_tokens": 94,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 65,
+            "audio_tokens": 0,
+            "reasoning_tokens": 82,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 102090,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 1.2550352755794536,
+          "time_to_first_token_ms": 72626.16726900001,
+          "total_tokens": 102184
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          3000,
+          0.833,
+          0.472,
+          "51145972"
+        ],
+        "content": "51145972",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0049-needle",
+        "reasoning_content": "Let me find the key k206566 in Table A first.\n\nLooking through Table A for k206566:\nk206566 -> c649117\n\nNow let me find c649117 in Table B:\nc649117 = 51145972\n",
+        "usage": {
+          "completion_tokens": 93,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 64,
+            "audio_tokens": 0,
+            "reasoning_tokens": 81,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 102090,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 1.2409133278556002,
+          "time_to_first_token_ms": 35199.604917000004,
+          "total_tokens": 102183
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          3000,
+          0.9,
+          0.476,
+          "10061608"
+        ],
+        "content": "10061608",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0050-needle",
+        "reasoning_content": "The user wants me to find the code for key k038217 in Table A, then find that code's value in Table B.\n\nLooking at Table A for k038217:\nk038217 -> c946232\n\nNow looking at Table B for c946232:\nc946232 = 10061608\n",
+        "usage": {
+          "completion_tokens": 106,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 76,
+            "audio_tokens": 0,
+            "reasoning_tokens": 94,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 102090,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 0.8278136244426761,
+          "time_to_first_token_ms": 28300.073497,
+          "total_tokens": 102196
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          3000,
+          0.967,
+          0.627,
+          "73584744"
+        ],
+        "content": "73584744",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0051-needle",
+        "reasoning_content": "The user wants me to find the code for key k367875 in Table A, then find that code's value in Table B.\n\nLooking at Table A for k367875:\nk367875 -> c459587\n\nNow looking at Table B for c459587:\nc459587 = 73584744\n",
+        "usage": {
+          "completion_tokens": 106,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 76,
+            "audio_tokens": 0,
+            "reasoning_tokens": 94,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 102090,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 0.9093156254035659,
+          "time_to_first_token_ms": 30159.590553,
+          "total_tokens": 102196
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          4800,
+          0.033,
+          0.372,
+          "48018455"
+        ],
+        "content": "48018455",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0052-needle",
+        "reasoning_content": "The user wants me to find the code for key k836926 in Table A, then find that code's value in Table B.\n\nLooking at Table A:\nk836926 -> c631254\n\nNow looking at Table B for c631254:\nc631254 = 48018455\n",
+        "usage": {
+          "completion_tokens": 98,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 70,
+            "audio_tokens": 0,
+            "reasoning_tokens": 86,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 163290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 0.9064906757850847,
+          "time_to_first_token_ms": 55553.460554,
+          "total_tokens": 163388
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          4800,
+          0.1,
+          0.617,
+          "97973191"
+        ],
+        "content": "97973191",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0053-needle",
+        "reasoning_content": "The user wants me to find the code for key k514891 in Table A, then find that code's value in Table B.\n\nLooking at Table A for k514891:\nk514891 -> c123867\n\nNow looking at Table B for c123867:\nc123867 = 97973191\n",
+        "usage": {
+          "completion_tokens": 106,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 76,
+            "audio_tokens": 0,
+            "reasoning_tokens": 94,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 163290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 0.9135984501617188,
+          "time_to_first_token_ms": 76872.17377800001,
+          "total_tokens": 163396
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          4800,
+          0.167,
+          0.725,
+          "35112070"
+        ],
+        "content": "35112070",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0054-needle",
+        "reasoning_content": "The user wants me to find the code for key k665020 in Table A, then find that code's value in Table B.\n\nLooking at Table A for k665020:\nk665020 -> c505039\n\nNow looking at Table B for c505039:\nc505039 = 35112070\n\nSo the answer is 35112070.\n",
+        "usage": {
+          "completion_tokens": 121,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 85,
+            "audio_tokens": 0,
+            "reasoning_tokens": 109,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 163290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 0.8146482676477654,
+          "time_to_first_token_ms": 48701.394505000004,
+          "total_tokens": 163411
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          4800,
+          0.233,
+          0.917,
+          "70907304"
+        ],
+        "content": "70907304",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0055-needle",
+        "reasoning_content": "The user wants me to find the code for key k016926 in Table A, then find that code's value in Table B.\n\nLooking in Table A for k016926:\nk016926 -> c074567\n\nNow looking in Table B for c074567:\nc074567 = 70907304\n",
+        "usage": {
+          "completion_tokens": 106,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 69,
+            "audio_tokens": 0,
+            "reasoning_tokens": 94,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 163290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 0.8064969327409197,
+          "time_to_first_token_ms": 76287.643033,
+          "total_tokens": 163396
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          4800,
+          0.3,
+          0.254,
+          "73308760"
+        ],
+        "content": "73308760",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0056-needle",
+        "reasoning_content": "Let me find the key k290388 in Table A first.\n\nLooking through Table A for k290388:\nk290388 -> c309744\n\nNow I need to find c309744 in Table B:\nc309744 = 73308760\n",
+        "usage": {
+          "completion_tokens": 94,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 65,
+            "audio_tokens": 0,
+            "reasoning_tokens": 82,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 163290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 1.0047578602978968,
+          "time_to_first_token_ms": 85384.580777,
+          "total_tokens": 163384
+        }
+      },
+      {
+        "answer_only": false,
+        "case": [
+          4800,
+          0.367,
+          0.38,
+          "52590382"
+        ],
+        "content": "94207600",
+        "finish_reason": "stop",
+        "ok": false,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0057-needle",
+        "reasoning_content": "Let me find the key k880253 in Table A first.\n\nLooking through Table A for k880253...\n\nk880253 -> c085059\n\nNow let me find c085059 in Table B.\n\nc085059 = 94207600\n",
+        "usage": {
+          "completion_tokens": 93,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 60,
+            "audio_tokens": 0,
+            "reasoning_tokens": 81,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 163290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 0.8334907522025405,
+          "time_to_first_token_ms": 76283.053947,
+          "total_tokens": 163383
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          4800,
+          0.433,
+          0.401,
+          "29726866"
+        ],
+        "content": "29726866",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0058-needle",
+        "reasoning_content": "The user wants me to find the code for key k824335 in Table A, then find that code's value in Table B.\n\nLooking in Table A for k824335:\nk824335 -> c045314\n\nNow looking in Table B for c045314:\nc045314 = 29726866\n",
+        "usage": {
+          "completion_tokens": 106,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 72,
+            "audio_tokens": 0,
+            "reasoning_tokens": 94,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 163290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 0.7166115749917672,
+          "time_to_first_token_ms": 48755.886937,
+          "total_tokens": 163396
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          4800,
+          0.5,
+          0.61,
+          "68328253"
+        ],
+        "content": "68328253",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0059-needle",
+        "reasoning_content": "Let me find the key k174676 in Table A first.\n\nLooking through Table A for k174676:\nk174676 -> c095403\n\nNow I need to find c095403 in Table B:\nc095403 = 68328253\n",
+        "usage": {
+          "completion_tokens": 94,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 63,
+            "audio_tokens": 0,
+            "reasoning_tokens": 82,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 163290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 0.8081128680028565,
+          "time_to_first_token_ms": 60287.356065,
+          "total_tokens": 163384
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          4800,
+          0.567,
+          0.354,
+          "51622736"
+        ],
+        "content": "51622736",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0060-needle",
+        "reasoning_content": "The user wants me to find the code for key k821811 in Table A, then find that code's value in Table B.\n\nLooking at Table A for k821811:\nk821811 -> c667597\n\nNow looking at Table B for c667597:\nc667597 = 51622736\n",
+        "usage": {
+          "completion_tokens": 106,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 73,
+            "audio_tokens": 0,
+            "reasoning_tokens": 94,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 163290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 0.8263322856984824,
+          "time_to_first_token_ms": 97341.644551,
+          "total_tokens": 163396
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          4800,
+          0.633,
+          0.715,
+          "60678541"
+        ],
+        "content": "60678541",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0061-needle",
+        "reasoning_content": "Let me find the key k572119 in Table A first.\n\nLooking through Table A for k572119:\nk572119 -> c910745\n\nNow I need to find c910745 in Table B:\nc910745 = 60678541\n",
+        "usage": {
+          "completion_tokens": 94,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 63,
+            "audio_tokens": 0,
+            "reasoning_tokens": 82,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 163290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 0.7894831472919648,
+          "time_to_first_token_ms": 80834.714287,
+          "total_tokens": 163384
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          4800,
+          0.7,
+          0.164,
+          "24371183"
+        ],
+        "content": "24371183",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0062-needle",
+        "reasoning_content": "Let me find the key k294646 in Table A, then find the corresponding code's value in Table B.\n\nLooking through Table A for k294646:\nk294646 -> c580641\n\nNow let me find c580641 in Table B:\nc580641 = 24371183\n",
+        "usage": {
+          "completion_tokens": 103,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 70,
+            "audio_tokens": 0,
+            "reasoning_tokens": 91,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 163290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 0.6790136154398152,
+          "time_to_first_token_ms": 49226.361184,
+          "total_tokens": 163393
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          4800,
+          0.767,
+          0.45,
+          "98802949"
+        ],
+        "content": "98802949",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0063-needle",
+        "reasoning_content": "Let me find the key k710338 in Table A first.\n\nLooking through Table A for k710338:\nk710338 -> c910072\n\nNow I need to find c910072 in Table B:\nc910072 = 98802949\n",
+        "usage": {
+          "completion_tokens": 94,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 63,
+            "audio_tokens": 0,
+            "reasoning_tokens": 82,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 163290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 0.7388904185522365,
+          "time_to_first_token_ms": 78640.84951700001,
+          "total_tokens": 163384
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          4800,
+          0.833,
+          0.749,
+          "90443144"
+        ],
+        "content": "90443144",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0064-needle",
+        "reasoning_content": "The user wants me to find the code for key k979230 in Table A, then find that code's value in Table B.\n\nLooking at Table A for k979230:\nk979230 -> c556703\n\nNow looking at Table B for c556703:\nc556703 = 90443144\n",
+        "usage": {
+          "completion_tokens": 106,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 71,
+            "audio_tokens": 0,
+            "reasoning_tokens": 94,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 163290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 1.0078094463794445,
+          "time_to_first_token_ms": 66657.29376,
+          "total_tokens": 163396
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          4800,
+          0.9,
+          0.985,
+          "98254900"
+        ],
+        "content": "98254900",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0065-needle",
+        "reasoning_content": "The user wants me to find the code for key k737159 in Table A, then find that code's value in Table B.\n\nLooking in Table A for k737159:\nk737159 -> c133572\n\nNow looking in Table B for c133572:\nc133572 = 98254900\n",
+        "usage": {
+          "completion_tokens": 106,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 75,
+            "audio_tokens": 0,
+            "reasoning_tokens": 94,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 163290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 1.906704570316543,
+          "time_to_first_token_ms": 77170.420233,
+          "total_tokens": 163396
+        }
+      },
+      {
+        "answer_only": true,
+        "case": [
+          4800,
+          0.967,
+          0.578,
+          "13803635"
+        ],
+        "content": "13803635",
+        "finish_reason": "stop",
+        "ok": true,
+        "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0066-needle",
+        "reasoning_content": "Let me find the key k689526 in Table A first.\n\nLooking through Table A for k689526:\nk689526 -> c423755\n\nNow let me find c423755 in Table B:\nc423755 = 13803635\n",
+        "usage": {
+          "completion_tokens": 93,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 63,
+            "audio_tokens": 0,
+            "reasoning_tokens": 81,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 163290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 46.299967325458816,
+          "time_to_first_token_ms": 53382.515557,
+          "total_tokens": 163383
+        }
+      }
+    ],
+    "total": 60
+  },
+  "nll": {
+    "actual_a4_reference": {
+      "candidate_nll": 1.065992331703926,
+      "count": 27033,
+      "max_absolute_logprob_delta": 10.134291305009246,
+      "mean_absolute_logprob_delta": 0.24789398507173083,
+      "nll_delta": 0.040442639890293286,
+      "prompt_tokens": 27034,
+      "reference_nll": 1.0255496918136326,
+      "scored_positions": [
+        1,
+        27033
+      ]
+    },
+    "configured_a16_reference": {
+      "candidate_nll": 1.065992331703926,
+      "count": 27033,
+      "max_absolute_logprob_delta": 12.435419805072934,
+      "mean_absolute_logprob_delta": 0.23629696491791838,
+      "nll_delta": -0.01668671666115329,
+      "prompt_tokens": 27034,
+      "reference_nll": 1.0826790483650792,
+      "scored_positions": [
+        1,
+        27033
+      ]
+    },
+    "earlier_shared_a4": {
+      "candidate_nll": 1.065992331703926,
+      "count": 27033,
+      "max_absolute_logprob_delta": 0.0,
+      "mean_absolute_logprob_delta": 0.0,
+      "nll_delta": 0.0,
+      "prompt_tokens": 27034,
+      "reference_nll": 1.065992331703926,
+      "scored_positions": [
+        1,
+        27033
+      ]
+    }
+  },
+  "nll_limits": "Actual A4 reference uses MXFP8 LM head and FP8 KV, not a BF16 oracle. A16 execution lane was not directly proven. Earlier +0.04044264 residual is not an acceptance tolerance or causal attribution.",
+  "nll_reference_files": {
+    "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-recovery/reference-a16-receipts/nll-sq-vllmref-a16.json": "2bb38fa0a9016457f63ae498c762210abb01c7e4d06fc80ae4ab8e83511d7215",
+    "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-recovery/sharedtp-strict-results/reference-a4.json": "ed7df4f6b419711426d027aabf40852a408e6e141ef9dc0bc7912178a0f3e7b5",
+    "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-recovery/sharedtp-strict-results/shared-a4/nll-canonical.json": "36062b7f4c4dedc8304461a17c69005bd66fc6906970279ba0c86afb11605d75"
+  },
+  "pair_images": [
+    [
+      "ennspark03",
+      "sha256:a0cebe89737898692964d3923477bef293a4ebde9dd32e27202697c54f763c9d"
+    ],
+    [
+      "ennspark04",
+      "sha256:a0cebe89737898692964d3923477bef293a4ebde9dd32e27202697c54f763c9d"
+    ]
+  ],
+  "performance_admitted": false,
+  "release_qualified": false,
+  "remaining_stage_errors": {
+    "vision-admission": {
+      "error": {
+        "code": null,
+        "hint": null,
+        "message": "Image decode error: image decode failed",
+        "param": null,
+        "type": "invalid_request_error"
+      }
+    }
+  },
+  "remaining_stage_outcomes": {
+    "canonical-nll": "pass",
+    "needle": "complete_measurement_no_threshold",
+    "schema-union-tool-choice-none-control": "pass",
+    "vision-admission": "fail",
+    "vision-d8": "pass"
+  },
+  "review_required": [
+    "NLL residual disposition",
+    "Raw needle failure/truncation and success inspection",
+    "Automatic union semantic failure retained; explicit strict-mode behavior separately measured",
+    "All remaining semantic stage outcomes",
+    "Performance permission only; publication remains separate"
+  ],
+  "serial": {
+    "bias": [
+      {
+        "comparison": {
+          "max_abs_delta": 0.0,
+          "scope": "Decoded token pieces/text, finish and counts; no generated token-ID proof",
+          "scored_generated_positions": [
+            1,
+            15
+          ],
+          "tolerance": 0.1
+        },
+        "dispatch": {
+          "accepted_prediction_tokens": [
+            0
+          ],
+          "missing_serial_counter_scope": "Allowed only with verified same-image source and running argv disabling every speculative mode",
+          "native_dispatch": {
+            "after_log_sha256": "02447782a65f639e99f501a97fc60af285fd82308eb69fa1ced35e453da66ce8",
+            "before_log_sha256": "d472c9fd683b202293c2c504d75cc59f61131cd1dd168901cf53bb72474d344f",
+            "container_id": "b08b95da877c8594b726aa1a9f115c67cb2fdaef5845f95be79f8ada93c5e979",
+            "image_id": "sha256:a0cebe89737898692964d3923477bef293a4ebde9dd32e27202697c54f763c9d",
+            "mtp_fraction": 0.0,
+            "native_done": "2026-10-20T01:05:22.649280Z  INFO spark::scheduler::mtp_accept_debug: Done: 16 tokens (length) 35.9 tok/s, TTFT=132.1ms, serial=1.00 mtp=0.00 p1=0.000 mean_na=0.000 tok_step=1.000 regime_reprobes=0 depth=k5 depth_switches=0 acc=-,-,-,-,-,-,- surv=0.00,0.00,0.00,0.00,0.00,0.00,0.00",
+            "scope": "One isolated completion between stable full-log snapshots; native per-request verify-step fraction, independent of draft acceptance",
+            "serial_fraction": 1.0,
+            "started_at": "2026-10-20T01:02:26.667914768Z"
+          },
+          "serial": true,
+          "verify_counter_after": {},
+          "verify_counter_before": {},
+          "verify_counter_delta": 0
+        },
+        "token": 1234
+      },
+      {
+        "comparison": {
+          "max_abs_delta": 0.0,
+          "scope": "Decoded token pieces/text, finish and counts; no generated token-ID proof",
+          "scored_generated_positions": [
+            1,
+            15
+          ],
+          "tolerance": 0.1
+        },
+        "dispatch": {
+          "accepted_prediction_tokens": [
+            0
+          ],
+          "missing_serial_counter_scope": "Allowed only with verified same-image source and running argv disabling every speculative mode",
+          "native_dispatch": {
+            "after_log_sha256": "961900669dfe8f1953a118f5179217c49799dfadc732b7a4303a352a804de2a1",
+            "before_log_sha256": "02447782a65f639e99f501a97fc60af285fd82308eb69fa1ced35e453da66ce8",
+            "container_id": "b08b95da877c8594b726aa1a9f115c67cb2fdaef5845f95be79f8ada93c5e979",
+            "image_id": "sha256:a0cebe89737898692964d3923477bef293a4ebde9dd32e27202697c54f763c9d",
+            "mtp_fraction": 0.0,
+            "native_done": "2026-10-20T01:05:24.215012Z  INFO spark::scheduler::mtp_accept_debug: Done: 16 tokens (length) 36.6 tok/s, TTFT=123.8ms, serial=1.00 mtp=0.00 p1=0.000 mean_na=0.000 tok_step=1.000 regime_reprobes=0 depth=k5 depth_switches=0 acc=-,-,-,-,-,-,- surv=0.00,0.00,0.00,0.00,0.00,0.00,0.00",
+            "scope": "One isolated completion between stable full-log snapshots; native per-request verify-step fraction, independent of draft acceptance",
+            "serial_fraction": 1.0,
+            "started_at": "2026-10-20T01:02:26.667914768Z"
+          },
+          "serial": true,
+          "verify_counter_after": {},
+          "verify_counter_before": {},
+          "verify_counter_delta": 0
+        },
+        "token": 125394
+      }
+    ],
+    "matched": 8,
+    "scope": "Diagnostic serial profile, same exact official image and prefix settings. Exact decoded reasoning/content, finish reason and token counts; no token-ID claim."
+  },
+  "source_adjudications": {
+    "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-component-admission-r1-results/vision-admission-adjudication.json": "efe9da1e76e4dd5d170ea42d81f80a8fa3b7696b9fd0e7436c52208f7c375bc1",
+    "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-schema-continuation-r1/baseline-offline-adjudication.json": "3e671ae9f61847c1d1ca759ed62c55618cd7ee550726d0b083bbd311bbdd9203",
+    "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-schema-continuation-r1/geometry-adjudication.json": "2371dbd8c09ca836a6d476ab76a9f2e1bb1ea0fabe9a57f084b50e64d0271fe0",
+    "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-schema-continuation-r1/serial-reviewed.json": "d8edb576eb5bb55278efb760e63d93ac878a3c43931a64ee7a46eab993b61176"
+  },
+  "sources": {
+    "baseline_quality_manifest_sha256": "4ad14c6095030b8ca592677595b567c3ba4c3b0c3ece6da51f707a2ecad9083c",
+    "failed_on": {
+      "outer_manifest_sha256": "b5139ee58b973d3133aba6ae3b90bbc113fd7b862aa224634b03ac38cd7451d5",
+      "quality_manifest_sha256": "8c072c8be25cc279b4078d3b20ac67f505850adffcfecfb6f935493923a9b079"
+    },
+    "remaining": {
+      "outer_manifest_sha256": "714ea5752c8dcb3b852ad7a62112a7927741564a03d5b57d6d7fa673ed27383c",
+      "quality_manifest_sha256": "3a097f8c5c9a169fa037509fbfbe7b5cfe5cdf1ce052252ff5e967fc8dcd59f0"
+    },
+    "serial": {
+      "outer_manifest_sha256": "e99849c1cf55ccf75d5775ae940512f0b84d8e5e887b7a440a3d450a93a6bde9",
+      "quality_manifest_sha256": "651d766253f5d0d260b2ac89226d58d8184671c15845d30c966416478beb9858"
+    }
+  },
+  "unresolved_failures": [
+    "Schema-only returned exact Oslo7. Auto tool-or-JSON union called get_stock_price with tickerOSLO, a semantic failure despite structural allowance."
+  ],
+  "vision_admission_adjudication": {
+    "actual_response": {
+      "error": {
+        "code": null,
+        "hint": null,
+        "message": "Image decode error: image decode failed",
+        "param": null,
+        "type": "invalid_request_error"
+      }
+    },
+    "all_same_payload": true,
+    "extra_request_run": false,
+    "full_quality_pass": false,
+    "images": 50,
+    "interpretation": "Malformed PNG lacks IDAT. Header decoder construction precedes admission.note, so this request never establishes row-budget rejection. Existing Rust header fixture includes a truncated IDAT header deliberately. Original expected-code failure remains; it is an evaluation coverage gap, not evidence of a broken row-budget path.",
+    "png_bytes": 45,
+    "png_chunks": [
+      "IHDR",
+      "IEND"
+    ],
+    "request_sha256": "d2564fa4f5d3d533c5def072b194ee806928cc90b4a877723e479311a03a6ce9",
+    "response_sha256": "3b39394ea96f75348431427422e4387174e3b505a0560d3c54dfa8e439704f72",
+    "source_sha256": {
+      "/Users/jmac/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/png-0.18.1/src/decoder/read_decoder.rs": "ddde714e6ee17298850f934fd2328f7095cd3c9d096930867edef0bfab91cc5d",
+      "/Users/jmac/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-fidelity-rc-20261019/crates/spark-model/src/vision_preprocess/fixtures.rs": "4a631a6b9f447028db9e50bb40257e841337c6d4bf8db8546e197b846febf048",
+      "/Users/jmac/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-fidelity-rc-20261019/crates/spark-model/src/vision_preprocess/probe.rs": "09766b25a9e461a6f08542290be0f479d7a17994744d3abcbaf1c9628fcd2545",
+      "/Users/jmac/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-fidelity-rc-20261019/crates/spark-server/src/api/chat/msg_entry/media.rs": "441381707d364288cf95676c492938ec6ece67bd292cdb831aeb594175ea7dd9",
+      "/Users/jmac/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-fidelity-rc-20261019/crates/spark-server/src/api/chat/vision_admit.rs": "02bee0470a7990c0fd47360c5c2d38ef8cfc34ad972d7b042b2ddf75de86e85e"
+    }
+  }
+}

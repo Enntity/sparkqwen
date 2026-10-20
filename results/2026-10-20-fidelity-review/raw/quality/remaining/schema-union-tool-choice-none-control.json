@@ -1,0 +1,96 @@
+{
+  "request": {
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "max_tokens": 256,
+    "messages": [
+      {
+        "content": "Return JSON with city Oslo and temperature_c 7.",
+        "role": "user"
+      }
+    ],
+    "model": "qwen3.8-flash-next-atlas",
+    "response_format": {
+      "json_schema": {
+        "name": "weather",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "city": {
+              "type": "string"
+            },
+            "temperature_c": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "city",
+            "temperature_c"
+          ],
+          "type": "object"
+        },
+        "strict": true
+      },
+      "type": "json_schema"
+    },
+    "temperature": 0,
+    "tool_choice": "none",
+    "tools": [
+      {
+        "function": {
+          "description": "Only for stock quotes.",
+          "name": "get_stock_price",
+          "parameters": {
+            "properties": {
+              "ticker": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "ticker"
+            ],
+            "type": "object"
+          }
+        },
+        "type": "function"
+      }
+    ]
+  },
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"city\": \"Oslo\", \"temperature_c\": 7}",
+          "role": "assistant"
+        }
+      }
+    ],
+    "created": 1792459382,
+    "id": "chatcmpl-b40771ae-7d1f-46de-ba90-287957b94db1",
+    "model": "qwen3.8-flash-next-atlas",
+    "object": "chat.completion",
+    "system_fingerprint": "fp_atlas",
+    "usage": {
+      "completion_tokens": 15,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": 0,
+        "audio_tokens": 0,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": 0
+      },
+      "prompt_tokens": 280,
+      "prompt_tokens_details": {
+        "audio_tokens": 0,
+        "cached_tokens": 0
+      },
+      "response_token/s": 33.91279249831977,
+      "time_to_first_token_ms": 270.771091,
+      "total_tokens": 295
+    }
+  },
+  "scope": "Only tool_choice differs from failed auto case; this never replaces its grade"
+}

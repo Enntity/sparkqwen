@@ -21,97 +21,59 @@ cp .env.example .env      # set WORKER to the other Spark's ssh destination
 ./start.sh
 ```
 
-**Status: drafter release.** The speculative drafter now sees the real
-context, which makes its deeper drafts land: RigMark code +17% and structured
-+22% over the FP4-Local release, with prose level; long prompts arriving
-together no longer share a delayed first token
-([results/2026-10-16-drafter](results/2026-10-16-drafter/RESULT.md)). The default download is
-[`nvidia/Qwen3.8-Flash-Next-FP4-Local`](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local)
-(95 GiB, pinned in [`install/checkpoint.json`](install/checkpoint.json)), not
-the 124 GiB `nvidia/Qwen3.8-Flash-Next-NVFP4` the earlier releases used.
-NVIDIA trained it with quantization-aware distillation against the BF16 model
-and stores its Gated DeltaNet, attention and shared-expert projections in
-MXFP8, where the NVFP4 release kept them BF16. The engine reads those MXFP8
-bytes directly when it decodes and runs prefill as MXFP8 W8A8, which is how
-NVIDIA's own serving recipe runs this checkpoint. The engine is pinned in
-[`install/atlas-source.json`](install/atlas-source.json) to Enntity/atlas
-`sparkqwen/atlas-20261017-vision` at `92dd5435` (tree `34e71b7b`): the
-shared-engine release plus the FP4-Local, drafter and vision admission series
-([docs/ENGINE.md](docs/ENGINE.md)).
-The engine still loads the NVFP4 checkpoint unchanged; see
-[Choosing a checkpoint](#choosing-a-checkpoint). The image for this release,
-`ghcr.io/enntity/atlas-sparkqwen:3b2deea3d187`, is not published yet; until
-it is, `./start.sh` builds it from source (30–60 minutes cold).
+**Status: maintenance publication accepted with known limitations.** The current source pin is
+`63bebfa6` (tree `fa4e4817`), built as install tree `70890529ba64` through the
+checked-in image build. It includes shared-expert TP and fixes for returned
+speculative scores and accepted-token usage. The image's build and selected
+final-image checks passed, but the full quality gate remains failed. Public source and
+image verification and local repository checks passed. See the [candidate review](results/2026-10-20-fidelity-review/RESULT.md)
+for exact identities, unedited receipts and the scoped publication disposition.
 
-## What it does
-
-Measured on two DGX Sparks joined by one 200G cable with GPU clocks
-uncapped, through the image `./start.sh` built from this checkout, against
-the FP4-Local release on the same pair the same day. The vision admission
-release changed only image requests (text output is byte-identical; see
-[2026-10-17-vision](results/2026-10-17-vision/RESULT.md)), so these numbers
-are the drafter release's. Receipts and caveats:
+The default checkpoint remains
+[`nvidia/Qwen3.8-Flash-Next-FP4-Local`](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local),
+pinned in [`install/checkpoint.json`](install/checkpoint.json). The exact engine
+commit and tree were fetched anonymously after publication of source tag
+`sparkqwen/fidelity-rc-20261019`. The tested image is available as
+`ghcr.io/enntity/atlas-sparkqwen:70890529ba64`, verified by anonymous digest pull
+at `sha256:a0cebe89737898692964d3923477bef293a4ebde9dd32e27202697c54f763c9d`. Earlier drafter and vision release measurements remain in
 [2026-10-16-drafter](results/2026-10-16-drafter/RESULT.md) and
-[2026-10-16-fp4local](results/2026-10-16-fp4local/RESULT.md).
+[2026-10-17-vision](results/2026-10-17-vision/RESULT.md).
 
-| Workload | This release | FP4-Local release |
-|---|---|---|
-| RigMark decode estimate: code / prose / structured | **112.7 / 56.9 / 127.5 tok/s** | 96.5 / 57.1 / 104.4 |
-| RigMark cold 16K-token prefill | 4,127 tok/s | 4,190 |
-| RigMark end-to-end concurrency, C1 / C2 / C4 / C8 | 72.4 / 121.4 / 186.7 / 278.8 tok/s | 69.5 / 110.4 / 188.4 / 290.3 |
-| RigMark output gates | 9/9 | 9/9 |
-| sparkDash one stream: structured / prose / code / JSON | **134.0 / 85.4 / 108.3 / 109.3 tok/s** | 111.9 / 81.8 / 101.5 / 95.7 |
-| Four ~18K prompts arriving 1 s apart: time to first token | **4.7 / 8.4 / 12.1 / 15.8 s** | 16.2 / 15.9 / 15.7 / 15.4 |
-| Four new conversations on one ~20K system prompt: first turn | **5.8 / 6.1 / 6.4 / 6.7 s** | 5.8 / 7.6 / 9.5 / 11.3 |
-| Cold prompt 2K / 8K / 16K / 28K: time to first token | 0.72 / 2.04 / 4.02 / 7.08 s | 0.71 / 2.00 / 3.95 / 7.03 |
-| Follow-up turn in an 8K / 20K conversation: time to first token | 0.16-0.19 / 0.17-0.21 s | 0.16-0.19 / 0.17-0.21 |
-| KV pool at the default 0.88 (`8x32k`) | 3.54M tokens | 3.42M |
-| Checkpoint download | 95 GiB | 95 GiB |
-| Quality probe: arithmetic / two-hop 24K needle | 40/40 · 12/12 | 40/40 · 12/12 |
-| Tool calling (`bench/tool_probe.py`, 7 cases) | 21/21 (3 runs each) | 21/21 |
+## Current evidence
 
-RigMark runs each concurrency cell once, so treat single cells as ±10%:
-sparkDash's eight-stream aggregate, which runs every workload, is level to
-+5% (424 / 300 / 327 / 368 tok/s structured / prose / code / JSON). The full
-RigMark cards: [this release](results/2026-10-16-drafter/raw/recipe/rigmark-DRAFTER.card.txt),
-[FP4-Local release](results/2026-10-16-fp4local/raw/recipe/rigmark-FP4L.card.txt)
-and [RC16 on NVFP4](results/2026-10-10-rc16/raw/recipe/rigmark-RC16.card.txt),
-each beside its JSON receipt. Every option in the default profile is exact:
-greedy output with speculative decoding, the new drafter context, up to eight
-concurrent requests and prefix-cache hits of ~4.4K tokens is identical to
-one-at-a-time decode with speculation and the cache off (8/8 prompts with
-thinking on, in each case), and the prompt logprobs are the FP4-Local
-release's. Not yet rerun on this release: the 77K-token needle and the
-`4x262k` profile (image prompts: [2026-10-17-vision](results/2026-10-17-vision/RESULT.md)). Two Sparks do not give bit-identical output to one
-GPU (BF16 rounding of the tensor-parallel sums; see
-[docs/LIMITATIONS.md](docs/LIMITATIONS.md)). These are single-session
-measurements on our pair, not a guarantee for yours.
+- Eight same-image serial/speculative prompts matched decoded reasoning,
+  content, finish reasons and counts. Two biased completion cases matched all
+  15 finite returned scores exactly. These checks do not establish generated
+  token-ID identity or universal speculative exactness.
+- Tool calling passed 21/21 cases. An automatic tool-or-JSON request nevertheless
+  chose an unrelated stock-price tool instead of the requested Oslo JSON.
+  Changing only `tool_choice` to `"none"` returned the expected JSON. Use that
+  explicit choice when tool calls must be excluded.
+- The two-hop needle test scored 59/60, with one wrong retrieval at 163,290
+  prompt tokens; the retained shipped-history result was 60/60. Complete old
+  request bodies are unavailable. The bounded C1 serial/speculative replay matched decoded outputs;
+  it does not reproduce the original C4/cache conditions or prove general
+  long-context exactness.
+- On 27,034 identical prompt IDs, all 27,033 scored positions reproduce the
+  earlier corrected shared-A4 candidate exactly. Candidate NLL is
+  1.0659923317 versus 1.0255496918 for the observed A4 reference: an unresolved
+  +0.0404426399 nats/token gap. The reference uses MXFP8 LM-head weights and
+  FP8 KV; it is not a full BF16 oracle.
+- Five- and eight-image cases passed. A tall-rectangle case exposed a wrong
+  expected label in the grader. The original failed result is preserved.
+  A corrected oversized-header probe returned HTTP 400
+  `vision_input_too_large`; its earlier malformed-PNG decoder error is retained
+  separately.
 
-## Quality
-
-Smaller and faster only matters if the answers hold up. What we know:
-
-- **NVIDIA's evaluation** (FP4-Local model card, against the BF16 model):
-  GPQA Diamond 91.5% vs 92.2%, ToolEvalBench 88.7% vs 89.4%. The checkpoint
-  was distilled from the BF16 model's token probabilities and hidden states,
-  with extra weight on when to end thinking and when to stop responding.
-- **NVIDIA's NVFP4 card** compares that checkpoint with Qwen's FP8 release, not
-  BF16, over nine benchmarks (GPQA Diamond 91.5 vs 92.0, τ²-Bench Telecom 90.1
-  vs 90.8, IFBench 81.0 vs 80.5, and six more). The two cards use different
-  baselines and benchmark sets, so they do not rank the two checkpoints
-  against each other.
-- **Our checks on FP4-Local:** the quality probe (40 multi-step arithmetic
-  problems, 12 two-hop needles over ~24K tokens) scores 40/40 and 12/12, the
-  same as RC16 on NVFP4; tool calling passes every case; RigMark passes all
-  9 output gates; greedy output is exact across speculation, concurrency and
-  cache hits.
-- **Our prefill choice:** prefill runs W8A8 (activations quantized to MXFP8,
-  as ModelOpt's MXFP8 format and NVIDIA's serving recipe do). Against the same
-  engine with exact BF16 prefill, teacher-forced negative log-likelihood on
-  48.6K tokens of code and prose rose by 0.0008 nats per token (+0.18%), and
-  W8A8 was lower on 13 of 32 chunks: within noise.
-- **Not measured:** a broad benchmark suite run head to head against the NVFP4
-  checkpoint on this engine.
+The completed main comparison has mixed results: cold 16K prefill rose from
+4,140.743 to 4,451.413 tok/s (two observations per arm), while median code
+decode fell from 113.503 to 106.988 tok/s (three per arm). C2/C4/C8 Rig aggregate
+rates also fell. Matrix completed ten streams with matched request hashes: four aggregate
+decode cells increased and C1-32K decreased, with one invocation per cell. The
+[full main comparison](results/2026-10-20-fidelity-review/RESULT.md#matched-performance)
+retains all repetitions and the four warm-conversation request differences. Historical measurements describe their
+recorded engine, checkpoint and profile, and do not qualify this candidate.
+See [LIMITATIONS](docs/LIMITATIONS.md) for the known failures and scope.
 
 ### Choosing a checkpoint
 
@@ -130,8 +92,9 @@ CHECKPOINT_REPO=nvidia/Qwen3.8-Flash-Next-NVFP4
 CHECKPOINT_REVISION=fc694b54fb0174e0913e6adf86691ef85a4ead47
 ```
 
-The engine loads it exactly as the shared-engine release did (the same
-prompt-logprob hash), and the `FP8_GDN` opt-in applies to it.
+Historical shared-engine results include NVFP4 loading and prompt-logprob
+checks. This candidate has not been requalified with NVFP4; the `FP8_GDN`
+opt-in applies to that checkpoint only.
 
 ## Requirements
 
@@ -154,7 +117,7 @@ Run it on the Spark that will serve the API (rank 0). Each step is skipped when
 already done, so rerunning it just restarts the engine.
 
 1. **Image.** Pulls `ghcr.io/enntity/atlas-sparkqwen:<tag>`, where the tag is
-   the git tree of [`install/`](install/) (the release tree `4618128c570b`),
+   the git tree of [`install/`](install/) (the current candidate tree `70890529ba64`),
    so the image always matches your checkout. If that tag is not published
    (an edited `install/`, or `PULL=0` in `.env`), it builds the image from
    source instead ([`install/build.sh`](install/build.sh): Atlas at the commit
@@ -185,14 +148,22 @@ curl -s http://127.0.0.1:8893/v1/chat/completions -H 'Content-Type: application/
   "messages": [{"role": "user", "content": "Write a haiku about two small computers."}]}'
 ```
 
-Streaming is supported. Reasoning defaults to `reasoning_effort: low`; set it
-per request in `chat_template_kwargs`. Requests that leave sampling unset get
-the model card's settings for their mode: temperature 1.0, top-p 0.95,
-top-k 20 with thinking on; 0.7, 0.80, 20 with thinking off; and the tools row
-(0.7, 0.80, 20, presence penalty 1.5) when the request carries tools. Tool
-calls (OpenAI `tools`, streaming included) are parsed in the checkpoint's own
-XML call format (Atlas's `qwen3_coder` parser); `bench/tool_probe.py` passes
-every case. With the NVFP4 checkpoint, images pass the race, conversation,
+Streaming is supported. When `reasoning_effort` is omitted, the checkpoint
+template selects `xhigh`. Set `low` or `medium` per request in
+`chat_template_kwargs` when desired. The profiles impose no separate thinking
+budget; the request's completion-token limit still applies. Requests that leave
+sampling unset use the checkpoint's generation settings in every mode,
+including requests with tools: temperature 1.0, top-p 0.95, top-k 20. Presence
+and frequency penalties default to 0, repetition penalty to 1, and min-p and
+top-n-sigma filtering are off. Explicit request values override these defaults.
+Tool calls (OpenAI `tools`, streaming included) are parsed in the checkpoint's
+XML call format (Atlas's `qwen3_coder` parser). The candidate uses the
+checkpoint's tool template without extra tool-result hints, tool-call logit
+steering, or a separate cap on prose between tool calls. The final-image tool cases passed 21/21; the automatic tool-or-JSON case
+failed semantically. Set `tool_choice: "none"` when the request must return JSON
+without a tool call; the exact control passed. See the
+[candidate review](results/2026-10-20-fidelity-review/RESULT.md). With the NVFP4 checkpoint,
+images pass the race, conversation,
 swap and cached-versus-cold checks in
 [results/2026-10-15-shared-engine](results/2026-10-15-shared-engine/RESULT.md);
 on FP4-Local (MXFP8 attention, NVFP4 MLP, loaded exactly) the race,
@@ -201,18 +172,18 @@ tokens ([results/2026-10-17-vision](results/2026-10-17-vision/RESULT.md)).
 Larger requests get an HTTP 400 `vision_input_too_large`; when the server's
 in-flight image budget (65,536 vision tokens) is full, an HTTP 503
 `vision_capacity_busy` with `Retry-After: 2`. Both limits are server flags
-(`--vision-max-request-rows`, `--vision-max-inflight-rows`). Structured
-output and video have not been tested.
+(`--vision-max-request-rows`, `--vision-max-inflight-rows`). The tested strict JSON-only case passed; automatic tool-or-JSON selection
+can still choose an unrelated tool. Video has not been tested.
 
 **Profiles** (`PROFILE` in `.env`):
 
 - `8x32k` (default): up to eight requests of up to 32K context each, from one
-  shared BF16 KV pool: about 3.42M tokens at the default
-  `GPU_MEMORY_UTILIZATION` of 0.88.
+  shared BF16 KV pool. Capacity is resolved at load from available memory;
+  older releases reported about 3.42M tokens at `GPU_MEMORY_UTILIZATION=0.88`.
 - `4x262k`: up to four requests of up to 256K context each, from the same
   pool (not yet measured with FP4-Local; 3.35M tokens with NVFP4).
 - `8x262k`: up to eight requests of up to 256K context each, from the same
-  pool: about 3.35M tokens.
+  pool. Older releases reported about 3.35M tokens; consult the current load log.
 
 Each profile sets a concurrency limit and a per-request context limit. All
 requests and the prefix cache draw on one shared pool; requests that together
@@ -229,7 +200,7 @@ qualified. What fits is host-dependent. The
 sidecars are separate installations; `./start.sh` does not install them
 ([docs/LIMITATIONS.md](docs/LIMITATIONS.md), Running beside sidecars).
 
-The greedy settings above are for measurement. For real work leave sampling
+The candidate comparison uses explicit greedy settings for measurement. For real work leave sampling
 unset (the defaults above) or use the model card's values; greedy decoding can
 loop ([docs/LIMITATIONS.md](docs/LIMITATIONS.md), Behavior).
 

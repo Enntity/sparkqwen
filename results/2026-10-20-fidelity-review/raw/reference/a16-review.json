@@ -1,0 +1,78 @@
+{
+  "status": "numerical_receipt_preserved_trace_gate_failed",
+  "actual_worker_decision_trace": false,
+  "configured_a4": "0",
+  "configured_force_a16": "1",
+  "canonical_ids_sha256": "a28f25b5d5564bbe42fd47799788317bbb7bfb586e133c2d9ab7af7ad947203c",
+  "prompt_only_nll": 1.0826790483650806,
+  "reference_a4_prompt_only_nll": 1.025549691813632,
+  "local_reviewed_b12x_source_sha256": "2aa10b8a8220dc27d2e833293d463e7ca8ca3b451ce7c83aeb0231058a26a4b6",
+  "records": {
+    "trace-01.log": {
+      "installations": [
+        {
+          "a4_env": "0",
+          "b12x_module": "/usr/local/lib/python3.12/dist-packages/flashinfer/experimental/b12x/moe/fused_moe/_preparation.py",
+          "b12x_source_sha256": "095faead05aba731829d5d3d31e59d3f37beb0ad74e2710ebca5db65d6b5d8d3",
+          "force_a16_env": "1",
+          "pid": 1,
+          "source_sha256": "8b860a1bb44b9c9f68209c7147c06bbd044a021f1a6d5c0878bf68a613e4a641",
+          "time_ns": 1792444842298693872,
+          "vllm_module": "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/b12x.py",
+          "vllm_source_sha256": "2aa10b8a8220dc27d2e833293d463e7ca8ca3b451ce7c83aeb0231058a26a4b6"
+        },
+        {
+          "a4_env": "0",
+          "b12x_module": "/usr/local/lib/python3.12/dist-packages/flashinfer/experimental/b12x/moe/fused_moe/_preparation.py",
+          "b12x_source_sha256": "095faead05aba731829d5d3d31e59d3f37beb0ad74e2710ebca5db65d6b5d8d3",
+          "force_a16_env": "1",
+          "pid": 168,
+          "source_sha256": "8b860a1bb44b9c9f68209c7147c06bbd044a021f1a6d5c0878bf68a613e4a641",
+          "time_ns": 1792444854568358023,
+          "vllm_module": "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/b12x.py",
+          "vllm_source_sha256": "2aa10b8a8220dc27d2e833293d463e7ca8ca3b451ce7c83aeb0231058a26a4b6"
+        },
+        {
+          "a4_env": "0",
+          "b12x_module": "/usr/local/lib/python3.12/dist-packages/flashinfer/experimental/b12x/moe/fused_moe/_preparation.py",
+          "b12x_source_sha256": "095faead05aba731829d5d3d31e59d3f37beb0ad74e2710ebca5db65d6b5d8d3",
+          "force_a16_env": "1",
+          "pid": 281,
+          "source_sha256": "8b860a1bb44b9c9f68209c7147c06bbd044a021f1a6d5c0878bf68a613e4a641",
+          "time_ns": 1792444858618397909,
+          "vllm_module": "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/b12x.py",
+          "vllm_source_sha256": "2aa10b8a8220dc27d2e833293d463e7ca8ca3b451ce7c83aeb0231058a26a4b6"
+        }
+      ],
+      "decision_records": 0
+    },
+    "log-02.txt": {
+      "installations": [
+        {
+          "a4_env": "0",
+          "b12x_module": "/usr/local/lib/python3.12/dist-packages/flashinfer/experimental/b12x/moe/fused_moe/_preparation.py",
+          "b12x_source_sha256": "095faead05aba731829d5d3d31e59d3f37beb0ad74e2710ebca5db65d6b5d8d3",
+          "force_a16_env": "1",
+          "pid": 1,
+          "source_sha256": "8b860a1bb44b9c9f68209c7147c06bbd044a021f1a6d5c0878bf68a613e4a641",
+          "time_ns": 1792444839068746573,
+          "vllm_module": "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/b12x.py",
+          "vllm_source_sha256": "2aa10b8a8220dc27d2e833293d463e7ca8ca3b451ce7c83aeb0231058a26a4b6"
+        },
+        {
+          "a4_env": "0",
+          "b12x_module": "/usr/local/lib/python3.12/dist-packages/flashinfer/experimental/b12x/moe/fused_moe/_preparation.py",
+          "b12x_source_sha256": "095faead05aba731829d5d3d31e59d3f37beb0ad74e2710ebca5db65d6b5d8d3",
+          "force_a16_env": "1",
+          "pid": 182,
+          "source_sha256": "8b860a1bb44b9c9f68209c7147c06bbd044a021f1a6d5c0878bf68a613e4a641",
+          "time_ns": 1792444844812884564,
+          "vllm_module": "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/fused_moe/b12x.py",
+          "vllm_source_sha256": "2aa10b8a8220dc27d2e833293d463e7ca8ca3b451ce7c83aeb0231058a26a4b6"
+        }
+      ],
+      "decision_records": 0
+    }
+  },
+  "source_explanation": "B12xExperts.apply lines1144-1172 bypasses _execution_parts when prepared._impl.a4_prefill_scales is false. Disabled A4 preparation chooses unit scales and ActivationMode.A16 for w4a16; installed hooks do not cover this direct bind/run path. A16 selection is source/configuration-inferred, not directly traced."
+}

@@ -1,7 +1,7 @@
 {
  "schema": "sparkqwen.atlas-install-profile/v1",
- "status": "validated",
- "note": "Up to four requests of up to 256K tokens. Qualified on the pair (docs/LIMITATIONS.md, Long context): a 3.35M-token KV pool at util 0.88 (RC15), KV exhaustion handled without losing the pair. RC16 profile (2026-10-10): exact speculation (spec == serial) and exact prefix caching (cache-on == cache-off); tensor-core MoE/mHC; no-duplicate prefill MoE (31.6 GiB freed for KV); batched C8 speculation with multi-prompt prefill; long-context QSA decode; prompt-tail checkpoints; content-loop steering. Gates: results/2026-10-10-rc16.",
+ "status": "candidate",
+ "note": "2026-10-19 fidelity candidate; final-image qualification pending. Configured limits: four concurrent requests and 262,144 tokens per request. Preserves checkpoint reasoning and sampling defaults; content-loop and tool-call steering and repetition watchdogs are disabled. Historical RC16 evidence (2026-10-10, results/2026-10-10-rc16) covers the earlier profile and engine, including loop steering, and does not qualify this candidate.",
  "environment": {
   "ATLAS_EP_PROTOCOL": "v2",
   "ATLAS_RDMA_ALLREDUCE": "1",
@@ -47,7 +47,6 @@
   "ATLAS_PREFILL_QUEUE_FIRST_CHUNK": "1",
   "ATLAS_QWEN4EXP_MTP_ABSORB": "1",
   "ATLAS_QWEN4EXP_MTP_PREFILL": "16384",
-  "ATLAS_QWEN4EXP_MTP_BF16_ROUTER": "1",
   "ATLAS_MTP_DEEP_WINDOW": "16",
   "ATLAS_MTP_MAX_SEQS": "8",
   "ATLAS_MTP_GATE_FORCE": "1",
@@ -68,9 +67,6 @@
   "ATLAS_QWEN4EXP_EXACT_DEFER": "1",
   "ATLAS_QWEN4EXP_QSA_KEY_ONLY": "1",
   "ATLAS_QWEN4EXP_QSA_COMMIT_ROWS": "1",
-  "ATLAS_CONTENT_LOOP_WATCHDOG": "1",
-  "ATLAS_CONTENT_LOOP_MIN_REPEATS": "32",
-  "ATLAS_LOOP_STEER": "1",
   "ATLAS_QWEN4EXP_FINISH_LEAF": "1",
   "ATLAS_QWEN4EXP_QSA_TOPK_WIDE": "1",
   "ATLAS_QWEN4EXP_QSA_DECODE_ROWS": "1",
@@ -133,11 +129,11 @@
   "--max-prefill-tokens=16384",
   "--fast-load-prefetch-shards",
   "--no-tui",
-  "--default-chat-template-kwargs={\"reasoning_effort\":\"low\"}",
   "--speculative",
   "--num-drafts=7",
   "--max-num-seqs=4",
   "--max-batch-size=4",
-  "--max-seq-len=262144"
+  "--max-seq-len=262144",
+  "--tool-max-tokens=262144"
  ]
 }

@@ -1,0 +1,122 @@
+{
+  "review_complete": true,
+  "harness_sha256": "1c67228fea46e7e7afde4f5b8ba14e026cd37ff7003f5d6011695e8a04f9c37a",
+  "archive_sha256": {
+    "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-baseline-main-r1/coordinator/rank0-archive/performance.tar": "dc2ba8bba932b0f1dda5a63ff12f54d4652cb6a3e4f024571391b01989d39cec",
+    "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main/coordinator/rank0-archive/performance.tar": "a653b97657afc6121d2da2439ceca3d31fc797c8e45446ab3401b7cd573ba9fb"
+  },
+  "request_hash_counts": {
+    "rigmark": {
+      "requests_per_arm": 28,
+      "matching_request_hashes": 28,
+      "unmatched_per_arm": 0
+    },
+    "sq": {
+      "requests_per_arm": 59,
+      "matching_request_hashes": 55,
+      "unmatched_per_arm": 4
+    },
+    "sd": {
+      "requests_per_arm": 64,
+      "matching_request_hashes": 64,
+      "unmatched_per_arm": 0
+    },
+    "agentic": {
+      "requests_per_arm": 20,
+      "matching_request_hashes": 20,
+      "unmatched_per_arm": 0
+    },
+    "field-1": {
+      "requests_per_arm": 4,
+      "matching_request_hashes": 4,
+      "unmatched_per_arm": 0
+    },
+    "field-2": {
+      "requests_per_arm": 4,
+      "matching_request_hashes": 4,
+      "unmatched_per_arm": 0
+    },
+    "field-3": {
+      "requests_per_arm": 4,
+      "matching_request_hashes": 4,
+      "unmatched_per_arm": 0
+    }
+  },
+  "warm_request_reconstruction_matches_recorded_hashes": true,
+  "different_requests": [
+    {
+      "size": 20480,
+      "turn": 2,
+      "baseline": {
+        "size": 20480,
+        "turn": 2,
+        "request_sha256": "2f70c53750930a5f436e0f15cf01a585dee64d22d125b7fb06ab45a81d91edb9",
+        "prompt_tokens": 20622,
+        "cached_tokens": 20560
+      },
+      "candidate": {
+        "size": 20480,
+        "turn": 2,
+        "request_sha256": "77ffe2527551ccc1fbed4322afd29f81b23c89a8dc103f4d7c1ddc3e99efa36f",
+        "prompt_tokens": 20620,
+        "cached_tokens": 20560
+      }
+    },
+    {
+      "size": 20480,
+      "turn": 3,
+      "baseline": {
+        "size": 20480,
+        "turn": 3,
+        "request_sha256": "9371f6766fbb865c5a7641ff49d422f38c3405be80af544ae9e5a43fba09acd6",
+        "prompt_tokens": 20673,
+        "cached_tokens": 20608
+      },
+      "candidate": {
+        "size": 20480,
+        "turn": 3,
+        "request_sha256": "865d1a5c5123041331eeb2e2e0715566fd43209b6fd56518ec15bcbbfe7e05f4",
+        "prompt_tokens": 20670,
+        "cached_tokens": 20608
+      }
+    },
+    {
+      "size": 20480,
+      "turn": 4,
+      "baseline": {
+        "size": 20480,
+        "turn": 4,
+        "request_sha256": "f6b6a0bb3edc9a3c0b326a65193c63efed15baf8fdbb40000a22aaf06af720be",
+        "prompt_tokens": 20724,
+        "cached_tokens": 20672
+      },
+      "candidate": {
+        "size": 20480,
+        "turn": 4,
+        "request_sha256": "d47d72c8b1c0ad6a28182ba2facbcb8438f72ce759db8bc55ad3b021faa7f57f",
+        "prompt_tokens": 20720,
+        "cached_tokens": 20656
+      }
+    },
+    {
+      "size": 20480,
+      "turn": 5,
+      "baseline": {
+        "size": 20480,
+        "turn": 5,
+        "request_sha256": "2d9d161f2035cd6e7cb565cc8d8f4039fd8d4f164c2b895b67a9870066a417a7",
+        "prompt_tokens": 20775,
+        "cached_tokens": 20720
+      },
+      "candidate": {
+        "size": 20480,
+        "turn": 5,
+        "request_sha256": "f4af2fd5d041957f4678a286cafadb6d459a0a6618d1fd183731ca2966868f33",
+        "prompt_tokens": 20770,
+        "cached_tokens": 20704
+      }
+    }
+  ],
+  "interpretation": "179 of183 request bodies match exactly. Four20K warm follow-ups differ because the unchanged harness appends each arm's generated80-character text_head. The retained result fields reconstruct all24 warm request hashes exactly. Treat these four timing cells as package/conversation behavior, not a matched request engine speed comparison. The original generic comparison warning remains preserved.",
+  "limits": "Other runtime identity, tokenization, numerical and effective-policy differences remain separate; exact request bytes do not establish equivalent model execution. No new model requests were sent."
+}

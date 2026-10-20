@@ -1,0 +1,3 @@
+SparkQwen tested maintenance source 63bebfa60d5086de9fc8cc07c21e5fbe38f3b742
+
+Processed decode scores, retained prediction usage and shared expert TP. Exact image qualification and disclosed model limitations accompany the product release.

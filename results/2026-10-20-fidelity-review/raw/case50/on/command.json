@@ -1,0 +1,7 @@
+[
+  "ssh",
+  "-o",
+  "BatchMode=yes",
+  "ennspark03",
+  "echo $$ > /home/enntitysparkadmin/tp4/receipts/qwen-perf-20261020T022139Z-ea1a9a4f/runner.pid; exec timeout --signal=TERM --kill-after=30 660 python3 /home/enntitysparkadmin/tp4/receipts/qwen-perf-20261020T022139Z-ea1a9a4f/case50-worker.py /home/enntitysparkadmin/tp4/receipts/qwen-perf-20261020T022139Z-ea1a9a4f 8e4954ca5b9887b1a39405a03d31235e0261ac4db1ba62a27dd5d24a105a47fb sha256:a0cebe89737898692964d3923477bef293a4ebde9dd32e27202697c54f763c9d a99204cde4031bd706e0b1f5189624e0ed2a13938ce090692de4628d751db434 on"
+]

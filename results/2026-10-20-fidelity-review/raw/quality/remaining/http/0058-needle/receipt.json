@@ -1,0 +1,28 @@
+{
+  "finished_ns": 1792460698640673000,
+  "number": 58,
+  "path": "/v1/chat/completions",
+  "protocol_error": null,
+  "request_sha256": "d2a877e5fbb0507886ebb8f3e56c4e9d536a3397e4eba5a3366edf2b723cc6fe",
+  "response_headers": {
+    "access-control-allow-origin": "*",
+    "connection": "close",
+    "content-type": "application/json",
+    "date": "Tue, 20 Oct 2026 01:44:58 GMT",
+    "openai-organization": "atlas-local",
+    "openai-processing-ms": "195557",
+    "openai-version": "2026-01-01",
+    "transfer-encoding": "chunked",
+    "x-ratelimit-limit-requests": "1000000",
+    "x-ratelimit-limit-tokens": "1000000000",
+    "x-ratelimit-remaining-requests": "999999",
+    "x-ratelimit-remaining-tokens": "999999999",
+    "x-ratelimit-reset-requests": "0s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_e86021e8-fff7-4662-b385-70c644451d00"
+  },
+  "response_sha256": "4ad9da335c42578913f90dd9675550c239c9d34549414fc41785ccd9e4aa0b2d",
+  "stage": "needle",
+  "started_ns": 1792460503052985000,
+  "status": 200
+}

@@ -1,0 +1,10 @@
+{
+  "complete": true,
+  "coordinator_pid": 32975,
+  "coordinator_still_running": false,
+  "error": null,
+  "existing_renewer_unchanged": true,
+  "lease_released": false,
+  "operation": "case50-serial",
+  "release_qualified": false
+}

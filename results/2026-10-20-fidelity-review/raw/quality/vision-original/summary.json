@@ -1,0 +1,53 @@
+{
+  "carried_components": {
+    "manifest_sha256": "8c072c8be25cc279b4078d3b20ac67f505850adffcfecfb6f935493923a9b079",
+    "prior_functional_status": "fail",
+    "prior_quality": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-dispatch-r1/quality/coordinator/quality",
+    "scope": "Carried exact-image components only; no previous full-suite success, no new claims for unrun stages",
+    "successful_prior_components": {
+      "biased_logprob_on": "Two16-token cases recorded with measured speculative dispatch; serial comparison pending",
+      "greedy_concurrency": "8/8 each; C1=C4=C8 and C1p=C4p",
+      "mtp_c1_dispatch": {
+        "accepted_prediction_tokens": [
+          193,
+          182,
+          223,
+          213,
+          200,
+          210,
+          206,
+          206
+        ],
+        "missing_serial_counter_scope": null,
+        "native_dispatch": null,
+        "serial": false,
+        "verify_counter_after": {},
+        "verify_counter_before": {},
+        "verify_counter_delta": 0
+      },
+      "tools": {
+        "choice_none": "3/3",
+        "followup": "3/3",
+        "no_tool": "3/3",
+        "parallel": "3/3",
+        "single": "3/3",
+        "stream": "3/3",
+        "typed": "3/3"
+      }
+    },
+    "union_request_sha256": "5d3bd84500927fff049ded2fd98dbd205c8d63c7d18e861c9ebf8009ac4dfbfd",
+    "union_response_sha256": "efcda31937afa1c3200f32f0c283b8fe2f44769cf94580b76b6f366f4e1c9fc5",
+    "unresolved_failure": "Schema-only returned exact Oslo7. Auto tool-or-JSON union called get_stock_price with tickerOSLO, a semantic failure despite structural allowance."
+  },
+  "diagnostic_execution_status": "fail",
+  "diagnostic_only": true,
+  "error": "AssertionError: {'case': 'b16680', 'status': 200, 'secs': 21.88, 'order_ok': False, 'text': 'red circle\\nblue square\\ngreen triangle\\norange circle\\npurple rectangle'}",
+  "functional": {},
+  "functional_status": "fail",
+  "measurements": {},
+  "quality_review_required": true,
+  "release_qualified": false,
+  "unresolved_failures": [
+    "Schema-only returned exact Oslo7. Auto tool-or-JSON union called get_stock_price with tickerOSLO, a semantic failure despite structural allowance."
+  ]
+}

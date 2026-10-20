@@ -1,0 +1,195 @@
+{
+  "choices": [
+    {
+      "finish_reason": "length",
+      "index": 0,
+      "logprobs": {
+        "text_offset": [
+          0,
+          7,
+          9,
+          11,
+          13,
+          15,
+          17,
+          19,
+          21,
+          23,
+          25,
+          27,
+          29,
+          31,
+          33,
+          35
+        ],
+        "token_logprobs": [
+          null,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tokens": [
+          " prompt",
+          "bs",
+          "bs",
+          "bs",
+          "bs",
+          "bs",
+          "bs",
+          "bs",
+          "bs",
+          "bs",
+          "bs",
+          "bs",
+          "bs",
+          "bs",
+          "bs",
+          "bs"
+        ],
+        "top_logprobs": [
+          null,
+          {
+            " and": -83.47656,
+            " many": -83.35156,
+            " several": -83.60156,
+            ",": -82.10156,
+            "bs": 0.0
+          },
+          {
+            " and": -90.125,
+            " many": -90.0625,
+            " with": -90.3125,
+            ",": -90.0,
+            "bs": 0.0
+          },
+          {
+            " ": -96.625,
+            " many": -95.5625,
+            " several": -96.6875,
+            ",": -96.8125,
+            "bs": 0.0
+          },
+          {
+            " many": -100.9375,
+            " several": -101.5,
+            ",": -101.4375,
+            "b": -102.1875,
+            "bs": 0.0
+          },
+          {
+            " and": -102.5625,
+            " many": -101.0625,
+            " several": -101.6875,
+            ",": -101.8125,
+            "bs": 0.0
+          },
+          {
+            " many": -101.5625,
+            " multiple": -102.5625,
+            " several": -102.125,
+            ",": -102.125,
+            "bs": 0.0
+          },
+          {
+            " many": -101.9375,
+            " multiple": -102.875,
+            " several": -102.875,
+            ",": -102.0,
+            "bs": 0.0
+          },
+          {
+            "\n\n": -102.875,
+            " many": -101.75,
+            " several": -101.9375,
+            ",": -102.125,
+            "bs": 0.0
+          },
+          {
+            "\n\n": -103.4375,
+            " many": -102.6875,
+            " several": -103.1875,
+            ",": -102.8125,
+            "bs": 0.0
+          },
+          {
+            "\n\n": -103.6875,
+            " many": -102.4375,
+            " several": -102.875,
+            ",": -103.125,
+            "bs": 0.0
+          },
+          {
+            "\n\n": -103.6875,
+            " many": -103.0,
+            " several": -103.8125,
+            ",": -103.4375,
+            "bs": 0.0
+          },
+          {
+            "\n\n": -103.9375,
+            " many": -103.4375,
+            " several": -103.8125,
+            ",": -103.5,
+            "bs": 0.0
+          },
+          {
+            "\n\n": -103.6875,
+            " many": -103.25,
+            " several": -103.875,
+            ",": -103.375,
+            "bs": 0.0
+          },
+          {
+            "\n\n": -103.9375,
+            " many": -103.5625,
+            " several": -103.8125,
+            ",": -103.5625,
+            "bs": 0.0
+          },
+          {
+            "\n\n": -103.75,
+            " and": -104.5,
+            " many": -104.25,
+            ",": -103.9375,
+            "bs": 0.0
+          }
+        ]
+      },
+      "text": "promptbsbsbsbsbsbsbsbsbsbsbsbsbsbsbs"
+    }
+  ],
+  "created": 1792457965,
+  "id": "cmpl-851f5f43-47cd-4de7-9cd0-029ab1bd76a1",
+  "model": "qwen3.8-flash-next-atlas",
+  "object": "text_completion",
+  "system_fingerprint": "fp_atlas",
+  "usage": {
+    "completion_tokens": 16,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 7,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens": 64,
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    },
+    "response_token/s": 35.652853809865384,
+    "time_to_first_token_ms": 135.77782299999998,
+    "total_tokens": 80
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "complete": true,
+  "coordinator_pid": 83572,
+  "coordinator_still_running": false,
+  "error": null,
+  "existing_renewer_unchanged": true,
+  "lease_released": false,
+  "operation": "matrix-baseline",
+  "release_qualified": false
+}
