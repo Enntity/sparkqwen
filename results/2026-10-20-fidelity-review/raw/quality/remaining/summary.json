@@ -1,0 +1,155 @@
+{
+  "carried_components": {
+    "carried_vision": {
+      "a5": {
+        "case": "a5",
+        "order_ok": true,
+        "secs": 128.81,
+        "status": 200,
+        "text": "red circle\nblue square\ngreen triangle\norange circle\npurple square"
+      },
+      "actual_canvas": [
+        256,
+        1184
+      ],
+      "actual_png_sha256": "1549a1d439b9f196d6483dfee46dab70878c802ea713f8cba45073013cc02adb",
+      "adjudicated_b16680_expected": "purple rectangle",
+      "b16680": {
+        "case": "b16680",
+        "order_ok": false,
+        "secs": 21.88,
+        "status": 200,
+        "text": "red circle\nblue square\ngreen triangle\norange circle\npurple rectangle"
+      },
+      "foreground_bounds": [
+        51,
+        236,
+        205,
+        948
+      ],
+      "foreground_dimensions": [
+        154,
+        712
+      ],
+      "legacy_grader_failure_preserved": true
+    },
+    "geometry_adjudication": "Frozen b16680 generator draws a rectangle on256x1184 canvas, preserving20%-80% bounds independently in x/y. The purple rectangle answer is geometrically correct; original order_okFalse expected mislabeled square and is preserved.",
+    "manifest_sha256": "8c072c8be25cc279b4078d3b20ac67f505850adffcfecfb6f935493923a9b079",
+    "prior_functional_status": "fail",
+    "prior_quality": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-dispatch-r1/quality/coordinator/quality",
+    "scope": "Carried exact-image components only; no previous full-suite success, no new claims for unrun stages",
+    "successful_prior_components": {
+      "biased_logprob_on": "Two16-token cases recorded with measured speculative dispatch; serial comparison pending",
+      "greedy_concurrency": "8/8 each; C1=C4=C8 and C1p=C4p",
+      "mtp_c1_dispatch": {
+        "accepted_prediction_tokens": [
+          193,
+          182,
+          223,
+          213,
+          200,
+          210,
+          206,
+          206
+        ],
+        "missing_serial_counter_scope": null,
+        "native_dispatch": null,
+        "serial": false,
+        "verify_counter_after": {},
+        "verify_counter_before": {},
+        "verify_counter_delta": 0
+      },
+      "tools": {
+        "choice_none": "3/3",
+        "followup": "3/3",
+        "no_tool": "3/3",
+        "parallel": "3/3",
+        "single": "3/3",
+        "stream": "3/3",
+        "typed": "3/3"
+      }
+    },
+    "union_request_sha256": "5d3bd84500927fff049ded2fd98dbd205c8d63c7d18e861c9ebf8009ac4dfbfd",
+    "union_response_sha256": "efcda31937afa1c3200f32f0c283b8fe2f44769cf94580b76b6f366f4e1c9fc5",
+    "unresolved_failure": "Schema-only returned exact Oslo7. Auto tool-or-JSON union called get_stock_price with tickerOSLO, a semantic failure despite structural allowance.",
+    "vision_prior_manifest_sha256": "b64225840b38f5d0ce225b04904038340b34eec519679a009a72a7cbd1e33d50",
+    "vision_prior_quality": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r1/remaining/coordinator/quality"
+  },
+  "diagnostic_execution_status": "pass",
+  "diagnostic_only": true,
+  "functional": {
+    "vision": {
+      "a5_b16680": "Carried with explicit b16680 geometry adjudication; no repeat requests",
+      "d8_admission": "failed; see per-stage errors"
+    }
+  },
+  "functional_status": "fail",
+  "independent_remaining_stages_attempted": [
+    "vision-d8",
+    "vision-admission",
+    "schema-union-tool-choice-none-control",
+    "canonical-nll",
+    "needle"
+  ],
+  "measurement_status": "complete",
+  "measurements": {
+    "additional_nll_comparisons": [
+      {
+        "candidate": 1.065992331703926,
+        "canonical_prompt_tokens": 27034,
+        "generated_row_excluded": true,
+        "mean_absolute_delta": 0.23629696491791838,
+        "mean_logprob_delta": 0.016686716661154236,
+        "reference": 1.0826790483650792,
+        "scored_positions": [
+          1,
+          27033
+        ]
+      }
+    ],
+    "needle": {
+      "acceptance_threshold": null,
+      "correct": 59,
+      "max_tokens": 2048,
+      "reasoning_effort": "low",
+      "seed": 20261018,
+      "total": 60
+    },
+    "nll": {
+      "candidate": 1.065992331703926,
+      "canonical_prompt_tokens": 27034,
+      "generated_row_excluded": true,
+      "mean_absolute_delta": 0.24789398507173083,
+      "mean_logprob_delta": -0.040442639890294244,
+      "reference": 1.0255496918136326,
+      "scored_positions": [
+        1,
+        27033
+      ]
+    }
+  },
+  "quality_review_required": true,
+  "release_qualified": false,
+  "remaining_stage_status": "fail",
+  "stage_errors": {
+    "vision-admission": {
+      "error": {
+        "code": null,
+        "hint": null,
+        "message": "Image decode error: image decode failed",
+        "param": null,
+        "type": "invalid_request_error"
+      }
+    }
+  },
+  "stage_outcomes": {
+    "canonical-nll": "pass",
+    "needle": "complete_measurement_no_threshold",
+    "schema-union-tool-choice-none-control": "pass",
+    "vision-admission": "fail",
+    "vision-d8": "pass"
+  },
+  "unresolved_failures": [
+    "Schema-only returned exact Oslo7. Auto tool-or-JSON union called get_stock_price with tickerOSLO, a semantic failure despite structural allowance."
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "listen": "State Recv-Q Send-Q Local Address:Port Peer Address:PortProcess\n",
+  "all": "State     Recv-Q Send-Q Local Address:Port Peer Address:Port Process\nTIME-WAIT 0      0          127.0.0.1:8893    127.0.0.1:49306       \nTIME-WAIT 0      0          127.0.0.1:8893    127.0.0.1:50222       \n",
+  "utc": "2026-10-20T02:27:00.346169+00:00"
+}

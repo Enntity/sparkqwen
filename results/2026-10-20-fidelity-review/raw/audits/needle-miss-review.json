@@ -1,0 +1,29 @@
+{
+  "provisional_until_final_archive": true,
+  "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0057-needle",
+  "raw_hashes": {
+    "request.body": "a99204cde4031bd706e0b1f5189624e0ed2a13938ce090692de4628d751db434",
+    "response.body": "fb22b91ff6183cf822aa8e39533d0fad2a5c0bbc6c05f13c4662bf0d7c5b5088"
+  },
+  "rows": 4800,
+  "depth": 0.367,
+  "b_pos": 0.38,
+  "correct_chain": [
+    "k880253",
+    "c582677",
+    "52590382"
+  ],
+  "observed_chain": [
+    "k880253",
+    "c085059",
+    "94207600"
+  ],
+  "observed_code_belongs_to_key": "k769018",
+  "finish_reason": "stop",
+  "prompt_tokens": 163290,
+  "completion_tokens": 93,
+  "reasoning_tokens": 81,
+  "accepted_prediction_tokens": 60,
+  "failure": "Incorrect first-hop retrieval; output matches the value of a different key. No truncation; expected code unambiguous in actual prompt.",
+  "causal_attribution": null
+}

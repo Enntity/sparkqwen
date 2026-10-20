@@ -1,0 +1,1 @@
+{"chat_template_kwargs": {"reasoning_effort": "low"}, "max_tokens": 320, "messages": [{"content": "Write a calm, detailed essay about how lighthouses were staffed and maintained in the 1800s.", "role": "user"}], "model": "qwen3.8-flash-next-atlas", "temperature": 0}

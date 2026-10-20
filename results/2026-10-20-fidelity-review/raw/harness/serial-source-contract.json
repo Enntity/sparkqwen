@@ -1,0 +1,36 @@
+{
+  "contract": {
+    "comparison": "Eight existing C1 chat requests plus two 16-token biased completions repeated under explicit serial profile. Exact decoded fields/counts, and 15 finite generated scores within 0.1. Preserve first nullable score; no generated token-ID proof.",
+    "completions": "Supported prompt token-ID array, logit_bias, logprobs, ignore_eos, explicit sampling fields and /detokenize. No disable_mtp or return_token_ids.",
+    "dispatch": "Record atlas_spec_decode_verify_total snapshots and completion_tokens_details.accepted_prediction_tokens; candidate requires positive measured work; serial requires zero and verifies source/argv even if counter series is absent.",
+    "http_disable_mtp": "Unsupported in this source; ChatCompletionRequest has no field and chat_blocking.rs dispatch sets false. Never send ignored request flag.",
+    "scheduler": "serve_load.rs use_speculative = (args.speculative || args.dflash) && scheduler_model.has_proposer(). Serial control removes --speculative and --num-drafts=7; no other speculative modes are present."
+  },
+  "engine_commit": "63bebfa60d5086de9fc8cc07c21e5fbe38f3b742",
+  "files": {
+    "crates/spark-server/src/api/chat_blocking.rs": "b3dd2de40240ecbc5134c9ad3ed67da93891e28f841b1beb579287e6b707080e",
+    "crates/spark-server/src/api/completions.rs": "28ec630b0312d214343ad5e37935cf6f0602884eae0fc04b478f96e58af413d3",
+    "crates/spark-server/src/api/misc_handlers.rs": "c225aa36f1e36f0ca7d20b9b7a06070cbcb3df84080c0e66fdbacbe464c10dd4",
+    "crates/spark-server/src/main_modules/serve_load.rs": "d6105796913447f8441c90634f43fc3638b4b7d37ddd6ef1b1651b525ebcd8e2",
+    "crates/spark-server/src/metrics.rs": "125d6116158b71e80da29cfc34fc08cbc2a1f1344f6c278cae4f9f18bb383124",
+    "crates/spark-server/src/openai/chat_request.rs": "613870854e589a6495663e1187b4a89aa02a359898ddb055fe27027b5da6c654",
+    "crates/spark-server/src/openai/completions.rs": "19c3565c7dd32f3135e59387c935784a762aecf684a3468c27c377a01adc112f",
+    "crates/spark-server/src/openai/encode.rs": "872898f39953654671c7cbe3fdf37243e769472fd81ca1de40e65c8b21efcfe8",
+    "crates/spark-server/src/scheduler/fast_greedy/raw_pick.rs": "7889f73b634342a3812017dc07899783d5df1681058dd52d216d152c6d890c49",
+    "crates/spark-server/src/scheduler/lifecycle.rs": "afc5a637dc0cda09d9bb6086160e5e713988313278a1bc9ddc3f233db373fc2d",
+    "crates/spark-server/src/scheduler/mod.rs": "f4109bc405a66fde60dac329769c4bb2a8428fdb560d9415c2a1c5083015db80",
+    "crates/spark-server/src/scheduler/mtp_accept_debug.rs": "1c8bc8c23123ccd44dd5eeda88f034d23e710bf3e94a44b67dcd8b8f7148e8ee",
+    "crates/spark-server/src/scheduler/mtp_bootstrap_step.rs": "067e238ad36930b42363e6d4059c8c9b8c91c4ec3a7f529b5d8e0d9561470e18",
+    "crates/spark-server/src/scheduler/mtp_step/bootstrap.rs": "23089d90553fa26fdd44ae822150ea336cca7e7877e49fb53b8a5cf6f3340433",
+    "crates/spark-server/src/scheduler/mtp_step/one_forward.rs": "7f42162e15c75b42dec716f308abbf247424bdeaec83aa8ff3f7aaa6d02dc54b",
+    "crates/spark-server/src/scheduler/spec_step/admission.rs": "9931b167b9174b2a9c0073519cceeab759268631a59514dc744223b534f010c8",
+    "crates/spark-server/src/scheduler/verify_dflash_step.rs": "7e9c8b00b7360b2efaed75bfbb2a18843c11be6a64b8a436ca7ab1556b2ffc72",
+    "crates/spark-server/src/scheduler/verify_k2_step.rs": "d193ce48d278d1803e39c7844955466a9e162cdde14c899a3f9e830d26b14d76",
+    "crates/spark-server/src/scheduler/verify_k3_step.rs": "fe76556d358915b88f79edda7eae2c744bdec91d35524dd5958f6039caf95cb2",
+    "crates/spark-server/src/scheduler/verify_k4_batch_step.rs": "e5c8e6cd94a4bfb2ad67219be454ca206b352d5cb1968ae595d8c4d6a87f4ea9",
+    "crates/spark-server/src/scheduler/verify_k4_step.rs": "e3c4e5cbcc4db929fc3975c1e870d63968f8119a3ddcb265fc05249813f579a2",
+    "crates/spark-server/src/scheduler/verify_pipeline_helper/scored.rs": "7b5250d210942e6b0886a57720b606c661ee95984a4eb843c8f9f16291bf1b66",
+    "crates/spark-server/src/scheduler/verify_pipeline_helper/selection.rs": "4b1bc52259ccca885b52b5491569c96b2e4f52fd469e104857d3616813fbf75b"
+  },
+  "live_qualification": "Pending exact corrected-image ON/OFF execution; CPU source tests are not model evidence."
+}

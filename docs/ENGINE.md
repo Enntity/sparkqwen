@@ -7,16 +7,31 @@ pinned in [`install/atlas-source.json`](../install/atlas-source.json), for the
 kernel target `qwen3.8-flash-next` (model type `qwen4_exp`).
 [`install/build.sh`](../install/build.sh) refuses any other tree.
 
-The current fidelity candidate pins `sparkqwen/fidelity-rc-20261019` at `63bebfa6`
+The current fidelity candidate pins source tag `sparkqwen/fidelity-rc-20261019` at `63bebfa6`
 (tree `fa4e4817`). It includes the fidelity fixes, checkpoint reasoning
-policy, and the shared-expert tensor-parallel split. Final-image quality and
-matched performance qualification are pending; this source pin is not a release
-receipt.
+policy, and the shared-expert tensor-parallel split. The official image passed its mandatory native build tests and pinned
+Rust 1.93.1 workspace Clippy. Final-image evidence includes successful components
+and known quality failures; main and matrix performance are mixed. The bounded long-context serial
+comparison is complete. Maintenance publication is accepted with disclosed
+limitations. The exact source commit/tree fetches anonymously. The published
+image passed anonymous digest-pull content and runtime verification; product
+repository release checks remain separate. The [candidate review](../results/2026-10-20-fidelity-review/RESULT.md)
+binds the exact image and binary to each measured scope.
 
 The candidate also fixes speculative returned scores under logit bias and
 history penalties. Requested scores use the serial processed distribution;
 unsupported speculative scoring paths use a supported verification or serial
 path. First-prefill-token logit-bias support remains an inherited limitation.
+
+Single and batched MTP bootstrap picks now return logprobs from the processed
+row that selected the token. BF16 and FP32 row handling and per-member read
+failures are covered by five mandatory native regressions. On the exact image,
+two biased completion cases matched the same-image serial control at all 15
+finite returned positions, with maximum score difference 0.0. The first
+prefill piece remains nullable and is not covered by logit bias. Eight greedy
+prompts matched decoded responses; generated token IDs were not exposed by
+that check. These bounded observations do not prove long-context or universal
+speculative equality.
 
 Accepted prediction usage counts only draft tokens retained in the response,
 including token-limit, stop and rollback cases. Internal verification and
@@ -76,7 +91,7 @@ From Atlas-Inf branches not yet on its `main` (picked with
 | Decode metadata sized to the padded rung | `fix/decode-meta-rung` 5eda7c5c, 9d84bace |
 | No mid-chunk tail capture while auxiliary state is live | `fix/fnext-midchunk-aux` c41d8298 |
 
-Ours. Every option the shipped profiles switch on was checked bit-exact
+Historical bringup checks: every option then enabled by the profiles was checked bit-exact
 against the engine with it off (same prompt logprobs, same greedy text), except
 where noted:
 

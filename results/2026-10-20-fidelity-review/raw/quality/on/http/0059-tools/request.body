@@ -1,0 +1,1 @@
+{"model": "qwen3.8-flash-next-atlas", "max_tokens": 1024, "tools": [{"type": "function", "function": {"name": "add", "description": "Add two integers.", "parameters": {"type": "object", "properties": {"a": {"type": "integer"}, "b": {"type": "integer"}}, "required": ["a", "b"]}}}], "messages": [{"role": "user", "content": "Use the add tool to add 17 and 25."}]}

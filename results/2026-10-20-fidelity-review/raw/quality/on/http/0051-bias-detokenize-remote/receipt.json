@@ -1,0 +1,18 @@
+{
+  "finished_ns": 1792457966779169000,
+  "number": 51,
+  "path": "/detokenize",
+  "protocol_error": null,
+  "request_sha256": "e0217ed5322ede960498d5afa4437724dcbd8e6f12b14f3d49dd9ec3eba8d6d7",
+  "response_headers": {
+    "access-control-allow-origin": "*",
+    "connection": "close",
+    "content-type": "application/json",
+    "date": "Tue, 20 Oct 2026 00:59:26 GMT",
+    "transfer-encoding": "chunked"
+  },
+  "response_sha256": "a3f8852e649f2684c83711c957a7f1a8192e6ca51f766f3eed4b99a1943302ee",
+  "stage": "bias-detokenize-remote",
+  "started_ns": 1792457966764877000,
+  "status": 200
+}

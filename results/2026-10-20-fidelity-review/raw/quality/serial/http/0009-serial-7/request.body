@@ -1,0 +1,1 @@
+{"chat_template_kwargs": {"reasoning_effort": "low"}, "max_tokens": 320, "messages": [{"content": "Explain how tides are caused by the moon and the sun, for a curious teenager, in paragraphs.", "role": "user"}], "model": "qwen3.8-flash-next-atlas", "temperature": 0}

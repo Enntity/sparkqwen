@@ -1,0 +1,117 @@
+{
+  "root": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/main",
+  "outer_manifest_sha256": "2c59254080807b936b7c9e53e38501b5463ffb00ebf02f8f06ffc0fe1761a973",
+  "streams": 183,
+  "transport": {
+    "rigmark": {
+      "count": 28,
+      "finishes": {
+        "stop": 9,
+        "length": 19
+      },
+      "accepted_exceeds_completion": 0,
+      "first_started_unix": 1792462127.893737,
+      "last_ended_unix": 1792462292.469123
+    },
+    "sq": {
+      "count": 59,
+      "finishes": {
+        "length": 57,
+        "stop": 2
+      },
+      "accepted_exceeds_completion": 0,
+      "first_started_unix": 1792462292.5615885,
+      "last_ended_unix": 1792462442.7121568
+    },
+    "sd": {
+      "count": 64,
+      "finishes": {
+        "length": 64
+      },
+      "accepted_exceeds_completion": 0,
+      "first_started_unix": 1792462442.794,
+      "last_ended_unix": 1792462553.89
+    },
+    "agentic": {
+      "count": 20,
+      "finishes": {
+        "stop": 20
+      },
+      "accepted_exceeds_completion": 0,
+      "first_started_unix": 1792462553.9456356,
+      "last_ended_unix": 1792462570.6431198
+    },
+    "field-1": {
+      "count": 4,
+      "finishes": {
+        "length": 4
+      },
+      "accepted_exceeds_completion": 0,
+      "first_started_unix": 1792462570.7209654,
+      "last_ended_unix": 1792462599.7805622
+    },
+    "field-2": {
+      "count": 4,
+      "finishes": {
+        "length": 4
+      },
+      "accepted_exceeds_completion": 0,
+      "first_started_unix": 1792462599.876165,
+      "last_ended_unix": 1792462629.8719332
+    },
+    "field-3": {
+      "count": 4,
+      "finishes": {
+        "length": 4
+      },
+      "accepted_exceeds_completion": 0,
+      "first_started_unix": 1792462629.9277933,
+      "last_ended_unix": 1792462659.6250763
+    }
+  },
+  "quality": {
+    "rig_structured_exact_50_objects": true,
+    "agentic_correct": 20,
+    "limits": "Code/prose completion checks are not execution/factual tests; performance/count gates are not broad quality."
+  },
+  "identity": {
+    "binary_sha256": "4650c2f4551e3e65c08cad4c97dfd894b87741f7d99a1e8a60c5b15acc60810a",
+    "checkpoint_config_sha256": "b50dbc52a0c83b0cd2a44a372c1fb6b5e0e6827d22f2611c97d4d030f92f6b28",
+    "checkpoint_index_sha256": "5fa166bbb1cf25adda455117563efa72a2072272001f459eedece131ffc913e1",
+    "engine_commit": "63bebfa60d5086de9fc8cc07c21e5fbe38f3b742",
+    "engine_tree": "fa4e4817b804039076ba8e506dbd6d55bd453033",
+    "gpu_memory_utilization": null,
+    "image_id": "sha256:a0cebe89737898692964d3923477bef293a4ebde9dd32e27202697c54f763c9d",
+    "install_tree": "70890529ba64dede889814f99f21b3c9a981d9bc",
+    "model": "qwen3.8-flash-next-atlas",
+    "profile": "/opt/atlas/profiles/8x32k.json",
+    "profile_sha256": "5360066d46f9769cd096f82bf1272c9c26baf306547ae3fcc2e8a67f9d5f1fbc"
+  },
+  "image_content_sha256": "01a711b2d80cb4ee932a3e1d4f406ef7e1bd4c55fa8754e619e0c9e6c86cd5cb",
+  "selected_member_sha256": {
+    "suite-passed.json": "31aba01d574bfcb23fbcb2596ac826623671a098cbcff32aba50eaafc332a44b",
+    "rigmark.audit.jsonl": "6fdb7f3bebdeb2ada8905c4ad9e4ba77907eea71cfba77ca512de907c9323649",
+    "sq.audit.jsonl": "f5ef19cf18a15faa32973ec1c9664c4cbdc4f928b853dcd566720da8c9c66908",
+    "sd.audit.jsonl": "c34771fe5e2d6a19a30914d432f64e44928e10a7a92f98d870e1756373b45bf6",
+    "agentic.audit.jsonl": "224be0775cccdcbcfeb97b5146b2d68f098b6090080366f75f2c474b5b6925fc",
+    "field-1.audit.jsonl": "76defa9d62490502966e20177408188e4d5ecc2de34605a933b570f44ddafc9d",
+    "field-2.audit.jsonl": "4e7c0da85a1547ba804ce257cf19a827730609f3861a572e564a839ff7af7890",
+    "field-3.audit.jsonl": "2939478af362fef8e811d63258c5666505b0207d944324e6622a8eb578a85df9",
+    "before-identity.json": "0d5d51cb2d4784039f5cf74dbdc8a2d76e8b3e1fadbc15992a7f6897ea2459fc",
+    "after-identity.json": "cdc8d9a90906cd0b17291e361ca68afc3dfd52aaa7ce114c461f6170de97685a",
+    "post-uncap-clocks.json": "7850c76c68d55095f8943da3da38f49b21d1fb073b6fa06b30ade97cc2065050",
+    "clock-restoration.json": "136cf3750b75505b828c4e5af070ee88573df959fe6288861fc6569660fb9c32",
+    "harness-sha256.json": "37375546134645ad26b72aacf78791641dbed27a32b70550028ceb81aee0dd92",
+    "runner-sha256.json": "52b7087cffdfb535575bcf4ae17b4bb7674ca677b240fdf29da11ed8794e7d1a",
+    "rigmark.json": "fdb9d63e258d645fa65740e9eecbd194f9469b0aaf3c640a22e7635b5799dc44",
+    "bench-candidate.json": "e113ba6c16f56cbdffbf6ee040f4e7ee9df929d3f331d94129650be8fba62a46",
+    "sd-candidate.json": "4262b704ee580823f2f70b2dcce404a32734eba35efeb730d9d662328f3da068",
+    "agentic-candidate.json": "fc9db26e0696bc18f18e54acb2c65314451d0f83797c08232f40c962610c25cb",
+    "field-1.json": "1bde028e797ae4072f853ea4219c60ecb07b85295243442351bfceaf8fb2f398",
+    "field-2.json": "adf3ebe97592df616d3b46fb49c0dcd4039f51aa1914d04eba5df50631872fcf",
+    "field-3.json": "aca05de8a0cec34a3265500e0b263b39c28e49e5fd88906ca3c77136d9873035"
+  },
+  "cleanup_verified": true,
+  "case50_excluded_from_timing": true,
+  "release_qualified": false
+}

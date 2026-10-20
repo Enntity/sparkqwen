@@ -1,0 +1,8 @@
+{
+  "product_commit": "10c0f7882532beba623042b517cad8def5747558",
+  "install_tree": "70890529ba64dede889814f99f21b3c9a981d9bc",
+  "engine_commit": "63bebfa60d5086de9fc8cc07c21e5fbe38f3b742",
+  "engine_tree": "fa4e4817b804039076ba8e506dbd6d55bd453033",
+  "engine_branch": "sparkqwen/fidelity-rc-20261019",
+  "engine_repository": "https://github.com/Enntity/atlas.git"
+}

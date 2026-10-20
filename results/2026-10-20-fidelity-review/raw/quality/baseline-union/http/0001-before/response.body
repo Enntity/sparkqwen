@@ -1,0 +1,27 @@
+# HELP atlas_http_bytes_out_total Total HTTP response body bytes
+# TYPE atlas_http_bytes_out_total counter
+atlas_http_bytes_out_total 53
+# HELP atlas_prefix_cache_hits_total Prefix cache lookups that found cached blocks
+# TYPE atlas_prefix_cache_hits_total counter
+atlas_prefix_cache_hits_total 0
+# HELP atlas_prefix_cache_misses_total Prefix cache lookups with no match
+# TYPE atlas_prefix_cache_misses_total counter
+atlas_prefix_cache_misses_total 0
+# HELP atlas_prefix_cache_hit_tokens_total Tokens reused from prefix cache
+# TYPE atlas_prefix_cache_hit_tokens_total counter
+atlas_prefix_cache_hit_tokens_total 0
+# HELP atlas_prefix_cache_hit_rate Prefix cache hit rate (0-1)
+# TYPE atlas_prefix_cache_hit_rate gauge
+atlas_prefix_cache_hit_rate 0.0000
+# HELP atlas_kernel_lookups_unresolved Kernel lookups that did not resolve for the live model
+# TYPE atlas_kernel_lookups_unresolved gauge
+atlas_kernel_lookups_unresolved 0
+# HELP atlas_token_entropy_last Most recent per-token entropy (nats)
+# TYPE atlas_token_entropy_last gauge
+atlas_token_entropy_last 0.0000
+# HELP atlas_low_entropy_tokens_total Tokens with entropy below 0.3
+# TYPE atlas_low_entropy_tokens_total counter
+atlas_low_entropy_tokens_total 0
+# HELP atlas_low_entropy_ratio Fraction of tokens with entropy below 0.3
+# TYPE atlas_low_entropy_ratio gauge
+atlas_low_entropy_ratio 0.0000

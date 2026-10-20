@@ -1,0 +1,12 @@
+{
+  "bind_now_succeeded_on_all_three_ports_both_hosts": true,
+  "campaign_leases_released": false,
+  "cause": "Transient bind failure after previous cleanup; no contemporaneous socket-state record establishes TIME_WAIT.",
+  "cleanup_verified": true,
+  "complete": true,
+  "failed_outer_manifest_sha256": "e996cd8cf4be22c0e748a5c6e96d744ffe8f5c465ebba36506e77e389617b30a",
+  "failure_phase": "rank0 preflight before stage/container/load",
+  "failure_preserved": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/matrix",
+  "no_model_or_cache_changes": true,
+  "only_owned_markers_released": true
+}

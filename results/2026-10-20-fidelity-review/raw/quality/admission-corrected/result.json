@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "request_sha256": "5179e83383d6e0226600397ef1738a869db3c7949ed3dbf02845bca6b813db3b",
+  "response_sha256": "f40dc5008b0762b17553faa940a225170fc27f61beb3e4d02493cd786239bdb4",
+  "scope": "One corrected header request before benchmark setup; source admission rejection precedes enqueue/prefill, no model completion observed. Original malformed-PNG failure remains preserved."
+}

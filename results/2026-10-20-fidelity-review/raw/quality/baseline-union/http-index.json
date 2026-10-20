@@ -1,0 +1,66 @@
+[
+  {
+    "finished_ns": 1792458845929282000,
+    "number": 1,
+    "path": "/metrics",
+    "protocol_error": null,
+    "request_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "response_headers": {
+      "access-control-allow-origin": "*",
+      "connection": "close",
+      "content-type": "text/plain; version=0.0.4; charset=utf-8",
+      "date": "Tue, 20 Oct 2026 01:14:06 GMT",
+      "transfer-encoding": "chunked"
+    },
+    "response_sha256": "e617efb1431a64b6d66ade6bfd9e9868a40091f2ced15e6dbd303b1400592bbf",
+    "stage": "before",
+    "started_ns": 1792458845911497000,
+    "status": 200
+  },
+  {
+    "finished_ns": 1792458851012114000,
+    "number": 2,
+    "path": "/v1/chat/completions",
+    "protocol_error": null,
+    "request_sha256": "5d3bd84500927fff049ded2fd98dbd205c8d63c7d18e861c9ebf8009ac4dfbfd",
+    "response_headers": {
+      "access-control-allow-origin": "*",
+      "connection": "close",
+      "content-type": "application/json",
+      "date": "Tue, 20 Oct 2026 01:14:11 GMT",
+      "openai-organization": "atlas-local",
+      "openai-processing-ms": "4567",
+      "openai-version": "2026-01-01",
+      "transfer-encoding": "chunked",
+      "x-ratelimit-limit-requests": "1000000",
+      "x-ratelimit-limit-tokens": "1000000000",
+      "x-ratelimit-remaining-requests": "999999",
+      "x-ratelimit-remaining-tokens": "999999999",
+      "x-ratelimit-reset-requests": "0s",
+      "x-ratelimit-reset-tokens": "0s",
+      "x-request-id": "req_228231df-2d7b-4cc6-be5f-345997dacecf"
+    },
+    "response_sha256": "6b9b7d01653cdd24bd0677759c3311923f7e3f46d8f54ede42b2c75a232340c0",
+    "stage": "schema-union-exact-baseline",
+    "started_ns": 1792458846425725000,
+    "status": 200
+  },
+  {
+    "finished_ns": 1792458851466429000,
+    "number": 3,
+    "path": "/metrics",
+    "protocol_error": null,
+    "request_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "response_headers": {
+      "access-control-allow-origin": "*",
+      "connection": "close",
+      "content-type": "text/plain; version=0.0.4; charset=utf-8",
+      "date": "Tue, 20 Oct 2026 01:14:11 GMT",
+      "transfer-encoding": "chunked"
+    },
+    "response_sha256": "609025a03a20d9abc532f7250623ac196a10840399b3c889cd7cbcaf7159278c",
+    "stage": "after",
+    "started_ns": 1792458851452710000,
+    "status": 200
+  }
+]

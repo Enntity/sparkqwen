@@ -1,0 +1,846 @@
+{
+  "_comment": "SPDX-License-Identifier: AGPL-3.0-only",
+  "schema": "sparkqwen.fidelity-review/v1",
+  "status": "candidate_review_complete_with_known_failures",
+  "fullQualityPass": false,
+  "releaseQualified": false,
+  "engine": {
+    "engine_branch": "sparkqwen/fidelity-rc-20261019",
+    "engine_commit": "63bebfa60d5086de9fc8cc07c21e5fbe38f3b742",
+    "engine_repository": "https://github.com/Enntity/atlas.git",
+    "engine_tree": "fa4e4817b804039076ba8e506dbd6d55bd453033",
+    "install_tree": "70890529ba64dede889814f99f21b3c9a981d9bc",
+    "product_commit": "10c0f7882532beba623042b517cad8def5747558"
+  },
+  "image": {
+    "tag": "ghcr.io/enntity/atlas-sparkqwen:70890529ba64",
+    "localImageId": "sha256:a0cebe89737898692964d3923477bef293a4ebde9dd32e27202697c54f763c9d",
+    "binarySHA256": "4650c2f4551e3e65c08cad4c97dfd894b87741f7d99a1e8a60c5b15acc60810a",
+    "contentFingerprintSHA256": "01a711b2d80cb4ee932a3e1d4f406ef7e1bd4c55fa8754e619e0c9e6c86cd5cb",
+    "architecture": "arm64",
+    "os": "linux",
+    "anonymousManifestVerified": true,
+    "registryPublication": "verified",
+    "registryDigest": "sha256:a0cebe89737898692964d3923477bef293a4ebde9dd32e27202697c54f763c9d"
+  },
+  "nativeBuild": {
+    "success": true,
+    "rust": "1.93.1",
+    "workspaceClippy": "passed",
+    "functionalFilterGroups": 16,
+    "bootstrapScoreTestsPassed": 5,
+    "receipt": "raw/build/build.log",
+    "note": "Filter groups overlap; group counts are not distinct test counts."
+  },
+  "quality": {
+    "profile": "8x262k",
+    "greedyConcurrency": {
+      "prompts": 8,
+      "comparisons": [
+        "C1=C4=C8",
+        "C1p=C4p"
+      ],
+      "passed": true
+    },
+    "serialControl": {
+      "matched": 8,
+      "scope": "Decoded reasoning/content, finish reason and counts. No generated token-ID proof."
+    },
+    "biasedScores": {
+      "cases": 2,
+      "finitePositionsPerCase": 15,
+      "maxAbsoluteDelta": 0.0,
+      "firstPrefillScore": null,
+      "firstPrefillBiasSupported": false
+    },
+    "tools": {
+      "passed": 21,
+      "total": 21
+    },
+    "autoToolJsonUnion": {
+      "semanticPass": false,
+      "observed": "get_stock_price(ticker=OSLO)",
+      "candidateExecution": "serial; native MTP fraction0"
+    },
+    "toolChoiceNoneControl": {
+      "passed": true,
+      "scope": "Same body with only tool_choice changed from auto to none"
+    },
+    "nll": {
+      "actual_a4_reference": {
+        "candidate_nll": 1.065992331703926,
+        "count": 27033,
+        "max_absolute_logprob_delta": 10.134291305009246,
+        "mean_absolute_logprob_delta": 0.24789398507173083,
+        "nll_delta": 0.040442639890293286,
+        "prompt_tokens": 27034,
+        "reference_nll": 1.0255496918136326,
+        "scored_positions": [
+          1,
+          27033
+        ]
+      },
+      "configured_a16_reference": {
+        "candidate_nll": 1.065992331703926,
+        "count": 27033,
+        "max_absolute_logprob_delta": 12.435419805072934,
+        "mean_absolute_logprob_delta": 0.23629696491791838,
+        "nll_delta": -0.01668671666115329,
+        "prompt_tokens": 27034,
+        "reference_nll": 1.0826790483650792,
+        "scored_positions": [
+          1,
+          27033
+        ]
+      },
+      "earlier_shared_a4": {
+        "candidate_nll": 1.065992331703926,
+        "count": 27033,
+        "max_absolute_logprob_delta": 0.0,
+        "mean_absolute_logprob_delta": 0.0,
+        "nll_delta": 0.0,
+        "prompt_tokens": 27034,
+        "reference_nll": 1.065992331703926,
+        "scored_positions": [
+          1,
+          27033
+        ]
+      }
+    },
+    "needle": {
+      "correct": 59,
+      "total": 60,
+      "historicalShippedCorrect": 60,
+      "finishStop": 60,
+      "promptTokenBands": [
+        {
+          "tokens": 30690,
+          "correct": 15,
+          "total": 15
+        },
+        {
+          "tokens": 61290,
+          "correct": 15,
+          "total": 15
+        },
+        {
+          "tokens": 102090,
+          "correct": 15,
+          "total": 15
+        },
+        {
+          "tokens": 163290,
+          "correct": 14,
+          "total": 15
+        }
+      ],
+      "miss": {
+        "caseIndex": 50,
+        "expected": "52590382",
+        "observed": "94207600",
+        "completionTokens": 93,
+        "acceptedPredictionTokens": 60,
+        "finish": "stop"
+      },
+      "historicalComparisonLimit": "Same seeded case metadata; complete old HTTP bodies absent. Historical reference also enabled MTP."
+    },
+    "vision": {
+      "a5": "pass",
+      "b16680OriginalGrader": "fail_preserved",
+      "b16680Geometry": "model correctly named a tall rectangle; original grader expected square",
+      "d8": "pass",
+      "malformedAdmissionFixture": "HTTP400 decoder error with null code; original failure preserved",
+      "correctedAdmissionFixture": "HTTP400 vision_input_too_large before benchmark; no model completion observed"
+    }
+  },
+  "performance": {
+    "status": "main_and_matrix_complete",
+    "main": {
+      "streamsPerArm": 183,
+      "allTransportPass": true,
+      "candidateAcceptedWithinCompletion": true,
+      "requestHashesEqual": 179,
+      "requestHashesTotal": 183,
+      "changedWarmConversationRequests": 4,
+      "genericWarningRetained": true,
+      "selectedMetrics": [
+        {
+          "label": "Rig code decode, median of 3",
+          "cell": "rigmark/decode/code/decode_tokens_per_second/median",
+          "baseline": {
+            "n": 1,
+            "observations": 1,
+            "minimum": 113.503,
+            "maximum": 113.503,
+            "median": 113.503,
+            "repetitions": [
+              []
+            ],
+            "reported_summary": true,
+            "direction": "higher",
+            "values": [
+              113.503
+            ],
+            "sources": [
+              {
+                "file": "raw/performance/main-baseline.tar",
+                "pointer": "/decode/code/decode_tokens_per_second/median"
+              }
+            ]
+          },
+          "candidate": {
+            "n": 1,
+            "observations": 1,
+            "minimum": 106.988,
+            "maximum": 106.988,
+            "median": 106.988,
+            "repetitions": [
+              []
+            ],
+            "reported_summary": true,
+            "direction": "higher",
+            "values": [
+              106.988
+            ],
+            "sources": [
+              {
+                "file": "raw/performance/main-candidate.tar",
+                "pointer": "/decode/code/decode_tokens_per_second/median"
+              }
+            ]
+          },
+          "delta": -6.515000000000001,
+          "delta_percent": -5.739936389346537,
+          "flags": [
+            "slower: review",
+            "harness summary; n counts summaries, not requests",
+            "evidence gaps: review",
+            "identity differences: review"
+          ]
+        },
+        {
+          "label": "Rig prose decode, median of 3",
+          "cell": "rigmark/decode/prose/decode_tokens_per_second/median",
+          "baseline": {
+            "n": 1,
+            "observations": 1,
+            "minimum": 57.529,
+            "maximum": 57.529,
+            "median": 57.529,
+            "repetitions": [
+              []
+            ],
+            "reported_summary": true,
+            "direction": "higher",
+            "values": [
+              57.529
+            ],
+            "sources": [
+              {
+                "file": "raw/performance/main-baseline.tar",
+                "pointer": "/decode/prose/decode_tokens_per_second/median"
+              }
+            ]
+          },
+          "candidate": {
+            "n": 1,
+            "observations": 1,
+            "minimum": 56.128,
+            "maximum": 56.128,
+            "median": 56.128,
+            "repetitions": [
+              []
+            ],
+            "reported_summary": true,
+            "direction": "higher",
+            "values": [
+              56.128
+            ],
+            "sources": [
+              {
+                "file": "raw/performance/main-candidate.tar",
+                "pointer": "/decode/prose/decode_tokens_per_second/median"
+              }
+            ]
+          },
+          "delta": -1.4010000000000034,
+          "delta_percent": -2.435293504145741,
+          "flags": [
+            "slower: review",
+            "harness summary; n counts summaries, not requests",
+            "evidence gaps: review",
+            "identity differences: review"
+          ]
+        },
+        {
+          "label": "Rig structured decode, median of 3",
+          "cell": "rigmark/decode/structured/decode_tokens_per_second/median",
+          "baseline": {
+            "n": 1,
+            "observations": 1,
+            "minimum": 130.691,
+            "maximum": 130.691,
+            "median": 130.691,
+            "repetitions": [
+              []
+            ],
+            "reported_summary": true,
+            "direction": "higher",
+            "values": [
+              130.691
+            ],
+            "sources": [
+              {
+                "file": "raw/performance/main-baseline.tar",
+                "pointer": "/decode/structured/decode_tokens_per_second/median"
+              }
+            ]
+          },
+          "candidate": {
+            "n": 1,
+            "observations": 1,
+            "minimum": 123.061,
+            "maximum": 123.061,
+            "median": 123.061,
+            "repetitions": [
+              []
+            ],
+            "reported_summary": true,
+            "direction": "higher",
+            "values": [
+              123.061
+            ],
+            "sources": [
+              {
+                "file": "raw/performance/main-candidate.tar",
+                "pointer": "/decode/structured/decode_tokens_per_second/median"
+              }
+            ]
+          },
+          "delta": -7.6299999999999955,
+          "delta_percent": -5.8381984987489535,
+          "flags": [
+            "slower: review",
+            "harness summary; n counts summaries, not requests",
+            "evidence gaps: review",
+            "identity differences: review"
+          ]
+        },
+        {
+          "label": "Rig cold 16K prefill, median of 2",
+          "cell": "rigmark/prefill/16384/cold/effective_prefill_tokens_per_second/median",
+          "baseline": {
+            "n": 1,
+            "observations": 1,
+            "minimum": 4140.743,
+            "maximum": 4140.743,
+            "median": 4140.743,
+            "repetitions": [
+              []
+            ],
+            "reported_summary": true,
+            "direction": "higher",
+            "values": [
+              4140.743
+            ],
+            "sources": [
+              {
+                "file": "raw/performance/main-baseline.tar",
+                "pointer": "/prefill/16384/cold/effective_prefill_tokens_per_second/median"
+              }
+            ]
+          },
+          "candidate": {
+            "n": 1,
+            "observations": 1,
+            "minimum": 4451.413,
+            "maximum": 4451.413,
+            "median": 4451.413,
+            "repetitions": [
+              []
+            ],
+            "reported_summary": true,
+            "direction": "higher",
+            "values": [
+              4451.413
+            ],
+            "sources": [
+              {
+                "file": "raw/performance/main-candidate.tar",
+                "pointer": "/prefill/16384/cold/effective_prefill_tokens_per_second/median"
+              }
+            ]
+          },
+          "delta": 310.66999999999916,
+          "delta_percent": 7.502759770408334,
+          "flags": [
+            "harness summary; n counts summaries, not requests",
+            "evidence gaps: review",
+            "identity differences: review"
+          ]
+        },
+        {
+          "label": "Rig C1 end-to-end aggregate, 1 round",
+          "cell": "rigmark/concurrency/1/aggregate_end_to_end_tokens_per_second/median",
+          "baseline": {
+            "n": 1,
+            "observations": 1,
+            "minimum": 75.701,
+            "maximum": 75.701,
+            "median": 75.701,
+            "repetitions": [
+              []
+            ],
+            "reported_summary": true,
+            "direction": "higher",
+            "values": [
+              75.701
+            ],
+            "sources": [
+              {
+                "file": "raw/performance/main-baseline.tar",
+                "pointer": "/concurrency/1/aggregate_end_to_end_tokens_per_second/median"
+              }
+            ]
+          },
+          "candidate": {
+            "n": 1,
+            "observations": 1,
+            "minimum": 84.523,
+            "maximum": 84.523,
+            "median": 84.523,
+            "repetitions": [
+              []
+            ],
+            "reported_summary": true,
+            "direction": "higher",
+            "values": [
+              84.523
+            ],
+            "sources": [
+              {
+                "file": "raw/performance/main-candidate.tar",
+                "pointer": "/concurrency/1/aggregate_end_to_end_tokens_per_second/median"
+              }
+            ]
+          },
+          "delta": 8.822000000000003,
+          "delta_percent": 11.653743015283819,
+          "flags": [
+            "harness summary; n counts summaries, not requests",
+            "evidence gaps: review",
+            "identity differences: review"
+          ]
+        },
+        {
+          "label": "Rig C2 end-to-end aggregate, 1 round",
+          "cell": "rigmark/concurrency/2/aggregate_end_to_end_tokens_per_second/median",
+          "baseline": {
+            "n": 1,
+            "observations": 1,
+            "minimum": 120.626,
+            "maximum": 120.626,
+            "median": 120.626,
+            "repetitions": [
+              []
+            ],
+            "reported_summary": true,
+            "direction": "higher",
+            "values": [
+              120.626
+            ],
+            "sources": [
+              {
+                "file": "raw/performance/main-baseline.tar",
+                "pointer": "/concurrency/2/aggregate_end_to_end_tokens_per_second/median"
+              }
+            ]
+          },
+          "candidate": {
+            "n": 1,
+            "observations": 1,
+            "minimum": 108.842,
+            "maximum": 108.842,
+            "median": 108.842,
+            "repetitions": [
+              []
+            ],
+            "reported_summary": true,
+            "direction": "higher",
+            "values": [
+              108.842
+            ],
+            "sources": [
+              {
+                "file": "raw/performance/main-candidate.tar",
+                "pointer": "/concurrency/2/aggregate_end_to_end_tokens_per_second/median"
+              }
+            ]
+          },
+          "delta": -11.784000000000006,
+          "delta_percent": -9.76903818413941,
+          "flags": [
+            "slower: review",
+            "harness summary; n counts summaries, not requests",
+            "evidence gaps: review",
+            "identity differences: review"
+          ]
+        },
+        {
+          "label": "Rig C4 end-to-end aggregate, 1 round",
+          "cell": "rigmark/concurrency/4/aggregate_end_to_end_tokens_per_second/median",
+          "baseline": {
+            "n": 1,
+            "observations": 1,
+            "minimum": 185.22,
+            "maximum": 185.22,
+            "median": 185.22,
+            "repetitions": [
+              []
+            ],
+            "reported_summary": true,
+            "direction": "higher",
+            "values": [
+              185.22
+            ],
+            "sources": [
+              {
+                "file": "raw/performance/main-baseline.tar",
+                "pointer": "/concurrency/4/aggregate_end_to_end_tokens_per_second/median"
+              }
+            ]
+          },
+          "candidate": {
+            "n": 1,
+            "observations": 1,
+            "minimum": 173.936,
+            "maximum": 173.936,
+            "median": 173.936,
+            "repetitions": [
+              []
+            ],
+            "reported_summary": true,
+            "direction": "higher",
+            "values": [
+              173.936
+            ],
+            "sources": [
+              {
+                "file": "raw/performance/main-candidate.tar",
+                "pointer": "/concurrency/4/aggregate_end_to_end_tokens_per_second/median"
+              }
+            ]
+          },
+          "delta": -11.283999999999992,
+          "delta_percent": -6.09221466364323,
+          "flags": [
+            "slower: review",
+            "harness summary; n counts summaries, not requests",
+            "evidence gaps: review",
+            "identity differences: review"
+          ]
+        },
+        {
+          "label": "Rig C8 end-to-end aggregate, 1 round",
+          "cell": "rigmark/concurrency/8/aggregate_end_to_end_tokens_per_second/median",
+          "baseline": {
+            "n": 1,
+            "observations": 1,
+            "minimum": 292.111,
+            "maximum": 292.111,
+            "median": 292.111,
+            "repetitions": [
+              []
+            ],
+            "reported_summary": true,
+            "direction": "higher",
+            "values": [
+              292.111
+            ],
+            "sources": [
+              {
+                "file": "raw/performance/main-baseline.tar",
+                "pointer": "/concurrency/8/aggregate_end_to_end_tokens_per_second/median"
+              }
+            ]
+          },
+          "candidate": {
+            "n": 1,
+            "observations": 1,
+            "minimum": 259.772,
+            "maximum": 259.772,
+            "median": 259.772,
+            "repetitions": [
+              []
+            ],
+            "reported_summary": true,
+            "direction": "higher",
+            "values": [
+              259.772
+            ],
+            "sources": [
+              {
+                "file": "raw/performance/main-candidate.tar",
+                "pointer": "/concurrency/8/aggregate_end_to_end_tokens_per_second/median"
+              }
+            ]
+          },
+          "delta": -32.339,
+          "delta_percent": -11.070791582651799,
+          "flags": [
+            "slower: review",
+            "harness summary; n counts summaries, not requests",
+            "evidence gaps: review",
+            "identity differences: review"
+          ]
+        },
+        {
+          "label": "Four-stream field aggregate, median of 3",
+          "cell": "field/aggregate_decode_tok_s",
+          "baseline": {
+            "n": 3,
+            "observations": 3,
+            "minimum": 61.353469,
+            "maximum": 62.617457,
+            "median": 61.789981,
+            "repetitions": [
+              [
+                "field-1"
+              ],
+              [
+                "field-2"
+              ],
+              [
+                "field-3"
+              ]
+            ],
+            "reported_summary": false,
+            "direction": "higher",
+            "values": [
+              61.789981,
+              61.353469,
+              62.617457
+            ],
+            "sources": [
+              {
+                "file": "raw/performance/main-baseline.tar",
+                "pointer": "/aggregate_decode_tok_s"
+              },
+              {
+                "file": "raw/performance/main-baseline.tar",
+                "pointer": "/aggregate_decode_tok_s"
+              },
+              {
+                "file": "raw/performance/main-baseline.tar",
+                "pointer": "/aggregate_decode_tok_s"
+              }
+            ]
+          },
+          "candidate": {
+            "n": 3,
+            "observations": 3,
+            "minimum": 62.575404,
+            "maximum": 64.432956,
+            "median": 62.833154,
+            "repetitions": [
+              [
+                "field-1"
+              ],
+              [
+                "field-2"
+              ],
+              [
+                "field-3"
+              ]
+            ],
+            "reported_summary": false,
+            "direction": "higher",
+            "values": [
+              64.432956,
+              62.575404,
+              62.833154
+            ],
+            "sources": [
+              {
+                "file": "raw/performance/main-candidate.tar",
+                "pointer": "/aggregate_decode_tok_s"
+              },
+              {
+                "file": "raw/performance/main-candidate.tar",
+                "pointer": "/aggregate_decode_tok_s"
+              },
+              {
+                "file": "raw/performance/main-candidate.tar",
+                "pointer": "/aggregate_decode_tok_s"
+              }
+            ]
+          },
+          "delta": 1.043173000000003,
+          "delta_percent": 1.6882559002567148,
+          "flags": [
+            "evidence gaps: review",
+            "identity differences: review"
+          ]
+        }
+      ]
+    },
+    "matrix": {
+      "status": "complete",
+      "streamsPerArm": 10,
+      "requestHashesEqual": 10,
+      "invocationsPerCell": 1,
+      "rawComparison": "raw/performance/matrix-comparison/report.json",
+      "firstAttempt": "preserved preflight bind failure before launch",
+      "firstAttemptCause": "not established",
+      "laterSerialTransition": "observed TIME_WAIT with EADDRINUSE; failed waiter compared OS-specific errno numbers"
+    },
+    "rawMainComparison": "raw/performance/main-comparison/report.json"
+  },
+  "case50OnOff": {
+    "status": "complete",
+    "on": {
+      "accepted_prediction_tokens": 60,
+      "cache_context": {
+        "fresh_serial_process": false,
+        "limit": "Equal cached-token counts do not prove equal cache contents; original miss was C4 and this replay is C1.",
+        "prefix_cache_enabled_on_both_ranks": true,
+        "prior_matrix_workload_in_same_process": true
+      },
+      "cached_prompt_tokens": 0,
+      "correct": false,
+      "decoded_fields": {
+        "completion_tokens": 93,
+        "content": "94207600",
+        "finish_reason": "stop",
+        "prompt_tokens": 163290,
+        "reasoning_content": "Let me find the key k880253 in Table A first.\n\nLooking through Table A for k880253...\n\nk880253 -> c085059\n\nNow let me find c085059 in Table B.\n\nc085059 = 94207600\n",
+        "tool_calls": null
+      },
+      "final_requests_total_metric": 11.0,
+      "full_usage": {
+        "completion_tokens": 93,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 60,
+          "audio_tokens": 0,
+          "reasoning_tokens": 81,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens": 163290,
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        },
+        "response_token/s": 58.76556165648332,
+        "time_to_first_token_ms": 48051.11393,
+        "total_tokens": 163383
+      },
+      "initial_active_metric": 0.0,
+      "initial_requests_total_metric": 10.0,
+      "mtp_fraction": 1.0,
+      "native_done": "2026-10-20T02:25:59.247265Z  INFO spark::scheduler::mtp_accept_debug: Done: 93 tokens (stop) 59.4 tok/s, TTFT=48051.1ms, serial=0.00 mtp=1.00 p1=0.781 mean_na=1.875 tok_step=2.875 regime_reprobes=0 depth=k4 depth_switches=0 acc=0.81,0.65,0.48,-,-,-,- surv=0.78,0.62,0.47,0.00,0.00,0.00,0.00",
+      "scope": "One C1 request; full decoded fields, no generated token-ID proof. Original miss occurred at C4; cache history differs.",
+      "serial_fraction": 0.0
+    },
+    "off": {
+      "accepted_prediction_tokens": 0,
+      "cache_context": {
+        "fresh_serial_process": true,
+        "limit": "Equal cached-token counts do not prove equal cache contents; original miss was C4 and this replay is C1.",
+        "prefix_cache_enabled_on_both_ranks": true,
+        "prior_matrix_workload_in_same_process": false
+      },
+      "cached_prompt_tokens": 0,
+      "cached_prompt_tokens_equal": true,
+      "correct": false,
+      "decoded_fields": {
+        "completion_tokens": 93,
+        "content": "94207600",
+        "finish_reason": "stop",
+        "prompt_tokens": 163290,
+        "reasoning_content": "Let me find the key k880253 in Table A first.\n\nLooking through Table A for k880253...\n\nk880253 -> c085059\n\nNow let me find c085059 in Table B.\n\nc085059 = 94207600\n",
+        "tool_calls": null
+      },
+      "final_requests_total_metric": 1.0,
+      "full_usage": {
+        "completion_tokens": 93,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 81,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens": 163290,
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        },
+        "response_token/s": 30.451003101089775,
+        "time_to_first_token_ms": 52040.519432,
+        "total_tokens": 163383
+      },
+      "initial_active_metric": null,
+      "initial_requests_total_metric": null,
+      "mtp_fraction": 0.0,
+      "native_done": "2026-10-20T02:30:44.192690Z  INFO spark::scheduler::mtp_accept_debug: Done: 93 tokens (stop) 30.8 tok/s, TTFT=52040.5ms, serial=1.00 mtp=0.00 p1=0.000 mean_na=0.000 tok_step=1.000 regime_reprobes=0 depth=k5 depth_switches=0 acc=-,-,-,-,-,-,- surv=0.00,0.00,0.00,0.00,0.00,0.00,0.00",
+      "on_cached_prompt_tokens": 0,
+      "on_correct": false,
+      "same_decoded_fields": true,
+      "scope": "One C1 request; full decoded fields, no generated token-ID proof. Original miss occurred at C4; cache history differs.",
+      "serial_fraction": 1.0
+    },
+    "sameDecodedFields": true,
+    "scope": "One C1 replay per arm, original miss C4; cache history differs. Equal cached-token counts do not prove equal state. No generated-token-ID proof."
+  },
+  "limits": [
+    "Known NLL residual +0.040442639890293286 against observed A4 reference; all 27,033 scores unchanged versus earlier shared-A4 candidate. No parity or causal claim.",
+    "Reference LM head uses MXFP8 and KV uses FP8; reference is not a full BF16 oracle.",
+    "Configured A16 reference has weaker executed-lane evidence and is supplementary.",
+    "Auto tool/schema semantic failure and genuine long-context miss remain.",
+    "Prior full-quality failures are not converted to a whole-suite pass."
+  ],
+  "releaseRecommendation": "Accept as a maintenance release with the disclosed limits after the recorded product-release conditions are verified; retain fullQualityPass=false. No fidelity-parity, universal speculative-exactness or overall speedup claim.",
+  "publicationDisposition": {
+    "status": "accept_maintenance_release_with_disclosed_limits",
+    "publicationAcceptedWithLimitations": true,
+    "fullQualityPass": false,
+    "productionActivationAuthorized": false,
+    "receipt": "raw/disposition/acceptance-r2.json",
+    "sha256": "7e2e699de3e8d06cb4a6eb3a3df5add15c8aaf18172f0f299aa1a0628ea91de0",
+    "productReleaseConditions": [
+      "Verify the exact engine pin through its annotated source tag and fresh anonymous commit/tree fetch. Preserve existing product branches.",
+      "Publish already tested image without rebuild; verify registry manifest and anonymous digest pull content/runtime.",
+      "Apply reviewed docs and unedited receipts, check all SHA256SUMS and complete repository static workflow, required remote checks and branch policy.",
+      "Never change install tree or tested runtime/profile sources during docs assembly."
+    ]
+  },
+  "sourcePublication": {
+    "complete": true,
+    "kind": "annotated-tag",
+    "ref": "sparkqwen/fidelity-rc-20261019",
+    "anonymousFreshCommitTreeFetch": true,
+    "receipt": "raw/publication/source/result.json",
+    "sha256": "ef45c926edeaba7b923520c9ea024065fb2974337b86fde0815c906b9ed1f3f3"
+  },
+  "imagePublication": {
+    "complete": true,
+    "image": "ghcr.io/enntity/atlas-sparkqwen:70890529ba64",
+    "registry_digest": "sha256:a0cebe89737898692964d3923477bef293a4ebde9dd32e27202697c54f763c9d",
+    "anonymous": true,
+    "fresh_client_context": true,
+    "daemon_layer_cache_may_be_reused": true,
+    "owned_inspection_containers_removed": true,
+    "receipt": "raw/publication/image/result.json",
+    "sha256": "862609a0729c4daead45b0a0f9f79f3ba371cf5fa88af1b2f49b16ec7761f8ae"
+  },
+  "remainingProductReleaseConditions": [
+    "Required remote checks and repository branch policy before merge.",
+    "Preserve tested install tree/runtime/profile bytes."
+  ],
+  "releaseQualifiedScope": "Evidence snapshot before product merge. Maintenance publication is accepted with disclosed limits; fullQualityPass remains false. Product release status is recorded by its GitHub release.",
+  "localProductChecks": {
+    "passed": true,
+    "receipt": "raw/product-checks/local-static.json",
+    "sha256": "a5ecff1e907edd3c75c70201adf2c3d1d29ba294d571a0660c703b5918762b81",
+    "runtime": "Python3.14.6 locally; GitHub workflow independently uses3.12"
+  }
+}

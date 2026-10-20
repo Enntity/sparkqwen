@@ -1,0 +1,71 @@
+{
+  "schema": "spark-maintenance-release-review/v1",
+  "product": "sparkqwen",
+  "reviewer": "Codex parent, with independent qwen_recovery evidence review",
+  "reviewed_at": "2026-10-20T02:36:26.089543+00:00",
+  "engine_commit": "63bebfa60d5086de9fc8cc07c21e5fbe38f3b742",
+  "engine_tree": "fa4e4817b804039076ba8e506dbd6d55bd453033",
+  "product_build_commit": "10c0f7882532beba623042b517cad8def5747558",
+  "install_tree": "70890529ba64dede889814f99f21b3c9a981d9bc",
+  "publication_accepted": true,
+  "decision": "accept_maintenance_release_with_disclosed_limits",
+  "full_quality_pass": false,
+  "production_activation_authorized_by_this_receipt": false,
+  "basis": [
+    "Exact official image fixes processed speculative/bootstrap score reporting and retained accepted-token usage; mandatory native checks and pinned compiler checks passed.",
+    "Same-image bounded serial comparisons and biased-score comparisons pass; tools21 and vision content cases pass. Corrected oversized-header admission returns intended400 error.",
+    "All183 main and10 matrix streams per arm completed and audited; all repetitions and slower cells remain disclosed.",
+    "Long-context serial replay matches the speculative decoded fields for the one observed C1 case. It produces the same incorrect answer; this does not excuse or hide the miss.",
+    "A maintenance release can document observed model errors without claiming full fidelity parity. Existing failures are preserved and release notes must describe them prominently."
+  ],
+  "limitations": [
+    "Full quality gate remains failed; no numerical parity, universal speculative equivalence, lossless recipe, or all-quality-pass claim.",
+    "Canonical prompt NLL1.0659923317039264 retains +0.0404426398902944 relative to observed A4 reference; earlier native base1.1216532930400633 is higher. No causal attribution.",
+    "Needle59/60 vs retained historical60/60; one wrong lookup at163290 prompt tokens, C1 ON/OFFsamewrongdecodedfields; originalC4 and cache-history limits remain.",
+    "Automatic tools plus strict JSON can choose an unrelated tool; explicit tool_choice:none control returned correct JSON.",
+    "Main performance mixed, including slower Rig medians and C2/C4/C8 cells; matrix one invocation/cell, C1-32Kslower. Four warm conversation requestbodies differ due generated history.",
+    "First-prefill-token logit bias remains inherited unsupported contract.",
+    "Oversized PNGprobe establishes header admission only, not full pixel decode proof."
+  ],
+  "conditions_before_product_release": [
+    "Verify the exact engine pin through its annotated source tag and fresh anonymous commit/tree fetch. Preserve existing product branches.",
+    "Publish already tested image without rebuild; verify registry manifest and anonymous digest pull content/runtime.",
+    "Apply reviewed docs and unedited receipts, check all SHA256SUMS and complete repository static workflow, required remote checks and branch policy.",
+    "Never change install tree or tested runtime/profile sources during docs assembly."
+  ],
+  "conditions_before_production": [
+    "Finish temporary GLM TP4 work and required production topology canary.",
+    "Complete LLooM deployment, additive model materialization, exact runtime identity, direct and gateway canaries, normal lease restoration and reservation drain/resume canary."
+  ],
+  "required_receipts": [
+    {
+      "path": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-release-build/audit-70890529ba64-r1/verified-build.json",
+      "sha256": "241a2cbfeccbb1a1e1f5e29f1f1c76ab60c88cd16cb80f183ee9f296446044eb"
+    },
+    {
+      "path": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-component-admission-r1-results/aggregate.json",
+      "sha256": "011be4d89aea7dde9c66601c63bc8d9195f5b9694a77541143f457885a60e96e"
+    },
+    {
+      "path": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-performance-audit-708-r2-results/SHA256SUMS.json",
+      "sha256": "8a3396cd1db12140d8865d5ac6284cb67c75b776ecab09f3e45be7f752619356"
+    },
+    {
+      "path": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-performance-audit-708-r2-results/case50-separate.json",
+      "sha256": "8b6803a4e89be827a74cf0d23df6c1e5bad3a7c27284856ce20147637f1c525f"
+    },
+    {
+      "path": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-main-request-comparison-r1/review.json",
+      "sha256": "36a0f5c33be3febf457d2543b7ad74cc21431b0ae52901cdc71c9a2089700239"
+    },
+    {
+      "path": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-case50-direct-after-matrix-r2/result.json",
+      "sha256": "27b4ae675930c45bf5f7d58245db49defb685a7a1f5b74a76f0e83813d7edead"
+    }
+  ],
+  "supersedes_for_source_ref": {
+    "path": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-release-acceptance-708-r1/acceptance.json",
+    "sha256": "e17f0dbf0a90ba4483229646b75ad4731daeba8db24d3e51353bed53d46ceb8e",
+    "reason": "GitHub already has branch sparkqwen. Existing product engine pins use slash-named tags. build.sh fetches pinned commit and verifies tree; publish annotated tag matching pin name, preserve existing branch."
+  }
+}

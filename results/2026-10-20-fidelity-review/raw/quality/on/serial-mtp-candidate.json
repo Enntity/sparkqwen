@@ -1,0 +1,1306 @@
+{
+  "biased_logprobs": {
+    "prompt_compact_sha256": "792d07fb4c443f01dbbec08546350cd0bcc61e61222fbeb2b059d57ff4f38ac6",
+    "prompt_ids": [
+      271,
+      2,
+      999,
+      25,
+      2993,
+      2631,
+      3359,
+      19159,
+      14,
+      52838,
+      20668,
+      198,
+      2,
+      13038,
+      6971,
+      25,
+      16401,
+      4478,
+      440,
+      1412,
+      15436,
+      271,
+      32,
+      16401,
+      27502,
+      5617,
+      364,
+      63520,
+      45543,
+      11,
+      1332,
+      4478,
+      13402,
+      383,
+      1204,
+      3999,
+      1754,
+      198,
+      8944,
+      369,
+      310,
+      9665,
+      13,
+      357,
+      3074,
+      1542,
+      791,
+      9640,
+      628,
+      914,
+      8387,
+      1330,
+      80837,
+      11784,
+      1056,
+      883,
+      198,
+      16,
+      15,
+      13948,
+      1061,
+      799,
+      42151,
+      1754
+    ],
+    "remote_shard_start": 124160,
+    "rows": [
+      {
+        "decoded_target": "bs",
+        "dispatch": {
+          "accepted_prediction_tokens": [
+            7
+          ],
+          "missing_serial_counter_scope": null,
+          "native_dispatch": {
+            "after_log_sha256": "ef587d2f981e6f183fe0722e43dd88e2e1e8fec1385f8bd2b971998f0aba86dd",
+            "before_log_sha256": "b168657db7d3b10e58424f800c349d7a2385cfcc3b7b1ec484900ae0e1ae76ad",
+            "container_id": "bdcb0a409bf799fdbdb6b8e3f0ef94bac4674a08b93338bb418e5b173e05e1ca",
+            "image_id": "sha256:a0cebe89737898692964d3923477bef293a4ebde9dd32e27202697c54f763c9d",
+            "mtp_fraction": 1.0,
+            "native_done": "2026-10-20T00:59:25.090837Z  INFO spark::scheduler::mtp_accept_debug: Done: 16 tokens (length) 38.0 tok/s, TTFT=135.8ms, serial=0.00 mtp=1.00 p1=0.444 mean_na=1.000 tok_step=2.000 regime_reprobes=0 depth=k4 depth_switches=0 acc=0.50,0.38,0.25,-,-,-,- surv=0.44,0.33,0.22,0.00,0.00,0.00,0.00",
+            "scope": "One isolated completion between stable full-log snapshots; native per-request verify-step fraction, independent of draft acceptance",
+            "serial_fraction": 0.0,
+            "started_at": "2026-10-20T00:55:34.078149584Z"
+          },
+          "serial": false,
+          "verify_counter_after": {},
+          "verify_counter_before": {},
+          "verify_counter_delta": 0
+        },
+        "request": {
+          "echo": false,
+          "frequency_penalty": 0,
+          "ignore_eos": true,
+          "logit_bias": {
+            "1234": 100
+          },
+          "logprobs": 5,
+          "max_tokens": 16,
+          "min_p": 0,
+          "model": "qwen3.8-flash-next-atlas",
+          "presence_penalty": 0,
+          "prompt": [
+            271,
+            2,
+            999,
+            25,
+            2993,
+            2631,
+            3359,
+            19159,
+            14,
+            52838,
+            20668,
+            198,
+            2,
+            13038,
+            6971,
+            25,
+            16401,
+            4478,
+            440,
+            1412,
+            15436,
+            271,
+            32,
+            16401,
+            27502,
+            5617,
+            364,
+            63520,
+            45543,
+            11,
+            1332,
+            4478,
+            13402,
+            383,
+            1204,
+            3999,
+            1754,
+            198,
+            8944,
+            369,
+            310,
+            9665,
+            13,
+            357,
+            3074,
+            1542,
+            791,
+            9640,
+            628,
+            914,
+            8387,
+            1330,
+            80837,
+            11784,
+            1056,
+            883,
+            198,
+            16,
+            15,
+            13948,
+            1061,
+            799,
+            42151,
+            1754
+          ],
+          "repetition_penalty": 1,
+          "stream": false,
+          "temperature": 0,
+          "top_k": 1,
+          "top_n_sigma": 0,
+          "top_p": 1
+        },
+        "response": {
+          "choices": [
+            {
+              "finish_reason": "length",
+              "index": 0,
+              "logprobs": {
+                "text_offset": [
+                  0,
+                  7,
+                  9,
+                  11,
+                  13,
+                  15,
+                  17,
+                  19,
+                  21,
+                  23,
+                  25,
+                  27,
+                  29,
+                  31,
+                  33,
+                  35
+                ],
+                "token_logprobs": [
+                  null,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "tokens": [
+                  " prompt",
+                  "bs",
+                  "bs",
+                  "bs",
+                  "bs",
+                  "bs",
+                  "bs",
+                  "bs",
+                  "bs",
+                  "bs",
+                  "bs",
+                  "bs",
+                  "bs",
+                  "bs",
+                  "bs",
+                  "bs"
+                ],
+                "top_logprobs": [
+                  null,
+                  {
+                    " and": -83.47656,
+                    " many": -83.35156,
+                    " several": -83.60156,
+                    ",": -82.10156,
+                    "bs": 0.0
+                  },
+                  {
+                    " and": -90.125,
+                    " many": -90.0625,
+                    " with": -90.3125,
+                    ",": -90.0,
+                    "bs": 0.0
+                  },
+                  {
+                    " ": -96.625,
+                    " many": -95.5625,
+                    " several": -96.6875,
+                    ",": -96.8125,
+                    "bs": 0.0
+                  },
+                  {
+                    " many": -100.9375,
+                    " several": -101.5,
+                    ",": -101.4375,
+                    "b": -102.1875,
+                    "bs": 0.0
+                  },
+                  {
+                    " and": -102.5625,
+                    " many": -101.0625,
+                    " several": -101.6875,
+                    ",": -101.8125,
+                    "bs": 0.0
+                  },
+                  {
+                    " many": -101.5625,
+                    " multiple": -102.5625,
+                    " several": -102.125,
+                    ",": -102.125,
+                    "bs": 0.0
+                  },
+                  {
+                    " many": -101.9375,
+                    " multiple": -102.875,
+                    " several": -102.875,
+                    ",": -102.0,
+                    "bs": 0.0
+                  },
+                  {
+                    "\n\n": -102.875,
+                    " many": -101.75,
+                    " several": -101.9375,
+                    ",": -102.125,
+                    "bs": 0.0
+                  },
+                  {
+                    "\n\n": -103.4375,
+                    " many": -102.6875,
+                    " several": -103.1875,
+                    ",": -102.8125,
+                    "bs": 0.0
+                  },
+                  {
+                    "\n\n": -103.6875,
+                    " many": -102.4375,
+                    " several": -102.875,
+                    ",": -103.125,
+                    "bs": 0.0
+                  },
+                  {
+                    "\n\n": -103.6875,
+                    " many": -103.0,
+                    " several": -103.8125,
+                    ",": -103.4375,
+                    "bs": 0.0
+                  },
+                  {
+                    "\n\n": -103.9375,
+                    " many": -103.4375,
+                    " several": -103.8125,
+                    ",": -103.5,
+                    "bs": 0.0
+                  },
+                  {
+                    "\n\n": -103.6875,
+                    " many": -103.25,
+                    " several": -103.875,
+                    ",": -103.375,
+                    "bs": 0.0
+                  },
+                  {
+                    "\n\n": -103.9375,
+                    " many": -103.5625,
+                    " several": -103.8125,
+                    ",": -103.5625,
+                    "bs": 0.0
+                  },
+                  {
+                    "\n\n": -103.75,
+                    " and": -104.5,
+                    " many": -104.25,
+                    ",": -103.9375,
+                    "bs": 0.0
+                  }
+                ]
+              },
+              "text": "promptbsbsbsbsbsbsbsbsbsbsbsbsbsbsbs"
+            }
+          ],
+          "created": 1792457965,
+          "id": "cmpl-851f5f43-47cd-4de7-9cd0-029ab1bd76a1",
+          "model": "qwen3.8-flash-next-atlas",
+          "object": "text_completion",
+          "system_fingerprint": "fp_atlas",
+          "usage": {
+            "completion_tokens": 16,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 7,
+              "audio_tokens": 0,
+              "reasoning_tokens": 0,
+              "rejected_prediction_tokens": 0
+            },
+            "prompt_tokens": 64,
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 0
+            },
+            "response_token/s": 35.652853809865384,
+            "time_to_first_token_ms": 135.77782299999998,
+            "total_tokens": 80
+          }
+        },
+        "token": 1234,
+        "view": {
+          "completion_tokens": 16,
+          "finish_reason": "length",
+          "first_score_nullable": true,
+          "prompt_tokens": 64,
+          "text": "promptbsbsbsbsbsbsbsbsbsbsbsbsbsbsbs",
+          "token_logprobs": [
+            null,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "tokens": [
+            " prompt",
+            "bs",
+            "bs",
+            "bs",
+            "bs",
+            "bs",
+            "bs",
+            "bs",
+            "bs",
+            "bs",
+            "bs",
+            "bs",
+            "bs",
+            "bs",
+            "bs",
+            "bs"
+          ]
+        }
+      },
+      {
+        "decoded_target": "\u7a3d\u67e5",
+        "dispatch": {
+          "accepted_prediction_tokens": [
+            0
+          ],
+          "missing_serial_counter_scope": null,
+          "native_dispatch": {
+            "after_log_sha256": "69e0c1c8bc330abf9f60f35b3eb538d329da55ea7e2426ae02cee3f7480b18c5",
+            "before_log_sha256": "ef587d2f981e6f183fe0722e43dd88e2e1e8fec1385f8bd2b971998f0aba86dd",
+            "container_id": "bdcb0a409bf799fdbdb6b8e3f0ef94bac4674a08b93338bb418e5b173e05e1ca",
+            "image_id": "sha256:a0cebe89737898692964d3923477bef293a4ebde9dd32e27202697c54f763c9d",
+            "mtp_fraction": 1.0,
+            "native_done": "2026-10-20T00:59:29.227500Z  INFO spark::scheduler::mtp_accept_debug: Done: 16 tokens (length) 22.1 tok/s, TTFT=127.3ms, serial=0.00 mtp=1.00 p1=0.000 mean_na=0.000 tok_step=1.000 regime_reprobes=0 depth=k4 depth_switches=0 acc=0.00,0.00,0.00,-,-,-,- surv=0.00,0.00,0.00,0.00,0.00,0.00,0.00",
+            "scope": "One isolated completion between stable full-log snapshots; native per-request verify-step fraction, independent of draft acceptance",
+            "serial_fraction": 0.0,
+            "started_at": "2026-10-20T00:55:34.078149584Z"
+          },
+          "serial": false,
+          "verify_counter_after": {},
+          "verify_counter_before": {},
+          "verify_counter_delta": 0
+        },
+        "request": {
+          "echo": false,
+          "frequency_penalty": 0,
+          "ignore_eos": true,
+          "logit_bias": {
+            "125394": 100
+          },
+          "logprobs": 5,
+          "max_tokens": 16,
+          "min_p": 0,
+          "model": "qwen3.8-flash-next-atlas",
+          "presence_penalty": 0,
+          "prompt": [
+            271,
+            2,
+            999,
+            25,
+            2993,
+            2631,
+            3359,
+            19159,
+            14,
+            52838,
+            20668,
+            198,
+            2,
+            13038,
+            6971,
+            25,
+            16401,
+            4478,
+            440,
+            1412,
+            15436,
+            271,
+            32,
+            16401,
+            27502,
+            5617,
+            364,
+            63520,
+            45543,
+            11,
+            1332,
+            4478,
+            13402,
+            383,
+            1204,
+            3999,
+            1754,
+            198,
+            8944,
+            369,
+            310,
+            9665,
+            13,
+            357,
+            3074,
+            1542,
+            791,
+            9640,
+            628,
+            914,
+            8387,
+            1330,
+            80837,
+            11784,
+            1056,
+            883,
+            198,
+            16,
+            15,
+            13948,
+            1061,
+            799,
+            42151,
+            1754
+          ],
+          "repetition_penalty": 1,
+          "stream": false,
+          "temperature": 0,
+          "top_k": 1,
+          "top_n_sigma": 0,
+          "top_p": 1
+        },
+        "response": {
+          "choices": [
+            {
+              "finish_reason": "length",
+              "index": 0,
+              "logprobs": {
+                "text_offset": [
+                  0,
+                  7,
+                  13,
+                  19,
+                  25,
+                  31,
+                  37,
+                  43,
+                  49,
+                  55,
+                  61,
+                  67,
+                  73,
+                  79,
+                  85,
+                  91
+                ],
+                "token_logprobs": [
+                  null,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "tokens": [
+                  " prompt",
+                  "\u7a3d\u67e5",
+                  "\u7a3d\u67e5",
+                  "\u7a3d\u67e5",
+                  "\u7a3d\u67e5",
+                  "\u7a3d\u67e5",
+                  "\u7a3d\u67e5",
+                  "\u7a3d\u67e5",
+                  "\u7a3d\u67e5",
+                  "\u7a3d\u67e5",
+                  "\u7a3d\u67e5",
+                  "\u7a3d\u67e5",
+                  "\u7a3d\u67e5",
+                  "\u7a3d\u67e5",
+                  "\u7a3d\u67e5",
+                  "\u7a3d\u67e5"
+                ],
+                "top_logprobs": [
+                  null,
+                  {
+                    " and": -79.109375,
+                    " many": -78.984375,
+                    " several": -79.234375,
+                    ",": -77.734375,
+                    "\u7a3d\u67e5": 0.0
+                  },
+                  {
+                    "": -96.0,
+                    " many": -95.1875,
+                    " multiple": -95.0,
+                    ",": -94.125,
+                    "\u7a3d\u67e5": 0.0
+                  },
+                  {
+                    " many": -101.1875,
+                    " multiple": -101.875,
+                    " several": -101.1875,
+                    ",": -100.8125,
+                    "\u7a3d\u67e5": 0.0
+                  },
+                  {
+                    "\n\n": -102.5,
+                    " many": -101.875,
+                    " several": -101.875,
+                    ",": -101.75,
+                    "\u7a3d\u67e5": 0.0
+                  },
+                  {
+                    " and": -102.0,
+                    " many": -101.6875,
+                    " several": -101.6875,
+                    ",": -101.3125,
+                    "\u7a3d\u67e5": 0.0
+                  },
+                  {
+                    "\n\n": -102.6875,
+                    " and": -102.5625,
+                    " several": -102.5625,
+                    ",": -101.875,
+                    "\u7a3d\u67e5": 0.0
+                  },
+                  {
+                    "\n\n": -101.6875,
+                    " and": -102.25,
+                    " many": -102.5625,
+                    ",": -101.1875,
+                    "\u7a3d\u67e5": 0.0
+                  },
+                  {
+                    "\n\n": -102.625,
+                    " and": -102.6875,
+                    " many": -103.1875,
+                    ",": -101.75,
+                    "\u7a3d\u67e5": 0.0
+                  },
+                  {
+                    "\n\n": -102.375,
+                    " and": -102.125,
+                    " many": -102.4375,
+                    ",": -101.4375,
+                    "\u7a3d\u67e5": 0.0
+                  },
+                  {
+                    "\n\n": -102.875,
+                    " and": -102.6875,
+                    " several": -103.0625,
+                    ",": -101.9375,
+                    "\u7a3d\u67e5": 0.0
+                  },
+                  {
+                    "\n\n": -102.5,
+                    " and": -102.875,
+                    " several": -103.3125,
+                    ",": -101.8125,
+                    "\u7a3d\u67e5": 0.0
+                  },
+                  {
+                    "\n": -104.8125,
+                    "\n\n": -103.4375,
+                    " and": -105.0,
+                    ",": -103.875,
+                    "\u7a3d\u67e5": 0.0
+                  },
+                  {
+                    "\n": -104.5,
+                    "\n\n": -103.1875,
+                    " and": -104.0625,
+                    ",": -103.0625,
+                    "\u7a3d\u67e5": 0.0
+                  },
+                  {
+                    "\n": -104.3125,
+                    "\n\n": -103.125,
+                    " and": -104.375,
+                    ",": -103.25,
+                    "\u7a3d\u67e5": 0.0
+                  },
+                  {
+                    "\n": -104.1875,
+                    "\n\n": -103.4375,
+                    " and": -104.5625,
+                    ",": -103.1875,
+                    "\u7a3d\u67e5": 0.0
+                  }
+                ]
+              },
+              "text": "prompt\u7a3d\u67e5\u7a3d\u67e5\u7a3d\u67e5\u7a3d\u67e5\u7a3d\u67e5\u7a3d\u67e5\u7a3d\u67e5\u7a3d\u67e5\u7a3d\u67e5\u7a3d\u67e5\u7a3d\u67e5\u7a3d\u67e5\u7a3d\u67e5\u7a3d\u67e5\u7a3d\u67e5"
+            }
+          ],
+          "created": 1792457969,
+          "id": "cmpl-b41f0350-de23-49d8-a8b2-386130d3d624",
+          "model": "qwen3.8-flash-next-atlas",
+          "object": "text_completion",
+          "system_fingerprint": "fp_atlas",
+          "usage": {
+            "completion_tokens": 16,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 0,
+              "rejected_prediction_tokens": 0
+            },
+            "prompt_tokens": 64,
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 64
+            },
+            "response_token/s": 20.742666016613637,
+            "time_to_first_token_ms": 127.268136,
+            "total_tokens": 80
+          }
+        },
+        "token": 125394,
+        "view": {
+          "completion_tokens": 16,
+          "finish_reason": "length",
+          "first_score_nullable": true,
+          "prompt_tokens": 64,
+          "text": "prompt\u7a3d\u67e5\u7a3d\u67e5\u7a3d\u67e5\u7a3d\u67e5\u7a3d\u67e5\u7a3d\u67e5\u7a3d\u67e5\u7a3d\u67e5\u7a3d\u67e5\u7a3d\u67e5\u7a3d\u67e5\u7a3d\u67e5\u7a3d\u67e5\u7a3d\u67e5\u7a3d\u67e5",
+          "token_logprobs": [
+            null,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "tokens": [
+            " prompt",
+            "\u7a3d\u67e5",
+            "\u7a3d\u67e5",
+            "\u7a3d\u67e5",
+            "\u7a3d\u67e5",
+            "\u7a3d\u67e5",
+            "\u7a3d\u67e5",
+            "\u7a3d\u67e5",
+            "\u7a3d\u67e5",
+            "\u7a3d\u67e5",
+            "\u7a3d\u67e5",
+            "\u7a3d\u67e5",
+            "\u7a3d\u67e5",
+            "\u7a3d\u67e5",
+            "\u7a3d\u67e5",
+            "\u7a3d\u67e5"
+          ]
+        }
+      }
+    ],
+    "scope": "Two forced-bias16-token completions; decoded output/score equivalence, no generated token-ID proof",
+    "vocab_size": 248320
+  },
+  "dispatch": {
+    "accepted_prediction_tokens": [
+      193,
+      182,
+      223,
+      213,
+      200,
+      210,
+      206,
+      206
+    ],
+    "missing_serial_counter_scope": null,
+    "native_dispatch": null,
+    "serial": false,
+    "verify_counter_after": {},
+    "verify_counter_before": {},
+    "verify_counter_delta": 0
+  },
+  "expected_identity": {
+    "binary_sha256": "4650c2f4551e3e65c08cad4c97dfd894b87741f7d99a1e8a60c5b15acc60810a",
+    "checkpoint_config_sha256": "b50dbc52a0c83b0cd2a44a372c1fb6b5e0e6827d22f2611c97d4d030f92f6b28",
+    "checkpoint_index_sha256": "5fa166bbb1cf25adda455117563efa72a2072272001f459eedece131ffc913e1",
+    "engine_commit": "63bebfa60d5086de9fc8cc07c21e5fbe38f3b742",
+    "engine_tree": "fa4e4817b804039076ba8e506dbd6d55bd453033",
+    "gpu_memory_utilization": null,
+    "image_id": "sha256:a0cebe89737898692964d3923477bef293a4ebde9dd32e27202697c54f763c9d",
+    "install_tree": "70890529ba64dede889814f99f21b3c9a981d9bc",
+    "model": "qwen3.8-flash-next-atlas",
+    "profile": "/opt/atlas/profiles/8x262k.json",
+    "profile_sha256": "225c23340d96e44bd1246e096b04ec49158c3e738ed30231a915183e60b1bd04",
+    "ranks": [
+      {
+        "container": "qwen-perf-20261020T005522Z-4f5ea75a-r0",
+        "host": "ennspark03",
+        "image_id": "sha256:a0cebe89737898692964d3923477bef293a4ebde9dd32e27202697c54f763c9d"
+      },
+      {
+        "container": "qwen-perf-20261020T005522Z-4f5ea75a-r1",
+        "host": "ennspark04",
+        "image_id": "sha256:a0cebe89737898692964d3923477bef293a4ebde9dd32e27202697c54f763c9d"
+      }
+    ]
+  },
+  "rows": [
+    {
+      "exact": {
+        "completion_tokens": 320,
+        "content": "# The Keepers of the Light: Lighthouse Staffing and Maintenance in the Nineteenth Century\n\n## A Life of Quiet Vigilance\n\nThere is perhaps no occupation in the nineteenth century that so perfectly embodied the tension between solitude and responsibility as that of the lighthouse keeper. Across the coastlines of Britain, the United States, France, and other maritime nations, thousands of men\u2014and occasionally women\u2014devoted their lives to a single, essential purpose: ensuring that a light burned through the darkness so that ships might find their way. Their work was unglamorous, physically demanding, and often lonely, yet it formed the backbone of a system that saved countless lives and enabled the great commercial shipping networks of the industrial age.\n\n## The Keeper and His Family\n\nIn the early decades of the nineteenth century, lighthouse staffing was largely a matter of local arrangement. In Britain, many lighthouses were still operated by private companies or individuals who held patents granted by the Crown. These patent holders often appointed a keeper, sometimes a retired",
+        "finish_reason": "length",
+        "prompt_tokens": 65,
+        "reasoning_content": "The user wants a calm, detailed essay about lighthouse staffing and maintenance in the 1800s. This is a straightforward historical topic. I should cover the key aspects: who the keepers were, their daily routines, the technology they maintained, the living conditions, the challenges they faced, and how the system evolved over the century. I want to maintain a measured, reflective tone throughout\u2014calm but not dry, detailed but not overwhelming. I'll aim for a well-structured essay that flows naturally through the subject.\n",
+        "tool_calls": null
+      },
+      "raw_folder": "http/0004-greedy-c1",
+      "request": {
+        "chat_template_kwargs": {
+          "reasoning_effort": "low"
+        },
+        "max_tokens": 320,
+        "messages": [
+          {
+            "content": "Write a calm, detailed essay about how lighthouses were staffed and maintained in the 1800s.",
+            "role": "user"
+          }
+        ],
+        "model": "qwen3.8-flash-next-atlas",
+        "temperature": 0
+      },
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "length",
+            "index": 0,
+            "logprobs": null,
+            "message": {
+              "content": "# The Keepers of the Light: Lighthouse Staffing and Maintenance in the Nineteenth Century\n\n## A Life of Quiet Vigilance\n\nThere is perhaps no occupation in the nineteenth century that so perfectly embodied the tension between solitude and responsibility as that of the lighthouse keeper. Across the coastlines of Britain, the United States, France, and other maritime nations, thousands of men\u2014and occasionally women\u2014devoted their lives to a single, essential purpose: ensuring that a light burned through the darkness so that ships might find their way. Their work was unglamorous, physically demanding, and often lonely, yet it formed the backbone of a system that saved countless lives and enabled the great commercial shipping networks of the industrial age.\n\n## The Keeper and His Family\n\nIn the early decades of the nineteenth century, lighthouse staffing was largely a matter of local arrangement. In Britain, many lighthouses were still operated by private companies or individuals who held patents granted by the Crown. These patent holders often appointed a keeper, sometimes a retired",
+              "reasoning_content": "The user wants a calm, detailed essay about lighthouse staffing and maintenance in the 1800s. This is a straightforward historical topic. I should cover the key aspects: who the keepers were, their daily routines, the technology they maintained, the living conditions, the challenges they faced, and how the system evolved over the century. I want to maintain a measured, reflective tone throughout\u2014calm but not dry, detailed but not overwhelming. I'll aim for a well-structured essay that flows naturally through the subject.\n",
+              "role": "assistant"
+            }
+          }
+        ],
+        "created": 1792457835,
+        "id": "chatcmpl-c1210454-7311-479f-b3d6-248e97d28fad",
+        "model": "qwen3.8-flash-next-atlas",
+        "object": "chat.completion",
+        "system_fingerprint": "fp_atlas",
+        "usage": {
+          "completion_tokens": 320,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 193,
+            "audio_tokens": 0,
+            "reasoning_tokens": 108,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 65,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          },
+          "response_token/s": 58.85214035320923,
+          "time_to_first_token_ms": 184.233883,
+          "total_tokens": 385
+        }
+      }
+    },
+    {
+      "exact": {
+        "completion_tokens": 320,
+        "content": "A sourdough starter is a living community of microorganisms \u2014 mainly wild yeast and lactic acid bacteria \u2014 that you keep alive by feeding it flour and water on a regular schedule. Unlike commercial yeast, which is a single strain grown in a lab, a starter is a whole ecosystem. The yeast and bacteria come from the flour itself, from the air in your kitchen, and from your hands. Over time, the ones that thrive in your particular environment become dominant, which is why every starter is a little different and why bakers often talk about theirs as if they were pets.\n\nThe yeast and the bacteria do different jobs, and they work together in a kind of partnership. The yeast eats the simple sugars in the flour",
+        "finish_reason": "length",
+        "prompt_tokens": 58,
+        "reasoning_content": "The user wants a clear, accessible explanation of how sourdough starter cultures work, written for a home baker. They specifically asked for \"plain paragraphs\" \u2014 so no bullet points, no numbered lists, no headers breaking things up into sections. Just flowing prose that a curious home baker could read and understand.\n\nI need to cover: what a starter actually is (the microbial community), how the fermentation works (wild yeast + lactic acid bacteria), what the feeding cycle does, why it rises and falls, the role of flour and water, and maybe a touch of why it's sour. I should keep the tone warm and practical, not textbook-dry. I'll avoid jargon where possible, or introduce it gently when it's useful.\n\nLet me write this as a few solid paragraphs that flow naturally from one idea to the next.\n",
+        "tool_calls": null
+      },
+      "raw_folder": "http/0005-greedy-c1",
+      "request": {
+        "chat_template_kwargs": {
+          "reasoning_effort": "low"
+        },
+        "max_tokens": 320,
+        "messages": [
+          {
+            "content": "Explain how sourdough starter cultures work, as plain paragraphs for a home baker.",
+            "role": "user"
+          }
+        ],
+        "model": "qwen3.8-flash-next-atlas",
+        "temperature": 0
+      },
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "length",
+            "index": 0,
+            "logprobs": null,
+            "message": {
+              "content": "A sourdough starter is a living community of microorganisms \u2014 mainly wild yeast and lactic acid bacteria \u2014 that you keep alive by feeding it flour and water on a regular schedule. Unlike commercial yeast, which is a single strain grown in a lab, a starter is a whole ecosystem. The yeast and bacteria come from the flour itself, from the air in your kitchen, and from your hands. Over time, the ones that thrive in your particular environment become dominant, which is why every starter is a little different and why bakers often talk about theirs as if they were pets.\n\nThe yeast and the bacteria do different jobs, and they work together in a kind of partnership. The yeast eats the simple sugars in the flour",
+              "reasoning_content": "The user wants a clear, accessible explanation of how sourdough starter cultures work, written for a home baker. They specifically asked for \"plain paragraphs\" \u2014 so no bullet points, no numbered lists, no headers breaking things up into sections. Just flowing prose that a curious home baker could read and understand.\n\nI need to cover: what a starter actually is (the microbial community), how the fermentation works (wild yeast + lactic acid bacteria), what the feeding cycle does, why it rises and falls, the role of flour and water, and maybe a touch of why it's sour. I should keep the tone warm and practical, not textbook-dry. I'll avoid jargon where possible, or introduce it gently when it's useful.\n\nLet me write this as a few solid paragraphs that flow naturally from one idea to the next.\n",
+              "role": "assistant"
+            }
+          }
+        ],
+        "created": 1792457841,
+        "id": "chatcmpl-459301a0-97b7-48a9-b5f0-138998ce52c9",
+        "model": "qwen3.8-flash-next-atlas",
+        "object": "chat.completion",
+        "system_fingerprint": "fp_atlas",
+        "usage": {
+          "completion_tokens": 320,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 182,
+            "audio_tokens": 0,
+            "reasoning_tokens": 171,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 58,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 54.68941251816846,
+          "time_to_first_token_ms": 135.296797,
+          "total_tokens": 378
+        }
+      }
+    },
+    {
+      "exact": {
+        "completion_tokens": 320,
+        "content": "",
+        "finish_reason": "length",
+        "prompt_tokens": 67,
+        "reasoning_content": "The user wants a Python function that parses ISO-8601 duration strings (like \"P3DT4H5M\") into total seconds, along with tests.\n\nLet me think about the ISO-8601 duration format:\n- Starts with \"P\" (period)\n- Date components: Y (years), M (months), W (weeks), D (days)\n- \"T\" separator before time components\n- Time components: H (hours), M (minutes), S (seconds)\n- Components can be integers or decimals (e.g., P1.5D)\n- Components can appear in any order but must be in descending order of magnitude\n- Example: P3Y6M4DT12H30M5S\n\nKey considerations:\n1. Years and months are ambiguous in seconds (how many days in a year? a month?). I'll need to make assumptions or handle them specially. Common approach: 1 year = 365 days, 1 month = 30 days. Or I could raise an error for years/months since they're calendar-dependent. Let me go with the common convention: 1 year = 365 days, 1 month = 30 days, and document this.\n\n2. The format is: P[nY][nM][nW][nD][T[nH][nM][nS]]\n   - Note: M before T is months, M after T is minutes\n\n3. I should use regex for parsing",
+        "tool_calls": null
+      },
+      "raw_folder": "http/0006-greedy-c1",
+      "request": {
+        "chat_template_kwargs": {
+          "reasoning_effort": "low"
+        },
+        "max_tokens": 320,
+        "messages": [
+          {
+            "content": "Write a Python function that parses ISO-8601 durations like P3DT4H5M into seconds, with tests.",
+            "role": "user"
+          }
+        ],
+        "model": "qwen3.8-flash-next-atlas",
+        "temperature": 0
+      },
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "length",
+            "index": 0,
+            "logprobs": null,
+            "message": {
+              "content": "",
+              "reasoning_content": "The user wants a Python function that parses ISO-8601 duration strings (like \"P3DT4H5M\") into total seconds, along with tests.\n\nLet me think about the ISO-8601 duration format:\n- Starts with \"P\" (period)\n- Date components: Y (years), M (months), W (weeks), D (days)\n- \"T\" separator before time components\n- Time components: H (hours), M (minutes), S (seconds)\n- Components can be integers or decimals (e.g., P1.5D)\n- Components can appear in any order but must be in descending order of magnitude\n- Example: P3Y6M4DT12H30M5S\n\nKey considerations:\n1. Years and months are ambiguous in seconds (how many days in a year? a month?). I'll need to make assumptions or handle them specially. Common approach: 1 year = 365 days, 1 month = 30 days. Or I could raise an error for years/months since they're calendar-dependent. Let me go with the common convention: 1 year = 365 days, 1 month = 30 days, and document this.\n\n2. The format is: P[nY][nM][nW][nD][T[nH][nM][nS]]\n   - Note: M before T is months, M after T is minutes\n\n3. I should use regex for parsing",
+              "role": "assistant"
+            }
+          }
+        ],
+        "created": 1792457846,
+        "id": "chatcmpl-2a2e288b-1cbd-4af7-b704-69943c38de78",
+        "model": "qwen3.8-flash-next-atlas",
+        "object": "chat.completion",
+        "system_fingerprint": "fp_atlas",
+        "usage": {
+          "completion_tokens": 320,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 223,
+            "audio_tokens": 0,
+            "reasoning_tokens": 319,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 67,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 72.15560931226359,
+          "time_to_first_token_ms": 142.656552,
+          "total_tokens": 387
+        }
+      }
+    },
+    {
+      "exact": {
+        "completion_tokens": 296,
+        "content": "```json\n{\n  \"planets\": [\n    {\n      \"name\": \"Vaelthorn\",\n      \"radius_km\": 78432,\n      \"moons\": 14,\n      \"atmosphere\": \"Hydrogen-helium with trace methane and ammonia clouds\"\n    },\n    {\n      \"name\": \"Korrathis\",\n      \"radius_km\": 4217,\n      \"moons\": 2,\n      \"atmosphere\": \"Thin carbon dioxide with sulfur dioxide haze\"\n    },\n    {\n      \"name\": \"Nymara\",\n      \"radius_km\": 9856,\n      \"moons\": 5,\n      \"atmosphere\": \"Dense nitrogen-oxygen with high water vapor content\"\n    }\n  ]\n}\n```",
+        "finish_reason": "stop",
+        "prompt_tokens": 58,
+        "reasoning_content": "The user wants me to create a JSON object describing three fictional planets. I need to include the fields: name, radius_km, moons, and atmosphere. Let me come up with creative fictional planets with varied and interesting characteristics.\n\nLet me think of three distinct planets:\n1. A gas giant-like planet with many moons\n2. A rocky planet with a thin atmosphere\n3. An ocean world with a dense atmosphere\n\nI'll make the values varied and interesting to make it feel like a real dataset.\n",
+        "tool_calls": null
+      },
+      "raw_folder": "http/0007-greedy-c1",
+      "request": {
+        "chat_template_kwargs": {
+          "reasoning_effort": "low"
+        },
+        "max_tokens": 320,
+        "messages": [
+          {
+            "content": "Return a JSON object describing three fictional planets with name, radius_km, moons and atmosphere.",
+            "role": "user"
+          }
+        ],
+        "model": "qwen3.8-flash-next-atlas",
+        "temperature": 0
+      },
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "logprobs": null,
+            "message": {
+              "content": "```json\n{\n  \"planets\": [\n    {\n      \"name\": \"Vaelthorn\",\n      \"radius_km\": 78432,\n      \"moons\": 14,\n      \"atmosphere\": \"Hydrogen-helium with trace methane and ammonia clouds\"\n    },\n    {\n      \"name\": \"Korrathis\",\n      \"radius_km\": 4217,\n      \"moons\": 2,\n      \"atmosphere\": \"Thin carbon dioxide with sulfur dioxide haze\"\n    },\n    {\n      \"name\": \"Nymara\",\n      \"radius_km\": 9856,\n      \"moons\": 5,\n      \"atmosphere\": \"Dense nitrogen-oxygen with high water vapor content\"\n    }\n  ]\n}\n```",
+              "reasoning_content": "The user wants me to create a JSON object describing three fictional planets. I need to include the fields: name, radius_km, moons, and atmosphere. Let me come up with creative fictional planets with varied and interesting characteristics.\n\nLet me think of three distinct planets:\n1. A gas giant-like planet with many moons\n2. A rocky planet with a thin atmosphere\n3. An ocean world with a dense atmosphere\n\nI'll make the values varied and interesting to make it feel like a real dataset.\n",
+              "role": "assistant"
+            }
+          }
+        ],
+        "created": 1792457850,
+        "id": "chatcmpl-8ca49c15-40dd-41fa-ab0e-02c06f6d6fdf",
+        "model": "qwen3.8-flash-next-atlas",
+        "object": "chat.completion",
+        "system_fingerprint": "fp_atlas",
+        "usage": {
+          "completion_tokens": 296,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 213,
+            "audio_tokens": 0,
+            "reasoning_tokens": 103,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 58,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 77.17598265849705,
+          "time_to_first_token_ms": 135.392765,
+          "total_tokens": 354
+        }
+      }
+    },
+    {
+      "exact": {
+        "completion_tokens": 320,
+        "content": "Before the middle of the fifteenth century, the written word in Europe was a rare and precious commodity. Books were copied by hand, primarily by monks in scriptoria attached to monasteries, a laborious process that could take months or even years for a single volume. The cost of producing a book was staggering, and as a result, libraries were the province of the Church, the aristocracy, and a handful of wealthy merchants. Literacy itself was correspondingly limited, concentrated among the clergy and a small professional class, while the vast majority of Europeans lived their entire lives without ever reading a word.\n\nThe story of the printing press begins not with a single moment of invention but with a convergence of technologies and conditions. Movable type had been developed in China as early as the eleventh century by Bi Sheng, and metal movable type was used in Korea by the thirteenth century. Woodblock printing had long been practiced across East Asia. In Europe, the ingredients were assembling",
+        "finish_reason": "length",
+        "prompt_tokens": 58,
+        "reasoning_content": "The user wants a prose description of the history of the printing press and its impact on literacy in Europe. I need to cover the key developments: the origins (Gutenberg and predecessors), the spread of the technology, and the effects on literacy, education, religion, and culture. I should write this as flowing prose rather than bullet points or an outline. Let me think about the arc of the narrative: pre-printing context, Gutenberg's innovation, the rapid spread, and then the transformative effects on literacy and European society. I want to be historically accurate while keeping it engaging and readable.\n",
+        "tool_calls": null
+      },
+      "raw_folder": "http/0008-greedy-c1",
+      "request": {
+        "chat_template_kwargs": {
+          "reasoning_effort": "low"
+        },
+        "max_tokens": 320,
+        "messages": [
+          {
+            "content": "Describe the history of the printing press and its effect on literacy in Europe, in prose.",
+            "role": "user"
+          }
+        ],
+        "model": "qwen3.8-flash-next-atlas",
+        "temperature": 0
+      },
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "length",
+            "index": 0,
+            "logprobs": null,
+            "message": {
+              "content": "Before the middle of the fifteenth century, the written word in Europe was a rare and precious commodity. Books were copied by hand, primarily by monks in scriptoria attached to monasteries, a laborious process that could take months or even years for a single volume. The cost of producing a book was staggering, and as a result, libraries were the province of the Church, the aristocracy, and a handful of wealthy merchants. Literacy itself was correspondingly limited, concentrated among the clergy and a small professional class, while the vast majority of Europeans lived their entire lives without ever reading a word.\n\nThe story of the printing press begins not with a single moment of invention but with a convergence of technologies and conditions. Movable type had been developed in China as early as the eleventh century by Bi Sheng, and metal movable type was used in Korea by the thirteenth century. Woodblock printing had long been practiced across East Asia. In Europe, the ingredients were assembling",
+              "reasoning_content": "The user wants a prose description of the history of the printing press and its impact on literacy in Europe. I need to cover the key developments: the origins (Gutenberg and predecessors), the spread of the technology, and the effects on literacy, education, religion, and culture. I should write this as flowing prose rather than bullet points or an outline. Let me think about the arc of the narrative: pre-printing context, Gutenberg's innovation, the rapid spread, and then the transformative effects on literacy and European society. I want to be historically accurate while keeping it engaging and readable.\n",
+              "role": "assistant"
+            }
+          }
+        ],
+        "created": 1792457855,
+        "id": "chatcmpl-e53339fa-1476-4dcb-b7df-5078051e9128",
+        "model": "qwen3.8-flash-next-atlas",
+        "object": "chat.completion",
+        "system_fingerprint": "fp_atlas",
+        "usage": {
+          "completion_tokens": 320,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 200,
+            "audio_tokens": 0,
+            "reasoning_tokens": 118,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 58,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 63.24107698061688,
+          "time_to_first_token_ms": 157.143628,
+          "total_tokens": 378
+        }
+      }
+    },
+    {
+      "exact": {
+        "completion_tokens": 320,
+        "content": "",
+        "finish_reason": "length",
+        "prompt_tokens": 60,
+        "reasoning_content": "The user wants a thread-safe LRU cache in Rust. Let me think about the design:\n\n1. **LRU Cache basics**: A cache with a fixed capacity. When full, evict the least recently used item. `get` and `put` should both be O(1).\n\n2. **Data structure**: The classic approach is a HashMap + doubly-linked list. The HashMap gives O(1) lookup, the linked list maintains recency order.\n\n3. **Thread safety in Rust**: I need to wrap the cache in a `Mutex` (or `RwLock` for better read concurrency). Since `get` also mutates the list (moves the accessed node to the front), `RwLock` won't help much \u2014 `Mutex` is the right choice here.\n\n4. **Implementation approach**:\n   - Use `HashMap<K, usize>` to map keys to indices in a `Vec` of nodes (slab allocation style), or use `HashMap<K, NodeRef>` with a linked list.\n   - Actually, the cleanest Rust approach without unsafe code: use a `HashMap<K, usize>` mapping keys to indices in a `Vec<Node>`, where each node has `prev` and `next` pointers (as indices). This avoids `unsafe` and `Rc<RefCell<...>>` complexity.\n   - Alternatively, use `HashMap<K, Rc<RefCell<Node>>>` with a doubly-linked list \u2014 but that's more complex and has interior mutability issues.\n   - The slab",
+        "tool_calls": null
+      },
+      "raw_folder": "http/0009-greedy-c1",
+      "request": {
+        "chat_template_kwargs": {
+          "reasoning_effort": "low"
+        },
+        "max_tokens": 320,
+        "messages": [
+          {
+            "content": "Implement a thread-safe LRU cache in Rust with get and put, and explain the design briefly.",
+            "role": "user"
+          }
+        ],
+        "model": "qwen3.8-flash-next-atlas",
+        "temperature": 0
+      },
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "length",
+            "index": 0,
+            "logprobs": null,
+            "message": {
+              "content": "",
+              "reasoning_content": "The user wants a thread-safe LRU cache in Rust. Let me think about the design:\n\n1. **LRU Cache basics**: A cache with a fixed capacity. When full, evict the least recently used item. `get` and `put` should both be O(1).\n\n2. **Data structure**: The classic approach is a HashMap + doubly-linked list. The HashMap gives O(1) lookup, the linked list maintains recency order.\n\n3. **Thread safety in Rust**: I need to wrap the cache in a `Mutex` (or `RwLock` for better read concurrency). Since `get` also mutates the list (moves the accessed node to the front), `RwLock` won't help much \u2014 `Mutex` is the right choice here.\n\n4. **Implementation approach**:\n   - Use `HashMap<K, usize>` to map keys to indices in a `Vec` of nodes (slab allocation style), or use `HashMap<K, NodeRef>` with a linked list.\n   - Actually, the cleanest Rust approach without unsafe code: use a `HashMap<K, usize>` mapping keys to indices in a `Vec<Node>`, where each node has `prev` and `next` pointers (as indices). This avoids `unsafe` and `Rc<RefCell<...>>` complexity.\n   - Alternatively, use `HashMap<K, Rc<RefCell<Node>>>` with a doubly-linked list \u2014 but that's more complex and has interior mutability issues.\n   - The slab",
+              "role": "assistant"
+            }
+          }
+        ],
+        "created": 1792457860,
+        "id": "chatcmpl-c10288ff-3324-44ae-9bcf-c5e7c9efa811",
+        "model": "qwen3.8-flash-next-atlas",
+        "object": "chat.completion",
+        "system_fingerprint": "fp_atlas",
+        "usage": {
+          "completion_tokens": 320,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 210,
+            "audio_tokens": 0,
+            "reasoning_tokens": 319,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 60,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 66.25900636448704,
+          "time_to_first_token_ms": 128.01971500000002,
+          "total_tokens": 380
+        }
+      }
+    },
+    {
+      "exact": {
+        "completion_tokens": 320,
+        "content": "1. **Switch to LED bulbs.** LEDs use up to 75% less electricity than incandescent bulbs and last significantly longer.\n\n2. **Unplug electronics when not in use.** Many devices draw \"phantom\" power even when switched off, quietly adding to your bill.\n\n3. **Wash clothes in cold water.** Heating water accounts for about 90% of a washing machine's energy use, so cold cycles save substantially.\n\n4. **Seal air leaks around doors and windows.** Drafts force your heating and cooling systems to work harder to maintain a comfortable temperature.\n\n5. **Use a programmable or smart thermostat.** Adjusting temperatures automatically when you're asleep or away avoids heating or cooling an empty home.\n\n6. **Clean or replace HVAC filters monthly.** Clogged filters restrict airflow, making your system consume more energy to circulate air.\n\n7. **Run dishwashers and washing machines only with full loads.** This maximizes the energy and water used per cycle, reducing the total number of runs needed.\n\n8. **Install low-flow showerheads and faucet aerators.** They reduce hot water consumption, which",
+        "finish_reason": "length",
+        "prompt_tokens": 58,
+        "reasoning_content": "The user wants a list of ten practical tips for reducing household energy use, each accompanied by a one-sentence reason explaining why it helps. I'll aim for a mix of easy, moderate, and slightly more involved tips, covering different areas of the home (heating/cooling, appliances, lighting, water, etc.). Each tip should be actionable and the reason should be concise and clear.\n",
+        "tool_calls": null
+      },
+      "raw_folder": "http/0010-greedy-c1",
+      "request": {
+        "chat_template_kwargs": {
+          "reasoning_effort": "low"
+        },
+        "max_tokens": 320,
+        "messages": [
+          {
+            "content": "List ten practical tips for reducing household energy use, each with a one-sentence reason.",
+            "role": "user"
+          }
+        ],
+        "model": "qwen3.8-flash-next-atlas",
+        "temperature": 0
+      },
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "length",
+            "index": 0,
+            "logprobs": null,
+            "message": {
+              "content": "1. **Switch to LED bulbs.** LEDs use up to 75% less electricity than incandescent bulbs and last significantly longer.\n\n2. **Unplug electronics when not in use.** Many devices draw \"phantom\" power even when switched off, quietly adding to your bill.\n\n3. **Wash clothes in cold water.** Heating water accounts for about 90% of a washing machine's energy use, so cold cycles save substantially.\n\n4. **Seal air leaks around doors and windows.** Drafts force your heating and cooling systems to work harder to maintain a comfortable temperature.\n\n5. **Use a programmable or smart thermostat.** Adjusting temperatures automatically when you're asleep or away avoids heating or cooling an empty home.\n\n6. **Clean or replace HVAC filters monthly.** Clogged filters restrict airflow, making your system consume more energy to circulate air.\n\n7. **Run dishwashers and washing machines only with full loads.** This maximizes the energy and water used per cycle, reducing the total number of runs needed.\n\n8. **Install low-flow showerheads and faucet aerators.** They reduce hot water consumption, which",
+              "reasoning_content": "The user wants a list of ten practical tips for reducing household energy use, each accompanied by a one-sentence reason explaining why it helps. I'll aim for a mix of easy, moderate, and slightly more involved tips, covering different areas of the home (heating/cooling, appliances, lighting, water, etc.). Each tip should be actionable and the reason should be concise and clear.\n",
+              "role": "assistant"
+            }
+          }
+        ],
+        "created": 1792457865,
+        "id": "chatcmpl-678a26c6-702a-4b27-839a-8d04f16724d9",
+        "model": "qwen3.8-flash-next-atlas",
+        "object": "chat.completion",
+        "system_fingerprint": "fp_atlas",
+        "usage": {
+          "completion_tokens": 320,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 206,
+            "audio_tokens": 0,
+            "reasoning_tokens": 80,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 58,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 65.96893195424406,
+          "time_to_first_token_ms": 128.209347,
+          "total_tokens": 378
+        }
+      }
+    },
+    {
+      "exact": {
+        "completion_tokens": 320,
+        "content": "Imagine the Earth as a giant ball of water and rock, and the Moon as a distant but persistent tugger. The Moon's gravity pulls on everything on Earth, but here's the key insight: it doesn't pull equally on all parts of the planet. The side of Earth facing the Moon gets pulled a little harder than the center, and the center gets pulled a little harder than the far side. This difference in pull \u2014 called the tidal force \u2014 is what actually matters. It stretches the Earth slightly, like pulling on both ends of a water balloon. On the side facing the Moon, the water gets pulled toward it, creating a bulge. On the opposite side, the water gets \"left behind\" because the solid Earth is being pulled away from it more strongly than the water is. That's why there are two tidal bulges at once, not just one.\n\nAs the Earth rotates through these two bulges every day, most coastlines experience two high tides and two low tides roughly every 24 hours and 50 minutes. That extra 50 minutes exists because the Moon",
+        "finish_reason": "length",
+        "prompt_tokens": 62,
+        "reasoning_content": "The user wants an explanation of tides caused by the moon and sun, targeted at a curious teenager. I need to make it engaging, clear, and accurate without being condescending. I should cover: gravitational pull, the differential force (tidal force), why there are two bulges, the sun's role, spring and neap tides, and maybe some fun facts. I'll write in paragraphs as requested, keeping the tone conversational but informative.\n",
+        "tool_calls": null
+      },
+      "raw_folder": "http/0011-greedy-c1",
+      "request": {
+        "chat_template_kwargs": {
+          "reasoning_effort": "low"
+        },
+        "max_tokens": 320,
+        "messages": [
+          {
+            "content": "Explain how tides are caused by the moon and the sun, for a curious teenager, in paragraphs.",
+            "role": "user"
+          }
+        ],
+        "model": "qwen3.8-flash-next-atlas",
+        "temperature": 0
+      },
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "length",
+            "index": 0,
+            "logprobs": null,
+            "message": {
+              "content": "Imagine the Earth as a giant ball of water and rock, and the Moon as a distant but persistent tugger. The Moon's gravity pulls on everything on Earth, but here's the key insight: it doesn't pull equally on all parts of the planet. The side of Earth facing the Moon gets pulled a little harder than the center, and the center gets pulled a little harder than the far side. This difference in pull \u2014 called the tidal force \u2014 is what actually matters. It stretches the Earth slightly, like pulling on both ends of a water balloon. On the side facing the Moon, the water gets pulled toward it, creating a bulge. On the opposite side, the water gets \"left behind\" because the solid Earth is being pulled away from it more strongly than the water is. That's why there are two tidal bulges at once, not just one.\n\nAs the Earth rotates through these two bulges every day, most coastlines experience two high tides and two low tides roughly every 24 hours and 50 minutes. That extra 50 minutes exists because the Moon",
+              "reasoning_content": "The user wants an explanation of tides caused by the moon and sun, targeted at a curious teenager. I need to make it engaging, clear, and accurate without being condescending. I should cover: gravitational pull, the differential force (tidal force), why there are two bulges, the sun's role, spring and neap tides, and maybe some fun facts. I'll write in paragraphs as requested, keeping the tone conversational but informative.\n",
+              "role": "assistant"
+            }
+          }
+        ],
+        "created": 1792457870,
+        "id": "chatcmpl-e8642f4f-0e52-4bb7-bdbf-556c2065a6f7",
+        "model": "qwen3.8-flash-next-atlas",
+        "object": "chat.completion",
+        "system_fingerprint": "fp_atlas",
+        "usage": {
+          "completion_tokens": 320,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 206,
+            "audio_tokens": 0,
+            "reasoning_tokens": 93,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 62,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 65.33866813658871,
+          "time_to_first_token_ms": 131.843336,
+          "total_tokens": 382
+        }
+      }
+    }
+  ],
+  "scope": "Final official-image C1 MTP-on receipt; serial-control comparison pending. Token counts and decoded text, not token-ID equality."
+}

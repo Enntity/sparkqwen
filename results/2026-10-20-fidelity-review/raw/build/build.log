@@ -1,0 +1,1146 @@
+#0 building with "qwen-release-70890529ba64-ab9f72aa5ce5" instance using remote driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 6.25kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/nvidia/cuda:13.0.0-devel-ubuntu24.04@sha256:1e8ac7a54c184a1af8ef2167f28fa98281892a835c981ebcddb1fad04bdd452d
+#2 ...
+
+#3 [internal] load metadata for docker.io/nvidia/cuda:13.0.0-runtime-ubuntu24.04@sha256:95318efecfd68ab3d109da5277863257b06137c84f34a87f38de970d5cd035d3
+#3 DONE 0.6s
+
+#2 [internal] load metadata for docker.io/nvidia/cuda:13.0.0-devel-ubuntu24.04@sha256:1e8ac7a54c184a1af8ef2167f28fa98281892a835c981ebcddb1fad04bdd452d
+#2 DONE 0.6s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 99B done
+#4 DONE 0.0s
+
+#5 [builder  1/18] FROM docker.io/nvidia/cuda:13.0.0-devel-ubuntu24.04@sha256:1e8ac7a54c184a1af8ef2167f28fa98281892a835c981ebcddb1fad04bdd452d
+#5 resolve docker.io/nvidia/cuda:13.0.0-devel-ubuntu24.04@sha256:1e8ac7a54c184a1af8ef2167f28fa98281892a835c981ebcddb1fad04bdd452d 0.0s done
+#5 DONE 0.0s
+
+#6 [stage-1  1/12] FROM docker.io/nvidia/cuda:13.0.0-runtime-ubuntu24.04@sha256:95318efecfd68ab3d109da5277863257b06137c84f34a87f38de970d5cd035d3
+#6 resolve docker.io/nvidia/cuda:13.0.0-runtime-ubuntu24.04@sha256:95318efecfd68ab3d109da5277863257b06137c84f34a87f38de970d5cd035d3 0.0s done
+#6 DONE 0.0s
+
+#7 [internal] load build context
+#7 transferring context: 42.05MB 0.4s done
+#7 DONE 0.5s
+
+#8 [builder  2/18] RUN apt-get update -qq && apt-get install -y -qq --no-install-recommends --allow-change-held-packages     git ca-certificates build-essential python3 curl pkg-config cmake libclang-dev     libibverbs-dev librdmacm-dev libnccl2=2.31.2-1+cuda13.3 libnccl-dev=2.31.2-1+cuda13.3 &&     rm -rf /var/lib/apt/lists/*
+#8 CACHED
+
+#9 [builder  3/18] RUN curl --proto '=https' --tlsv1.2 -sSfLo /tmp/rustup-init       "https://static.rust-lang.org/rustup/archive/1.29.1/aarch64-unknown-linux-gnu/rustup-init" &&     echo "15f6e4ce9f583b929c996c91562bad6d4454f3281de858b02cdfdef615fac433  /tmp/rustup-init" | sha256sum -c - && chmod +x /tmp/rustup-init &&     /tmp/rustup-init -y --profile minimal --default-toolchain 1.93.1 && rm /tmp/rustup-init
+#9 CACHED
+
+#10 [builder  4/18] RUN git clone https://github.com/NVIDIA/cutlass.git /opt/cutlass &&     git -C /opt/cutlass checkout cf064d2e6bad2886238ac565b3b49007764f4939
+#10 CACHED
+
+#11 [builder  5/18] WORKDIR /build
+#11 CACHED
+
+#12 [builder  6/18] COPY engine/Cargo.toml engine/Cargo.lock engine/rust-toolchain.toml engine/README.md ./
+#12 CACHED
+
+#13 [builder  7/18] COPY engine/crates/ crates/
+#13 DONE 0.2s
+
+#14 [builder  8/18] COPY engine/kernels/ kernels/
+#14 DONE 0.1s
+
+#15 [builder  9/18] COPY engine/vendor/ vendor/
+#15 DONE 0.1s
+
+#16 [builder 10/18] COPY engine/jinja-templates/ jinja-templates/
+#16 DONE 0.1s
+
+#17 [builder 11/18] COPY engine/tests/fixtures/ tests/fixtures/
+#17 DONE 0.1s
+
+#18 [builder 12/18] COPY engine/test_data/ test_data/
+#18 DONE 0.1s
+
+#19 [builder 13/18] RUN --mount=type=cache,target=/build/target,id=atlas-cargo-target-sparkqwen,sharing=shared     cargo build --locked --release -j "4" -p spark-server &&     install -D target/release/spark /build/dist/spark
+#19 0.092     Updating crates.io index
+#19 1.062  Downloading crates ...
+#19 1.180   Downloaded anstyle-query v1.1.5
+#19 1.181   Downloaded ahash v0.8.12
+#19 1.185   Downloaded allocator-api2 v0.2.21
+#19 1.196   Downloaded adler2 v2.0.1
+#19 1.203   Downloaded clap_lex v1.0.0
+#19 1.211   Downloaded colorchoice v1.0.4
+#19 1.211   Downloaded cfg-if v1.0.4
+#19 1.212   Downloaded byteorder-lite v0.1.0
+#19 1.213   Downloaded atomic-waker v1.1.2
+#19 1.214   Downloaded ident_case v1.0.1
+#19 1.214   Downloaded color_quant v1.1.0
+#19 1.215   Downloaded castaway v0.2.4
+#19 1.216   Downloaded anstyle-parse v1.0.0
+#19 1.217   Downloaded anstyle v1.0.14
+#19 1.220   Downloaded anstream v1.0.0
+#19 1.221   Downloaded cassowary v0.3.0
+#19 1.228   Downloaded block-buffer v0.10.4
+#19 1.229   Downloaded heck v0.5.0
+#19 1.230   Downloaded futures-macro v0.3.33
+#19 1.231   Downloaded idna_adapter v1.2.1
+#19 1.232   Downloaded futures-sink v0.3.33
+#19 1.232   Downloaded futures-task v0.3.33
+#19 1.233   Downloaded equivalent v1.0.2
+#19 1.234   Downloaded errno v0.3.14
+#19 1.235   Downloaded foldhash v0.2.0
+#19 1.236   Downloaded futures-core v0.3.33
+#19 1.237   Downloaded anyhow v1.0.104
+#19 1.239   Downloaded httpdate v1.0.3
+#19 1.240   Downloaded fastrand v2.3.0
+#19 1.240   Downloaded derive_builder_macro v0.20.2
+#19 1.241   Downloaded darling_macro v0.23.0
+#19 1.241   Downloaded foldhash v0.1.5
+#19 1.242   Downloaded clap_derive v4.6.4
+#19 1.243   Downloaded funty v2.0.0
+#19 1.244   Downloaded form_urlencoded v1.2.2
+#19 1.244   Downloaded generic-array v0.14.7
+#19 1.245   Downloaded http-body v1.0.1
+#19 1.246   Downloaded darling_macro v0.20.11
+#19 1.246   Downloaded cpufeatures v0.2.17
+#19 1.247   Downloaded document-features v0.2.12
+#19 1.248   Downloaded http-body-util v0.1.3
+#19 1.249   Downloaded either v1.15.0
+#19 1.250   Downloaded dary_heap v0.3.8
+#19 1.251   Downloaded crypto-common v0.1.7
+#19 1.252   Downloaded futures-io v0.3.33
+#19 1.253   Downloaded find-msvc-tools v0.1.9
+#19 1.254   Downloaded fnv v1.0.7
+#19 1.255   Downloaded derive_builder_core v0.20.2
+#19 1.256   Downloaded shlex v1.3.0
+#19 1.257   Downloaded futures-executor v0.3.33
+#19 1.258   Downloaded httparse v1.10.1
+#19 1.259   Downloaded sha2 v0.10.9
+#19 1.260   Downloaded autocfg v1.5.0
+#19 1.261   Downloaded getrandom v0.2.17
+#19 1.263   Downloaded daachorse v1.0.1
+#19 1.265   Downloaded strum v0.26.3
+#19 1.266   Downloaded is_terminal_polyfill v1.70.2
+#19 1.267   Downloaded signal-hook-mio v0.2.5
+#19 1.268   Downloaded strsim v0.11.1
+#19 1.269   Downloaded slab v0.4.12
+#19 1.269   Downloaded simd-adler32 v0.3.8
+#19 1.270   Downloaded signal-hook-registry v1.4.8
+#19 1.271   Downloaded scopeguard v1.2.0
+#19 1.271   Downloaded compact_str v0.8.2
+#19 1.273   Downloaded bitflags v2.11.0
+#19 1.277   Downloaded strum_macros v0.26.4
+#19 1.279   Downloaded time-core v0.1.8
+#19 1.279   Downloaded synstructure v0.13.2
+#19 1.280   Downloaded flate2 v1.1.9
+#19 1.282   Downloaded compact_str v0.9.0
+#19 1.284   Downloaded thiserror v2.0.19
+#19 1.287   Downloaded tokio-stream v0.1.19
+#19 1.291   Downloaded serde_spanned v0.6.9
+#19 1.292   Downloaded tower-layer v0.3.3
+#19 1.292   Downloaded toml_datetime v0.6.11
+#19 1.292   Downloaded toml v0.8.23
+#19 1.293   Downloaded icu_properties v2.1.2
+#19 1.294   Downloaded icu_normalizer v2.1.1
+#19 1.297   Downloaded tracing-attributes v0.1.31
+#19 1.298   Downloaded tower-service v0.3.3
+#19 1.299   Downloaded tracing-log v0.2.0
+#19 1.300   Downloaded try-lock v0.2.5
+#19 1.300   Downloaded tracing-core v0.1.36
+#19 1.302   Downloaded untrusted v0.9.0
+#19 1.303   Downloaded spm_precompiled v0.1.4
+#19 1.309   Downloaded unicode-truncate v1.1.0
+#19 1.310   Downloaded unicode-ident v1.0.24
+#19 1.311   Downloaded rand_chacha v0.3.1
+#19 1.312   Downloaded time v0.3.47
+#19 1.319   Downloaded zerofrom-derive v0.1.6
+#19 1.320   Downloaded zune-core v0.5.1
+#19 1.321   Downloaded zmij v1.0.21
+#19 1.322   Downloaded toml_edit v0.22.27
+#19 1.325   Downloaded zeroize v1.8.2
+#19 1.326   Downloaded wyz v0.5.1
+#19 1.327   Downloaded tower-http v0.7.0
+#19 1.332   Downloaded zerovec-derive v0.11.2
+#19 1.333   Downloaded tokio v1.52.3
+#19 1.355   Downloaded yoke-derive v0.8.1
+#19 1.356   Downloaded tui-textarea v0.7.0
+#19 1.358   Downloaded unicode-width v0.2.0
+#19 1.361   Downloaded unicode_categories v0.1.1
+#19 1.363   Downloaded unicode-width v0.1.14
+#19 1.366   Downloaded url v2.5.8
+#19 1.367   Downloaded zerovec v0.11.5
+#19 1.370   Downloaded zerocopy-derive v0.8.39
+#19 1.375   Downloaded weezl v0.1.12
+#19 1.376   Downloaded winnow v0.7.14
+#19 1.381   Downloaded zerotrie v0.2.3
+#19 1.382   Downloaded zerocopy v0.8.39
+#19 1.392   Downloaded rustls-webpki v0.103.15
+#19 1.393   Downloaded minimal-lexical v0.2.1
+#19 1.396   Downloaded zune-jpeg v0.5.12
+#19 1.398   Downloaded png v0.18.1
+#19 1.400   Downloaded mio v1.2.1
+#19 1.404   Downloaded itertools v0.13.0
+#19 1.407   Downloaded serde_json v1.0.151
+#19 1.411   Downloaded libm v0.2.16
+#19 1.415   Downloaded regex v1.12.3
+#19 1.418   Downloaded moxcms v0.8.1
+#19 1.423   Downloaded rayon v1.12.0
+#19 1.427   Downloaded minijinja v2.21.0
+#19 1.430   Downloaded itertools v0.14.0
+#19 1.434   Downloaded image v0.25.10
+#19 1.439   Downloaded icu_properties_data v2.1.2
+#19 1.444   Downloaded nom v7.1.3
+#19 1.446   Downloaded webpki-roots v1.0.6
+#19 1.448   Downloaded tiff v0.11.3
+#19 1.451   Downloaded rand v0.9.3
+#19 1.453   Downloaded regex-syntax v0.8.10
+#19 1.457   Downloaded rustls v0.23.45
+#19 1.463   Downloaded rustix v0.38.44
+#19 1.474   Downloaded io-uring v0.7.13
+#19 1.476   Downloaded rustix v1.1.4
+#19 1.488   Downloaded indexmap v2.13.0
+#19 1.490   Downloaded rand v0.8.6
+#19 1.492   Downloaded memchr v2.8.0
+#19 1.494   Downloaded serde v1.0.229
+#19 1.496   Downloaded ratatui v0.29.0
+#19 1.506   Downloaded ryu v1.0.23
+#19 1.507   Downloaded prometheus v0.14.0
+#19 1.510   Downloaded proc-macro2 v1.0.106
+#19 1.511   Downloaded libloading v0.9.0
+#19 1.512   Downloaded regex-automata v0.4.14
+#19 1.520   Downloaded image-webp v0.2.4
+#19 1.522   Downloaded rayon-core v1.13.0
+#19 1.523   Downloaded onig_sys v69.9.1
+#19 1.533   Downloaded miniz_oxide v0.8.9
+#19 1.534   Downloaded ureq v3.3.0
+#19 1.537   Downloaded litrs v1.0.0
+#19 1.538   Downloaded unicode-normalization-alignments v0.1.12
+#19 1.540   Downloaded num-traits v0.2.19
+#19 1.541   Downloaded log v0.4.29
+#19 1.542   Downloaded unicode-segmentation v1.12.0
+#19 1.543   Downloaded typenum v1.20.1
+#19 1.545   Downloaded tracing-subscriber v0.3.23
+#19 1.549   Downloaded libc v0.2.189
+#19 1.569   Downloaded serde_core v1.0.229
+#19 1.570   Downloaded pxfm v0.1.28
+#19 1.582   Downloaded tracing v0.1.44
+#19 1.591   Downloaded serde_derive v1.0.229
+#19 1.592   Downloaded safetensors v0.8.0
+#19 1.593   Downloaded rand_distr v0.4.3
+#19 1.594   Downloaded parking_lot v0.12.5
+#19 1.595   Downloaded once_cell v1.21.4
+#19 1.596   Downloaded memmap2 v0.9.11
+#19 1.597   Downloaded matchit v0.8.4
+#19 1.598   Downloaded litemap v0.8.1
+#19 1.599   Downloaded idna v1.1.0
+#19 1.601   Downloaded icu_provider v2.1.1
+#19 1.602   Downloaded icu_normalizer_data v2.1.1
+#19 1.603   Downloaded want v0.3.1
+#19 1.603   Downloaded version_check v0.9.5
+#19 1.604   Downloaded stable_deref_trait v1.2.1
+#19 1.604   Downloaded rustversion v1.0.22
+#19 1.605   Downloaded rustls-pki-types v1.14.0
+#19 1.606   Downloaded rand_core v0.6.4
+#19 1.607   Downloaded rand_chacha v0.9.0
+#19 1.607   Downloaded pkg-config v0.3.32
+#19 1.608   Downloaded pin-project-lite v0.2.16
+#19 1.610   Downloaded parking_lot_core v0.9.12
+#19 1.611   Downloaded nu-ansi-term v0.50.3
+#19 1.612   Downloaded yoke v0.8.1
+#19 1.613   Downloaded indoc v2.0.7
+#19 1.614   Downloaded tower v0.5.3
+#19 1.618   Downloaded tokio-util v0.7.18
+#19 1.621   Downloaded utf8_iter v1.0.4
+#19 1.621   Downloaded serde_path_to_error v0.1.20
+#19 1.622   Downloaded quote v1.0.45
+#19 1.623   Downloaded onig v6.5.1
+#19 1.624   Downloaded ring v0.17.14
+#19 1.646   Downloaded lock_api v0.4.14
+#19 1.646   Downloaded libloading v0.8.9
+#19 1.647   Downloaded zerofrom v0.1.6
+#19 1.647   Downloaded writeable v0.6.2
+#19 1.648   Downloaded utf8-zero v0.8.1
+#19 1.648   Downloaded tokenizers v0.23.1
+#19 1.652   Downloaded syn v3.0.3
+#19 1.658   Downloaded syn v2.0.117
+#19 1.663   Downloaded rand_core v0.9.5
+#19 1.663   Downloaded ppv-lite86 v0.2.21
+#19 1.664   Downloaded paste v1.0.15
+#19 1.665   Downloaded instability v0.3.12
+#19 1.665   Downloaded utf8parse v0.2.2
+#19 1.666   Downloaded ureq-proto v0.6.0
+#19 1.667   Downloaded rayon-cond v0.4.0
+#19 1.668   Downloaded pin-utils v0.1.0
+#19 1.668   Downloaded monostate-impl v0.1.18
+#19 1.669   Downloaded monostate v0.1.18
+#19 1.669   Downloaded mime v0.3.17
+#19 1.670   Downloaded memo-map v0.3.3
+#19 1.670   Downloaded macro_rules_attribute v0.2.2
+#19 1.671   Downloaded lru v0.12.5
+#19 1.671   Downloaded macro_rules_attribute-proc_macro v0.2.2
+#19 1.672   Downloaded lazy_static v1.5.0
+#19 1.672   Downloaded itoa v1.0.17
+#19 1.673   Downloaded toml_write v0.1.2
+#19 1.674   Downloaded percent-encoding v2.3.2
+#19 1.674   Downloaded hyper v1.8.1
+#19 1.677   Downloaded futures-util v0.3.33
+#19 1.682   Downloaded esaxx-rs v0.1.10
+#19 1.684   Downloaded clap_builder v4.6.6
+#19 1.687   Downloaded bitvec v1.1.1
+#19 1.694   Downloaded axum v0.8.9
+#19 1.697   Downloaded linux-raw-sys v0.4.15
+#19 1.723   Downloaded hashbrown v0.16.1
+#19 1.726   Downloaded hashbrown v0.15.5
+#19 1.728   Downloaded hashbrown v0.14.5
+#19 1.730   Downloaded h2 v0.4.16
+#19 1.734   Downloaded crossterm v0.28.1
+#19 1.736   Downloaded aho-corasick v1.1.4
+#19 1.739   Downloaded tokio-macros v2.7.0
+#19 1.739   Downloaded tinystr v0.8.2
+#19 1.740   Downloaded time-macros v0.2.27
+#19 1.741   Downloaded thread_local v1.1.9
+#19 1.742   Downloaded tap v1.0.1
+#19 1.742   Downloaded radium v0.7.0
+#19 1.742   Downloaded num-conv v0.2.0
+#19 1.743   Downloaded http v1.4.0
+#19 1.744   Downloaded tempfile v3.27.0
+#19 1.745   Downloaded hyper-util v0.1.20
+#19 1.748   Downloaded base64 v0.22.1
+#19 1.750   Downloaded thiserror-impl v2.0.19
+#19 1.750   Downloaded sync_wrapper v1.0.2
+#19 1.751   Downloaded subtle v2.6.1
+#19 1.751   Downloaded static_assertions v1.1.0
+#19 1.752   Downloaded socket2 v0.6.4
+#19 1.752   Downloaded smallvec v1.15.1
+#19 1.753   Downloaded signal-hook v0.3.18
+#19 1.755   Downloaded icu_locale_core v2.1.1
+#19 1.757   Downloaded icu_collections v2.1.1
+#19 1.760   Downloaded getrandom v0.3.4
+#19 1.761   Downloaded futures v0.3.33
+#19 1.763   Downloaded darling_core v0.23.0
+#19 1.765   Downloaded darling_core v0.20.11
+#19 1.767   Downloaded clap v4.6.6
+#19 1.771   Downloaded cc v1.2.56
+#19 1.773   Downloaded bytemuck v1.25.0
+#19 1.774   Downloaded base64 v0.13.1
+#19 1.775   Downloaded sharded-slab v0.1.7
+#19 1.776   Downloaded matchers v0.2.0
+#19 1.777   Downloaded half v2.7.1
+#19 1.778   Downloaded darling v0.23.0
+#19 1.780   Downloaded crossbeam-utils v0.8.21
+#19 1.781   Downloaded futures-channel v0.3.33
+#19 1.782   Downloaded crc32fast v1.5.0
+#19 1.783   Downloaded axum-core v0.5.6
+#19 1.784   Downloaded digest v0.10.7
+#19 1.784   Downloaded derive_builder v0.20.2
+#19 1.786   Downloaded darling v0.20.11
+#19 1.788   Downloaded crossbeam-epoch v0.9.20
+#19 1.789   Downloaded serde_urlencoded v0.7.1
+#19 1.790   Downloaded quick-error v2.0.1
+#19 1.790   Downloaded powerfmt v0.2.0
+#19 1.791   Downloaded potential_utf v0.1.4
+#19 1.791   Downloaded gif v0.14.2
+#19 1.792   Downloaded deranged v0.5.8
+#19 1.792   Downloaded cookie v0.18.1
+#19 1.794   Downloaded cookie_store v0.22.1
+#19 1.795   Downloaded linux-raw-sys v0.12.1
+#19 1.830   Downloaded bytes v1.11.1
+#19 1.832   Downloaded fdeflate v0.3.7
+#19 1.832   Downloaded fax v0.2.7
+#19 1.833   Downloaded displaydoc v0.2.5
+#19 1.834   Downloaded crossbeam-deque v0.8.6
+#19 1.835   Downloaded dashmap v6.2.1
+#19 1.895    Compiling atlas-rdma v1.0.0-beta-preview (/build/crates/atlas-rdma)
+#19 1.895    Compiling cudarc v0.19.2 (/build/vendor/cudarc)
+#19 1.895    Compiling atlas-closure v1.0.0-beta-preview (/build/crates/atlas-closure)
+#19 1.895    Compiling atlas-core v1.0.0-beta-preview (/build/crates/atlas-core)
+#19 1.963    Compiling spark-runtime v1.0.0-beta-preview (/build/crates/spark-runtime)
+#19 2.034    Compiling atlas-kernels v1.0.0-beta-preview (/build/crates/atlas-kernels)
+#19 2.339    Compiling atlas-tier v1.0.0-beta-preview (/build/crates/atlas-tier)
+#19 2.780    Compiling spark-storage v1.0.0-beta-preview (/build/crates/spark-storage)
+#19 3.014    Compiling spark-comm v1.0.0-beta-preview (/build/crates/spark-comm)
+#19 9.307    Compiling cufile-sys v1.0.0-beta-preview (/build/crates/cufile-sys)
+#19 9.520    Compiling spark-model v1.0.0-beta-preview (/build/crates/spark-model)
+#19 13.16    Compiling atlas-governance v1.0.0-beta-preview (/build/crates/atlas-governance)
+#19 14.84    Compiling atlas-plugin v1.0.0-beta-preview (/build/crates/atlas-plugin)
+#19 16.33    Compiling xgrammar v1.0.0-beta-preview (/build/crates/xgrammar)
+#19 39.98 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: compiled 228 kernels for target 0 (gb10, qwen3.8-flash-next, nvfp4) (34 model-specific overrides)
+#19 39.98 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: dedup+parallel: 228/228 unique nvcc invocations (0 cache hits, 1.0× dedup), 10 parallel workers
+#19 99.14    Compiling spark-server v1.0.0-beta-preview (/build/crates/spark-server)
+#19 144.5     Finished `release` profile [optimized] target(s) in 2m 24s
+#19 DONE 144.7s
+
+#20 [builder 14/18] COPY install/rust-notices.py /product/install/rust-notices.py
+#20 DONE 0.1s
+
+#21 [builder 15/18] RUN python3 /product/install/rust-notices.py /build /build/dist/notices-rust
+#21 0.183  Downloading crates ...
+#21 0.315   Downloaded ciborium-ll v0.2.2
+#21 0.330   Downloaded anes v0.1.6
+#21 0.332   Downloaded criterion-plot v0.8.2
+#21 0.333   Downloaded cast v0.3.0
+#21 0.347   Downloaded plotters-svg v0.3.7
+#21 0.348   Downloaded page_size v0.6.0
+#21 0.349   Downloaded ciborium-io v0.2.2
+#21 0.349   Downloaded alloca v0.4.0
+#21 0.350   Downloaded same-file v1.0.6
+#21 0.353   Downloaded plotters-backend v0.3.7
+#21 0.360   Downloaded walkdir v2.5.0
+#21 0.361   Downloaded tinytemplate v1.2.1
+#21 0.361   Downloaded oorandom v11.1.5
+#21 0.362   Downloaded ciborium v0.2.2
+#21 0.365   Downloaded criterion v0.8.2
+#21 0.368   Downloaded plotters v0.3.7
+#21 0.455 303 third-party crates, 1 without a license file in the crate
+#21 DONE 0.5s
+
+#22 [builder 16/18] RUN mkdir -p /opt/cuda-stubs &&     ln -s /usr/local/cuda/lib64/stubs/libcuda.so /opt/cuda-stubs/libcuda.so.1
+#22 DONE 0.1s
+
+#23 [builder 17/18] RUN --mount=type=cache,target=/build/target,id=atlas-cargo-target-sparkqwen,sharing=shared     set -eu; for check in atlas-core:qwen4_exp_ spark-server:scheduler::lifecycle_tests         spark-server:scheduler::admission:: spark-server:cancellation_tests         spark-server:disconnect_prefill_tests spark-server:buffered_disconnect_         spark-server:verify_pipeline_helper::scored::tests spark-server:prediction_usage spark-server:bootstrap_score spark-server:unscored_logprob_admission spark-server:batched_logprob_read_failure_aborts_every_advanced_member spark-server:refusal spark-server:api::chat_stream spark-server:tool_parser::         spark-runtime:radix_tree:: spark-model:block_mgmt::tails::tests; do       crate=${check%%:*}; filter=${check#*:};       if [ "$crate" = spark-server ]; then target="--bin spark"; else target="--lib"; fi;       LD_LIBRARY_PATH=/opt/cuda-stubs:/usr/local/cuda/lib64       timeout --signal=TERM --kill-after=10s 600       cargo test --locked --release -j "4" -p "$crate" $target "$filter"         > /tmp/atlas-check.log 2>&1 || { cat /tmp/atlas-check.log; exit 1; };       cat /tmp/atlas-check.log;       grep -E 'test result: ok. [1-9][0-9]* passed;' /tmp/atlas-check.log;     done
+#23 3.653    Compiling atlas-core v1.0.0-beta-preview (/build/crates/atlas-core)
+#23 3.653     Finished `release` profile [optimized] target(s) in 3.57s
+#23 3.653      Running unittests src/lib.rs (target/release/deps/atlas_core-72704e53be51b1fe)
+#23 3.653 
+#23 3.653 running 23 tests
+#23 3.653 test config::parsers::qwen4_exp::qwen4_exp_tests::parses_the_real_config_json_when_present ... ok
+#23 3.653 test config::parsers::qwen4_exp::qwen4_exp_tests::indexer_maps_onto_index_fields_and_only_full_attention_layers ... ok
+#23 3.653 test config::parsers::qwen4_exp::qwen4_exp_tests::attention_is_gated_and_layer_types_survive ... ok
+#23 3.653 test config::parsers::qwen4_exp::qwen4_exp_tests::both_naming_revisions_route_to_this_parser ... ok
+#23 3.653 test config::parsers::qwen4_exp::qwen4_exp_tests::a_zero_ple_layer_id_is_refused ... ok
+#23 3.653 test config::parsers::qwen4_exp::qwen4_exp_tests::hyper_connections_map_onto_the_deepseek_v4_fields ... ok
+#23 3.653 test config::parsers::qwen4_exp::qwen4_exp_tests::layer_types_length_must_match_num_hidden_layers ... ok
+#23 3.653 test config::parsers::qwen4_exp::qwen4_exp_tests::missing_text_config_is_refused ... ok
+#23 3.653 test config::parsers::qwen4_exp::qwen4_exp_tests::ple_layer_id_past_the_end_is_refused ... ok
+#23 3.653 test config::parsers::qwen4_exp::qwen4_exp_tests::partial_indexer_config_is_refused ... ok
+#23 3.653 test config::parsers::qwen4_exp::qwen4_exp_tests::ngram_head_count_must_divide_hidden_size ... ok
+#23 3.653 test config::parsers::qwen4_exp::qwen4_exp_tests::parses_the_shipped_checkpoint_config ... ok
+#23 3.653 test config::parsers::qwen4_exp::qwen4_exp_tests::vision_tower_is_parsed ... ok
+#23 3.653 test config::parsers::qwen4_exp::qwen4_exp_tests::the_nvfp4_quantization_config_is_read_from_the_top_level ... ok
+#23 3.653 test config::parsers::qwen4_exp::qwen4_exp_tests::partial_hyper_connection_config_is_refused ... ok
+#23 3.653 test config::parsers::qwen4_exp::qwen4_exp_tests::ngram_geometry_matches_the_longcat_formula ... ok
+#23 3.653 test config::parsers::qwen4_exp::qwen4_exp_tests::rope_reads_through_the_nested_rope_parameters ... ok
+#23 3.653 test config::parsers::qwen4_exp::qwen4_exp_tests::the_fp8_release_carries_its_block_size_through_too ... ok
+#23 3.653 test config::tests::qwen4_exp_fixture_parses_the_hybrid_moe_layout ... ok
+#23 3.653 test config::tests::qwen4_exp_forces_topk_renormalisation_the_config_does_not_state ... ok
+#23 3.653 test config::tests::qwen4_exp_does_not_declare_the_longcat_trio ... ok
+#23 3.653 test config::parsers::qwen4_exp::qwen4_exp_tests::the_fp4_local_config_parses_to_the_same_architecture ... ok
+#23 3.653 test config::tests::qwen4_exp_ngram_geometry_survives_the_real_parse ... ok
+#23 3.653 
+#23 3.653 test result: ok. 23 passed; 0 failed; 0 ignored; 0 measured; 170 filtered out; finished in 0.00s
+#23 3.653 
+#23 3.655 test result: ok. 23 passed; 0 failed; 0 ignored; 0 measured; 170 filtered out; finished in 0.00s
+#23 78.12 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: compiled 228 kernels for target 0 (gb10, qwen3.8-flash-next, nvfp4) (34 model-specific overrides)
+#23 78.12 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: dedup+parallel: 228/228 unique nvcc invocations (0 cache hits, 1.0× dedup), 10 parallel workers
+#23 78.12    Compiling spark-model v1.0.0-beta-preview (/build/crates/spark-model)
+#23 78.12    Compiling spark-server v1.0.0-beta-preview (/build/crates/spark-server)
+#23 78.12     Finished `release` profile [optimized] target(s) in 1m 14s
+#23 78.12      Running unittests src/main.rs (target/release/deps/spark-90edfebc73d09829)
+#23 78.12 
+#23 78.12 running 23 tests
+#23 78.12 test scheduler::lifecycle_tests::empty_output_edges ... ok
+#23 78.12 test scheduler::lifecycle_tests::early_stop_one_token_short_of_budget_is_not_length ... ok
+#23 78.12 test scheduler::lifecycle_tests::length_means_budget_exhausted_only ... ok
+#23 78.12 test scheduler::lifecycle_tests::normal_stops_are_unchanged ... ok
+#23 78.12 test scheduler::lifecycle_tests::eos_on_the_last_budgeted_token_is_stop_not_length ... ok
+#23 78.12 test scheduler::lifecycle_tests::non_truncating_stops_are_not_relabelled_as_length ... ok
+#23 78.12 test scheduler::lifecycle_tests::call_site::call_site_passes_the_real_last_token_and_eos ... ok
+#23 78.12 test scheduler::lifecycle_tests::call_site::call_site_passes_the_real_budget ... ok
+#23 78.12 test scheduler::lifecycle_tests::call_site::call_site_passes_the_real_seq_len ... ok
+#23 78.12 test scheduler::lifecycle_tests::call_site::call_site_passes_the_real_guard ... ok
+#23 78.12 test scheduler::lifecycle_tests::prediction_usage::k4::prediction_usage_k4_eos_retains_only_emitted_drafts ... ok
+#23 78.12 test scheduler::lifecycle_tests::prediction_usage::prediction_usage_cancel_before_draft_push_reports_zero ... ok
+#23 78.12 test scheduler::lifecycle_tests::prediction_usage::k4::prediction_usage_k4_partial_and_rejected_bonus_are_not_drafts ... ok
+#23 78.12 test scheduler::lifecycle_tests::call_site::terminal_model_error_is_sent_as_error_without_successful_done ... ok
+#23 78.12 test scheduler::lifecycle_tests::prediction_usage::k4::prediction_usage_k4_suppressed_draft_does_not_credit_bonus ... ok
+#23 78.12 test scheduler::lifecycle_tests::prediction_usage::k4::prediction_usage_k4_cap_and_bonus_preserve_raw_acceptance ... ok
+#23 78.12 test scheduler::lifecycle_tests::prediction_usage::prediction_usage_counts_only_returned_drafts_at_length_boundary ... ok
+#23 78.12 test scheduler::lifecycle_tests::prediction_usage::prediction_usage_counts_eos_draft_but_not_unemitted_tail ... ok
+#23 78.12 test scheduler::lifecycle_tests::prediction_usage::prediction_usage_rejected_draft_bonus_is_not_accepted ... ok
+#23 78.12 test scheduler::lifecycle_tests::prediction_usage::prediction_usage_skipped_drafts_do_not_turn_bonus_into_acceptance ... ok
+#23 78.12 test scheduler::lifecycle_tests::timeout_unchanged_and_still_outranks_everything ... ok
+#23 78.12 test scheduler::lifecycle_tests::token_derived_stops_outrank_non_timeout_guards ... ok
+#23 78.12 test scheduler::lifecycle_tests::prediction_usage::prediction_usage_stream_done_uses_returned_draft_count ... ok
+#23 78.12 
+#23 78.12 test result: ok. 23 passed; 0 failed; 0 ignored; 0 measured; 2832 filtered out; finished in 0.00s
+#23 78.12 
+#23 78.12 test result: ok. 23 passed; 0 failed; 0 ignored; 0 measured; 2832 filtered out; finished in 0.00s
+#23 78.26 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: compiled 228 kernels for target 0 (gb10, qwen3.8-flash-next, nvfp4) (34 model-specific overrides)
+#23 78.26 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: dedup+parallel: 228/228 unique nvcc invocations (0 cache hits, 1.0× dedup), 10 parallel workers
+#23 78.26     Finished `release` profile [optimized] target(s) in 0.09s
+#23 78.26      Running unittests src/main.rs (target/release/deps/spark-90edfebc73d09829)
+#23 78.26 
+#23 78.26 running 12 tests
+#23 78.26 test scheduler::admission::tests::block_math_matches_legacy_formula ... ok
+#23 78.26 test scheduler::admission::tests::in_flight_commitments_reduce_capacity ... ok
+#23 78.26 test scheduler::admission::tests::two_chunked_image_requests_are_admitted_in_the_same_tick ... ok
+#23 78.26 test scheduler::admission::tests::ep_oversized_blocking_request_gets_error_before_allocation ... ok
+#23 78.26 test scheduler::admission::tests::fits_everything_admission_unchanged ... ok
+#23 78.26 test scheduler::admission::tests::c128_overflow_queues_instead_of_admit_then_shoot ... ok
+#23 78.26 test scheduler::admission::tests::ep_zero_capacity_rejects_even_a_single_request ... ok
+#23 78.26 test scheduler::admission::tests::liveness_oversized_lone_request_still_admits ... ok
+#23 78.26 test scheduler::admission::tests::admission_stops_at_first_misfit_no_head_of_line_bypass ... ok
+#23 78.26 test scheduler::admission::tests::watermark_caps_the_decode_reservation ... ok
+#23 78.26 test scheduler::admission::tests::watermark_zero_reserves_prompt_only_legacy ... ok
+#23 78.26 test scheduler::admission::tests::ep_oversized_stream_gets_error_before_allocation ... ok
+#23 78.26 
+#23 78.26 test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 2843 filtered out; finished in 0.00s
+#23 78.26 
+#23 78.27 test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 2843 filtered out; finished in 0.00s
+#23 78.42 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: compiled 228 kernels for target 0 (gb10, qwen3.8-flash-next, nvfp4) (34 model-specific overrides)
+#23 78.42 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: dedup+parallel: 228/228 unique nvcc invocations (0 cache hits, 1.0× dedup), 10 parallel workers
+#23 78.42     Finished `release` profile [optimized] target(s) in 0.09s
+#23 78.42      Running unittests src/main.rs (target/release/deps/spark-90edfebc73d09829)
+#23 78.42 
+#23 78.42 running 10 tests
+#23 78.42 test scheduler::emit_step::tests::cancellation_tests::buffered_disconnect_retires_dead_receiver_at_emit ... ok
+#23 78.42 test scheduler::emit_step::tests::cancellation_tests::streaming_cancel_semantics_unchanged_for_blocking_helper ... ok
+#23 78.42 test scheduler::emit_step::tests::cancellation_tests::non_spec_cancel_after_sampling_is_rechecked_before_commit ... ok
+#23 78.42 test scheduler::emit_step::tests::cancellation_tests::emit_and_retirement_helper_preserve_budgets_and_finish_precedence ... ok
+#23 78.42 test scheduler::emit_step::tests::cancellation_tests::non_spec_preset_cancel_retires_without_committing_sampled_token ... ok
+#23 78.42 test scheduler::emit_step::tests::cancellation_tests::non_spec_without_cancel_still_enforces_token_and_context_limits ... ok
+#23 78.42 test scheduler::emit_step::tests::cancellation_tests::buffered_disconnect_retires_at_decode_boundary ... ok
+#23 78.42 test scheduler::emit_step::tests::cancellation_tests::non_spec_midbatch_cancel_preserves_other_rows_and_original_mapping ... ok
+#23 78.42 test scheduler::emit_step::tests::cancellation_tests::buffered_live_receiver_still_emits ... ok
+#23 78.42 test scheduler::emit_step::tests::cancellation_tests::cancelled_host_sampling_preserves_request_adaptive_state_serial_and_parallel ... ok
+#23 78.42 
+#23 78.42 test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 2845 filtered out; finished in 0.00s
+#23 78.42 
+#23 78.42 test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 2845 filtered out; finished in 0.00s
+#23 78.58 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: compiled 228 kernels for target 0 (gb10, qwen3.8-flash-next, nvfp4) (34 model-specific overrides)
+#23 78.58 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: dedup+parallel: 228/228 unique nvcc invocations (0 cache hits, 1.0× dedup), 10 parallel workers
+#23 78.58     Finished `release` profile [optimized] target(s) in 0.09s
+#23 78.58      Running unittests src/main.rs (target/release/deps/spark-90edfebc73d09829)
+#23 78.58 
+#23 78.58 running 2 tests
+#23 78.58 test scheduler::phase_continue_prefills::disconnect_prefill_tests::streaming_prefill_is_never_retired_by_disconnect_sweep ... ok
+#23 78.58 test scheduler::phase_continue_prefills::disconnect_prefill_tests::dead_blocking_prefill_retires_and_live_one_survives ... ok
+#23 78.58 
+#23 78.58 test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 2853 filtered out; finished in 0.00s
+#23 78.58 
+#23 78.58 test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 2853 filtered out; finished in 0.00s
+#23 78.74 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: compiled 228 kernels for target 0 (gb10, qwen3.8-flash-next, nvfp4) (34 model-specific overrides)
+#23 78.74 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: dedup+parallel: 228/228 unique nvcc invocations (0 cache hits, 1.0× dedup), 10 parallel workers
+#23 78.74     Finished `release` profile [optimized] target(s) in 0.09s
+#23 78.74      Running unittests src/main.rs (target/release/deps/spark-90edfebc73d09829)
+#23 78.74 
+#23 78.74 running 5 tests
+#23 78.74 test scheduler::emit_step::tests::cancellation_tests::buffered_disconnect_retires_dead_receiver_at_emit ... ok
+#23 78.74 test scheduler::preempt_tests::resume::buffered_disconnect_drops_parked_history_without_reprefill ... ok
+#23 78.74 test scheduler::preempt_tests::resume::buffered_disconnect_keeps_failed_spill_cleanup_for_retry ... ok
+#23 78.74 test scheduler::emit_step::tests::cancellation_tests::buffered_disconnect_retires_at_decode_boundary ... ok
+#23 78.74 test scheduler::preempt_tests::resume::buffered_disconnect_removes_spill_without_restoration ... ok
+#23 78.74 
+#23 78.74 test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 2850 filtered out; finished in 0.00s
+#23 78.74 
+#23 78.74 test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 2850 filtered out; finished in 0.00s
+#23 78.90 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: compiled 228 kernels for target 0 (gb10, qwen3.8-flash-next, nvfp4) (34 model-specific overrides)
+#23 78.90 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: dedup+parallel: 228/228 unique nvcc invocations (0 cache hits, 1.0× dedup), 10 parallel workers
+#23 78.90     Finished `release` profile [optimized] target(s) in 0.09s
+#23 78.90      Running unittests src/main.rs (target/release/deps/spark-90edfebc73d09829)
+#23 78.90 
+#23 78.90 running 4 tests
+#23 78.90 test scheduler::verify_pipeline_helper::scored::tests::unrequested_scoring_performs_no_model_read_or_pick ... ok
+#23 78.90 test scheduler::verify_pipeline_helper::scored::tests::scored_dense_thinking_boundary_commits_once_and_stops_at_rejection ... ok
+#23 78.90 test scheduler::verify_pipeline_helper::scored::tests::dense_logprobs_report_the_biased_selection_distribution ... ok
+#23 78.90 test scheduler::verify_pipeline_helper::scored::tests::processed_scores_match_serial_with_history_and_batched_row_offset ... ok
+#23 78.90 
+#23 78.90 test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 2851 filtered out; finished in 0.00s
+#23 78.90 
+#23 78.90 test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 2851 filtered out; finished in 0.00s
+#23 79.05 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: compiled 228 kernels for target 0 (gb10, qwen3.8-flash-next, nvfp4) (34 model-specific overrides)
+#23 79.05 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: dedup+parallel: 228/228 unique nvcc invocations (0 cache hits, 1.0× dedup), 10 parallel workers
+#23 79.05     Finished `release` profile [optimized] target(s) in 0.09s
+#23 79.05      Running unittests src/main.rs (target/release/deps/spark-90edfebc73d09829)
+#23 79.05 
+#23 79.05 running 11 tests
+#23 79.05 test scheduler::lifecycle_tests::prediction_usage::k4::prediction_usage_k4_suppressed_draft_does_not_credit_bonus ... ok
+#23 79.05 test scheduler::lifecycle_tests::prediction_usage::k4::prediction_usage_k4_eos_retains_only_emitted_drafts ... ok
+#23 79.05 test scheduler::rollback::rollback_rewind::prediction_usage_tests::prediction_usage_rollback_removes_only_discarded_draft_positions ... ok
+#23 79.05 test scheduler::lifecycle_tests::prediction_usage::prediction_usage_counts_eos_draft_but_not_unemitted_tail ... ok
+#23 79.05 test scheduler::lifecycle_tests::prediction_usage::k4::prediction_usage_k4_cap_and_bonus_preserve_raw_acceptance ... ok
+#23 79.05 test scheduler::lifecycle_tests::prediction_usage::prediction_usage_stream_done_uses_returned_draft_count ... ok
+#23 79.05 test scheduler::lifecycle_tests::prediction_usage::prediction_usage_rejected_draft_bonus_is_not_accepted ... ok
+#23 79.05 test scheduler::lifecycle_tests::prediction_usage::prediction_usage_cancel_before_draft_push_reports_zero ... ok
+#23 79.05 test scheduler::lifecycle_tests::prediction_usage::k4::prediction_usage_k4_partial_and_rejected_bonus_are_not_drafts ... ok
+#23 79.05 test scheduler::lifecycle_tests::prediction_usage::prediction_usage_counts_only_returned_drafts_at_length_boundary ... ok
+#23 79.05 test scheduler::lifecycle_tests::prediction_usage::prediction_usage_skipped_drafts_do_not_turn_bonus_into_acceptance ... ok
+#23 79.05 
+#23 79.05 test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 2844 filtered out; finished in 0.00s
+#23 79.05 
+#23 79.05 test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 2844 filtered out; finished in 0.00s
+#23 79.20 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: compiled 228 kernels for target 0 (gb10, qwen3.8-flash-next, nvfp4) (34 model-specific overrides)
+#23 79.20 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: dedup+parallel: 228/228 unique nvcc invocations (0 cache hits, 1.0× dedup), 10 parallel workers
+#23 79.20     Finished `release` profile [optimized] target(s) in 0.09s
+#23 79.20      Running unittests src/main.rs (target/release/deps/spark-90edfebc73d09829)
+#23 79.20 
+#23 79.20 running 5 tests
+#23 79.20 test scheduler::mtp_step::one_forward::tests::bootstrap_score_tests::bootstrap_score_unscored_fast_path_does_not_copy ... ok
+#23 79.20 test scheduler::mtp_step::one_forward::tests::bootstrap_score_tests::bootstrap_score_single_fp32_uses_actual_dtype ... ok
+#23 79.20 test scheduler::mtp_step::one_forward::tests::bootstrap_score_tests::bootstrap_score_single_bf16_uses_processed_row ... ok
+#23 79.20 test scheduler::mtp_step::one_forward::tests::bootstrap_score_tests::bootstrap_score_batch_read_failure_only_aborts_failed_member ... ok
+#23 79.20 test scheduler::mtp_step::one_forward::tests::bootstrap_score_tests::bootstrap_score_batch_uses_each_processed_row ... ok
+#23 79.20 
+#23 79.20 test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 2850 filtered out; finished in 0.00s
+#23 79.20 
+#23 79.21 test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 2850 filtered out; finished in 0.00s
+#23 79.36 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: compiled 228 kernels for target 0 (gb10, qwen3.8-flash-next, nvfp4) (34 model-specific overrides)
+#23 79.36 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: dedup+parallel: 228/228 unique nvcc invocations (0 cache hits, 1.0× dedup), 10 parallel workers
+#23 79.36     Finished `release` profile [optimized] target(s) in 0.09s
+#23 79.36      Running unittests src/main.rs (target/release/deps/spark-90edfebc73d09829)
+#23 79.36 
+#23 79.36 running 2 tests
+#23 79.36 test scheduler::spec_step::admission::tests::unscored_logprob_admission_declines_ngram_and_self_spec ... ok
+#23 79.36 test scheduler::mtp_step::one_forward::tests::logprob_tests::unscored_logprob_admission_keeps_dflash_requests_on_single_sequence_path ... ok
+#23 79.36 
+#23 79.36 test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 2853 filtered out; finished in 0.00s
+#23 79.36 
+#23 79.36 test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 2853 filtered out; finished in 0.00s
+#23 79.52 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: compiled 228 kernels for target 0 (gb10, qwen3.8-flash-next, nvfp4) (34 model-specific overrides)
+#23 79.52 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: dedup+parallel: 228/228 unique nvcc invocations (0 cache hits, 1.0× dedup), 10 parallel workers
+#23 79.52     Finished `release` profile [optimized] target(s) in 0.08s
+#23 79.52      Running unittests src/main.rs (target/release/deps/spark-90edfebc73d09829)
+#23 79.52 
+#23 79.52 running 1 test
+#23 79.52 test scheduler::mtp_step::one_forward::tests::logprob_tests::batched_logprob_read_failure_aborts_every_advanced_member ... ok
+#23 79.52 
+#23 79.52 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 2854 filtered out; finished in 0.00s
+#23 79.52 
+#23 79.52 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 2854 filtered out; finished in 0.00s
+#23 79.69 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: compiled 228 kernels for target 0 (gb10, qwen3.8-flash-next, nvfp4) (34 model-specific overrides)
+#23 79.69 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: dedup+parallel: 228/228 unique nvcc invocations (0 cache hits, 1.0× dedup), 10 parallel workers
+#23 79.69     Finished `release` profile [optimized] target(s) in 0.08s
+#23 79.69      Running unittests src/main.rs (target/release/deps/spark-90edfebc73d09829)
+#23 79.69 
+#23 79.69 running 32 tests
+#23 79.69 test api::chat_stream::handle_done::finalization::tests::terminal_done_semantic_guard_does_not_flush_lantern_or_refusal ... ok
+#23 79.69 test api::refusal_content_tests::blocking_valid_tool_call_keeps_call_and_finish_reason ... ok
+#23 79.69 test grammar::tests::misc::test_stop_token_exempt_from_grammar_refusal ... ok
+#23 79.69 test api::refusal_content_tests::blocking_multi_sentence_refusal_keeps_full_content_and_refusal ... ok
+#23 79.69 test api::refusal_content_tests::blocking_prefix_false_positive_keeps_full_answer ... ok
+#23 79.69 test api::refusal_content_tests::blocking_refusal_preserves_reasoning_trace ... ok
+#23 79.69 test refusal::tests::mixed_case_matches ... ok
+#23 79.69 test api::refusal_content_tests::blocking_sympathy_keeps_full_content_without_refusal ... ok
+#23 79.69 test api::refusal_content_tests::blocking_empty_text_has_no_content_and_no_refusal ... ok
+#23 79.69 test api::refusal_content_tests::blocking_refusal_preserves_length_and_timeout_finish_reasons ... ok
+#23 79.69 test api::chat_stream::handle_done::finalization::tests::terminal_done_refusal_annotation_preserves_full_content ... ok
+#23 79.69 test api::refusal_content_tests::blocking_ordinary_text_has_content_and_no_refusal ... ok
+#23 79.69 test refusal::tests::kill_switch_returns_none ... ok
+#23 79.69 test refusal::tests::matches_canonical_refusal ... ok
+#23 79.69 test refusal::tests::matches_with_leading_whitespace ... ok
+#23 79.69 test refusal::tests::no_terminator_falls_back_to_line ... ok
+#23 79.69 test refusal::tests::non_refusal_returns_none ... ok
+#23 79.69 test scheduler::preempt_tests::chunk_retry::a_final_agreed_refusal_fails_this_request_without_a_victim ... ok
+#23 79.69 test scheduler::preempt_tests::kv_refusal::a_bootstrap_refusal_after_part_of_the_batch_ran_is_not_requeued ... ok
+#23 79.69 test scheduler::preempt_tests::kv_refusal::a_lone_sequence_that_outgrew_the_pool_finishes_with_the_error ... ok
+#23 79.69 test scheduler::preempt_tests::kv_refusal::a_refusal_whose_only_other_sequence_is_finished_fails_alone ... ok
+#23 79.69 test scheduler::preempt_tests::chunk_retry::a_refusal_with_nothing_to_evict_fails_after_one_attempt ... ok
+#23 79.69 test scheduler::preempt_tests::a_refusal_after_part_of_the_batch_ran_fails_it_without_a_retry ... ok
+#23 79.69 test scheduler::preempt_tests::chunk_retry::a_same_worded_error_that_is_not_the_agreed_refusal_is_not_retried ... ok
+#23 79.69 test scheduler::preempt_tests::kv_refusal::a_refused_batch_preempts_the_least_progress_sequence_and_retries_the_rest ... ok
+#23 79.69 test scheduler::preempt_tests::kv_refusal::a_running_sequence_can_be_the_victim_of_another_ones_refusal ... ok
+#23 79.69 test scheduler::preempt_tests::kv_refusal::other_engine_errors_and_finished_sequences_are_left_alone ... ok
+#23 79.69 test tui::bench_preflight::tests::every_refusal_reason_reads_differently ... ok
+#23 79.69 test scheduler::emit_step::tests::strict_grammar_tests::a_lenient_refusal_still_disengages_and_continues ... ok
+#23 79.69 test scheduler::emit_step::tests::strict_grammar_tests::a_strict_refusal_ends_the_response_with_an_error ... ok
+#23 79.69 test scheduler::emit_step::tests::strict_grammar_tests::decode::a_strict_refusal_in_serial_decode_ends_the_response_with_an_error ... ok
+#23 79.69 test scheduler::emit_step::tests::strict_grammar_tests::decode::a_first_token_refusal_fails_a_strict_grammar_only ... ok
+#23 79.69 
+#23 79.69 test result: ok. 32 passed; 0 failed; 0 ignored; 0 measured; 2823 filtered out; finished in 0.01s
+#23 79.69 
+#23 79.69 test result: ok. 32 passed; 0 failed; 0 ignored; 0 measured; 2823 filtered out; finished in 0.01s
+#23 79.84 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: compiled 228 kernels for target 0 (gb10, qwen3.8-flash-next, nvfp4) (34 model-specific overrides)
+#23 79.84 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: dedup+parallel: 228/228 unique nvcc invocations (0 cache hits, 1.0× dedup), 10 parallel workers
+#23 79.84     Finished `release` profile [optimized] target(s) in 0.08s
+#23 79.84      Running unittests src/main.rs (target/release/deps/spark-90edfebc73d09829)
+#23 79.84 
+#23 79.84 running 43 tests
+#23 79.84 test api::chat_stream::cancel_guard_tests::the_scan_would_notice_a_bare_store ... ok
+#23 79.84 test api::chat_stream::cancel_guard_tests::every_cancel_flag_store_names_its_guard ... ok
+#23 79.84 test api::chat_stream::handle_done::finalization::tests::terminal_done_keeps_existing_finish_precedence_and_tool_history ... ok
+#23 79.84 test api::chat_stream::handle_done::finalization::tests::terminal_done_guard_during_flush_discards_all_generated_delta_kinds_and_ids ... ok
+#23 79.84 test api::chat_stream::handle_done::finalization::tests::terminal_done_normal_eos_and_explicit_stop_keep_safe_sanitizer_prefix ... ok
+#23 79.84 test api::chat_stream::handle_done::finalization::tests::terminal_done_refusal_annotation_preserves_full_content ... ok
+#23 79.84 test api::chat_stream::handle_done::finalization::tests::terminal_done_semantic_guard_does_not_flush_lantern_or_refusal ... ok
+#23 79.84 test api::chat_stream::handle_done::wire_finish_reason_tests::stop_string_match_is_stop_not_length ... ok
+#23 79.84 test api::chat_stream::handle_done::finalization::tests::terminal_done_tool_or_generic_guard_skips_buffered_fragments ... ok
+#23 79.84 test api::chat_stream::handle_done::wire_finish_reason_tests::stream_guard_does_not_outrank_what_actually_happened ... ok
+#23 79.84 test api::chat_stream::handle_done::wire_finish_reason_tests::stream_side_guard_cut_reports_length ... ok
+#23 79.84 test api::chat_stream::handle_done::wire_finish_reason_tests::timeout_and_tool_overrides_keep_their_rank ... ok
+#23 79.84 test api::chat_stream::glm_tool_boundary_tests::reasoning_done_tests::sanitizer_prefix_first_content_token_reaches_neutral_delta_immediately ... ok
+#23 79.84 test api::chat_stream::glm_tool_boundary_tests::reasoning_done_tests::reasoning_done_does_not_duplicate_a_closed_thinking_tail ... ok
+#23 79.84 test api::chat_stream::handle_token::role_literal_strip_tests::bare_role_literal_preserved_inside_tool_call ... ok
+#23 79.84 test api::chat_stream::handle_token::role_literal_strip_tests::bare_role_literal_still_stripped_outside_tool_call ... ok
+#23 79.84 test api::chat_stream::glm_tool_boundary_tests::glm_native_tool_boundary_streaming_preserves_reasoning_then_tool ... ok
+#23 79.84 test api::chat_stream::glm_tool_boundary_tests::reasoning_done_tests::reasoning_done_preserves_rejected_output_and_leak_suppression ... ok
+#23 79.84 test api::chat_stream::glm_tool_boundary_tests::glm_native_tool_boundary_blocking_preserves_validated_call ... ok
+#23 79.84 test api::chat_stream::glm_tool_boundary_tests::glm_native_tool_boundary_first_token_and_malformed_envelope ... ok
+#23 79.84 test api::chat_stream::glm_tool_boundary_tests::reasoning_done_tests::reasoning_done_matches_blocking_when_eos_has_no_think_close ... ok
+#23 79.84 test api::chat_stream::handle_token::role_literal_strip_tests::ordinary_content_untouched ... ok
+#23 79.84 test api::chat_stream::handle_token::role_literal_strip_tests::dsml_split_opener_preserves_tool_fragment_and_streams_call ... ok
+#23 79.84 test api::chat_stream::handle_token::role_literal_strip_tests::ordinary_name_streams_intact ... ok
+#23 79.84 test api::chat_stream::handle_token::role_literal_strip_tests::tool_call_name_split_after_tool_streams_intact ... ok
+#23 79.84 test api::chat_stream::handle_token::role_literal_strip_tests::tool_describe_name_split_after_tool_streams_intact ... ok
+#23 79.84 test api::chat_stream::handle_token::role_literal_strip_tests::tool_search_name_split_after_tool_streams_intact ... ok
+#23 79.84 test api::chat_stream::handle_token::stop_string_holdback_tests::no_stop_strings_is_zero_behavior_change ... ok
+#23 79.84 test api::chat_stream::handle_token::stop_string_holdback_tests::stop_string_spanning_chunk_boundary_does_not_leak ... ok
+#23 79.84 test api::chat_stream::handle_token::stop_string_holdback_tests::utf8_boundary_safety_in_holdback ... ok
+#23 79.84 test api::chat_stream::handle_token::terminal_token::tests::explicit_stop_preserves_same_event_prefix_but_not_following_tokens ... ok
+#23 79.84 test api::chat_stream::handle_token::terminal_token::tests::open_stream_preserves_normal_delivery ... ok
+#23 79.84 test api::chat_stream::handle_token::terminal_token::tests::terminal_guard_drops_late_content_reasoning_and_token_ids_before_body ... ok
+#23 79.84 test api::chat_stream::glm_tool_boundary_tests::glm_native_tool_boundary_keeps_request_model_and_name_guards ... ok
+#23 79.84 test api::chat_stream::state::stop_string_match_tests::note_stop_string_match_records_and_cancels ... ok
+#23 79.84 test api::chat_stream::strip::tests::empty_before_is_safe ... ok
+#23 79.84 test api::chat_stream::strip::tests::inserts_space_between_glued_words ... ok
+#23 79.84 test api::chat_stream::strip::tests::no_double_space_when_already_separated ... ok
+#23 79.84 test api::chat_stream::strip::tests::no_space_when_after_starts_with_newline ... ok
+#23 79.84 test api::chat_stream::token_ids::tests::take_ids_if_drains_only_when_on ... ok
+#23 79.84 test api::chat_stream::tool_handlers::name_run_cap_tests::different_name_resets_run ... ok
+#23 79.84 test api::chat_stream::tool_handlers::name_run_cap_tests::runaway_same_name_run_still_trips ... ok
+#23 79.84 test api::chat_stream::tool_handlers::name_run_cap_tests::three_call_parallel_fanout_stays_under_cap ... ok
+#23 79.84 
+#23 79.84 test result: ok. 43 passed; 0 failed; 0 ignored; 0 measured; 2812 filtered out; finished in 0.00s
+#23 79.84 
+#23 79.84 test result: ok. 43 passed; 0 failed; 0 ignored; 0 measured; 2812 filtered out; finished in 0.00s
+#23 79.99 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: compiled 228 kernels for target 0 (gb10, qwen3.8-flash-next, nvfp4) (34 model-specific overrides)
+#23 79.99 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: dedup+parallel: 228/228 unique nvcc invocations (0 cache hits, 1.0× dedup), 10 parallel workers
+#23 79.99     Finished `release` profile [optimized] target(s) in 0.08s
+#23 79.99      Running unittests src/main.rs (target/release/deps/spark-90edfebc73d09829)
+#23 79.99 
+#23 79.99 running 178 tests
+#23 79.99 test tool_parser::poolside_v1::tests::rejects_duplicate_argument_keys ... ok
+#23 79.99 test tool_parser::poolside_v1::tests::blocking_parser_does_not_salvage_incomplete_poolside_envelope ... ok
+#23 79.99 test tool_parser::poolside_v1::tests::parses_native_poolside_call ... ok
+#23 79.99 test tool_parser::prompt_levers::tests::off_is_the_default_and_the_json_path ... ok
+#23 79.99 test tool_parser::poolside_v1::tests::default_parse_drops_bare_identifier_instead_of_fabricating_a_call ... ok
+#23 79.99 test tool_parser::prompt_levers::tests::two_models_can_disagree_within_one_process ... ok
+#23 79.99 test tool_parser::poolside_v1::tests::streaming_parser_does_not_emit_incomplete_poolside_envelope ... ok
+#23 79.99 test tool_parser::poolside_v1::tests::schema_types_values_and_string_parameters_keep_their_text ... ok
+#23 79.99 test tool_parser::tests::deepseek_v4_dsml::blocking_dsml_parser_preserves_typed_arguments ... ok
+#23 79.99 test tool_parser::poolside_v1::tests::streaming_detector_promotes_bare_names_only_when_opted_in ... ok
+#23 79.99 test tool_parser::poolside_v1::tests::rejects_incomplete_argument_pair ... ok
+#23 79.99 test tool_parser::tests::group_a::parse_hermes_single_call ... ok
+#23 79.99 test tool_parser::tests::group_a::parse_hermes_with_content_and_multiple ... ok
+#23 79.99 test tool_parser::poolside_v1::tests::blocking_parser_accepts_complete_zero_argument_call ... ok
+#23 79.99 test tool_parser::poolside_v1::tests::preserves_unquoted_string_whitespace_exactly ... ok
+#23 79.99 test tool_parser::tests::deepseek_v4_dsml::deepseek_v4_parser_is_registered ... ok
+#23 79.99 test tool_parser::tests::deepseek_v4_dsml::streaming_dsml_parser_handles_split_special_tokens ... ok
+#23 79.99 test tool_parser::tests::group_a::parse_minimax_xml_drops_write_with_empty_filepath ... ok
+#23 79.99 test tool_parser::tests::group_a::parse_minimax_xml_drops_write_with_whitespace_filepath ... ok
+#23 79.99 test tool_parser::tests::group_a::parse_minimax_xml_keeps_bash_with_empty_path_field ... ok
+#23 79.99 test tool_parser::tests::group_a::parse_minimax_xml_keeps_write_with_valid_filepath ... ok
+#23 79.99 test tool_parser::tests::group_a::parse_no_calls ... ok
+#23 79.99 test tool_parser::tests::group_a::streaming_detector_hermes ... ok
+#23 79.99 test tool_parser::tests::group_a::streaming_detector_minimax_bpe_broken_split_chunks ... ok
+#23 79.99 test tool_parser::tests::group_a::streaming_detector_minimax_envelope_bpe_broken ... ok
+#23 79.99 test tool_parser::tests::group_a::streaming_detector_minimax_envelope_bpe_broken_two_invokes ... ok
+#23 79.99 test tool_parser::tests::group_a::streaming_detector_minimax_envelope_canonical ... ok
+#23 79.99 test tool_parser::tests::group_a::validate_allows_read_with_empty_path ... ok
+#23 79.99 test tool_parser::tests::group_a::validate_rejects_write_with_empty_filepath ... ok
+#23 79.99 test tool_parser::tests::group_a_formats::minimax_xml_format_tool_calls_roundtrip ... ok
+#23 79.99 test tool_parser::tests::group_a_formats::parse_minimax_xml_multiple_params ... ok
+#23 79.99 test tool_parser::tests::group_a_formats::parse_minimax_xml_single_param ... ok
+#23 79.99 test tool_parser::tests::group_a_formats::parse_minimax_xml_with_content_prefix ... ok
+#23 79.99 test tool_parser::tests::group_a_formats::parse_qwen3_coder_empty_body_then_backfill ... ok
+#23 79.99 test tool_parser::tests::group_a_formats::parse_qwen3_coder_single_param ... ok
+#23 79.99 test tool_parser::tests::group_b::format_tool_response_default ... ok
+#23 79.99 test tool_parser::tests::group_b::hermes_parser_system_prompt_contains_json ... ok
+#23 79.99 test tool_parser::tests::group_b::into_parser_returns_correct_name ... ok
+#23 79.99 test tool_parser::tests::group_b::parse_bare_attribute_style_no_wrapper ... ok
+#23 79.99 test tool_parser::tests::group_b::parse_bare_duplicated_name_equals ... ok
+#23 79.99 test tool_parser::tests::group_b::parse_bare_mistral_namespaced_function_name ... ok
+#23 79.99 test tool_parser::tests::group_b::parse_bare_tag_style_nested_params ... ok
+#23 79.99 test tool_parser::tests::group_b::parse_bare_tag_style_simple ... ok
+#23 79.99 test tool_parser::tests::group_b::parse_gemma4_namespaced_function_name ... ok
+#23 79.99 test tool_parser::tests::group_b::parse_hermes_namespaced_function_name ... ok
+#23 79.99 test tool_parser::tests::group_b::parse_mike_screenshot_format ... ok
+#23 79.99 test tool_parser::tests::group_b::parse_minimax_namespaced_function_name ... ok
+#23 79.99 test tool_parser::tests::group_b::parse_mistral_namespaced_function_name ... ok
+#23 79.99 test tool_parser::tests::group_b::parse_qwen3_coder_call_direct_two_funcs_returns_first_only_no_bleed ... ok
+#23 79.99 test tool_parser::tests::group_b::parse_qwen3_coder_duplicated_name_equals ... ok
+#23 79.99 test tool_parser::tests::group_b::parse_qwen3_coder_json_args_grammar_mode ... ok
+#23 79.99 test tool_parser::tests::group_b::parse_qwen3_coder_multiple_params ... ok
+#23 79.99 test tool_parser::tests::group_b::parse_qwen3_coder_name_with_trailing_garbage ... ok
+#23 79.99 test tool_parser::tests::group_b::parse_qwen3_coder_namespaced_function_name ... ok
+#23 79.99 test tool_parser::tests::group_b::parse_qwen3_coder_two_consecutive_functions_no_field_bleed ... ok
+#23 79.99 test tool_parser::tests::group_b::parse_qwen3_coder_unclosed_param_then_next_function_does_not_bleed ... ok
+#23 79.99 test tool_parser::tests::group_b::parse_qwen3_coder_with_content ... ok
+#23 79.99 test tool_parser::tests::group_b::parse_tag_style_inside_tool_call_wrapper ... ok
+#23 79.99 test tool_parser::tests::group_b::qwen3_coder_parser_system_prompt_contains_xml ... ok
+#23 79.99 test tool_parser::tests::group_b::qwen3_coder_template_owned_definitions_keep_choice_policy ... ok
+#23 79.99 test tool_parser::tests::group_b::streaming_bare_function_flush ... ok
+#23 79.99 test tool_parser::tests::group_b::streaming_detector_qwen3_coder ... ok
+#23 79.99 test tool_parser::tests::group_b::tool_call_format_from_str ... ok
+#23 79.99 test tool_parser::tests::group_b::tscg_is_decided_per_model_not_per_process ... ok
+#23 79.99 test tool_parser::tests::group_b_mistral::parse_mistral_multiple_calls ... ok
+#23 79.99 test tool_parser::tests::group_b_mistral::parse_mistral_single_call ... ok
+#23 79.99 test tool_parser::tests::group_b_mistral::parse_mistral_with_leading_content ... ok
+#23 79.99 test tool_parser::tests::group_c::find_balanced_json_end_simple ... ok
+#23 79.99 test tool_parser::tests::group_c::find_balanced_json_end_string_braces ... ok
+#23 79.99 test tool_parser::tests::group_c::fuzzy_repair_case_insensitive ... ok
+#23 79.99 test tool_parser::tests::group_c::fuzzy_repair_dash_vs_underscore ... ok
+#23 79.99 test tool_parser::tests::group_c::fuzzy_repair_mcp_double_underscore_added ... ok
+#23 79.99 test tool_parser::tests::group_c::fuzzy_repair_mcp_double_underscore_dropped ... ok
+#23 79.99 test tool_parser::tests::group_c::fuzzy_repair_no_false_positive_on_distinct_names ... ok
+#23 79.99 test tool_parser::tests::group_c::leak_markers_default_is_empty ... ok
+#23 79.99 test tool_parser::tests::group_c::leak_markers_minimax_has_invoke_open ... ok
+#23 79.99 test tool_parser::tests::group_c::leak_markers_qwen3_coder_has_parameter_open ... ok
+#23 79.99 test tool_parser::tests::group_c::mistral_native_parser_format_tool_calls ... ok
+#23 79.99 test tool_parser::tests::group_c::mistral_native_parser_name_and_dispatch ... ok
+#23 79.99 test tool_parser::tests::group_c::parse_mistral_nested_json_args ... ok
+#23 79.99 test tool_parser::tests::group_c::parse_mistral_truncated_args_recovered ... ok
+#23 79.99 test tool_parser::tests::group_c::parse_mistral_with_whitespace ... ok
+#23 79.99 test tool_parser::tests::group_c::qwen3_coder_f33_bash_description_has_retry_rule ... ok
+#23 79.99 test tool_parser::tests::group_c::qwen3_coder_prompt_has_antinarration_hardening ... ok
+#23 79.99 test tool_parser::tests::group_c::qwen3_missing_param_close_doesnt_swallow_next_param ... ok
+#23 79.99 test tool_parser::tests::group_c::qwen3_tool_call_close_inside_param_value_not_terminating ... ok
+#23 79.99 test tool_parser::tests::group_c::salvage_does_not_fire_when_legitimate_function_opener_present ... ok
+#23 79.99 test tool_parser::tests::group_c::salvage_param_as_function_recovers_write_call ... ok
+#23 79.99 test tool_parser::tests::group_c::salvage_rejects_non_identifier_name ... ok
+#23 79.99 test tool_parser::tests::group_c::salvage_requires_closing_function_tag ... ok
+#23 79.99 test tool_parser::tests::group_c::streaming_detector_mistral_single ... ok
+#23 79.99 test tool_parser::tests::group_c::streaming_detector_mistral_split_tokens ... ok
+#23 79.99 test tool_parser::tests::group_d::flush_after_incremental_start_does_not_double_emit ... ok
+#23 79.99 test tool_parser::tests::group_e::coerce_all_multi_call ... ok
+#23 79.99 test tool_parser::tests::group_e::coerce_array_string ... ok
+#23 79.99 test tool_parser::tests::group_e::coerce_boolean_capitalized ... ok
+#23 79.99 test tool_parser::tests::group_e::coerce_boolean_false_lower ... ok
+#23 79.99 test tool_parser::tests::group_e::coerce_boolean_lower ... ok
+#23 79.99 test tool_parser::tests::group_e::coerce_boolean_true_capitalized ... ok
+#23 79.99 test tool_parser::tests::group_e::coerce_ignores_missing_tool ... ok
+#23 79.99 test tool_parser::tests::group_e::coerce_integer_string ... ok
+#23 79.99 test tool_parser::tests::group_e::coerce_invalid_arguments_json_is_noop ... ok
+#23 79.99 test tool_parser::tests::group_e::coerce_null_string ... ok
+#23 79.99 test tool_parser::tests::group_e::coerce_number_float ... ok
+#23 79.99 test tool_parser::tests::group_e::coerce_object_string ... ok
+#23 79.99 test tool_parser::tests::group_e::empty_arg_preserved ... ok
+#23 79.99 test tool_parser::tests::group_e::no_coerce_already_number ... ok
+#23 79.99 test tool_parser::tests::group_e::no_coerce_unparseable ... ok
+#23 79.99 test tool_parser::tests::group_e::qwen3_coder_wants_typed ... ok
+#23 79.99 test tool_parser::tests::group_e::qwen3_xml_coerced_via_parse_and_coerce_all ... ok
+#23 79.99 test tool_parser::tests::group_e::qwen3_xml_has_grammar ... ok
+#23 79.99 test tool_parser::tests::group_e::qwen3_xml_name ... ok
+#23 79.99 test tool_parser::tests::group_e::qwen3_xml_system_prompt_contains_markers ... ok
+#23 79.99 test tool_parser::tests::group_e::qwen3_xml_wants_typed ... ok
+#23 79.99 test tool_parser::tests::group_e::repair_empty_key_in_nested_array_item ... ok
+#23 79.99 test tool_parser::tests::group_e::repair_empty_key_in_stringified_nested_array ... ok
+#23 79.99 test tool_parser::tests::group_e::repair_empty_key_skips_when_multiple_required_missing ... ok
+#23 79.99 test tool_parser::tests::group_e::repair_empty_key_skips_when_value_not_in_enum ... ok
+#23 79.99 test tool_parser::tests::group_e::tool_call_format_from_str_qwen3_xml ... ok
+#23 79.99 test tool_parser::tests::group_f::backfill_fills_omitted_subagent_type_with_valid_agent ... ok
+#23 79.99 test tool_parser::tests::group_f::backfill_subagent_type_prefers_general_purpose_variant ... ok
+#23 79.99 test tool_parser::tests::group_f::namespaced_bare_identifier_still_parses_as_tool ... ok
+#23 79.99 test tool_parser::tests::group_f::phantom_json_colon_prose_is_not_a_tool_call ... ok
+#23 79.99 test tool_parser::tests::group_f::tool_call_colon_prefix_falls_through_to_embedded_json_name ... ok
+#23 79.99 test tool_parser::tests::group_g_parallel::parse_hermes_three_calls_same_name_distinct_args ... ok
+#23 79.99 test tool_parser::tests::group_g_parallel::parse_hermes_two_calls_all_returned_in_order ... ok
+#23 79.99 test tool_parser::tests::group_g_parallel::parse_hermes_unterminated_tail_garbage_contained ... ok
+#23 79.99 test tool_parser::tests::group_g_parallel::parse_qwen3_coder_three_calls_with_content_around ... ok
+#23 79.99 test tool_parser::tests::group_g_parallel::parse_qwen3_coder_two_calls_all_returned ... ok
+#23 79.99 test tool_parser::tests::group_g_parallel::parse_qwen3_coder_unterminated_tail_garbage_contained ... ok
+#23 79.99 test tool_parser::tests::group_g_parallel::parse_qwen3_coder_unterminated_tail_keeps_closed_params ... ok
+#23 79.99 test tool_parser::tests::group_g_parallel::parse_single_call_regression_unchanged ... ok
+#23 79.99 test tool_parser::tests::group_g_parallel::streaming_blocking_parity_on_unterminated_tail ... ok
+#23 79.99 test tool_parser::tests::group_g_parallel::grammar_shaped_hermes_two_calls_all_chunk_sizes ... ok
+#23 79.99 test tool_parser::tests::group_g_parallel::streaming_hermes_two_calls_incrementing_index ... ok
+#23 79.99 test tool_parser::tests::group_g_parallel::streaming_qwen3_coder_three_calls_incrementing_index ... ok
+#23 79.99 test tool_parser::tests::group_g_parallel::streaming_single_call_close_streamed_regression ... ok
+#23 79.99 test tool_parser::tests::group_g_parallel::streaming_single_call_dangling_close_flush_regression ... ok
+#23 79.99 test tool_parser::tests::group_g_parallel::streaming_two_calls_with_interleaved_content ... ok
+#23 79.99 test tool_parser::tests::group_h_salvage::buffered_pipeline_recovers_live_shape_1 ... ok
+#23 79.99 test tool_parser::tests::group_h_salvage::buffered_pipeline_recovers_live_shape_2 ... ok
+#23 79.99 test tool_parser::tests::group_h_salvage::buffered_recovers_garbled_close_reopen ... ok
+#23 79.99 test tool_parser::tests::group_h_salvage::buffered_salvage_does_not_clobber_populated_target ... ok
+#23 79.99 test tool_parser::tests::group_h_salvage::legit_close_prefix_content_not_split ... ok
+#23 79.99 test tool_parser::tests::group_h_salvage::salvage_helper_never_rewrites_legit_schema_keys ... ok
+#23 79.99 test tool_parser::tests::group_h_salvage::salvage_helper_resplits_echoed_key ... ok
+#23 79.99 test tool_parser::tests::group_h_salvage::streaming_live_fragments_recover_echoed_key ... ok
+#23 79.99 test tool_parser::tests::group_h_salvage::streaming_recovers_garbled_close_reopen ... ok
+#23 79.99 test tool_parser::tests::group_i_poolside_safety::empty_content_remains_schema_valid ... ok
+#23 79.99 test tool_parser::tests::group_i_poolside_safety::empty_write_path_is_not_executable ... ok
+#23 79.99 test tool_parser::tests::group_i_poolside_safety::missing_write_path_is_not_executable_after_backfill ... ok
+#23 79.99 test tool_parser::tests::group_i_poolside_safety::poolside_parser_does_not_reinject_tool_prompt ... ok
+#23 79.99 test tool_parser::tests::group_j_poolside_stream_name::incomplete_native_envelope_is_not_completed_at_eos ... ok
+#23 79.99 test tool_parser::tests::group_j_poolside_stream_name::closed_zero_argument_call_matches_every_split ... ok
+#23 79.99 test tool_parser::tests::group_j_poolside_stream_name::malformed_native_header_never_uses_nested_name ... ok
+#23 79.99 test tool_parser::tests::group_j_poolside_stream_name::native_header_precedes_nested_attachment_name ... ok
+#23 79.99 test tool_parser::tests::group_j_poolside_stream_name::other_format_headers_keep_existing_names ... ok
+#23 79.99 test tool_parser::tests::group_j_poolside_stream_name::partial_header_waits_for_complete_arg_key ... ok
+#23 79.99 test tool_parser::tests::streaming_frag::qwen3_coder_live_coerces_integer_param ... ok
+#23 79.99 test tool_parser::tests::streaming_frag::qwen3_coder_live_flush_path_emits_closing_brace ... ok
+#23 79.99 test tool_parser::tests::streaming_frag::qwen3_coder_live_streams_multiple_fragments_before_end ... ok
+#23 79.99 test tool_parser::tests::streaming_frag::qwen3_coder_streaming_close_with_final_value_in_same_chunk ... ok
+#23 79.99 test tool_parser::tests::streaming_frag::qwen3_coder_streaming_fragmented_at_path_boundary ... ok
+#23 79.99 test tool_parser::tests::streaming_frag::qwen3_coder_streaming_fragmented_at_xml_opener ... ok
+#23 79.99 test tool_parser::tests::streaming_frag::qwen3_coder_streaming_same_name_tool_calls_no_collision ... ok
+#23 79.99 test tool_parser::tests::streaming_frag_env::kill_switch_buffers_full_args_no_fragments ... ignored, mutates process-global ATLAS_BUFFER_TOOL_ARGS; run serially with --ignored --test-threads=1
+#23 79.99 test tool_parser::tests::streaming_frag_env::bare_function_streams_incrementally_and_emits_call_once ... ok
+#23 79.99 test tool_parser::tests::streaming_leak::flush_content_sanitizer_drops_held_back_trailing_close ... ok
+#23 79.99 test tool_parser::tests::streaming_leak::qwen3_coder_doubled_tool_call_close_not_leaked ... ok
+#23 79.99 test tool_parser::tests::streaming_leak::qwen3_coder_runaway_content_dump_not_leaked ... ok
+#23 79.99 test tool_parser::tests::streaming_leak::qwen3_coder_spurious_trailing_close_reaches_flush_not_leaked ... ok
+#23 79.99 test tool_parser::tests::streaming_leak::qwen3_coder_spurious_trailing_close_underscore_call_not_leaked ... ok
+#23 79.99 test tool_parser::tests::streaming_leak::scrub_tool_tags_preserves_non_tool_content ... ok
+#23 79.99 test tool_parser::tests::streaming_leak::scrub_tool_tags_strips_runaway_markup_dump ... ok
+#23 79.99 test tool_parser::validation::path_sanitizer_tests::malformed_quoted_comma_filepath_sanitized ... ok
+#23 79.99 test tool_parser::validation::path_sanitizer_tests::punctuation_drifted_cwd_inside_bash_command_is_repaired ... ok
+#23 79.99 test tool_parser::validation::path_sanitizer_tests::punctuation_drifted_workdir_is_repaired_to_cwd ... ok
+#23 79.99 test tool_parser::tests::group_j_poolside_stream_name::native_arguments_match_blocking_parser_at_every_split ... ok
+#23 79.99 
+#23 79.99 test result: ok. 177 passed; 0 failed; 1 ignored; 0 measured; 2677 filtered out; finished in 0.01s
+#23 79.99 
+#23 79.99 test result: ok. 177 passed; 0 failed; 1 ignored; 0 measured; 2677 filtered out; finished in 0.01s
+#23 165.5 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: compiled 228 kernels for target 0 (gb10, qwen3.8-flash-next, nvfp4) (34 model-specific overrides)
+#23 165.5 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: dedup+parallel: 228/228 unique nvcc invocations (0 cache hits, 1.0× dedup), 10 parallel workers
+#23 165.5    Compiling atlas-core v1.0.0-beta-preview (/build/crates/atlas-core)
+#23 165.5    Compiling spark-runtime v1.0.0-beta-preview (/build/crates/spark-runtime)
+#23 165.5    Compiling atlas-kernels v1.0.0-beta-preview (/build/crates/atlas-kernels)
+#23 165.5     Finished `release` profile [optimized] target(s) in 1m 25s
+#23 165.5      Running unittests src/lib.rs (target/release/deps/spark_runtime-082adb2e4d4b110e)
+#23 165.5 
+#23 165.5 running 145 tests
+#23 165.5 test radix_tree::snapshot::tests::insert_tier::insert_over_a_resident_entry_still_hands_back_its_slot ... ok
+#23 165.5 test radix_tree::snapshot::tests::evict_to_tier_none_when_all_spilled ... ok
+#23 165.5 test radix_tree::snapshot::tests::deep_tail_evicted_without_tail_protect ... ok
+#23 165.5 test radix_tree::snapshot::tests::deep_victim_is_spilled_under_the_gate ... ok
+#23 165.5 test radix_tree::snapshot::tests::insert_tier::insert_tail_sibling_over_a_spilled_entry_hands_back_no_slot ... ok
+#23 165.5 test radix_tree::snapshot::tests::insert_tier::insert_tail_still_displaces_a_resident_tail ... ok
+#23 165.5 test radix_tree::snapshot::tests::insert_tier::insert_tail_rehomes_a_spilled_entry_to_hbm ... ok
+#23 165.5 test radix_tree::snapshot::tests::insert_tier::insert_tail_over_a_spilled_entry_hands_back_no_slot ... ok
+#23 165.5 test radix_tree::snapshot::tests::eviction_ignores_hit_history ... ok
+#23 165.5 test radix_tree::inner::evict_tests::single_block_fast_path_matches_batch_evict ... ok
+#23 165.5 test radix_tree::snapshot::tests::evict_to_tier_spills_not_removes ... ok
+#23 165.5 test radix_tree::snapshot::tests::lease::alpha_zero_is_pure_lru_ordering ... ok
+#23 165.5 test radix_tree::snapshot::tests::insert_tier::insert_over_a_spilled_entry_hands_back_no_slot ... ok
+#23 165.5 test radix_tree::snapshot::tests::insert_tier::the_tail_supersede_sweep_does_not_hand_back_a_spilled_tail ... ok
+#23 165.5 test radix_tree::snapshot::tests::lease::all_leased_pool_still_evicts ... ok
+#23 165.5 test radix_tree::snapshot::tests::lease::insert_overwrite_clears_sibling ... ok
+#23 165.5 test radix_tree::snapshot::tests::lease::alpha_prefers_depth_within_session_staleness_still_primary ... ok
+#23 165.5 test radix_tree::snapshot::tests::lease::dormant_session_tail_evictable ... ok
+#23 165.5 test radix_tree::snapshot::tests::lease::lease_expires_without_live_lookups ... ok
+#23 165.5 test radix_tree::snapshot::tests::lease::finish_leaf_not_protected ... ok
+#23 165.5 test radix_tree::snapshot::tests::lease::lookup_tiered_tail_session_gate ... ok
+#23 165.5 test radix_tree::snapshot::tests::lease::new_tail_sweeps_old_tail_and_sibling ... ok
+#23 165.5 test radix_tree::snapshot::tests::lease::sibling_leased_with_live_session ... ok
+#23 165.5 test radix_tree::snapshot::tests::lease::insert_overwrite_clears_is_tail ... ok
+#23 165.5 test radix_tree::snapshot::tests::lease::sibling_not_session_gated_in_lookup ... ok
+#23 165.5 test radix_tree::snapshot::tests::lease::single_leased_entry_still_evictable ... ok
+#23 165.5 test radix_tree::snapshot::tests::lease::tail_lease_protects_live_session_is_tail ... ok
+#23 165.5 test radix_tree::snapshot::tests::lookup_bumps_winner_only ... ok
+#23 165.5 test radix_tree::snapshot::tests::lookup_tracks_live_session ... ok
+#23 165.5 test radix_tree::snapshot::tests::promote_rehomes_to_hbm ... ok
+#23 165.5 test radix_tree::snapshot::tests::reinsert_unspills ... ok
+#23 165.5 test radix_tree::snapshot::tests::shallow_victim_is_dropped_not_spilled ... ok
+#23 165.5 test radix_tree::snapshot::tests::spilled_entry_lookup_semantics ... ok
+#23 165.5 test radix_tree::snapshot::tests::stats_track_hits_and_recompute ... ok
+#23 165.5 test radix_tree::snapshot::tests::test_snapshot_index_deepest_match ... ok
+#23 165.5 test radix_tree::snapshot::tests::test_snapshot_index_insert_lookup_roundtrip ... ok
+#23 165.5 test radix_tree::snapshot::tests::test_snapshot_index_lru_eviction ... ok
+#23 165.5 test radix_tree::snapshot::tests::test_snapshot_index_overwrite_existing ... ok
+#23 165.5 test radix_tree::snapshot::tests::test_snapshot_index_session_isolation ... ok
+#23 165.5 test radix_tree::snapshot_chain::tests::marked_branch_is_never_superseded ... ok
+#23 165.5 test radix_tree::snapshot_chain::tests::forks_at_sees_only_a_diverging_full_block ... ok
+#23 165.5 test radix_tree::snapshot_chain::tests::growing_conversation_supersedes_its_previous_tail ... ok
+#23 165.5 test radix_tree::snapshot_chain::tests::a_rank_local_bump_can_change_the_victim ... ok
+#23 165.5 test radix_tree::snapshot_chain::tests::frontiers_are_evicted_least_recently_used_first ... ok
+#23 165.5 test radix_tree::snapshot_chain::tests::diverging_continuations_make_a_branch_point ... ok
+#23 165.5 test radix_tree::snapshot_chain::tests::resident_at_matches_exact_depth_only ... ok
+#23 165.5 test radix_tree::snapshot_leaf::tests::a_leaf_does_not_supersede_the_checkpoint_under_it ... ok
+#23 165.5 test radix_tree::snapshot_chain::tests::superseded_history_goes_before_any_frontier ... ok
+#23 165.5 test radix_tree::snapshot_leaf::tests::a_checkpoint_and_a_leaf_at_one_prefix ... ok
+#23 165.5 test radix_tree::snapshot_chain::tests::victims_do_not_depend_on_session_hash ... ok
+#23 165.5 test radix_tree::tests::adapter::test_adapter_insert_does_not_clobber_other_adapter ... ok
+#23 165.5 test radix_tree::tests::adapter::test_base_blocks_not_reused_by_adapter ... ok
+#23 165.5 test radix_tree::tests::basic::test_branching_tree ... ok
+#23 165.5 test radix_tree::tests::basic::test_evict_lru_order ... ok
+#23 165.5 test radix_tree::tests::basic::test_evict_chain_from_leaf ... ok
+#23 165.5 test radix_tree::tests::basic::test_hss_disk_ref_acquisition_cold_insert ... ok
+#23 165.5 test radix_tree::tests::adapter::test_kv_cache_adapter_isolation ... ok
+#23 165.5 test radix_tree::snapshot_leaf::tests::a_leaf_never_takes_a_frontier_slot ... ok
+#23 165.5 test radix_tree::tests::basic::test_hss_disk_ref_acquisition_extension ... ok
+#23 165.5 test radix_tree::tests::basic::test_evict_skips_referenced_nodes ... ok
+#23 165.5 test radix_tree::tests::basic::test_hss_disk_ref_acquisition_no_op_when_hss_inactive ... ok
+#23 165.5 test radix_tree::tests::basic::test_hss_disk_ref_acquisition_re_insert_no_double ... ok
+#23 165.5 test radix_tree::snapshot_leaf::tests::victims_are_dead_history_then_leaves_then_frontiers ... ok
+#23 165.5 test radix_tree::tests::basic::test_insert_and_lookup_exact ... ok
+#23 165.5 test radix_tree::snapshot_leaf::tests::the_restoring_turn_settles_its_leaf ... ok
+#23 165.5 test radix_tree::tests::basic::test_insert_and_lookup_multi_block ... ok
+#23 165.5 test radix_tree::tests::basic::test_insert_idempotent ... ok
+#23 165.5 test radix_tree::tests::basic::test_insert_release_lookup_survives ... ok
+#23 165.5 test radix_tree::snapshot_leaf::tests::a_rolling_leaf_moves_only_while_the_sequence_still_holds_it ... ok
+#23 165.5 test radix_tree::tests::basic::test_no_match ... ok
+#23 165.5 test radix_tree::tests::basic::test_partial_match ... ok
+#23 165.5 test radix_tree::tests::basic::test_release_decrements_refcount ... ok
+#23 165.5 test radix_tree::tests::basic::test_ssm_snapshot_insert_and_lookup ... ok
+#23 165.5 test radix_tree::tests::basic::test_ssm_snapshot_overwrite_returns_displaced ... ok
+#23 165.5 test radix_tree::tests::basic::test_ssm_snapshot_partial_match_returns_deepest ... ok
+#23 165.5 test radix_tree::tests::basic::test_ssm_snapshot_survives_tree_eviction ... ok
+#23 165.5 test radix_tree::tests::evict_scan::bench_evict_large_tree_vs_literal_scan ... ignored, manual CPU benchmark; run with --ignored --nocapture
+#23 165.5 test radix_tree::tests::basic::test_sub_block_tokens_ignored ... ok
+#23 165.5 test radix_tree::tests::evict_scan::differential_heap_matches_scan_with_free_node_reuse ... ok
+#23 165.5 test radix_tree::tests::evict_scan::equal_stamps_on_competing_leaves_match_scan ... ok
+#23 165.5 test radix_tree::tests::evict_scan::zero_and_all_live_match_scan ... ok
+#23 165.5 test radix_tree::tests::nvme::a_kept_record_below_the_resident_prefix_is_not_planned ... ok
+#23 165.5 test radix_tree::tests::nvme::a_kept_record_makes_the_next_eviction_free ... ok
+#23 165.5 test radix_tree::tests::nvme::a_kept_record_survives_a_re_insert_and_goes_with_its_node ... ok
+#23 165.5 test radix_tree::tests::nvme::a_late_failure_report_never_drops_a_node_restored_from_that_record ... ok
+#23 165.5 test radix_tree::tests::nvme::a_spilled_continuation_still_counts_as_a_fork ... ok
+#23 165.5 test radix_tree::tests::nvme::budget_drops_coldest_disk_leaves_first ... ok
+#23 165.5 test radix_tree::tests::nvme::colder_candidate_is_deleted_not_spilled ... ok
+#23 165.5 test radix_tree::tests::nvme::disabled_tier_deletes_and_plans_nothing ... ok
+#23 165.5 test radix_tree::tests::nvme::enable_is_once_and_needs_budget ... ok
+#23 165.5 test radix_tree::tests::nvme::evict_spills_leaf_first_and_keeps_nodes ... ok
+#23 165.5 test radix_tree::tests::nvme::failed_read_drops_node_and_disk_subtree ... ok
+#23 165.5 test radix_tree::tests::nvme::host_bytes_per_disk_block_covers_a_node ... ok
+#23 165.5 test radix_tree::tests::nvme::insert_rehomes_disk_nodes_onto_recomputed_blocks ... ok
+#23 165.5 test radix_tree::tests::nvme::over_released_node_is_deleted_not_spilled ... ok
+#23 165.5 test radix_tree::tests::nvme::pinned_path_survives_eviction_during_restore ... ok
+#23 165.5 test radix_tree::tests::nvme::records_are_kept_only_while_half_the_budget_is_free ... ok
+#23 165.5 test radix_tree::tests::nvme::restore_continues_below_resident_prefix ... ok
+#23 165.5 test radix_tree::tests::nvme::restore_round_trip_promotes_in_path_order ... ok
+#23 165.5 test radix_tree::tests::nvme::snapshot_anchor_depth_is_read_only ... ok
+#23 165.5 test radix_tree::tests::nvme::spill_failure_degrades_to_plain_eviction ... ok
+#23 165.5 test radix_tree::tests::nvme::stale_spill_failure_never_drops_the_slots_new_owner ... ok
+#23 165.5 test radix_tree::tests::nvme::unadopted_blocks_are_handed_back ... ok
+#23 165.5 test radix_tree::tests::nvme_classes::a_full_class_cold_drops_a_colder_victim_beside_a_free_class ... ok
+#23 165.5 test radix_tree::tests::nvme_classes::a_full_class_drops_only_its_own_leaves ... ok
+#23 165.5 test radix_tree::tests::nvme_classes::a_full_class_trims_a_chain_tail_across_classes ... ok
+#23 165.5 test radix_tree::tests::nvme_classes::enable_classes_needs_a_budget_and_a_class ... ok
+#23 165.5 test radix_tree::tests::nvme_classes::every_block_takes_a_slot_of_its_residue ... ok
+#23 165.5 test radix_tree::tests::nvme_classes::one_class_is_the_plain_tier ... ok
+#23 165.5 test radix_tree::tests::nvme_classes::records_are_kept_while_their_own_class_is_half_free ... ok
+#23 165.5 test radix_tree::tests::nvme_classes::ranks_with_different_ids_get_the_same_slots ... ok
+#23 165.5 test radix_tree::tests::nvme_lru::a_declined_plan_does_not_refresh_its_records ... ok
+#23 165.5 test radix_tree::tests::nvme_lru::a_restored_run_is_the_most_recently_used ... ok
+#23 165.5 test radix_tree::tests::nvme_lru::a_rewritten_block_gives_up_its_kept_record ... ok
+#23 165.5 test radix_tree::tests::snapshot::test_hash_token_prefix_base_byte_identical ... ok
+#23 165.5 test radix_tree::tests::snapshot::test_insert_without_snapshot ... ok
+#23 165.5 test radix_tree::tests::snapshot::test_intermediate_snapshot_deepest_wins ... ok
+#23 165.5 test radix_tree::tests::snapshot::test_intermediate_snapshot_on_partial_match ... ok
+#23 165.5 test radix_tree::tests::snapshot::test_intermediate_snapshot_partial_prefix_hit ... ok
+#23 165.5 test radix_tree::tests::snapshot::test_intermediate_snapshot_survives_tree_eviction ... ok
+#23 165.5 test radix_tree::tests::snapshot::test_snapshot_index_adapter_isolation ... ok
+#23 165.5 test radix_tree::tests::snapshot::test_ssm_snapshot_adapter_isolation_via_tree ... ok
+#23 165.5 test radix_tree::tests::snapshot_reap::forget_tiered_does_not_count_as_an_eviction ... ok
+#23 165.5 test radix_tree::tests::snapshot_reap::forget_tiered_refuses_a_resident_entry ... ok
+#23 165.5 test radix_tree::tests::snapshot_reap::forget_tiered_removes_a_tiered_entry ... ok
+#23 165.5 test radix_tree::tests::snapshot_reap::forget_tiered_unknown_key_is_false ... ok
+#23 165.5 test radix_tree::tests::snapshot_reap::test_no_tier_default_impl ... ok
+#23 165.5 test radix_tree::tests::snapshot_reap::test_spill_tier_lookup_transitions ... ok
+#23 165.5 test radix_tree::tests::vision_key::different_images_miss ... ok
+#23 165.5 test radix_tree::tests::vision_key::ranks_rebuilding_the_key_agree_on_the_match ... ok
+#23 165.5 test radix_tree::tests::vision_key::raw_placeholder_streams_collide ... ok
+#23 165.5 test radix_tree::tests::vision_key::same_image_resent_hits ... ok
+#23 165.5 test radix_tree::tests::vision_key::swapped_second_image_misses_from_its_first_block ... ok
+#23 165.5 test radix_tree::tests::vision_key::text_before_the_first_image_keys_like_text ... ok
+#23 165.5 test radix_tree::tests::whole_block::chain_keeps_the_original_block_through_node_exists ... ok
+#23 165.5 test radix_tree::tests::whole_block::live_donor_keeps_its_frontier_block ... ok
+#23 165.5 test radix_tree::tests::whole_block::rank_min_relookup_lands_on_the_agreed_whole_blocks ... ok
+#23 165.5 test radix_tree::tests::whole_block::retired_donor_block_is_not_reused_by_the_next_choice ... ok
+#23 165.5 test radix_tree::tests::whole_block::strict_prefix_retry_stops_before_the_longer_prompts_block ... ok
+#23 165.5 test radix_tree::tests::whole_block::the_frontier_block_is_not_published ... ok
+#23 165.5 test radix_tree::tests::evict_scan::differential_heap_matches_scan_across_adapters ... ok
+#23 165.5 test radix_tree::tests::evict_scan::differential_heap_matches_literal_scan ... ok
+#23 165.5 test radix_tree::tests::whole_block::a_match_never_ends_inside_a_block ... ok
+#23 165.5 test radix_tree::snapshot_chain::tests::a_fast_session_cannot_evict_slower_sessions ... ok
+#23 165.5 test radix_tree::snapshot_leaf::tests::leaves_never_cost_a_conversation_its_checkpoint ... ok
+#23 165.5 
+#23 165.5 test result: ok. 144 passed; 0 failed; 1 ignored; 0 measured; 350 filtered out; finished in 0.08s
+#23 165.5 
+#23 165.5 test result: ok. 144 passed; 0 failed; 1 ignored; 0 measured; 350 filtered out; finished in 0.08s
+#23 293.9 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: compiled 228 kernels for target 0 (gb10, qwen3.8-flash-next, nvfp4) (34 model-specific overrides)
+#23 293.9 warning: atlas-kernels@1.0.0-beta-preview: atlas-kernels: dedup+parallel: 228/228 unique nvcc invocations (0 cache hits, 1.0× dedup), 10 parallel workers
+#23 293.9    Compiling spark-runtime v1.0.0-beta-preview (/build/crates/spark-runtime)
+#23 293.9    Compiling spark-comm v1.0.0-beta-preview (/build/crates/spark-comm)
+#23 293.9    Compiling spark-model v1.0.0-beta-preview (/build/crates/spark-model)
+#23 293.9    Compiling spark-storage v1.0.0-beta-preview (/build/crates/spark-storage)
+#23 293.9     Finished `release` profile [optimized] target(s) in 2m 08s
+#23 293.9      Running unittests src/lib.rs (target/release/deps/spark_model-926d3299fb936d99)
+#23 293.9 
+#23 293.9 running 8 tests
+#23 293.9 test model::block_mgmt::tails::tests::decode_fill_failure_leaves_the_block_with_the_sequence ... ok
+#23 293.9 test model::block_mgmt::tails::tests::write_window_verdict_ignores_reference_counts ... ok
+#23 293.9 test model::block_mgmt::tails::tests::prefill_exhaustion_publishes_the_blocks_it_pushed ... ok
+#23 293.9 test model::block_mgmt::tails::tests::write_window_leaves_prefix_cache_blocks_alone ... ok
+#23 293.9 test model::block_mgmt::tails::tests::prefill_before_a_nonzero_window_is_a_noop ... ok
+#23 293.9 test model::block_mgmt::tails::tests::prefill_bulk_reclaims_exact_shortfall_from_real_prefix_cache ... ok
+#23 293.9 test model::block_mgmt::tails::tests::prefill_disk_id_failure_publishes_the_block_it_pushed ... ok
+#23 293.9 test model::block_mgmt::tails::tests::write_window_refuses_an_owned_block_without_a_tail ... ok
+#23 293.9 
+#23 293.9 test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 2052 filtered out; finished in 0.00s
+#23 293.9 
+#23 293.9 test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 2052 filtered out; finished in 0.00s
+#23 DONE 293.9s
+
+#24 [builder 18/18] RUN --mount=type=cache,target=/build/target,id=atlas-cargo-target-sparkqwen,sharing=shared     rustup component add clippy --toolchain 1.93.1 &&     ATLAS_SKIP_BUILD=1 CUDARC_CUDA_VERSION=13000     cargo clippy --locked --workspace --tests -j "4"
+#24 0.113 info: downloading component clippy
+#24 1.082    Compiling cudarc v0.19.2 (/build/vendor/cudarc)
+#24 1.082    Compiling atlas-core v1.0.0-beta-preview (/build/crates/atlas-core)
+#24 1.082    Compiling atlas-closure v1.0.0-beta-preview (/build/crates/atlas-closure)
+#24 1.082    Compiling atlas-rdma v1.0.0-beta-preview (/build/crates/atlas-rdma)
+#24 1.173    Compiling atlas-kernels v1.0.0-beta-preview (/build/crates/atlas-kernels)
+#24 1.179     Checking atlas-tier v1.0.0-beta-preview (/build/crates/atlas-tier)
+#24 1.272    Compiling spark-runtime v1.0.0-beta-preview (/build/crates/spark-runtime)
+#24 1.281    Compiling spark-storage v1.0.0-beta-preview (/build/crates/spark-storage)
+#24 1.390     Checking cufile-sys v1.0.0-beta-preview (/build/crates/cufile-sys)
+#24 1.401    Compiling spark-comm v1.0.0-beta-preview (/build/crates/spark-comm)
+#24 1.426    Compiling spark-model v1.0.0-beta-preview (/build/crates/spark-model)
+#24 1.554     Checking atlas-governance v1.0.0-beta-preview (/build/crates/atlas-governance)
+#24 1.608     Checking xgrammar v1.0.0-beta-preview (/build/crates/xgrammar)
+#24 1.627     Checking atlas-plugin v1.0.0-beta-preview (/build/crates/atlas-plugin)
+#24 1.731    Compiling atlas-spark-bench v1.0.0-beta-preview (/build/crates/atlas-spark-bench)
+#24 1.822     Checking spark-nllb v1.0.0-beta-preview (/build/crates/spark-nllb)
+#24 10.87     Checking spark-server v1.0.0-beta-preview (/build/crates/spark-server)
+#24 18.25     Finished `dev` profile [unoptimized + debuginfo] target(s) in 17.52s
+#24 DONE 18.3s
+
+#25 [stage-1  2/12] RUN apt-get update -qq && apt-get install -y -qq --no-install-recommends --allow-change-held-packages     python3 ca-certificates libnccl2=2.31.2-1+cuda13.3 libibverbs1 librdmacm1     ibverbs-providers libnl-3-200 libnl-route-3-200 && rm -rf /var/lib/apt/lists/*
+#25 CACHED
+
+#26 [stage-1  3/12] COPY --from=builder /build/dist/spark /usr/local/bin/spark
+#26 DONE 0.1s
+
+#27 [stage-1  4/12] COPY --from=builder /build/jinja-templates/ /jinja-templates/
+#27 DONE 0.1s
+
+#28 [stage-1  5/12] COPY --from=builder /opt/cutlass/LICENSE.txt /opt/atlas/notices/CUTLASS-LICENSE.txt
+#28 DONE 0.1s
+
+#29 [stage-1  6/12] COPY --from=builder /build/dist/notices-rust/ /opt/atlas/notices/rust/
+#29 DONE 0.1s
+
+#30 [stage-1  7/12] COPY install/serve.py /opt/atlas/
+#30 DONE 0.1s
+
+#31 [stage-1  8/12] COPY install/profiles/ /opt/atlas/profiles/
+#31 DONE 0.1s
+
+#32 [stage-1  9/12] COPY install/atlas-source.json /opt/atlas/source-manifest.json
+#32 DONE 0.1s
+
+#33 [stage-1 10/12] COPY install/checkpoint.json /opt/atlas/checkpoint.json
+#33 DONE 0.1s
+
+#34 [stage-1 11/12] COPY engine/LICENSE /LICENSE
+#34 DONE 0.1s
+
+#35 [stage-1 12/12] RUN test -n "70890529ba64dede889814f99f21b3c9a981d9bc"
+#35 DONE 0.1s
+
+#36 exporting to oci image format
+#36 exporting layers
+#36 exporting layers 2.2s done
+#36 exporting manifest sha256:a0cebe89737898692964d3923477bef293a4ebde9dd32e27202697c54f763c9d
+#36 exporting manifest sha256:a0cebe89737898692964d3923477bef293a4ebde9dd32e27202697c54f763c9d 0.0s done
+#36 exporting config sha256:4f38e3eee367bc3c262b715d713b00d3898387341458f2de5ec3fcffe7bfe44f 0.0s done
+#36 sending tarball
+#36 ...
+
+#37 importing to docker
+#37 DONE 0.0s
+
+#36 exporting to oci image format
+#36 sending tarball 6.8s done
+#36 DONE 9.1s
+ghcr.io/enntity/atlas-sparkqwen:70890529ba64

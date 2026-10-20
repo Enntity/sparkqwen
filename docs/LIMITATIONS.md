@@ -3,6 +3,46 @@
 
 What to know before relying on SparkQwen.
 
+## Current fidelity candidate
+
+The official candidate at engine `63bebfa6`, install tree `70890529ba64`, has
+not passed the full quality gate. Maintenance publication is accepted with
+disclosed limitations, subject to the separate release conditions. The
+[candidate review](../results/2026-10-20-fidelity-review/RESULT.md) preserves
+successful components, original failures and evaluator corrections.
+
+- Same-ID prompt NLL is 1.0659923317 versus 1.0255496918 for the observed A4
+  reference, a +0.0404426399 nats/token gap. All 27,033 scores are unchanged
+  from the earlier corrected shared-A4 candidate. The reference's MXFP8 LM
+  head and FP8 KV differ from a full BF16 oracle. No parity or causal claim
+  follows from this comparison.
+- The two-hop test scored 59/60, including one incorrect answer at 163,290
+  prompt tokens, versus 60/60 in the retained shipped history. The miss ended
+  normally. Historical complete request bodies are absent, and the historical
+  reference also used MTP. The C1 ON/OFF follow-up matched decoded outputs; different cache
+  history and the original C4 concurrency limit its interpretation.
+- An automatic tool-or-JSON request selected an unrelated stock-price tool.
+  The exact request with `tool_choice: "none"` returned the expected JSON.
+  Excluding tools is useful when JSON is required, but one passing control
+  does not establish general semantic correctness. The candidate failed case
+  executed serially; this is not evidence of a speculative mismatch.
+- Eight serial/speculative prompts matched decoded outputs, and two biased
+  completion probes matched all 15 finite score positions. These checks do
+  not expose generated token IDs. First-prefill-token logit bias remains
+  unsupported, and its returned score is nullable.
+- The tall-rectangle vision case was mislabeled as a square by the grader.
+  The earlier oversized-input fixture lacked PNG IDAT data and exercised a
+  decoder error. Both original failures remain recorded; geometry inspection
+  corrected the label, and a later valid header probe independently verified
+  HTTP 400 `vision_input_too_large` before model prefill.
+- Main performance is mixed: prefill improved in the measured pair of
+  observations, while Rig decode medians and C2/C4/C8 aggregates fell. Matrix
+  aggregate decode rose in four cells and fell in C1-32K, with one invocation
+  per cell. Four warm-conversation requests differ after prior
+  generated outputs; their timings are package comparisons rather than
+  same-request measurements. Historical figures below retain their dated scope. `4x262k`, sidecar operation and a complete
+  262,144-token prompt have not been requalified on this candidate.
+
 ## Installation
 
 - The image for this release's `install/` tree is not published yet; until
@@ -21,7 +61,7 @@ What to know before relying on SparkQwen.
 
 ## Scope of the measurements
 
-The drafter release's results (`results/2026-10-16-drafter`) were measured
+The historical drafter release's results (`results/2026-10-16-drafter`) were measured
 through the release image built from this checkout, with GPU clocks uncapped;
 its FP4-Local baseline is `results/2026-10-16-fp4local`. The vision
 admission release (`results/2026-10-17-vision`) changed only image requests
@@ -72,7 +112,7 @@ identity.
 
 ## Long context
 
-- `4x262k` and `8x262k` were qualified on the pair: a correct 77K-token needle
+- Historical NVFP4 `4x262k` and `8x262k` checks on the pair recorded: a correct 77K-token needle
   (21 s cold; 58 tok/s decode on `4x262k`, 51 on `8x262k`), a 0.2 s warm
   follow-up turn, and four concurrent 100K prompts all answered with the pair
   serving afterwards. When
@@ -160,9 +200,10 @@ identity.
 - Tool calling uses the checkpoint's `<tool_call><function=…><parameter=…>`
   format (Atlas's `qwen3_coder` parser), without extra tool-result hints,
   tool-call logit steering, or a separate cap on prose between calls. Earlier
-  pair testing passed 35/35 `bench/tool_probe.py` cases. Final-image tool and
-  schema gates remain pending for this candidate; real agent clients with
-  large tool sets have not been measured yet.
+  pair testing passed 35/35 `bench/tool_probe.py` cases. The current image
+  passed 21/21 tool cases but failed the automatic tool-or-JSON semantic case
+  described above. Real agent clients with large tool sets have not been
+  measured yet.
 - Video has not been tested with this model. Historical image results cover
   race, conversation, swap and cached-versus-cold checks in
   [results/2026-10-15-shared-engine](../results/2026-10-15-shared-engine/RESULT.md).
@@ -190,8 +231,8 @@ identity.
 
 ## Known issues
 
-Found in release reviews and deferred; none affects the shipped profiles'
-measured behavior.
+The following inherited implementation issues were deferred in earlier release
+reviews. Current measured quality failures are listed above.
 
 - `ATLAS_QWEN4EXP_ROWS32_TILE` has no fallback if its kernel fails to
   launch (the NVFP4 row kernels do).

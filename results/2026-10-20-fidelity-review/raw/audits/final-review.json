@@ -1,0 +1,230 @@
+{
+  "aggregate_independently_reproduced_with_frozen_pillow_python": true,
+  "aggregate_sha256": "011be4d89aea7dde9c66601c63bc8d9195f5b9694a77541143f457885a60e96e",
+  "bounded_followup_proposal": "After matrix timed workload, reuse its8x262k official-image ON process for one exact failed request; then same official-image serial control profile differing only removal of --speculative and --num-drafts=7, replay exact request. Archive raw body/response, identical source/image/checkpoint/limits, actual argv and native per-request dispatch. Compare full reasoning/content, finish/counts and semantic answer. This C1 diagnosis does not reproduce original C4 scheduling; report that limitation and use outcome to decide whether more work is needed. No full60 rerun.",
+  "cleanup_verified": true,
+  "full_quality_pass": false,
+  "history": {
+    "fix1_42": {
+      "all60_metadata_matched": true,
+      "candidate_gains": [],
+      "candidate_losses": [],
+      "case50": [
+        {
+          "answer": "52590382",
+          "b_pos": 0.38,
+          "depth": 0.367,
+          "ok": false,
+          "out": "50828308",
+          "rows": 4800,
+          "tag": "sq-fix1-low"
+        }
+      ],
+      "correct": 59,
+      "misses": [
+        {
+          "answer": "52590382",
+          "b_pos": 0.38,
+          "depth": 0.367,
+          "ok": false,
+          "out": "50828308",
+          "rows": 4800,
+          "tag": "sq-fix1-low"
+        }
+      ],
+      "path": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-component-admission-r1-results/historical-needle-fix1-low.jsonl",
+      "sha256": "ba02746d87e0d51fdb3d5c474a9781f2c47fa4a30ee5914cac667d3af73b5fe6",
+      "total": 60
+    },
+    "shipped41": {
+      "all60_metadata_matched": true,
+      "candidate_gains": [],
+      "candidate_losses": [
+        [
+          4800,
+          0.367,
+          0.38,
+          "52590382"
+        ]
+      ],
+      "case50": [
+        {
+          "answer": "52590382",
+          "b_pos": 0.38,
+          "depth": 0.367,
+          "ok": true,
+          "out": "52590382",
+          "rows": 4800,
+          "tag": "sq-shipped-low"
+        }
+      ],
+      "correct": 60,
+      "misses": [],
+      "path": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-final-quality-review-708-dispatch/historical-needle-shipped-low.jsonl",
+      "sha256": "11aa5305f91bb9137d60a2e5003fdc4e699aab8780070d0e9cf803fb21ceb74d",
+      "total": 60
+    },
+    "vllm32": {
+      "all60_metadata_matched": true,
+      "candidate_gains": [],
+      "candidate_losses": [],
+      "case50": [
+        {
+          "answer": "52590382",
+          "b_pos": 0.38,
+          "depth": 0.367,
+          "ok": false,
+          "out": "\n\n87384785",
+          "rows": 4800,
+          "tag": "vllmref-low"
+        }
+      ],
+      "correct": 59,
+      "misses": [
+        {
+          "answer": "52590382",
+          "b_pos": 0.38,
+          "depth": 0.367,
+          "ok": false,
+          "out": "\n\n87384785",
+          "rows": 4800,
+          "tag": "vllmref-low"
+        }
+      ],
+      "path": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-component-admission-r1-results/historical-needle-vllmref-low.jsonl",
+      "sha256": "9842a4ca26440bb629a5b7f7b838fdf56f609873d447333ce9c120d07479ce6a",
+      "total": 60
+    }
+  },
+  "history_limits": "All60 case metadata match each historical arm. Full historical HTTP request/response bytes unavailable. Shipped41 passed the case; fix1_42 and vllm32 each failed exactly this case with different wrong answers. Historical vLLM run_qwen.sh explicitly enabled MTP4; this is not a plain-serial control.",
+  "needle": {
+    "59_successes_exact_answer_only": true,
+    "actual_prompt_token_bands": {
+      "1800": {
+        "cases": 15,
+        "correct": 15,
+        "prompt_tokens": [
+          61290
+        ]
+      },
+      "3000": {
+        "cases": 15,
+        "correct": 15,
+        "prompt_tokens": [
+          102090
+        ]
+      },
+      "4800": {
+        "cases": 15,
+        "correct": 14,
+        "prompt_tokens": [
+          163290
+        ]
+      },
+      "900": {
+        "cases": 15,
+        "correct": 15,
+        "prompt_tokens": [
+          30690
+        ]
+      }
+    },
+    "all60_finish_stop": true,
+    "correct": 59,
+    "failed_case_reasoning": {
+      "answer_only": false,
+      "case": [
+        4800,
+        0.367,
+        0.38,
+        "52590382"
+      ],
+      "content": "94207600",
+      "finish_reason": "stop",
+      "ok": false,
+      "raw_directory": "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-remaining-r2/remaining/coordinator/quality/http/0057-needle",
+      "reasoning_content": "Let me find the key k880253 in Table A first.\n\nLooking through Table A for k880253...\n\nk880253 -> c085059\n\nNow let me find c085059 in Table B.\n\nc085059 = 94207600\n",
+      "usage": {
+        "completion_tokens": 93,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 60,
+          "audio_tokens": 0,
+          "reasoning_tokens": 81,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens": 163290,
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 32
+        },
+        "response_token/s": 0.8334907522025405,
+        "time_to_first_token_ms": 76283.053947,
+        "total_tokens": 163383
+      }
+    },
+    "failure_cause_scope": "Wrong first-hop retrieval, no truncation. Runtime/model numerical cause remains unassigned.",
+    "maximum_prompt_tokens": 163290,
+    "total": 60
+  },
+  "nll": {
+    "actual_a4_reference": {
+      "candidate_nll": 1.065992331703926,
+      "count": 27033,
+      "max_absolute_logprob_delta": 10.134291305009246,
+      "mean_absolute_logprob_delta": 0.24789398507173083,
+      "nll_delta": 0.040442639890293286,
+      "prompt_tokens": 27034,
+      "reference_nll": 1.0255496918136326,
+      "scored_positions": [
+        1,
+        27033
+      ]
+    },
+    "configured_a16_reference": {
+      "candidate_nll": 1.065992331703926,
+      "count": 27033,
+      "max_absolute_logprob_delta": 12.435419805072934,
+      "mean_absolute_logprob_delta": 0.23629696491791838,
+      "nll_delta": -0.01668671666115329,
+      "prompt_tokens": 27034,
+      "reference_nll": 1.0826790483650792,
+      "scored_positions": [
+        1,
+        27033
+      ]
+    },
+    "earlier_shared_a4": {
+      "candidate_nll": 1.065992331703926,
+      "count": 27033,
+      "max_absolute_logprob_delta": 0.0,
+      "mean_absolute_logprob_delta": 0.0,
+      "nll_delta": 0.0,
+      "prompt_tokens": 27034,
+      "reference_nll": 1.065992331703926,
+      "scored_positions": [
+        1,
+        27033
+      ]
+    }
+  },
+  "recommendation": "Permit frozen main/matrix candidate performance measurements with original auto-union failure, unchanged NLL residual, genuine163290-token retrieval miss, and malformed admission coverage gap recorded. Corrected admission preflight must pass before main benchmark. No full-quality or release acceptance; matched same-image long-context ON/OFF diagnosis remains needed before asserting speculation exactness at163k.",
+  "release_qualified": false,
+  "stage_errors": {
+    "vision-admission": {
+      "error": {
+        "code": null,
+        "hint": null,
+        "message": "Image decode error: image decode failed",
+        "param": null,
+        "type": "invalid_request_error"
+      }
+    }
+  },
+  "stage_outcomes": {
+    "canonical-nll": "pass",
+    "needle": "complete_measurement_no_threshold",
+    "schema-union-tool-choice-none-control": "pass",
+    "vision-admission": "fail",
+    "vision-d8": "pass"
+  }
+}

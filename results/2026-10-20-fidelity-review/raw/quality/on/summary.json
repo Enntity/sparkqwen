@@ -1,0 +1,37 @@
+{
+  "error": "AssertionError: ",
+  "functional": {
+    "biased_logprob_on": "Two16-token cases recorded with measured speculative dispatch; serial comparison pending",
+    "greedy_concurrency": "8/8 each; C1=C4=C8 and C1p=C4p",
+    "mtp_c1_dispatch": {
+      "accepted_prediction_tokens": [
+        193,
+        182,
+        223,
+        213,
+        200,
+        210,
+        206,
+        206
+      ],
+      "missing_serial_counter_scope": null,
+      "native_dispatch": null,
+      "serial": false,
+      "verify_counter_after": {},
+      "verify_counter_before": {},
+      "verify_counter_delta": 0
+    },
+    "tools": {
+      "choice_none": "3/3",
+      "followup": "3/3",
+      "no_tool": "3/3",
+      "parallel": "3/3",
+      "single": "3/3",
+      "stream": "3/3",
+      "typed": "3/3"
+    }
+  },
+  "functional_status": "fail",
+  "measurements": {},
+  "quality_review_required": true
+}

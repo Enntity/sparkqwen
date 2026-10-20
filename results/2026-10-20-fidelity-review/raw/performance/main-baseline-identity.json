@@ -1,0 +1,25 @@
+{
+  "binary_sha256": "69e56e1af5267dd8aa39e9a3b3d23d2bb8fc83d268ebc35e34b2d687e3ad5565",
+  "checkpoint_config_sha256": "b50dbc52a0c83b0cd2a44a372c1fb6b5e0e6827d22f2611c97d4d030f92f6b28",
+  "checkpoint_index_sha256": "5fa166bbb1cf25adda455117563efa72a2072272001f459eedece131ffc913e1",
+  "engine_commit": "92dd5435d87535e240dec0f332bbfa4c68bc5740",
+  "engine_tree": "34e71b7bae90c6b8530d9894842a44ddb5ca0904",
+  "gpu_memory_utilization": null,
+  "image_id": "sha256:44d739d076fc1b2d2048ca0c471cd9a164f11110a65381b7df4354b21b2334ce",
+  "install_tree": "3b2deea3d187ca36855ccc23569718b3f8128bc3",
+  "model": "qwen3.8-flash-next-atlas",
+  "profile": "/opt/atlas/profiles/8x32k.json",
+  "profile_sha256": "d0754014f85062ebf3bed827bbfdc9921b71869717637a7399673326021ac33b",
+  "ranks": [
+    {
+      "container": "qwen-perf-20261020T001542Z-97936145-r0",
+      "host": "ennspark03",
+      "image_id": "sha256:815f73ea9bdaa119da7a1bc8b7c15b4fc1b8238642e084d513a8c33e1b425e90"
+    },
+    {
+      "container": "qwen-perf-20261020T001542Z-97936145-r1",
+      "host": "ennspark04",
+      "image_id": "sha256:815f73ea9bdaa119da7a1bc8b7c15b4fc1b8238642e084d513a8c33e1b425e90"
+    }
+  ]
+}

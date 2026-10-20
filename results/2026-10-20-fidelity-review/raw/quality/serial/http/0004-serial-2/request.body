@@ -1,0 +1,1 @@
+{"chat_template_kwargs": {"reasoning_effort": "low"}, "max_tokens": 320, "messages": [{"content": "Write a Python function that parses ISO-8601 durations like P3DT4H5M into seconds, with tests.", "role": "user"}], "model": "qwen3.8-flash-next-atlas", "temperature": 0}

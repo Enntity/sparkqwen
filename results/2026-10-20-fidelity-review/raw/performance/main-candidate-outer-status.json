@@ -1,0 +1,10 @@
+{
+  "complete": true,
+  "coordinator_pid": 20443,
+  "coordinator_still_running": false,
+  "error": null,
+  "existing_renewer_unchanged": true,
+  "lease_released": false,
+  "operation": "main-candidate",
+  "release_qualified": false
+}

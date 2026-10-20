@@ -1,0 +1,8 @@
+{
+  "diagnostic_execution_status": "fail",
+  "diagnostic_only": true,
+  "error": "AssertionError()",
+  "functional_status": "not_qualified",
+  "quality_review_required": true,
+  "release_qualified": false
+}

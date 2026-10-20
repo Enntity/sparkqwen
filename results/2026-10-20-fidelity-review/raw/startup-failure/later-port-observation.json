@@ -1,0 +1,14 @@
+{
+  "ennspark03": {
+    "listeners": "",
+    "sockets": "",
+    "gpu": "",
+    "containers": ""
+  },
+  "ennspark04": {
+    "listeners": "",
+    "sockets": "",
+    "gpu": "",
+    "containers": ""
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "on": {
+    "diagnostic_execution_status": "pass",
+    "full_quality_pass": false,
+    "measurement": {
+      "accepted_prediction_tokens": 60,
+      "cache_context": {
+        "fresh_serial_process": false,
+        "limit": "Equal cached-token counts do not prove equal cache contents; original miss was C4 and this replay is C1.",
+        "prefix_cache_enabled_on_both_ranks": true,
+        "prior_matrix_workload_in_same_process": true
+      },
+      "cached_prompt_tokens": 0,
+      "correct": false,
+      "decoded_fields": {
+        "completion_tokens": 93,
+        "content": "94207600",
+        "finish_reason": "stop",
+        "prompt_tokens": 163290,
+        "reasoning_content": "Let me find the key k880253 in Table A first.\n\nLooking through Table A for k880253...\n\nk880253 -> c085059\n\nNow let me find c085059 in Table B.\n\nc085059 = 94207600\n",
+        "tool_calls": null
+      },
+      "final_requests_total_metric": 11.0,
+      "full_usage": {
+        "completion_tokens": 93,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 60,
+          "audio_tokens": 0,
+          "reasoning_tokens": 81,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens": 163290,
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        },
+        "response_token/s": 58.76556165648332,
+        "time_to_first_token_ms": 48051.11393,
+        "total_tokens": 163383
+      },
+      "initial_active_metric": 0.0,
+      "initial_requests_total_metric": 10.0,
+      "mtp_fraction": 1.0,
+      "native_done": "2026-10-20T02:25:59.247265Z  INFO spark::scheduler::mtp_accept_debug: Done: 93 tokens (stop) 59.4 tok/s, TTFT=48051.1ms, serial=0.00 mtp=1.00 p1=0.781 mean_na=1.875 tok_step=2.875 regime_reprobes=0 depth=k4 depth_switches=0 acc=0.81,0.65,0.48,-,-,-,- surv=0.78,0.62,0.47,0.00,0.00,0.00,0.00",
+      "scope": "One C1 request; full decoded fields, no generated token-ID proof. Original miss occurred at C4; cache history differs.",
+      "serial_fraction": 0.0
+    },
+    "release_qualified": false,
+    "request_sha256": "a99204cde4031bd706e0b1f5189624e0ed2a13938ce090692de4628d751db434"
+  },
+  "off": {
+    "diagnostic_execution_status": "pass",
+    "full_quality_pass": false,
+    "measurement": {
+      "accepted_prediction_tokens": 0,
+      "cache_context": {
+        "fresh_serial_process": true,
+        "limit": "Equal cached-token counts do not prove equal cache contents; original miss was C4 and this replay is C1.",
+        "prefix_cache_enabled_on_both_ranks": true,
+        "prior_matrix_workload_in_same_process": false
+      },
+      "cached_prompt_tokens": 0,
+      "cached_prompt_tokens_equal": true,
+      "correct": false,
+      "decoded_fields": {
+        "completion_tokens": 93,
+        "content": "94207600",
+        "finish_reason": "stop",
+        "prompt_tokens": 163290,
+        "reasoning_content": "Let me find the key k880253 in Table A first.\n\nLooking through Table A for k880253...\n\nk880253 -> c085059\n\nNow let me find c085059 in Table B.\n\nc085059 = 94207600\n",
+        "tool_calls": null
+      },
+      "final_requests_total_metric": 1.0,
+      "full_usage": {
+        "completion_tokens": 93,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 81,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens": 163290,
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        },
+        "response_token/s": 30.451003101089775,
+        "time_to_first_token_ms": 52040.519432,
+        "total_tokens": 163383
+      },
+      "initial_active_metric": null,
+      "initial_requests_total_metric": null,
+      "mtp_fraction": 0.0,
+      "native_done": "2026-10-20T02:30:44.192690Z  INFO spark::scheduler::mtp_accept_debug: Done: 93 tokens (stop) 30.8 tok/s, TTFT=52040.5ms, serial=1.00 mtp=0.00 p1=0.000 mean_na=0.000 tok_step=1.000 regime_reprobes=0 depth=k5 depth_switches=0 acc=-,-,-,-,-,-,- surv=0.00,0.00,0.00,0.00,0.00,0.00,0.00",
+      "on_cached_prompt_tokens": 0,
+      "on_correct": false,
+      "same_decoded_fields": true,
+      "scope": "One C1 request; full decoded fields, no generated token-ID proof. Original miss occurred at C4; cache history differs.",
+      "serial_fraction": 1.0
+    },
+    "release_qualified": false,
+    "request_sha256": "a99204cde4031bd706e0b1f5189624e0ed2a13938ce090692de4628d751db434"
+  },
+  "source_sha256": {
+    "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/matrix-r2/coordinator/case50-on/result.json": "f52b9cd7c8264b17f1e8d386757387d35a2da75d5e2a2a4a854bb706e0bb520e",
+    "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/case50-serial/coordinator/case50-off/result.json": "1af9a16af698bc87fcfa7de137c63cc2c32016c0fd3f2f04b13d75659f78fa43"
+  },
+  "excluded_from_performance": true,
+  "limits": "C1 versus original C4 and differing warm-prefix history remain confounds. Equal cached-token counts do not prove equal state.",
+  "release_qualified": false
+}

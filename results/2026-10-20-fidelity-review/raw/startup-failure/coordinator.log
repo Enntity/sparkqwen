@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "<string>", line 21, in <module>
+OSError: [Errno 98] Address already in use
+Traceback (most recent call last):
+  File "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-component-admission-case50-r1/coordinate-with-admission.py", line 453, in <module>
+    if __name__=='__main__': main()
+                             ^^^^^^
+  File "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-component-admission-case50-r1/coordinate-with-admission.py", line 452, in main
+    execute(c,a.output,profile,limit)
+  File "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-component-admission-case50-r1/coordinate-with-admission.py", line 442, in execute
+    need(not error and not cleanup_errors,f'run failed; inspect {out}/result.json; retain campaign reservations until cleanup verified')
+  File "/Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-component-admission-case50-r1/coordinate-with-admission.py", line 16, in need
+    if not ok: raise RuntimeError(why)
+               ^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: run failed; inspect /Users/jmac/Documents/Codex/2026-10-19/cl/work/qwen-official-70890529ba64-performance-r1/matrix/coordinator/result.json; retain campaign reservations until cleanup verified
