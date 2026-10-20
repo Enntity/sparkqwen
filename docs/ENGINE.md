@@ -7,8 +7,8 @@ pinned in [`install/atlas-source.json`](../install/atlas-source.json), for the
 kernel target `qwen3.8-flash-next` (model type `qwen4_exp`).
 [`install/build.sh`](../install/build.sh) refuses any other tree.
 
-The current fidelity candidate pins `sparkqwen/fidelity-rc-20261019` at `f52a45bf`
-(tree `003232c3`). It includes the fidelity fixes, checkpoint reasoning
+The current fidelity candidate pins `sparkqwen/fidelity-rc-20261019` at `63bebfa6`
+(tree `fa4e4817`). It includes the fidelity fixes, checkpoint reasoning
 policy, and the shared-expert tensor-parallel split. Final-image quality and
 matched performance qualification are pending; this source pin is not a release
 receipt.
