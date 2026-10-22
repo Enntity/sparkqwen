@@ -8,8 +8,8 @@ kernel target `qwen3.8-flash-next` (model type `qwen4_exp`).
 [`install/build.sh`](../install/build.sh) refuses any other tree.
 
 SparkQwen 0.2.0 uses the common `spark-shared` engine tree.
-The pinned snapshot is `feature/common-spark-engine-20261022` at `a9a7a399`
-(tree `d0137d77`). It brings together
+The pinned snapshot is `feature/common-spark-engine-20261022` at `92632506`
+(tree `47e8a7a0`). It brings together
 the SparkGLM literal-XML and grammar fixes, packed-prefill and split-score paths,
 and SparkQwen's native MXFP8 shared expert, F32 HC/PLE norms, row-invariant
 prefill and native MTP. The source history retains both product branches.
@@ -25,7 +25,13 @@ the TP2/EP2 mode contract before GPU allocation.
 Literal tool-envelope strings in user prose, schema descriptions and historical
 argument values are encoded as ordinary text. The checkpoint template still
 emits native function/parameter tool-call envelopes. The same serving code
-handles OpenAI and Anthropic requests, including streaming.
+handles OpenAI and Anthropic requests, including streaming. Literal fragments
+split across tokens survive streaming and end-of-stream flushing.
+
+Strict MTP prompt absorption batches only the BF16 K/V projections in groups
+of up to eight rows, preserving the scalar reduction order and skipping unused
+Q projections. The GPU parity check compares real checkpoint K/V tensors
+against scalar GEMV, including tail batches and both TP2 shards.
 
 The exact engine commit and tree are authoritative in
 [`install/atlas-source.json`](../install/atlas-source.json). A common source tree
