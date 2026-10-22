@@ -8,8 +8,8 @@ kernel target `qwen3.8-flash-next` (model type `qwen4_exp`).
 [`install/build.sh`](../install/build.sh) refuses any other tree.
 
 SparkQwen 0.2.0 uses the common `spark-shared` engine tree.
-The pinned snapshot is `feature/common-spark-engine-20261022` at `27e7c9fc`
-(tree `d6a18067`). It brings together
+The pinned snapshot is `feature/common-spark-engine-20261022` at `ed381734`
+(tree `4b2505e0`). It brings together
 the SparkGLM literal-XML and grammar fixes, packed-prefill and split-score paths,
 and SparkQwen's native MXFP8 shared expert, F32 HC/PLE norms, row-invariant
 prefill and native MTP. The source history retains both product branches.
@@ -26,7 +26,10 @@ Literal tool-envelope strings in user prose, schema descriptions and historical
 argument values are encoded as ordinary text. The checkpoint template still
 emits native function/parameter tool-call envelopes. The same serving code
 handles OpenAI and Anthropic requests, including streaming. Literal fragments
-split across tokens survive streaming and end-of-stream flushing.
+split across tokens survive streaming and end-of-stream flushing. Qwen reasoning
+preserves literal tool markup until its explicit thinking terminator. Required
+tool grammar starts after that terminator; its first reasoning sample suppresses
+the native tool opener, matching subsequent reasoning samples.
 
 Strict MTP prompt absorption batches only the BF16 K/V projections in groups
 of up to eight rows, preserving the scalar reduction order and skipping unused
