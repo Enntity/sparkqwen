@@ -5,12 +5,14 @@
 #
 #   ./start.sh              prepare whatever is missing, then serve
 #   ./start.sh fabric       inspect the selected ports without changing anything
+#   ./start.sh --version    checkout product version and pinned engine
 #   ./start.sh stop         stop both ranks
 #   ./start.sh status       container state and health
 #   ./start.sh logs [worker]
 #   ./start.sh build | download    run one preparation step
 set -euo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")"
+if [[ ${1:-} == --version ]]; then exec python3 install/serve.py --version; fi
 if [[ -f .env ]]; then set -a; . ./.env; set +a; fi
 : "${WORKER:?set WORKER in .env to the ssh destination of the other Spark (see .env.example)}"
 [[ $WORKER != -* ]] || { echo "WORKER must be an ssh destination, not an option: $WORKER" >&2; exit 2; }
@@ -166,6 +168,9 @@ case ${1:-up} in
   up) build; download; serve ;;
   build | download | stop) "$1" ;;
   status)
+    echo "checkout: $(python3 install/serve.py --version | head -1)"
+    docker inspect -f 'running rank 0: version={{index .Config.Labels "org.opencontainers.image.version"}} image={{.Image}}' "${NAME}0" 2>/dev/null || true
+    on_worker docker inspect -f 'running rank 1: version={{index .Config.Labels "org.opencontainers.image.version"}} image={{.Image}}' "${NAME}1" 2>/dev/null || true
     echo "image  $IMAGE"
     echo "rank 0 $(state)"; echo "rank 1 $(worker_state) ($WORKER)"
     curl -sf "$API/health" >/dev/null && echo "health ok ($API)" || echo 'health: not serving' ;;

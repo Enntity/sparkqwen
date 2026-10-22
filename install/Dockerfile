@@ -77,7 +77,7 @@ COPY --from=builder /build/dist/spark /usr/local/bin/spark
 COPY --from=builder /build/jinja-templates/ /jinja-templates/
 COPY --from=builder /opt/cutlass/LICENSE.txt /opt/atlas/notices/CUTLASS-LICENSE.txt
 COPY --from=builder /build/dist/notices-rust/ /opt/atlas/notices/rust/
-COPY install/serve.py /opt/atlas/
+COPY install/serve.py install/release.json /opt/atlas/
 COPY install/profiles/ /opt/atlas/profiles/
 COPY install/atlas-source.json /opt/atlas/source-manifest.json
 COPY install/checkpoint.json /opt/atlas/checkpoint.json
@@ -87,8 +87,11 @@ ENV RUST_LOG=info
 EXPOSE 8893
 # The image's identity is the git tree of install/ (its tag); label it last.
 ARG INSTALL_TREE
+ARG PRODUCT_VERSION
+RUN python3 -c 'import json,sys; assert json.load(open("/opt/atlas/release.json"))["version"] == sys.argv[1]' "$PRODUCT_VERSION"
 RUN test -n "$INSTALL_TREE"
-LABEL org.opencontainers.image.licenses="AGPL-3.0-only" \
+LABEL org.opencontainers.image.version="$PRODUCT_VERSION" \
+      org.opencontainers.image.licenses="AGPL-3.0-only" \
       org.opencontainers.image.source="https://github.com/Enntity/sparkqwen" \
       io.enntity.sparkqwen.install-tree="$INSTALL_TREE"
 ENTRYPOINT ["python3", "/opt/atlas/serve.py"]
