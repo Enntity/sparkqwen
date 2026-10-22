@@ -43,6 +43,12 @@ RUN python3 /product/install/rust-notices.py /build /build/dist/notices-rust
 # CUDA stubs permit these CPU-only tests without GPU build entitlements.
 RUN mkdir -p /opt/cuda-stubs && \
     ln -s /usr/local/cuda/lib64/stubs/libcuda.so /opt/cuda-stubs/libcuda.so.1
+# Full server tests read captured request fixtures and committed benchmark
+# definitions, and discover their root through Git. Keep the shallow source
+# checkout only in the builder; none of this enters the runtime image.
+COPY engine/scripts/fixtures/ scripts/fixtures/
+COPY engine/.benchmarks/ .benchmarks/
+COPY engine/.git/ .git/
 # The published Qwen3.8-Flash-Next config parses into the hybrid MoE layout the
 # kernels were built for; then the serving lifecycle, admission, cancellation
 # and full server tests on the same Linux/CUDA build as the shipped binary.

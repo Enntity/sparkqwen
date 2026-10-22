@@ -3,3 +3,6 @@
 **/__pycache__
 engine/ckpt
 engine/assets
+
+# Builder tests use the exact shallow public source checkout.
+!engine/.git
