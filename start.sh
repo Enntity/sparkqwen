@@ -36,6 +36,21 @@ on_worker() { ssh -o BatchMode=yes "$WORKER" "$(printf '%q ' "$@")"; }
 # Run a local script on the worker with safely quoted arguments.
 script_on_worker() { local script=$1; shift; on_worker bash -s -- "$@" < "$script"; }
 has_image() { docker image inspect "$IMAGE" >/dev/null 2>&1; }
+# Legacy images inherited Ubuntu's version label (for example 24.04).
+# Only a product semantic version is a SparkQwen release number.
+running_identity() {
+  local rank=$1 identity version image_id
+  local format='{{index .Config.Labels "org.opencontainers.image.version"}}|{{.Image}}'
+  if [[ $rank == 0 ]]; then
+    identity=$(docker inspect -f "$format" "${NAME}$rank" 2>/dev/null) || return 0
+  else
+    identity=$(on_worker docker inspect -f "$format" "${NAME}$rank" 2>/dev/null) || return 0
+  fi
+  IFS='|' read -r version image_id <<< "$identity"
+  [[ $version =~ ^[0-9]+\.[0-9]+\.[0-9]+([+-].*)?$ ]] || version='unversioned (legacy image)'
+  printf 'running rank %s: version=%s image=%s\n' "$rank" "$version" "$image_id"
+}
+
 
 # Inventory is read on each host. No device-name or physical-port convention.
 fabric_ports() {
@@ -167,8 +182,8 @@ case ${1:-up} in
   build | download | stop) "$1" ;;
   status)
     echo "checkout: $(python3 install/serve.py --version | head -1)"
-    docker inspect -f 'running rank 0: version={{index .Config.Labels "org.opencontainers.image.version"}} image={{.Image}}' "${NAME}0" 2>/dev/null || true
-    on_worker docker inspect -f 'running rank 1: version={{index .Config.Labels "org.opencontainers.image.version"}} image={{.Image}}' "${NAME}1" 2>/dev/null || true
+    running_identity 0
+    running_identity 1
     echo "image  $IMAGE"
     echo "rank 0 $(state)"; echo "rank 1 $(worker_state) ($WORKER)"
     curl -sf "$API/health" >/dev/null && echo "health ok ($API)" || echo 'health: not serving' ;;

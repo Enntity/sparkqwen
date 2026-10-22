@@ -10,7 +10,8 @@ Historical dated releases and release-candidate numbers remain available.
 checkout version and exact pinned engine without needing Docker, weights, `.env`
 or a worker. `./start.sh status` also reads the version label and image ID from
 each deployed container, so an older deployment is distinguishable from a newer
-checkout. Older images without the label may show an empty version; use their image ID.
+checkout. Older images may inherit the base OS label, such as `24.04`. Status reports
+these as `unversioned (legacy image)`; use their image ID.
 
 For an image already installed locally, `docker run --rm IMAGE --version` prints
 its product version and engine pin without loading the model. Container startup

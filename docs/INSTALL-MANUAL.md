@@ -6,8 +6,8 @@ time. Run steps 1–3 on **both** Sparks with the same `MODEL_ROOT`.
 
 | Component | Pin |
 |---|---|
-| Engine | [`Enntity/atlas`](https://github.com/Enntity/atlas), `sparkqwen/atlas-20261016-fp4local` at 9f64bf6b ([`install/atlas-source.json`](../install/atlas-source.json), [docs/ENGINE.md](ENGINE.md)) |
-| Model | [`nvidia/Qwen3.8-Flash-Next-FP4-Local`](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local) @ `b9ce18a6887e18c089fdea8509a33e63429a3300` ([`install/checkpoint.json`](../install/checkpoint.json)); the engine also loads [`nvidia/Qwen3.8-Flash-Next-NVFP4`](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-NVFP4) @ `fc694b54fb0174e0913e6adf86691ef85a4ead47` |
+| Engine | [`Enntity/atlas`](https://github.com/Enntity/atlas), the common engine snapshot pinned for SparkQwen 0.2.0 ([`install/atlas-source.json`](../install/atlas-source.json), [docs/ENGINE.md](ENGINE.md)) |
+| Model | [`nvidia/Qwen3.8-Flash-Next-FP4-Local`](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local) @ `b9ce18a6887e18c089fdea8509a33e63429a3300` ([`install/checkpoint.json`](../install/checkpoint.json)) |
 | Build dependencies | CUTLASS `cf064d2e`, NCCL 2.31.2, Rust 1.93.1, CUDA 13.0 |
 | Profiles | [`install/profiles/`](../install/profiles/): `8x32k` (default), `4x262k` and `8x262k` (long context) |
 
@@ -29,8 +29,8 @@ IMAGE=$(install/build.sh)
 `Enntity/atlas` at the pinned commit, refuses any other tree, and builds the
 engine for `qwen3.8-flash-next` and its build-time tests.
 
-The release image is published: `docker pull "$IMAGE"` replaces the build
-when your `install/` tree is the release's. To use a local build on the other
+When an image for your recipe has been published, `docker pull "$IMAGE"`
+replaces the build. Check the release notes for its publication status. To use a local build on the other
 Spark, copy it:
 `docker save "$IMAGE" | ssh other-spark docker load`.
 
@@ -52,10 +52,8 @@ published; nothing is converted. On its first start each rank also writes a
 packed copy of the PLE n-gram table, 31 GB, to `--ple-cache` (default
 `~/.cache/atlas-ple`), so leave room for it; later starts check it and reuse it.
 
-To serve the NVFP4 checkpoint instead, download
-`nvidia/Qwen3.8-Flash-Next-NVFP4` at `fc694b54fb0174e0913e6adf86691ef85a4ead47`
-into `$MODEL_ROOT/nvidia--Qwen3.8-Flash-Next-NVFP4` and pass
-`--checkpoint nvidia--Qwen3.8-Flash-Next-NVFP4` to both ranks below.
+The 0.2.0 Strict and Spark modes require this native FP4-Local checkpoint.
+Historical NVFP4 results do not qualify that checkpoint for these modes.
 
 ## 4. Start the pair, worker first
 
@@ -126,7 +124,9 @@ repository; `./start.sh` neither installs nor manages them.
 - **NCCL fails with `modify_qp -> RTR failed`:** the RoCE link, or its IPv4
   address, is missing on one Spark. The engine picks each rail's RoCE v2 IPv4
   GID automatically. To force one, add `"ATLAS_RDMA_GID": "<index>"` to the
-  profile's `environment`; the launcher ignores ambient `ATLAS_*` variables.
+  profile's `environment`; the launcher strips ambient tuning variables, while allowing `ATLAS_LOG_*`
+  diagnostics and the exact `ATLAS_LOOP_NO_SUPPRESS` escape hatch. Profile
+  values take precedence.
 - **The host stops responding under load:** GB10 memory is shared with the
   host. Keep builds, other models and large processes off the pair while
   serving, and consider a host watchdog that stops the
