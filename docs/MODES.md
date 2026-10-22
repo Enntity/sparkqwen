@@ -27,3 +27,8 @@ rejected in either mode. Checkpoint sampling and reasoning defaults remain in
 force unless the request explicitly overrides them. Neither mode promises
 identical text to an older release, another tensor-parallel topology or another
 numerical reference. See the release's measured qualification and limitations.
+
+The release profiles clear the full prefill scratch arena. The inherited
+`ATLAS_GLM_ZERO_ROWS=1` shortcut is disabled because no Qwen-specific stale-byte
+check qualified it across the profiles. Historical speed observations alone
+do not establish its correctness.
