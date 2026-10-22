@@ -83,12 +83,10 @@ compile kernels. Later starts reuse both. Run one warmup pass before measuring.
 **Profiles.** `--profile 4x262k` or `--profile 8x262k` selects a long-context profile. A path to a JSON file runs your own profile. Use the same profile
 on both ranks.
 
-**Opt-in.** `--fp8-gdn` (lossy FP8 Gated DeltaNet projections, NVFP4
-checkpoint only; the engine refuses it with FP4-Local) is off by default. Use
-the same setting on both ranks; see [LIMITATIONS.md](LIMITATIONS.md).
-
-`--qsa-tc2r` was removed in RC16: the tensor-core QSA prefill it selected is
-the two-Spark default since RC15.
+**Mode.** Pass `--mode strict` (the default) or `--mode spark` on both ranks.
+Both require the native FP4-Local checkpoint and retain MTP. See
+[Strict and Spark](MODES.md). Historical `--fp8-gdn` and `--qsa-tc2r` switches
+are unsupported.
 
 **Memory share.** `--gpu-memory-utilization` (two decimals, 0.70–0.95) on both
 ranks overrides the profiles' default 0.88. The sidecar configuration below

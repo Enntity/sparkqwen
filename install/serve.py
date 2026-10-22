@@ -7,7 +7,6 @@ import os
 from pathlib import Path
 import re
 import sys
-import sys
 
 
 def fabric_hcas(value, sysfs=Path('/sys/class/infiniband'), siblings=True):
@@ -97,7 +96,44 @@ def opt_ins(environ):
     return env
 
 
+def serving_mode(environ, profile):
+    """Both modes preserve the native target and use target-verified native MTP."""
+    mode = environ.get('SPARKQWEN_MODE', 'strict')
+    if mode not in ('strict', 'spark'):
+        raise ValueError('SPARKQWEN_MODE must be strict or spark')
+    required = {
+        'ATLAS_QWEN4EXP_NO_PLE': '0',
+        'ATLAS_MTP_DRAFTER_QSA': '0',
+        'ATLAS_QSA_DISABLE': '0',
+        'ATLAS_QWEN4EXP_MXFP8_DECODE': '1',
+        'ATLAS_QWEN4EXP_BF16_GDN': '1',
+        'ATLAS_QWEN4EXP_FP8_GDN': '0',
+        'ATLAS_QWEN4EXP_PREFILL_W8A8': '1',
+        'ATLAS_QWEN4EXP_PREFILL_MOE': '1',
+        'ATLAS_QWEN4EXP_PREFILL_MOE_BF16': '0',
+        'ATLAS_QWEN4EXP_PREFILL_BF16_PROJ': '0',
+    }
+    for flag, value in required.items():
+        if profile['environment'].get(flag, value) != value:
+            raise ValueError(f'{mode} mode requires {flag}={value}')
+    if opt_ins(environ):
+        raise ValueError('strict/spark modes require native FP4-Local projections; FP8_GDN is unsupported')
+    args = list(profile['server_argv'])
+    for flag in ('--world-size=2', '--tp-size=2', '--ep-size=2', '--kv-cache-dtype=bf16'):
+        if flag not in args:
+            raise ValueError(f'strict/spark modes require {flag}')
+    forbidden = ('--dflash', '--self-speculative', '--ngram-speculative', '--expert-tp', '--no-fast-load', '--attn-proj-dtype', '--lm-head-dtype')
+    if any(arg.split('=', 1)[0] in forbidden for arg in args):
+        raise ValueError('strict/spark modes support only the Qwen native MTP lane')
+    if '--speculative' not in args:
+        raise ValueError('strict/spark modes require --speculative; use disable_mtp for serial requests')
+    required.update(ATLAS_QWEN4EXP_MTP_BF16_ATTN='1' if mode == 'strict' else '0',
+                    ATLAS_QWEN4EXP_DRAFT_HEAD_NVFP4='0' if mode == 'strict' else '1')
+    return mode, dict(required, ATLAS_QWEN4EXP_SERVING_MODE=mode), args
+
+
 def launch(environ, profile):
+    mode, precision, args = serving_mode(environ, profile)
     rank = environ.get('NODE_RANK', '')
     if rank not in ('0', '1'):
         raise ValueError('NODE_RANK must be 0 or 1')
@@ -119,12 +155,13 @@ def launch(environ, profile):
     # changes require a new reviewed image/profile instead of accidental tuning.
     env = {key: value for key, value in environ.items() if not key.startswith('ATLAS_')}
     env.update(profile['environment'])
-    env.update(opt_ins(environ))
+    env.update(precision)
+    env['SPARKQWEN_MODE'] = mode
     env['NCCL_SOCKET_IFNAME'] = interface
     env['NCCL_IB_HCA'] = ','.join(hcas)
     # The engine's direct RDMA all-reduce stripes over the same devices.
     env['ATLAS_RDMA_RAILS'] = env['NCCL_IB_HCA']
-    args = [str(arg).replace('${model}', model) for arg in profile['server_argv']]
+    args = [str(arg).replace('${model}', model) for arg in args]
     # A dedicated pair can give the KV pool more of the unified memory than the
     # shipped default leaves free; a lower share reserves host/service memory
     # but shrinks the shared KV token pool. No context or concurrency promise.
@@ -178,7 +215,7 @@ def main():
     if not (model/'config.json').is_file() or not (model/'model.safetensors.index.json').is_file():
         raise ValueError(f'Incomplete checkpoint at {model}')
     source = json.loads((here/'source-manifest.json').read_text())
-    print(json.dumps({'event': 'atlas-recipe-start', **release_info(here), 'rank': env['NODE_RANK'], 'profile': profile.stem,
+    print(json.dumps({'event': 'atlas-recipe-start', **release_info(here), 'rank': env['NODE_RANK'], 'profile': profile.stem, 'mode': env['SPARKQWEN_MODE'],
                       'opt_ins': sorted(k for k in OPT_INS if env.get(k) == '1'),
                       'source': f"{source['repository']}@{source['commit']}"}), flush=True)
     os.execve(argv[0], argv, env)

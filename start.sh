@@ -18,6 +18,13 @@ if [[ -f .env ]]; then set -a; . ./.env; set +a; fi
 [[ $WORKER != -* ]] || { echo "WORKER must be an ssh destination, not an option: $WORKER" >&2; exit 2; }
 MODEL_ROOT=${MODEL_ROOT:-$HOME/models/sparkqwen}
 PROFILE=${PROFILE:-8x32k}
+MODE=${MODE:-strict}
+if [[ ${1:-} == --mode ]]; then
+  [[ $# -ge 2 ]] || { echo '--mode requires strict or spark' >&2; exit 2; }
+  MODE=$2; shift 2
+fi
+[[ $MODE == strict || $MODE == spark ]] || { echo '--mode must be strict or spark' >&2; exit 2; }
+[[ ${FP8_GDN:-0} == 0 ]] || { echo 'Strict/Spark require native FP4-Local projections' >&2; exit 2; }
 IMAGE=${IMAGE:-}
 MODEL=qwen3.8-flash-next-atlas
 API=http://127.0.0.1:8893
@@ -118,22 +125,13 @@ stop() {
 state() { docker inspect -f '{{.State.Status}}' "${NAME}0" 2>/dev/null || echo absent; }
 worker_state() { on_worker docker inspect -f '{{.State.Status}}' "${NAME}1" 2>/dev/null || echo absent; }
 
-switch() {  # NAME FLAG: append FLAG to common when the .env switch NAME is 1
-  case ${!1:-0} in
-    0) ;;
-    1) common+=("$2") ;;
-    *) echo "$1 must be 0 or 1" >&2; exit 2 ;;
-  esac
-}
-
 serve() {
   local common address
   address=$ip0
   common=(--leader-address "$address" --model-root "$MODEL_ROOT" --checkpoint "${CHECKPOINT_REPO/\//--}" --image "$IMAGE"
-          --profile "$PROFILE"
+          --profile "$PROFILE" --mode "$MODE"
           ${GPU_MEMORY_UTILIZATION:+--gpu-memory-utilization "$GPU_MEMORY_UTILIZATION"})
-  switch FP8_GDN --fp8-gdn
-  say "start rank 1 on $WORKER, then rank 0 here (leader $address, profile $PROFILE)"
+  say "start rank 1 on $WORKER, then rank 0 here (leader $address, profile $PROFILE, mode $MODE)"
   stop
   script_on_worker install/start-node.sh --rank 1 --fabric-hca "$hca1" --fabric-interface "$iface1" --no-fabric-siblings "${common[@]}"
   install/start-node.sh --rank 0 --fabric-hca "$hca0" --fabric-interface "$iface0" --no-fabric-siblings "${common[@]}"

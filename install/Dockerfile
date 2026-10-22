@@ -45,13 +45,11 @@ RUN mkdir -p /opt/cuda-stubs && \
     ln -s /usr/local/cuda/lib64/stubs/libcuda.so /opt/cuda-stubs/libcuda.so.1
 # The published Qwen3.8-Flash-Next config parses into the hybrid MoE layout the
 # kernels were built for; then the serving lifecycle, admission, cancellation
-# and tool-parser tests on the same Linux/CUDA build as the shipped binary.
+# and full server tests on the same Linux/CUDA build as the shipped binary.
 # Each filter must match at least one test.
 RUN --mount=type=cache,target=/build/target,id=atlas-cargo-target-sparkqwen,sharing=shared \
-    set -eu; for check in atlas-core:qwen4_exp_ spark-server:scheduler::lifecycle_tests \
-        spark-server:scheduler::admission:: spark-server:cancellation_tests \
-        spark-server:disconnect_prefill_tests spark-server:buffered_disconnect_ \
-        spark-server:verify_pipeline_helper::scored::tests spark-server:prediction_usage spark-server:bootstrap_score spark-server:unscored_logprob_admission spark-server:batched_logprob_read_failure_aborts_every_advanced_member spark-server:refusal spark-server:api::chat_stream spark-server:tool_parser:: \
+    set -eu; for check in atlas-core:qwen4_exp_ spark-comm: spark-server: \
+        spark-model:weight_loader::qwen4_exp spark-model:w4a4_scales::tests \
         spark-runtime:radix_tree:: spark-model:block_mgmt::tails::tests; do \
       crate=${check%%:*}; filter=${check#*:}; \
       if [ "$crate" = spark-server ]; then target="--bin spark"; else target="--lib"; fi; \
