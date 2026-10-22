@@ -119,14 +119,32 @@ def serving_mode(environ, profile):
     if opt_ins(environ):
         raise ValueError('strict/spark modes require native FP4-Local projections; FP8_GDN is unsupported')
     args = list(profile['server_argv'])
-    for flag in ('--world-size=2', '--tp-size=2', '--ep-size=2', '--kv-cache-dtype=bf16'):
-        if flag not in args:
-            raise ValueError(f'strict/spark modes require {flag}')
+    def single_value(flag):
+        entries = [(i, arg) for i, arg in enumerate(args) if arg.split('=', 1)[0] == flag]
+        if len(entries) != 1:
+            raise ValueError(f'strict/spark modes require exactly one {flag}')
+        index, arg = entries[0]
+        if '=' in arg:
+            return arg.split('=', 1)[1]
+        if index + 1 < len(args) and not args[index + 1].startswith('--'):
+            return args[index + 1]
+        raise ValueError(f'{flag} requires a value')
+
+    for flag, value in {'--world-size': '2', '--tp-size': '2', '--ep-size': '2',
+                        '--kv-cache-dtype': 'bf16',
+                        '--kernel-target': 'qwen3.8-flash-next'}.items():
+        if single_value(flag) != value:
+            raise ValueError(f'strict/spark modes require {flag}={value}')
+    if not re.fullmatch(r'[1-9][0-9]*', single_value('--num-drafts')):
+        raise ValueError('strict/spark modes require a positive --num-drafts')
     forbidden = ('--dflash', '--self-speculative', '--ngram-speculative', '--expert-tp', '--no-fast-load', '--attn-proj-dtype', '--lm-head-dtype')
     if any(arg.split('=', 1)[0] in forbidden for arg in args):
         raise ValueError('strict/spark modes support only the Qwen native MTP lane')
-    if '--speculative' not in args:
+    if [arg for arg in args if arg.split('=', 1)[0] == '--speculative'] != ['--speculative']:
         raise ValueError('strict/spark modes require --speculative; use disable_mtp for serial requests')
+    speculative_index = args.index('--speculative')
+    if speculative_index + 1 < len(args) and not args[speculative_index + 1].startswith('--'):
+        raise ValueError('--speculative is a flag and accepts no value')
     required.update(ATLAS_QWEN4EXP_MTP_BF16_ATTN='1' if mode == 'strict' else '0',
                     ATLAS_QWEN4EXP_DRAFT_HEAD_NVFP4='0' if mode == 'strict' else '1')
     return mode, dict(required, ATLAS_QWEN4EXP_SERVING_MODE=mode), args

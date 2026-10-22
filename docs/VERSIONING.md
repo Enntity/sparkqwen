@@ -33,3 +33,10 @@ versions do not replace them. Image tags remain the first 12 characters of the
 
 A version number is not a new model-quality or performance qualification. Each
 release must link its actual checks and evidence, including any limitations.
+
+A successful image build is one acceptance check. Before merging or publishing a
+release, run the product static workflow and the pinned engine's required checks
+from its `AGENTS.md`, `CONTRIBUTING.md` and CI workflows, including the applicable
+benchmark gates. Keep their results alongside exact-image GPU and model receipts.
+The image build runs native workspace tests and Clippy; it does not run every
+repository hygiene or hardware gate. Record any existing failures explicitly.

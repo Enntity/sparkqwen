@@ -62,3 +62,38 @@ class ModeContract(unittest.TestCase):
                                  ATLAS_QWEN4EXP_MXFP8_DECODE='0'), load_profile('8x32k'))
         self.assertEqual(env['ATLAS_QWEN4EXP_SERVING_MODE'], 'strict')
         self.assertEqual(env['ATLAS_QWEN4EXP_MXFP8_DECODE'], '1')
+
+    def test_custom_profile_rejects_invalid_or_duplicate_mtp_arguments(self):
+        mutations = [
+            ('--kernel-target=qwen3.8-flash-next', ['--kernel-target=glm5']),
+            ('--num-drafts=7', ['--num-drafts=0']),
+            ('--num-drafts=7', []),
+            ('--num-drafts=7', ['--num-drafts=-1']),
+            ('--num-drafts=7', ['--num-drafts=two']),
+            ('--speculative', ['--speculative', 'false']),
+            ('--speculative', ['--speculative', 'true']),
+        ]
+        for flag in ('--world-size=2', '--tp-size=2', '--ep-size=2',
+                     '--kv-cache-dtype=bf16', '--kernel-target=qwen3.8-flash-next',
+                     '--num-drafts=7', '--speculative'):
+            mutations.append((None, [flag]))
+        mutations.extend([(None, ['--tp-size', '1']),
+                          (None, ['--num-drafts=0']),
+                          (None, ['--speculative=false'])])
+        for mode in ('strict', 'spark'):
+            for remove, additions in mutations:
+                with self.subTest(mode=mode, remove=remove, additions=additions):
+                    profile = load_profile('8x32k')
+                    if remove:
+                        profile['server_argv'].remove(remove)
+                    profile['server_argv'].extend(additions)
+                    with self.assertRaises(ValueError):
+                        serve.launch(dict(self.env, SPARKQWEN_MODE=mode), profile)
+
+    def test_custom_profile_positive_drafts_and_split_values(self):
+        profile = load_profile('8x32k')
+        profile['server_argv'].remove('--num-drafts=7')
+        profile['server_argv'].extend(['--num-drafts', '1'])
+        for mode in ('strict', 'spark'):
+            args, _ = serve.launch(dict(self.env, SPARKQWEN_MODE=mode), profile)
+            self.assertEqual(args[args.index('--num-drafts') + 1], '1')

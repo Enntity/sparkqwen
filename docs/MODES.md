@@ -3,7 +3,9 @@
 
 Set `MODE=strict` (the default) or `MODE=spark` in `.env`, or run
 `./start.sh --mode spark`. Managed launchers pass `SPARKQWEN_MODE`; the per-node
-entry point accepts `--mode strict|spark`. Use the same mode on both ranks.
+entry point accepts `--mode strict|spark`. Use the same mode on both ranks. Custom profiles must select the Qwen kernel
+target exactly once, retain TP2/EP2 and BF16 KV, and enable native speculation
+with a positive draft count. Conflicting duplicate mode arguments are rejected.
 
 Both modes use TP2/EP2, BF16 KV, the checkpoint's native target precision and
 its native MTP head. HC and PLE norm weights remain F32; the target router and
