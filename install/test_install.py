@@ -162,6 +162,23 @@ class LaunchContract(unittest.TestCase):
         self.assertEqual(env['ATLAS_QWEN4EXP_FP8_GDN'], '0')
         self.assertNotIn('ATLAS_UNREVIEWED_EXPERIMENT', env)
 
+    def test_reviewed_operational_flags_survive_ambient_strip(self):
+        _, env = serve.launch(dict(self.environment, ATLAS_LOOP_NO_SUPPRESS='1',
+                                   ATLAS_LOG_SPIN='1', ATLAS_LOOP_NO_SUPPRESSFOO='1',
+                                   ATLAS_UNREVIEWED_EXPERIMENT='1'), self.profile)
+        self.assertEqual(env['ATLAS_LOOP_NO_SUPPRESS'], '1')
+        self.assertEqual(env['ATLAS_LOG_SPIN'], '1')
+        self.assertNotIn('ATLAS_LOOP_NO_SUPPRESSFOO', env)
+        self.assertNotIn('ATLAS_UNREVIEWED_EXPERIMENT', env)
+
+    def test_profile_still_overrides_operational_flags(self):
+        profile = dict(self.profile, environment=dict(self.profile['environment'],
+                       ATLAS_LOOP_NO_SUPPRESS='0', ATLAS_LOG_SPIN='0'))
+        _, env = serve.launch(dict(self.environment, ATLAS_LOOP_NO_SUPPRESS='1',
+                                   ATLAS_LOG_SPIN='1'), profile)
+        self.assertEqual(env['ATLAS_LOOP_NO_SUPPRESS'], '0')
+        self.assertEqual(env['ATLAS_LOG_SPIN'], '0')
+
     def test_modes_reject_legacy_lossy_opt_ins(self):
         for mode in ('strict', 'spark'):
             for value in ('1', 'yes', 'true', '2', ' 1'):

@@ -153,7 +153,11 @@ def launch(environ, profile):
         raise ValueError('MODEL_PATH must be an absolute path')
     # Profile values intentionally win over ambient optimization flags. Runtime
     # changes require a new reviewed image/profile instead of accidental tuning.
-    env = {key: value for key, value in environ.items() if not key.startswith('ATLAS_')}
+    # Keep the reviewed logging knobs and exact loop-recovery escape hatch,
+    # as in SparkGLM. The profile still overrides these operational choices.
+    env = {key: value for key, value in environ.items()
+           if not key.startswith('ATLAS_') or key.startswith('ATLAS_LOG_')
+           or key == 'ATLAS_LOOP_NO_SUPPRESS'}
     env.update(profile['environment'])
     env.update(precision)
     env['SPARKQWEN_MODE'] = mode
