@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 import re
 import sys
+import sys
 
 
 def fabric_hcas(value, sysfs=Path('/sys/class/infiniband'), siblings=True):
@@ -149,15 +150,35 @@ def profile_path(environ, here):
     return here/'profiles'/f'{name}.json'
 
 
+def release_info(here):
+    release = json.loads((here/'release.json').read_text())
+    source_path = here/'source-manifest.json'
+    if not source_path.is_file():
+        source_path = here/'atlas-source.json'
+    source = json.loads(source_path.read_text())
+    return {'product': release['product'], 'version': release['version'],
+            'engine_commit': source['commit'], 'engine_tree': source['tree']}
+
+
+def print_version(here):
+    info = release_info(here)
+    print(f"{info['product']} {info['version']}")
+    print(f"Atlas {info['engine_commit']}")
+    print(f"Engine tree {info['engine_tree']}")
+
+
 def main():
     here = Path(__file__).resolve().parent
+    if sys.argv[1:] == ['--version']:
+        print_version(here)
+        return
     profile = profile_path(os.environ, here)
     argv, env = launch(os.environ, json.loads(profile.read_text()))
     model = Path(env.get('MODEL_PATH', '/models/checkpoint'))
     if not (model/'config.json').is_file() or not (model/'model.safetensors.index.json').is_file():
         raise ValueError(f'Incomplete checkpoint at {model}')
     source = json.loads((here/'source-manifest.json').read_text())
-    print(json.dumps({'event': 'atlas-recipe-start', 'rank': env['NODE_RANK'], 'profile': profile.stem,
+    print(json.dumps({'event': 'atlas-recipe-start', **release_info(here), 'rank': env['NODE_RANK'], 'profile': profile.stem,
                       'opt_ins': sorted(k for k in OPT_INS if env.get(k) == '1'),
                       'source': f"{source['repository']}@{source['commit']}"}), flush=True)
     os.execve(argv[0], argv, env)

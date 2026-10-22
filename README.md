@@ -4,6 +4,9 @@
 
 # SparkQwen
 
+**SparkQwen 0.1.0** · [Versioning](docs/VERSIONING.md). Run `./start.sh --version`
+for this checkout, or `./start.sh status` for the version and image IDs on both ranks.
+
 Qwen3.8-Flash-Next on two NVIDIA DGX Sparks, served by the
 [Atlas](https://github.com/Enntity/atlas) inference engine: tensor and expert
 parallelism across both boxes over one ConnectX-7 cable, NVIDIA's

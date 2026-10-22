@@ -16,6 +16,7 @@ image=${SPARKQWEN_IMAGE_REPO:-ghcr.io/enntity/atlas-sparkqwen}:${tree:0:12}
 [[ $# == 0 ]] || { echo 'usage: build.sh [--tag]' >&2; exit 2; }
 [[ -z $(git -C "$product" status --porcelain --untracked-files=all -- install) ]] || {
   echo 'install/ has local changes; commit them first (the image tag is its git tree)' >&2; exit 2; }
+version=$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["version"])' "$here/release.json")
 read -r repo commit pin_tree < <(python3 -c 'import json,sys; m=json.load(open(sys.argv[1])); print(m["repository"], m["commit"], m["tree"])' "$here/atlas-source.json")
 [[ $commit =~ ^[0-9a-f]{40}$ && $pin_tree =~ ^[0-9a-f]{40}$ ]] || {
   echo "install/atlas-source.json pins no engine yet (commit '$commit', tree '$pin_tree')." >&2
@@ -35,7 +36,7 @@ GIT_LFS_SKIP_SMUDGE=1 git -C "$context/engine" -c advice.detachedHead=false chec
 git -C "$product" archive HEAD install | tar -x -C "$context"
 cp "$here/dockerignore" "$context/.dockerignore"
 
-docker build --build-arg "INSTALL_TREE=$tree" \
+docker build --build-arg "INSTALL_TREE=$tree" --build-arg "PRODUCT_VERSION=$version" \
   --build-arg "BUILD_JOBS=${ATLAS_BUILD_JOBS:-4}" \
   -f "$context/install/Dockerfile" -t "$image" "$context" >&2
 [[ $(docker image inspect -f '{{.Architecture}} {{index .Config.Labels "io.enntity.sparkqwen.install-tree"}}' "$image") == "arm64 $tree" ]] || {
