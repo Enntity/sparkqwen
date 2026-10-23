@@ -1,7 +1,7 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 # SparkQwen 0.2.0
 
-Qualification covers **Qwen3.8-Flash-Next FP4-Local only**, running across two DGX Sparks at TP2/EP2. This source release uses the common Atlas engine shared with SparkGLM. The versioned image was built locally and tested on both nodes; it has not been published to the registry or deployed as managed Qwen serving.
+Qualification covers **Qwen3.8-Flash-Next FP4-Local only**, running across two DGX Sparks at TP2/EP2. This source release uses the common Atlas engine shared with SparkGLM. The versioned image was built locally and tested on both nodes. It was subsequently published in the [0.2.0 release](https://github.com/Enntity/sparkqwen/releases/tag/v0.2.0), pulled anonymously on both nodes, and deployed in managed Spark mode. The [registry manifest](https://github.com/Enntity/sparkqwen/releases/download/v0.2.0/registry-manifest.json) records published digest `sha256:fffbd3918c3a7fd1d4f64ca8c9f1484b54aaa64811868f33a81777bacc9d993e`. Build-time receipts retain their original publication status; publication did not change the tested image or qualify additional configurations.
 
 ## Tested identity
 

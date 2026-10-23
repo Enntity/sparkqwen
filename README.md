@@ -18,34 +18,73 @@ decoding, prefix caching, and an OpenAI-compatible API. It is the sibling of
 policy and measurement rules it applies to Qwen's hybrid MoE (Gated DeltaNet
 and sparse-indexed attention, 512 experts, PLE n-gram embedding).
 
+## 0.2.0 performance and quality
+
+**Spark mode: 91.3 tok/s code, 60.9 tok/s prose, 70.2 tok/s JSON.** These are
+single-stream decode averages over three repeats on two DGX Sparks, using
+Qwen3.8-Flash-Next FP4-Local, TP2/EP2, BF16 KV, `8x262k` and utilization `0.88`.
+The previous image ran on the same pair with the same profile and memory share.
+
+| Decode, tok/s | Previous image | 0.2.0 Strict | 0.2.0 Spark |
+| --- | ---: | ---: | ---: |
+| Code | 77.62 | 75.96 | **91.33** |
+| Prose | 56.39 | 53.43 | **60.91** |
+| JSON | **75.98** | 62.01 | 70.17 |
+
+Spark measured **4.01 s cold 16K prefill TTFT** and **139.52 aggregate tok/s at
+four concurrent requests** (two repeats each). These are recipe comparisons;
+generated text can differ. There is no universal speedup: JSON and aggregate
+throughput at concurrency 1 and 2 were slower than the previous image. See the
+[full performance tables and raw repeats](results/2026-10-22-common-engine/RESULT.md#performance).
+
+| Final-image quality check | Strict | Spark |
+| --- | ---: | ---: |
+| Tool battery | 21/21 | 21/21 |
+| Arithmetic | 40/40 | 40/40 |
+| Short retrieval | 12/12 | 12/12 |
+| Schema cases | 2/2 | 2/2 |
+| Still-image cases | 4/4 | 4/4 |
+| Literal-XML canary | 30/32 | 30/32 |
+| Long retrieval | 59/60 | Two selected cases replayed; full set not rerun |
+
+**Known limits.** Both modes miss two exact-format XML cases. A separate,
+harder literal-XML fixture also fails: prose replaces the requested text on
+the OpenAI-compatible endpoint, and the Anthropic-compatible endpoint exhausts
+its completion budget. Strict misses one of 60 long-retrieval cases; Spark reproduces that failure and one selected pass,
+but has no full 60-case rerun on the final image. These small batteries are
+not a formal agentic benchmark or a general model-quality score.
+
+Both modes match the full canonical logprob array (NLL **0.9951030694** over
+27,033 scored positions), and each passed 8/8 decoded comparisons in the
+concurrency, prefix-cache and MTP/serial groups. This does not establish
+whole-model BF16 parity or generated-token-ID identity.
+
+The [qualification report](results/2026-10-22-common-engine/RESULT.md) contains
+exact identities, commands, raw receipts and checksums. Full 262K prompts,
+other profiles and the 0.70 sidecar configuration are not qualified for this
+release. Read [Limitations](docs/LIMITATIONS.md) before choosing a deployment.
+Historical measurements remain in their dated result folders and do not
+qualify 0.2.0.
+
+## Quick start
+
 ```sh
 git clone https://github.com/Enntity/sparkqwen.git
 cd sparkqwen
 cp .env.example .env      # set WORKER to the other Spark's ssh destination
-./start.sh
+PROFILE=8x262k ./start.sh --mode spark
 ```
 
-The current source pins Atlas `f1fdf272` from the common Spark engine tree.
-It includes the literal tool-XML and grammar fixes, native MXFP8 shared experts,
-F32 HC/PLE norms, and Strict/Spark modes with native MTP. The image tag is
-`e3bb830b0c66`, derived from this checkout's `install/` tree. This image has not
-been published to the registry; `./start.sh` builds the exact source pin when
-the tag is unavailable. Set `PULL=0` to select a source build directly.
-
-## Current evidence
-
-The [0.2.0 qualification](results/2026-10-22-common-engine/RESULT.md) records
-the final native build and pair replay, plus earlier numerical GPU checks and
-matched Strict/Spark comparisons against the previous published image on the same pair. It identifies the
-checkpoint, image, configuration and limitations for each measurement.
-[Limitations](docs/LIMITATIONS.md) separates the current scope from historical
-results. A version number identifies the distribution; it is not a claim of
-universal numerical parity or model quality.
-
-The previous published image (`70890529ba64`, engine `63bebfa6`) and its known
-quality limitations remain documented in the
-[2026-10-20 fidelity review](results/2026-10-20-fidelity-review/RESULT.md).
-Earlier drafter and vision measurements remain in their dated result folders.
+The [0.2.0 release](https://github.com/Enntity/sparkqwen/releases/tag/v0.2.0)
+and its container are **published**. `./start.sh` pulls
+`ghcr.io/enntity/atlas-sparkqwen:e3bb830b0c66`; the
+[registry manifest](https://github.com/Enntity/sparkqwen/releases/download/v0.2.0/registry-manifest.json)
+records digest `sha256:fffbd3918c3a7fd1d4f64ca8c9f1484b54aaa64811868f33a81777bacc9d993e`.
+Set `PULL=0` to build the pinned source instead. The image uses common Atlas
+commit `f1fdf272`, including the tool-XML and grammar fixes, native MXFP8 shared
+experts, and F32 HC/PLE norms. Omitting `--mode` selects Strict; both modes keep
+native MTP. The example and figures use `PROFILE=8x262k`; the launcher's default is
+`8x32k`.
 
 ### Choosing a checkpoint
 
