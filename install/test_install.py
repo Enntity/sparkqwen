@@ -419,7 +419,7 @@ class EnginePin(unittest.TestCase):
         self.assertEqual(pin['schema'], 'sparkqwen.atlas-engine-source/v2')
         self.assertEqual(pin['repository'], 'https://github.com/Enntity/atlas.git')
         self.assertEqual((pin['kernel_target'], pin['model_type']), ('qwen3.8-flash-next', 'qwen4_exp'))
-        self.assertTrue(pin['branch'].startswith(('sparkqwen/atlas-', 'sparkqwen/fidelity-rc-', 'feature/common-spark-engine-')))
+        self.assertEqual(pin['branch'], 'spark-shared')
         layers = pin['layers']
         commits = [pin['commit'], pin['tree'], layers['atlas_inf_main_base']] + [
             layers[k]['commit'] for k in ('glm_upstream_series', 'upstream_candidate', 'sparkqwen_only')]

@@ -2,7 +2,7 @@
   "schema": "sparkqwen.atlas-engine-source/v2",
   "note": "Exact common Spark engine commit/tree. Integrates the SparkGLM and SparkQwen histories, F32 HC/PLE norms, literal tool-XML text handling and validated Strict/Spark native-MTP modes. Model-specific execution remains gated. Build and qualification receipts identify the tested product image separately.",
   "repository": "https://github.com/Enntity/atlas.git",
-  "branch": "feature/common-spark-engine-20261022",
+  "branch": "spark-shared",
   "commit": "8649689d698d2487beba5eddbb89f2a3681d7cd2",
   "tree": "575d19019245b32b5767cf32e74a72a044bdc627",
   "layers": {
