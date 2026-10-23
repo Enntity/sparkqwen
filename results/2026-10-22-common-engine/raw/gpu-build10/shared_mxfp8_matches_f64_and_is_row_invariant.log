@@ -1,0 +1,42 @@
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.0
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+running 1 test
+test layers::moe::shared_mxfp8::gpu_tests::shared_mxfp8_matches_f64_and_is_row_invariant ... layer 0 slice 0/1 decode: gate/up 0/81920 outside f64 +- FP32 sum error; SiLU*up 40960/40960 = mx_swiglu of the plain sums (0 more than 1 ulp off); down 0/163840 outside
+layer 0 slice 0/1 prefill: gate/up 0/81920 and down 0/163840 outside f64 +- FP32 sum error of their operands; SiLU quant twins equal; 3000 rows == halves at 1344: true; rel-L2 W8A8 vs decode 4.79e-2
+layer 0 slice 0/2 decode: gate/up 0/40960 outside f64 +- FP32 sum error; SiLU*up 20480/20480 = mx_swiglu of the plain sums (0 more than 1 ulp off); down 0/163840 outside
+layer 0 slice 0/2 prefill: gate/up 0/40960 and down 0/163840 outside f64 +- FP32 sum error of their operands; SiLU quant twins equal; 3000 rows == halves at 1344: true; rel-L2 W8A8 vs decode 5.24e-2
+layer 0 slice 1/2 decode: gate/up 0/40960 outside f64 +- FP32 sum error; SiLU*up 20480/20480 = mx_swiglu of the plain sums (0 more than 1 ulp off); down 0/163840 outside
+layer 0 slice 1/2 prefill: gate/up 0/40960 and down 0/163840 outside f64 +- FP32 sum error of their operands; SiLU quant twins equal; 3000 rows == halves at 1344: true; rel-L2 W8A8 vs decode 4.37e-2
+layer 0: TP2 partials' sum vs the whole, rel-L2 3.64e-3
+layer 3 slice 0/1 decode: gate/up 0/81920 outside f64 +- FP32 sum error; SiLU*up 40960/40960 = mx_swiglu of the plain sums (0 more than 1 ulp off); down 0/163840 outside
+layer 3 slice 0/1 prefill: gate/up 0/81920 and down 0/163840 outside f64 +- FP32 sum error of their operands; SiLU quant twins equal; 3000 rows == halves at 1344: true; rel-L2 W8A8 vs decode 4.50e-2
+layer 3 slice 0/2 decode: gate/up 0/40960 outside f64 +- FP32 sum error; SiLU*up 20480/20480 = mx_swiglu of the plain sums (0 more than 1 ulp off); down 0/163840 outside
+layer 3 slice 0/2 prefill: gate/up 0/40960 and down 0/163840 outside f64 +- FP32 sum error of their operands; SiLU quant twins equal; 3000 rows == halves at 1344: true; rel-L2 W8A8 vs decode 4.52e-2
+layer 3 slice 1/2 decode: gate/up 0/40960 outside f64 +- FP32 sum error; SiLU*up 20480/20480 = mx_swiglu of the plain sums (0 more than 1 ulp off); down 0/163840 outside
+layer 3 slice 1/2 prefill: gate/up 0/40960 and down 0/163840 outside f64 +- FP32 sum error of their operands; SiLU quant twins equal; 3000 rows == halves at 1344: true; rel-L2 W8A8 vs decode 4.61e-2
+layer 3: TP2 partials' sum vs the whole, rel-L2 2.84e-3
+layer 47 slice 0/1 decode: gate/up 0/81920 outside f64 +- FP32 sum error; SiLU*up 40960/40960 = mx_swiglu of the plain sums (0 more than 1 ulp off); down 0/163840 outside
+layer 47 slice 0/1 prefill: gate/up 0/81920 and down 0/163840 outside f64 +- FP32 sum error of their operands; SiLU quant twins equal; 3000 rows == halves at 1344: true; rel-L2 W8A8 vs decode 4.43e-2
+layer 47 slice 0/2 decode: gate/up 0/40960 outside f64 +- FP32 sum error; SiLU*up 20480/20480 = mx_swiglu of the plain sums (0 more than 1 ulp off); down 0/163840 outside
+layer 47 slice 0/2 prefill: gate/up 0/40960 and down 0/163840 outside f64 +- FP32 sum error of their operands; SiLU quant twins equal; 3000 rows == halves at 1344: true; rel-L2 W8A8 vs decode 4.47e-2
+layer 47 slice 1/2 decode: gate/up 0/40960 outside f64 +- FP32 sum error; SiLU*up 20480/20480 = mx_swiglu of the plain sums (0 more than 1 ulp off); down 0/163840 outside
+layer 47 slice 1/2 prefill: gate/up 0/40960 and down 0/163840 outside f64 +- FP32 sum error of their operands; SiLU quant twins equal; 3000 rows == halves at 1344: true; rel-L2 W8A8 vs decode 4.35e-2
+layer 47: TP2 partials' sum vs the whole, rel-L2 2.84e-3
+ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 2308 filtered out; finished in 9.79s
+

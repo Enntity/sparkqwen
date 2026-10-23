@@ -1,0 +1,62 @@
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.0
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+running 1 test
+test layers::ops::qwen4exp_oracle_tests::qwen4exp_oracle_hc_matches_the_cpu_reference ... hc_expand (trunk entry):
+  all streams          max|diff|=0.0000e0 cos=1.000000000 ref_rms=5.7866e-1 tol=2.8933e-2
+
+T=1 (split collapse — the decode path)
+ attn_hyper_connection:
+  mixed_input          max|diff|=1.9137e-3 cos=0.999998590 ref_rms=2.3089e-1 tol=1.1545e-2
+  injection            max|diff|=2.3842e-7 cos=1.000000000 ref_rms=1.0156e0 tol=5.0780e-2
+  control: sum≠mean    max|diff|=2.2317e0 cos=0.999998590 ref_rms=9.2356e-1  (must be LARGE)
+ mlp_hyper_connection:
+  mixed_input          max|diff|=1.8924e-3 cos=0.999998580 ref_rms=2.3202e-1 tol=1.1601e-2
+  injection            max|diff|=1.1921e-7 cos=1.000000000 ref_rms=1.0225e0 tol=5.1124e-2
+  control: sum≠mean    max|diff|=2.2640e0 cos=0.999998580 ref_rms=9.2806e-1  (must be LARGE)
+ hyper_connection_mixer:
+  mixed_input          max|diff|=1.8944e-3 cos=0.999998645 ref_rms=2.3133e-1 tol=1.1566e-2
+
+T=64 (split collapse — the decode path)
+ attn_hyper_connection:
+  mixed_input          max|diff|=1.9517e-3 cos=0.999998614 ref_rms=2.3031e-1 tol=1.1516e-2
+  injection            max|diff|=8.9407e-7 cos=1.000000000 ref_rms=9.9815e-1 tol=4.9907e-2
+  control: sum≠mean    max|diff|=2.7504e0 cos=0.999998614 ref_rms=9.2125e-1  (must be LARGE)
+ mlp_hyper_connection:
+  mixed_input          max|diff|=1.9524e-3 cos=0.999998618 ref_rms=2.3067e-1 tol=1.1533e-2
+  injection            max|diff|=5.9605e-7 cos=1.000000000 ref_rms=9.9610e-1 tol=4.9805e-2
+  control: sum≠mean    max|diff|=2.7135e0 cos=0.999998618 ref_rms=9.2267e-1  (must be LARGE)
+ hyper_connection_mixer:
+  mixed_input          max|diff|=1.9519e-3 cos=0.999998625 ref_rms=2.3086e-1 tol=1.1543e-2
+
+T=96 (batched-GEMM collapse)
+ attn_hyper_connection:
+  mixed_input          max|diff|=1.9517e-3 cos=0.999998620 ref_rms=2.3053e-1 tol=1.1526e-2
+  injection            max|diff|=8.9407e-7 cos=1.000000000 ref_rms=1.0008e0 tol=5.0038e-2
+  control: sum≠mean    max|diff|=2.7504e0 cos=0.999998620 ref_rms=9.2211e-1  (must be LARGE)
+ mlp_hyper_connection:
+  mixed_input          max|diff|=1.9528e-3 cos=0.999998616 ref_rms=2.3090e-1 tol=1.1545e-2
+  injection            max|diff|=5.9605e-7 cos=1.000000000 ref_rms=9.9315e-1 tol=4.9658e-2
+  control: sum≠mean    max|diff|=2.7135e0 cos=0.999998616 ref_rms=9.2359e-1  (must be LARGE)
+ hyper_connection_mixer:
+  mixed_input          max|diff|=1.9519e-3 cos=0.999998624 ref_rms=2.3113e-1 tol=1.1557e-2
+
+hc_post:
+  residual             max|diff|=0.0000e0 cos=1.000000000 ref_rms=8.1630e-1 tol=4.0815e-2
+ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 2308 filtered out; finished in 2.00s
+

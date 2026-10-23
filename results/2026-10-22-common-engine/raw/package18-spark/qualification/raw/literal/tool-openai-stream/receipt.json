@@ -1,0 +1,15 @@
+{
+  "elapsed_ms": 1243.294,
+  "error": null,
+  "name": "literal/tool-openai-stream",
+  "parse_error": null,
+  "path": "/v1/chat/completions",
+  "request_bytes": 800,
+  "request_sha256": "a642e4a80549c2fc7dd5157df7c60196ec48f5a530b8360c2c11e7327caad905",
+  "response_bytes": 8129,
+  "response_sha256": "841490dbbcefd0690c1a46fdc27d1431aed53e8e60d6af66a26d3312a49c0391",
+  "sse_events": 28,
+  "status": 200,
+  "stream": true,
+  "url": "http://127.0.0.1:8893/v1/chat/completions"
+}

@@ -1,0 +1,1386 @@
+[
+  {
+    "case": "openai-inline-block",
+    "request": {
+      "model": "qwen3.8-flash-next-atlas",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Reply with exactly this text, without invoking tools: The opening tag is `<tool_call>` and this is ordinary prose. END."
+        }
+      ],
+      "max_tokens": 1024,
+      "temperature": 0,
+      "stream": false,
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "record_check",
+            "description": "Record a number",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "value"
+              ]
+            }
+          }
+        }
+      ],
+      "chat_template_kwargs": {
+        "reasoning_effort": "low"
+      }
+    },
+    "expected_content": "The opening tag is `<tool_call>` and this is ordinary prose. END.",
+    "ok": true,
+    "content": "The opening tag is `<tool_call>` and this is ordinary prose. END.",
+    "calls": [],
+    "finish": [
+      "stop"
+    ],
+    "seconds": 2.319
+  },
+  {
+    "case": "openai-fence-block",
+    "request": {
+      "model": "qwen3.8-flash-next-atlas",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Reproduce the following text exactly, including the code fence and END, as ordinary text. Do not invoke tools:\n```xml\n<tool_call>record_check<arg_key>value</arg_key><arg_value>42</arg_value></tool_call>\n```\nEND"
+        }
+      ],
+      "max_tokens": 1024,
+      "temperature": 0,
+      "stream": false,
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "record_check",
+            "description": "Record a number",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "value"
+              ]
+            }
+          }
+        }
+      ],
+      "chat_template_kwargs": {
+        "reasoning_effort": "low"
+      }
+    },
+    "expected_content": "```xml\n<tool_call>record_check<arg_key>value</arg_key><arg_value>42</arg_value></tool_call>\n```\nEND",
+    "ok": true,
+    "content": "```xml\n<tool_call>record_check<arg_key>value</arg_key><arg_value>42</arg_value></tool_call>\n```\nEND",
+    "calls": [],
+    "finish": [
+      "stop"
+    ],
+    "seconds": 1.798
+  },
+  {
+    "case": "openai-quoted-block",
+    "request": {
+      "model": "qwen3.8-flash-next-atlas",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Reply with exactly this text, without invoking tools: The opening tag is \"<tool_call>\" and this is ordinary prose. END."
+        }
+      ],
+      "max_tokens": 1024,
+      "temperature": 0,
+      "stream": false,
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "record_check",
+            "description": "Record a number",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "value"
+              ]
+            }
+          }
+        }
+      ],
+      "chat_template_kwargs": {
+        "reasoning_effort": "low"
+      }
+    },
+    "expected_content": "The opening tag is \"<tool_call>\" and this is ordinary prose. END.",
+    "ok": true,
+    "content": "The opening tag is \"<tool_call>\" and this is ordinary prose. END.",
+    "calls": [],
+    "finish": [
+      "stop"
+    ],
+    "seconds": 1.085
+  },
+  {
+    "case": "openai-closing-block",
+    "request": {
+      "model": "qwen3.8-flash-next-atlas",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Reply with exactly this text, without invoking tools: The closing tag is `</tool_call>` and this is ordinary prose. END."
+        }
+      ],
+      "max_tokens": 1024,
+      "temperature": 0,
+      "stream": false,
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "record_check",
+            "description": "Record a number",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "value"
+              ]
+            }
+          }
+        }
+      ],
+      "chat_template_kwargs": {
+        "reasoning_effort": "low"
+      }
+    },
+    "expected_content": "The closing tag is `</tool_call>` and this is ordinary prose. END.",
+    "ok": true,
+    "content": "The closing tag is `</tool_call>` and this is ordinary prose. END.",
+    "calls": [],
+    "finish": [
+      "stop"
+    ],
+    "seconds": 1.081
+  },
+  {
+    "case": "openai-plain-block",
+    "request": {
+      "model": "qwen3.8-flash-next-atlas",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Reply with exactly this text, without invoking tools: The delimiter <tool_call> opens a tool invocation. END."
+        }
+      ],
+      "max_tokens": 1024,
+      "temperature": 0,
+      "stream": false,
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "record_check",
+            "description": "Record a number",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "value"
+              ]
+            }
+          }
+        }
+      ],
+      "chat_template_kwargs": {
+        "reasoning_effort": "low"
+      }
+    },
+    "expected_content": "The delimiter <tool_call> opens a tool invocation. END.",
+    "ok": true,
+    "content": "The delimiter <tool_call> opens a tool invocation. END.",
+    "calls": [],
+    "finish": [
+      "stop"
+    ],
+    "seconds": 0.931
+  },
+  {
+    "case": "openai-no-tools-block",
+    "request": {
+      "model": "qwen3.8-flash-next-atlas",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Reply with exactly this text: The opening tag is `<tool_call>` and this is ordinary prose. END."
+        }
+      ],
+      "max_tokens": 1024,
+      "temperature": 0,
+      "stream": false,
+      "chat_template_kwargs": {
+        "reasoning_effort": "low"
+      }
+    },
+    "expected_content": "The opening tag is `<tool_call>` and this is ordinary prose. END.",
+    "ok": true,
+    "content": "The opening tag is `<tool_call>` and this is ordinary prose. END.",
+    "calls": [],
+    "finish": [
+      "stop"
+    ],
+    "seconds": 0.697
+  },
+  {
+    "case": "openai-malformed-known-block",
+    "request": {
+      "model": "qwen3.8-flash-next-atlas",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Return this exact invalid XML example in backticks, without correcting it and without invoking tools: <tool_call>record_check<arg_key>not_a_parameter</arg_key><arg_value>BAD</arg_value></tool_call> Then write END."
+        }
+      ],
+      "max_tokens": 1024,
+      "temperature": 0,
+      "stream": false,
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "record_check",
+            "description": "Record a number",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "value"
+              ]
+            }
+          }
+        }
+      ],
+      "chat_template_kwargs": {
+        "reasoning_effort": "low"
+      }
+    },
+    "ok": true,
+    "content": "`<tool_call>record_check<arg_key>not_a_parameter</arg_key><arg_value>BAD</arg_value></tool_call>`\n\nEND",
+    "calls": [],
+    "finish": [
+      "stop"
+    ],
+    "seconds": 1.347
+  },
+  {
+    "case": "openai-real-block",
+    "request": {
+      "model": "qwen3.8-flash-next-atlas",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Call record_check with value 42."
+        }
+      ],
+      "max_tokens": 1024,
+      "temperature": 0,
+      "stream": false,
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "record_check",
+            "description": "Record a number",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "value"
+              ]
+            }
+          }
+        }
+      ],
+      "chat_template_kwargs": {
+        "reasoning_effort": "low"
+      }
+    },
+    "parsed_calls": [
+      {
+        "name": "record_check",
+        "input": {
+          "value": 42
+        }
+      }
+    ],
+    "ok": true,
+    "content": "",
+    "calls": [
+      {
+        "id": "call_0000000000000004",
+        "type": "function",
+        "function": {
+          "name": "record_check",
+          "arguments": "{\"value\":42}"
+        }
+      }
+    ],
+    "finish": [
+      "tool_calls"
+    ],
+    "seconds": 1.353
+  },
+  {
+    "case": "openai-inline-stream",
+    "request": {
+      "model": "qwen3.8-flash-next-atlas",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Reply with exactly this text, without invoking tools: The opening tag is `<tool_call>` and this is ordinary prose. END."
+        }
+      ],
+      "max_tokens": 1024,
+      "temperature": 0,
+      "stream": true,
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "record_check",
+            "description": "Record a number",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "value"
+              ]
+            }
+          }
+        }
+      ],
+      "chat_template_kwargs": {
+        "reasoning_effort": "low"
+      }
+    },
+    "expected_content": "The opening tag is `<tool_call>` and this is ordinary prose. END.",
+    "ok": true,
+    "content": "\n\nThe opening tag is `<tool_call>` and this is ordinary prose. END.",
+    "calls": [],
+    "finish": [
+      "stop"
+    ],
+    "seconds": 0.946
+  },
+  {
+    "case": "openai-fence-stream",
+    "request": {
+      "model": "qwen3.8-flash-next-atlas",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Reproduce the following text exactly, including the code fence and END, as ordinary text. Do not invoke tools:\n```xml\n<tool_call>record_check<arg_key>value</arg_key><arg_value>42</arg_value></tool_call>\n```\nEND"
+        }
+      ],
+      "max_tokens": 1024,
+      "temperature": 0,
+      "stream": true,
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "record_check",
+            "description": "Record a number",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "value"
+              ]
+            }
+          }
+        }
+      ],
+      "chat_template_kwargs": {
+        "reasoning_effort": "low"
+      }
+    },
+    "expected_content": "```xml\n<tool_call>record_check<arg_key>value</arg_key><arg_value>42</arg_value></tool_call>\n```\nEND",
+    "ok": true,
+    "content": "\n\n```xml\n<tool_call>record_check<arg_key>value</arg_key><arg_value>42</arg_value></tool_call>\n```\nEND",
+    "calls": [],
+    "finish": [
+      "stop"
+    ],
+    "seconds": 1.707
+  },
+  {
+    "case": "openai-quoted-stream",
+    "request": {
+      "model": "qwen3.8-flash-next-atlas",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Reply with exactly this text, without invoking tools: The opening tag is \"<tool_call>\" and this is ordinary prose. END."
+        }
+      ],
+      "max_tokens": 1024,
+      "temperature": 0,
+      "stream": true,
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "record_check",
+            "description": "Record a number",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "value"
+              ]
+            }
+          }
+        }
+      ],
+      "chat_template_kwargs": {
+        "reasoning_effort": "low"
+      }
+    },
+    "expected_content": "The opening tag is \"<tool_call>\" and this is ordinary prose. END.",
+    "ok": true,
+    "content": "\n\nThe opening tag is \"<tool_call>\" and this is ordinary prose. END.",
+    "calls": [],
+    "finish": [
+      "stop"
+    ],
+    "seconds": 1.077
+  },
+  {
+    "case": "openai-closing-stream",
+    "request": {
+      "model": "qwen3.8-flash-next-atlas",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Reply with exactly this text, without invoking tools: The closing tag is `</tool_call>` and this is ordinary prose. END."
+        }
+      ],
+      "max_tokens": 1024,
+      "temperature": 0,
+      "stream": true,
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "record_check",
+            "description": "Record a number",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "value"
+              ]
+            }
+          }
+        }
+      ],
+      "chat_template_kwargs": {
+        "reasoning_effort": "low"
+      }
+    },
+    "expected_content": "The closing tag is `</tool_call>` and this is ordinary prose. END.",
+    "ok": true,
+    "content": "\n\nThe closing tag is `</tool_call>` and this is ordinary prose. END.",
+    "calls": [],
+    "finish": [
+      "stop"
+    ],
+    "seconds": 1.07
+  },
+  {
+    "case": "openai-plain-stream",
+    "request": {
+      "model": "qwen3.8-flash-next-atlas",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Reply with exactly this text, without invoking tools: The delimiter <tool_call> opens a tool invocation. END."
+        }
+      ],
+      "max_tokens": 1024,
+      "temperature": 0,
+      "stream": true,
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "record_check",
+            "description": "Record a number",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "value"
+              ]
+            }
+          }
+        }
+      ],
+      "chat_template_kwargs": {
+        "reasoning_effort": "low"
+      }
+    },
+    "expected_content": "The delimiter <tool_call> opens a tool invocation. END.",
+    "ok": true,
+    "content": "\n\nThe delimiter <tool_call> opens a tool invocation. END.",
+    "calls": [],
+    "finish": [
+      "stop"
+    ],
+    "seconds": 0.929
+  },
+  {
+    "case": "openai-no-tools-stream",
+    "request": {
+      "model": "qwen3.8-flash-next-atlas",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Reply with exactly this text: The opening tag is `<tool_call>` and this is ordinary prose. END."
+        }
+      ],
+      "max_tokens": 1024,
+      "temperature": 0,
+      "stream": true,
+      "chat_template_kwargs": {
+        "reasoning_effort": "low"
+      }
+    },
+    "expected_content": "The opening tag is `<tool_call>` and this is ordinary prose. END.",
+    "ok": true,
+    "content": "\n\nThe opening tag is `<tool_call>` and this is ordinary prose. END.",
+    "calls": [],
+    "finish": [
+      "stop"
+    ],
+    "seconds": 0.701
+  },
+  {
+    "case": "openai-malformed-known-stream",
+    "request": {
+      "model": "qwen3.8-flash-next-atlas",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Return this exact invalid XML example in backticks, without correcting it and without invoking tools: <tool_call>record_check<arg_key>not_a_parameter</arg_key><arg_value>BAD</arg_value></tool_call> Then write END."
+        }
+      ],
+      "max_tokens": 1024,
+      "temperature": 0,
+      "stream": true,
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "record_check",
+            "description": "Record a number",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "value"
+              ]
+            }
+          }
+        }
+      ],
+      "chat_template_kwargs": {
+        "reasoning_effort": "low"
+      }
+    },
+    "ok": true,
+    "content": "\n\n`<tool_call>record_check<arg_key>not_a_parameter</arg_key><arg_value>BAD</arg_value></tool_call>`\n\nEND",
+    "calls": [],
+    "finish": [
+      "stop"
+    ],
+    "seconds": 1.32
+  },
+  {
+    "case": "openai-real-stream",
+    "request": {
+      "model": "qwen3.8-flash-next-atlas",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Call record_check with value 42."
+        }
+      ],
+      "max_tokens": 1024,
+      "temperature": 0,
+      "stream": true,
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "record_check",
+            "description": "Record a number",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "value"
+              ]
+            }
+          }
+        }
+      ],
+      "chat_template_kwargs": {
+        "reasoning_effort": "low"
+      }
+    },
+    "parsed_calls": [
+      {
+        "name": "record_check",
+        "input": {
+          "value": 42
+        }
+      }
+    ],
+    "ok": true,
+    "content": "\n\n",
+    "calls": [
+      {
+        "index": 0,
+        "id": "call_0000000000000005",
+        "type": "function",
+        "function": {
+          "name": "record_check",
+          "arguments": ""
+        }
+      },
+      {
+        "index": 0,
+        "function": {
+          "arguments": "{\"value\":42"
+        }
+      },
+      {
+        "index": 0,
+        "function": {
+          "arguments": "}"
+        }
+      }
+    ],
+    "finish": [
+      "tool_calls"
+    ],
+    "seconds": 1.324
+  },
+  {
+    "case": "anthropic-inline-block",
+    "request": {
+      "model": "qwen3.8-flash-next-atlas",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Reply with exactly this text, without invoking tools: The opening tag is `<tool_call>` and this is ordinary prose. END."
+        }
+      ],
+      "max_tokens": 1024,
+      "temperature": 0,
+      "stream": false,
+      "tools": [
+        {
+          "name": "record_check",
+          "description": "Record a number",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "value"
+            ]
+          }
+        }
+      ]
+    },
+    "expected_content": "The opening tag is `<tool_call>` and this is ordinary prose. END.",
+    "ok": true,
+    "content": "The opening tag is `<tool_call>` and this is ordinary prose. END.",
+    "calls": [],
+    "finish": [
+      "end_turn"
+    ],
+    "seconds": 1.566
+  },
+  {
+    "case": "anthropic-fence-block",
+    "request": {
+      "model": "qwen3.8-flash-next-atlas",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Reproduce the following text exactly, including the code fence and END, as ordinary text. Do not invoke tools:\n```xml\n<tool_call>record_check<arg_key>value</arg_key><arg_value>42</arg_value></tool_call>\n```\nEND"
+        }
+      ],
+      "max_tokens": 1024,
+      "temperature": 0,
+      "stream": false,
+      "tools": [
+        {
+          "name": "record_check",
+          "description": "Record a number",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "value"
+            ]
+          }
+        }
+      ]
+    },
+    "expected_content": "```xml\n<tool_call>record_check<arg_key>value</arg_key><arg_value>42</arg_value></tool_call>\n```\nEND",
+    "ok": false,
+    "content": "```xml\n<tool_call>record_check<arg_key>value</arg_key><arg_value>42</arg_value>\n</tool_call>\n```\nEND",
+    "calls": [],
+    "finish": [
+      "end_turn"
+    ],
+    "seconds": 2.758
+  },
+  {
+    "case": "anthropic-quoted-block",
+    "request": {
+      "model": "qwen3.8-flash-next-atlas",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Reply with exactly this text, without invoking tools: The opening tag is \"<tool_call>\" and this is ordinary prose. END."
+        }
+      ],
+      "max_tokens": 1024,
+      "temperature": 0,
+      "stream": false,
+      "tools": [
+        {
+          "name": "record_check",
+          "description": "Record a number",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "value"
+            ]
+          }
+        }
+      ]
+    },
+    "expected_content": "The opening tag is \"<tool_call>\" and this is ordinary prose. END.",
+    "ok": true,
+    "content": "The opening tag is \"<tool_call>\" and this is ordinary prose. END.",
+    "calls": [],
+    "finish": [
+      "end_turn"
+    ],
+    "seconds": 1.466
+  },
+  {
+    "case": "anthropic-closing-block",
+    "request": {
+      "model": "qwen3.8-flash-next-atlas",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Reply with exactly this text, without invoking tools: The closing tag is `</tool_call>` and this is ordinary prose. END."
+        }
+      ],
+      "max_tokens": 1024,
+      "temperature": 0,
+      "stream": false,
+      "tools": [
+        {
+          "name": "record_check",
+          "description": "Record a number",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "value"
+            ]
+          }
+        }
+      ]
+    },
+    "expected_content": "The closing tag is `</tool_call>` and this is ordinary prose. END.",
+    "ok": true,
+    "content": "The closing tag is `</tool_call>` and this is ordinary prose. END.",
+    "calls": [],
+    "finish": [
+      "end_turn"
+    ],
+    "seconds": 1.538
+  },
+  {
+    "case": "anthropic-plain-block",
+    "request": {
+      "model": "qwen3.8-flash-next-atlas",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Reply with exactly this text, without invoking tools: The delimiter <tool_call> opens a tool invocation. END."
+        }
+      ],
+      "max_tokens": 1024,
+      "temperature": 0,
+      "stream": false,
+      "tools": [
+        {
+          "name": "record_check",
+          "description": "Record a number",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "value"
+            ]
+          }
+        }
+      ]
+    },
+    "expected_content": "The delimiter <tool_call> opens a tool invocation. END.",
+    "ok": true,
+    "content": "The delimiter <tool_call> opens a tool invocation. END.",
+    "calls": [],
+    "finish": [
+      "end_turn"
+    ],
+    "seconds": 1.35
+  },
+  {
+    "case": "anthropic-no-tools-block",
+    "request": {
+      "model": "qwen3.8-flash-next-atlas",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Reply with exactly this text: The opening tag is `<tool_call>` and this is ordinary prose. END."
+        }
+      ],
+      "max_tokens": 1024,
+      "temperature": 0,
+      "stream": false
+    },
+    "expected_content": "The opening tag is `<tool_call>` and this is ordinary prose. END.",
+    "ok": true,
+    "content": "The opening tag is `<tool_call>` and this is ordinary prose. END.",
+    "calls": [],
+    "finish": [
+      "end_turn"
+    ],
+    "seconds": 1.065
+  },
+  {
+    "case": "anthropic-malformed-known-block",
+    "request": {
+      "model": "qwen3.8-flash-next-atlas",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Return this exact invalid XML example in backticks, without correcting it and without invoking tools: <tool_call>record_check<arg_key>not_a_parameter</arg_key><arg_value>BAD</arg_value></tool_call> Then write END."
+        }
+      ],
+      "max_tokens": 1024,
+      "temperature": 0,
+      "stream": false,
+      "tools": [
+        {
+          "name": "record_check",
+          "description": "Record a number",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "value"
+            ]
+          }
+        }
+      ]
+    },
+    "ok": true,
+    "content": "`<tool_call>record_check<arg_key>not_a_parameter</arg_key><arg_value>BAD</arg_value></tool_call>`\nEND",
+    "calls": [],
+    "finish": [
+      "end_turn"
+    ],
+    "seconds": 4.969
+  },
+  {
+    "case": "anthropic-real-block",
+    "request": {
+      "model": "qwen3.8-flash-next-atlas",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Call record_check with value 42."
+        }
+      ],
+      "max_tokens": 1024,
+      "temperature": 0,
+      "stream": false,
+      "tools": [
+        {
+          "name": "record_check",
+          "description": "Record a number",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "value"
+            ]
+          }
+        }
+      ]
+    },
+    "parsed_calls": [
+      {
+        "name": "record_check",
+        "input": {
+          "value": 42
+        }
+      }
+    ],
+    "ok": true,
+    "content": "",
+    "calls": [
+      {
+        "type": "tool_use",
+        "id": "call_0000000000000006",
+        "name": "record_check",
+        "input": {
+          "value": 42
+        }
+      }
+    ],
+    "finish": [
+      "tool_use"
+    ],
+    "seconds": 1.372
+  },
+  {
+    "case": "anthropic-inline-stream",
+    "request": {
+      "model": "qwen3.8-flash-next-atlas",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Reply with exactly this text, without invoking tools: The opening tag is `<tool_call>` and this is ordinary prose. END."
+        }
+      ],
+      "max_tokens": 1024,
+      "temperature": 0,
+      "stream": true,
+      "tools": [
+        {
+          "name": "record_check",
+          "description": "Record a number",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "value"
+            ]
+          }
+        }
+      ]
+    },
+    "expected_content": "The opening tag is `<tool_call>` and this is ordinary prose. END.",
+    "ok": true,
+    "content": "\n\nThe opening tag is `<tool_call>` and this is ordinary prose. END.",
+    "calls": [],
+    "finish": [
+      "end_turn"
+    ],
+    "seconds": 1.449
+  },
+  {
+    "case": "anthropic-fence-stream",
+    "request": {
+      "model": "qwen3.8-flash-next-atlas",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Reproduce the following text exactly, including the code fence and END, as ordinary text. Do not invoke tools:\n```xml\n<tool_call>record_check<arg_key>value</arg_key><arg_value>42</arg_value></tool_call>\n```\nEND"
+        }
+      ],
+      "max_tokens": 1024,
+      "temperature": 0,
+      "stream": true,
+      "tools": [
+        {
+          "name": "record_check",
+          "description": "Record a number",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "value"
+            ]
+          }
+        }
+      ]
+    },
+    "expected_content": "```xml\n<tool_call>record_check<arg_key>value</arg_key><arg_value>42</arg_value></tool_call>\n```\nEND",
+    "ok": false,
+    "content": "\n\n```xml\n<tool_call>record_check<arg_key>value</arg_key><arg_value>42</arg_value>\n</tool_call>\n```\nEND",
+    "calls": [],
+    "finish": [
+      "end_turn"
+    ],
+    "seconds": 2.669
+  },
+  {
+    "case": "anthropic-quoted-stream",
+    "request": {
+      "model": "qwen3.8-flash-next-atlas",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Reply with exactly this text, without invoking tools: The opening tag is \"<tool_call>\" and this is ordinary prose. END."
+        }
+      ],
+      "max_tokens": 1024,
+      "temperature": 0,
+      "stream": true,
+      "tools": [
+        {
+          "name": "record_check",
+          "description": "Record a number",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "value"
+            ]
+          }
+        }
+      ]
+    },
+    "expected_content": "The opening tag is \"<tool_call>\" and this is ordinary prose. END.",
+    "ok": true,
+    "content": "\n\nThe opening tag is \"<tool_call>\" and this is ordinary prose. END.",
+    "calls": [],
+    "finish": [
+      "end_turn"
+    ],
+    "seconds": 1.446
+  },
+  {
+    "case": "anthropic-closing-stream",
+    "request": {
+      "model": "qwen3.8-flash-next-atlas",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Reply with exactly this text, without invoking tools: The closing tag is `</tool_call>` and this is ordinary prose. END."
+        }
+      ],
+      "max_tokens": 1024,
+      "temperature": 0,
+      "stream": true,
+      "tools": [
+        {
+          "name": "record_check",
+          "description": "Record a number",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "value"
+            ]
+          }
+        }
+      ]
+    },
+    "expected_content": "The closing tag is `</tool_call>` and this is ordinary prose. END.",
+    "ok": true,
+    "content": "\n\nThe closing tag is `</tool_call>` and this is ordinary prose. END.",
+    "calls": [],
+    "finish": [
+      "end_turn"
+    ],
+    "seconds": 1.517
+  },
+  {
+    "case": "anthropic-plain-stream",
+    "request": {
+      "model": "qwen3.8-flash-next-atlas",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Reply with exactly this text, without invoking tools: The delimiter <tool_call> opens a tool invocation. END."
+        }
+      ],
+      "max_tokens": 1024,
+      "temperature": 0,
+      "stream": true,
+      "tools": [
+        {
+          "name": "record_check",
+          "description": "Record a number",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "value"
+            ]
+          }
+        }
+      ]
+    },
+    "expected_content": "The delimiter <tool_call> opens a tool invocation. END.",
+    "ok": true,
+    "content": "\n\nThe delimiter <tool_call> opens a tool invocation. END.",
+    "calls": [],
+    "finish": [
+      "end_turn"
+    ],
+    "seconds": 1.335
+  },
+  {
+    "case": "anthropic-no-tools-stream",
+    "request": {
+      "model": "qwen3.8-flash-next-atlas",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Reply with exactly this text: The opening tag is `<tool_call>` and this is ordinary prose. END."
+        }
+      ],
+      "max_tokens": 1024,
+      "temperature": 0,
+      "stream": true
+    },
+    "expected_content": "The opening tag is `<tool_call>` and this is ordinary prose. END.",
+    "ok": true,
+    "content": "\n\nThe opening tag is `<tool_call>` and this is ordinary prose. END.",
+    "calls": [],
+    "finish": [
+      "end_turn"
+    ],
+    "seconds": 1.071
+  },
+  {
+    "case": "anthropic-malformed-known-stream",
+    "request": {
+      "model": "qwen3.8-flash-next-atlas",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Return this exact invalid XML example in backticks, without correcting it and without invoking tools: <tool_call>record_check<arg_key>not_a_parameter</arg_key><arg_value>BAD</arg_value></tool_call> Then write END."
+        }
+      ],
+      "max_tokens": 1024,
+      "temperature": 0,
+      "stream": true,
+      "tools": [
+        {
+          "name": "record_check",
+          "description": "Record a number",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "value"
+            ]
+          }
+        }
+      ]
+    },
+    "ok": true,
+    "content": "\n\n`<tool_call>record_check<arg_key>not_a_parameter</arg_key><arg_value>BAD</arg_value></tool_call>`\nEND",
+    "calls": [],
+    "finish": [
+      "end_turn"
+    ],
+    "seconds": 4.9
+  },
+  {
+    "case": "anthropic-real-stream",
+    "request": {
+      "model": "qwen3.8-flash-next-atlas",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Call record_check with value 42."
+        }
+      ],
+      "max_tokens": 1024,
+      "temperature": 0,
+      "stream": true,
+      "tools": [
+        {
+          "name": "record_check",
+          "description": "Record a number",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "value"
+            ]
+          }
+        }
+      ]
+    },
+    "parsed_calls": [
+      {
+        "name": "record_check",
+        "input": {
+          "value": 42
+        }
+      }
+    ],
+    "ok": true,
+    "content": "\n\n",
+    "calls": [
+      {
+        "index": 2,
+        "type": "tool_use",
+        "id": "call_0000000000000007",
+        "name": "record_check",
+        "input": {}
+      },
+      {
+        "index": 2,
+        "type": "input_json_delta",
+        "partial_json": "{\"value\":42"
+      },
+      {
+        "index": 2,
+        "type": "input_json_delta",
+        "partial_json": "}"
+      }
+    ],
+    "finish": [
+      "tool_use"
+    ],
+    "seconds": 1.374
+  }
+]

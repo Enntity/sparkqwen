@@ -1,0 +1,35 @@
+{
+  "product_build_commit": "39f57764cfca710143615f42bf68d319cb7ad111",
+  "install_tree": "e3bb830b0c662b1a547a8c8d5aba1a37fed3c25b",
+  "checks": [
+    {
+      "name": "contracts",
+      "exit": 0
+    },
+    {
+      "name": "shell",
+      "exit": 0
+    },
+    {
+      "name": "python",
+      "exit": 0
+    },
+    {
+      "name": "javascript",
+      "exit": 0
+    },
+    {
+      "name": "json",
+      "exit": 0
+    },
+    {
+      "name": "all result checksums",
+      "exit": 0
+    },
+    {
+      "name": "changed document local links",
+      "exit": 0
+    }
+  ],
+  "launcher_tests": 46
+}

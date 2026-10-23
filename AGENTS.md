@@ -6,13 +6,18 @@ claim.
 
 - Keep it simple: one entry point (`start.sh`), one install directory, one
   results tree. Prefer removing code to adding it.
+- SparkQwen supports Qwen3.8-Flash-Next only. Qualify the actual pinned
+  product checkpoint and image across the pair. Atlas benchmarks using dense
+  Qwen or other model families are separate engine evidence; they cannot
+  qualify SparkQwen or replace its product tests. Verify model and rank
+  identities before starting a qualification run.
 - The image tag is the git tree of `install/`. Anything that changes the image
   must live in `install/`, and nothing else should.
-- Engine changes belong in `Enntity/atlas`, never in this repository:
-  upstream-worthy work on a focused branch cut from Atlas-Inf `main`, then
-  into the `upstream/qwen38-flash-next-*` series; SparkQwen-only work on the
-  `sparkqwen/*` branch. Then update the pin in `install/atlas-source.json`
-  (commit and tree together) and `docs/ENGINE.md`. Never push to Atlas-Inf.
+- Engine changes belong in `Enntity/atlas`, on the shared `spark-shared`
+  engine used by SparkGLM and SparkQwen. Open and merge PRs only in Enntity's
+  repositories. Never push or open PRs in Atlas-Inf. Update the exact commit
+  and tree together in `install/atlas-source.json` and `docs/ENGINE.md` after
+  qualification; keep product packaging here.
 - This repository holds accepted work only. Plans, porting logs, WIP and
   host-specific notes go to a private notes repository. Keep host names, user names, private addresses and home
   paths out of everything here except the unedited receipts in

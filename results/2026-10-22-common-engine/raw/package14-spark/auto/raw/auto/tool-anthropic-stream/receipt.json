@@ -1,0 +1,15 @@
+{
+  "elapsed_ms": 2475.002,
+  "error": null,
+  "name": "auto/tool-anthropic-stream",
+  "parse_error": null,
+  "path": "/v1/messages",
+  "request_bytes": 701,
+  "request_sha256": "bd3de7b4e6be6ac94b139b90cc9f6b32849d20f9831aeb0ae603567b8187268d",
+  "response_bytes": 13074,
+  "response_sha256": "c72754f3774d128235fa5e76b2fceeec1fc7033768a61be9d086d41988c765e7",
+  "sse_events": 102,
+  "status": 200,
+  "stream": true,
+  "url": "http://127.0.0.1:8893/v1/messages"
+}

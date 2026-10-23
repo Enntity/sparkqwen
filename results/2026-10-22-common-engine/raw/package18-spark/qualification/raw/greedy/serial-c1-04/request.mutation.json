@@ -1,0 +1,14 @@
+{
+  "after": true,
+  "before": null,
+  "before_present": false,
+  "changed_keys": [
+    "disable_mtp"
+  ],
+  "control": "same_server_disable_mtp",
+  "exact_request_sha256": "392cc5d8b0f464fed6f3706a039db573c50ad01a8d9c693178d35d01a0016fe3",
+  "field": "disable_mtp",
+  "mutated": true,
+  "only_mutation": true,
+  "sent_request_sha256": "5b785eee240d9ab1d629c7a4407bec5475d43859b23bcc8de0cd9e76d430e687"
+}

@@ -1,0 +1,67 @@
+{
+  "sha": "f1fdf272cd54322ce82ad40814e19ef9915949f3",
+  "time": "2026-10-23T03:31:14.851442+00:00",
+  "checks": [
+    {
+      "name": "fmt",
+      "command": [
+        "cargo",
+        "fmt",
+        "--all",
+        "--",
+        "--check"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "spdx",
+      "command": [
+        "python3",
+        "scripts/check_spdx.py"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "kernel-shadows",
+      "command": [
+        "python3",
+        "scripts/check_kernel_shadows.py"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "kernel-names",
+      "command": [
+        "python3",
+        "scripts/dev/check_qwen4exp_kernel_names.py"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "typos",
+      "command": [
+        "/private/tmp/qwen-tools/bin/typos"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "mdbook",
+      "command": [
+        "/private/tmp/qwen-tools/bin/mdbook",
+        "build",
+        "book"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "rustdoc",
+      "command": [
+        "cargo",
+        "doc",
+        "--workspace",
+        "--no-deps"
+      ],
+      "exit": 0
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+{"model": "qwen3.8-flash-next-atlas", "max_tokens": 320, "temperature": 0, "messages": [{"role": "user", "content": "Implement a thread-safe LRU cache in Rust with get and put, and explain the design briefly."}], "chat_template_kwargs": {"reasoning_effort": "low"}}

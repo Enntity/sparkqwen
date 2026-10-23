@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "choices": [
+    {
+      "passed": true,
+      "status": 200,
+      "finish_reason": "stop",
+      "content": "red circle\nblue square\ngreen triangle\norange circle\npurple square",
+      "normalized_lines": [
+        "red circle",
+        "blue square",
+        "green triangle",
+        "orange circle",
+        "purple square"
+      ],
+      "expected_lines": [
+        "red circle",
+        "blue square",
+        "green triangle",
+        "orange circle",
+        "purple square"
+      ]
+    },
+    {
+      "passed": true,
+      "status": 200,
+      "finish_reason": "stop",
+      "content": "red circle\nblue square\ngreen triangle\norange circle\npurple square",
+      "normalized_lines": [
+        "red circle",
+        "blue square",
+        "green triangle",
+        "orange circle",
+        "purple square"
+      ],
+      "expected_lines": [
+        "red circle",
+        "blue square",
+        "green triangle",
+        "orange circle",
+        "purple square"
+      ]
+    }
+  ]
+}

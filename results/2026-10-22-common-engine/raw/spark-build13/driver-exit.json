@@ -1,0 +1,5 @@
+{
+  "exit_code": 1,
+  "reason": "XML exact-format canary30/32, two Anthropic fence newline misses",
+  "independent_phases_completed": true
+}

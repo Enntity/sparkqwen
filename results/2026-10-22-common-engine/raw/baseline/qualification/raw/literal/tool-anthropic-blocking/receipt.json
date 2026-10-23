@@ -1,0 +1,15 @@
+{
+  "elapsed_ms": 829.561,
+  "error": null,
+  "name": "literal/tool-anthropic-blocking",
+  "parse_error": null,
+  "path": "/v1/messages",
+  "request_bytes": 609,
+  "request_sha256": "87e6cb72da1f40887ebcc8114f86fe2c06b17a9a7adeeb42e08fb1d08abafd86",
+  "response_bytes": 405,
+  "response_sha256": "b039716f2dc575b6ba742eaa60e4dbee8ec2ba961ba9def7c7597c6a522aa6f6",
+  "sse_events": null,
+  "status": 200,
+  "stream": false,
+  "url": "http://127.0.0.1:8893/v1/messages"
+}

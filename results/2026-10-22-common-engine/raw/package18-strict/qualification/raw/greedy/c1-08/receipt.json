@@ -1,0 +1,15 @@
+{
+  "elapsed_ms": 6229.587,
+  "error": null,
+  "name": "greedy/c1-08",
+  "parse_error": null,
+  "path": "/v1/chat/completions",
+  "request_bytes": 266,
+  "request_sha256": "fbde399d92f851bfdd563eee9e949fad009dbab784f3317e1c0dc71d9a4077ad",
+  "response_bytes": 2117,
+  "response_sha256": "249a420734f1683fcd90e57845abb616b9d53af6991941b7072bc0cc842ca470",
+  "sse_events": null,
+  "status": 200,
+  "stream": false,
+  "url": "http://127.0.0.1:8893/v1/chat/completions"
+}

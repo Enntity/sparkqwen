@@ -1,0 +1,72 @@
+{
+  "comparison": "C1 decoded fields",
+  "fields": [
+    "reasoning_content",
+    "content",
+    "tool_calls",
+    "finish_reason",
+    "prompt_tokens",
+    "completion_tokens"
+  ],
+  "cases": [
+    {
+      "case": 1,
+      "request_equal": true,
+      "left_response_sha256": "871a42213ea3c31c8484d29a01dc4851d11cb5b4681099adfc95771a83c3a946",
+      "right_response_sha256": "efcfc10fc821909e6c31847b9704352bb0e929a72ab0af9916a752da8662f0bc",
+      "mismatched_fields": []
+    },
+    {
+      "case": 2,
+      "request_equal": true,
+      "left_response_sha256": "0fff049c0256a199f005d323fbea37ea9ec85d6de6535a8a39f3ce9594a8f49a",
+      "right_response_sha256": "f6f4bfee973b6aca5520e66aaffdb14741ccfdf012e619a6831bab826ad30fae",
+      "mismatched_fields": []
+    },
+    {
+      "case": 3,
+      "request_equal": true,
+      "left_response_sha256": "d4a697b2a7e95f97cab3acabb4a81439c209e4561e9fcb73bde32cbd48302f6d",
+      "right_response_sha256": "0f38b3b90650b29dd9ab5497359c5279e3d75b0759f65b1f17b5774ef1ab4077",
+      "mismatched_fields": []
+    },
+    {
+      "case": 4,
+      "request_equal": true,
+      "left_response_sha256": "02bcabb7614c77ddf100b40a07a3e07e5d2c9ca0a1e1b777855bde71a4fd93fb",
+      "right_response_sha256": "cf0a70ab16064b13d8a8d9575098cbaa2ba38dedfefa3e1c3b391afe6251c3b9",
+      "mismatched_fields": []
+    },
+    {
+      "case": 5,
+      "request_equal": true,
+      "left_response_sha256": "f476b536d819ea16a34c448d0657f5d401c7968e2b3360bff0cd7519b32cad62",
+      "right_response_sha256": "6bd81c1e1e464b406a612b8a796593c48605c3ba4ce1913d0fdece01c9cee03a",
+      "mismatched_fields": []
+    },
+    {
+      "case": 6,
+      "request_equal": true,
+      "left_response_sha256": "52b6acc5fb16567cee622a0a6046369794ff5125312a5cd04e323e8e2fd93ec1",
+      "right_response_sha256": "33dbcf545a56c3944c343a5bfa345b5146c7f882addd39c1b73e313091dc4949",
+      "mismatched_fields": []
+    },
+    {
+      "case": 7,
+      "request_equal": true,
+      "left_response_sha256": "ec5792b815c3f054f593b37c16e1fb57e470be3797a15212779d98c6ef7992ca",
+      "right_response_sha256": "c6a7adb46fc18c62bcc9a2f8d73b41c2a6994eff6206657891824c09f223890a",
+      "mismatched_fields": []
+    },
+    {
+      "case": 8,
+      "request_equal": true,
+      "left_response_sha256": "8d0e6b0f3b539571f53f8682b54c707343edf7318c850a611b93ba2f0940f9ae",
+      "right_response_sha256": "12b86fd11645458deaf5731a584b73676e9937627c25390d62ba9b5470f448b8",
+      "mismatched_fields": []
+    }
+  ],
+  "matched": 8,
+  "total": 8,
+  "note": "Decoded-field equality on this sample; generated token IDs are not exposed."
+}

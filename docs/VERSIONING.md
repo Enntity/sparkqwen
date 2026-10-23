@@ -26,8 +26,8 @@ Before publishing a changed distribution, bump the version in `install/release.j
 
 Documentation-only changes do not need a version bump. Do not reuse a published
 version for different distribution contents. Tag GitHub releases `vMAJOR.MINOR.PATCH`
-and record the product commit, full install tree, Atlas commit/tree and image digest
-in the release assets. Engine pins and image digests remain immutable identities;
+and record the product commit, full install tree, Atlas commit/tree and local image ID
+in the release assets. If published to a registry, also record its manifest digest. Engine pins and image digests remain immutable identities;
 versions do not replace them. Image tags remain the first 12 characters of the
 `install/` tree hash, and `start.sh` continues to select that exact tag.
 

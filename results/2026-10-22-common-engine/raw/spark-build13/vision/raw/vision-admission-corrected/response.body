@@ -1,0 +1,1 @@
+{"error":{"message":"vision input too large: the first 9 of 50 images already need 36135 vision tokens, more than the 32768 this server accepts per request; send fewer or smaller images","type":"invalid_request_error","param":"messages","code":"vision_input_too_large","hint":null}}

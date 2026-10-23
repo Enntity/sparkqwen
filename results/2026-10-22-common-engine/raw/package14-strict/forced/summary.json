@@ -1,0 +1,175 @@
+{
+  "tool-anthropic-blocking": {
+    "protocol_ok": true,
+    "semantic_ok": true,
+    "view": {
+      "content": [
+        {
+          "thinking": "We need to respond to user: \"Call get_weather for Paris.\" Need use tool. Need call get_weather with city Paris. Then likely report result.\n",
+          "type": "thinking"
+        },
+        {
+          "id": "call_0000000000000002",
+          "input": {
+            "city": "Paris"
+          },
+          "name": "get_weather",
+          "type": "tool_use"
+        }
+      ],
+      "id": "msg_b783bf16-58a3-4243-b074-9f83850566eb",
+      "model": "qwen3.8-flash-next-atlas",
+      "role": "assistant",
+      "stop_reason": "tool_use",
+      "stop_sequence": null,
+      "type": "message",
+      "usage": {
+        "cache_read_input_tokens": 0,
+        "input_tokens": 318,
+        "output_tokens": 59
+      }
+    }
+  },
+  "tool-anthropic-stream": {
+    "protocol_ok": true,
+    "semantic_ok": true,
+    "view": {
+      "event_names": [
+        "message_start",
+        "content_block_start",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_stop",
+        "content_block_start",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_stop",
+        "message_delta",
+        "message_stop"
+      ],
+      "stop_reason": "tool_use",
+      "text": "",
+      "tools": [
+        {
+          "id": "call_0000000000000003",
+          "input": {},
+          "name": "get_weather",
+          "partial_json": "{\"city\":\"Paris\"}",
+          "type": "tool_use"
+        }
+      ],
+      "usage": {
+        "cache_read_input_tokens": 304,
+        "input_tokens": 318,
+        "output_tokens": 59
+      }
+    }
+  },
+  "tool-openai-blocking": {
+    "protocol_ok": true,
+    "semantic_ok": true,
+    "view": {
+      "completion_tokens": 49,
+      "content": null,
+      "finish_reason": "tool_calls",
+      "prompt_tokens": 306,
+      "reasoning_content": "The user wants me to call the get_weather tool for Paris. This is a straightforward single tool call.\n",
+      "tool_calls": [
+        {
+          "function": {
+            "arguments": "{\"city\":\"Paris\"}",
+            "name": "get_weather"
+          },
+          "id": "call_0000000000000000",
+          "type": "function"
+        }
+      ],
+      "usage": {
+        "completion_tokens": 49,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 22,
+          "audio_tokens": 0,
+          "reasoning_tokens": 21,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens": 306,
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        },
+        "response_token/s": 42.062559771335586,
+        "time_to_first_token_ms": 323.585279,
+        "total_tokens": 355
+      }
+    }
+  },
+  "tool-openai-stream": {
+    "protocol_ok": true,
+    "semantic_ok": true,
+    "view": {
+      "completion_tokens": 49,
+      "content": "",
+      "finish_reason": "tool_calls",
+      "prompt_tokens": 306,
+      "reasoning_content": "The user wants me to call the get_weather tool for Paris. This is a straightforward single tool call.\n",
+      "tool_calls": [
+        {
+          "function": {
+            "arguments": "{\"city\":\"Paris\"}",
+            "name": "get_weather"
+          },
+          "id": "call_0000000000000001",
+          "index": 0,
+          "type": "function"
+        }
+      ],
+      "usage": {
+        "completion_tokens": 49,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 21,
+          "audio_tokens": 0,
+          "reasoning_tokens": 21,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens": 306,
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 304
+        },
+        "response_token/s": 40.193051917549376,
+        "time_to_first_token_ms": 143.49721300000002,
+        "total_tokens": 355
+      }
+    }
+  }
+}

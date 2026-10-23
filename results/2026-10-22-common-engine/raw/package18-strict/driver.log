@@ -1,0 +1,10 @@
+PACKAGE18 strict SMOKE PASS
+PACKAGE18 strict REPLAY PASS
+{
+  "mode": "strict",
+  "tools": "21/21",
+  "arithmetic": "40/40",
+  "retrieval": "12/12",
+  "xml_full": "inspect retained summary and exact failures"
+}
+PRODUCT18 strict FULL RUN COMPLETE; inspect retained long/XML results

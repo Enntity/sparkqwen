@@ -1,0 +1,18 @@
+{
+  "engine_commit": "8649689d698d2487beba5eddbb89f2a3681d7cd2",
+  "engine_tree": "575d19019245b32b5767cf32e74a72a044bdc627",
+  "product_commit": "a3f17b4082015085dd63d7e38b35f420245ac740",
+  "install_tree": "29ff2889abf27adea6d9dacf49ec114f6a648ed6",
+  "image": "ghcr.io/enntity/atlas-sparkqwen:29ff2889abf2",
+  "image_id": "sha256:93d4cf2ece6914e3e218f4f324fac6454a4268f43ba84e234f8f45e322757e5e",
+  "version": "0.2.0",
+  "result": "passed: full native workspace tests and Clippy",
+  "log": "checks/build-13.log",
+  "log_sha256": "7935e9eb1d3c3791bb26283c2a78525aa554bec2a8950d7250de18e97f01aca1",
+  "test_summary": {
+    "target_result_rows": 84,
+    "passed": 8054,
+    "failed": 0,
+    "ignored": 255
+  }
+}

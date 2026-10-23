@@ -8,8 +8,8 @@ kernel target `qwen3.8-flash-next` (model type `qwen4_exp`).
 [`install/build.sh`](../install/build.sh) refuses any other tree.
 
 SparkQwen 0.2.0 uses the common `spark-shared` engine tree.
-The pinned snapshot on `spark-shared` is `8649689d`
-(tree `575d1901`). It brings together
+The pinned snapshot on `spark-shared` is `f1fdf272`
+(tree `f3b0524e`). It brings together
 the SparkGLM literal-XML and grammar fixes, packed-prefill and split-score paths,
 and SparkQwen's native MXFP8 shared expert, F32 HC/PLE norms, row-invariant
 prefill and native MTP. The source history retains both product branches.
@@ -57,8 +57,9 @@ form the shared layer `upstream/atlas-shared-20261015-vision`:
 
 1. **Atlas-Inf `main` at `7ffd183f`.**
 2. **SparkGLM's upstream GLM-5.3-Flash series** (tags `upstream/glm53-flash-*`,
-   the series [SparkGLM](https://github.com/Enntity/sparkglm) intends to
-   propose to Atlas-Inf). It carries the model-independent work: prefill FIFO
+   historically organized as an upstream proposal series in the Enntity fork).
+   This integration and its PRs remain in Enntity repositories. It carries the
+   model-independent work: prefill FIFO
    and SRPT ordering, disconnect retirement, strict structured output with
    linear-cost grammar compile, `min_tokens` end-ban, whole-block prefix
    sharing, CUTLASS error drain, race hardening, KV sizing from the engine's
@@ -67,7 +68,7 @@ form the shared layer `upstream/atlas-shared-20261015-vision`:
    command ring). Its GLM-only paths are gated by model type or kernel target
    and stay off for `qwen4_exp`.
 3. **The Qwen3.8-Flash-Next series** (`upstream/qwen38-flash-next-*`), in the
-   order we intend to propose it upstream. Listed below.
+   historical proposal order. Listed below; current work and PRs stay in Enntity repositories.
 4. **SparkQwen-only commits** on `sparkqwen/atlas-<date>-<name>`. Listed
    below, after the Qwen series.
 

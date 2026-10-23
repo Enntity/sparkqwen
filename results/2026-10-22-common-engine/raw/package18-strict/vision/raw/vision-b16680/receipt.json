@@ -1,0 +1,103 @@
+{
+  "archive": {
+    "elapsed_ms": 21872.59,
+    "grade": {
+      "content": "red circle\nblue square\ngreen triangle\norange circle\npurple rectangle",
+      "expected_lines": [
+        "red circle",
+        "blue square",
+        "green triangle",
+        "orange circle",
+        "purple rectangle"
+      ],
+      "finish_reason": "stop",
+      "normalized_lines": [
+        "red circle",
+        "blue square",
+        "green triangle",
+        "orange circle",
+        "purple rectangle"
+      ],
+      "passed": true,
+      "status": 200
+    },
+    "receipt_source": "raw/quality/vision-original/http/0004-vision-b16680/receipt.json",
+    "request_bytes": 113034,
+    "request_sha256": "d456be971d3c25600d28cf992a92e83bbd94f239581b72d2b6bb0634954ddf3a",
+    "request_source": "raw/quality/vision-original/http/0004-vision-b16680/request.body",
+    "response_bytes": 700,
+    "response_headers": {
+      "access-control-allow-origin": "*",
+      "connection": "close",
+      "content-type": "application/json",
+      "date": "Tue, 20 Oct 2026 01:11:02 GMT",
+      "openai-organization": "atlas-local",
+      "openai-processing-ms": "21848",
+      "openai-version": "2026-01-01",
+      "transfer-encoding": "chunked",
+      "x-ratelimit-limit-requests": "1000000",
+      "x-ratelimit-limit-tokens": "1000000000",
+      "x-ratelimit-remaining-requests": "999999",
+      "x-ratelimit-remaining-tokens": "999999999",
+      "x-ratelimit-reset-requests": "0s",
+      "x-ratelimit-reset-tokens": "0s",
+      "x-request-id": "req_4e27f387-1897-48a2-993d-e13028483001"
+    },
+    "response_sha256": "28c1cb0cf7e616347bf44bb00f8ac5d8ec2047b8d6701e5da7a2703b32ce9dd8",
+    "response_source": "raw/quality/vision-original/http/0004-vision-b16680/response.body",
+    "stage": "vision-b16680",
+    "status": 200
+  },
+  "case": "vision-b16680",
+  "elapsed_ms": 22125.967,
+  "error": null,
+  "finished_at": "2026-10-23T05:58:18.435959Z",
+  "finished_ns": 1792735098435949929,
+  "grade": {
+    "content": "red circle\nblue square\ngreen triangle\norange circle\npurple rectangle",
+    "expected_lines": [
+      "red circle",
+      "blue square",
+      "green triangle",
+      "orange circle",
+      "purple rectangle"
+    ],
+    "finish_reason": "stop",
+    "normalized_lines": [
+      "red circle",
+      "blue square",
+      "green triangle",
+      "orange circle",
+      "purple rectangle"
+    ],
+    "passed": true,
+    "status": 200
+  },
+  "offline": false,
+  "path": "/v1/chat/completions",
+  "request_bytes": 113034,
+  "request_sha256": "d456be971d3c25600d28cf992a92e83bbd94f239581b72d2b6bb0634954ddf3a",
+  "response_bytes": 694,
+  "response_headers": {
+    "access-control-allow-origin": "*",
+    "connection": "close",
+    "content-type": "application/json",
+    "date": "Fri, 23 Oct 2026 05:58:18 GMT",
+    "openai-organization": "atlas-local",
+    "openai-processing-ms": "22124",
+    "openai-version": "2026-01-01",
+    "transfer-encoding": "chunked",
+    "x-ratelimit-limit-requests": "1000000",
+    "x-ratelimit-limit-tokens": "1000000000",
+    "x-ratelimit-remaining-requests": "999999",
+    "x-ratelimit-remaining-tokens": "999999999",
+    "x-ratelimit-reset-requests": "0s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_61e2a0d6-36b4-425f-9e4b-a98046092dc3"
+  },
+  "response_sha256": "9e609844e0a95a049279d233107b2c107151a46a9b7a6ef9e1bd89e590a1ab93",
+  "started_at": "2026-10-23T05:57:56.309980Z",
+  "started_ns": 1792735076309983383,
+  "status": 200,
+  "url": "http://127.0.0.1:8893/v1/chat/completions"
+}

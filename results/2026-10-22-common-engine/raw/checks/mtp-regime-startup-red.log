@@ -1,0 +1,17 @@
+   Compiling atlas-kernels v1.0.0-beta-preview (/Volumes/JMac External/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-common-20261022/crates/atlas-kernels)
+   Compiling atlas-rdma v1.0.0-beta-preview (/Volumes/JMac External/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-common-20261022/crates/atlas-rdma)
+   Compiling spark-runtime v1.0.0-beta-preview (/Volumes/JMac External/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-common-20261022/crates/spark-runtime)
+   Compiling spark-comm v1.0.0-beta-preview (/Volumes/JMac External/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-common-20261022/crates/spark-comm)
+   Compiling spark-storage v1.0.0-beta-preview (/Volumes/JMac External/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-common-20261022/crates/spark-storage)
+   Compiling atlas-plugin v1.0.0-beta-preview (/Volumes/JMac External/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-common-20261022/crates/atlas-plugin)
+   Compiling spark-model v1.0.0-beta-preview (/Volumes/JMac External/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-common-20261022/crates/spark-model)
+   Compiling spark-server v1.0.0-beta-preview (/Volumes/JMac External/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-common-20261022/crates/spark-server)
+error[E0433]: cannot find `AtlasCudaBackend` in `cuda_backend`
+  --> crates/spark-server/tests/integration.rs:61:38
+   |
+61 |         spark_runtime::cuda_backend::AtlasCudaBackend::new(0, &ptx_modules)?,
+   |                                      ^^^^^^^^^^^^^^^^ could not find `AtlasCudaBackend` in `cuda_backend`
+
+For more information about this error, try `rustc --explain E0433`.
+error: could not compile `spark-server` (test "integration") due to 1 previous error
+warning: build failed, waiting for other jobs to finish...

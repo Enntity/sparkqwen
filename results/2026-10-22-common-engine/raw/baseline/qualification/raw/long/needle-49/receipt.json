@@ -1,0 +1,15 @@
+{
+  "elapsed_ms": 212359.115,
+  "error": null,
+  "name": "long/needle-49",
+  "parse_error": null,
+  "path": "/v1/chat/completions",
+  "request_bytes": 192362,
+  "request_sha256": "5e3700971e0d1ed31f54df252c23f93ceef891e580ea935b3283f364a627dd67",
+  "response_bytes": 879,
+  "response_sha256": "994402500c13172ff8ced9c5b253af243d0f4159e2992a89ecaa5abb999bfb05",
+  "sse_events": null,
+  "status": 200,
+  "stream": false,
+  "url": "http://127.0.0.1:8893/v1/chat/completions"
+}

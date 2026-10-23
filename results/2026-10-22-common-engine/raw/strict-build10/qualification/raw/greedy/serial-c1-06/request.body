@@ -1,0 +1,15 @@
+{
+  "chat_template_kwargs": {
+    "reasoning_effort": "low"
+  },
+  "disable_mtp": true,
+  "max_tokens": 320,
+  "messages": [
+    {
+      "content": "Implement a thread-safe LRU cache in Rust with get and put, and explain the design briefly.",
+      "role": "user"
+    }
+  ],
+  "model": "qwen3.8-flash-next-atlas",
+  "temperature": 0
+}

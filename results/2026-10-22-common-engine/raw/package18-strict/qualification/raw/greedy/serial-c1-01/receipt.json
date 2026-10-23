@@ -1,0 +1,15 @@
+{
+  "elapsed_ms": 8897.013,
+  "error": null,
+  "name": "greedy/serial-c1-01",
+  "parse_error": null,
+  "path": "/v1/chat/completions",
+  "request_bytes": 336,
+  "request_sha256": "dc1fff74887887e9940c42856a18756ac6955ae45cd2beefb1c09f972bde5a71",
+  "response_bytes": 2141,
+  "response_sha256": "54e28c320a3b68d1d2c79f6e3ea4b06a1a98153917fe3b0ab032e08892ee09c6",
+  "sse_events": null,
+  "status": 200,
+  "stream": false,
+  "url": "http://127.0.0.1:8893/v1/chat/completions"
+}

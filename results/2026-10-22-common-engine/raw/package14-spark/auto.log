@@ -1,0 +1,60 @@
+{
+  "auto": {
+    "tool-openai-blocking": {
+      "protocol_ok": true,
+      "semantic_ok": true,
+      "calls": [
+        {
+          "id": "call_0000000000000004",
+          "type": "function",
+          "function": {
+            "name": "get_weather",
+            "arguments": "{\"city\":\"Paris\"}"
+          }
+        }
+      ]
+    },
+    "tool-openai-stream": {
+      "protocol_ok": true,
+      "semantic_ok": true,
+      "calls": [
+        {
+          "index": 0,
+          "id": "call_0000000000000005",
+          "type": "function",
+          "function": {
+            "name": "get_weather",
+            "arguments": "{\"city\":\"Paris\"}"
+          }
+        }
+      ]
+    },
+    "tool-anthropic-blocking": {
+      "protocol_ok": true,
+      "semantic_ok": true,
+      "calls": [
+        {
+          "type": "tool_use",
+          "id": "call_0000000000000006",
+          "name": "get_weather",
+          "input": {
+            "city": "Paris"
+          }
+        }
+      ]
+    },
+    "tool-anthropic-stream": {
+      "protocol_ok": true,
+      "semantic_ok": true,
+      "calls": [
+        {
+          "type": "tool_use",
+          "id": "call_0000000000000007",
+          "name": "get_weather",
+          "input": {},
+          "partial_json": "{\"city\":\"Paris\"}"
+        }
+      ]
+    }
+  }
+}

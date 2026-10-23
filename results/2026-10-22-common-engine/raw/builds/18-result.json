@@ -1,0 +1,21 @@
+{
+  "kind": "product",
+  "image": "ghcr.io/enntity/atlas-sparkqwen:e3bb830b0c66",
+  "image_id": "sha256:1ce658b527adb46bccbb154f3e5aab20382ac3ec5ff17544770058d1bdce8d8a",
+  "engine_commit": "f1fdf272cd54322ce82ad40814e19ef9915949f3",
+  "engine_tree": "f3b0524eb5925a9978d803718e721440ba323b2c",
+  "binary_sha256": "af8ab1ba66ed2acead19121955ef07608c29c22b4ee3d48cebec0ca57a5a247f",
+  "validated": true,
+  "native_tests": {
+    "passed": 8068,
+    "failed": 0,
+    "ignored": 255
+  },
+  "test_sections": 84,
+  "clippy": "pass",
+  "version": "0.2.0",
+  "built_product_commit": "39f57764cfca710143615f42bf68d319cb7ad111",
+  "install_tree": "e3bb830b0c662b1a547a8c8d5aba1a37fed3c25b",
+  "registry_publication": false,
+  "live_pair_replay": "pending"
+}

@@ -1,0 +1,10 @@
+PACKAGE18 spark SMOKE PASS
+PACKAGE18 spark REPLAY PASS
+{
+  "mode": "spark",
+  "tools": "21/21",
+  "arithmetic": "40/40",
+  "retrieval": "12/12",
+  "xml_full": "inspect retained summary and exact failures"
+}
+PRODUCT18 spark FOCUSED RUN COMPLETE; inspect targeted long/XML results; full60 long not rerun

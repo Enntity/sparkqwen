@@ -1,0 +1,32 @@
+{
+  "max_tokens": 1024,
+  "messages": [
+    {
+      "content": "The literal string <tool_call> in this sentence is documentation about XML. Check the weather in Paris using the available tool.",
+      "role": "user"
+    }
+  ],
+  "model": "qwen3.8-flash-next-atlas",
+  "temperature": 0,
+  "tool_choice": {
+    "type": "auto"
+  },
+  "tools": [
+    {
+      "description": "Get the weather for a city.",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "city": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "city"
+        ],
+        "type": "object"
+      },
+      "name": "get_weather"
+    }
+  ]
+}

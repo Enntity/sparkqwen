@@ -1,0 +1,175 @@
+{
+  "tool-openai-blocking": {
+    "protocol_ok": true,
+    "semantic_ok": true,
+    "view": {
+      "reasoning_content": "The user wants me to call the get_weather tool for Paris. This is a straightforward single tool call.\n",
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "call_0000000000000000",
+          "type": "function",
+          "function": {
+            "name": "get_weather",
+            "arguments": "{\"city\":\"Paris\"}"
+          }
+        }
+      ],
+      "finish_reason": "tool_calls",
+      "completion_tokens": 49,
+      "prompt_tokens": 306,
+      "usage": {
+        "prompt_tokens": 306,
+        "completion_tokens": 49,
+        "total_tokens": 355,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 21,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 22,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 323.585279,
+        "response_token/s": 42.062559771335586
+      }
+    }
+  },
+  "tool-openai-stream": {
+    "protocol_ok": true,
+    "semantic_ok": true,
+    "view": {
+      "reasoning_content": "The user wants me to call the get_weather tool for Paris. This is a straightforward single tool call.\n",
+      "content": "",
+      "tool_calls": [
+        {
+          "index": 0,
+          "id": "call_0000000000000001",
+          "type": "function",
+          "function": {
+            "name": "get_weather",
+            "arguments": "{\"city\":\"Paris\"}"
+          }
+        }
+      ],
+      "finish_reason": "tool_calls",
+      "completion_tokens": 49,
+      "prompt_tokens": 306,
+      "usage": {
+        "prompt_tokens": 306,
+        "completion_tokens": 49,
+        "total_tokens": 355,
+        "prompt_tokens_details": {
+          "cached_tokens": 304,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 21,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 21,
+          "rejected_prediction_tokens": 0
+        },
+        "time_to_first_token_ms": 143.49721300000002,
+        "response_token/s": 40.193051917549376
+      }
+    }
+  },
+  "tool-anthropic-blocking": {
+    "protocol_ok": true,
+    "semantic_ok": true,
+    "view": {
+      "id": "msg_b783bf16-58a3-4243-b074-9f83850566eb",
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "We need to respond to user: \"Call get_weather for Paris.\" Need use tool. Need call get_weather with city Paris. Then likely report result.\n"
+        },
+        {
+          "type": "tool_use",
+          "id": "call_0000000000000002",
+          "name": "get_weather",
+          "input": {
+            "city": "Paris"
+          }
+        }
+      ],
+      "model": "qwen3.8-flash-next-atlas",
+      "stop_reason": "tool_use",
+      "stop_sequence": null,
+      "usage": {
+        "input_tokens": 318,
+        "output_tokens": 59,
+        "cache_read_input_tokens": 0
+      }
+    }
+  },
+  "tool-anthropic-stream": {
+    "protocol_ok": true,
+    "semantic_ok": true,
+    "view": {
+      "text": "",
+      "tools": [
+        {
+          "type": "tool_use",
+          "id": "call_0000000000000003",
+          "name": "get_weather",
+          "input": {},
+          "partial_json": "{\"city\":\"Paris\"}"
+        }
+      ],
+      "event_names": [
+        "message_start",
+        "content_block_start",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_stop",
+        "content_block_start",
+        "content_block_delta",
+        "content_block_delta",
+        "content_block_stop",
+        "message_delta",
+        "message_stop"
+      ],
+      "usage": {
+        "input_tokens": 318,
+        "output_tokens": 59,
+        "cache_read_input_tokens": 304
+      },
+      "stop_reason": "tool_use"
+    }
+  }
+}

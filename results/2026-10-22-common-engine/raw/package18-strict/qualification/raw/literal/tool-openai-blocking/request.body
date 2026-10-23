@@ -1,0 +1,41 @@
+{
+  "chat_template_kwargs": {
+    "reasoning_effort": "low"
+  },
+  "max_tokens": 1024,
+  "messages": [
+    {
+      "content": "Call get_weather for Paris.",
+      "role": "user"
+    }
+  ],
+  "model": "qwen3.8-flash-next-atlas",
+  "temperature": 0,
+  "tool_choice": {
+    "function": {
+      "name": "get_weather"
+    },
+    "type": "function"
+  },
+  "tools": [
+    {
+      "function": {
+        "description": "Get the weather for a city.",
+        "name": "get_weather",
+        "parameters": {
+          "additionalProperties": false,
+          "properties": {
+            "city": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "city"
+          ],
+          "type": "object"
+        }
+      },
+      "type": "function"
+    }
+  ]
+}

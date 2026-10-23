@@ -1,0 +1,16 @@
+    Checking cudarc v0.19.2 (/Volumes/JMac External/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-common-20261022/vendor/cudarc)
+    Checking atlas-core v1.0.0-beta-preview (/Volumes/JMac External/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-common-20261022/crates/atlas-core)
+ Documenting atlas-core v1.0.0-beta-preview (/Volumes/JMac External/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-common-20261022/crates/atlas-core)
+    Checking atlas-kernels v1.0.0-beta-preview (/Volumes/JMac External/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-common-20261022/crates/atlas-kernels)
+ Documenting atlas-kernels v1.0.0-beta-preview (/Volumes/JMac External/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-common-20261022/crates/atlas-kernels)
+    Checking spark-runtime v1.0.0-beta-preview (/Volumes/JMac External/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-common-20261022/crates/spark-runtime)
+ Documenting spark-runtime v1.0.0-beta-preview (/Volumes/JMac External/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-common-20261022/crates/spark-runtime)
+ Documenting atlas-spark-bench v1.0.0-beta-preview (/Volumes/JMac External/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-common-20261022/crates/atlas-spark-bench)
+    Checking spark-storage v1.0.0-beta-preview (/Volumes/JMac External/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-common-20261022/crates/spark-storage)
+ Documenting spark-storage v1.0.0-beta-preview (/Volumes/JMac External/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-common-20261022/crates/spark-storage)
+    Checking spark-model v1.0.0-beta-preview (/Volumes/JMac External/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-common-20261022/crates/spark-model)
+ Documenting spark-model v1.0.0-beta-preview (/Volumes/JMac External/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-common-20261022/crates/spark-model)
+ Documenting spark-server v1.0.0-beta-preview (/Volumes/JMac External/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-common-20261022/crates/spark-server)
+    Checking spark-server v1.0.0-beta-preview (/Volumes/JMac External/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-common-20261022/crates/spark-server)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 13.36s
+   Generated /Volumes/JMac External/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-common-20261022/target/doc/atlas_closure/index.html and 21 other files

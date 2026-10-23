@@ -1,0 +1,220 @@
+{
+  "commit": "f1fdf272cd54322ce82ad40814e19ef9915949f3",
+  "error_count": 53,
+  "allowlisted_count": 109,
+  "new_vs_previous": [],
+  "rows": [
+    {
+      "path": "crates/atlas-core/src/config/methods.rs",
+      "lines": 527
+    },
+    {
+      "path": "crates/atlas-kernels/src/lib.rs",
+      "lines": 514
+    },
+    {
+      "path": "crates/spark-storage/src/ngram_pack.rs",
+      "lines": 785
+    },
+    {
+      "path": "crates/spark-storage/src/ngram_pack/tests.rs",
+      "lines": 582
+    },
+    {
+      "path": "crates/spark-runtime/src/gpu/mock.rs",
+      "lines": 507
+    },
+    {
+      "path": "crates/spark-runtime/src/cublaslt/mx_algo.rs",
+      "lines": 627
+    },
+    {
+      "path": "crates/spark-runtime/src/cuda_backend/gpu_impl.rs",
+      "lines": 530
+    },
+    {
+      "path": "crates/spark-server/src/scheduler/preempt.rs",
+      "lines": 561
+    },
+    {
+      "path": "crates/spark-server/src/api/inference_impl.rs",
+      "lines": 532
+    },
+    {
+      "path": "crates/spark-comm/src/lib.rs",
+      "lines": 589
+    },
+    {
+      "path": "crates/spark-comm/src/nccl_backend/rdma_pair/chain_loopback_tests.rs",
+      "lines": 704
+    },
+    {
+      "path": "crates/spark-comm/src/nccl_backend/rdma_pair/oneshot.rs",
+      "lines": 1169
+    },
+    {
+      "path": "crates/spark-comm/src/nccl_backend/rdma_pair/oneshot_gpu_tests.rs",
+      "lines": 502
+    },
+    {
+      "path": "crates/spark-comm/src/nccl_backend/rdma_pair/loopback_tests.rs",
+      "lines": 612
+    },
+    {
+      "path": "crates/spark-model/tests/dflash2_selector_exact.rs",
+      "lines": 623
+    },
+    {
+      "path": "crates/spark-model/examples/glm_fp4l_native_bench.rs",
+      "lines": 768
+    },
+    {
+      "path": "crates/spark-model/src/video_preprocess.rs",
+      "lines": 505
+    },
+    {
+      "path": "crates/spark-model/src/layers/glm_kv_shard.rs",
+      "lines": 647
+    },
+    {
+      "path": "crates/spark-model/src/layers/mod.rs",
+      "lines": 532
+    },
+    {
+      "path": "crates/spark-model/src/layers/qwen3_ssm/trait_decode_multi_seq/ssm_batched.rs",
+      "lines": 508
+    },
+    {
+      "path": "crates/spark-model/src/layers/glm5_kda/projection.rs",
+      "lines": 578
+    },
+    {
+      "path": "crates/spark-model/src/layers/ops/glm_indexer.rs",
+      "lines": 551
+    },
+    {
+      "path": "crates/spark-model/src/layers/ops/fp8b.rs",
+      "lines": 917
+    },
+    {
+      "path": "crates/spark-model/src/layers/ops/mxfp8_gemm_test_gpu.rs",
+      "lines": 552
+    },
+    {
+      "path": "crates/spark-model/src/layers/moe/helpers_a.rs",
+      "lines": 504
+    },
+    {
+      "path": "crates/spark-model/src/layers/moe/route_fuse_test_gpu.rs",
+      "lines": 529
+    },
+    {
+      "path": "crates/spark-model/src/layers/moe/decode_m16_tests.rs",
+      "lines": 513
+    },
+    {
+      "path": "crates/spark-model/src/layers/moe/decode_m16.rs",
+      "lines": 602
+    },
+    {
+      "path": "crates/spark-model/src/layers/moe/helpers_c.rs",
+      "lines": 577
+    },
+    {
+      "path": "crates/spark-model/src/layers/moe/shared_mxfp8_test_gpu.rs",
+      "lines": 561
+    },
+    {
+      "path": "crates/spark-model/src/layers/dflash_head/rank_split_exec.rs",
+      "lines": 708
+    },
+    {
+      "path": "crates/spark-model/src/layers/dflash_head/rank_split.rs",
+      "lines": 598
+    },
+    {
+      "path": "crates/spark-model/src/layers/dflash_head/batch_propose.rs",
+      "lines": 501
+    },
+    {
+      "path": "crates/spark-model/src/layers/dflash_head/rank_split_tests.rs",
+      "lines": 856
+    },
+    {
+      "path": "crates/spark-model/src/layers/qwen3_attention/types.rs",
+      "lines": 512
+    },
+    {
+      "path": "crates/spark-model/src/layers/qwen3_attention/trait_impl.rs",
+      "lines": 521
+    },
+    {
+      "path": "crates/spark-model/src/layers/qwen3_attention/prefill/paged_glm_shard_chain_gpu_tests.rs",
+      "lines": 532
+    },
+    {
+      "path": "crates/spark-model/src/layers/qwen3_attention/prefill/paged_glm_shard_merge_gpu_tests.rs",
+      "lines": 796
+    },
+    {
+      "path": "crates/spark-model/src/layers/qwen3_attention/trait_impl/multi_seq/mla_glm.rs",
+      "lines": 501
+    },
+    {
+      "path": "crates/spark-model/src/weight_loader/qwen4_exp.rs",
+      "lines": 582
+    },
+    {
+      "path": "crates/spark-model/src/weight_loader/glm5/fp4l_test_gpu.rs",
+      "lines": 696
+    },
+    {
+      "path": "crates/spark-model/src/weight_loader/glm5/native_test_gpu.rs",
+      "lines": 777
+    },
+    {
+      "path": "crates/spark-model/src/weight_loader/glm5/components.rs",
+      "lines": 603
+    },
+    {
+      "path": "crates/spark-model/src/weight_loader/qwen4_exp/ple.rs",
+      "lines": 520
+    },
+    {
+      "path": "crates/spark-model/src/weight_loader/qwen4_exp/mtp.rs",
+      "lines": 543
+    },
+    {
+      "path": "crates/spark-model/src/model/verify_pieces.rs",
+      "lines": 516
+    },
+    {
+      "path": "crates/spark-model/src/model/glm_packed_prefill.rs",
+      "lines": 563
+    },
+    {
+      "path": "crates/spark-model/src/model/impl_b3_dflash.rs",
+      "lines": 533
+    },
+    {
+      "path": "crates/spark-model/src/model/startup_parity_table.rs",
+      "lines": 589
+    },
+    {
+      "path": "crates/spark-model/src/model/impl_a3.rs",
+      "lines": 504
+    },
+    {
+      "path": "crates/spark-model/src/model/qwen4exp_lmhead_split.rs",
+      "lines": 568
+    },
+    {
+      "path": "crates/spark-model/src/model/trait_impl/prefill_b.rs",
+      "lines": 542
+    },
+    {
+      "path": "crates/spark-model/src/model/trait_impl/prefill_b/forward_layers.rs",
+      "lines": 613
+    }
+  ]
+}

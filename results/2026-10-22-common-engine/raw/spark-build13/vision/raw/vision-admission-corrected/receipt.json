@@ -1,0 +1,70 @@
+{
+  "archive": {
+    "elapsed_ms": null,
+    "grade": {
+      "completion_observed": false,
+      "error_code": "vision_input_too_large",
+      "error_message": "vision input too large: the first 9 of 50 images already need 36135 vision tokens, more than the 32768 this server accepts per request; send fewer or smaller images",
+      "expected_error_code": "vision_input_too_large",
+      "passed": true,
+      "status": 400
+    },
+    "receipt_source": "raw/quality/admission-corrected/receipt.json",
+    "request_bytes": 7617,
+    "request_sha256": "5179e83383d6e0226600397ef1738a869db3c7949ed3dbf02845bca6b813db3b",
+    "request_source": "raw/quality/admission-corrected/request.body",
+    "response_bytes": 282,
+    "response_headers": {},
+    "response_sha256": "f40dc5008b0762b17553faa940a225170fc27f61beb3e4d02493cd786239bdb4",
+    "response_source": "raw/quality/admission-corrected/response.body",
+    "result": {
+      "passed": true,
+      "request_sha256": "5179e83383d6e0226600397ef1738a869db3c7949ed3dbf02845bca6b813db3b",
+      "response_sha256": "f40dc5008b0762b17553faa940a225170fc27f61beb3e4d02493cd786239bdb4",
+      "scope": "One corrected header request before benchmark setup; source admission rejection precedes enqueue/prefill, no model completion observed. Original malformed-PNG failure remains preserved."
+    },
+    "result_source": "raw/quality/admission-corrected/result.json",
+    "stage": null,
+    "status": 400
+  },
+  "case": "vision-admission-corrected",
+  "elapsed_ms": 0.991,
+  "error": "HTTP 400",
+  "finished_at": "2026-10-23T01:42:10.539264Z",
+  "finished_ns": 1792719730539262117,
+  "grade": {
+    "completion_observed": false,
+    "error_code": "vision_input_too_large",
+    "error_message": "vision input too large: the first 9 of 50 images already need 36135 vision tokens, more than the 32768 this server accepts per request; send fewer or smaller images",
+    "expected_error_code": "vision_input_too_large",
+    "passed": true,
+    "status": 400
+  },
+  "offline": false,
+  "path": "/v1/chat/completions",
+  "request_bytes": 7617,
+  "request_sha256": "5179e83383d6e0226600397ef1738a869db3c7949ed3dbf02845bca6b813db3b",
+  "response_bytes": 282,
+  "response_headers": {
+    "access-control-allow-origin": "*",
+    "connection": "close",
+    "content-type": "application/json",
+    "date": "Fri, 23 Oct 2026 01:42:10 GMT",
+    "openai-organization": "atlas-local",
+    "openai-processing-ms": "0",
+    "openai-version": "2026-01-01",
+    "transfer-encoding": "chunked",
+    "x-ratelimit-limit-requests": "1000000",
+    "x-ratelimit-limit-tokens": "1000000000",
+    "x-ratelimit-remaining-requests": "999999",
+    "x-ratelimit-remaining-tokens": "999999999",
+    "x-ratelimit-reset-requests": "0s",
+    "x-ratelimit-reset-tokens": "0s",
+    "x-request-id": "req_1bdb5545-daf9-44ce-9cb0-94cc895a41eb"
+  },
+  "response_sha256": "f40dc5008b0762b17553faa940a225170fc27f61beb3e4d02493cd786239bdb4",
+  "started_at": "2026-10-23T01:42:10.538267Z",
+  "started_ns": 1792719730538270886,
+  "status": 400,
+  "url": "http://127.0.0.1:8893/v1/chat/completions"
+}

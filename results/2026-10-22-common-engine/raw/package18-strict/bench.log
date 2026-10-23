@@ -1,0 +1,24 @@
+decode prose 0 0.167 51.38 384
+decode prose 1 0.152 53.43 384
+decode prose 2 0.152 53.48 384
+decode code 0 0.146 73.71 384
+decode code 1 0.145 75.96 384
+decode code 2 0.145 76.09 384
+decode json 0 0.157 60.61 384
+decode json 1 0.154 62.01 384
+decode json 2 0.152 62.28 384
+prefill 2048 0 2022 0.73
+prefill 2048 1 2023 0.707
+prefill 8192 0 8170 2.059
+prefill 8192 1 8169 2.062
+prefill 16384 0 16390 4.008
+prefill 16384 1 16408 4.06
+prefill 28672 0 28809 7.086
+prefill 28672 1 28819 7.114
+conc 1 0 51.3
+conc 1 1 50.13
+conc 2 0 81.44
+conc 2 1 84.06
+conc 4 0 125.48
+conc 4 1 134.4
+wrote bench-strict-18.json

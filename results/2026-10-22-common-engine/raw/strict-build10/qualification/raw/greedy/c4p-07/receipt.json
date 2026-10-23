@@ -1,0 +1,15 @@
+{
+  "elapsed_ms": 9555.674,
+  "error": null,
+  "name": "greedy/c4p-07",
+  "parse_error": null,
+  "path": "/v1/chat/completions",
+  "request_bytes": 12271,
+  "request_sha256": "8a3271df2c16fe7231768f68178f899cb54bb6d1fe66d452d63dddff1e5fcaf4",
+  "response_bytes": 2122,
+  "response_sha256": "b5a9e58a6190eda2e7cc7292ebb3abf5fefd391da67910195f2786fd3a616422",
+  "sse_events": null,
+  "status": 200,
+  "stream": false,
+  "url": "http://127.0.0.1:8893/v1/chat/completions"
+}

@@ -1,0 +1,2709 @@
+{
+  "driver": "/home/enntitysparkadmin/qwen-common-20261022/qualification.py",
+  "evidence_root": "/home/enntitysparkadmin/qwen-common-20261022/product/results/2026-10-20-fidelity-review",
+  "fixture_manifest": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures-manifest.json",
+  "long_requested": true,
+  "mode": "strict",
+  "model": "qwen3.8-flash-next-atlas",
+  "offline": false,
+  "results": {
+    "canonical_nll": {
+      "engine_signal": null,
+      "nll_nats_per_token": 0.9951030694174534,
+      "protocol_ok": true,
+      "references": {
+        "reference_earlier_shared_a4": {
+          "delta": -0.07088926228647296,
+          "nll": 1.0659923317039264
+        },
+        "reference_observed_a4": {
+          "delta": -0.03044662239617857,
+          "nll": 1.025549691813632
+        }
+      },
+      "score_positions": [
+        1,
+        27033
+      ],
+      "semantic_ok": null,
+      "status": 200
+    },
+    "greedy": {
+      "arms": {
+        "c1": [
+          {
+            "budget_truncated": true,
+            "cached_tokens": 16,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-01.json",
+            "index": 1,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "af5a45b9c33fff1afcb87ea85d92b6bac75087fd957b3a49ebef5b6a09031058"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 32,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-02.json",
+            "index": 2,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "32cba69c9eb49548895cbaaae34278908f0098865d337f9450fb891aa0b17b2f"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 32,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-03.json",
+            "index": 3,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "0b4afbeaa13f6dfef1e8e78d925d33f79ec6700bc79b08cd8bd6c7b875b94efa"
+          },
+          {
+            "budget_truncated": false,
+            "cached_tokens": 32,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-04.json",
+            "index": 4,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "d18596fb6f54e4d9400aa36d71c2d04ae7ec22f268f47f2950a64abcdb9fc2cc"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 32,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-05.json",
+            "index": 5,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "5c46d9b19a4dc6fa9c9280dd274ad61d9e9961eaeae38a72dc0056bfe268a374"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 32,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-06.json",
+            "index": 6,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "1f22cdc91ec7ad5d4fd8ac3f5f38ade1d4ebbca4117c1b8e91958014b2b301a3"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 32,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-07.json",
+            "index": 7,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "67742ea68838cc4a9df1452787c271fa7d3ed9d932da64293283d452b644394d"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 32,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-08.json",
+            "index": 8,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "2f3a3ee6f8a062f044ec5569937028458ab85357d48f30b636c1e053c12e7aba"
+          }
+        ],
+        "c1p": [
+          {
+            "budget_truncated": true,
+            "cached_tokens": 4448,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/prefix-01.json",
+            "index": 1,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "e0acd2a5e88612610122b8537dc21fa0e72268d656f11058f8a0bcc17cbd3041"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 4448,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/prefix-02.json",
+            "index": 2,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "646e0a65a26598bf97045817a5575d63e6752ae4f8be1089b86896d171f7429d"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 4448,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/prefix-03.json",
+            "index": 3,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "a9ceec777c7127395e31aa6eb8341ac187b1a212236974ac5435cb5831f91955"
+          },
+          {
+            "budget_truncated": false,
+            "cached_tokens": 4448,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/prefix-04.json",
+            "index": 4,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "3e1296cfeb773a8fdcaf92d9dafa9bd0e4ea7a279d53cb1606c977f5154f9075"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 4448,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/prefix-05.json",
+            "index": 5,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "edbd9d58d759c5c6364ead1ebefe04a3d86f320ad1a353d59ee4ecef67a27725"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 4448,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/prefix-06.json",
+            "index": 6,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "8b01e1c919cdbaf7ceb30735d26df8ff001c8e0d71a6a5a3495840c4db41803b"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 4448,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/prefix-07.json",
+            "index": 7,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "ce462b0e3dd55db4777cf195bf9a53539e4c7c2cc17bdcfef5aca900652f6482"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 4448,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/prefix-08.json",
+            "index": 8,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "57393c50d7fa13b2273abc884433e3efd61b43a50c698614b2af803310affda1"
+          }
+        ],
+        "c4": [
+          {
+            "budget_truncated": true,
+            "cached_tokens": 64,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-01.json",
+            "index": 1,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "af5a45b9c33fff1afcb87ea85d92b6bac75087fd957b3a49ebef5b6a09031058"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-02.json",
+            "index": 2,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "32cba69c9eb49548895cbaaae34278908f0098865d337f9450fb891aa0b17b2f"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 64,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-03.json",
+            "index": 3,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "0b4afbeaa13f6dfef1e8e78d925d33f79ec6700bc79b08cd8bd6c7b875b94efa"
+          },
+          {
+            "budget_truncated": false,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-04.json",
+            "index": 4,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "d18596fb6f54e4d9400aa36d71c2d04ae7ec22f268f47f2950a64abcdb9fc2cc"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-05.json",
+            "index": 5,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "5c46d9b19a4dc6fa9c9280dd274ad61d9e9961eaeae38a72dc0056bfe268a374"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-06.json",
+            "index": 6,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "1f22cdc91ec7ad5d4fd8ac3f5f38ade1d4ebbca4117c1b8e91958014b2b301a3"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-07.json",
+            "index": 7,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "67742ea68838cc4a9df1452787c271fa7d3ed9d932da64293283d452b644394d"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-08.json",
+            "index": 8,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "2f3a3ee6f8a062f044ec5569937028458ab85357d48f30b636c1e053c12e7aba"
+          }
+        ],
+        "c4p": [
+          {
+            "budget_truncated": true,
+            "cached_tokens": 4480,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/prefix-01.json",
+            "index": 1,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "e0acd2a5e88612610122b8537dc21fa0e72268d656f11058f8a0bcc17cbd3041"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 4480,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/prefix-02.json",
+            "index": 2,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "646e0a65a26598bf97045817a5575d63e6752ae4f8be1089b86896d171f7429d"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 4480,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/prefix-03.json",
+            "index": 3,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "a9ceec777c7127395e31aa6eb8341ac187b1a212236974ac5435cb5831f91955"
+          },
+          {
+            "budget_truncated": false,
+            "cached_tokens": 4480,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/prefix-04.json",
+            "index": 4,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "3e1296cfeb773a8fdcaf92d9dafa9bd0e4ea7a279d53cb1606c977f5154f9075"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 4480,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/prefix-05.json",
+            "index": 5,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "edbd9d58d759c5c6364ead1ebefe04a3d86f320ad1a353d59ee4ecef67a27725"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 4480,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/prefix-06.json",
+            "index": 6,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "8b01e1c919cdbaf7ceb30735d26df8ff001c8e0d71a6a5a3495840c4db41803b"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 4480,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/prefix-07.json",
+            "index": 7,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "ce462b0e3dd55db4777cf195bf9a53539e4c7c2cc17bdcfef5aca900652f6482"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 4480,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/prefix-08.json",
+            "index": 8,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "57393c50d7fa13b2273abc884433e3efd61b43a50c698614b2af803310affda1"
+          }
+        ],
+        "c8": [
+          {
+            "budget_truncated": true,
+            "cached_tokens": 64,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-01.json",
+            "index": 1,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "af5a45b9c33fff1afcb87ea85d92b6bac75087fd957b3a49ebef5b6a09031058"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-02.json",
+            "index": 2,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "32cba69c9eb49548895cbaaae34278908f0098865d337f9450fb891aa0b17b2f"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 64,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-03.json",
+            "index": 3,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "0b4afbeaa13f6dfef1e8e78d925d33f79ec6700bc79b08cd8bd6c7b875b94efa"
+          },
+          {
+            "budget_truncated": false,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-04.json",
+            "index": 4,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "d18596fb6f54e4d9400aa36d71c2d04ae7ec22f268f47f2950a64abcdb9fc2cc"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-05.json",
+            "index": 5,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "5c46d9b19a4dc6fa9c9280dd274ad61d9e9961eaeae38a72dc0056bfe268a374"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-06.json",
+            "index": 6,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "1f22cdc91ec7ad5d4fd8ac3f5f38ade1d4ebbca4117c1b8e91958014b2b301a3"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-07.json",
+            "index": 7,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "67742ea68838cc4a9df1452787c271fa7d3ed9d932da64293283d452b644394d"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-08.json",
+            "index": 8,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "2f3a3ee6f8a062f044ec5569937028458ab85357d48f30b636c1e053c12e7aba"
+          }
+        ],
+        "serial": [
+          {
+            "budget_truncated": true,
+            "cached_tokens": 64,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-01.json",
+            "index": 1,
+            "protocol_ok": true,
+            "request_mutation": {
+              "after": true,
+              "before": null,
+              "before_present": false,
+              "changed_keys": [
+                "disable_mtp"
+              ],
+              "control": "same_server_disable_mtp",
+              "exact_request_sha256": "f1615348fc38680b5ef732fda3b98e653aede4d7f76b58ae3a6d54fe774e0c6e",
+              "field": "disable_mtp",
+              "mutated": true,
+              "only_mutation": true,
+              "sent_request_sha256": "dc1fff74887887e9940c42856a18756ac6955ae45cd2beefb1c09f972bde5a71"
+            },
+            "semantic_ok": null,
+            "serial_control": "same_server_disable_mtp",
+            "status": 200,
+            "text_sha256": "af5a45b9c33fff1afcb87ea85d92b6bac75087fd957b3a49ebef5b6a09031058"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-02.json",
+            "index": 2,
+            "protocol_ok": true,
+            "request_mutation": {
+              "after": true,
+              "before": null,
+              "before_present": false,
+              "changed_keys": [
+                "disable_mtp"
+              ],
+              "control": "same_server_disable_mtp",
+              "exact_request_sha256": "8ed6e4abaedfff49367f5170b6a1c6f167a8a351245f100524a0543c82e431fb",
+              "field": "disable_mtp",
+              "mutated": true,
+              "only_mutation": true,
+              "sent_request_sha256": "d1b55323b33650d2c917d8321e21078c4940d8bee6dcd17be4c45445139ddfa7"
+            },
+            "semantic_ok": null,
+            "serial_control": "same_server_disable_mtp",
+            "status": 200,
+            "text_sha256": "32cba69c9eb49548895cbaaae34278908f0098865d337f9450fb891aa0b17b2f"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 64,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-03.json",
+            "index": 3,
+            "protocol_ok": true,
+            "request_mutation": {
+              "after": true,
+              "before": null,
+              "before_present": false,
+              "changed_keys": [
+                "disable_mtp"
+              ],
+              "control": "same_server_disable_mtp",
+              "exact_request_sha256": "6378f9b6feeb2b5c0a0bc74bc0494828294383995855d527019d5ab82e55cb58",
+              "field": "disable_mtp",
+              "mutated": true,
+              "only_mutation": true,
+              "sent_request_sha256": "3493962a1fd11ac1fd60b772394aeb8aade1e0637cedb3fd84560bd93b37096e"
+            },
+            "semantic_ok": null,
+            "serial_control": "same_server_disable_mtp",
+            "status": 200,
+            "text_sha256": "0b4afbeaa13f6dfef1e8e78d925d33f79ec6700bc79b08cd8bd6c7b875b94efa"
+          },
+          {
+            "budget_truncated": false,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-04.json",
+            "index": 4,
+            "protocol_ok": true,
+            "request_mutation": {
+              "after": true,
+              "before": null,
+              "before_present": false,
+              "changed_keys": [
+                "disable_mtp"
+              ],
+              "control": "same_server_disable_mtp",
+              "exact_request_sha256": "392cc5d8b0f464fed6f3706a039db573c50ad01a8d9c693178d35d01a0016fe3",
+              "field": "disable_mtp",
+              "mutated": true,
+              "only_mutation": true,
+              "sent_request_sha256": "5b785eee240d9ab1d629c7a4407bec5475d43859b23bcc8de0cd9e76d430e687"
+            },
+            "semantic_ok": null,
+            "serial_control": "same_server_disable_mtp",
+            "status": 200,
+            "text_sha256": "d18596fb6f54e4d9400aa36d71c2d04ae7ec22f268f47f2950a64abcdb9fc2cc"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-05.json",
+            "index": 5,
+            "protocol_ok": true,
+            "request_mutation": {
+              "after": true,
+              "before": null,
+              "before_present": false,
+              "changed_keys": [
+                "disable_mtp"
+              ],
+              "control": "same_server_disable_mtp",
+              "exact_request_sha256": "a097cd698e7184089b6da02f6fa8d1d81c63234a27b060391866cb8b3d2d084d",
+              "field": "disable_mtp",
+              "mutated": true,
+              "only_mutation": true,
+              "sent_request_sha256": "2d37ca43dec3cd2275bfcde15d1d891f865d8ecc04054e325df8a1ac78dec77e"
+            },
+            "semantic_ok": null,
+            "serial_control": "same_server_disable_mtp",
+            "status": 200,
+            "text_sha256": "5c46d9b19a4dc6fa9c9280dd274ad61d9e9961eaeae38a72dc0056bfe268a374"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-06.json",
+            "index": 6,
+            "protocol_ok": true,
+            "request_mutation": {
+              "after": true,
+              "before": null,
+              "before_present": false,
+              "changed_keys": [
+                "disable_mtp"
+              ],
+              "control": "same_server_disable_mtp",
+              "exact_request_sha256": "10d2722336b403a832494fb7c82e08a91862882431079516f5b4253968d2c0c2",
+              "field": "disable_mtp",
+              "mutated": true,
+              "only_mutation": true,
+              "sent_request_sha256": "a0ee8c6ad30acedfd5550581ca3653ddb825ee864ec0d520e30fc65d43b30cae"
+            },
+            "semantic_ok": null,
+            "serial_control": "same_server_disable_mtp",
+            "status": 200,
+            "text_sha256": "1f22cdc91ec7ad5d4fd8ac3f5f38ade1d4ebbca4117c1b8e91958014b2b301a3"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-07.json",
+            "index": 7,
+            "protocol_ok": true,
+            "request_mutation": {
+              "after": true,
+              "before": null,
+              "before_present": false,
+              "changed_keys": [
+                "disable_mtp"
+              ],
+              "control": "same_server_disable_mtp",
+              "exact_request_sha256": "dcfee9f0342e9da9ce4536049fe494ca8e06253945cc7c5d7f06a14c10124c4e",
+              "field": "disable_mtp",
+              "mutated": true,
+              "only_mutation": true,
+              "sent_request_sha256": "93ec1fbcaeeeb76561820800d790ad5869868e24eafaaa1cad7caedd051baea9"
+            },
+            "semantic_ok": null,
+            "serial_control": "same_server_disable_mtp",
+            "status": 200,
+            "text_sha256": "67742ea68838cc4a9df1452787c271fa7d3ed9d932da64293283d452b644394d"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-08.json",
+            "index": 8,
+            "protocol_ok": true,
+            "request_mutation": {
+              "after": true,
+              "before": null,
+              "before_present": false,
+              "changed_keys": [
+                "disable_mtp"
+              ],
+              "control": "same_server_disable_mtp",
+              "exact_request_sha256": "fbde399d92f851bfdd563eee9e949fad009dbab784f3317e1c0dc71d9a4077ad",
+              "field": "disable_mtp",
+              "mutated": true,
+              "only_mutation": true,
+              "sent_request_sha256": "39765b9c0017a8831e27f6e62254b69ff448d028d402967f4717bd50e513ae1d"
+            },
+            "semantic_ok": null,
+            "serial_control": "same_server_disable_mtp",
+            "status": 200,
+            "text_sha256": "2f3a3ee6f8a062f044ec5569937028458ab85357d48f30b636c1e053c12e7aba"
+          }
+        ]
+      },
+      "comparisons": [
+        {
+          "compared_protocol_rows": 8,
+          "details": [
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 1,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 2,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 3,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 4,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 5,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 6,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 7,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 8,
+              "protocol_ok": true
+            }
+          ],
+          "field_matches": {
+            "content": 8,
+            "finish_reason": 8,
+            "reasoning_content": 8,
+            "tool_calls": 8,
+            "usage": 0
+          },
+          "fields": [
+            "reasoning_content",
+            "content",
+            "tool_calls",
+            "finish_reason",
+            "usage"
+          ],
+          "left": "c1",
+          "matched": 0,
+          "protocol_failures": [],
+          "right": "c4",
+          "total": 8
+        },
+        {
+          "compared_protocol_rows": 8,
+          "details": [
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 1,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 2,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 3,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 4,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 5,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 6,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 7,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 8,
+              "protocol_ok": true
+            }
+          ],
+          "field_matches": {
+            "content": 8,
+            "finish_reason": 8,
+            "reasoning_content": 8,
+            "tool_calls": 8,
+            "usage": 0
+          },
+          "fields": [
+            "reasoning_content",
+            "content",
+            "tool_calls",
+            "finish_reason",
+            "usage"
+          ],
+          "left": "c1",
+          "matched": 0,
+          "protocol_failures": [],
+          "right": "c8",
+          "total": 8
+        },
+        {
+          "compared_protocol_rows": 8,
+          "details": [
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 1,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 2,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 3,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 4,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 5,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 6,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 7,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 8,
+              "protocol_ok": true
+            }
+          ],
+          "field_matches": {
+            "content": 8,
+            "finish_reason": 8,
+            "reasoning_content": 8,
+            "tool_calls": 8,
+            "usage": 0
+          },
+          "fields": [
+            "reasoning_content",
+            "content",
+            "tool_calls",
+            "finish_reason",
+            "usage"
+          ],
+          "left": "c1p",
+          "matched": 0,
+          "protocol_failures": [],
+          "right": "c4p",
+          "total": 8
+        }
+      ],
+      "prefix_cache_signal": {
+        "c1p": {
+          "all_cached_positive": true,
+          "cached_tokens": [
+            4448,
+            4448,
+            4448,
+            4448,
+            4448,
+            4448,
+            4448,
+            4448
+          ]
+        },
+        "c4p": {
+          "all_cached_positive": true,
+          "cached_tokens": [
+            4480,
+            4480,
+            4480,
+            4480,
+            4480,
+            4480,
+            4480,
+            4480
+          ]
+        }
+      },
+      "serial_vs_mtp": {
+        "available": true,
+        "compared_protocol_rows": 8,
+        "control": "same_server_disable_mtp",
+        "details": [
+          {
+            "exact": false,
+            "fields": {
+              "content": true,
+              "finish_reason": true,
+              "reasoning_content": true,
+              "tool_calls": true,
+              "usage": false
+            },
+            "index": 1,
+            "protocol_ok": true
+          },
+          {
+            "exact": false,
+            "fields": {
+              "content": true,
+              "finish_reason": true,
+              "reasoning_content": true,
+              "tool_calls": true,
+              "usage": false
+            },
+            "index": 2,
+            "protocol_ok": true
+          },
+          {
+            "exact": false,
+            "fields": {
+              "content": true,
+              "finish_reason": true,
+              "reasoning_content": true,
+              "tool_calls": true,
+              "usage": false
+            },
+            "index": 3,
+            "protocol_ok": true
+          },
+          {
+            "exact": false,
+            "fields": {
+              "content": true,
+              "finish_reason": true,
+              "reasoning_content": true,
+              "tool_calls": true,
+              "usage": false
+            },
+            "index": 4,
+            "protocol_ok": true
+          },
+          {
+            "exact": false,
+            "fields": {
+              "content": true,
+              "finish_reason": true,
+              "reasoning_content": true,
+              "tool_calls": true,
+              "usage": false
+            },
+            "index": 5,
+            "protocol_ok": true
+          },
+          {
+            "exact": false,
+            "fields": {
+              "content": true,
+              "finish_reason": true,
+              "reasoning_content": true,
+              "tool_calls": true,
+              "usage": false
+            },
+            "index": 6,
+            "protocol_ok": true
+          },
+          {
+            "exact": false,
+            "fields": {
+              "content": true,
+              "finish_reason": true,
+              "reasoning_content": true,
+              "tool_calls": true,
+              "usage": false
+            },
+            "index": 7,
+            "protocol_ok": true
+          },
+          {
+            "exact": false,
+            "fields": {
+              "content": true,
+              "finish_reason": true,
+              "reasoning_content": true,
+              "tool_calls": true,
+              "usage": false
+            },
+            "index": 8,
+            "protocol_ok": true
+          }
+        ],
+        "field_matches": {
+          "content": 8,
+          "finish_reason": 8,
+          "reasoning_content": 8,
+          "tool_calls": 8,
+          "usage": 0
+        },
+        "fields": [
+          "reasoning_content",
+          "content",
+          "tool_calls",
+          "finish_reason",
+          "usage"
+        ],
+        "left": "c1",
+        "matched": 0,
+        "protocol_failures": [],
+        "right": "serial",
+        "rows": [
+          {
+            "budget_truncated": true,
+            "cached_tokens": 64,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-01.json",
+            "index": 1,
+            "protocol_ok": true,
+            "request_mutation": {
+              "after": true,
+              "before": null,
+              "before_present": false,
+              "changed_keys": [
+                "disable_mtp"
+              ],
+              "control": "same_server_disable_mtp",
+              "exact_request_sha256": "f1615348fc38680b5ef732fda3b98e653aede4d7f76b58ae3a6d54fe774e0c6e",
+              "field": "disable_mtp",
+              "mutated": true,
+              "only_mutation": true,
+              "sent_request_sha256": "dc1fff74887887e9940c42856a18756ac6955ae45cd2beefb1c09f972bde5a71"
+            },
+            "semantic_ok": null,
+            "serial_control": "same_server_disable_mtp",
+            "status": 200,
+            "text_sha256": "af5a45b9c33fff1afcb87ea85d92b6bac75087fd957b3a49ebef5b6a09031058"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-02.json",
+            "index": 2,
+            "protocol_ok": true,
+            "request_mutation": {
+              "after": true,
+              "before": null,
+              "before_present": false,
+              "changed_keys": [
+                "disable_mtp"
+              ],
+              "control": "same_server_disable_mtp",
+              "exact_request_sha256": "8ed6e4abaedfff49367f5170b6a1c6f167a8a351245f100524a0543c82e431fb",
+              "field": "disable_mtp",
+              "mutated": true,
+              "only_mutation": true,
+              "sent_request_sha256": "d1b55323b33650d2c917d8321e21078c4940d8bee6dcd17be4c45445139ddfa7"
+            },
+            "semantic_ok": null,
+            "serial_control": "same_server_disable_mtp",
+            "status": 200,
+            "text_sha256": "32cba69c9eb49548895cbaaae34278908f0098865d337f9450fb891aa0b17b2f"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 64,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-03.json",
+            "index": 3,
+            "protocol_ok": true,
+            "request_mutation": {
+              "after": true,
+              "before": null,
+              "before_present": false,
+              "changed_keys": [
+                "disable_mtp"
+              ],
+              "control": "same_server_disable_mtp",
+              "exact_request_sha256": "6378f9b6feeb2b5c0a0bc74bc0494828294383995855d527019d5ab82e55cb58",
+              "field": "disable_mtp",
+              "mutated": true,
+              "only_mutation": true,
+              "sent_request_sha256": "3493962a1fd11ac1fd60b772394aeb8aade1e0637cedb3fd84560bd93b37096e"
+            },
+            "semantic_ok": null,
+            "serial_control": "same_server_disable_mtp",
+            "status": 200,
+            "text_sha256": "0b4afbeaa13f6dfef1e8e78d925d33f79ec6700bc79b08cd8bd6c7b875b94efa"
+          },
+          {
+            "budget_truncated": false,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-04.json",
+            "index": 4,
+            "protocol_ok": true,
+            "request_mutation": {
+              "after": true,
+              "before": null,
+              "before_present": false,
+              "changed_keys": [
+                "disable_mtp"
+              ],
+              "control": "same_server_disable_mtp",
+              "exact_request_sha256": "392cc5d8b0f464fed6f3706a039db573c50ad01a8d9c693178d35d01a0016fe3",
+              "field": "disable_mtp",
+              "mutated": true,
+              "only_mutation": true,
+              "sent_request_sha256": "5b785eee240d9ab1d629c7a4407bec5475d43859b23bcc8de0cd9e76d430e687"
+            },
+            "semantic_ok": null,
+            "serial_control": "same_server_disable_mtp",
+            "status": 200,
+            "text_sha256": "d18596fb6f54e4d9400aa36d71c2d04ae7ec22f268f47f2950a64abcdb9fc2cc"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-05.json",
+            "index": 5,
+            "protocol_ok": true,
+            "request_mutation": {
+              "after": true,
+              "before": null,
+              "before_present": false,
+              "changed_keys": [
+                "disable_mtp"
+              ],
+              "control": "same_server_disable_mtp",
+              "exact_request_sha256": "a097cd698e7184089b6da02f6fa8d1d81c63234a27b060391866cb8b3d2d084d",
+              "field": "disable_mtp",
+              "mutated": true,
+              "only_mutation": true,
+              "sent_request_sha256": "2d37ca43dec3cd2275bfcde15d1d891f865d8ecc04054e325df8a1ac78dec77e"
+            },
+            "semantic_ok": null,
+            "serial_control": "same_server_disable_mtp",
+            "status": 200,
+            "text_sha256": "5c46d9b19a4dc6fa9c9280dd274ad61d9e9961eaeae38a72dc0056bfe268a374"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-06.json",
+            "index": 6,
+            "protocol_ok": true,
+            "request_mutation": {
+              "after": true,
+              "before": null,
+              "before_present": false,
+              "changed_keys": [
+                "disable_mtp"
+              ],
+              "control": "same_server_disable_mtp",
+              "exact_request_sha256": "10d2722336b403a832494fb7c82e08a91862882431079516f5b4253968d2c0c2",
+              "field": "disable_mtp",
+              "mutated": true,
+              "only_mutation": true,
+              "sent_request_sha256": "a0ee8c6ad30acedfd5550581ca3653ddb825ee864ec0d520e30fc65d43b30cae"
+            },
+            "semantic_ok": null,
+            "serial_control": "same_server_disable_mtp",
+            "status": 200,
+            "text_sha256": "1f22cdc91ec7ad5d4fd8ac3f5f38ade1d4ebbca4117c1b8e91958014b2b301a3"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-07.json",
+            "index": 7,
+            "protocol_ok": true,
+            "request_mutation": {
+              "after": true,
+              "before": null,
+              "before_present": false,
+              "changed_keys": [
+                "disable_mtp"
+              ],
+              "control": "same_server_disable_mtp",
+              "exact_request_sha256": "dcfee9f0342e9da9ce4536049fe494ca8e06253945cc7c5d7f06a14c10124c4e",
+              "field": "disable_mtp",
+              "mutated": true,
+              "only_mutation": true,
+              "sent_request_sha256": "93ec1fbcaeeeb76561820800d790ad5869868e24eafaaa1cad7caedd051baea9"
+            },
+            "semantic_ok": null,
+            "serial_control": "same_server_disable_mtp",
+            "status": 200,
+            "text_sha256": "67742ea68838cc4a9df1452787c271fa7d3ed9d932da64293283d452b644394d"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-strict/qualification/fixtures/greedy/plain-08.json",
+            "index": 8,
+            "protocol_ok": true,
+            "request_mutation": {
+              "after": true,
+              "before": null,
+              "before_present": false,
+              "changed_keys": [
+                "disable_mtp"
+              ],
+              "control": "same_server_disable_mtp",
+              "exact_request_sha256": "fbde399d92f851bfdd563eee9e949fad009dbab784f3317e1c0dc71d9a4077ad",
+              "field": "disable_mtp",
+              "mutated": true,
+              "only_mutation": true,
+              "sent_request_sha256": "39765b9c0017a8831e27f6e62254b69ff448d028d402967f4717bd50e513ae1d"
+            },
+            "semantic_ok": null,
+            "serial_control": "same_server_disable_mtp",
+            "status": 200,
+            "text_sha256": "2f3a3ee6f8a062f044ec5569937028458ab85357d48f30b636c1e053c12e7aba"
+          }
+        ],
+        "total": 8
+      }
+    },
+    "literal_xml_and_tools": {
+      "tool-anthropic-blocking": {
+        "budget_truncated": false,
+        "engine_signal": null,
+        "protocol_ok": true,
+        "semantic_category": "forced_tool",
+        "semantic_ok": true,
+        "status": 200,
+        "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "tool_calls": [
+          {
+            "id": "call_000000000000000e",
+            "input": {
+              "city": "Paris"
+            },
+            "name": "get_weather",
+            "type": "tool_use"
+          }
+        ]
+      },
+      "tool-anthropic-stream": {
+        "budget_truncated": false,
+        "engine_signal": null,
+        "protocol_ok": true,
+        "semantic_category": "forced_tool",
+        "semantic_ok": true,
+        "status": 200,
+        "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "tool_calls": [
+          {
+            "id": "call_000000000000000f",
+            "input": {},
+            "name": "get_weather",
+            "partial_json": "{\"city\":\"Paris\"}",
+            "type": "tool_use"
+          }
+        ]
+      },
+      "tool-openai-blocking": {
+        "budget_truncated": false,
+        "engine_signal": null,
+        "protocol_ok": true,
+        "semantic_category": "forced_tool",
+        "semantic_ok": true,
+        "status": 200,
+        "text_sha256": "633769a0ab32c9e1f69fffa9d3101d634d775dad27cb5bb7219010f2f9c5c42a",
+        "tool_calls": [
+          {
+            "function": {
+              "arguments": "{\"city\":\"Paris\"}",
+              "name": "get_weather"
+            },
+            "id": "call_000000000000000c",
+            "type": "function"
+          }
+        ]
+      },
+      "tool-openai-stream": {
+        "budget_truncated": false,
+        "engine_signal": null,
+        "protocol_ok": true,
+        "semantic_category": "forced_tool",
+        "semantic_ok": true,
+        "status": 200,
+        "text_sha256": "633769a0ab32c9e1f69fffa9d3101d634d775dad27cb5bb7219010f2f9c5c42a",
+        "tool_calls": [
+          {
+            "function": {
+              "arguments": "{\"city\":\"Paris\"}",
+              "name": "get_weather"
+            },
+            "id": "call_000000000000000d",
+            "index": 0,
+            "type": "function"
+          }
+        ]
+      },
+      "xml-anthropic-blocking": {
+        "budget_truncated": true,
+        "engine_signal": null,
+        "protocol_ok": true,
+        "semantic_category": "inconclusive_budget",
+        "semantic_ok": null,
+        "status": 200,
+        "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "tool_calls": []
+      },
+      "xml-anthropic-stream": {
+        "budget_truncated": true,
+        "engine_signal": null,
+        "protocol_ok": true,
+        "semantic_category": "inconclusive_budget",
+        "semantic_ok": null,
+        "status": 200,
+        "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "tool_calls": []
+      },
+      "xml-openai-blocking": {
+        "budget_truncated": false,
+        "engine_signal": null,
+        "protocol_ok": true,
+        "semantic_category": "model_literal_prose",
+        "semantic_ok": false,
+        "status": 200,
+        "text_sha256": "eaea88f5526698e9c2b9f96f8cebc5f2aa1c21536fe0629420a93b3dbfb40fb4",
+        "tool_calls": null
+      },
+      "xml-openai-stream": {
+        "budget_truncated": false,
+        "engine_signal": null,
+        "protocol_ok": true,
+        "semantic_category": "model_literal_prose",
+        "semantic_ok": false,
+        "status": 200,
+        "text_sha256": "3f0cdc0ffe2b178507980e65ee9b497e569c4026d31f9f12f51373679c94171e",
+        "tool_calls": null
+      }
+    },
+    "long_context": {
+      "concurrency": 4,
+      "protocol_ok": true,
+      "rows": [
+        {
+          "answer": "85852150",
+          "budget_truncated": false,
+          "depth": 0.167,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "85852150",
+          "expected_metadata_out": "85852150",
+          "index": 1,
+          "output_tail": "7 -> c675686\n\nFrom Table B:\nc675686 = 85852150\n\n---\n85852150",
+          "protocol_ok": true,
+          "query_key": "975947",
+          "request_content_chars": 34371,
+          "rows": 900,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "675686"
+        },
+        {
+          "answer": "10382229",
+          "budget_truncated": false,
+          "depth": 0.033,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "10382229",
+          "expected_metadata_out": "10382229",
+          "index": 2,
+          "output_tail": "2 -> c884392\n\nFrom Table B:\nc884392 = 10382229\n\n---\n10382229",
+          "protocol_ok": true,
+          "query_key": "906592",
+          "request_content_chars": 34371,
+          "rows": 900,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "884392"
+        },
+        {
+          "answer": "29641454",
+          "budget_truncated": false,
+          "depth": 0.1,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "29641454",
+          "expected_metadata_out": "29641454",
+          "index": 3,
+          "output_tail": "1:\nc923471 = 29641454\n\nThe answer is 29641454.\n\n---\n29641454",
+          "protocol_ok": true,
+          "query_key": "356652",
+          "request_content_chars": 34371,
+          "rows": 900,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "923471"
+        },
+        {
+          "answer": "52917357",
+          "budget_truncated": false,
+          "depth": 0.233,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "52917357",
+          "expected_metadata_out": "52917357",
+          "index": 4,
+          "output_tail": "3 -> c335228\n\nFrom Table B:\nc335228 = 52917357\n\n---\n52917357",
+          "protocol_ok": true,
+          "query_key": "694443",
+          "request_content_chars": 34371,
+          "rows": 900,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "335228"
+        },
+        {
+          "answer": "88054827",
+          "budget_truncated": false,
+          "depth": 0.3,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "88054827",
+          "expected_metadata_out": "88054827",
+          "index": 5,
+          "output_tail": "5 -> c561064\n\nFrom Table B:\nc561064 = 88054827\n\n---\n88054827",
+          "protocol_ok": true,
+          "query_key": "714025",
+          "request_content_chars": 34371,
+          "rows": 900,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "561064"
+        },
+        {
+          "answer": "56409884",
+          "budget_truncated": false,
+          "depth": 0.367,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "56409884",
+          "expected_metadata_out": "56409884",
+          "index": 6,
+          "output_tail": "ing at Table B for c793607:\nc793607 = 56409884\n\n---\n56409884",
+          "protocol_ok": true,
+          "query_key": "740615",
+          "request_content_chars": 34371,
+          "rows": 900,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "793607"
+        },
+        {
+          "answer": "68697282",
+          "budget_truncated": false,
+          "depth": 0.433,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "68697282",
+          "expected_metadata_out": "68697282",
+          "index": 7,
+          "output_tail": "3:\nc325993 = 68697282\n\nThe answer is 68697282.\n\n---\n68697282",
+          "protocol_ok": true,
+          "query_key": "088714",
+          "request_content_chars": 34371,
+          "rows": 900,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "325993"
+        },
+        {
+          "answer": "56085835",
+          "budget_truncated": false,
+          "depth": 0.5,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "56085835",
+          "expected_metadata_out": "56085835",
+          "index": 8,
+          "output_tail": "ing at Table B for c998187:\nc998187 = 56085835\n\n---\n56085835",
+          "protocol_ok": true,
+          "query_key": "105225",
+          "request_content_chars": 34371,
+          "rows": 900,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "998187"
+        },
+        {
+          "answer": "82198881",
+          "budget_truncated": false,
+          "depth": 0.567,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "82198881",
+          "expected_metadata_out": "82198881",
+          "index": 9,
+          "output_tail": "c424456 = 82198881\n\nSo the answer is 82198881.\n\n---\n82198881",
+          "protocol_ok": true,
+          "query_key": "831120",
+          "request_content_chars": 34371,
+          "rows": 900,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "424456"
+        },
+        {
+          "answer": "88427461",
+          "budget_truncated": false,
+          "depth": 0.633,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "88427461",
+          "expected_metadata_out": "88427461",
+          "index": 10,
+          "output_tail": "ing at Table B for c614093:\nc614093 = 88427461\n\n---\n88427461",
+          "protocol_ok": true,
+          "query_key": "660818",
+          "request_content_chars": 34371,
+          "rows": 900,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "614093"
+        },
+        {
+          "answer": "00030332",
+          "budget_truncated": false,
+          "depth": 0.7,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "00030332",
+          "expected_metadata_out": "00030332",
+          "index": 11,
+          "output_tail": "c957627 = 00030332\n\nSo the answer is 00030332.\n\n---\n00030332",
+          "protocol_ok": true,
+          "query_key": "388721",
+          "request_content_chars": 34371,
+          "rows": 900,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "957627"
+        },
+        {
+          "answer": "75517914",
+          "budget_truncated": false,
+          "depth": 0.767,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "75517914",
+          "expected_metadata_out": "75517914",
+          "index": 12,
+          "output_tail": "c298071 = 75517914\n\nSo the answer is 75517914.\n\n---\n75517914",
+          "protocol_ok": true,
+          "query_key": "381670",
+          "request_content_chars": 34371,
+          "rows": 900,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "298071"
+        },
+        {
+          "answer": "23469311",
+          "budget_truncated": false,
+          "depth": 0.833,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "23469311",
+          "expected_metadata_out": "23469311",
+          "index": 13,
+          "output_tail": "969 = 23469311\n\nThe 8-digit value is 23469311.\n\n---\n23469311",
+          "protocol_ok": true,
+          "query_key": "809353",
+          "request_content_chars": 34371,
+          "rows": 900,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "851969"
+        },
+        {
+          "answer": "95984342",
+          "budget_truncated": false,
+          "depth": 0.9,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "95984342",
+          "expected_metadata_out": "95984342",
+          "index": 14,
+          "output_tail": "ing at Table B for c541761:\nc541761 = 95984342\n\n---\n95984342",
+          "protocol_ok": true,
+          "query_key": "753866",
+          "request_content_chars": 34371,
+          "rows": 900,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "541761"
+        },
+        {
+          "answer": "56018428",
+          "budget_truncated": false,
+          "depth": 0.967,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "56018428",
+          "expected_metadata_out": "56018428",
+          "index": 15,
+          "output_tail": "ing at Table B for c335369:\nc335369 = 56018428\n\n---\n56018428",
+          "protocol_ok": true,
+          "query_key": "283085",
+          "request_content_chars": 34371,
+          "rows": 900,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "335369"
+        },
+        {
+          "answer": "14002526",
+          "budget_truncated": false,
+          "depth": 0.033,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "14002526",
+          "expected_metadata_out": "14002526",
+          "index": 16,
+          "output_tail": "c540342 = 14002526\n\nSo the answer is 14002526.\n\n---\n14002526",
+          "protocol_ok": true,
+          "query_key": "940659",
+          "request_content_chars": 68571,
+          "rows": 1800,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "540342"
+        },
+        {
+          "answer": "06483354",
+          "budget_truncated": false,
+          "depth": 0.1,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "06483354",
+          "expected_metadata_out": "06483354",
+          "index": 17,
+          "output_tail": "493 = 06483354\n\nThe 8-digit value is 06483354.\n\n---\n06483354",
+          "protocol_ok": true,
+          "query_key": "243282",
+          "request_content_chars": 68571,
+          "rows": 1800,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "366493"
+        },
+        {
+          "answer": "97568825",
+          "budget_truncated": false,
+          "depth": 0.167,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "97568825",
+          "expected_metadata_out": "97568825",
+          "index": 18,
+          "output_tail": "ing at Table B for c273909:\nc273909 = 97568825\n\n---\n97568825",
+          "protocol_ok": true,
+          "query_key": "248528",
+          "request_content_chars": 68571,
+          "rows": 1800,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "273909"
+        },
+        {
+          "answer": "66939152",
+          "budget_truncated": false,
+          "depth": 0.233,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "66939152",
+          "expected_metadata_out": "66939152",
+          "index": 19,
+          "output_tail": "c114321 = 66939152\n\nSo the answer is 66939152.\n\n---\n66939152",
+          "protocol_ok": true,
+          "query_key": "274840",
+          "request_content_chars": 68571,
+          "rows": 1800,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "114321"
+        },
+        {
+          "answer": "38518884",
+          "budget_truncated": false,
+          "depth": 0.3,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "38518884",
+          "expected_metadata_out": "38518884",
+          "index": 20,
+          "output_tail": "c153208 = 38518884\n\nSo the answer is 38518884.\n\n---\n38518884",
+          "protocol_ok": true,
+          "query_key": "114435",
+          "request_content_chars": 68571,
+          "rows": 1800,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "153208"
+        },
+        {
+          "answer": "33080118",
+          "budget_truncated": false,
+          "depth": 0.367,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "33080118",
+          "expected_metadata_out": "33080118",
+          "index": 21,
+          "output_tail": "ing at Table B for c395410:\nc395410 = 33080118\n\n---\n33080118",
+          "protocol_ok": true,
+          "query_key": "439113",
+          "request_content_chars": 68571,
+          "rows": 1800,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "395410"
+        },
+        {
+          "answer": "84291185",
+          "budget_truncated": false,
+          "depth": 0.433,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "84291185",
+          "expected_metadata_out": "84291185",
+          "index": 22,
+          "output_tail": "1:\nc452971 = 84291185\n\nThe answer is 84291185.\n\n---\n84291185",
+          "protocol_ok": true,
+          "query_key": "429693",
+          "request_content_chars": 68571,
+          "rows": 1800,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "452971"
+        },
+        {
+          "answer": "34564315",
+          "budget_truncated": false,
+          "depth": 0.5,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "34564315",
+          "expected_metadata_out": "34564315",
+          "index": 23,
+          "output_tail": "ing at Table B for c367973:\nc367973 = 34564315\n\n---\n34564315",
+          "protocol_ok": true,
+          "query_key": "578747",
+          "request_content_chars": 68571,
+          "rows": 1800,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "367973"
+        },
+        {
+          "answer": "44998321",
+          "budget_truncated": false,
+          "depth": 0.567,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "44998321",
+          "expected_metadata_out": "44998321",
+          "index": 24,
+          "output_tail": "c077349 = 44998321\n\nSo the answer is 44998321.\n\n---\n44998321",
+          "protocol_ok": true,
+          "query_key": "100773",
+          "request_content_chars": 68571,
+          "rows": 1800,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "077349"
+        },
+        {
+          "answer": "45535022",
+          "budget_truncated": false,
+          "depth": 0.633,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "45535022",
+          "expected_metadata_out": "45535022",
+          "index": 25,
+          "output_tail": "me find c234508 in Table B:\nc234508 = 45535022\n\n---\n45535022",
+          "protocol_ok": true,
+          "query_key": "389376",
+          "request_content_chars": 68571,
+          "rows": 1800,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "234508"
+        },
+        {
+          "answer": "56132109",
+          "budget_truncated": false,
+          "depth": 0.7,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "56132109",
+          "expected_metadata_out": "56132109",
+          "index": 26,
+          "output_tail": "c334034 = 56132109\n\nSo the answer is 56132109.\n\n---\n56132109",
+          "protocol_ok": true,
+          "query_key": "797899",
+          "request_content_chars": 68571,
+          "rows": 1800,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "334034"
+        },
+        {
+          "answer": "91770641",
+          "budget_truncated": false,
+          "depth": 0.767,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "91770641",
+          "expected_metadata_out": "91770641",
+          "index": 27,
+          "output_tail": "9:\nc126919 = 91770641\n\nThe answer is 91770641.\n\n---\n91770641",
+          "protocol_ok": true,
+          "query_key": "131830",
+          "request_content_chars": 68571,
+          "rows": 1800,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "126919"
+        },
+        {
+          "answer": "57554400",
+          "budget_truncated": false,
+          "depth": 0.833,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "57554400",
+          "expected_metadata_out": "57554400",
+          "index": 28,
+          "output_tail": "6:\nc843656 = 57554400\n\nThe answer is 57554400.\n\n---\n57554400",
+          "protocol_ok": true,
+          "query_key": "926069",
+          "request_content_chars": 68571,
+          "rows": 1800,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "843656"
+        },
+        {
+          "answer": "30805752",
+          "budget_truncated": false,
+          "depth": 0.9,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "30805752",
+          "expected_metadata_out": "30805752",
+          "index": 29,
+          "output_tail": "ing at Table B for c004762:\nc004762 = 30805752\n\n---\n30805752",
+          "protocol_ok": true,
+          "query_key": "364519",
+          "request_content_chars": 68571,
+          "rows": 1800,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "004762"
+        },
+        {
+          "answer": "78965747",
+          "budget_truncated": false,
+          "depth": 0.967,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "78965747",
+          "expected_metadata_out": "78965747",
+          "index": 30,
+          "output_tail": "9:\nc001429 = 78965747\n\nThe answer is 78965747.\n\n---\n78965747",
+          "protocol_ok": true,
+          "query_key": "364019",
+          "request_content_chars": 68571,
+          "rows": 1800,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "001429"
+        },
+        {
+          "answer": "77140129",
+          "budget_truncated": false,
+          "depth": 0.033,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "77140129",
+          "expected_metadata_out": "77140129",
+          "index": 31,
+          "output_tail": "c091069 = 77140129\n\nSo the answer is 77140129.\n\n---\n77140129",
+          "protocol_ok": true,
+          "query_key": "988843",
+          "request_content_chars": 114171,
+          "rows": 3000,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "091069"
+        },
+        {
+          "answer": "43414356",
+          "budget_truncated": false,
+          "depth": 0.1,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "43414356",
+          "expected_metadata_out": "43414356",
+          "index": 32,
+          "output_tail": "ing at Table B for c049257:\nc049257 = 43414356\n\n---\n43414356",
+          "protocol_ok": true,
+          "query_key": "090634",
+          "request_content_chars": 114171,
+          "rows": 3000,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "049257"
+        },
+        {
+          "answer": "92381007",
+          "budget_truncated": false,
+          "depth": 0.167,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "92381007",
+          "expected_metadata_out": "92381007",
+          "index": 33,
+          "output_tail": "ing at Table B for c882780:\nc882780 = 92381007\n\n---\n92381007",
+          "protocol_ok": true,
+          "query_key": "237373",
+          "request_content_chars": 114171,
+          "rows": 3000,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "882780"
+        },
+        {
+          "answer": "36812869",
+          "budget_truncated": false,
+          "depth": 0.233,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "36812869",
+          "expected_metadata_out": "36812869",
+          "index": 34,
+          "output_tail": "ing at Table B for c717191:\nc717191 = 36812869\n\n---\n36812869",
+          "protocol_ok": true,
+          "query_key": "032221",
+          "request_content_chars": 114171,
+          "rows": 3000,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "717191"
+        },
+        {
+          "answer": "66459192",
+          "budget_truncated": false,
+          "depth": 0.3,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "66459192",
+          "expected_metadata_out": "66459192",
+          "index": 35,
+          "output_tail": "ing at Table B for c639774:\nc639774 = 66459192\n\n---\n66459192",
+          "protocol_ok": true,
+          "query_key": "910006",
+          "request_content_chars": 114171,
+          "rows": 3000,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "639774"
+        },
+        {
+          "answer": "49476037",
+          "budget_truncated": false,
+          "depth": 0.367,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "49476037",
+          "expected_metadata_out": "49476037",
+          "index": 36,
+          "output_tail": "ing in Table B for c857947:\nc857947 = 49476037\n\n---\n49476037",
+          "protocol_ok": true,
+          "query_key": "052539",
+          "request_content_chars": 114171,
+          "rows": 3000,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "857947"
+        },
+        {
+          "answer": "69770104",
+          "budget_truncated": false,
+          "depth": 0.433,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "69770104",
+          "expected_metadata_out": "69770104",
+          "index": 37,
+          "output_tail": "c076033 = 69770104\n\nSo the answer is 69770104.\n\n---\n69770104",
+          "protocol_ok": true,
+          "query_key": "260872",
+          "request_content_chars": 114171,
+          "rows": 3000,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "076033"
+        },
+        {
+          "answer": "78207611",
+          "budget_truncated": false,
+          "depth": 0.5,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "78207611",
+          "expected_metadata_out": "78207611",
+          "index": 38,
+          "output_tail": "me find c066813 in Table B:\nc066813 = 78207611\n\n---\n78207611",
+          "protocol_ok": true,
+          "query_key": "958679",
+          "request_content_chars": 114171,
+          "rows": 3000,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "066813"
+        },
+        {
+          "answer": "98639918",
+          "budget_truncated": false,
+          "depth": 0.567,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "98639918",
+          "expected_metadata_out": "98639918",
+          "index": 39,
+          "output_tail": "ing in Table B for c785677:\nc785677 = 98639918\n\n---\n98639918",
+          "protocol_ok": true,
+          "query_key": "584425",
+          "request_content_chars": 114171,
+          "rows": 3000,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "785677"
+        },
+        {
+          "answer": "57917062",
+          "budget_truncated": false,
+          "depth": 0.633,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "57917062",
+          "expected_metadata_out": "57917062",
+          "index": 40,
+          "output_tail": "ing at Table B for c199236:\nc199236 = 57917062\n\n---\n57917062",
+          "protocol_ok": true,
+          "query_key": "883023",
+          "request_content_chars": 114171,
+          "rows": 3000,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "199236"
+        },
+        {
+          "answer": "39556398",
+          "budget_truncated": false,
+          "depth": 0.7,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "39556398",
+          "expected_metadata_out": "39556398",
+          "index": 41,
+          "output_tail": "c991234 = 39556398\n\nSo the answer is 39556398.\n\n---\n39556398",
+          "protocol_ok": true,
+          "query_key": "128279",
+          "request_content_chars": 114171,
+          "rows": 3000,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "991234"
+        },
+        {
+          "answer": "57704515",
+          "budget_truncated": false,
+          "depth": 0.767,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "57704515",
+          "expected_metadata_out": "57704515",
+          "index": 42,
+          "output_tail": "ing at Table B for c394459:\nc394459 = 57704515\n\n---\n57704515",
+          "protocol_ok": true,
+          "query_key": "191760",
+          "request_content_chars": 114171,
+          "rows": 3000,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "394459"
+        },
+        {
+          "answer": "51145972",
+          "budget_truncated": false,
+          "depth": 0.833,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "51145972",
+          "expected_metadata_out": "51145972",
+          "index": 43,
+          "output_tail": "ing at Table B for c649117:\nc649117 = 51145972\n\n---\n51145972",
+          "protocol_ok": true,
+          "query_key": "206566",
+          "request_content_chars": 114171,
+          "rows": 3000,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "649117"
+        },
+        {
+          "answer": "10061608",
+          "budget_truncated": false,
+          "depth": 0.9,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "10061608",
+          "expected_metadata_out": "10061608",
+          "index": 44,
+          "output_tail": "ing in Table B for c946232:\nc946232 = 10061608\n\n---\n10061608",
+          "protocol_ok": true,
+          "query_key": "038217",
+          "request_content_chars": 114171,
+          "rows": 3000,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "946232"
+        },
+        {
+          "answer": "73584744",
+          "budget_truncated": false,
+          "depth": 0.967,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "73584744",
+          "expected_metadata_out": "73584744",
+          "index": 45,
+          "output_tail": "ing in Table B for c459587:\nc459587 = 73584744\n\n---\n73584744",
+          "protocol_ok": true,
+          "query_key": "367875",
+          "request_content_chars": 114171,
+          "rows": 3000,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "459587"
+        },
+        {
+          "answer": "48018455",
+          "budget_truncated": false,
+          "depth": 0.033,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "48018455",
+          "expected_metadata_out": "48018455",
+          "index": 46,
+          "output_tail": "c631254 = 48018455\n\nSo the answer is 48018455.\n\n---\n48018455",
+          "protocol_ok": true,
+          "query_key": "836926",
+          "request_content_chars": 182571,
+          "rows": 4800,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "631254"
+        },
+        {
+          "answer": "97973191",
+          "budget_truncated": false,
+          "depth": 0.1,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "97973191",
+          "expected_metadata_out": "97973191",
+          "index": 47,
+          "output_tail": "7:\nc123867 = 97973191\n\nThe answer is 97973191.\n\n---\n97973191",
+          "protocol_ok": true,
+          "query_key": "514891",
+          "request_content_chars": 182571,
+          "rows": 4800,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "123867"
+        },
+        {
+          "answer": "35112070",
+          "budget_truncated": false,
+          "depth": 0.167,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "35112070",
+          "expected_metadata_out": "35112070",
+          "index": 48,
+          "output_tail": "9:\nc505039 = 35112070\n\nThe answer is 35112070.\n\n---\n35112070",
+          "protocol_ok": true,
+          "query_key": "665020",
+          "request_content_chars": 182571,
+          "rows": 4800,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "505039"
+        },
+        {
+          "answer": "70907304",
+          "budget_truncated": false,
+          "depth": 0.233,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "70907304",
+          "expected_metadata_out": "70907304",
+          "index": 49,
+          "output_tail": "ing at Table B for c074567:\nc074567 = 70907304\n\n---\n70907304",
+          "protocol_ok": true,
+          "query_key": "016926",
+          "request_content_chars": 182571,
+          "rows": 4800,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "074567"
+        },
+        {
+          "answer": "73308760",
+          "budget_truncated": false,
+          "depth": 0.3,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "73308760",
+          "expected_metadata_out": "73308760",
+          "index": 50,
+          "output_tail": "ing at Table B for c309744:\nc309744 = 73308760\n\n---\n73308760",
+          "protocol_ok": true,
+          "query_key": "290388",
+          "request_content_chars": 182571,
+          "rows": 4800,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "309744"
+        },
+        {
+          "answer": "52590382",
+          "budget_truncated": false,
+          "depth": 0.367,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "52590382",
+          "expected_metadata_out": "94207600",
+          "index": 51,
+          "output_tail": "\nLooking through Table B... c010364 = 01987362\n\n---\n01987362",
+          "protocol_ok": true,
+          "query_key": "880253",
+          "request_content_chars": 182571,
+          "rows": 4800,
+          "semantic_category": "model_retrieval",
+          "semantic_ok": false,
+          "status": 200,
+          "table_a_code": "582677"
+        },
+        {
+          "answer": "29726866",
+          "budget_truncated": false,
+          "depth": 0.433,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "29726866",
+          "expected_metadata_out": "29726866",
+          "index": 52,
+          "output_tail": "e find c045314 in Table B.\n\nc045314 = 29726866\n\n---\n29726866",
+          "protocol_ok": true,
+          "query_key": "824335",
+          "request_content_chars": 182571,
+          "rows": 4800,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "045314"
+        },
+        {
+          "answer": "68328253",
+          "budget_truncated": false,
+          "depth": 0.5,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "68328253",
+          "expected_metadata_out": "68328253",
+          "index": 53,
+          "output_tail": "ing in Table B for c095403:\nc095403 = 68328253\n\n---\n68328253",
+          "protocol_ok": true,
+          "query_key": "174676",
+          "request_content_chars": 182571,
+          "rows": 4800,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "095403"
+        },
+        {
+          "answer": "51622736",
+          "budget_truncated": false,
+          "depth": 0.567,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "51622736",
+          "expected_metadata_out": "51622736",
+          "index": 54,
+          "output_tail": "ing in Table B for c667597:\nc667597 = 51622736\n\n---\n51622736",
+          "protocol_ok": true,
+          "query_key": "821811",
+          "request_content_chars": 182571,
+          "rows": 4800,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "667597"
+        },
+        {
+          "answer": "60678541",
+          "budget_truncated": false,
+          "depth": 0.633,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "60678541",
+          "expected_metadata_out": "60678541",
+          "index": 55,
+          "output_tail": "e find c910745 in Table B.\n\nc910745 = 60678541\n\n---\n60678541",
+          "protocol_ok": true,
+          "query_key": "572119",
+          "request_content_chars": 182571,
+          "rows": 4800,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "910745"
+        },
+        {
+          "answer": "24371183",
+          "budget_truncated": false,
+          "depth": 0.7,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "24371183",
+          "expected_metadata_out": "24371183",
+          "index": 56,
+          "output_tail": "e find c580641 in Table B.\n\nc580641 = 24371183\n\n---\n24371183",
+          "protocol_ok": true,
+          "query_key": "294646",
+          "request_content_chars": 182571,
+          "rows": 4800,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "580641"
+        },
+        {
+          "answer": "98802949",
+          "budget_truncated": false,
+          "depth": 0.767,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "98802949",
+          "expected_metadata_out": "98802949",
+          "index": 57,
+          "output_tail": "ing at Table B for c910072:\nc910072 = 98802949\n\n---\n98802949",
+          "protocol_ok": true,
+          "query_key": "710338",
+          "request_content_chars": 182571,
+          "rows": 4800,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "910072"
+        },
+        {
+          "answer": "90443144",
+          "budget_truncated": false,
+          "depth": 0.833,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "90443144",
+          "expected_metadata_out": "90443144",
+          "index": 58,
+          "output_tail": "e find c556703 in Table B.\n\nc556703 = 90443144\n\n---\n90443144",
+          "protocol_ok": true,
+          "query_key": "979230",
+          "request_content_chars": 182571,
+          "rows": 4800,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "556703"
+        },
+        {
+          "answer": "98254900",
+          "budget_truncated": false,
+          "depth": 0.9,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "98254900",
+          "expected_metadata_out": "98254900",
+          "index": 59,
+          "output_tail": "ing at Table B for c133572:\nc133572 = 98254900\n\n---\n98254900",
+          "protocol_ok": true,
+          "query_key": "737159",
+          "request_content_chars": 182571,
+          "rows": 4800,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "133572"
+        },
+        {
+          "answer": "13803635",
+          "budget_truncated": false,
+          "depth": 0.967,
+          "engine_signal": null,
+          "expected_match": "derived_answer",
+          "expected_metadata_answer": "13803635",
+          "expected_metadata_out": "13803635",
+          "index": 60,
+          "output_tail": "\nLooking through Table B... c423755 = 13803635\n\n---\n13803635",
+          "protocol_ok": true,
+          "query_key": "689526",
+          "request_content_chars": 182571,
+          "rows": 4800,
+          "semantic_category": "retrieval_answer",
+          "semantic_ok": true,
+          "status": 200,
+          "table_a_code": "423755"
+        }
+      ],
+      "seed": 20261018,
+      "semantic_correct": 59,
+      "semantic_failures_are_model_observations": true,
+      "semantic_total": 60
+    },
+    "schema": {
+      "tool_choice_none": {
+        "budget_truncated": false,
+        "engine_signal": null,
+        "protocol_ok": true,
+        "semantic_category": "expected_json",
+        "semantic_ok": true,
+        "status": 200,
+        "tool_calls": null
+      },
+      "union": {
+        "budget_truncated": false,
+        "engine_signal": null,
+        "protocol_ok": true,
+        "semantic_category": "expected_json",
+        "semantic_ok": true,
+        "status": 200,
+        "tool_calls": null
+      }
+    }
+  },
+  "semantic_observations_are_not_engine_failures": true,
+  "serial_url_configured": false,
+  "url": "http://127.0.0.1:8893"
+}
