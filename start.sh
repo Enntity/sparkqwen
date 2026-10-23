@@ -23,8 +23,13 @@ if [[ ${1:-} == --mode ]]; then
   [[ $# -ge 2 ]] || { echo '--mode requires strict or spark' >&2; exit 2; }
   MODE=$2; shift 2
 fi
-[[ $MODE == strict || $MODE == spark ]] || { echo '--mode must be strict or spark' >&2; exit 2; }
-[[ ${FP8_GDN:-0} == 0 ]] || { echo 'Strict/Spark require native FP4-Local projections' >&2; exit 2; }
+# Launch-only checks must not prevent inspecting or stopping an older deployment.
+if [[ ${1:-up} == up ]]; then
+  [[ $MODE == strict || $MODE == spark ]] || { echo '--mode must be strict or spark' >&2; exit 2; }
+  [[ ${FP8_GDN:-0} == 0 ]] || { echo 'Strict/Spark require native FP4-Local projections' >&2; exit 2; }
+  [[ -z ${GPU_MEMORY_UTILIZATION:-} || $GPU_MEMORY_UTILIZATION =~ ^0\.(7[0-9]|8[0-9]|9[0-5])$ ]] ||
+    { echo 'GPU_MEMORY_UTILIZATION must be 0.70 to 0.95' >&2; exit 2; }
+fi
 IMAGE=${IMAGE:-}
 MODEL=qwen3.8-flash-next-atlas
 API=http://127.0.0.1:8893

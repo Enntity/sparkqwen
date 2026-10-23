@@ -59,6 +59,8 @@ while [[ $# -gt 0 ]]; do
 done
 [[ $rank == 0 || $rank == 1 ]] && [[ -n $leader && -n $model_root && -n $image ]] || usage
 [[ $mode == strict || $mode == spark ]] || { echo '--mode must be strict or spark' >&2; exit 2; }
+[[ -z $util || $util =~ ^0\.(7[0-9]|8[0-9]|9[0-5])$ ]] ||
+  { echo '--gpu-memory-utilization must be 0.70 to 0.95' >&2; exit 2; }
 sysfs=${FABRIC_SYSFS:-/sys/class/infiniband}
 if [[ -z $hca ]]; then
   [[ -n $iface ]] || { echo "pass --fabric-hca or --fabric-interface; no port is assumed" >&2; exit 2; }

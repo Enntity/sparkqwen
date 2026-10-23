@@ -349,6 +349,13 @@ class StartNode(unittest.TestCase):
             log = self.root/'docker.log'
             self.assertFalse(log.exists(), 'validation must precede docker rm')
 
+    def test_invalid_utilization_never_removes_a_running_rank(self):
+        for value in ('0.69', '0.96', '0.9', '1.00', 'nan', '0.88\n'):
+            with self.subTest(value=value):
+                run, _ = self.start('0', '--gpu-memory-utilization', value)
+                self.assertNotEqual(run.returncode, 0)
+                self.assertFalse((self.root/'docker.log').exists(), 'validation must precede docker rm')
+
     def test_default_checkpoint_is_the_pinned_one_and_can_be_overridden(self):
         # start.sh passes the pinned checkpoint's directory; the default, used
         # when start-node.sh runs by hand, names the same pin.
