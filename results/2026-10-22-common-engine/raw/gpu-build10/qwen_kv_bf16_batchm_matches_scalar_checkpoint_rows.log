@@ -1,0 +1,48 @@
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 13.0.0
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+running 1 test
+test layers::qwen3_attention::trait_impl::multi_seq::kv_bf16::gpu_tests::qwen_kv_bf16_batchm_matches_scalar_checkpoint_rows ... TP2 rank0, rows=1: exact K/V and untouched Q/padding
+TP2 rank0, rows=2: exact K/V and untouched Q/padding
+TP2 rank0, rows=7: exact K/V and untouched Q/padding
+TP2 rank0, rows=8: exact K/V and untouched Q/padding
+TP2 rank0, rows=9: exact K/V and untouched Q/padding
+TP2 rank0, rows=16: exact K/V and untouched Q/padding
+TP2 rank0, rows=64: exact K/V and untouched Q/padding
+TP2 rank0, rows=257: exact K/V and untouched Q/padding
+TP2 rank0, rows=16385: exact K/V and untouched Q/padding
+TP2 rank1, rows=1: exact K/V and untouched Q/padding
+TP2 rank1, rows=2: exact K/V and untouched Q/padding
+TP2 rank1, rows=7: exact K/V and untouched Q/padding
+TP2 rank1, rows=8: exact K/V and untouched Q/padding
+TP2 rank1, rows=9: exact K/V and untouched Q/padding
+TP2 rank1, rows=16: exact K/V and untouched Q/padding
+TP2 rank1, rows=64: exact K/V and untouched Q/padding
+TP2 rank1, rows=257: exact K/V and untouched Q/padding
+TP2 rank1, rows=16385: exact K/V and untouched Q/padding
+TP1 rank0, rows=1: exact K/V and untouched Q/padding
+TP1 rank0, rows=2: exact K/V and untouched Q/padding
+TP1 rank0, rows=7: exact K/V and untouched Q/padding
+TP1 rank0, rows=8: exact K/V and untouched Q/padding
+TP1 rank0, rows=9: exact K/V and untouched Q/padding
+TP1 rank0, rows=16: exact K/V and untouched Q/padding
+TP1 rank0, rows=64: exact K/V and untouched Q/padding
+TP1 rank0, rows=257: exact K/V and untouched Q/padding
+TP1 rank0, rows=16385: exact K/V and untouched Q/padding
+ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 2308 filtered out; finished in 3.23s
+

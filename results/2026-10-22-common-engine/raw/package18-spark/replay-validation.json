@@ -1,0 +1,7 @@
+{
+  "mode": "spark",
+  "nll": 0.9951030694174534,
+  "all_four_parity_groups": "8/8",
+  "logprobs_exactly_equal_strict13": true,
+  "request_sha256": "960026bdf022c54ecfdcd39f027d0af0d3f66f9dbf97aa0de4323809fb6d8c0d"
+}

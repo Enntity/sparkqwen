@@ -1,0 +1,21 @@
+{
+  "case": 51,
+  "arms": {
+    "strict": {
+      "request_sha256": "a99204cde4031bd706e0b1f5189624e0ed2a13938ce090692de4628d751db434",
+      "response_sha256": "63fb02b07895cd24acba65f171a69ad361d95fc222b67e74c7537015e498ad8f",
+      "content": "01987362",
+      "finish_reason": "stop"
+    },
+    "spark": {
+      "request_sha256": "a99204cde4031bd706e0b1f5189624e0ed2a13938ce090692de4628d751db434",
+      "response_sha256": "7c0471e53872b64ccdde715a4afb9e748500c57088e264a0326ed75d22fa174c",
+      "content": "01987362",
+      "finish_reason": "stop"
+    }
+  },
+  "same_request": true,
+  "same_message": true,
+  "expected_answer": "52590382",
+  "note": "Strict Build10 versus Spark Build13; decoded comparison bounds mode differences, not full-model reference fidelity or causal attribution."
+}

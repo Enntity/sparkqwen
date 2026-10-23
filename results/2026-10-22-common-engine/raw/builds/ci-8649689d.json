@@ -1,0 +1,9 @@
+{
+  "head": "8649689d698d2487beba5eddbb89f2a3681d7cd2",
+  "status": "no hosted checks reported",
+  "repository_actions_enabled": true,
+  "workflow_state": "active",
+  "manual_dispatch_error": "HTTP 422: Actions has been disabled for this repository",
+  "organization_policy_read_error": "HTTP 403: admin:org or actions policies permission required",
+  "settings_changed": false
+}

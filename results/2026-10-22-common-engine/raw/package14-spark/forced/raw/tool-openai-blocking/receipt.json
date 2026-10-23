@@ -1,0 +1,15 @@
+{
+  "elapsed_ms": 4228.327,
+  "error": null,
+  "name": "tool-openai-blocking",
+  "parse_error": null,
+  "path": "/v1/chat/completions",
+  "request_bytes": 782,
+  "request_sha256": "d232439aecf0c494fd918949749c95d0181dcc4fab99f5e0949c54fea6812bbc",
+  "response_bytes": 882,
+  "response_sha256": "186cd0f25e9bec2cbfdc7f29c692615287adb9521221cd6e77db398c90fc3fb7",
+  "sse_events": null,
+  "status": 200,
+  "stream": false,
+  "url": "http://127.0.0.1:8893/v1/chat/completions"
+}

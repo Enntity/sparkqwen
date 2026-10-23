@@ -1,0 +1,79 @@
+{
+  "product": "39f57764cfca710143615f42bf68d319cb7ad111",
+  "install": "e3bb830b0c662b1a547a8c8d5aba1a37fed3c25b",
+  "checks": [
+    {
+      "name": "contracts",
+      "exit": 1,
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "install",
+        "-p",
+        "test_*.py",
+        "-v"
+      ]
+    },
+    {
+      "name": "shellcheck",
+      "exit": 0,
+      "command": [
+        "shellcheck",
+        "-S",
+        "warning",
+        "-e",
+        "SC2054",
+        "start.sh",
+        "install/start-node.sh",
+        "install/build.sh"
+      ]
+    },
+    {
+      "name": "python",
+      "exit": 0,
+      "command": [
+        "python3",
+        "-m",
+        "py_compile",
+        "bench/sq_bench.py",
+        "bench/long_probe.py",
+        "bench/lp_repeat.py",
+        "bench/agentic_probe.py",
+        "bench/tool_probe.py",
+        "bench/lp_dump.py",
+        "bench/quality_probe.py",
+        "bench/greedy_eq.py",
+        "bench/nll_probe.py",
+        "install/test_version.py",
+        "install/serve.py",
+        "install/test_fabric.py",
+        "install/test_install.py",
+        "install/rust-notices.py",
+        "install/test_modes.py"
+      ]
+    },
+    {
+      "name": "javascript",
+      "exit": 0,
+      "command": [
+        "node",
+        "--check",
+        "bench/sd_bench.mjs"
+      ]
+    },
+    {
+      "name": "json",
+      "exit": 0
+    },
+    {
+      "name": "contracts after documentation tree correction",
+      "exit": 0,
+      "passed": 46,
+      "receipt": "product18-contracts-green.log"
+    }
+  ],
+  "note": "Working documentation included; result receipts checked after final evidence publication."
+}

@@ -1,0 +1,60 @@
+{
+  "auto": {
+    "tool-anthropic-blocking": {
+      "calls": [
+        {
+          "id": "call_000000000000000a",
+          "input": {
+            "city": "Paris"
+          },
+          "name": "get_weather",
+          "type": "tool_use"
+        }
+      ],
+      "protocol_ok": true,
+      "semantic_ok": true
+    },
+    "tool-anthropic-stream": {
+      "calls": [
+        {
+          "id": "call_000000000000000b",
+          "input": {},
+          "name": "get_weather",
+          "partial_json": "{\"city\":\"Paris\"}",
+          "type": "tool_use"
+        }
+      ],
+      "protocol_ok": true,
+      "semantic_ok": true
+    },
+    "tool-openai-blocking": {
+      "calls": [
+        {
+          "function": {
+            "arguments": "{\"city\":\"Paris\"}",
+            "name": "get_weather"
+          },
+          "id": "call_0000000000000008",
+          "type": "function"
+        }
+      ],
+      "protocol_ok": true,
+      "semantic_ok": true
+    },
+    "tool-openai-stream": {
+      "calls": [
+        {
+          "function": {
+            "arguments": "{\"city\":\"Paris\"}",
+            "name": "get_weather"
+          },
+          "id": "call_0000000000000009",
+          "index": 0,
+          "type": "function"
+        }
+      ],
+      "protocol_ok": true,
+      "semantic_ok": true
+    }
+  }
+}

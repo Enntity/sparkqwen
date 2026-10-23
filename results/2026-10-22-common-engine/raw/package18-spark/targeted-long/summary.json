@@ -1,0 +1,73 @@
+{
+  "cases": [
+    {
+      "case": 51,
+      "expected": "52590382",
+      "protocol_ok": true,
+      "request_sha256": "a99204cde4031bd706e0b1f5189624e0ed2a13938ce090692de4628d751db434",
+      "same_decoded_fields_as_strict18": true,
+      "same_request_as_strict18": true,
+      "semantic_ok": false,
+      "view": {
+        "completion_tokens": 119,
+        "content": "01987362",
+        "finish_reason": "stop",
+        "prompt_tokens": 163290,
+        "reasoning_content": "The user wants me to find the code for key k880253 in Table A, then find that code's value in Table B.\n\nLet me search for k880253 in Table A.\n\nLooking through Table A... k880253 -> c010364\n\nNow let me find c010364 in Table B.\n\nLooking through Table B... c010364 = 01987362\n",
+        "tool_calls": null,
+        "usage": {
+          "completion_tokens": 119,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 81,
+            "audio_tokens": 0,
+            "reasoning_tokens": 107,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 163290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 61.266778220039576,
+          "time_to_first_token_ms": 49389.392598,
+          "total_tokens": 163409
+        }
+      }
+    },
+    {
+      "case": 60,
+      "expected": "13803635",
+      "protocol_ok": true,
+      "request_sha256": "f0bf252c5fe7b9b9d6e61ef885138a96041e4715893c091264ac915c1d83931f",
+      "same_decoded_fields_as_strict18": true,
+      "same_request_as_strict18": true,
+      "semantic_ok": true,
+      "view": {
+        "completion_tokens": 119,
+        "content": "13803635",
+        "finish_reason": "stop",
+        "prompt_tokens": 163290,
+        "reasoning_content": "The user wants me to find the code for key k689526 in Table A, then find that code's value in Table B.\n\nLet me search for k689526 in Table A.\n\nLooking through Table A... k689526 -> c423755\n\nNow let me find c423755 in Table B.\n\nLooking through Table B... c423755 = 13803635\n",
+        "tool_calls": null,
+        "usage": {
+          "completion_tokens": 119,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 85,
+            "audio_tokens": 0,
+            "reasoning_tokens": 107,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 163290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 32
+          },
+          "response_token/s": 66.71932574263606,
+          "time_to_first_token_ms": 49255.106202999996,
+          "total_tokens": 163409
+        }
+      }
+    }
+  ],
+  "scope": "Two selected long requests at C1; not the full60 concurrent suite. Case51 is a retained historical failure, case60 a successful long control."
+}

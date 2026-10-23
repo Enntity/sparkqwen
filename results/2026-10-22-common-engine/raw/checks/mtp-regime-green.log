@@ -1,0 +1,40 @@
+   Compiling spark-server v1.0.0-beta-preview (/Volumes/JMac External/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-common-20261022/crates/spark-server)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 11.56s
+     Running unittests src/main.rs (target/debug/deps/spark-0e3b51d742cd56d6)
+
+running 32 tests
+test scheduler::mtp_gate::tests::bit_exact_verify_counts_as_the_think_opt_in_for_one_sequence ... ok
+test scheduler::mtp_gate::ceiling::tests::no_ceiling_means_no_clamp ... ok
+test scheduler::mtp_gate::ceiling::tests::the_default_draft_depth_never_loses_a_live_step ... ok
+test scheduler::mtp_gate::qsa_latch::tests::only_a_lone_sequence_gets_the_lifted_limit ... ok
+test scheduler::mtp_gate::tests::dflash_raw_argmax_stays_serial_in_think ... ok
+test scheduler::mtp_gate::tests::dflash_spec_think_opts_in ... ok
+test scheduler::mtp_gate::tests::bootstrap_steps_count_at_least_one_token ... ok
+test scheduler::mtp_gate::regime_tests::widening_still_selects_serial_when_steady_mtp_is_slower ... ok
+test scheduler::mtp_gate::tests::decode_steps_charge_the_batch_width ... ok
+test scheduler::mtp_gate::regime_tests::widening_bootstrap_cost_does_not_disable_faster_steady_mtp ... ok
+test scheduler::mtp_gate::tests::depth_change_schedules_early_probe_without_state_wipe ... ok
+test scheduler::mtp_gate::qsa_latch::tests::latch_table_around_bound ... ok
+test scheduler::mtp_gate::ceiling::tests::rows_fit_table_around_the_ceiling ... ok
+test scheduler::mtp_gate::tests::entry_pin_steps_do_not_touch_arbitration_state ... ok
+test scheduler::mtp_gate::tests::hysteresis_blocks_within_margin_switches ... ok
+test scheduler::mtp_gate::tests::no_switch_without_both_baselines ... ok
+test scheduler::mtp_gate::tests::probe_cadence_is_per_sequence_at_width ... ok
+test scheduler::mtp_gate::tests::entry_pin_env_parse ... ok
+test scheduler::mtp_gate::tests::refresh_probe_opens_after_interval_and_returns ... ok
+test scheduler::mtp_gate::tests::serial_mode_reprobes_mtp_and_recovers ... ok
+test scheduler::mtp_gate::tests::standard_mtp_spec_think_opts_in ... ok
+test scheduler::mtp_gate::tests::stale_other_baseline_cannot_steal_mode ... ok
+test scheduler::mtp_gate::tests::standard_mtp_stays_serial_in_think ... ok
+test scheduler::mtp_gate::tests::entry_pin_overrides_serial_mode_for_answer_openings ... ok
+test scheduler::mtp_gate::tests::starts_in_mtp_mode ... ok
+test scheduler::mtp_gate::tests::switches_to_serial_when_clearly_faster_with_dwell ... ok
+test scheduler::mtp_gate::tests::request_disable_mtp_overrides_all_spec_dispatch_modes ... ok
+test scheduler::mtp_gate::tests::widening_still_pulls_the_probe_forward ... ok
+test scheduler::mtp_gate::tests::think_budget_2048_two_crossings_do_not_dump_serial ... ok
+test scheduler::mtp_gate::tests::width_regime_change_stales_and_remeasures_in_the_new_regime ... ok
+test scheduler::mtp_gate::tests::width_jitter_inside_a_bucket_does_not_stale ... ok
+test scheduler::mtp_gate::tests::arbiter_charges_active_width_never_a_padded_width ... ok
+
+test result: ok. 32 passed; 0 failed; 0 ignored; 0 measured; 2959 filtered out; finished in 0.00s
+

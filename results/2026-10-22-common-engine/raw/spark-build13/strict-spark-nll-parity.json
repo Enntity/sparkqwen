@@ -1,0 +1,10 @@
+{
+  "same_request": true,
+  "same_logprobs": true,
+  "tokens": 27035,
+  "scored_positions": 27033,
+  "response_sha256": {
+    "strict": "63018bf12fa6469f056313c2434cc895eae136a1c5f79099585294c802721eeb",
+    "spark": "c8548e98dfc069606d8c3d6f4ce5cd05be3661af4d0100e653230389c8eed542"
+  }
+}

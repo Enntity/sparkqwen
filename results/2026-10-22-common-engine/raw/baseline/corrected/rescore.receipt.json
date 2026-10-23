@@ -1,0 +1,9 @@
+{
+  "evidence_root": "/home/enntitysparkadmin/qwen-common-20261022/product/results/2026-10-20-fidelity-review",
+  "original_files_preserved": [
+    "/home/enntitysparkadmin/qwen-common-20261022/baseline/qualification/fixtures-manifest.json",
+    "/home/enntitysparkadmin/qwen-common-20261022/baseline/qualification/summary.json"
+  ],
+  "requests": 60,
+  "source_run": "/home/enntitysparkadmin/qwen-common-20261022/baseline/qualification"
+}

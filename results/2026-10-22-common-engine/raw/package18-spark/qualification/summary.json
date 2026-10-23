@@ -1,0 +1,1559 @@
+{
+  "driver": "/home/enntitysparkadmin/qwen-common-20261022/qualification.py",
+  "evidence_root": "/home/enntitysparkadmin/qwen-common-20261022/product/results/2026-10-20-fidelity-review",
+  "fixture_manifest": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures-manifest.json",
+  "long_requested": false,
+  "mode": "spark",
+  "model": "qwen3.8-flash-next-atlas",
+  "offline": false,
+  "results": {
+    "canonical_nll": {
+      "engine_signal": null,
+      "nll_nats_per_token": 0.9951030694174534,
+      "protocol_ok": true,
+      "references": {
+        "reference_earlier_shared_a4": {
+          "delta": -0.07088926228647296,
+          "nll": 1.0659923317039264
+        },
+        "reference_observed_a4": {
+          "delta": -0.03044662239617857,
+          "nll": 1.025549691813632
+        }
+      },
+      "score_positions": [
+        1,
+        27033
+      ],
+      "semantic_ok": null,
+      "status": 200
+    },
+    "greedy": {
+      "arms": {
+        "c1": [
+          {
+            "budget_truncated": true,
+            "cached_tokens": 16,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-01.json",
+            "index": 1,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "af5a45b9c33fff1afcb87ea85d92b6bac75087fd957b3a49ebef5b6a09031058"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 32,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-02.json",
+            "index": 2,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "32cba69c9eb49548895cbaaae34278908f0098865d337f9450fb891aa0b17b2f"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 32,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-03.json",
+            "index": 3,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "0b4afbeaa13f6dfef1e8e78d925d33f79ec6700bc79b08cd8bd6c7b875b94efa"
+          },
+          {
+            "budget_truncated": false,
+            "cached_tokens": 32,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-04.json",
+            "index": 4,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "d18596fb6f54e4d9400aa36d71c2d04ae7ec22f268f47f2950a64abcdb9fc2cc"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 32,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-05.json",
+            "index": 5,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "5c46d9b19a4dc6fa9c9280dd274ad61d9e9961eaeae38a72dc0056bfe268a374"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 32,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-06.json",
+            "index": 6,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "1f22cdc91ec7ad5d4fd8ac3f5f38ade1d4ebbca4117c1b8e91958014b2b301a3"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 32,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-07.json",
+            "index": 7,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "67742ea68838cc4a9df1452787c271fa7d3ed9d932da64293283d452b644394d"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 32,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-08.json",
+            "index": 8,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "2f3a3ee6f8a062f044ec5569937028458ab85357d48f30b636c1e053c12e7aba"
+          }
+        ],
+        "c1p": [
+          {
+            "budget_truncated": true,
+            "cached_tokens": 4448,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/prefix-01.json",
+            "index": 1,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "e0acd2a5e88612610122b8537dc21fa0e72268d656f11058f8a0bcc17cbd3041"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 4448,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/prefix-02.json",
+            "index": 2,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "646e0a65a26598bf97045817a5575d63e6752ae4f8be1089b86896d171f7429d"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 4448,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/prefix-03.json",
+            "index": 3,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "a9ceec777c7127395e31aa6eb8341ac187b1a212236974ac5435cb5831f91955"
+          },
+          {
+            "budget_truncated": false,
+            "cached_tokens": 4448,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/prefix-04.json",
+            "index": 4,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "3e1296cfeb773a8fdcaf92d9dafa9bd0e4ea7a279d53cb1606c977f5154f9075"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 4448,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/prefix-05.json",
+            "index": 5,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "edbd9d58d759c5c6364ead1ebefe04a3d86f320ad1a353d59ee4ecef67a27725"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 4448,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/prefix-06.json",
+            "index": 6,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "8b01e1c919cdbaf7ceb30735d26df8ff001c8e0d71a6a5a3495840c4db41803b"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 4448,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/prefix-07.json",
+            "index": 7,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "ce462b0e3dd55db4777cf195bf9a53539e4c7c2cc17bdcfef5aca900652f6482"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 4448,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/prefix-08.json",
+            "index": 8,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "57393c50d7fa13b2273abc884433e3efd61b43a50c698614b2af803310affda1"
+          }
+        ],
+        "c4": [
+          {
+            "budget_truncated": true,
+            "cached_tokens": 64,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-01.json",
+            "index": 1,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "af5a45b9c33fff1afcb87ea85d92b6bac75087fd957b3a49ebef5b6a09031058"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-02.json",
+            "index": 2,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "32cba69c9eb49548895cbaaae34278908f0098865d337f9450fb891aa0b17b2f"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 64,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-03.json",
+            "index": 3,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "0b4afbeaa13f6dfef1e8e78d925d33f79ec6700bc79b08cd8bd6c7b875b94efa"
+          },
+          {
+            "budget_truncated": false,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-04.json",
+            "index": 4,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "d18596fb6f54e4d9400aa36d71c2d04ae7ec22f268f47f2950a64abcdb9fc2cc"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-05.json",
+            "index": 5,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "5c46d9b19a4dc6fa9c9280dd274ad61d9e9961eaeae38a72dc0056bfe268a374"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-06.json",
+            "index": 6,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "1f22cdc91ec7ad5d4fd8ac3f5f38ade1d4ebbca4117c1b8e91958014b2b301a3"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-07.json",
+            "index": 7,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "67742ea68838cc4a9df1452787c271fa7d3ed9d932da64293283d452b644394d"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-08.json",
+            "index": 8,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "2f3a3ee6f8a062f044ec5569937028458ab85357d48f30b636c1e053c12e7aba"
+          }
+        ],
+        "c4p": [
+          {
+            "budget_truncated": true,
+            "cached_tokens": 4480,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/prefix-01.json",
+            "index": 1,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "e0acd2a5e88612610122b8537dc21fa0e72268d656f11058f8a0bcc17cbd3041"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 4480,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/prefix-02.json",
+            "index": 2,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "646e0a65a26598bf97045817a5575d63e6752ae4f8be1089b86896d171f7429d"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 4480,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/prefix-03.json",
+            "index": 3,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "a9ceec777c7127395e31aa6eb8341ac187b1a212236974ac5435cb5831f91955"
+          },
+          {
+            "budget_truncated": false,
+            "cached_tokens": 4480,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/prefix-04.json",
+            "index": 4,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "3e1296cfeb773a8fdcaf92d9dafa9bd0e4ea7a279d53cb1606c977f5154f9075"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 4480,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/prefix-05.json",
+            "index": 5,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "edbd9d58d759c5c6364ead1ebefe04a3d86f320ad1a353d59ee4ecef67a27725"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 4480,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/prefix-06.json",
+            "index": 6,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "8b01e1c919cdbaf7ceb30735d26df8ff001c8e0d71a6a5a3495840c4db41803b"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 4480,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/prefix-07.json",
+            "index": 7,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "ce462b0e3dd55db4777cf195bf9a53539e4c7c2cc17bdcfef5aca900652f6482"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 4480,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/prefix-08.json",
+            "index": 8,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "57393c50d7fa13b2273abc884433e3efd61b43a50c698614b2af803310affda1"
+          }
+        ],
+        "c8": [
+          {
+            "budget_truncated": true,
+            "cached_tokens": 64,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-01.json",
+            "index": 1,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "af5a45b9c33fff1afcb87ea85d92b6bac75087fd957b3a49ebef5b6a09031058"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-02.json",
+            "index": 2,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "32cba69c9eb49548895cbaaae34278908f0098865d337f9450fb891aa0b17b2f"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 64,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-03.json",
+            "index": 3,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "0b4afbeaa13f6dfef1e8e78d925d33f79ec6700bc79b08cd8bd6c7b875b94efa"
+          },
+          {
+            "budget_truncated": false,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-04.json",
+            "index": 4,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "d18596fb6f54e4d9400aa36d71c2d04ae7ec22f268f47f2950a64abcdb9fc2cc"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-05.json",
+            "index": 5,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "5c46d9b19a4dc6fa9c9280dd274ad61d9e9961eaeae38a72dc0056bfe268a374"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-06.json",
+            "index": 6,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "1f22cdc91ec7ad5d4fd8ac3f5f38ade1d4ebbca4117c1b8e91958014b2b301a3"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-07.json",
+            "index": 7,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "67742ea68838cc4a9df1452787c271fa7d3ed9d932da64293283d452b644394d"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-08.json",
+            "index": 8,
+            "protocol_ok": true,
+            "semantic_ok": null,
+            "status": 200,
+            "text_sha256": "2f3a3ee6f8a062f044ec5569937028458ab85357d48f30b636c1e053c12e7aba"
+          }
+        ],
+        "serial": [
+          {
+            "budget_truncated": true,
+            "cached_tokens": 64,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-01.json",
+            "index": 1,
+            "protocol_ok": true,
+            "request_mutation": {
+              "after": true,
+              "before": null,
+              "before_present": false,
+              "changed_keys": [
+                "disable_mtp"
+              ],
+              "control": "same_server_disable_mtp",
+              "exact_request_sha256": "f1615348fc38680b5ef732fda3b98e653aede4d7f76b58ae3a6d54fe774e0c6e",
+              "field": "disable_mtp",
+              "mutated": true,
+              "only_mutation": true,
+              "sent_request_sha256": "dc1fff74887887e9940c42856a18756ac6955ae45cd2beefb1c09f972bde5a71"
+            },
+            "semantic_ok": null,
+            "serial_control": "same_server_disable_mtp",
+            "status": 200,
+            "text_sha256": "af5a45b9c33fff1afcb87ea85d92b6bac75087fd957b3a49ebef5b6a09031058"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-02.json",
+            "index": 2,
+            "protocol_ok": true,
+            "request_mutation": {
+              "after": true,
+              "before": null,
+              "before_present": false,
+              "changed_keys": [
+                "disable_mtp"
+              ],
+              "control": "same_server_disable_mtp",
+              "exact_request_sha256": "8ed6e4abaedfff49367f5170b6a1c6f167a8a351245f100524a0543c82e431fb",
+              "field": "disable_mtp",
+              "mutated": true,
+              "only_mutation": true,
+              "sent_request_sha256": "d1b55323b33650d2c917d8321e21078c4940d8bee6dcd17be4c45445139ddfa7"
+            },
+            "semantic_ok": null,
+            "serial_control": "same_server_disable_mtp",
+            "status": 200,
+            "text_sha256": "32cba69c9eb49548895cbaaae34278908f0098865d337f9450fb891aa0b17b2f"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 64,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-03.json",
+            "index": 3,
+            "protocol_ok": true,
+            "request_mutation": {
+              "after": true,
+              "before": null,
+              "before_present": false,
+              "changed_keys": [
+                "disable_mtp"
+              ],
+              "control": "same_server_disable_mtp",
+              "exact_request_sha256": "6378f9b6feeb2b5c0a0bc74bc0494828294383995855d527019d5ab82e55cb58",
+              "field": "disable_mtp",
+              "mutated": true,
+              "only_mutation": true,
+              "sent_request_sha256": "3493962a1fd11ac1fd60b772394aeb8aade1e0637cedb3fd84560bd93b37096e"
+            },
+            "semantic_ok": null,
+            "serial_control": "same_server_disable_mtp",
+            "status": 200,
+            "text_sha256": "0b4afbeaa13f6dfef1e8e78d925d33f79ec6700bc79b08cd8bd6c7b875b94efa"
+          },
+          {
+            "budget_truncated": false,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-04.json",
+            "index": 4,
+            "protocol_ok": true,
+            "request_mutation": {
+              "after": true,
+              "before": null,
+              "before_present": false,
+              "changed_keys": [
+                "disable_mtp"
+              ],
+              "control": "same_server_disable_mtp",
+              "exact_request_sha256": "392cc5d8b0f464fed6f3706a039db573c50ad01a8d9c693178d35d01a0016fe3",
+              "field": "disable_mtp",
+              "mutated": true,
+              "only_mutation": true,
+              "sent_request_sha256": "5b785eee240d9ab1d629c7a4407bec5475d43859b23bcc8de0cd9e76d430e687"
+            },
+            "semantic_ok": null,
+            "serial_control": "same_server_disable_mtp",
+            "status": 200,
+            "text_sha256": "d18596fb6f54e4d9400aa36d71c2d04ae7ec22f268f47f2950a64abcdb9fc2cc"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-05.json",
+            "index": 5,
+            "protocol_ok": true,
+            "request_mutation": {
+              "after": true,
+              "before": null,
+              "before_present": false,
+              "changed_keys": [
+                "disable_mtp"
+              ],
+              "control": "same_server_disable_mtp",
+              "exact_request_sha256": "a097cd698e7184089b6da02f6fa8d1d81c63234a27b060391866cb8b3d2d084d",
+              "field": "disable_mtp",
+              "mutated": true,
+              "only_mutation": true,
+              "sent_request_sha256": "2d37ca43dec3cd2275bfcde15d1d891f865d8ecc04054e325df8a1ac78dec77e"
+            },
+            "semantic_ok": null,
+            "serial_control": "same_server_disable_mtp",
+            "status": 200,
+            "text_sha256": "5c46d9b19a4dc6fa9c9280dd274ad61d9e9961eaeae38a72dc0056bfe268a374"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-06.json",
+            "index": 6,
+            "protocol_ok": true,
+            "request_mutation": {
+              "after": true,
+              "before": null,
+              "before_present": false,
+              "changed_keys": [
+                "disable_mtp"
+              ],
+              "control": "same_server_disable_mtp",
+              "exact_request_sha256": "10d2722336b403a832494fb7c82e08a91862882431079516f5b4253968d2c0c2",
+              "field": "disable_mtp",
+              "mutated": true,
+              "only_mutation": true,
+              "sent_request_sha256": "a0ee8c6ad30acedfd5550581ca3653ddb825ee864ec0d520e30fc65d43b30cae"
+            },
+            "semantic_ok": null,
+            "serial_control": "same_server_disable_mtp",
+            "status": 200,
+            "text_sha256": "1f22cdc91ec7ad5d4fd8ac3f5f38ade1d4ebbca4117c1b8e91958014b2b301a3"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-07.json",
+            "index": 7,
+            "protocol_ok": true,
+            "request_mutation": {
+              "after": true,
+              "before": null,
+              "before_present": false,
+              "changed_keys": [
+                "disable_mtp"
+              ],
+              "control": "same_server_disable_mtp",
+              "exact_request_sha256": "dcfee9f0342e9da9ce4536049fe494ca8e06253945cc7c5d7f06a14c10124c4e",
+              "field": "disable_mtp",
+              "mutated": true,
+              "only_mutation": true,
+              "sent_request_sha256": "93ec1fbcaeeeb76561820800d790ad5869868e24eafaaa1cad7caedd051baea9"
+            },
+            "semantic_ok": null,
+            "serial_control": "same_server_disable_mtp",
+            "status": 200,
+            "text_sha256": "67742ea68838cc4a9df1452787c271fa7d3ed9d932da64293283d452b644394d"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-08.json",
+            "index": 8,
+            "protocol_ok": true,
+            "request_mutation": {
+              "after": true,
+              "before": null,
+              "before_present": false,
+              "changed_keys": [
+                "disable_mtp"
+              ],
+              "control": "same_server_disable_mtp",
+              "exact_request_sha256": "fbde399d92f851bfdd563eee9e949fad009dbab784f3317e1c0dc71d9a4077ad",
+              "field": "disable_mtp",
+              "mutated": true,
+              "only_mutation": true,
+              "sent_request_sha256": "39765b9c0017a8831e27f6e62254b69ff448d028d402967f4717bd50e513ae1d"
+            },
+            "semantic_ok": null,
+            "serial_control": "same_server_disable_mtp",
+            "status": 200,
+            "text_sha256": "2f3a3ee6f8a062f044ec5569937028458ab85357d48f30b636c1e053c12e7aba"
+          }
+        ]
+      },
+      "comparisons": [
+        {
+          "compared_protocol_rows": 8,
+          "details": [
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 1,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 2,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 3,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 4,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 5,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 6,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 7,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 8,
+              "protocol_ok": true
+            }
+          ],
+          "field_matches": {
+            "content": 8,
+            "finish_reason": 8,
+            "reasoning_content": 8,
+            "tool_calls": 8,
+            "usage": 0
+          },
+          "fields": [
+            "reasoning_content",
+            "content",
+            "tool_calls",
+            "finish_reason",
+            "usage"
+          ],
+          "left": "c1",
+          "matched": 0,
+          "protocol_failures": [],
+          "right": "c4",
+          "total": 8
+        },
+        {
+          "compared_protocol_rows": 8,
+          "details": [
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 1,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 2,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 3,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 4,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 5,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 6,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 7,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 8,
+              "protocol_ok": true
+            }
+          ],
+          "field_matches": {
+            "content": 8,
+            "finish_reason": 8,
+            "reasoning_content": 8,
+            "tool_calls": 8,
+            "usage": 0
+          },
+          "fields": [
+            "reasoning_content",
+            "content",
+            "tool_calls",
+            "finish_reason",
+            "usage"
+          ],
+          "left": "c1",
+          "matched": 0,
+          "protocol_failures": [],
+          "right": "c8",
+          "total": 8
+        },
+        {
+          "compared_protocol_rows": 8,
+          "details": [
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 1,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 2,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 3,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 4,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 5,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 6,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 7,
+              "protocol_ok": true
+            },
+            {
+              "exact": false,
+              "fields": {
+                "content": true,
+                "finish_reason": true,
+                "reasoning_content": true,
+                "tool_calls": true,
+                "usage": false
+              },
+              "index": 8,
+              "protocol_ok": true
+            }
+          ],
+          "field_matches": {
+            "content": 8,
+            "finish_reason": 8,
+            "reasoning_content": 8,
+            "tool_calls": 8,
+            "usage": 0
+          },
+          "fields": [
+            "reasoning_content",
+            "content",
+            "tool_calls",
+            "finish_reason",
+            "usage"
+          ],
+          "left": "c1p",
+          "matched": 0,
+          "protocol_failures": [],
+          "right": "c4p",
+          "total": 8
+        }
+      ],
+      "prefix_cache_signal": {
+        "c1p": {
+          "all_cached_positive": true,
+          "cached_tokens": [
+            4448,
+            4448,
+            4448,
+            4448,
+            4448,
+            4448,
+            4448,
+            4448
+          ]
+        },
+        "c4p": {
+          "all_cached_positive": true,
+          "cached_tokens": [
+            4480,
+            4480,
+            4480,
+            4480,
+            4480,
+            4480,
+            4480,
+            4480
+          ]
+        }
+      },
+      "serial_vs_mtp": {
+        "available": true,
+        "compared_protocol_rows": 8,
+        "control": "same_server_disable_mtp",
+        "details": [
+          {
+            "exact": false,
+            "fields": {
+              "content": true,
+              "finish_reason": true,
+              "reasoning_content": true,
+              "tool_calls": true,
+              "usage": false
+            },
+            "index": 1,
+            "protocol_ok": true
+          },
+          {
+            "exact": false,
+            "fields": {
+              "content": true,
+              "finish_reason": true,
+              "reasoning_content": true,
+              "tool_calls": true,
+              "usage": false
+            },
+            "index": 2,
+            "protocol_ok": true
+          },
+          {
+            "exact": false,
+            "fields": {
+              "content": true,
+              "finish_reason": true,
+              "reasoning_content": true,
+              "tool_calls": true,
+              "usage": false
+            },
+            "index": 3,
+            "protocol_ok": true
+          },
+          {
+            "exact": false,
+            "fields": {
+              "content": true,
+              "finish_reason": true,
+              "reasoning_content": true,
+              "tool_calls": true,
+              "usage": false
+            },
+            "index": 4,
+            "protocol_ok": true
+          },
+          {
+            "exact": false,
+            "fields": {
+              "content": true,
+              "finish_reason": true,
+              "reasoning_content": true,
+              "tool_calls": true,
+              "usage": false
+            },
+            "index": 5,
+            "protocol_ok": true
+          },
+          {
+            "exact": false,
+            "fields": {
+              "content": true,
+              "finish_reason": true,
+              "reasoning_content": true,
+              "tool_calls": true,
+              "usage": false
+            },
+            "index": 6,
+            "protocol_ok": true
+          },
+          {
+            "exact": false,
+            "fields": {
+              "content": true,
+              "finish_reason": true,
+              "reasoning_content": true,
+              "tool_calls": true,
+              "usage": false
+            },
+            "index": 7,
+            "protocol_ok": true
+          },
+          {
+            "exact": false,
+            "fields": {
+              "content": true,
+              "finish_reason": true,
+              "reasoning_content": true,
+              "tool_calls": true,
+              "usage": false
+            },
+            "index": 8,
+            "protocol_ok": true
+          }
+        ],
+        "field_matches": {
+          "content": 8,
+          "finish_reason": 8,
+          "reasoning_content": 8,
+          "tool_calls": 8,
+          "usage": 0
+        },
+        "fields": [
+          "reasoning_content",
+          "content",
+          "tool_calls",
+          "finish_reason",
+          "usage"
+        ],
+        "left": "c1",
+        "matched": 0,
+        "protocol_failures": [],
+        "right": "serial",
+        "rows": [
+          {
+            "budget_truncated": true,
+            "cached_tokens": 64,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-01.json",
+            "index": 1,
+            "protocol_ok": true,
+            "request_mutation": {
+              "after": true,
+              "before": null,
+              "before_present": false,
+              "changed_keys": [
+                "disable_mtp"
+              ],
+              "control": "same_server_disable_mtp",
+              "exact_request_sha256": "f1615348fc38680b5ef732fda3b98e653aede4d7f76b58ae3a6d54fe774e0c6e",
+              "field": "disable_mtp",
+              "mutated": true,
+              "only_mutation": true,
+              "sent_request_sha256": "dc1fff74887887e9940c42856a18756ac6955ae45cd2beefb1c09f972bde5a71"
+            },
+            "semantic_ok": null,
+            "serial_control": "same_server_disable_mtp",
+            "status": 200,
+            "text_sha256": "af5a45b9c33fff1afcb87ea85d92b6bac75087fd957b3a49ebef5b6a09031058"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-02.json",
+            "index": 2,
+            "protocol_ok": true,
+            "request_mutation": {
+              "after": true,
+              "before": null,
+              "before_present": false,
+              "changed_keys": [
+                "disable_mtp"
+              ],
+              "control": "same_server_disable_mtp",
+              "exact_request_sha256": "8ed6e4abaedfff49367f5170b6a1c6f167a8a351245f100524a0543c82e431fb",
+              "field": "disable_mtp",
+              "mutated": true,
+              "only_mutation": true,
+              "sent_request_sha256": "d1b55323b33650d2c917d8321e21078c4940d8bee6dcd17be4c45445139ddfa7"
+            },
+            "semantic_ok": null,
+            "serial_control": "same_server_disable_mtp",
+            "status": 200,
+            "text_sha256": "32cba69c9eb49548895cbaaae34278908f0098865d337f9450fb891aa0b17b2f"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 64,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-03.json",
+            "index": 3,
+            "protocol_ok": true,
+            "request_mutation": {
+              "after": true,
+              "before": null,
+              "before_present": false,
+              "changed_keys": [
+                "disable_mtp"
+              ],
+              "control": "same_server_disable_mtp",
+              "exact_request_sha256": "6378f9b6feeb2b5c0a0bc74bc0494828294383995855d527019d5ab82e55cb58",
+              "field": "disable_mtp",
+              "mutated": true,
+              "only_mutation": true,
+              "sent_request_sha256": "3493962a1fd11ac1fd60b772394aeb8aade1e0637cedb3fd84560bd93b37096e"
+            },
+            "semantic_ok": null,
+            "serial_control": "same_server_disable_mtp",
+            "status": 200,
+            "text_sha256": "0b4afbeaa13f6dfef1e8e78d925d33f79ec6700bc79b08cd8bd6c7b875b94efa"
+          },
+          {
+            "budget_truncated": false,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-04.json",
+            "index": 4,
+            "protocol_ok": true,
+            "request_mutation": {
+              "after": true,
+              "before": null,
+              "before_present": false,
+              "changed_keys": [
+                "disable_mtp"
+              ],
+              "control": "same_server_disable_mtp",
+              "exact_request_sha256": "392cc5d8b0f464fed6f3706a039db573c50ad01a8d9c693178d35d01a0016fe3",
+              "field": "disable_mtp",
+              "mutated": true,
+              "only_mutation": true,
+              "sent_request_sha256": "5b785eee240d9ab1d629c7a4407bec5475d43859b23bcc8de0cd9e76d430e687"
+            },
+            "semantic_ok": null,
+            "serial_control": "same_server_disable_mtp",
+            "status": 200,
+            "text_sha256": "d18596fb6f54e4d9400aa36d71c2d04ae7ec22f268f47f2950a64abcdb9fc2cc"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-05.json",
+            "index": 5,
+            "protocol_ok": true,
+            "request_mutation": {
+              "after": true,
+              "before": null,
+              "before_present": false,
+              "changed_keys": [
+                "disable_mtp"
+              ],
+              "control": "same_server_disable_mtp",
+              "exact_request_sha256": "a097cd698e7184089b6da02f6fa8d1d81c63234a27b060391866cb8b3d2d084d",
+              "field": "disable_mtp",
+              "mutated": true,
+              "only_mutation": true,
+              "sent_request_sha256": "2d37ca43dec3cd2275bfcde15d1d891f865d8ecc04054e325df8a1ac78dec77e"
+            },
+            "semantic_ok": null,
+            "serial_control": "same_server_disable_mtp",
+            "status": 200,
+            "text_sha256": "5c46d9b19a4dc6fa9c9280dd274ad61d9e9961eaeae38a72dc0056bfe268a374"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-06.json",
+            "index": 6,
+            "protocol_ok": true,
+            "request_mutation": {
+              "after": true,
+              "before": null,
+              "before_present": false,
+              "changed_keys": [
+                "disable_mtp"
+              ],
+              "control": "same_server_disable_mtp",
+              "exact_request_sha256": "10d2722336b403a832494fb7c82e08a91862882431079516f5b4253968d2c0c2",
+              "field": "disable_mtp",
+              "mutated": true,
+              "only_mutation": true,
+              "sent_request_sha256": "a0ee8c6ad30acedfd5550581ca3653ddb825ee864ec0d520e30fc65d43b30cae"
+            },
+            "semantic_ok": null,
+            "serial_control": "same_server_disable_mtp",
+            "status": 200,
+            "text_sha256": "1f22cdc91ec7ad5d4fd8ac3f5f38ade1d4ebbca4117c1b8e91958014b2b301a3"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-07.json",
+            "index": 7,
+            "protocol_ok": true,
+            "request_mutation": {
+              "after": true,
+              "before": null,
+              "before_present": false,
+              "changed_keys": [
+                "disable_mtp"
+              ],
+              "control": "same_server_disable_mtp",
+              "exact_request_sha256": "dcfee9f0342e9da9ce4536049fe494ca8e06253945cc7c5d7f06a14c10124c4e",
+              "field": "disable_mtp",
+              "mutated": true,
+              "only_mutation": true,
+              "sent_request_sha256": "93ec1fbcaeeeb76561820800d790ad5869868e24eafaaa1cad7caedd051baea9"
+            },
+            "semantic_ok": null,
+            "serial_control": "same_server_disable_mtp",
+            "status": 200,
+            "text_sha256": "67742ea68838cc4a9df1452787c271fa7d3ed9d932da64293283d452b644394d"
+          },
+          {
+            "budget_truncated": true,
+            "cached_tokens": 48,
+            "engine_signal": null,
+            "fixture": "/home/enntitysparkadmin/qwen-common-20261022/package18-spark/qualification/fixtures/greedy/plain-08.json",
+            "index": 8,
+            "protocol_ok": true,
+            "request_mutation": {
+              "after": true,
+              "before": null,
+              "before_present": false,
+              "changed_keys": [
+                "disable_mtp"
+              ],
+              "control": "same_server_disable_mtp",
+              "exact_request_sha256": "fbde399d92f851bfdd563eee9e949fad009dbab784f3317e1c0dc71d9a4077ad",
+              "field": "disable_mtp",
+              "mutated": true,
+              "only_mutation": true,
+              "sent_request_sha256": "39765b9c0017a8831e27f6e62254b69ff448d028d402967f4717bd50e513ae1d"
+            },
+            "semantic_ok": null,
+            "serial_control": "same_server_disable_mtp",
+            "status": 200,
+            "text_sha256": "2f3a3ee6f8a062f044ec5569937028458ab85357d48f30b636c1e053c12e7aba"
+          }
+        ],
+        "total": 8
+      }
+    },
+    "literal_xml_and_tools": {
+      "tool-anthropic-blocking": {
+        "budget_truncated": false,
+        "engine_signal": null,
+        "protocol_ok": true,
+        "semantic_category": "forced_tool",
+        "semantic_ok": true,
+        "status": 200,
+        "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "tool_calls": [
+          {
+            "id": "call_000000000000000e",
+            "input": {
+              "city": "Paris"
+            },
+            "name": "get_weather",
+            "type": "tool_use"
+          }
+        ]
+      },
+      "tool-anthropic-stream": {
+        "budget_truncated": false,
+        "engine_signal": null,
+        "protocol_ok": true,
+        "semantic_category": "forced_tool",
+        "semantic_ok": true,
+        "status": 200,
+        "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "tool_calls": [
+          {
+            "id": "call_000000000000000f",
+            "input": {},
+            "name": "get_weather",
+            "partial_json": "{\"city\":\"Paris\"}",
+            "type": "tool_use"
+          }
+        ]
+      },
+      "tool-openai-blocking": {
+        "budget_truncated": false,
+        "engine_signal": null,
+        "protocol_ok": true,
+        "semantic_category": "forced_tool",
+        "semantic_ok": true,
+        "status": 200,
+        "text_sha256": "633769a0ab32c9e1f69fffa9d3101d634d775dad27cb5bb7219010f2f9c5c42a",
+        "tool_calls": [
+          {
+            "function": {
+              "arguments": "{\"city\":\"Paris\"}",
+              "name": "get_weather"
+            },
+            "id": "call_000000000000000c",
+            "type": "function"
+          }
+        ]
+      },
+      "tool-openai-stream": {
+        "budget_truncated": false,
+        "engine_signal": null,
+        "protocol_ok": true,
+        "semantic_category": "forced_tool",
+        "semantic_ok": true,
+        "status": 200,
+        "text_sha256": "633769a0ab32c9e1f69fffa9d3101d634d775dad27cb5bb7219010f2f9c5c42a",
+        "tool_calls": [
+          {
+            "function": {
+              "arguments": "{\"city\":\"Paris\"}",
+              "name": "get_weather"
+            },
+            "id": "call_000000000000000d",
+            "index": 0,
+            "type": "function"
+          }
+        ]
+      },
+      "xml-anthropic-blocking": {
+        "budget_truncated": true,
+        "engine_signal": null,
+        "protocol_ok": true,
+        "semantic_category": "inconclusive_budget",
+        "semantic_ok": null,
+        "status": 200,
+        "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "tool_calls": []
+      },
+      "xml-anthropic-stream": {
+        "budget_truncated": true,
+        "engine_signal": null,
+        "protocol_ok": true,
+        "semantic_category": "inconclusive_budget",
+        "semantic_ok": null,
+        "status": 200,
+        "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "tool_calls": []
+      },
+      "xml-openai-blocking": {
+        "budget_truncated": false,
+        "engine_signal": null,
+        "protocol_ok": true,
+        "semantic_category": "model_literal_prose",
+        "semantic_ok": false,
+        "status": 200,
+        "text_sha256": "eaea88f5526698e9c2b9f96f8cebc5f2aa1c21536fe0629420a93b3dbfb40fb4",
+        "tool_calls": null
+      },
+      "xml-openai-stream": {
+        "budget_truncated": false,
+        "engine_signal": null,
+        "protocol_ok": true,
+        "semantic_category": "model_literal_prose",
+        "semantic_ok": false,
+        "status": 200,
+        "text_sha256": "3f0cdc0ffe2b178507980e65ee9b497e569c4026d31f9f12f51373679c94171e",
+        "tool_calls": null
+      }
+    },
+    "schema": {
+      "tool_choice_none": {
+        "budget_truncated": false,
+        "engine_signal": null,
+        "protocol_ok": true,
+        "semantic_category": "expected_json",
+        "semantic_ok": true,
+        "status": 200,
+        "tool_calls": null
+      },
+      "union": {
+        "budget_truncated": false,
+        "engine_signal": null,
+        "protocol_ok": true,
+        "semantic_category": "expected_json",
+        "semantic_ok": true,
+        "status": 200,
+        "tool_calls": null
+      }
+    }
+  },
+  "semantic_observations_are_not_engine_failures": true,
+  "serial_url_configured": false,
+  "url": "http://127.0.0.1:8893"
+}

@@ -1,0 +1,93 @@
+[
+    {
+        "Id": "sha256:51ed8738f143b3c92773daf04143fcb4758cf63a23fca2fb0b863346096c963b",
+        "RepoTags": [
+            "ghcr.io/enntity/atlas-sparkqwen:71a2c510af62"
+        ],
+        "RepoDigests": [],
+        "Comment": "buildkit.dockerfile.v0",
+        "Created": "2026-10-22T18:46:00.706397781-07:00",
+        "Config": {
+            "ExposedPorts": {
+                "8893/tcp": {}
+            },
+            "Env": [
+                "PATH=/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "NVARCH=sbsa",
+                "NVIDIA_REQUIRE_CUDA=cuda>=13.0 brand=unknown,driver>=535,driver<536 brand=grid,driver>=535,driver<536 brand=tesla,driver>=535,driver<536 brand=nvidia,driver>=535,driver<536 brand=quadro,driver>=535,driver<536 brand=quadrortx,driver>=535,driver<536 brand=nvidiartx,driver>=535,driver<536 brand=vapps,driver>=535,driver<536 brand=vpc,driver>=535,driver<536 brand=vcs,driver>=535,driver<536 brand=vws,driver>=535,driver<536 brand=cloudgaming,driver>=535,driver<536 brand=unknown,driver>=550,driver<551 brand=grid,driver>=550,driver<551 brand=tesla,driver>=550,driver<551 brand=nvidia,driver>=550,driver<551 brand=quadro,driver>=550,driver<551 brand=quadrortx,driver>=550,driver<551 brand=nvidiartx,driver>=550,driver<551 brand=vapps,driver>=550,driver<551 brand=vpc,driver>=550,driver<551 brand=vcs,driver>=550,driver<551 brand=vws,driver>=550,driver<551 brand=cloudgaming,driver>=550,driver<551 brand=unknown,driver>=565,driver<566 brand=grid,driver>=565,driver<566 brand=tesla,driver>=565,driver<566 brand=nvidia,driver>=565,driver<566 brand=quadro,driver>=565,driver<566 brand=quadrortx,driver>=565,driver<566 brand=nvidiartx,driver>=565,driver<566 brand=vapps,driver>=565,driver<566 brand=vpc,driver>=565,driver<566 brand=vcs,driver>=565,driver<566 brand=vws,driver>=565,driver<566 brand=cloudgaming,driver>=565,driver<566 brand=unknown,driver>=570,driver<571 brand=grid,driver>=570,driver<571 brand=tesla,driver>=570,driver<571 brand=nvidia,driver>=570,driver<571 brand=quadro,driver>=570,driver<571 brand=quadrortx,driver>=570,driver<571 brand=nvidiartx,driver>=570,driver<571 brand=vapps,driver>=570,driver<571 brand=vpc,driver>=570,driver<571 brand=vcs,driver>=570,driver<571 brand=vws,driver>=570,driver<571 brand=cloudgaming,driver>=570,driver<571 brand=unknown,driver>=575,driver<576 brand=grid,driver>=575,driver<576 brand=tesla,driver>=575,driver<576 brand=nvidia,driver>=575,driver<576 brand=quadro,driver>=575,driver<576 brand=quadrortx,driver>=575,driver<576 brand=nvidiartx,driver>=575,driver<576 brand=vapps,driver>=575,driver<576 brand=vpc,driver>=575,driver<576 brand=vcs,driver>=575,driver<576 brand=vws,driver>=575,driver<576 brand=cloudgaming,driver>=575,driver<576",
+                "NV_CUDA_CUDART_VERSION=13.0.48-1",
+                "CUDA_VERSION=13.0.0",
+                "LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64:/usr/local/cuda/lib64",
+                "NVIDIA_VISIBLE_DEVICES=all",
+                "NVIDIA_DRIVER_CAPABILITIES=compute,utility",
+                "NV_CUDA_LIB_VERSION=13.0.0-1",
+                "NV_NVTX_VERSION=13.0.39-1",
+                "NV_LIBNPP_VERSION=13.0.0.50-1",
+                "NV_LIBNPP_PACKAGE=libnpp-13-0=13.0.0.50-1",
+                "NV_LIBCUSPARSE_VERSION=12.6.2.49-1",
+                "NV_LIBCUBLAS_PACKAGE_NAME=libcublas-13-0",
+                "NV_LIBCUBLAS_VERSION=13.0.0.19-1",
+                "NV_LIBCUBLAS_PACKAGE=libcublas-13-0=13.0.0.19-1",
+                "NV_LIBNCCL_PACKAGE_NAME=libnccl2",
+                "NV_LIBNCCL_PACKAGE_VERSION=2.27.7-1",
+                "NCCL_VERSION=2.27.7-1",
+                "NV_LIBNCCL_PACKAGE=libnccl2=2.27.7-1+cuda13.0",
+                "NVIDIA_PRODUCT_NAME=CUDA",
+                "RUST_LOG=info"
+            ],
+            "Entrypoint": [
+                "python3",
+                "/opt/atlas/serve.py"
+            ],
+            "Labels": {
+                "io.enntity.sparkqwen.install-tree": "71a2c510af621cabfb734f12d82d7b96940527ec",
+                "maintainer": "NVIDIA CORPORATION <cudatools@nvidia.com>",
+                "org.opencontainers.image.licenses": "AGPL-3.0-only",
+                "org.opencontainers.image.ref.name": "ubuntu",
+                "org.opencontainers.image.source": "https://github.com/Enntity/sparkqwen",
+                "org.opencontainers.image.version": "0.2.0"
+            }
+        },
+        "Architecture": "arm64",
+        "Os": "linux",
+        "Size": 2949246852,
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/7fmustth0ysvg0yari7haxv4t/diff:/var/lib/docker/overlay2/ntiktc1t226rcwqd8bya87de0/diff:/var/lib/docker/overlay2/b6xa0xwcfzmuf3u7gxaylaouo/diff:/var/lib/docker/overlay2/m6djifgs8bgxbmh8pf96mk80j/diff:/var/lib/docker/overlay2/xzlxhmt9xc0qb3lrabtz293ny/diff:/var/lib/docker/overlay2/ykoqmjjimdy23a2do58g2g06c/diff:/var/lib/docker/overlay2/wcidh263ft8gh4lgyozug16wb/diff:/var/lib/docker/overlay2/v223sw1opib3v8622q2a92vvs/diff:/var/lib/docker/overlay2/37crf9q7wyiyxh2ysccw2ew7b/diff:/var/lib/docker/overlay2/cuu69z8gegl7j4bib7tmqc3m3/diff:/var/lib/docker/overlay2/654iko12r1doz6sdd7dlbnigb/diff:/var/lib/docker/overlay2/332d9a77db5cb3aa8b678cf35355262e8b4da610fcd4f5fc240330b8460578c4/diff:/var/lib/docker/overlay2/b002bbb3208d705958ac7f2b7f85dc4953e34b63fe31ed684c2ffe362e93d957/diff:/var/lib/docker/overlay2/14ecf7bf469401debcc2f88028a26e94c4347b058f9a510606e54aa39031fc9a/diff:/var/lib/docker/overlay2/ce807a3ca2969e102422f0350316caf9d8f08e9f0c20d48d419b80572029ea49/diff:/var/lib/docker/overlay2/335e22268d37caf1e1bd08581b7af72fc5e6e2853ca040c0728dc19895cb4ae9/diff:/var/lib/docker/overlay2/53ffba0c4c0794fe9a0a02196ba6647ae0ac1996db20c4b387edb339b3216bac/diff:/var/lib/docker/overlay2/428843b8dc5a3368298ac0bf74c6d58d949c71f6a67d62d0a7145dcf97fc9aed/diff:/var/lib/docker/overlay2/13df8cf9ee23c49e2720f3d2a758abca842136d270f14e794e2042915f3c7103/diff:/var/lib/docker/overlay2/66245500b3d87c06fe8693bf309ee463da8c92d2f3b4043cf66c72d912001409/diff",
+                "MergedDir": "/var/lib/docker/overlay2/zdz2w22i3qpto81njba928ka7/merged",
+                "UpperDir": "/var/lib/docker/overlay2/zdz2w22i3qpto81njba928ka7/diff",
+                "WorkDir": "/var/lib/docker/overlay2/zdz2w22i3qpto81njba928ka7/work"
+            },
+            "Name": "overlay2"
+        },
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:f938656f385ef839075702193b749dad80f71362a3316b96702c58c070312e22",
+                "sha256:0518eee5fb57a204387a0d6260ed020e5f4a7771332dea1ab62a49c0965ca5da",
+                "sha256:261410ed5824e16edff702f1cb73de7e637e383edeab57d68e55e4546990f019",
+                "sha256:1a08fdb211bc9766164f60dc3e8d966d63d73929abdab6b4f0b4a54732002a16",
+                "sha256:5a78bf589884924fc929c0c16794b40840135578f5c85b3819102b4bdd309806",
+                "sha256:c41037a107a646de6c8652a75c3d183e20d0a307a85568a527758be968418157",
+                "sha256:06f3d3f7a28a502845a518e3f9a13a6f5fd5aebf76f81573d4169bc363887d39",
+                "sha256:c6fe46d25054e1d8ba25f0b343c0bb17e0e573607c2f62d1841d11448b432d8f",
+                "sha256:f5c43d5cd90753144224cee4eb2b8790933951743d37dc7684dfa4627d3547df",
+                "sha256:dfbf5762c278b000e76b768870f8f9fafacb2d4bbc82d79b475cf2b14a1231bc",
+                "sha256:02fabb95fb06289b3d05d37f412a73d53767386c67904b9affcb7a7d0d7f8c40",
+                "sha256:ab3d4d65866ca4ea499180627e8373c43f3e7ed8533352d38fb4b2984153fc25",
+                "sha256:d3257879ac576f6459aa500ce1d577fdada552e40292cc6285dcbfdd38f541e8",
+                "sha256:b4e035e765f513ad94e97116cb334dd624e6a1c1fe5c03ebaf72dcc2a6da0aee",
+                "sha256:61b4e0a443189fce63615220abfb6b2d371bb5bd109cee91e9d9924047e8f465",
+                "sha256:62fc4b7768525d715d685d77db1f3a884cd02ac03d4ead863b68905b7925b57e",
+                "sha256:c146cdf26d58ca4131023389d5f8c07c4078dc3a1f20cf97849b64e92482b144",
+                "sha256:ae42b9e7ded8077b77c31d59aa82f58c72f53373e1e307033cc7ef7b2193ef3d",
+                "sha256:e781ed525ed7b4b9b6acbb188c27cc463c9d65c8cadc40d0120fe498ab37a413",
+                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "2026-10-22T18:46:00.847031225-07:00"
+        }
+    }
+]

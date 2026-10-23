@@ -1,0 +1,98 @@
+{
+  "canonical_nll": {
+    "engine_signal": null,
+    "nll_nats_per_token": 1.0659923317039264,
+    "protocol_ok": true,
+    "references": {
+      "reference_earlier_shared_a4": {
+        "delta": 0.0,
+        "nll": 1.0659923317039264
+      },
+      "reference_observed_a4": {
+        "delta": 0.040442639890294396,
+        "nll": 1.025549691813632
+      }
+    },
+    "score_positions": [
+      1,
+      27033
+    ],
+    "semantic_ok": null,
+    "status": 200
+  },
+  "decoded_parity": [
+    {
+      "left": "c1",
+      "right": "c4",
+      "matched": 8,
+      "total": 8,
+      "field_matches": {
+        "reasoning_content": 8,
+        "content": 8,
+        "tool_calls": 8,
+        "finish_reason": 8,
+        "prompt_tokens": 8,
+        "completion_tokens": 8
+      },
+      "mismatches": []
+    },
+    {
+      "left": "c1",
+      "right": "c8",
+      "matched": 8,
+      "total": 8,
+      "field_matches": {
+        "reasoning_content": 8,
+        "content": 8,
+        "tool_calls": 8,
+        "finish_reason": 8,
+        "prompt_tokens": 8,
+        "completion_tokens": 8
+      },
+      "mismatches": []
+    },
+    {
+      "left": "c1p",
+      "right": "c4p",
+      "matched": 8,
+      "total": 8,
+      "field_matches": {
+        "reasoning_content": 8,
+        "content": 8,
+        "tool_calls": 8,
+        "finish_reason": 8,
+        "prompt_tokens": 8,
+        "completion_tokens": 8
+      },
+      "mismatches": []
+    },
+    {
+      "left": "c1",
+      "right": "serial",
+      "matched": 8,
+      "total": 8,
+      "field_matches": {
+        "reasoning_content": 8,
+        "content": 8,
+        "tool_calls": 8,
+        "finish_reason": 8,
+        "prompt_tokens": 8,
+        "completion_tokens": 8
+      },
+      "mismatches": []
+    }
+  ],
+  "retrieval_content": {
+    "correct": 59,
+    "total": 60,
+    "failures": [
+      {
+        "case": 51,
+        "answer_in_content": false,
+        "content": "94207600",
+        "finish_reason": "stop"
+      }
+    ]
+  },
+  "note": "Decoded output equality is bounded evidence; generated token IDs are not exposed. Cache and accepted-prediction counters are retained in raw responses but are not output-equality criteria."
+}

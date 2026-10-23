@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "product_commit": "faa7c504521ef8cdbfe804836eaccfcc3fb2fa7b",
+  "install_tree": "71a2c510af621cabfb734f12d82d7b96940527ec",
+  "engine_commit": "8649689d698d2487beba5eddbb89f2a3681d7cd2",
+  "engine_tree": "575d19019245b32b5767cf32e74a72a044bdc627",
+  "image": "ghcr.io/enntity/atlas-sparkqwen:71a2c510af62",
+  "image_id": "sha256:51ed8738f143b3c92773daf04143fcb4758cf63a23fca2fb0b863346096c963b",
+  "binary_sha256": "aaa897e1d6f63f037db2b5c7a6e22607f1f6b7064b224d830c02e30131f2447b",
+  "same_binary_as_build13": true,
+  "test_summary": {
+    "passed": 8054,
+    "failed": 0,
+    "ignored": 255
+  },
+  "test_result_rows": 84,
+  "clippy": "passed",
+  "log_sha256": "9fa51fcfdb852e7ab488aa57bd54b931750b3b050f9000400566e742cdfc3b7d",
+  "registry_publication": false
+}

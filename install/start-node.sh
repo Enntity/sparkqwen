@@ -10,25 +10,25 @@ usage() {
   cat >&2 <<'EOF'
 usage: start-node.sh --rank 0|1 --leader-address IP --model-root DIR --image TAG
                      [--fabric-interface IFACE] [--fabric-hca DEVICE[,DEVICE...]]
-                     [--profile 8x32k|4x262k|8x262k|FILE] [--gpu-memory-utilization 0.70-0.95]
-                     [--fp8-gdn] [--checkpoint NAME] [--cuda-cache DIR] [--ple-cache DIR] [--name NAME]
+                     [--mode strict|spark] [--profile 8x32k|4x262k|8x262k|FILE] [--gpu-memory-utilization 0.70-0.95]
+                     [--checkpoint NAME] [--cuda-cache DIR] [--ple-cache DIR] [--name NAME]
 
   --leader-address   rank 0's IPv4 address on the direct Spark-to-Spark fabric
   --model-root       directory holding the checkpoint directory
   --checkpoint       the checkpoint's directory under --model-root (default:
                      the pinned nvidia--Qwen3.8-Flash-Next-FP4-Local; the
-                     engine also loads nvidia--Qwen3.8-Flash-Next-NVFP4)
+                     Strict/Spark require the native FP4-Local format)
   --image            the image tag, install/build.sh --tag
   --fabric-interface the fabric's network interface on THIS node (default: the
                      interface of the first --fabric-hca; otherwise required)
+  --mode             strict (default): BF16 draft attention/head; spark: NVFP4 draft copies
+                     Both require the pinned FP4-Local native target format.
   --profile          a profile shipped in the image (default 8x32k) or a JSON
                      file of your own; use the same one on both ranks
   --gpu-memory-utilization  share of unified memory for the engine, two
                      decimals from 0.70 to 0.95 (default: the profile's 0.88).
                      A lower share reserves host/service memory but shrinks the
                      shared KV token pool; no context or concurrency promise.
-  --fp8-gdn          opt-in, lossy: FP8 Gated DeltaNet projections (faster
-                     decode, not bit-exact); use it on both ranks
   --cuda-cache       persistent CUDA JIT cache (default: ~/.cache/atlas-cuda)
   --ple-cache        persistent packed PLE n-gram table, ~29 GB, written on the
                      first start of an NVFP4-PLE checkpoint (default: ~/.cache/atlas-ple)
@@ -36,7 +36,7 @@ EOF
   exit 2
 }
 rank="" leader="" iface="" model_root="" image="" hca=""
-cache="$HOME/.cache/atlas-cuda" ple_cache="$HOME/.cache/atlas-ple" name="" profile=8x32k util="" fp8_gdn=0 siblings=0
+cache="$HOME/.cache/atlas-cuda" ple_cache="$HOME/.cache/atlas-ple" name="" profile=8x32k mode=strict util="" siblings=0
 checkpoint_name=nvidia--Qwen3.8-Flash-Next-FP4-Local
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -51,13 +51,16 @@ while [[ $# -gt 0 ]]; do
     --checkpoint) checkpoint_name=$2; shift 2 ;;
     --name) name=$2; shift 2 ;;
     --profile) profile=$2; shift 2 ;;
+    --mode) mode=$2; shift 2 ;;
     --gpu-memory-utilization) util=$2; shift 2 ;;
     --no-fabric-siblings) siblings=0; shift ;;
-    --fp8-gdn) fp8_gdn=1; shift ;;
     *) usage ;;
   esac
 done
 [[ $rank == 0 || $rank == 1 ]] && [[ -n $leader && -n $model_root && -n $image ]] || usage
+[[ $mode == strict || $mode == spark ]] || { echo '--mode must be strict or spark' >&2; exit 2; }
+[[ -z $util || $util =~ ^0\.(7[0-9]|8[0-9]|9[0-5])$ ]] ||
+  { echo '--gpu-memory-utilization must be 0.70 to 0.95' >&2; exit 2; }
 sysfs=${FABRIC_SYSFS:-/sys/class/infiniband}
 if [[ -z $hca ]]; then
   [[ -n $iface ]] || { echo "pass --fabric-hca or --fabric-interface; no port is assumed" >&2; exit 2; }
@@ -117,9 +120,8 @@ docker run -d --name "$name" --restart no --network host --ipc host \
   --mount "type=bind,src=$(realpath "$ple_cache"),dst=/atlas-ple" ${profile_mount[@]+"${profile_mount[@]}"} \
   -e NODE_RANK="$rank" -e MASTER_ADDR="$leader" -e MASTER_PORT=29510 \
   -e FABRIC_INTERFACE="$iface" -e FABRIC_HCA="$hca" -e FABRIC_SIBLINGS="$siblings" -e MODEL_PATH="$checkpoint" \
-  -e SERVED_MODEL_NAME=qwen3.8-flash-next-atlas -e SPARKQWEN_PROFILE="$profile" \
+  -e SERVED_MODEL_NAME=qwen3.8-flash-next-atlas -e SPARKQWEN_PROFILE="$profile" -e SPARKQWEN_MODE="$mode" \
   ${util:+-e SPARKQWEN_GPU_MEMORY_UTILIZATION="$util"} \
-  -e SPARKQWEN_FP8_GDN="$fp8_gdn" \
   -e NCCL_SOCKET_IFNAME="$iface" -e GLOO_SOCKET_IFNAME="$iface" \
   -e HF_HUB_OFFLINE=1 -e TRANSFORMERS_OFFLINE=1 \
   -e CUDA_CACHE_PATH=/atlas-cuda-cache -e CUDA_CACHE_MAXSIZE=4294967296 \

@@ -1,0 +1,114 @@
+{
+  "controls": {
+    "mtp": {
+      "content": "01987362",
+      "correct": false,
+      "mutation": {},
+      "status": 200,
+      "usage": {
+        "completion_tokens": 119,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 83,
+          "audio_tokens": 0,
+          "reasoning_tokens": 107,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens": 163290,
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 163280
+        },
+        "response_token/s": 58.02621685257403,
+        "time_to_first_token_ms": 47997.839251000005,
+        "total_tokens": 163409
+      },
+      "view": {
+        "completion_tokens": 119,
+        "content": "01987362",
+        "finish_reason": "stop",
+        "prompt_tokens": 163290,
+        "reasoning_content": "The user wants me to find the code for key k880253 in Table A, then find that code's value in Table B.\n\nLet me search for k880253 in Table A.\n\nLooking through Table A... k880253 -> c010364\n\nNow let me find c010364 in Table B.\n\nLooking through Table B... c010364 = 01987362\n",
+        "tool_calls": null,
+        "usage": {
+          "completion_tokens": 119,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 83,
+            "audio_tokens": 0,
+            "reasoning_tokens": 107,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 163290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 163280
+          },
+          "response_token/s": 58.02621685257403,
+          "time_to_first_token_ms": 47997.839251000005,
+          "total_tokens": 163409
+        }
+      }
+    },
+    "serial": {
+      "content": "01987362",
+      "correct": false,
+      "mutation": {
+        "disable_mtp": true
+      },
+      "status": 200,
+      "usage": {
+        "completion_tokens": 119,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 107,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens": 163290,
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 163280
+        },
+        "response_token/s": 30.95229488489092,
+        "time_to_first_token_ms": 295.828935,
+        "total_tokens": 163409
+      },
+      "view": {
+        "completion_tokens": 119,
+        "content": "01987362",
+        "finish_reason": "stop",
+        "prompt_tokens": 163290,
+        "reasoning_content": "The user wants me to find the code for key k880253 in Table A, then find that code's value in Table B.\n\nLet me search for k880253 in Table A.\n\nLooking through Table A... k880253 -> c010364\n\nNow let me find c010364 in Table B.\n\nLooking through Table B... c010364 = 01987362\n",
+        "tool_calls": null,
+        "usage": {
+          "completion_tokens": 119,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 107,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens": 163290,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 163280
+          },
+          "response_token/s": 30.95229488489092,
+          "time_to_first_token_ms": 295.828935,
+          "total_tokens": 163409
+        }
+      }
+    }
+  },
+  "decoded_equal": true,
+  "ground_truth": {
+    "answer": "52590382",
+    "code": "582677",
+    "content_bytes": 182571,
+    "content_chars": 182571,
+    "key": "880253",
+    "table_a_entries": 4800,
+    "table_b_distinct_codes": 4785,
+    "table_b_entries": 4800
+  },
+  "request_sha256": "a99204cde4031bd706e0b1f5189624e0ed2a13938ce090692de4628d751db434"
+}

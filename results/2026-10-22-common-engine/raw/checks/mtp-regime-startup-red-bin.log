@@ -1,0 +1,19 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.32s
+     Running unittests src/main.rs (target/debug/deps/spark-0e3b51d742cd56d6)
+
+running 2 tests
+test scheduler::mtp_gate::regime_tests::widening_still_selects_serial_when_steady_mtp_is_slower ... ok
+
+thread 'scheduler::mtp_gate::regime_tests::widening_bootstrap_cost_does_not_disable_faster_steady_mtp' (326605451) panicked at crates/spark-server/src/scheduler/mtp_gate/regime_tests.rs:27:5:
+steady MTP delivers 83.3 tok/s versus serial 54.8; startup must not trap it in Serial: MTP=Some(31.99999999999999), serial=Some(54.79452054794521)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test scheduler::mtp_gate::regime_tests::widening_bootstrap_cost_does_not_disable_faster_steady_mtp ... FAILED
+
+failures:
+
+failures:
+    scheduler::mtp_gate::regime_tests::widening_bootstrap_cost_does_not_disable_faster_steady_mtp
+
+test result: FAILED. 1 passed; 1 failed; 0 ignored; 0 measured; 2989 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p spark-server --bin spark`

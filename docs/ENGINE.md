@@ -7,55 +7,49 @@ pinned in [`install/atlas-source.json`](../install/atlas-source.json), for the
 kernel target `qwen3.8-flash-next` (model type `qwen4_exp`).
 [`install/build.sh`](../install/build.sh) refuses any other tree.
 
-The current fidelity candidate pins source tag `sparkqwen/fidelity-rc-20261019` at `63bebfa6`
-(tree `fa4e4817`). It includes the fidelity fixes, checkpoint reasoning
-policy, and the shared-expert tensor-parallel split. The official image passed its mandatory native build tests and pinned
-Rust 1.93.1 workspace Clippy. Final-image evidence includes successful components
-and known quality failures; main and matrix performance are mixed. The bounded long-context serial
-comparison is complete. Maintenance publication is accepted with disclosed
-limitations. The exact source commit/tree fetches anonymously. The published
-image passed anonymous digest-pull content and runtime verification; product
-repository release checks remain separate. The [candidate review](../results/2026-10-20-fidelity-review/RESULT.md)
-binds the exact image and binary to each measured scope.
+SparkQwen 0.2.0 uses the common `spark-shared` engine tree.
+The pinned snapshot on `spark-shared` is `f1fdf272`
+(tree `f3b0524e`). It brings together
+the SparkGLM literal-XML and grammar fixes, packed-prefill and split-score paths,
+and SparkQwen's native MXFP8 shared expert, F32 HC/PLE norms, row-invariant
+prefill and native MTP. The source history retains both product branches.
+Model-specific kernels and serving policies remain gated by model type and
+kernel target.
 
-The candidate also fixes speculative returned scores under logit bias and
-history penalties. Requested scores use the serial processed distribution;
-unsupported speculative scoring paths use a supported verification or serial
-path. First-prefill-token logit-bias support remains an inherited limitation.
+[Strict and Spark](MODES.md) share the checkpoint's native target precision.
+Strict retains BF16 draft projections; Spark uses NVFP4 draft copies through
+the shared RNE weight quantizer. Both retain native MTP. The loader validates
+native tensor shapes and precision before conversion, and startup validates
+the TP2/EP2 mode contract before GPU allocation.
 
-Single and batched MTP bootstrap picks now return logprobs from the processed
-row that selected the token. BF16 and FP32 row handling and per-member read
-failures are covered by five mandatory native regressions. On the exact image,
-two biased completion cases matched the same-image serial control at all 15
-finite returned positions, with maximum score difference 0.0. The first
-prefill piece remains nullable and is not covered by logit bias. Eight greedy
-prompts matched decoded responses; generated token IDs were not exposed by
-that check. These bounded observations do not prove long-context or universal
-speculative equality.
+Literal tool-envelope strings in user prose, schema descriptions and historical
+argument values are encoded as ordinary text. The checkpoint template still
+emits native function/parameter tool-call envelopes. The same serving code
+handles OpenAI and Anthropic requests, including streaming. Literal fragments
+split across tokens survive streaming and end-of-stream flushing. Qwen reasoning
+preserves literal tool markup until its explicit thinking terminator. Required
+tool grammar starts after that terminator; its first reasoning sample suppresses
+the native tool opener, matching subsequent reasoning samples.
 
-Accepted prediction usage counts only draft tokens retained in the response,
-including token-limit, stop and rollback cases. Internal verification and
-draft-depth statistics retain their existing meaning.
+Strict MTP prompt absorption batches only the BF16 K/V projections in groups
+of up to eight rows, preserving the scalar reduction order and skipping unused
+Q projections. The GPU parity check compares real checkpoint K/V tensors
+against scalar GEMV, including tail batches and both TP2 shards.
 
-The earlier `sparkqwen/atlas-20261017-vision` release at `92dd5435` built on the
-shared-engine release (`sparkqwen/atlas-20261015-vision`, `1954e759`), the
-[FP4-Local series](#fp4-local-series), the [drafter series](#drafter-series),
-and the [vision admission series](#vision-admission-series). Its dated receipts
-remain in [FP4-Local](../results/2026-10-16-fp4local/RESULT.md),
-[drafter](../results/2026-10-16-drafter/RESULT.md), and
-[vision](../results/2026-10-17-vision/RESULT.md).
-The earlier NVFP4 prompt-logprob comparison is recorded in
-[shared-engine results](../results/2026-10-15-shared-engine/RESULT.md), and the
-RC16 gates in [RC16 results](../results/2026-10-10-rc16/RESULT.md). Those historical
-results do not qualify the current candidate.
+The exact engine commit and tree are authoritative in
+[`install/atlas-source.json`](../install/atlas-source.json). A common source tree
+does not repin an already deployed SparkGLM image or qualify an untested model
+configuration. See the [0.2.0 qualification](../results/2026-10-22-common-engine/RESULT.md)
+for the built image, measured scope and limitations.
 
-The shared layer is `upstream/atlas-shared-20261015-vision` at `a9464810`, on Atlas-Inf `main` at
-`7ffd183f`. These are pinned Enntity snapshots, separate from current
-Atlas-Inf `main`. `Enntity/atlas` keeps one branch per layer: `spark-shared`,
-which SparkGLM builds on too, and `sparkqwen` on top of it; each release is a
-tag ([branch and release index](https://github.com/Enntity/atlas/blob/enntity/releases/docs/PUBLISHED_RELEASES.md)).
+## Historical engine layers
 
-## Layers
+The sections below describe the dated releases that were integrated into the
+common tree. Their measurements apply to those releases. The previous fidelity
+release at `63bebfa6` is documented in the
+[2026-10-20 review](../results/2026-10-20-fidelity-review/RESULT.md).
+
+### Layer history
 
 The historical `sparkqwen/atlas-<date>-<name>` release tags use four layers,
 each on top of the one before; the second and third, and the model-independent RC16 commits,
@@ -63,8 +57,9 @@ form the shared layer `upstream/atlas-shared-20261015-vision`:
 
 1. **Atlas-Inf `main` at `7ffd183f`.**
 2. **SparkGLM's upstream GLM-5.3-Flash series** (tags `upstream/glm53-flash-*`,
-   the series [SparkGLM](https://github.com/Enntity/sparkglm) intends to
-   propose to Atlas-Inf). It carries the model-independent work: prefill FIFO
+   historically organized as an upstream proposal series in the Enntity fork).
+   This integration and its PRs remain in Enntity repositories. It carries the
+   model-independent work: prefill FIFO
    and SRPT ordering, disconnect retirement, strict structured output with
    linear-cost grammar compile, `min_tokens` end-ban, whole-block prefix
    sharing, CUTLASS error drain, race hardening, KV sizing from the engine's
@@ -73,7 +68,7 @@ form the shared layer `upstream/atlas-shared-20261015-vision`:
    command ring). Its GLM-only paths are gated by model type or kernel target
    and stay off for `qwen4_exp`.
 3. **The Qwen3.8-Flash-Next series** (`upstream/qwen38-flash-next-*`), in the
-   order we intend to propose it upstream. Listed below.
+   historical proposal order. Listed below; current work and PRs stay in Enntity repositories.
 4. **SparkQwen-only commits** on `sparkqwen/atlas-<date>-<name>`. Listed
    below, after the Qwen series.
 
@@ -238,9 +233,9 @@ prompt logprobs).
 
 ## Changing the engine
 
-Engine changes go to `Enntity/atlas` first: upstream-worthy work on a focused
-branch cut from Atlas-Inf `main`, then into the `spark-shared` branch;
-SparkQwen-only work on the `sparkqwen` branch, rebased onto `spark-shared`.
-Tag the release, then update the pin, and the profiles if a switch changes.
+Engine changes go to `Enntity/atlas` first. Integrate reviewed GLM and Qwen
+changes into `spark-shared`, retaining model-specific gates. Update the product
+source pin, version and profiles together, then build and qualify that exact
+image. Historical product branches and tags remain provenance references.
 
 Single and batched bootstrap decode also report scores from the processed row used for token selection. First-prefill-token bias support is unchanged; the first returned score may be null. Exact-image serial/speculative score qualification remains required.

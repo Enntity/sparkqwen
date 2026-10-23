@@ -1,0 +1,7 @@
+{
+  "current": "Strict18",
+  "historical": "Spark13",
+  "same_request_bytes": true,
+  "same_message": true,
+  "same_finish_reason": true
+}

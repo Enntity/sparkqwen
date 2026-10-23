@@ -1,0 +1,1 @@
+qwen4_exp kernel names: OK (194 fail-closed lookups checked against 717 entry points in 229 modules; 80 try_kernel fallbacks not required; 44 expected_absent entries, none stale)

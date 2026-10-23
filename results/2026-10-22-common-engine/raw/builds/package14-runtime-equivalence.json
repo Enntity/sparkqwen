@@ -1,0 +1,24 @@
+{
+  "identical_runtime_files": true,
+  "image_hashes": {
+    "ghcr.io/enntity/atlas-sparkqwen:29ff2889abf2": [
+      "aaa897e1d6f63f037db2b5c7a6e22607f1f6b7064b224d830c02e30131f2447b  /usr/local/bin/spark",
+      "af809f60e1146f66836a2549ad11082cebbd335362686e381c90dfae96588c1e  /opt/atlas/serve.py",
+      "6d1cca5110b5f608efc6c7730a1b54d948d417b4c4910684d90e1b886a8361eb  /opt/atlas/release.json",
+      "0a02cbada1480b54c68e2445a0ef644e6f20f7cd6a560a92d628111de74c00aa  /opt/atlas/checkpoint.json",
+      "675bde148d025c92a1c15ff3e1f1df87faa670e2090a65aed48149bfd7b00273  /opt/atlas/profiles/8x262k.json",
+      "dcf298c125f8393c1b07615c60cc1de5ef9bcf449a3cdf89e04dd0e88dce4b35  /opt/atlas/profiles/8x32k.json",
+      "8536708d3b5ab2ce2551ff04ac73feca014d9838f524c3c486c231db72794281  /opt/atlas/profiles/4x262k.json"
+    ],
+    "ghcr.io/enntity/atlas-sparkqwen:71a2c510af62": [
+      "aaa897e1d6f63f037db2b5c7a6e22607f1f6b7064b224d830c02e30131f2447b  /usr/local/bin/spark",
+      "af809f60e1146f66836a2549ad11082cebbd335362686e381c90dfae96588c1e  /opt/atlas/serve.py",
+      "6d1cca5110b5f608efc6c7730a1b54d948d417b4c4910684d90e1b886a8361eb  /opt/atlas/release.json",
+      "0a02cbada1480b54c68e2445a0ef644e6f20f7cd6a560a92d628111de74c00aa  /opt/atlas/checkpoint.json",
+      "675bde148d025c92a1c15ff3e1f1df87faa670e2090a65aed48149bfd7b00273  /opt/atlas/profiles/8x262k.json",
+      "dcf298c125f8393c1b07615c60cc1de5ef9bcf449a3cdf89e04dd0e88dce4b35  /opt/atlas/profiles/8x32k.json",
+      "8536708d3b5ab2ce2551ff04ac73feca014d9838f524c3c486c231db72794281  /opt/atlas/profiles/4x262k.json"
+    ]
+  },
+  "expected_difference": "source-manifest branch metadata: feature branch to spark-shared; engine commit/tree unchanged"
+}

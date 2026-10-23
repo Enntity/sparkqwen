@@ -1,0 +1,2390 @@
+{
+  "arms": {
+    "baseline": {
+      "arm": "baseline",
+      "cells": {
+        "conc": [
+          {
+            "count": 2,
+            "descriptor": [
+              1
+            ],
+            "label": "1 streams",
+            "medians": {
+              "numeric_fields": {
+                "agg_tok_s": 60.35,
+                "c": 1,
+                "rep": 0.5,
+                "tokens": 256,
+                "wall": 4.24
+              },
+              "speed_tok_s": 60.35,
+              "ttft_s": 0.152,
+              "wall_s": 4.24
+            },
+            "repetitions": [
+              {
+                "agg_tok_s": 60.09,
+                "c": 1,
+                "per_stream_tok_s": [
+                  62.17
+                ],
+                "rep": 0,
+                "tokens": 256,
+                "ttft": [
+                  0.158
+                ],
+                "wall": 4.26
+              },
+              {
+                "agg_tok_s": 60.61,
+                "c": 1,
+                "per_stream_tok_s": [
+                  62.54
+                ],
+                "rep": 1,
+                "tokens": 256,
+                "ttft": [
+                  0.146
+                ],
+                "wall": 4.22
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 2,
+            "descriptor": [
+              2
+            ],
+            "label": "2 streams",
+            "medians": {
+              "numeric_fields": {
+                "agg_tok_s": 94.75,
+                "c": 2,
+                "rep": 0.5,
+                "tokens": 512,
+                "wall": 5.405
+              },
+              "speed_tok_s": 94.75,
+              "ttft_s": 0.1915,
+              "wall_s": 5.405
+            },
+            "repetitions": [
+              {
+                "agg_tok_s": 93.92,
+                "c": 2,
+                "per_stream_tok_s": [
+                  48.45,
+                  52.34
+                ],
+                "rep": 0,
+                "tokens": 512,
+                "ttft": [
+                  0.188,
+                  0.188
+                ],
+                "wall": 5.45
+              },
+              {
+                "agg_tok_s": 95.58,
+                "c": 2,
+                "per_stream_tok_s": [
+                  49.41,
+                  57.92
+                ],
+                "rep": 1,
+                "tokens": 512,
+                "ttft": [
+                  0.195,
+                  0.195
+                ],
+                "wall": 5.36
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 2,
+            "descriptor": [
+              4
+            ],
+            "label": "4 streams",
+            "medians": {
+              "numeric_fields": {
+                "agg_tok_s": 138.515,
+                "c": 4,
+                "rep": 0.5,
+                "tokens": 1024,
+                "wall": 7.395
+              },
+              "speed_tok_s": 138.515,
+              "ttft_s": 0.2575,
+              "wall_s": 7.395
+            },
+            "repetitions": [
+              {
+                "agg_tok_s": 136.34,
+                "c": 4,
+                "per_stream_tok_s": [
+                  37.4,
+                  39.76,
+                  40.71,
+                  35.13
+                ],
+                "rep": 0,
+                "tokens": 1024,
+                "ttft": [
+                  0.251,
+                  0.25,
+                  0.251,
+                  0.25
+                ],
+                "wall": 7.51
+              },
+              {
+                "agg_tok_s": 140.69,
+                "c": 4,
+                "per_stream_tok_s": [
+                  38.03,
+                  41.48,
+                  43.62,
+                  36.37
+                ],
+                "rep": 1,
+                "tokens": 1024,
+                "ttft": [
+                  0.266,
+                  0.266,
+                  0.265,
+                  0.264
+                ],
+                "wall": 7.28
+              }
+            ],
+            "request_hashes": []
+          }
+        ],
+        "decode": [
+          {
+            "count": 3,
+            "descriptor": [
+              "code"
+            ],
+            "label": "code",
+            "medians": {
+              "numeric_fields": {
+                "cached": 64,
+                "out": 384,
+                "prompt": 65,
+                "rep": 1,
+                "tok_s": 77.62,
+                "ttft": 0.132,
+                "wall": 5.076
+              },
+              "speed_tok_s": 77.62,
+              "ttft_s": 0.132,
+              "wall_s": 5.076
+            },
+            "repetitions": [
+              {
+                "cached": 32,
+                "kind": "code",
+                "out": 384,
+                "prompt": 65,
+                "rep": 0,
+                "text_head": "The user wants a Python module that implements an LRU cache with:\n1. TTL (Time-T",
+                "tok_s": 74.66,
+                "ttft": 0.132,
+                "wall": 5.262
+              },
+              {
+                "cached": 64,
+                "kind": "code",
+                "out": 384,
+                "prompt": 65,
+                "rep": 1,
+                "text_head": "The user wants a Python module that implements an LRU cache with:\n1. TTL (Time-T",
+                "tok_s": 77.65,
+                "ttft": 0.143,
+                "wall": 5.076
+              },
+              {
+                "cached": 64,
+                "kind": "code",
+                "out": 384,
+                "prompt": 65,
+                "rep": 2,
+                "text_head": "The user wants a Python module that implements an LRU cache with:\n1. TTL (Time-T",
+                "tok_s": 77.62,
+                "ttft": 0.131,
+                "wall": 5.065
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 3,
+            "descriptor": [
+              "json"
+            ],
+            "label": "json",
+            "medians": {
+              "numeric_fields": {
+                "cached": 64,
+                "out": 384,
+                "prompt": 77,
+                "rep": 1,
+                "tok_s": 75.98,
+                "ttft": 0.142,
+                "wall": 5.183
+              },
+              "speed_tok_s": 75.98,
+              "ttft_s": 0.142,
+              "wall_s": 5.183
+            },
+            "repetitions": [
+              {
+                "cached": 32,
+                "kind": "json",
+                "out": 384,
+                "prompt": 77,
+                "rep": 0,
+                "text_head": "The user wants a JSON array of 12 fictional library books with specific fields: ",
+                "tok_s": 73.63,
+                "ttft": 0.146,
+                "wall": 5.348
+              },
+              {
+                "cached": 64,
+                "kind": "json",
+                "out": 384,
+                "prompt": 77,
+                "rep": 1,
+                "text_head": "The user wants a JSON array of 12 fictional library books with specific fields: ",
+                "tok_s": 76.16,
+                "ttft": 0.141,
+                "wall": 5.17
+              },
+              {
+                "cached": 64,
+                "kind": "json",
+                "out": 384,
+                "prompt": 77,
+                "rep": 2,
+                "text_head": "The user wants a JSON array of 12 fictional library books with specific fields: ",
+                "tok_s": 75.98,
+                "ttft": 0.142,
+                "wall": 5.183
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 3,
+            "descriptor": [
+              "prose"
+            ],
+            "label": "prose",
+            "medians": {
+              "numeric_fields": {
+                "cached": 64,
+                "out": 384,
+                "prompt": 69,
+                "rep": 1,
+                "tok_s": 56.39,
+                "ttft": 0.157,
+                "wall": 6.949
+              },
+              "speed_tok_s": 56.39,
+              "ttft_s": 0.157,
+              "wall_s": 6.949
+            },
+            "repetitions": [
+              {
+                "cached": 0,
+                "kind": "prose",
+                "out": 384,
+                "prompt": 69,
+                "rep": 0,
+                "text_head": "The user wants a calm, detailed essay about lighthouse staffing and maintenance ",
+                "tok_s": 53.77,
+                "ttft": 0.241,
+                "wall": 7.364
+              },
+              {
+                "cached": 64,
+                "kind": "prose",
+                "out": 384,
+                "prompt": 69,
+                "rep": 1,
+                "text_head": "The user wants a calm, detailed essay about lighthouse staffing and maintenance ",
+                "tok_s": 56.39,
+                "ttft": 0.157,
+                "wall": 6.949
+              },
+              {
+                "cached": 64,
+                "kind": "prose",
+                "out": 384,
+                "prompt": 69,
+                "rep": 2,
+                "text_head": "The user wants a calm, detailed essay about lighthouse staffing and maintenance ",
+                "tok_s": 56.53,
+                "ttft": 0.144,
+                "wall": 6.919
+              }
+            ],
+            "request_hashes": []
+          }
+        ],
+        "prefill": [
+          {
+            "count": 2,
+            "descriptor": [
+              2048
+            ],
+            "label": "2048 tokens",
+            "medians": {
+              "numeric_fields": {
+                "cached": 32,
+                "out": 16,
+                "prompt": 2022.5,
+                "rep": 0.5,
+                "size": 2048,
+                "tok_s": 57.45,
+                "ttft": 0.714,
+                "wall": 0.9755
+              },
+              "speed_tok_s": 57.45,
+              "ttft_s": 0.714,
+              "wall_s": 0.9755
+            },
+            "repetitions": [
+              {
+                "cached": 32,
+                "out": 16,
+                "prompt": 2022,
+                "rep": 0,
+                "size": 2048,
+                "text_head": "The user asks which shelf holds Entry 3. Looking at Entry 3:",
+                "tok_s": 56.93,
+                "ttft": 0.74,
+                "wall": 1.004
+              },
+              {
+                "cached": 32,
+                "out": 16,
+                "prompt": 2023,
+                "rep": 1,
+                "size": 2048,
+                "text_head": "The user asks which shelf holds Entry 3. Looking at the data:\n\n",
+                "tok_s": 57.97,
+                "ttft": 0.688,
+                "wall": 0.947
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 2,
+            "descriptor": [
+              8192
+            ],
+            "label": "8192 tokens",
+            "medians": {
+              "numeric_fields": {
+                "cached": 32,
+                "out": 16,
+                "prompt": 8169.5,
+                "rep": 0.5,
+                "size": 8192,
+                "tok_s": 54.754999999999995,
+                "ttft": 1.99,
+                "wall": 2.2634999999999996
+              },
+              "speed_tok_s": 54.754999999999995,
+              "ttft_s": 1.99,
+              "wall_s": 2.2634999999999996
+            },
+            "repetitions": [
+              {
+                "cached": 32,
+                "out": 16,
+                "prompt": 8170,
+                "rep": 0,
+                "size": 8192,
+                "text_head": "The user is asking which shelf holds Entry 3. Looking at the data:",
+                "tok_s": 54.07,
+                "ttft": 1.998,
+                "wall": 2.275
+              },
+              {
+                "cached": 32,
+                "out": 16,
+                "prompt": 8169,
+                "rep": 1,
+                "size": 8192,
+                "text_head": "The user is asking which shelf holds Entry 3. Looking at the data:",
+                "tok_s": 55.44,
+                "ttft": 1.982,
+                "wall": 2.252
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 2,
+            "descriptor": [
+              16384
+            ],
+            "label": "16384 tokens",
+            "medians": {
+              "numeric_fields": {
+                "cached": 32,
+                "out": 16,
+                "prompt": 16399,
+                "rep": 0.5,
+                "size": 16384,
+                "tok_s": 56.9,
+                "ttft": 3.9130000000000003,
+                "wall": 4.1855
+              },
+              "speed_tok_s": 56.9,
+              "ttft_s": 3.9130000000000003,
+              "wall_s": 4.1855
+            },
+            "repetitions": [
+              {
+                "cached": 32,
+                "out": 16,
+                "prompt": 16390,
+                "rep": 0,
+                "size": 16384,
+                "text_head": "The user asks which shelf holds Entry 3. Looking at Entry 3:",
+                "tok_s": 46.36,
+                "ttft": 3.882,
+                "wall": 4.205
+              },
+              {
+                "cached": 32,
+                "out": 16,
+                "prompt": 16408,
+                "rep": 1,
+                "size": 16384,
+                "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+                "tok_s": 67.44,
+                "ttft": 3.944,
+                "wall": 4.166
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 2,
+            "descriptor": [
+              28672
+            ],
+            "label": "28672 tokens",
+            "medians": {
+              "numeric_fields": {
+                "cached": 32,
+                "out": 16,
+                "prompt": 28814,
+                "rep": 0.5,
+                "size": 28672,
+                "tok_s": 55.155,
+                "ttft": 6.9295,
+                "wall": 7.201499999999999
+              },
+              "speed_tok_s": 55.155,
+              "ttft_s": 6.9295,
+              "wall_s": 7.201499999999999
+            },
+            "repetitions": [
+              {
+                "cached": 32,
+                "out": 16,
+                "prompt": 28809,
+                "rep": 0,
+                "size": 28672,
+                "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+                "tok_s": 55.0,
+                "ttft": 6.92,
+                "wall": 7.193
+              },
+              {
+                "cached": 32,
+                "out": 16,
+                "prompt": 28819,
+                "rep": 1,
+                "size": 28672,
+                "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+                "tok_s": 55.31,
+                "ttft": 6.939,
+                "wall": 7.21
+              }
+            ],
+            "request_hashes": []
+          }
+        ],
+        "warm": [
+          {
+            "count": 1,
+            "descriptor": [
+              8192,
+              0
+            ],
+            "label": "8192 tokens / turn 0",
+            "medians": {
+              "numeric_fields": {
+                "cached": 32,
+                "out": 20,
+                "prompt": 8162,
+                "size": 8192,
+                "tok_s": 52.69,
+                "ttft": 1.976,
+                "turn": 0,
+                "wall": 2.337
+              },
+              "speed_tok_s": 52.69,
+              "ttft_s": 1.976,
+              "wall_s": 2.337
+            },
+            "repetitions": [
+              {
+                "cached": 32,
+                "out": 20,
+                "prompt": 8162,
+                "size": 8192,
+                "text_head": "The user wants me to read the registry and reply only with \"OK\".\n\n\nOK",
+                "tok_s": 52.69,
+                "ttft": 1.976,
+                "turn": 0,
+                "wall": 2.337
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 1,
+            "descriptor": [
+              8192,
+              1
+            ],
+            "label": "8192 tokens / turn 1",
+            "medians": {
+              "numeric_fields": {
+                "cached": 8160,
+                "out": 48,
+                "prompt": 8191,
+                "size": 8192,
+                "tok_s": 68.2,
+                "ttft": 0.161,
+                "turn": 1,
+                "wall": 0.851
+              },
+              "speed_tok_s": 68.2,
+              "ttft_s": 0.161,
+              "wall_s": 0.851
+            },
+            "repetitions": [
+              {
+                "cached": 8160,
+                "out": 48,
+                "prompt": 8191,
+                "size": 8192,
+                "text_head": "The user is asking about Entry 3 from the registry. Let me look it up.\n\nEntry 3:",
+                "tok_s": 68.2,
+                "ttft": 0.161,
+                "turn": 1,
+                "wall": 0.851
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 1,
+            "descriptor": [
+              8192,
+              2
+            ],
+            "label": "8192 tokens / turn 2",
+            "medians": {
+              "numeric_fields": {
+                "cached": 8176,
+                "out": 48,
+                "prompt": 8242,
+                "size": 8192,
+                "tok_s": 63.94,
+                "ttft": 0.178,
+                "turn": 2,
+                "wall": 0.913
+              },
+              "speed_tok_s": 63.94,
+              "ttft_s": 0.178,
+              "wall_s": 0.913
+            },
+            "repetitions": [
+              {
+                "cached": 8176,
+                "out": 48,
+                "prompt": 8242,
+                "size": 8192,
+                "text_head": "The user is asking about Entry 10 from the registry. Let me look it up.\n\nEntry 1",
+                "tok_s": 63.94,
+                "ttft": 0.178,
+                "turn": 2,
+                "wall": 0.913
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 1,
+            "descriptor": [
+              8192,
+              3
+            ],
+            "label": "8192 tokens / turn 3",
+            "medians": {
+              "numeric_fields": {
+                "cached": 8240,
+                "out": 48,
+                "prompt": 8293,
+                "size": 8192,
+                "tok_s": 68.47,
+                "ttft": 0.166,
+                "turn": 3,
+                "wall": 0.852
+              },
+              "speed_tok_s": 68.47,
+              "ttft_s": 0.166,
+              "wall_s": 0.852
+            },
+            "repetitions": [
+              {
+                "cached": 8240,
+                "out": 48,
+                "prompt": 8293,
+                "size": 8192,
+                "text_head": "The user is asking about Entry 17 from the registry. Let me look it up.\n\nEntry 1",
+                "tok_s": 68.47,
+                "ttft": 0.166,
+                "turn": 3,
+                "wall": 0.852
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 1,
+            "descriptor": [
+              8192,
+              4
+            ],
+            "label": "8192 tokens / turn 4",
+            "medians": {
+              "numeric_fields": {
+                "cached": 8288,
+                "out": 48,
+                "prompt": 8344,
+                "size": 8192,
+                "tok_s": 73.52,
+                "ttft": 0.158,
+                "turn": 4,
+                "wall": 0.798
+              },
+              "speed_tok_s": 73.52,
+              "ttft_s": 0.158,
+              "wall_s": 0.798
+            },
+            "repetitions": [
+              {
+                "cached": 8288,
+                "out": 48,
+                "prompt": 8344,
+                "size": 8192,
+                "text_head": "The user is asking about Entry 24 from the registry. Let me look it up.\n\nEntry 2",
+                "tok_s": 73.52,
+                "ttft": 0.158,
+                "turn": 4,
+                "wall": 0.798
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 1,
+            "descriptor": [
+              8192,
+              5
+            ],
+            "label": "8192 tokens / turn 5",
+            "medians": {
+              "numeric_fields": {
+                "cached": 8336,
+                "out": 48,
+                "prompt": 8395,
+                "size": 8192,
+                "tok_s": 64.65,
+                "ttft": 0.156,
+                "turn": 5,
+                "wall": 0.883
+              },
+              "speed_tok_s": 64.65,
+              "ttft_s": 0.156,
+              "wall_s": 0.883
+            },
+            "repetitions": [
+              {
+                "cached": 8336,
+                "out": 48,
+                "prompt": 8395,
+                "size": 8192,
+                "text_head": "The user is asking about Entry 31 from the registry. Let me look it up.\n\nEntry 3",
+                "tok_s": 64.65,
+                "ttft": 0.156,
+                "turn": 5,
+                "wall": 0.883
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 1,
+            "descriptor": [
+              20480,
+              0
+            ],
+            "label": "20480 tokens / turn 0",
+            "medians": {
+              "numeric_fields": {
+                "cached": 32,
+                "out": 39,
+                "prompt": 20542,
+                "size": 20480,
+                "tok_s": 58.18,
+                "ttft": 4.963,
+                "turn": 0,
+                "wall": 5.616
+              },
+              "speed_tok_s": 58.18,
+              "ttft_s": 4.963,
+              "wall_s": 5.616
+            },
+            "repetitions": [
+              {
+                "cached": 32,
+                "out": 39,
+                "prompt": 20542,
+                "size": 20480,
+                "text_head": "The user wants me to read through the registry of entries and simply reply \"OK\".",
+                "tok_s": 58.18,
+                "ttft": 4.963,
+                "turn": 0,
+                "wall": 5.616
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 1,
+            "descriptor": [
+              20480,
+              1
+            ],
+            "label": "20480 tokens / turn 1",
+            "medians": {
+              "numeric_fields": {
+                "cached": 20528,
+                "out": 48,
+                "prompt": 20571,
+                "size": 20480,
+                "tok_s": 60.73,
+                "ttft": 0.213,
+                "turn": 1,
+                "wall": 0.987
+              },
+              "speed_tok_s": 60.73,
+              "ttft_s": 0.213,
+              "wall_s": 0.987
+            },
+            "repetitions": [
+              {
+                "cached": 20528,
+                "out": 48,
+                "prompt": 20571,
+                "size": 20480,
+                "text_head": "The user wants to know which shelf holds Entry 3. Let me look at Entry 3 from th",
+                "tok_s": 60.73,
+                "ttft": 0.213,
+                "turn": 1,
+                "wall": 0.987
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 1,
+            "descriptor": [
+              20480,
+              2
+            ],
+            "label": "20480 tokens / turn 2",
+            "medians": {
+              "numeric_fields": {
+                "cached": 20560,
+                "out": 48,
+                "prompt": 20620,
+                "size": 20480,
+                "tok_s": 68.52,
+                "ttft": 0.166,
+                "turn": 2,
+                "wall": 0.852
+              },
+              "speed_tok_s": 68.52,
+              "ttft_s": 0.166,
+              "wall_s": 0.852
+            },
+            "repetitions": [
+              {
+                "cached": 20560,
+                "out": 48,
+                "prompt": 20620,
+                "size": 20480,
+                "text_head": "The user wants to know which shelf holds Entry 10. Let me look at Entry 10 from ",
+                "tok_s": 68.52,
+                "ttft": 0.166,
+                "turn": 2,
+                "wall": 0.852
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 1,
+            "descriptor": [
+              20480,
+              3
+            ],
+            "label": "20480 tokens / turn 3",
+            "medians": {
+              "numeric_fields": {
+                "cached": 20608,
+                "out": 48,
+                "prompt": 20670,
+                "size": 20480,
+                "tok_s": 64.62,
+                "ttft": 0.193,
+                "turn": 3,
+                "wall": 0.92
+              },
+              "speed_tok_s": 64.62,
+              "ttft_s": 0.193,
+              "wall_s": 0.92
+            },
+            "repetitions": [
+              {
+                "cached": 20608,
+                "out": 48,
+                "prompt": 20670,
+                "size": 20480,
+                "text_head": "The user wants to know which shelf holds Entry 17. Let me look at Entry 17 from ",
+                "tok_s": 64.62,
+                "ttft": 0.193,
+                "turn": 3,
+                "wall": 0.92
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 1,
+            "descriptor": [
+              20480,
+              4
+            ],
+            "label": "20480 tokens / turn 4",
+            "medians": {
+              "numeric_fields": {
+                "cached": 20656,
+                "out": 48,
+                "prompt": 20720,
+                "size": 20480,
+                "tok_s": 60.42,
+                "ttft": 0.184,
+                "turn": 4,
+                "wall": 0.962
+              },
+              "speed_tok_s": 60.42,
+              "ttft_s": 0.184,
+              "wall_s": 0.962
+            },
+            "repetitions": [
+              {
+                "cached": 20656,
+                "out": 48,
+                "prompt": 20720,
+                "size": 20480,
+                "text_head": "The user wants to know which shelf holds Entry 24. Let me look at Entry 24 from ",
+                "tok_s": 60.42,
+                "ttft": 0.184,
+                "turn": 4,
+                "wall": 0.962
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 1,
+            "descriptor": [
+              20480,
+              5
+            ],
+            "label": "20480 tokens / turn 5",
+            "medians": {
+              "numeric_fields": {
+                "cached": 20704,
+                "out": 48,
+                "prompt": 20770,
+                "size": 20480,
+                "tok_s": 69.25,
+                "ttft": 0.187,
+                "turn": 5,
+                "wall": 0.865
+              },
+              "speed_tok_s": 69.25,
+              "ttft_s": 0.187,
+              "wall_s": 0.865
+            },
+            "repetitions": [
+              {
+                "cached": 20704,
+                "out": 48,
+                "prompt": 20770,
+                "size": 20480,
+                "text_head": "The user wants to know which shelf holds Entry 31. Let me look at Entry 31 from ",
+                "tok_s": 69.25,
+                "ttft": 0.187,
+                "turn": 5,
+                "wall": 0.865
+              }
+            ],
+            "request_hashes": []
+          }
+        ]
+      },
+      "correctness": {
+        "canonical_nll": {
+          "engine_signal": null,
+          "nll_nats_per_token": 1.0659923317039264,
+          "protocol_ok": true,
+          "score_positions": [
+            1,
+            27033
+          ],
+          "semantic_ok": null,
+          "source": "analysis",
+          "status": 200
+        },
+        "decoded_parity": {
+          "all_pairs_match": true,
+          "pairs": [
+            {
+              "field_matches": {
+                "completion_tokens": 8,
+                "content": 8,
+                "finish_reason": 8,
+                "prompt_tokens": 8,
+                "reasoning_content": 8,
+                "tool_calls": 8
+              },
+              "left": "c1",
+              "matched": 8,
+              "mismatches": [],
+              "right": "c4",
+              "total": 8
+            },
+            {
+              "field_matches": {
+                "completion_tokens": 8,
+                "content": 8,
+                "finish_reason": 8,
+                "prompt_tokens": 8,
+                "reasoning_content": 8,
+                "tool_calls": 8
+              },
+              "left": "c1",
+              "matched": 8,
+              "mismatches": [],
+              "right": "c8",
+              "total": 8
+            },
+            {
+              "field_matches": {
+                "completion_tokens": 8,
+                "content": 8,
+                "finish_reason": 8,
+                "prompt_tokens": 8,
+                "reasoning_content": 8,
+                "tool_calls": 8
+              },
+              "left": "c1p",
+              "matched": 8,
+              "mismatches": [],
+              "right": "c4p",
+              "total": 8
+            },
+            {
+              "field_matches": {
+                "completion_tokens": 8,
+                "content": 8,
+                "finish_reason": 8,
+                "prompt_tokens": 8,
+                "reasoning_content": 8,
+                "tool_calls": 8
+              },
+              "left": "c1",
+              "matched": 8,
+              "mismatches": [],
+              "right": "serial",
+              "total": 8
+            }
+          ],
+          "source": "analysis"
+        },
+        "long_final_content": {
+          "correct": 59,
+          "failures": [
+            {
+              "answer_in_content": false,
+              "case": 51,
+              "content": "94207600",
+              "finish_reason": "stop"
+            }
+          ],
+          "source": "analysis",
+          "total": 60
+        },
+        "mode": "baseline",
+        "sources": {
+          "analysis": "/Volumes/JMac External/software/ml/enntity/sparkglm-research/experiments/qwen-common-20261022/baseline/analysis.json",
+          "corrected_summary": "/Volumes/JMac External/software/ml/enntity/sparkglm-research/experiments/qwen-common-20261022/baseline/corrected/summary.corrected.json",
+          "qualification_summary": "/Volumes/JMac External/software/ml/enntity/sparkglm-research/experiments/qwen-common-20261022/baseline/qualification/summary.json",
+          "xml": "/Volumes/JMac External/software/ml/enntity/sparkglm-research/experiments/qwen-common-20261022/baseline/xml/summary.json"
+        },
+        "xml32": {
+          "ok": 4,
+          "real_controls_ok": 4,
+          "real_controls_total": 4,
+          "source": "/Volumes/JMac External/software/ml/enntity/sparkglm-research/experiments/qwen-common-20261022/baseline/xml/summary.json",
+          "total": 32
+        }
+      },
+      "date": "2026-10-22 13:15:59",
+      "source": {
+        "path": "/Volumes/JMac External/software/ml/enntity/sparkglm-research/experiments/qwen-common-20261022/baseline/bench-baseline.json",
+        "sha256": "078bb72c4014e8c3255c9be093679e22c75ddffcdc9726974a048621fbf8c8f8"
+      }
+    },
+    "strict": {
+      "arm": "strict",
+      "cells": {
+        "conc": [
+          {
+            "count": 2,
+            "descriptor": [
+              1
+            ],
+            "label": "1 streams",
+            "medians": {
+              "numeric_fields": {
+                "agg_tok_s": 50.285,
+                "c": 1,
+                "rep": 0.5,
+                "tokens": 256,
+                "wall": 5.09
+              },
+              "speed_tok_s": 50.285,
+              "ttft_s": 0.1615,
+              "wall_s": 5.09
+            },
+            "repetitions": [
+              {
+                "agg_tok_s": 50.77,
+                "c": 1,
+                "per_stream_tok_s": [
+                  52.31
+                ],
+                "rep": 0,
+                "tokens": 256,
+                "ttft": [
+                  0.167
+                ],
+                "wall": 5.04
+              },
+              {
+                "agg_tok_s": 49.8,
+                "c": 1,
+                "per_stream_tok_s": [
+                  51.16
+                ],
+                "rep": 1,
+                "tokens": 256,
+                "ttft": [
+                  0.156
+                ],
+                "wall": 5.14
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 2,
+            "descriptor": [
+              2
+            ],
+            "label": "2 streams",
+            "medians": {
+              "numeric_fields": {
+                "agg_tok_s": 82.055,
+                "c": 2,
+                "rep": 0.5,
+                "tokens": 512,
+                "wall": 6.24
+              },
+              "speed_tok_s": 82.055,
+              "ttft_s": 0.2015,
+              "wall_s": 6.24
+            },
+            "repetitions": [
+              {
+                "agg_tok_s": 80.76,
+                "c": 2,
+                "per_stream_tok_s": [
+                  41.5,
+                  46.65
+                ],
+                "rep": 0,
+                "tokens": 512,
+                "ttft": [
+                  0.194,
+                  0.193
+                ],
+                "wall": 6.34
+              },
+              {
+                "agg_tok_s": 83.35,
+                "c": 2,
+                "per_stream_tok_s": [
+                  42.98,
+                  49.83
+                ],
+                "rep": 1,
+                "tokens": 512,
+                "ttft": [
+                  0.21,
+                  0.209
+                ],
+                "wall": 6.14
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 2,
+            "descriptor": [
+              4
+            ],
+            "label": "4 streams",
+            "medians": {
+              "numeric_fields": {
+                "agg_tok_s": 128.35999999999999,
+                "c": 4,
+                "rep": 0.5,
+                "tokens": 1024,
+                "wall": 7.985
+              },
+              "speed_tok_s": 128.35999999999999,
+              "ttft_s": 0.27949999999999997,
+              "wall_s": 7.985
+            },
+            "repetitions": [
+              {
+                "agg_tok_s": 124.33,
+                "c": 4,
+                "per_stream_tok_s": [
+                  33.88,
+                  36.65,
+                  39.88,
+                  31.98
+                ],
+                "rep": 0,
+                "tokens": 1024,
+                "ttft": [
+                  0.262,
+                  0.262,
+                  0.261,
+                  0.261
+                ],
+                "wall": 8.24
+              },
+              {
+                "agg_tok_s": 132.39,
+                "c": 4,
+                "per_stream_tok_s": [
+                  34.29,
+                  37.79,
+                  41.69,
+                  34.53
+                ],
+                "rep": 1,
+                "tokens": 1024,
+                "ttft": [
+                  0.298,
+                  0.298,
+                  0.297,
+                  0.297
+                ],
+                "wall": 7.73
+              }
+            ],
+            "request_hashes": []
+          }
+        ],
+        "decode": [
+          {
+            "count": 3,
+            "descriptor": [
+              "code"
+            ],
+            "label": "code",
+            "medians": {
+              "numeric_fields": {
+                "cached": 64,
+                "out": 384,
+                "prompt": 65,
+                "rep": 1,
+                "tok_s": 76.4,
+                "ttft": 0.147,
+                "wall": 5.164
+              },
+              "speed_tok_s": 76.4,
+              "ttft_s": 0.147,
+              "wall_s": 5.164
+            },
+            "repetitions": [
+              {
+                "cached": 32,
+                "kind": "code",
+                "out": 384,
+                "prompt": 65,
+                "rep": 0,
+                "text_head": "The user wants a Python module that implements an LRU cache with:\n1. TTL (Time-T",
+                "tok_s": 74.41,
+                "ttft": 0.147,
+                "wall": 5.294
+              },
+              {
+                "cached": 64,
+                "kind": "code",
+                "out": 384,
+                "prompt": 65,
+                "rep": 1,
+                "text_head": "The user wants a Python module that implements an LRU cache with:\n1. TTL (Time-T",
+                "tok_s": 76.41,
+                "ttft": 0.152,
+                "wall": 5.164
+              },
+              {
+                "cached": 64,
+                "kind": "code",
+                "out": 384,
+                "prompt": 65,
+                "rep": 2,
+                "text_head": "The user wants a Python module that implements an LRU cache with:\n1. TTL (Time-T",
+                "tok_s": 76.4,
+                "ttft": 0.142,
+                "wall": 5.155
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 3,
+            "descriptor": [
+              "json"
+            ],
+            "label": "json",
+            "medians": {
+              "numeric_fields": {
+                "cached": 64,
+                "out": 384,
+                "prompt": 77,
+                "rep": 1,
+                "tok_s": 62.29,
+                "ttft": 0.164,
+                "wall": 6.313
+              },
+              "speed_tok_s": 62.29,
+              "ttft_s": 0.164,
+              "wall_s": 6.313
+            },
+            "repetitions": [
+              {
+                "cached": 32,
+                "kind": "json",
+                "out": 384,
+                "prompt": 77,
+                "rep": 0,
+                "text_head": "The user wants a JSON array of 12 fictional library books. Each book needs: titl",
+                "tok_s": 60.6,
+                "ttft": 0.158,
+                "wall": 6.478
+              },
+              {
+                "cached": 64,
+                "kind": "json",
+                "out": 384,
+                "prompt": 77,
+                "rep": 1,
+                "text_head": "The user wants a JSON array of 12 fictional library books. Each book needs: titl",
+                "tok_s": 62.41,
+                "ttft": 0.169,
+                "wall": 6.306
+              },
+              {
+                "cached": 64,
+                "kind": "json",
+                "out": 384,
+                "prompt": 77,
+                "rep": 2,
+                "text_head": "The user wants a JSON array of 12 fictional library books. Each book needs: titl",
+                "tok_s": 62.29,
+                "ttft": 0.164,
+                "wall": 6.313
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 3,
+            "descriptor": [
+              "prose"
+            ],
+            "label": "prose",
+            "medians": {
+              "numeric_fields": {
+                "cached": 64,
+                "out": 384,
+                "prompt": 69,
+                "rep": 1,
+                "tok_s": 53.38,
+                "ttft": 0.165,
+                "wall": 7.34
+              },
+              "speed_tok_s": 53.38,
+              "ttft_s": 0.165,
+              "wall_s": 7.34
+            },
+            "repetitions": [
+              {
+                "cached": 0,
+                "kind": "prose",
+                "out": 384,
+                "prompt": 69,
+                "rep": 0,
+                "text_head": "The user wants a calm, detailed essay about lighthouse staffing and maintenance ",
+                "tok_s": 50.83,
+                "ttft": 0.192,
+                "wall": 7.727
+              },
+              {
+                "cached": 64,
+                "kind": "prose",
+                "out": 384,
+                "prompt": 69,
+                "rep": 1,
+                "text_head": "The user wants a calm, detailed essay about lighthouse staffing and maintenance ",
+                "tok_s": 53.38,
+                "ttft": 0.165,
+                "wall": 7.34
+              },
+              {
+                "cached": 64,
+                "kind": "prose",
+                "out": 384,
+                "prompt": 69,
+                "rep": 2,
+                "text_head": "The user wants a calm, detailed essay about lighthouse staffing and maintenance ",
+                "tok_s": 53.5,
+                "ttft": 0.158,
+                "wall": 7.317
+              }
+            ],
+            "request_hashes": []
+          }
+        ],
+        "prefill": [
+          {
+            "count": 2,
+            "descriptor": [
+              2048
+            ],
+            "label": "2048 tokens",
+            "medians": {
+              "numeric_fields": {
+                "cached": 32,
+                "out": 16,
+                "prompt": 2022.5,
+                "rep": 0.5,
+                "size": 2048,
+                "tok_s": 50.71,
+                "ttft": 0.7204999999999999,
+                "wall": 1.0165
+              },
+              "speed_tok_s": 50.71,
+              "ttft_s": 0.7204999999999999,
+              "wall_s": 1.0165
+            },
+            "repetitions": [
+              {
+                "cached": 32,
+                "out": 16,
+                "prompt": 2022,
+                "rep": 0,
+                "size": 2048,
+                "text_head": "The user asks which shelf holds Entry 3. Looking at Entry 3:",
+                "tok_s": 50.93,
+                "ttft": 0.745,
+                "wall": 1.04
+              },
+              {
+                "cached": 32,
+                "out": 16,
+                "prompt": 2023,
+                "rep": 1,
+                "size": 2048,
+                "text_head": "The user asks which shelf holds Entry 3. Looking at the data:\n\n",
+                "tok_s": 50.49,
+                "ttft": 0.696,
+                "wall": 0.993
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 2,
+            "descriptor": [
+              8192
+            ],
+            "label": "8192 tokens",
+            "medians": {
+              "numeric_fields": {
+                "cached": 32,
+                "out": 16,
+                "prompt": 8169.5,
+                "rep": 0.5,
+                "size": 8192,
+                "tok_s": 49.12,
+                "ttft": 1.9925000000000002,
+                "wall": 2.298
+              },
+              "speed_tok_s": 49.12,
+              "ttft_s": 1.9925000000000002,
+              "wall_s": 2.298
+            },
+            "repetitions": [
+              {
+                "cached": 32,
+                "out": 16,
+                "prompt": 8170,
+                "rep": 0,
+                "size": 8192,
+                "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+                "tok_s": 47.44,
+                "ttft": 1.999,
+                "wall": 2.315
+              },
+              {
+                "cached": 32,
+                "out": 16,
+                "prompt": 8169,
+                "rep": 1,
+                "size": 8192,
+                "text_head": "The user is asking which shelf holds Entry 3. Looking at the data:",
+                "tok_s": 50.8,
+                "ttft": 1.986,
+                "wall": 2.281
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 2,
+            "descriptor": [
+              16384
+            ],
+            "label": "16384 tokens",
+            "medians": {
+              "numeric_fields": {
+                "cached": 32,
+                "out": 16,
+                "prompt": 16399,
+                "rep": 0.5,
+                "size": 16384,
+                "tok_s": 55.075,
+                "ttft": 3.9305,
+                "wall": 4.205
+              },
+              "speed_tok_s": 55.075,
+              "ttft_s": 3.9305,
+              "wall_s": 4.205
+            },
+            "repetitions": [
+              {
+                "cached": 32,
+                "out": 16,
+                "prompt": 16390,
+                "rep": 0,
+                "size": 16384,
+                "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+                "tok_s": 50.1,
+                "ttft": 3.893,
+                "wall": 4.192
+              },
+              {
+                "cached": 32,
+                "out": 16,
+                "prompt": 16408,
+                "rep": 1,
+                "size": 16384,
+                "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+                "tok_s": 60.05,
+                "ttft": 3.968,
+                "wall": 4.218
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 2,
+            "descriptor": [
+              28672
+            ],
+            "label": "28672 tokens",
+            "medians": {
+              "numeric_fields": {
+                "cached": 32,
+                "out": 16,
+                "prompt": 28814,
+                "rep": 0.5,
+                "size": 28672,
+                "tok_s": 50.45,
+                "ttft": 6.9205000000000005,
+                "wall": 7.217499999999999
+              },
+              "speed_tok_s": 50.45,
+              "ttft_s": 6.9205000000000005,
+              "wall_s": 7.217499999999999
+            },
+            "repetitions": [
+              {
+                "cached": 32,
+                "out": 16,
+                "prompt": 28809,
+                "rep": 0,
+                "size": 28672,
+                "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+                "tok_s": 49.78,
+                "ttft": 6.917,
+                "wall": 7.218
+              },
+              {
+                "cached": 32,
+                "out": 16,
+                "prompt": 28819,
+                "rep": 1,
+                "size": 28672,
+                "text_head": "The user is asking which shelf holds Entry 3. Let me look at Entry",
+                "tok_s": 51.12,
+                "ttft": 6.924,
+                "wall": 7.217
+              }
+            ],
+            "request_hashes": []
+          }
+        ],
+        "warm": [
+          {
+            "count": 1,
+            "descriptor": [
+              8192,
+              0
+            ],
+            "label": "8192 tokens / turn 0",
+            "medians": {
+              "numeric_fields": {
+                "cached": 32,
+                "out": 39,
+                "prompt": 8162,
+                "size": 8192,
+                "tok_s": 55.88,
+                "ttft": 1.994,
+                "turn": 0,
+                "wall": 2.674
+              },
+              "speed_tok_s": 55.88,
+              "ttft_s": 1.994,
+              "wall_s": 2.674
+            },
+            "repetitions": [
+              {
+                "cached": 32,
+                "out": 39,
+                "prompt": 8162,
+                "size": 8192,
+                "text_head": "The user wants me to read through the registry of entries and simply reply \"OK\".",
+                "tok_s": 55.88,
+                "ttft": 1.994,
+                "turn": 0,
+                "wall": 2.674
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 1,
+            "descriptor": [
+              8192,
+              1
+            ],
+            "label": "8192 tokens / turn 1",
+            "medians": {
+              "numeric_fields": {
+                "cached": 8160,
+                "out": 48,
+                "prompt": 8191,
+                "size": 8192,
+                "tok_s": 51.95,
+                "ttft": 0.166,
+                "turn": 1,
+                "wall": 1.071
+              },
+              "speed_tok_s": 51.95,
+              "ttft_s": 0.166,
+              "wall_s": 1.071
+            },
+            "repetitions": [
+              {
+                "cached": 8160,
+                "out": 48,
+                "prompt": 8191,
+                "size": 8192,
+                "text_head": "The user wants to know which shelf holds Entry 3. Let me look at Entry 3 from th",
+                "tok_s": 51.95,
+                "ttft": 0.166,
+                "turn": 1,
+                "wall": 1.071
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 1,
+            "descriptor": [
+              8192,
+              2
+            ],
+            "label": "8192 tokens / turn 2",
+            "medians": {
+              "numeric_fields": {
+                "cached": 8176,
+                "out": 48,
+                "prompt": 8240,
+                "size": 8192,
+                "tok_s": 60.43,
+                "ttft": 0.191,
+                "turn": 2,
+                "wall": 0.969
+              },
+              "speed_tok_s": 60.43,
+              "ttft_s": 0.191,
+              "wall_s": 0.969
+            },
+            "repetitions": [
+              {
+                "cached": 8176,
+                "out": 48,
+                "prompt": 8240,
+                "size": 8192,
+                "text_head": "The user wants to know which shelf holds Entry 10. Let me look at Entry 10 from ",
+                "tok_s": 60.43,
+                "ttft": 0.191,
+                "turn": 2,
+                "wall": 0.969
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 1,
+            "descriptor": [
+              8192,
+              3
+            ],
+            "label": "8192 tokens / turn 3",
+            "medians": {
+              "numeric_fields": {
+                "cached": 8224,
+                "out": 48,
+                "prompt": 8290,
+                "size": 8192,
+                "tok_s": 60.22,
+                "ttft": 0.173,
+                "turn": 3,
+                "wall": 0.953
+              },
+              "speed_tok_s": 60.22,
+              "ttft_s": 0.173,
+              "wall_s": 0.953
+            },
+            "repetitions": [
+              {
+                "cached": 8224,
+                "out": 48,
+                "prompt": 8290,
+                "size": 8192,
+                "text_head": "The user wants to know which shelf holds Entry 17. Let me look at Entry 17 from ",
+                "tok_s": 60.22,
+                "ttft": 0.173,
+                "turn": 3,
+                "wall": 0.953
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 1,
+            "descriptor": [
+              8192,
+              4
+            ],
+            "label": "8192 tokens / turn 4",
+            "medians": {
+              "numeric_fields": {
+                "cached": 8288,
+                "out": 48,
+                "prompt": 8340,
+                "size": 8192,
+                "tok_s": 57.46,
+                "ttft": 0.177,
+                "turn": 4,
+                "wall": 0.995
+              },
+              "speed_tok_s": 57.46,
+              "ttft_s": 0.177,
+              "wall_s": 0.995
+            },
+            "repetitions": [
+              {
+                "cached": 8288,
+                "out": 48,
+                "prompt": 8340,
+                "size": 8192,
+                "text_head": "The user wants to know which shelf holds Entry 24. Let me look at Entry 24 from ",
+                "tok_s": 57.46,
+                "ttft": 0.177,
+                "turn": 4,
+                "wall": 0.995
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 1,
+            "descriptor": [
+              8192,
+              5
+            ],
+            "label": "8192 tokens / turn 5",
+            "medians": {
+              "numeric_fields": {
+                "cached": 8336,
+                "out": 48,
+                "prompt": 8390,
+                "size": 8192,
+                "tok_s": 62.06,
+                "ttft": 0.163,
+                "turn": 5,
+                "wall": 0.92
+              },
+              "speed_tok_s": 62.06,
+              "ttft_s": 0.163,
+              "wall_s": 0.92
+            },
+            "repetitions": [
+              {
+                "cached": 8336,
+                "out": 48,
+                "prompt": 8390,
+                "size": 8192,
+                "text_head": "The user wants to know which shelf holds Entry 31. Let me look at Entry 31 from ",
+                "tok_s": 62.06,
+                "ttft": 0.163,
+                "turn": 5,
+                "wall": 0.92
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 1,
+            "descriptor": [
+              20480,
+              0
+            ],
+            "label": "20480 tokens / turn 0",
+            "medians": {
+              "numeric_fields": {
+                "cached": 32,
+                "out": 39,
+                "prompt": 20542,
+                "size": 20480,
+                "tok_s": 49.1,
+                "ttft": 4.971,
+                "turn": 0,
+                "wall": 5.745
+              },
+              "speed_tok_s": 49.1,
+              "ttft_s": 4.971,
+              "wall_s": 5.745
+            },
+            "repetitions": [
+              {
+                "cached": 32,
+                "out": 39,
+                "prompt": 20542,
+                "size": 20480,
+                "text_head": "The user wants me to read through the registry of entries and simply reply \"OK\".",
+                "tok_s": 49.1,
+                "ttft": 4.971,
+                "turn": 0,
+                "wall": 5.745
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 1,
+            "descriptor": [
+              20480,
+              1
+            ],
+            "label": "20480 tokens / turn 1",
+            "medians": {
+              "numeric_fields": {
+                "cached": 20528,
+                "out": 48,
+                "prompt": 20571,
+                "size": 20480,
+                "tok_s": 57.27,
+                "ttft": 0.221,
+                "turn": 1,
+                "wall": 1.041
+              },
+              "speed_tok_s": 57.27,
+              "ttft_s": 0.221,
+              "wall_s": 1.041
+            },
+            "repetitions": [
+              {
+                "cached": 20528,
+                "out": 48,
+                "prompt": 20571,
+                "size": 20480,
+                "text_head": "The user wants to know which shelf holds Entry 3. Let me look at Entry 3 from th",
+                "tok_s": 57.27,
+                "ttft": 0.221,
+                "turn": 1,
+                "wall": 1.041
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 1,
+            "descriptor": [
+              20480,
+              2
+            ],
+            "label": "20480 tokens / turn 2",
+            "medians": {
+              "numeric_fields": {
+                "cached": 20560,
+                "out": 48,
+                "prompt": 20620,
+                "size": 20480,
+                "tok_s": 61.24,
+                "ttft": 0.186,
+                "turn": 2,
+                "wall": 0.954
+              },
+              "speed_tok_s": 61.24,
+              "ttft_s": 0.186,
+              "wall_s": 0.954
+            },
+            "repetitions": [
+              {
+                "cached": 20560,
+                "out": 48,
+                "prompt": 20620,
+                "size": 20480,
+                "text_head": "The user wants to know which shelf holds Entry 10. Let me look at Entry 10 from ",
+                "tok_s": 61.24,
+                "ttft": 0.186,
+                "turn": 2,
+                "wall": 0.954
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 1,
+            "descriptor": [
+              20480,
+              3
+            ],
+            "label": "20480 tokens / turn 3",
+            "medians": {
+              "numeric_fields": {
+                "cached": 20608,
+                "out": 48,
+                "prompt": 20670,
+                "size": 20480,
+                "tok_s": 56.99,
+                "ttft": 0.214,
+                "turn": 3,
+                "wall": 1.039
+              },
+              "speed_tok_s": 56.99,
+              "ttft_s": 0.214,
+              "wall_s": 1.039
+            },
+            "repetitions": [
+              {
+                "cached": 20608,
+                "out": 48,
+                "prompt": 20670,
+                "size": 20480,
+                "text_head": "The user wants to know which shelf holds Entry 17. Let me look at Entry 17 from ",
+                "tok_s": 56.99,
+                "ttft": 0.214,
+                "turn": 3,
+                "wall": 1.039
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 1,
+            "descriptor": [
+              20480,
+              4
+            ],
+            "label": "20480 tokens / turn 4",
+            "medians": {
+              "numeric_fields": {
+                "cached": 20656,
+                "out": 48,
+                "prompt": 20720,
+                "size": 20480,
+                "tok_s": 55.58,
+                "ttft": 0.209,
+                "turn": 4,
+                "wall": 1.055
+              },
+              "speed_tok_s": 55.58,
+              "ttft_s": 0.209,
+              "wall_s": 1.055
+            },
+            "repetitions": [
+              {
+                "cached": 20656,
+                "out": 48,
+                "prompt": 20720,
+                "size": 20480,
+                "text_head": "The user wants to know which shelf holds Entry 24. Let me look at Entry 24 from ",
+                "tok_s": 55.58,
+                "ttft": 0.209,
+                "turn": 4,
+                "wall": 1.055
+              }
+            ],
+            "request_hashes": []
+          },
+          {
+            "count": 1,
+            "descriptor": [
+              20480,
+              5
+            ],
+            "label": "20480 tokens / turn 5",
+            "medians": {
+              "numeric_fields": {
+                "cached": 20704,
+                "out": 48,
+                "prompt": 20770,
+                "size": 20480,
+                "tok_s": 65.03,
+                "ttft": 0.213,
+                "turn": 5,
+                "wall": 0.936
+              },
+              "speed_tok_s": 65.03,
+              "ttft_s": 0.213,
+              "wall_s": 0.936
+            },
+            "repetitions": [
+              {
+                "cached": 20704,
+                "out": 48,
+                "prompt": 20770,
+                "size": 20480,
+                "text_head": "The user wants to know which shelf holds Entry 31. Let me look at Entry 31 from ",
+                "tok_s": 65.03,
+                "ttft": 0.213,
+                "turn": 5,
+                "wall": 0.936
+              }
+            ],
+            "request_hashes": []
+          }
+        ]
+      },
+      "correctness": {
+        "canonical_nll": {
+          "nll_nats_per_token": null,
+          "source": null
+        },
+        "decoded_parity": {
+          "all_pairs_match": false,
+          "pairs": [],
+          "source": null
+        },
+        "long_final_content": {
+          "correct": null,
+          "failures": [],
+          "source": null,
+          "total": null
+        },
+        "mode": "strict",
+        "sources": {},
+        "xml32": {
+          "ok": 0,
+          "real_controls_ok": 0,
+          "real_controls_total": 0,
+          "source": null,
+          "total": 0
+        }
+      },
+      "date": "2026-10-22 16:09:56",
+      "source": {
+        "path": "/Volumes/JMac External/software/ml/enntity/sparkglm-research/experiments/qwen-common-20261022/strict/bench-strict.json",
+        "sha256": "1b46e9c758df771ce801e99faa85b31cf809d83b8ea5a7c02b05c0a4391d9643"
+      }
+    }
+  },
+  "baseline_mode": "baseline",
+  "bench_comparisons": [
+    {
+      "baseline_median_tok_s": 77.62,
+      "baseline_repetitions": 3,
+      "candidate_median_tok_s": 76.4,
+      "candidate_repetitions": 3,
+      "cell": "decode",
+      "comparison_basis": "same_bench_cell_without_request_hash_proof",
+      "label": "code",
+      "mode": "strict",
+      "request_match_verified": false,
+      "speed_delta_pct": -1.5717598557072887,
+      "warm_request_match_claim": null
+    },
+    {
+      "baseline_median_tok_s": 75.98,
+      "baseline_repetitions": 3,
+      "candidate_median_tok_s": 62.29,
+      "candidate_repetitions": 3,
+      "cell": "decode",
+      "comparison_basis": "same_bench_cell_without_request_hash_proof",
+      "label": "json",
+      "mode": "strict",
+      "request_match_verified": false,
+      "speed_delta_pct": -18.017899447222963,
+      "warm_request_match_claim": null
+    },
+    {
+      "baseline_median_tok_s": 56.39,
+      "baseline_repetitions": 3,
+      "candidate_median_tok_s": 53.38,
+      "candidate_repetitions": 3,
+      "cell": "decode",
+      "comparison_basis": "same_bench_cell_without_request_hash_proof",
+      "label": "prose",
+      "mode": "strict",
+      "request_match_verified": false,
+      "speed_delta_pct": -5.337825855648159,
+      "warm_request_match_claim": null
+    },
+    {
+      "baseline_median_tok_s": 56.9,
+      "baseline_repetitions": 2,
+      "candidate_median_tok_s": 55.075,
+      "candidate_repetitions": 2,
+      "cell": "prefill",
+      "comparison_basis": "same_bench_cell_without_request_hash_proof",
+      "label": "16384 tokens",
+      "mode": "strict",
+      "request_match_verified": false,
+      "speed_delta_pct": -3.2073813708260013,
+      "warm_request_match_claim": null
+    },
+    {
+      "baseline_median_tok_s": 57.45,
+      "baseline_repetitions": 2,
+      "candidate_median_tok_s": 50.71,
+      "candidate_repetitions": 2,
+      "cell": "prefill",
+      "comparison_basis": "same_bench_cell_without_request_hash_proof",
+      "label": "2048 tokens",
+      "mode": "strict",
+      "request_match_verified": false,
+      "speed_delta_pct": -11.731940818102704,
+      "warm_request_match_claim": null
+    },
+    {
+      "baseline_median_tok_s": 55.155,
+      "baseline_repetitions": 2,
+      "candidate_median_tok_s": 50.45,
+      "candidate_repetitions": 2,
+      "cell": "prefill",
+      "comparison_basis": "same_bench_cell_without_request_hash_proof",
+      "label": "28672 tokens",
+      "mode": "strict",
+      "request_match_verified": false,
+      "speed_delta_pct": -8.530504940621885,
+      "warm_request_match_claim": null
+    },
+    {
+      "baseline_median_tok_s": 54.754999999999995,
+      "baseline_repetitions": 2,
+      "candidate_median_tok_s": 49.12,
+      "candidate_repetitions": 2,
+      "cell": "prefill",
+      "comparison_basis": "same_bench_cell_without_request_hash_proof",
+      "label": "8192 tokens",
+      "mode": "strict",
+      "request_match_verified": false,
+      "speed_delta_pct": -10.291297598392834,
+      "warm_request_match_claim": null
+    },
+    {
+      "baseline_median_tok_s": 60.35,
+      "baseline_repetitions": 2,
+      "candidate_median_tok_s": 50.285,
+      "candidate_repetitions": 2,
+      "cell": "conc",
+      "comparison_basis": "same_bench_cell_without_request_hash_proof",
+      "label": "1 streams",
+      "mode": "strict",
+      "request_match_verified": false,
+      "speed_delta_pct": -16.67771333885668,
+      "warm_request_match_claim": null
+    },
+    {
+      "baseline_median_tok_s": 94.75,
+      "baseline_repetitions": 2,
+      "candidate_median_tok_s": 82.055,
+      "candidate_repetitions": 2,
+      "cell": "conc",
+      "comparison_basis": "same_bench_cell_without_request_hash_proof",
+      "label": "2 streams",
+      "mode": "strict",
+      "request_match_verified": false,
+      "speed_delta_pct": -13.39841688654353,
+      "warm_request_match_claim": null
+    },
+    {
+      "baseline_median_tok_s": 138.515,
+      "baseline_repetitions": 2,
+      "candidate_median_tok_s": 128.35999999999999,
+      "candidate_repetitions": 2,
+      "cell": "conc",
+      "comparison_basis": "same_bench_cell_without_request_hash_proof",
+      "label": "4 streams",
+      "mode": "strict",
+      "request_match_verified": false,
+      "speed_delta_pct": -7.331335956394613,
+      "warm_request_match_claim": null
+    },
+    {
+      "baseline_median_tok_s": 58.18,
+      "baseline_repetitions": 1,
+      "candidate_median_tok_s": 49.1,
+      "candidate_repetitions": 1,
+      "cell": "warm",
+      "comparison_basis": "descriptive_unpaired_warm_median",
+      "label": "20480 tokens / turn 0",
+      "mode": "strict",
+      "request_match_verified": false,
+      "speed_delta_pct": -15.606737710553453,
+      "warm_request_match_claim": false
+    },
+    {
+      "baseline_median_tok_s": 60.73,
+      "baseline_repetitions": 1,
+      "candidate_median_tok_s": 57.27,
+      "candidate_repetitions": 1,
+      "cell": "warm",
+      "comparison_basis": "descriptive_unpaired_warm_median",
+      "label": "20480 tokens / turn 1",
+      "mode": "strict",
+      "request_match_verified": false,
+      "speed_delta_pct": -5.697348921455614,
+      "warm_request_match_claim": false
+    },
+    {
+      "baseline_median_tok_s": 68.52,
+      "baseline_repetitions": 1,
+      "candidate_median_tok_s": 61.24,
+      "candidate_repetitions": 1,
+      "cell": "warm",
+      "comparison_basis": "descriptive_unpaired_warm_median",
+      "label": "20480 tokens / turn 2",
+      "mode": "strict",
+      "request_match_verified": false,
+      "speed_delta_pct": -10.62463514302393,
+      "warm_request_match_claim": false
+    },
+    {
+      "baseline_median_tok_s": 64.62,
+      "baseline_repetitions": 1,
+      "candidate_median_tok_s": 56.99,
+      "candidate_repetitions": 1,
+      "cell": "warm",
+      "comparison_basis": "descriptive_unpaired_warm_median",
+      "label": "20480 tokens / turn 3",
+      "mode": "strict",
+      "request_match_verified": false,
+      "speed_delta_pct": -11.807489941194682,
+      "warm_request_match_claim": false
+    },
+    {
+      "baseline_median_tok_s": 60.42,
+      "baseline_repetitions": 1,
+      "candidate_median_tok_s": 55.58,
+      "candidate_repetitions": 1,
+      "cell": "warm",
+      "comparison_basis": "descriptive_unpaired_warm_median",
+      "label": "20480 tokens / turn 4",
+      "mode": "strict",
+      "request_match_verified": false,
+      "speed_delta_pct": -8.010592519033432,
+      "warm_request_match_claim": false
+    },
+    {
+      "baseline_median_tok_s": 69.25,
+      "baseline_repetitions": 1,
+      "candidate_median_tok_s": 65.03,
+      "candidate_repetitions": 1,
+      "cell": "warm",
+      "comparison_basis": "descriptive_unpaired_warm_median",
+      "label": "20480 tokens / turn 5",
+      "mode": "strict",
+      "request_match_verified": false,
+      "speed_delta_pct": -6.093862815884476,
+      "warm_request_match_claim": false
+    },
+    {
+      "baseline_median_tok_s": 52.69,
+      "baseline_repetitions": 1,
+      "candidate_median_tok_s": 55.88,
+      "candidate_repetitions": 1,
+      "cell": "warm",
+      "comparison_basis": "descriptive_unpaired_warm_median",
+      "label": "8192 tokens / turn 0",
+      "mode": "strict",
+      "request_match_verified": false,
+      "speed_delta_pct": 6.0542797494780975,
+      "warm_request_match_claim": false
+    },
+    {
+      "baseline_median_tok_s": 68.2,
+      "baseline_repetitions": 1,
+      "candidate_median_tok_s": 51.95,
+      "candidate_repetitions": 1,
+      "cell": "warm",
+      "comparison_basis": "descriptive_unpaired_warm_median",
+      "label": "8192 tokens / turn 1",
+      "mode": "strict",
+      "request_match_verified": false,
+      "speed_delta_pct": -23.826979472140764,
+      "warm_request_match_claim": false
+    },
+    {
+      "baseline_median_tok_s": 63.94,
+      "baseline_repetitions": 1,
+      "candidate_median_tok_s": 60.43,
+      "candidate_repetitions": 1,
+      "cell": "warm",
+      "comparison_basis": "descriptive_unpaired_warm_median",
+      "label": "8192 tokens / turn 2",
+      "mode": "strict",
+      "request_match_verified": false,
+      "speed_delta_pct": -5.489521426337185,
+      "warm_request_match_claim": false
+    },
+    {
+      "baseline_median_tok_s": 68.47,
+      "baseline_repetitions": 1,
+      "candidate_median_tok_s": 60.22,
+      "candidate_repetitions": 1,
+      "cell": "warm",
+      "comparison_basis": "descriptive_unpaired_warm_median",
+      "label": "8192 tokens / turn 3",
+      "mode": "strict",
+      "request_match_verified": false,
+      "speed_delta_pct": -12.049072586534248,
+      "warm_request_match_claim": false
+    },
+    {
+      "baseline_median_tok_s": 73.52,
+      "baseline_repetitions": 1,
+      "candidate_median_tok_s": 57.46,
+      "candidate_repetitions": 1,
+      "cell": "warm",
+      "comparison_basis": "descriptive_unpaired_warm_median",
+      "label": "8192 tokens / turn 4",
+      "mode": "strict",
+      "request_match_verified": false,
+      "speed_delta_pct": -21.84439608269858,
+      "warm_request_match_claim": false
+    },
+    {
+      "baseline_median_tok_s": 64.65,
+      "baseline_repetitions": 1,
+      "candidate_median_tok_s": 62.06,
+      "candidate_repetitions": 1,
+      "cell": "warm",
+      "comparison_basis": "descriptive_unpaired_warm_median",
+      "label": "8192 tokens / turn 5",
+      "mode": "strict",
+      "request_match_verified": false,
+      "speed_delta_pct": -4.006187161639607,
+      "warm_request_match_claim": false
+    }
+  ],
+  "generated_at": "2026-10-22T23:12:53.464787+00:00",
+  "schema": "sparkqwen.qualification-comparison/v1"
+}

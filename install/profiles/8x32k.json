@@ -1,7 +1,7 @@
 {
  "schema": "sparkqwen.atlas-install-profile/v1",
  "status": "candidate",
- "note": "2026-10-19 fidelity candidate; final-image qualification pending. Configured limits: eight concurrent requests and 32,768 tokens per request. Preserves checkpoint reasoning and sampling defaults; content-loop and tool-call steering and repetition watchdogs are disabled. Historical RC16 evidence (2026-10-10, results/2026-10-10-rc16) covers the earlier profile and engine, including loop steering, and does not qualify this candidate.",
+ "note": "SparkQwen 0.2.0 common-engine recipe. Configured limits: eight concurrent requests and 32,768 tokens per request. Preserves checkpoint reasoning and sampling defaults; content-loop and tool-call steering and repetition watchdogs are disabled. Strict/Spark mode policy is applied by the launcher. See the release receipts for measured qualification; configured limits alone are not qualification.",
  "environment": {
   "ATLAS_EP_PROTOCOL": "v2",
   "ATLAS_RDMA_ALLREDUCE": "1",
@@ -60,7 +60,7 @@
   "ATLAS_VERIFY_PICK_PAR": "1",
   "ATLAS_QWEN4EXP_HC_WIDE": "1",
   "ATLAS_QWEN4EXP_MTP_GROUPED_NORM": "1",
-  "ATLAS_GLM_ZERO_ROWS": "1",
+  "ATLAS_GLM_ZERO_ROWS": "0",
   "ATLAS_QWEN4EXP_EOS_BAN": "1",
   "ATLAS_QWEN4EXP_QKV_ROWS_2D": "1",
   "ATLAS_QWEN4EXP_VERIFY_BT_PINNED": "1",

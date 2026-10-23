@@ -1,0 +1,24 @@
+decode prose 0 0.167 58.6 384
+decode prose 1 0.158 61.02 384
+decode prose 2 0.155 60.91 384
+decode code 0 0.145 88.81 384
+decode code 1 0.149 91.47 384
+decode code 2 0.15 91.33 384
+decode json 0 0.162 68.27 384
+decode json 1 0.159 70.17 384
+decode json 2 0.154 70.32 384
+prefill 2048 0 2022 0.728
+prefill 2048 1 2023 0.706
+prefill 8192 0 8170 2.05
+prefill 8192 1 8169 2.049
+prefill 16384 0 16390 3.977
+prefill 16384 1 16408 4.045
+prefill 28672 0 28809 7.081
+prefill 28672 1 28819 7.079
+conc 1 0 59.29
+conc 1 1 56.81
+conc 2 0 87.27
+conc 2 1 91.74
+conc 4 0 138.17
+conc 4 1 140.88
+wrote bench-spark-18.json

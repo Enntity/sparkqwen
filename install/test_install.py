@@ -45,7 +45,7 @@ def _link_local_gid(dev):
 class LaunchContract(unittest.TestCase):
     def setUp(self):
         self.profile = json.loads(serve.profile_path({}, HERE).read_text())
-        self.environment = {'NODE_RANK': '0', 'MASTER_ADDR': '192.0.2.1',
+        self.environment = {'SPARKQWEN_MODE': 'spark', 'NODE_RANK': '0', 'MASTER_ADDR': '192.0.2.1',
                             'FABRIC_INTERFACE': 'enp1s0f0np0', 'FABRIC_HCA': 'rocep1s0f0', 'MODEL_PATH': '/models/ckpt'}
 
     def test_two_rank_contract_and_private_ports(self):
@@ -159,31 +159,31 @@ class LaunchContract(unittest.TestCase):
                                    ATLAS_QWEN4EXP_FP8_GDN='1', ATLAS_UNREVIEWED_EXPERIMENT='1'),
                               self.profile)
         self.assertEqual(env['ATLAS_QWEN4EXP_EXACT_VERIFY'], '1')
-        self.assertNotIn('ATLAS_QWEN4EXP_FP8_GDN', env)
+        self.assertEqual(env['ATLAS_QWEN4EXP_FP8_GDN'], '0')
         self.assertNotIn('ATLAS_UNREVIEWED_EXPERIMENT', env)
 
-    def test_opt_ins_are_off_unless_switched_on(self):
-        _, plain = serve.launch(self.environment, self.profile)
-        for switch, flags in serve.OPT_INS.items():
-            with self.subTest(switch=switch):
-                _, off = serve.launch(dict(self.environment, **{switch: '0'}), self.profile)
-                self.assertEqual({k: v for k, v in off.items() if k != switch}, plain)
-                for key in flags:
-                    self.assertNotIn(key, plain)
-                _, on = serve.launch(dict(self.environment, **{switch: '1'}), self.profile)
-                self.assertEqual({k: v for k, v in on.items() if plain.get(k) != v},
-                                 dict(flags, **{switch: '1'}))
-                for bad in ('yes', 'true', '2', ' 1'):
-                    with self.assertRaises(ValueError):
-                        serve.launch(dict(self.environment, **{switch: bad}), self.profile)
-        self.assertEqual(serve.OPT_INS['SPARKQWEN_FP8_GDN'], {'ATLAS_QWEN4EXP_FP8_GDN': '1'})
-        self.assertEqual(set(serve.OPT_INS), {'SPARKQWEN_FP8_GDN'})
+    def test_reviewed_operational_flags_survive_ambient_strip(self):
+        _, env = serve.launch(dict(self.environment, ATLAS_LOOP_NO_SUPPRESS='1',
+                                   ATLAS_LOG_SPIN='1', ATLAS_LOOP_NO_SUPPRESSFOO='1',
+                                   ATLAS_UNREVIEWED_EXPERIMENT='1'), self.profile)
+        self.assertEqual(env['ATLAS_LOOP_NO_SUPPRESS'], '1')
+        self.assertEqual(env['ATLAS_LOG_SPIN'], '1')
+        self.assertNotIn('ATLAS_LOOP_NO_SUPPRESSFOO', env)
+        self.assertNotIn('ATLAS_UNREVIEWED_EXPERIMENT', env)
 
-    def test_env_example_leaves_the_opt_ins_off(self):
-        lines = (HERE.parent/'.env.example').read_text().splitlines()
-        self.assertIn('#FP8_GDN=1', lines)
-        self.assertFalse([l for l in lines if l.startswith('FP8_GDN')])
-        self.assertFalse([l for l in lines if 'QSA_TC2R' in l])
+    def test_profile_still_overrides_operational_flags(self):
+        profile = dict(self.profile, environment=dict(self.profile['environment'],
+                       ATLAS_LOOP_NO_SUPPRESS='0', ATLAS_LOG_SPIN='0'))
+        _, env = serve.launch(dict(self.environment, ATLAS_LOOP_NO_SUPPRESS='1',
+                                   ATLAS_LOG_SPIN='1'), profile)
+        self.assertEqual(env['ATLAS_LOOP_NO_SUPPRESS'], '0')
+        self.assertEqual(env['ATLAS_LOG_SPIN'], '0')
+
+    def test_modes_reject_legacy_lossy_opt_ins(self):
+        for mode in ('strict', 'spark'):
+            for value in ('1', 'yes', 'true', '2', ' 1'):
+                with self.subTest(mode=mode, value=value), self.assertRaises(ValueError):
+                    serve.launch(dict(self.environment, SPARKQWEN_MODE=mode, SPARKQWEN_FP8_GDN=value), self.profile)
 
     def test_gpu_memory_utilization_override(self):
         argv, _ = serve.launch(dict(self.environment, SPARKQWEN_GPU_MEMORY_UTILIZATION='0.91'), self.profile)
@@ -336,9 +336,25 @@ class StartNode(unittest.TestCase):
                 self.assertTrue((self.root/'ple').is_dir())
                 self.assertIn(f'-e NODE_RANK={rank} ', cmd)
                 self.assertIn('-e SPARKQWEN_PROFILE=8x32k ', cmd)
-                self.assertIn('-e SPARKQWEN_FP8_GDN=0 ', cmd)
+                self.assertIn('-e SPARKQWEN_MODE=strict ', cmd)
+                self.assertNotIn('SPARKQWEN_FP8_GDN', cmd)
                 self.assertNotIn('QSA_TC2R', cmd)
                 self.assertTrue(cmd.endswith(' img'))
+
+    def test_invalid_modes_and_lossy_switch_fail_before_container_mutation(self):
+        for args in [('--mode', 'fast'), ('--mode', ''), ('--fp8-gdn',)]:
+            run, commands = self.start('0', *args)
+            self.assertNotEqual(run.returncode, 0)
+            self.assertEqual(commands, [])
+            log = self.root/'docker.log'
+            self.assertFalse(log.exists(), 'validation must precede docker rm')
+
+    def test_invalid_utilization_never_removes_a_running_rank(self):
+        for value in ('0.69', '0.96', '0.9', '1.00', 'nan', '0.88\n'):
+            with self.subTest(value=value):
+                run, _ = self.start('0', '--gpu-memory-utilization', value)
+                self.assertNotEqual(run.returncode, 0)
+                self.assertFalse((self.root/'docker.log').exists(), 'validation must precede docker rm')
 
     def test_default_checkpoint_is_the_pinned_one_and_can_be_overridden(self):
         # start.sh passes the pinned checkpoint's directory; the default, used
@@ -359,10 +375,10 @@ class StartNode(unittest.TestCase):
                 self.assertEqual(docker_run, [])
 
     def test_opt_ins_and_profile_reach_the_container(self):
-        run, docker_run = self.start('0', '--fp8-gdn', '--profile', '4x262k',
+        run, docker_run = self.start('0', '--mode', 'spark', '--profile', '4x262k',
                                      '--gpu-memory-utilization', '0.90')
         self.assertEqual(run.returncode, 0, run.stderr)
-        self.assertIn('-e SPARKQWEN_FP8_GDN=1 ', docker_run[0])
+        self.assertIn('-e SPARKQWEN_MODE=spark ', docker_run[0])
         self.assertIn('-e SPARKQWEN_PROFILE=4x262k ', docker_run[0])
         self.assertIn('-e SPARKQWEN_GPU_MEMORY_UTILIZATION=0.90 ', docker_run[0])
 
@@ -403,7 +419,7 @@ class EnginePin(unittest.TestCase):
         self.assertEqual(pin['schema'], 'sparkqwen.atlas-engine-source/v2')
         self.assertEqual(pin['repository'], 'https://github.com/Enntity/atlas.git')
         self.assertEqual((pin['kernel_target'], pin['model_type']), ('qwen3.8-flash-next', 'qwen4_exp'))
-        self.assertTrue(pin['branch'].startswith(('sparkqwen/atlas-', 'sparkqwen/fidelity-rc-')))
+        self.assertEqual(pin['branch'], 'spark-shared')
         layers = pin['layers']
         commits = [pin['commit'], pin['tree'], layers['atlas_inf_main_base']] + [
             layers[k]['commit'] for k in ('glm_upstream_series', 'upstream_candidate', 'sparkqwen_only')]
@@ -413,9 +429,12 @@ class EnginePin(unittest.TestCase):
             self.assertTrue(value == 'PENDING' if pending else SHA.fullmatch(value), value)
         self.assertEqual(pending, pin['branch'].endswith('-PENDING'))
 
-    def test_fidelity_candidate_docs_match_source_identity(self):
+    def test_common_engine_docs_and_parents_match_source_identity(self):
         pin = self.pin
-        self.assertTrue(pin['branch'].startswith('sparkqwen/fidelity-rc-'))
+        common = pin['layers']['common_engine']
+        self.assertEqual((common['commit'], common['tree']), (pin['commit'], pin['tree']))
+        for parent in ('glm_parent', 'qwen_parent'):
+            self.assertRegex(common[parent], r'^[0-9a-f]{40}$')
         docs = (HERE.parent/'docs/ENGINE.md').read_text()
         self.assertIn(f"`{pin['branch']}`", docs)
         self.assertIn(f"`{pin['commit'][:8]}`", docs)

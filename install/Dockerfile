@@ -43,25 +43,14 @@ RUN python3 /product/install/rust-notices.py /build /build/dist/notices-rust
 # CUDA stubs permit these CPU-only tests without GPU build entitlements.
 RUN mkdir -p /opt/cuda-stubs && \
     ln -s /usr/local/cuda/lib64/stubs/libcuda.so /opt/cuda-stubs/libcuda.so.1
-# The published Qwen3.8-Flash-Next config parses into the hybrid MoE layout the
-# kernels were built for; then the serving lifecycle, admission, cancellation
-# and tool-parser tests on the same Linux/CUDA build as the shipped binary.
-# Each filter must match at least one test.
+# Workspace contracts read source files, fixtures and committed benchmark
+# definitions. Preserve the exact checkout in the builder only.
+COPY engine/ /build/
+# Full native CPU suite. GPU tests remain ignored here and are qualified on
+# the hardware separately. Keep failures fatal; never ship a partial gate.
 RUN --mount=type=cache,target=/build/target,id=atlas-cargo-target-sparkqwen,sharing=shared \
-    set -eu; for check in atlas-core:qwen4_exp_ spark-server:scheduler::lifecycle_tests \
-        spark-server:scheduler::admission:: spark-server:cancellation_tests \
-        spark-server:disconnect_prefill_tests spark-server:buffered_disconnect_ \
-        spark-server:verify_pipeline_helper::scored::tests spark-server:prediction_usage spark-server:bootstrap_score spark-server:unscored_logprob_admission spark-server:batched_logprob_read_failure_aborts_every_advanced_member spark-server:refusal spark-server:api::chat_stream spark-server:tool_parser:: \
-        spark-runtime:radix_tree:: spark-model:block_mgmt::tails::tests; do \
-      crate=${check%%:*}; filter=${check#*:}; \
-      if [ "$crate" = spark-server ]; then target="--bin spark"; else target="--lib"; fi; \
-      LD_LIBRARY_PATH=/opt/cuda-stubs:/usr/local/cuda/lib64 \
-      timeout --signal=TERM --kill-after=10s 600 \
-      cargo test --locked --release -j "$BUILD_JOBS" -p "$crate" $target "$filter" \
-        > /tmp/atlas-check.log 2>&1 || { cat /tmp/atlas-check.log; exit 1; }; \
-      cat /tmp/atlas-check.log; \
-      grep -E 'test result: ok. [1-9][0-9]* passed;' /tmp/atlas-check.log; \
-    done
+    LD_LIBRARY_PATH=/opt/cuda-stubs:/usr/local/cuda/lib64 \
+    cargo test --locked --workspace --release --no-fail-fast -j "$BUILD_JOBS"
 
 # Run the workspace lint gate with the same pinned Rust compiler as the image.
 RUN --mount=type=cache,target=/build/target,id=atlas-cargo-target-sparkqwen,sharing=shared \

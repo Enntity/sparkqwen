@@ -10,7 +10,8 @@ Historical dated releases and release-candidate numbers remain available.
 checkout version and exact pinned engine without needing Docker, weights, `.env`
 or a worker. `./start.sh status` also reads the version label and image ID from
 each deployed container, so an older deployment is distinguishable from a newer
-checkout. Older images without the label may show an empty version; use their image ID.
+checkout. Older images may inherit the base OS label, such as `24.04`. Status reports
+these as `unversioned (legacy image)`; use their image ID.
 
 For an image already installed locally, `docker run --rm IMAGE --version` prints
 its product version and engine pin without loading the model. Container startup
@@ -25,10 +26,17 @@ Before publishing a changed distribution, bump the version in `install/release.j
 
 Documentation-only changes do not need a version bump. Do not reuse a published
 version for different distribution contents. Tag GitHub releases `vMAJOR.MINOR.PATCH`
-and record the product commit, full install tree, Atlas commit/tree and image digest
-in the release assets. Engine pins and image digests remain immutable identities;
+and record the product commit, full install tree, Atlas commit/tree and local image ID
+in the release assets. If published to a registry, also record its manifest digest. Engine pins and image digests remain immutable identities;
 versions do not replace them. Image tags remain the first 12 characters of the
 `install/` tree hash, and `start.sh` continues to select that exact tag.
 
 A version number is not a new model-quality or performance qualification. Each
 release must link its actual checks and evidence, including any limitations.
+
+A successful image build is one acceptance check. Before merging or publishing a
+release, run the product static workflow and the pinned engine's required checks
+from its `AGENTS.md`, `CONTRIBUTING.md` and CI workflows, including the applicable
+benchmark gates. Keep their results alongside exact-image GPU and model receipts.
+The image build runs native workspace tests and Clippy; it does not run every
+repository hygiene or hardware gate. Record any existing failures explicitly.

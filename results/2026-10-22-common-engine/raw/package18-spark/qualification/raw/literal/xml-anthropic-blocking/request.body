@@ -1,0 +1,11 @@
+{
+  "max_tokens": 1024,
+  "messages": [
+    {
+      "content": "Answer in one short sentence. Repeat this exact text as prose: The literal marker is `<tool_call>` and the literal closing marker is `</tool_call>`. Neither marker requests a tool call.",
+      "role": "user"
+    }
+  ],
+  "model": "qwen3.8-flash-next-atlas",
+  "temperature": 0
+}

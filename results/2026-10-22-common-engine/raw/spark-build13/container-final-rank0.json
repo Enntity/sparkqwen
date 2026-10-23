@@ -1,0 +1,309 @@
+[
+    {
+        "Id": "cd4838ae2ce68f45313b1151db2ae8e6597ca15603fb314c12fe197a2b344812",
+        "Created": "2026-10-23T00:59:20.691829036Z",
+        "Path": "python3",
+        "Args": [
+            "/opt/atlas/serve.py"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 342696,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-10-23T00:59:20.764335923Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:93d4cf2ece6914e3e218f4f324fac6454a4268f43ba84e234f8f45e322757e5e",
+        "ResolvConfPath": "/var/lib/docker/containers/cd4838ae2ce68f45313b1151db2ae8e6597ca15603fb314c12fe197a2b344812/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/cd4838ae2ce68f45313b1151db2ae8e6597ca15603fb314c12fe197a2b344812/hostname",
+        "HostsPath": "/var/lib/docker/containers/cd4838ae2ce68f45313b1151db2ae8e6597ca15603fb314c12fe197a2b344812/hosts",
+        "LogPath": "/var/lib/docker/containers/cd4838ae2ce68f45313b1151db2ae8e6597ca15603fb314c12fe197a2b344812/cd4838ae2ce68f45313b1151db2ae8e6597ca15603fb314c12fe197a2b344812-json.log",
+        "Name": "/atlas-sparkqwen-common-rank0",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "docker-default",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "host",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": [
+                "CAP_IPC_LOCK",
+                "CAP_SYS_NICE"
+            ],
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "host",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": [
+                "no-new-privileges=true",
+                "label=disable"
+            ],
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 34359738368,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 122406567936,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": [],
+            "BlkioDeviceWriteBps": [],
+            "BlkioDeviceReadIOps": [],
+            "BlkioDeviceWriteIOps": [],
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [
+                {
+                    "PathOnHost": "/dev/infiniband",
+                    "PathInContainer": "/dev/infiniband",
+                    "CgroupPermissions": "rwm"
+                }
+            ],
+            "DeviceCgroupRules": null,
+            "DeviceRequests": [
+                {
+                    "Driver": "",
+                    "Count": -1,
+                    "DeviceIDs": null,
+                    "Capabilities": [
+                        [
+                            "gpu"
+                        ]
+                    ],
+                    "Options": {}
+                }
+            ],
+            "MemoryReservation": 0,
+            "MemorySwap": 244813135872,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": [
+                {
+                    "Name": "memlock",
+                    "Hard": -1,
+                    "Soft": -1
+                }
+            ],
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "Mounts": [
+                {
+                    "Type": "bind",
+                    "Source": "/home/enntitysparkadmin/.lloom/models/nvidia--Qwen3.8-Flash-Next-FP4-Local",
+                    "Target": "/home/enntitysparkadmin/.lloom/models/nvidia--Qwen3.8-Flash-Next-FP4-Local",
+                    "ReadOnly": true
+                },
+                {
+                    "Type": "bind",
+                    "Source": "/home/enntitysparkadmin/.cache/atlas-cuda",
+                    "Target": "/atlas-cuda-cache"
+                },
+                {
+                    "Type": "bind",
+                    "Source": "/home/enntitysparkadmin/.cache/atlas-ple",
+                    "Target": "/atlas-ple"
+                }
+            ],
+            "MaskedPaths": [
+                "/proc/acpi",
+                "/proc/asound",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/sys/devices/virtual/powercap",
+                "/sys/firmware"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "ID": "cd4838ae2ce68f45313b1151db2ae8e6597ca15603fb314c12fe197a2b344812",
+                "LowerDir": "/var/lib/docker/overlay2/130951ecd8f12e8373a342c544799b252e42c4e67fa4a8df40f06057fc531cca-init/diff:/var/lib/docker/overlay2/s55ek0btn4c79ap4qcnpam6l6/diff:/var/lib/docker/overlay2/db15cpnmozhsaar22kv7ofwfd/diff:/var/lib/docker/overlay2/mlae08dbqcepxjcnu4rbmvnw7/diff:/var/lib/docker/overlay2/g7hw7f4qers45mwzjvw2qnj4s/diff:/var/lib/docker/overlay2/y0rkh9lqxap7e25nhovss3ue3/diff:/var/lib/docker/overlay2/xzlxhmt9xc0qb3lrabtz293ny/diff:/var/lib/docker/overlay2/ykoqmjjimdy23a2do58g2g06c/diff:/var/lib/docker/overlay2/wcidh263ft8gh4lgyozug16wb/diff:/var/lib/docker/overlay2/v223sw1opib3v8622q2a92vvs/diff:/var/lib/docker/overlay2/37crf9q7wyiyxh2ysccw2ew7b/diff:/var/lib/docker/overlay2/cuu69z8gegl7j4bib7tmqc3m3/diff:/var/lib/docker/overlay2/654iko12r1doz6sdd7dlbnigb/diff:/var/lib/docker/overlay2/332d9a77db5cb3aa8b678cf35355262e8b4da610fcd4f5fc240330b8460578c4/diff:/var/lib/docker/overlay2/b002bbb3208d705958ac7f2b7f85dc4953e34b63fe31ed684c2ffe362e93d957/diff:/var/lib/docker/overlay2/14ecf7bf469401debcc2f88028a26e94c4347b058f9a510606e54aa39031fc9a/diff:/var/lib/docker/overlay2/ce807a3ca2969e102422f0350316caf9d8f08e9f0c20d48d419b80572029ea49/diff:/var/lib/docker/overlay2/335e22268d37caf1e1bd08581b7af72fc5e6e2853ca040c0728dc19895cb4ae9/diff:/var/lib/docker/overlay2/53ffba0c4c0794fe9a0a02196ba6647ae0ac1996db20c4b387edb339b3216bac/diff:/var/lib/docker/overlay2/428843b8dc5a3368298ac0bf74c6d58d949c71f6a67d62d0a7145dcf97fc9aed/diff:/var/lib/docker/overlay2/13df8cf9ee23c49e2720f3d2a758abca842136d270f14e794e2042915f3c7103/diff:/var/lib/docker/overlay2/66245500b3d87c06fe8693bf309ee463da8c92d2f3b4043cf66c72d912001409/diff",
+                "MergedDir": "/var/lib/docker/overlay2/130951ecd8f12e8373a342c544799b252e42c4e67fa4a8df40f06057fc531cca/merged",
+                "UpperDir": "/var/lib/docker/overlay2/130951ecd8f12e8373a342c544799b252e42c4e67fa4a8df40f06057fc531cca/diff",
+                "WorkDir": "/var/lib/docker/overlay2/130951ecd8f12e8373a342c544799b252e42c4e67fa4a8df40f06057fc531cca/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/home/enntitysparkadmin/.cache/atlas-cuda",
+                "Destination": "/atlas-cuda-cache",
+                "Mode": "",
+                "RW": true,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "/home/enntitysparkadmin/.cache/atlas-ple",
+                "Destination": "/atlas-ple",
+                "Mode": "",
+                "RW": true,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "/home/enntitysparkadmin/.lloom/models/nvidia--Qwen3.8-Flash-Next-FP4-Local",
+                "Destination": "/home/enntitysparkadmin/.lloom/models/nvidia--Qwen3.8-Flash-Next-FP4-Local",
+                "Mode": "",
+                "RW": false,
+                "Propagation": "rprivate"
+            }
+        ],
+        "Config": {
+            "Hostname": "spark-8333",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "8893/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "GLOO_SOCKET_IFNAME=enp1s0f0np0",
+                "TRANSFORMERS_OFFLINE=1",
+                "CUDA_CACHE_MAXSIZE=4294967296",
+                "FABRIC_HCA=rocep1s0f0",
+                "FABRIC_SIBLINGS=0",
+                "SERVED_MODEL_NAME=qwen3.8-flash-next-atlas",
+                "SPARKQWEN_PROFILE=8x262k",
+                "CUDA_CACHE_PATH=/atlas-cuda-cache",
+                "FABRIC_INTERFACE=enp1s0f0np0",
+                "SPARKQWEN_GPU_MEMORY_UTILIZATION=0.88",
+                "NODE_RANK=0",
+                "MASTER_ADDR=10.100.192.2",
+                "MASTER_PORT=29510",
+                "SPARKQWEN_MODE=spark",
+                "NCCL_SOCKET_IFNAME=enp1s0f0np0",
+                "HF_HUB_OFFLINE=1",
+                "MODEL_PATH=/home/enntitysparkadmin/.lloom/models/nvidia--Qwen3.8-Flash-Next-FP4-Local",
+                "PATH=/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "NVARCH=sbsa",
+                "NVIDIA_REQUIRE_CUDA=cuda>=13.0 brand=unknown,driver>=535,driver<536 brand=grid,driver>=535,driver<536 brand=tesla,driver>=535,driver<536 brand=nvidia,driver>=535,driver<536 brand=quadro,driver>=535,driver<536 brand=quadrortx,driver>=535,driver<536 brand=nvidiartx,driver>=535,driver<536 brand=vapps,driver>=535,driver<536 brand=vpc,driver>=535,driver<536 brand=vcs,driver>=535,driver<536 brand=vws,driver>=535,driver<536 brand=cloudgaming,driver>=535,driver<536 brand=unknown,driver>=550,driver<551 brand=grid,driver>=550,driver<551 brand=tesla,driver>=550,driver<551 brand=nvidia,driver>=550,driver<551 brand=quadro,driver>=550,driver<551 brand=quadrortx,driver>=550,driver<551 brand=nvidiartx,driver>=550,driver<551 brand=vapps,driver>=550,driver<551 brand=vpc,driver>=550,driver<551 brand=vcs,driver>=550,driver<551 brand=vws,driver>=550,driver<551 brand=cloudgaming,driver>=550,driver<551 brand=unknown,driver>=565,driver<566 brand=grid,driver>=565,driver<566 brand=tesla,driver>=565,driver<566 brand=nvidia,driver>=565,driver<566 brand=quadro,driver>=565,driver<566 brand=quadrortx,driver>=565,driver<566 brand=nvidiartx,driver>=565,driver<566 brand=vapps,driver>=565,driver<566 brand=vpc,driver>=565,driver<566 brand=vcs,driver>=565,driver<566 brand=vws,driver>=565,driver<566 brand=cloudgaming,driver>=565,driver<566 brand=unknown,driver>=570,driver<571 brand=grid,driver>=570,driver<571 brand=tesla,driver>=570,driver<571 brand=nvidia,driver>=570,driver<571 brand=quadro,driver>=570,driver<571 brand=quadrortx,driver>=570,driver<571 brand=nvidiartx,driver>=570,driver<571 brand=vapps,driver>=570,driver<571 brand=vpc,driver>=570,driver<571 brand=vcs,driver>=570,driver<571 brand=vws,driver>=570,driver<571 brand=cloudgaming,driver>=570,driver<571 brand=unknown,driver>=575,driver<576 brand=grid,driver>=575,driver<576 brand=tesla,driver>=575,driver<576 brand=nvidia,driver>=575,driver<576 brand=quadro,driver>=575,driver<576 brand=quadrortx,driver>=575,driver<576 brand=nvidiartx,driver>=575,driver<576 brand=vapps,driver>=575,driver<576 brand=vpc,driver>=575,driver<576 brand=vcs,driver>=575,driver<576 brand=vws,driver>=575,driver<576 brand=cloudgaming,driver>=575,driver<576",
+                "NV_CUDA_CUDART_VERSION=13.0.48-1",
+                "CUDA_VERSION=13.0.0",
+                "LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64:/usr/local/cuda/lib64",
+                "NVIDIA_VISIBLE_DEVICES=all",
+                "NVIDIA_DRIVER_CAPABILITIES=compute,utility",
+                "NV_CUDA_LIB_VERSION=13.0.0-1",
+                "NV_NVTX_VERSION=13.0.39-1",
+                "NV_LIBNPP_VERSION=13.0.0.50-1",
+                "NV_LIBNPP_PACKAGE=libnpp-13-0=13.0.0.50-1",
+                "NV_LIBCUSPARSE_VERSION=12.6.2.49-1",
+                "NV_LIBCUBLAS_PACKAGE_NAME=libcublas-13-0",
+                "NV_LIBCUBLAS_VERSION=13.0.0.19-1",
+                "NV_LIBCUBLAS_PACKAGE=libcublas-13-0=13.0.0.19-1",
+                "NV_LIBNCCL_PACKAGE_NAME=libnccl2",
+                "NV_LIBNCCL_PACKAGE_VERSION=2.27.7-1",
+                "NCCL_VERSION=2.27.7-1",
+                "NV_LIBNCCL_PACKAGE=libnccl2=2.27.7-1+cuda13.0",
+                "NVIDIA_PRODUCT_NAME=CUDA",
+                "RUST_LOG=info"
+            ],
+            "Cmd": null,
+            "Image": "ghcr.io/enntity/atlas-sparkqwen:29ff2889abf2",
+            "Volumes": null,
+            "WorkingDir": "",
+            "Entrypoint": [
+                "python3",
+                "/opt/atlas/serve.py"
+            ],
+            "Labels": {
+                "io.enntity.sparkqwen.install-tree": "29ff2889abf27adea6d9dacf49ec114f6a648ed6",
+                "maintainer": "NVIDIA CORPORATION <cudatools@nvidia.com>",
+                "org.opencontainers.image.licenses": "AGPL-3.0-only",
+                "org.opencontainers.image.ref.name": "ubuntu",
+                "org.opencontainers.image.source": "https://github.com/Enntity/sparkqwen",
+                "org.opencontainers.image.version": "0.2.0"
+            },
+            "StopTimeout": 60
+        },
+        "NetworkSettings": {
+            "SandboxID": "91e976685aace45d93aae3569cab39c0d182db647785cbbbec291dacbf6209d5",
+            "SandboxKey": "/var/run/docker/netns/default",
+            "Ports": {},
+            "Networks": {
+                "host": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "c35b8f56b23a17f7c80cdd444b28ac049fad908e4d9be2846f3c2e3f93e43ea6",
+                    "EndpointID": "ad4729bc7c28dea864b6ef5fad45e4028ced3518aa8888ebb8043ac0a7e8e100",
+                    "Gateway": "",
+                    "IPAddress": "",
+                    "MacAddress": "",
+                    "IPPrefixLen": 0,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": null
+                }
+            }
+        }
+    }
+]

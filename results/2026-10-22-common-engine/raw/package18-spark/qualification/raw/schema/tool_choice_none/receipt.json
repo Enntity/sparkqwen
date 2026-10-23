@@ -1,0 +1,15 @@
+{
+  "elapsed_ms": 666.319,
+  "error": null,
+  "name": "schema/tool_choice_none",
+  "parse_error": null,
+  "path": "/v1/chat/completions",
+  "request_bytes": 740,
+  "request_sha256": "4ef03b19bdf7822211a68583042bd23da446d7d2ee292bf7e5807dec7d161684",
+  "response_bytes": 656,
+  "response_sha256": "9063de5e1353cee181033b627d7fd2e93040b052a0adad5551f348d30cf12000",
+  "sse_events": null,
+  "status": 200,
+  "stream": false,
+  "url": "http://127.0.0.1:8893/v1/chat/completions"
+}

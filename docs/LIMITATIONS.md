@@ -3,9 +3,32 @@
 
 What to know before relying on SparkQwen.
 
-## Current fidelity candidate
+## Version 0.2.0 scope
 
-The official candidate at engine `63bebfa6`, install tree `70890529ba64`, has
+See the [common-engine qualification](../results/2026-10-22-common-engine/RESULT.md)
+for the tested image, Strict/Spark results and measured limitations. Both modes
+use TP2/EP2 and native MTP. The campaign uses `8x262k` at memory utilization
+`0.88`; it does not qualify `4x262k`, sidecar operation at `0.70`, a complete
+262,144-token request, or a single-GPU configuration. The image has been built
+locally; registry publication is separate.
+
+The final Strict image scored 59/60 on the long-context set, with the same
+case 51 miss as the prior fidelity release. The final Spark image replayed
+selected cases 51 and 60 at C1 and matched Strict exactly: case 51 still fails
+and case 60 passes. Spark did not repeat the full 60-case set on the final
+image; its earlier Build13 result of 59/60 remains historical. Both final
+modes passed 30/32 XML canary checks. Two fenced examples retain the markup
+but add an internal newline. The harder preserved XML fixture also retains semantic
+and completion-budget failures in both final modes. These are disclosed limitations, not passes.
+
+The full native workspace test suite and Clippy are mandatory image-build
+gates. Ignored GPU/fixture tests are reported separately from passing tests;
+selected numerical GPU checks and full-model qualification have their own
+receipts. Optional Qwen PDL remains disabled in the product profiles.
+
+## Previous fidelity release (2026-10-20)
+
+The previous release at engine `63bebfa6`, install tree `70890529ba64`, has
 not passed the full quality gate. Maintenance publication is accepted with
 disclosed limitations, subject to the separate release conditions. The
 [candidate review](../results/2026-10-20-fidelity-review/RESULT.md) preserves
@@ -45,7 +68,7 @@ successful components, original failures and evaluator corrections.
 
 ## Installation
 
-- The current image is published as
+- The previous fidelity image was published as
   `ghcr.io/enntity/atlas-sparkqwen:70890529ba64`, with anonymously verified
   digest `sha256:a0cebe89737898692964d3923477bef293a4ebde9dd32e27202697c54f763c9d`.
   `./start.sh` uses the image for the pinned `install/` tree and can build
@@ -181,18 +204,19 @@ identity.
   expert and target router to NVFP4. Prompt and generated tokens therefore
   still use different arithmetic. `ATLAS_QWEN4EXP_PREFILL_W8A8=0` changes
   the MXFP8 projection/shared-expert path; it does not disable routed W4A4
-  prefill. The current NLL gap and exactness scope are stated above.
+  prefill. The dated NLL gap above belongs to that release.
 - The historical 2026-10-16 FP4-Local release recorded 8/8 exactness checks,
   a 0.18% teacher-forced NLL increase against its exact BF16 prefill control,
   and 4,161 versus 3,846 tok/s at 16K with its W8A8 option on versus off
   (`results/2026-10-16-fp4local`). Those measurements do not qualify the
   current routed-MoE or shared-expert implementation.
-- FP4-Local's F32 HC and PLE norm weights are still rounded to BF16 at load
-  time. Keeping the shared expert's original MXFP8 weights does not preserve
-  every checkpoint tensor's precision. A matched TP1 validation of this
-  release remains outstanding.
-- `FP8_GDN=1` (NVFP4 checkpoint only) changes outputs, and has not been
-  measured with RC15 or later.
+- SparkQwen 0.2.0 retains F32 HC and PLE norm weights end to end. The previous
+  fidelity release rounded these weights to BF16. This correction changes the
+  numerical baseline; it does not imply text equality with earlier releases.
+- Strict/Spark are TP2/EP2 modes. The contributor's TP1 observations on the
+  earlier fidelity engine are recorded in [issue #13](https://github.com/Enntity/sparkqwen/issues/13).
+  They do not qualify a single-GPU configuration of 0.2.0.
+- The historical `FP8_GDN=1` override is rejected by Strict/Spark.
 - cuBLASLt chooses split-K differently in CUDA 13.0 (the runtime image) and
   13.1. Exactness checks are only meaningful inside the image's CUDA version.
 
@@ -205,7 +229,7 @@ identity.
 - **Greedy decoding can loop.** When sampling is unset, all modes, including
   requests with tools, use the checkpoint generation settings: temperature
   1.0, top-p 0.95, top-k 20. Min-p and top-n-sigma filtering are off. The
-  candidate disables content-loop steering, thinking and content watchdogs,
+  recipe disables content-loop steering, thinking and content watchdogs,
   and stream repetition guards. Request completion-token limits still apply.
   Older RC16 results that used loop steering describe that earlier configuration.
 - Presence and frequency penalties default to 0 and repetition penalty to 1,
@@ -214,11 +238,12 @@ identity.
 - Tool calling uses the checkpoint's `<tool_call><function=…><parameter=…>`
   format (Atlas's `qwen3_coder` parser), without extra tool-result hints,
   tool-call logit steering, or a separate cap on prose between calls. Earlier
-  pair testing passed 35/35 `bench/tool_probe.py` cases. The current image
-  passed 21/21 tool cases but failed the automatic tool-or-JSON semantic case
-  described above. Real agent clients with large tool sets have not been
-  measured yet.
-- Video has not been tested with this model. Historical image results cover
+  pair testing passed 35/35 `bench/tool_probe.py` cases. The previous fidelity
+  image passed 21/21 but failed the automatic tool-or-JSON semantic case
+  described above. See the 0.2.0 qualification for current results. Real agent
+  clients with large tool sets have not been measured in this campaign.
+- Video on the FP4-Local product checkpoint is not qualified by this campaign.
+  Historical image results cover
   race, conversation, swap and cached-versus-cold checks in
   [results/2026-10-15-shared-engine](../results/2026-10-15-shared-engine/RESULT.md).
 - In sparkDash's structured prompts, a "(stream i/n)" suffix makes the model

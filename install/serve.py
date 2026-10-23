@@ -7,7 +7,6 @@ import os
 from pathlib import Path
 import re
 import sys
-import sys
 
 
 def fabric_hcas(value, sysfs=Path('/sys/class/infiniband'), siblings=True):
@@ -97,7 +96,62 @@ def opt_ins(environ):
     return env
 
 
+def serving_mode(environ, profile):
+    """Both modes preserve the native target and use target-verified native MTP."""
+    mode = environ.get('SPARKQWEN_MODE', 'strict')
+    if mode not in ('strict', 'spark'):
+        raise ValueError('SPARKQWEN_MODE must be strict or spark')
+    required = {
+        'ATLAS_QWEN4EXP_NO_PLE': '0',
+        'ATLAS_MTP_DRAFTER_QSA': '0',
+        'ATLAS_QSA_DISABLE': '0',
+        'ATLAS_QWEN4EXP_MXFP8_DECODE': '1',
+        'ATLAS_QWEN4EXP_BF16_GDN': '1',
+        'ATLAS_QWEN4EXP_FP8_GDN': '0',
+        'ATLAS_QWEN4EXP_PREFILL_W8A8': '1',
+        'ATLAS_QWEN4EXP_PREFILL_MOE': '1',
+        'ATLAS_QWEN4EXP_PREFILL_MOE_BF16': '0',
+        'ATLAS_QWEN4EXP_PREFILL_BF16_PROJ': '0',
+    }
+    for flag, value in required.items():
+        if profile['environment'].get(flag, value) != value:
+            raise ValueError(f'{mode} mode requires {flag}={value}')
+    if opt_ins(environ):
+        raise ValueError('strict/spark modes require native FP4-Local projections; FP8_GDN is unsupported')
+    args = list(profile['server_argv'])
+    def single_value(flag):
+        entries = [(i, arg) for i, arg in enumerate(args) if arg.split('=', 1)[0] == flag]
+        if len(entries) != 1:
+            raise ValueError(f'strict/spark modes require exactly one {flag}')
+        index, arg = entries[0]
+        if '=' in arg:
+            return arg.split('=', 1)[1]
+        if index + 1 < len(args) and not args[index + 1].startswith('--'):
+            return args[index + 1]
+        raise ValueError(f'{flag} requires a value')
+
+    for flag, value in {'--world-size': '2', '--tp-size': '2', '--ep-size': '2',
+                        '--kv-cache-dtype': 'bf16',
+                        '--kernel-target': 'qwen3.8-flash-next'}.items():
+        if single_value(flag) != value:
+            raise ValueError(f'strict/spark modes require {flag}={value}')
+    if not re.fullmatch(r'[1-9][0-9]*', single_value('--num-drafts')):
+        raise ValueError('strict/spark modes require a positive --num-drafts')
+    forbidden = ('--dflash', '--self-speculative', '--ngram-speculative', '--expert-tp', '--no-fast-load', '--attn-proj-dtype', '--lm-head-dtype')
+    if any(arg.split('=', 1)[0] in forbidden for arg in args):
+        raise ValueError('strict/spark modes support only the Qwen native MTP lane')
+    if [arg for arg in args if arg.split('=', 1)[0] == '--speculative'] != ['--speculative']:
+        raise ValueError('strict/spark modes require --speculative; use disable_mtp for serial requests')
+    speculative_index = args.index('--speculative')
+    if speculative_index + 1 < len(args) and not args[speculative_index + 1].startswith('--'):
+        raise ValueError('--speculative is a flag and accepts no value')
+    required.update(ATLAS_QWEN4EXP_MTP_BF16_ATTN='1' if mode == 'strict' else '0',
+                    ATLAS_QWEN4EXP_DRAFT_HEAD_NVFP4='0' if mode == 'strict' else '1')
+    return mode, dict(required, ATLAS_QWEN4EXP_SERVING_MODE=mode), args
+
+
 def launch(environ, profile):
+    mode, precision, args = serving_mode(environ, profile)
     rank = environ.get('NODE_RANK', '')
     if rank not in ('0', '1'):
         raise ValueError('NODE_RANK must be 0 or 1')
@@ -117,14 +171,19 @@ def launch(environ, profile):
         raise ValueError('MODEL_PATH must be an absolute path')
     # Profile values intentionally win over ambient optimization flags. Runtime
     # changes require a new reviewed image/profile instead of accidental tuning.
-    env = {key: value for key, value in environ.items() if not key.startswith('ATLAS_')}
+    # Keep the reviewed logging knobs and exact loop-recovery escape hatch,
+    # as in SparkGLM. The profile still overrides these operational choices.
+    env = {key: value for key, value in environ.items()
+           if not key.startswith('ATLAS_') or key.startswith('ATLAS_LOG_')
+           or key == 'ATLAS_LOOP_NO_SUPPRESS'}
     env.update(profile['environment'])
-    env.update(opt_ins(environ))
+    env.update(precision)
+    env['SPARKQWEN_MODE'] = mode
     env['NCCL_SOCKET_IFNAME'] = interface
     env['NCCL_IB_HCA'] = ','.join(hcas)
     # The engine's direct RDMA all-reduce stripes over the same devices.
     env['ATLAS_RDMA_RAILS'] = env['NCCL_IB_HCA']
-    args = [str(arg).replace('${model}', model) for arg in profile['server_argv']]
+    args = [str(arg).replace('${model}', model) for arg in args]
     # A dedicated pair can give the KV pool more of the unified memory than the
     # shipped default leaves free; a lower share reserves host/service memory
     # but shrinks the shared KV token pool. No context or concurrency promise.
@@ -178,7 +237,7 @@ def main():
     if not (model/'config.json').is_file() or not (model/'model.safetensors.index.json').is_file():
         raise ValueError(f'Incomplete checkpoint at {model}')
     source = json.loads((here/'source-manifest.json').read_text())
-    print(json.dumps({'event': 'atlas-recipe-start', **release_info(here), 'rank': env['NODE_RANK'], 'profile': profile.stem,
+    print(json.dumps({'event': 'atlas-recipe-start', **release_info(here), 'rank': env['NODE_RANK'], 'profile': profile.stem, 'mode': env['SPARKQWEN_MODE'],
                       'opt_ins': sorted(k for k in OPT_INS if env.get(k) == '1'),
                       'source': f"{source['repository']}@{source['commit']}"}), flush=True)
     os.execve(argv[0], argv, env)

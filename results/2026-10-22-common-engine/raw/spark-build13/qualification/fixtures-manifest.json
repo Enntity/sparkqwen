@@ -1,0 +1,1892 @@
+{
+  "canonical_nll": {
+    "bytes": 143416,
+    "ids": 27034,
+    "ids_compact_sha256": "a28f25b5d5564bbe42fd47799788317bbb7bfb586e133c2d9ab7af7ad947203c",
+    "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/canonical-nll.request.json",
+    "reference_earlier_shared_a4": {
+      "bytes": 1037784,
+      "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/earlier-shared-a4.json",
+      "sha256": "36062b7f4c4dedc8304461a17c69005bd66fc6906970279ba0c86afb11605d75",
+      "source": "raw/reference/earlier-shared-a4.json"
+    },
+    "reference_observed_a4": {
+      "bytes": 950305,
+      "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/observed-a4.json",
+      "sha256": "ed7df4f6b419711426d027aabf40852a408e6e141ef9dc0bc7912178a0f3e7b5",
+      "source": "raw/reference/observed-a4.json"
+    },
+    "sha256": "960026bdf022c54ecfdcd39f027d0af0d3f66f9dbf97aa0de4323809fb6d8c0d",
+    "source": "raw/quality/remaining/http/0006-canonical-nll/request.body"
+  },
+  "greedy_plain": [
+    {
+      "bytes": 266,
+      "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/greedy/plain-01.json",
+      "sha256": "f1615348fc38680b5ef732fda3b98e653aede4d7f76b58ae3a6d54fe774e0c6e",
+      "source": "raw/quality/on/http/0004-greedy-c1/request.body"
+    },
+    {
+      "bytes": 256,
+      "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/greedy/plain-02.json",
+      "sha256": "8ed6e4abaedfff49367f5170b6a1c6f167a8a351245f100524a0543c82e431fb",
+      "source": "raw/quality/on/http/0005-greedy-c1/request.body"
+    },
+    {
+      "bytes": 268,
+      "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/greedy/plain-03.json",
+      "sha256": "6378f9b6feeb2b5c0a0bc74bc0494828294383995855d527019d5ab82e55cb58",
+      "source": "raw/quality/on/http/0006-greedy-c1/request.body"
+    },
+    {
+      "bytes": 273,
+      "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/greedy/plain-04.json",
+      "sha256": "392cc5d8b0f464fed6f3706a039db573c50ad01a8d9c693178d35d01a0016fe3",
+      "source": "raw/quality/on/http/0007-greedy-c1/request.body"
+    },
+    {
+      "bytes": 264,
+      "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/greedy/plain-05.json",
+      "sha256": "a097cd698e7184089b6da02f6fa8d1d81c63234a27b060391866cb8b3d2d084d",
+      "source": "raw/quality/on/http/0008-greedy-c1/request.body"
+    },
+    {
+      "bytes": 265,
+      "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/greedy/plain-06.json",
+      "sha256": "10d2722336b403a832494fb7c82e08a91862882431079516f5b4253968d2c0c2",
+      "source": "raw/quality/on/http/0009-greedy-c1/request.body"
+    },
+    {
+      "bytes": 265,
+      "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/greedy/plain-07.json",
+      "sha256": "dcfee9f0342e9da9ce4536049fe494ca8e06253945cc7c5d7f06a14c10124c4e",
+      "source": "raw/quality/on/http/0010-greedy-c1/request.body"
+    },
+    {
+      "bytes": 266,
+      "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/greedy/plain-08.json",
+      "sha256": "fbde399d92f851bfdd563eee9e949fad009dbab784f3317e1c0dc71d9a4077ad",
+      "source": "raw/quality/on/http/0011-greedy-c1/request.body"
+    }
+  ],
+  "greedy_prefix": [
+    {
+      "bytes": 12272,
+      "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/greedy/prefix-01.json",
+      "sha256": "7397d065934f61655d779775d4d318a231ce74131e9e4b9236f5743b9eeb488f",
+      "source": "raw/quality/on/http/0030-greedy-c1p/request.body"
+    },
+    {
+      "bytes": 12262,
+      "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/greedy/prefix-02.json",
+      "sha256": "3595f0a90b1e49e5a51f9655449541fe5a971775639bac88ce43e4e0bf5a5f43",
+      "source": "raw/quality/on/http/0031-greedy-c1p/request.body"
+    },
+    {
+      "bytes": 12274,
+      "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/greedy/prefix-03.json",
+      "sha256": "5932e2506ad0cd3261a51ece5e258ffe2016742ccd2c93305e5a44e0ae3b9b6f",
+      "source": "raw/quality/on/http/0032-greedy-c1p/request.body"
+    },
+    {
+      "bytes": 12279,
+      "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/greedy/prefix-04.json",
+      "sha256": "61aaba13e19443efde20cd02219fcb0339c14bf12d2a9c5ce2d0e3dad5472667",
+      "source": "raw/quality/on/http/0033-greedy-c1p/request.body"
+    },
+    {
+      "bytes": 12270,
+      "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/greedy/prefix-05.json",
+      "sha256": "c3d3221764c1340e284e071abb1c5d3c27e258db42777e02f3291c351a82ea54",
+      "source": "raw/quality/on/http/0034-greedy-c1p/request.body"
+    },
+    {
+      "bytes": 12271,
+      "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/greedy/prefix-06.json",
+      "sha256": "e93716c8bab44cec584d885bbbb2592307ffdf9b53139fcb8c86c036f4dfb66a",
+      "source": "raw/quality/on/http/0035-greedy-c1p/request.body"
+    },
+    {
+      "bytes": 12271,
+      "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/greedy/prefix-07.json",
+      "sha256": "8a3271df2c16fe7231768f68178f899cb54bb6d1fe66d452d63dddff1e5fcaf4",
+      "source": "raw/quality/on/http/0036-greedy-c1p/request.body"
+    },
+    {
+      "bytes": 12272,
+      "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/greedy/prefix-08.json",
+      "sha256": "b0880a56f2c3cfc598d534d0d1bbe7dd85b6d436e9d7440e0d7188e62353d741",
+      "source": "raw/quality/on/http/0037-greedy-c1p/request.body"
+    }
+  ],
+  "greedy_prefix_warmup": {
+    "bytes": 12192,
+    "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/greedy/prefix-warmup.json",
+    "sha256": "cf7fbb5bdd0bc545e62eac09fab0c73e7ba82d7eb32e68789eefae89ca2b347c",
+    "source": "raw/quality/on/http/0029-greedy-c1p/request.body"
+  },
+  "literal_xml_and_tools": {
+    "tool-anthropic-blocking": {
+      "bytes": 609,
+      "endpoint": "/v1/messages",
+      "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/literal/tool-anthropic-blocking.json",
+      "sha256": "87e6cb72da1f40887ebcc8114f86fe2c06b17a9a7adeeb42e08fb1d08abafd86",
+      "stream": false
+    },
+    "tool-anthropic-stream": {
+      "bytes": 627,
+      "endpoint": "/v1/messages",
+      "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/literal/tool-anthropic-stream.json",
+      "sha256": "a703f655aaab239af6a2c43108ac0fdcf080a18393c432597010c48b497aaf3c",
+      "stream": true
+    },
+    "tool-openai-blocking": {
+      "bytes": 782,
+      "endpoint": "/v1/chat/completions",
+      "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/literal/tool-openai-blocking.json",
+      "sha256": "d232439aecf0c494fd918949749c95d0181dcc4fab99f5e0949c54fea6812bbc",
+      "stream": false
+    },
+    "tool-openai-stream": {
+      "bytes": 800,
+      "endpoint": "/v1/chat/completions",
+      "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/literal/tool-openai-stream.json",
+      "sha256": "a642e4a80549c2fc7dd5157df7c60196ec48f5a530b8360c2c11e7327caad905",
+      "stream": true
+    },
+    "xml-anthropic-blocking": {
+      "bytes": 344,
+      "endpoint": "/v1/messages",
+      "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/literal/xml-anthropic-blocking.json",
+      "sha256": "becb20556fa70fc39cab56d2e6c9618790e01aaf7ca6e83278a16256b500cc0b",
+      "stream": false
+    },
+    "xml-anthropic-stream": {
+      "bytes": 362,
+      "endpoint": "/v1/messages",
+      "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/literal/xml-anthropic-stream.json",
+      "sha256": "2a9a303859ff7811c3b52362d9ba11888c70a884a96cfcceda2c98d15a088897",
+      "stream": true
+    },
+    "xml-openai-blocking": {
+      "bytes": 407,
+      "endpoint": "/v1/chat/completions",
+      "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/literal/xml-openai-blocking.json",
+      "sha256": "b3cc64f6c4a4086ffa7f91c038b8432ef1bb6946a699a42aef7aac171a7ada77",
+      "stream": false
+    },
+    "xml-openai-stream": {
+      "bytes": 425,
+      "endpoint": "/v1/chat/completions",
+      "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/literal/xml-openai-stream.json",
+      "sha256": "05e84b34447f5f0fd12cc8f93c49ddc1fb9f6d43620e9bd683728d373d7044ad",
+      "stream": true
+    }
+  },
+  "long_context": {
+    "concurrency": 4,
+    "expected_source": "raw/quality/remaining/needle-final-low.jsonl",
+    "ground_truth": {
+      "arrival_order_used": false,
+      "mapping_key": "answer",
+      "method": "parse_request_tables_by_query"
+    },
+    "max_tokens": 2048,
+    "reasoning_effort": "low",
+    "requests": [
+      {
+        "expected": {
+          "answer": "85852150",
+          "b_pos": 0.768,
+          "depth": 0.167,
+          "ok": true,
+          "out": "85852150",
+          "rows": 900,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 36362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-01.json",
+          "sha256": "2eb15ec55ed8f7165066bceb42ffbaa2e8af2cc49b6fe85d14b91f24ff2f1fba",
+          "source": "raw/quality/remaining/http/0007-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "85852150",
+          "code": "675686",
+          "content_bytes": 34371,
+          "content_chars": 34371,
+          "key": "975947",
+          "table_a_entries": 900,
+          "table_b_distinct_codes": 900,
+          "table_b_entries": 900
+        }
+      },
+      {
+        "expected": {
+          "answer": "10382229",
+          "b_pos": 0.828,
+          "depth": 0.033,
+          "ok": true,
+          "out": "10382229",
+          "rows": 900,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 36362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-02.json",
+          "sha256": "3ad87cb362b6ee68a8d00831ca60dd5c868ac808cf9bc294e03aaf5c89ec9b4e",
+          "source": "raw/quality/remaining/http/0008-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "10382229",
+          "code": "884392",
+          "content_bytes": 34371,
+          "content_chars": 34371,
+          "key": "906592",
+          "table_a_entries": 900,
+          "table_b_distinct_codes": 900,
+          "table_b_entries": 900
+        }
+      },
+      {
+        "expected": {
+          "answer": "29641454",
+          "b_pos": 0.832,
+          "depth": 0.1,
+          "ok": true,
+          "out": "29641454",
+          "rows": 900,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 36362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-03.json",
+          "sha256": "b6b40b6ae1877e673d32c72287fbdcd2a5aff7fcfb3b1aa9c4a680b84e12c896",
+          "source": "raw/quality/remaining/http/0009-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "29641454",
+          "code": "923471",
+          "content_bytes": 34371,
+          "content_chars": 34371,
+          "key": "356652",
+          "table_a_entries": 900,
+          "table_b_distinct_codes": 900,
+          "table_b_entries": 900
+        }
+      },
+      {
+        "expected": {
+          "answer": "52917357",
+          "b_pos": 0.864,
+          "depth": 0.233,
+          "ok": true,
+          "out": "52917357",
+          "rows": 900,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 36362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-04.json",
+          "sha256": "2311445998c5054cd6393a72ffadf0cb5346d24feb7c8dfde10fb343300d5ce0",
+          "source": "raw/quality/remaining/http/0010-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "52917357",
+          "code": "335228",
+          "content_bytes": 34371,
+          "content_chars": 34371,
+          "key": "694443",
+          "table_a_entries": 900,
+          "table_b_distinct_codes": 900,
+          "table_b_entries": 900
+        }
+      },
+      {
+        "expected": {
+          "answer": "88054827",
+          "b_pos": 0.944,
+          "depth": 0.3,
+          "ok": true,
+          "out": "88054827",
+          "rows": 900,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 36362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-05.json",
+          "sha256": "d0b50ec49acd26c069721cc4a35b6d05a13931bccd5c8ea9039199187488073d",
+          "source": "raw/quality/remaining/http/0011-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "88054827",
+          "code": "561064",
+          "content_bytes": 34371,
+          "content_chars": 34371,
+          "key": "714025",
+          "table_a_entries": 900,
+          "table_b_distinct_codes": 899,
+          "table_b_entries": 900
+        }
+      },
+      {
+        "expected": {
+          "answer": "56409884",
+          "b_pos": 0.823,
+          "depth": 0.367,
+          "ok": true,
+          "out": "56409884",
+          "rows": 900,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 36362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-06.json",
+          "sha256": "b99640ff26b850948fc322b355dca74dbe9fed7a6407354e8aee874cd43c6603",
+          "source": "raw/quality/remaining/http/0012-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "56409884",
+          "code": "793607",
+          "content_bytes": 34371,
+          "content_chars": 34371,
+          "key": "740615",
+          "table_a_entries": 900,
+          "table_b_distinct_codes": 900,
+          "table_b_entries": 900
+        }
+      },
+      {
+        "expected": {
+          "answer": "68697282",
+          "b_pos": 0.87,
+          "depth": 0.433,
+          "ok": true,
+          "out": "68697282",
+          "rows": 900,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 36362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-07.json",
+          "sha256": "2250ef0292e9578b357138afdc61eda1c8ff76289e0a5cfea7383a783c3a9c41",
+          "source": "raw/quality/remaining/http/0013-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "68697282",
+          "code": "325993",
+          "content_bytes": 34371,
+          "content_chars": 34371,
+          "key": "088714",
+          "table_a_entries": 900,
+          "table_b_distinct_codes": 897,
+          "table_b_entries": 900
+        }
+      },
+      {
+        "expected": {
+          "answer": "56085835",
+          "b_pos": 0.579,
+          "depth": 0.5,
+          "ok": true,
+          "out": "56085835",
+          "rows": 900,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 36362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-08.json",
+          "sha256": "5558c8cfed762cf8108d082fd4c28d6bd9d1f3fb86f8f4b0681b2d6852e2c330",
+          "source": "raw/quality/remaining/http/0014-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "56085835",
+          "code": "998187",
+          "content_bytes": 34371,
+          "content_chars": 34371,
+          "key": "105225",
+          "table_a_entries": 900,
+          "table_b_distinct_codes": 900,
+          "table_b_entries": 900
+        }
+      },
+      {
+        "expected": {
+          "answer": "82198881",
+          "b_pos": 0.016,
+          "depth": 0.567,
+          "ok": true,
+          "out": "82198881",
+          "rows": 900,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 36362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-09.json",
+          "sha256": "4b3168c94e644cf9fc29cdc2697a812f278fffc1eee48ddd539ce537b5045a65",
+          "source": "raw/quality/remaining/http/0015-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "82198881",
+          "code": "424456",
+          "content_bytes": 34371,
+          "content_chars": 34371,
+          "key": "831120",
+          "table_a_entries": 900,
+          "table_b_distinct_codes": 900,
+          "table_b_entries": 900
+        }
+      },
+      {
+        "expected": {
+          "answer": "88427461",
+          "b_pos": 0.612,
+          "depth": 0.633,
+          "ok": true,
+          "out": "88427461",
+          "rows": 900,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 36362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-10.json",
+          "sha256": "a4a6c34bc5dab8fbaa45bf338483a25c242dc2767eb61e2a218f1d4c34130a10",
+          "source": "raw/quality/remaining/http/0016-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "88427461",
+          "code": "614093",
+          "content_bytes": 34371,
+          "content_chars": 34371,
+          "key": "660818",
+          "table_a_entries": 900,
+          "table_b_distinct_codes": 900,
+          "table_b_entries": 900
+        }
+      },
+      {
+        "expected": {
+          "answer": "00030332",
+          "b_pos": 0.44,
+          "depth": 0.7,
+          "ok": true,
+          "out": "00030332",
+          "rows": 900,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 36362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-11.json",
+          "sha256": "a4a970e63b40f01a14a14959fcdd812670ccb01bb664bf95710d6c66ac76e59b",
+          "source": "raw/quality/remaining/http/0017-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "00030332",
+          "code": "957627",
+          "content_bytes": 34371,
+          "content_chars": 34371,
+          "key": "388721",
+          "table_a_entries": 900,
+          "table_b_distinct_codes": 900,
+          "table_b_entries": 900
+        }
+      },
+      {
+        "expected": {
+          "answer": "75517914",
+          "b_pos": 0.607,
+          "depth": 0.767,
+          "ok": true,
+          "out": "75517914",
+          "rows": 900,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 36362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-12.json",
+          "sha256": "792c00241a8a278c80d1fca90aeb19944a4646905212103c0e44682a79bee5e0",
+          "source": "raw/quality/remaining/http/0018-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "75517914",
+          "code": "298071",
+          "content_bytes": 34371,
+          "content_chars": 34371,
+          "key": "381670",
+          "table_a_entries": 900,
+          "table_b_distinct_codes": 900,
+          "table_b_entries": 900
+        }
+      },
+      {
+        "expected": {
+          "answer": "23469311",
+          "b_pos": 0.036,
+          "depth": 0.833,
+          "ok": true,
+          "out": "23469311",
+          "rows": 900,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 36362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-13.json",
+          "sha256": "e247d2d065d5df5e3732f5dfbf10212b604a91aa6f3c7f502ef71f2115ade0de",
+          "source": "raw/quality/remaining/http/0019-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "23469311",
+          "code": "851969",
+          "content_bytes": 34371,
+          "content_chars": 34371,
+          "key": "809353",
+          "table_a_entries": 900,
+          "table_b_distinct_codes": 900,
+          "table_b_entries": 900
+        }
+      },
+      {
+        "expected": {
+          "answer": "95984342",
+          "b_pos": 0.956,
+          "depth": 0.9,
+          "ok": true,
+          "out": "95984342",
+          "rows": 900,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 36362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-14.json",
+          "sha256": "4efec2abb01bc928f5661f452f5805d99251f004c153d3c4c7ce3d122a0eaf09",
+          "source": "raw/quality/remaining/http/0020-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "95984342",
+          "code": "541761",
+          "content_bytes": 34371,
+          "content_chars": 34371,
+          "key": "753866",
+          "table_a_entries": 900,
+          "table_b_distinct_codes": 900,
+          "table_b_entries": 900
+        }
+      },
+      {
+        "expected": {
+          "answer": "56018428",
+          "b_pos": 0.49,
+          "depth": 0.967,
+          "ok": true,
+          "out": "56018428",
+          "rows": 900,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 36362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-15.json",
+          "sha256": "87d33d0149a1a718818a6df121d2b1703e5a5a9dc2b95a836d9b489d0ae899d7",
+          "source": "raw/quality/remaining/http/0021-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "56018428",
+          "code": "335369",
+          "content_bytes": 34371,
+          "content_chars": 34371,
+          "key": "283085",
+          "table_a_entries": 900,
+          "table_b_distinct_codes": 897,
+          "table_b_entries": 900
+        }
+      },
+      {
+        "expected": {
+          "answer": "14002526",
+          "b_pos": 0.492,
+          "depth": 0.033,
+          "ok": true,
+          "out": "14002526",
+          "rows": 1800,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 72362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-16.json",
+          "sha256": "e4c480e21ae84b66a526b0683c8529e872c72395dbe78bbdc59fc074b2353617",
+          "source": "raw/quality/remaining/http/0022-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "14002526",
+          "code": "540342",
+          "content_bytes": 68571,
+          "content_chars": 68571,
+          "key": "940659",
+          "table_a_entries": 1800,
+          "table_b_distinct_codes": 1794,
+          "table_b_entries": 1800
+        }
+      },
+      {
+        "expected": {
+          "answer": "06483354",
+          "b_pos": 0.047,
+          "depth": 0.1,
+          "ok": true,
+          "out": "06483354",
+          "rows": 1800,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 72362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-17.json",
+          "sha256": "ce28690628ba795b174b6118fbdbba424e1bae5f07a5d9253546da1354966210",
+          "source": "raw/quality/remaining/http/0023-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "06483354",
+          "code": "366493",
+          "content_bytes": 68571,
+          "content_chars": 68571,
+          "key": "243282",
+          "table_a_entries": 1800,
+          "table_b_distinct_codes": 1799,
+          "table_b_entries": 1800
+        }
+      },
+      {
+        "expected": {
+          "answer": "97568825",
+          "b_pos": 0.711,
+          "depth": 0.167,
+          "ok": true,
+          "out": "97568825",
+          "rows": 1800,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 72362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-18.json",
+          "sha256": "4c8a60b933da43aea7d8faef1dc4d2fb220525cc303f24822879541ab8a36dcc",
+          "source": "raw/quality/remaining/http/0024-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "97568825",
+          "code": "273909",
+          "content_bytes": 68571,
+          "content_chars": 68571,
+          "key": "248528",
+          "table_a_entries": 1800,
+          "table_b_distinct_codes": 1797,
+          "table_b_entries": 1800
+        }
+      },
+      {
+        "expected": {
+          "answer": "66939152",
+          "b_pos": 0.452,
+          "depth": 0.233,
+          "ok": true,
+          "out": "66939152",
+          "rows": 1800,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 72362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-19.json",
+          "sha256": "8a7e75e8938bdb9c1af14251bdabe154cb6c26df158b0c03ec953015130ec209",
+          "source": "raw/quality/remaining/http/0025-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "66939152",
+          "code": "114321",
+          "content_bytes": 68571,
+          "content_chars": 68571,
+          "key": "274840",
+          "table_a_entries": 1800,
+          "table_b_distinct_codes": 1797,
+          "table_b_entries": 1800
+        }
+      },
+      {
+        "expected": {
+          "answer": "38518884",
+          "b_pos": 0.373,
+          "depth": 0.3,
+          "ok": true,
+          "out": "38518884",
+          "rows": 1800,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 72362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-20.json",
+          "sha256": "50fc003dd02e0cccde1efbe4ac27132454b11c585ba6035b59baa5fcc11e50f0",
+          "source": "raw/quality/remaining/http/0026-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "38518884",
+          "code": "153208",
+          "content_bytes": 68571,
+          "content_chars": 68571,
+          "key": "114435",
+          "table_a_entries": 1800,
+          "table_b_distinct_codes": 1799,
+          "table_b_entries": 1800
+        }
+      },
+      {
+        "expected": {
+          "answer": "33080118",
+          "b_pos": 0.998,
+          "depth": 0.367,
+          "ok": true,
+          "out": "33080118",
+          "rows": 1800,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 72362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-21.json",
+          "sha256": "b1053b46955398c2ae41d0b2e4995ddc0a4c22ed295b445057ef006a75328f86",
+          "source": "raw/quality/remaining/http/0027-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "33080118",
+          "code": "395410",
+          "content_bytes": 68571,
+          "content_chars": 68571,
+          "key": "439113",
+          "table_a_entries": 1800,
+          "table_b_distinct_codes": 1800,
+          "table_b_entries": 1800
+        }
+      },
+      {
+        "expected": {
+          "answer": "84291185",
+          "b_pos": 0.772,
+          "depth": 0.433,
+          "ok": true,
+          "out": "84291185",
+          "rows": 1800,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 72362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-22.json",
+          "sha256": "fe01ec44043d2ed588fd864f457ffa54326c248204278f6016fe0faf1f412555",
+          "source": "raw/quality/remaining/http/0028-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "84291185",
+          "code": "452971",
+          "content_bytes": 68571,
+          "content_chars": 68571,
+          "key": "429693",
+          "table_a_entries": 1800,
+          "table_b_distinct_codes": 1800,
+          "table_b_entries": 1800
+        }
+      },
+      {
+        "expected": {
+          "answer": "34564315",
+          "b_pos": 0.956,
+          "depth": 0.5,
+          "ok": true,
+          "out": "34564315",
+          "rows": 1800,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 72362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-23.json",
+          "sha256": "b08f73b9c7f1590d2bca41b61f19f75ea1da1fbe2a7bd41feb6647c017abcd56",
+          "source": "raw/quality/remaining/http/0029-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "34564315",
+          "code": "367973",
+          "content_bytes": 68571,
+          "content_chars": 68571,
+          "key": "578747",
+          "table_a_entries": 1800,
+          "table_b_distinct_codes": 1799,
+          "table_b_entries": 1800
+        }
+      },
+      {
+        "expected": {
+          "answer": "44998321",
+          "b_pos": 0.86,
+          "depth": 0.567,
+          "ok": true,
+          "out": "44998321",
+          "rows": 1800,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 72362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-24.json",
+          "sha256": "444a137989db22e1607598bc0af38dfb2ec7325b5983a20b06eb066a09b58a30",
+          "source": "raw/quality/remaining/http/0030-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "44998321",
+          "code": "077349",
+          "content_bytes": 68571,
+          "content_chars": 68571,
+          "key": "100773",
+          "table_a_entries": 1800,
+          "table_b_distinct_codes": 1800,
+          "table_b_entries": 1800
+        }
+      },
+      {
+        "expected": {
+          "answer": "45535022",
+          "b_pos": 0.758,
+          "depth": 0.633,
+          "ok": true,
+          "out": "45535022",
+          "rows": 1800,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 72362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-25.json",
+          "sha256": "c0289b17307736f6af8adb69bdc084bb4245162a7cba74f33b03a820d6463d9b",
+          "source": "raw/quality/remaining/http/0031-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "45535022",
+          "code": "234508",
+          "content_bytes": 68571,
+          "content_chars": 68571,
+          "key": "389376",
+          "table_a_entries": 1800,
+          "table_b_distinct_codes": 1799,
+          "table_b_entries": 1800
+        }
+      },
+      {
+        "expected": {
+          "answer": "56132109",
+          "b_pos": 0.213,
+          "depth": 0.7,
+          "ok": true,
+          "out": "56132109",
+          "rows": 1800,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 72362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-26.json",
+          "sha256": "90f570b5a7bdc0801c9d85d2bd5806f6eb8a7e8f362da56233968ed841249e7f",
+          "source": "raw/quality/remaining/http/0032-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "56132109",
+          "code": "334034",
+          "content_bytes": 68571,
+          "content_chars": 68571,
+          "key": "797899",
+          "table_a_entries": 1800,
+          "table_b_distinct_codes": 1798,
+          "table_b_entries": 1800
+        }
+      },
+      {
+        "expected": {
+          "answer": "91770641",
+          "b_pos": 0.93,
+          "depth": 0.767,
+          "ok": true,
+          "out": "91770641",
+          "rows": 1800,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 72362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-27.json",
+          "sha256": "def0f7ac85cf65c7809e5bfc366bb3879df9fc4c0cd5b1e4bba0e5404412a95e",
+          "source": "raw/quality/remaining/http/0033-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "91770641",
+          "code": "126919",
+          "content_bytes": 68571,
+          "content_chars": 68571,
+          "key": "131830",
+          "table_a_entries": 1800,
+          "table_b_distinct_codes": 1800,
+          "table_b_entries": 1800
+        }
+      },
+      {
+        "expected": {
+          "answer": "57554400",
+          "b_pos": 0.167,
+          "depth": 0.833,
+          "ok": true,
+          "out": "57554400",
+          "rows": 1800,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 72362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-28.json",
+          "sha256": "121494de71fbc893cbe83e19afdd57931900b04393948a13b85dea63fcef74d2",
+          "source": "raw/quality/remaining/http/0034-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "57554400",
+          "code": "843656",
+          "content_bytes": 68571,
+          "content_chars": 68571,
+          "key": "926069",
+          "table_a_entries": 1800,
+          "table_b_distinct_codes": 1799,
+          "table_b_entries": 1800
+        }
+      },
+      {
+        "expected": {
+          "answer": "30805752",
+          "b_pos": 0.535,
+          "depth": 0.9,
+          "ok": true,
+          "out": "30805752",
+          "rows": 1800,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 72362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-29.json",
+          "sha256": "2c37fab67c9d6c0bc1867c42fd8f1ba2bffd3300437d1e7ce84312ff1adb1a64",
+          "source": "raw/quality/remaining/http/0035-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "30805752",
+          "code": "004762",
+          "content_bytes": 68571,
+          "content_chars": 68571,
+          "key": "364519",
+          "table_a_entries": 1800,
+          "table_b_distinct_codes": 1798,
+          "table_b_entries": 1800
+        }
+      },
+      {
+        "expected": {
+          "answer": "78965747",
+          "b_pos": 0.388,
+          "depth": 0.967,
+          "ok": true,
+          "out": "78965747",
+          "rows": 1800,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 72362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-30.json",
+          "sha256": "ab12d5b35f2c4fd728c2d593f83d84bb1419c1e2420e3456f01e121cc6945522",
+          "source": "raw/quality/remaining/http/0036-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "78965747",
+          "code": "001429",
+          "content_bytes": 68571,
+          "content_chars": 68571,
+          "key": "364019",
+          "table_a_entries": 1800,
+          "table_b_distinct_codes": 1799,
+          "table_b_entries": 1800
+        }
+      },
+      {
+        "expected": {
+          "answer": "77140129",
+          "b_pos": 0.651,
+          "depth": 0.033,
+          "ok": true,
+          "out": "77140129",
+          "rows": 3000,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 120362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-31.json",
+          "sha256": "5f05fc374f1c944e03ee067b52947756d2e3162c3920c6561581ec8ea1ddbb26",
+          "source": "raw/quality/remaining/http/0037-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "77140129",
+          "code": "091069",
+          "content_bytes": 114171,
+          "content_chars": 114171,
+          "key": "988843",
+          "table_a_entries": 3000,
+          "table_b_distinct_codes": 2995,
+          "table_b_entries": 3000
+        }
+      },
+      {
+        "expected": {
+          "answer": "43414356",
+          "b_pos": 0.624,
+          "depth": 0.1,
+          "ok": true,
+          "out": "43414356",
+          "rows": 3000,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 120362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-32.json",
+          "sha256": "847f0616ee4d2d6c284baf4502648c0c32e66b724ad77abe0dc8424747bd63e4",
+          "source": "raw/quality/remaining/http/0038-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "43414356",
+          "code": "049257",
+          "content_bytes": 114171,
+          "content_chars": 114171,
+          "key": "090634",
+          "table_a_entries": 3000,
+          "table_b_distinct_codes": 2995,
+          "table_b_entries": 3000
+        }
+      },
+      {
+        "expected": {
+          "answer": "92381007",
+          "b_pos": 0.276,
+          "depth": 0.167,
+          "ok": true,
+          "out": "92381007",
+          "rows": 3000,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 120362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-33.json",
+          "sha256": "6429f46bd5a1bb5033c56d3c4aa6c10a5db504a5fb6f1e17c8b2108382b5deea",
+          "source": "raw/quality/remaining/http/0039-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "92381007",
+          "code": "882780",
+          "content_bytes": 114171,
+          "content_chars": 114171,
+          "key": "237373",
+          "table_a_entries": 3000,
+          "table_b_distinct_codes": 2995,
+          "table_b_entries": 3000
+        }
+      },
+      {
+        "expected": {
+          "answer": "36812869",
+          "b_pos": 0.59,
+          "depth": 0.233,
+          "ok": true,
+          "out": "36812869",
+          "rows": 3000,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 120362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-34.json",
+          "sha256": "dc7d7d89b12888bb9dcefcf62c79eedf4410e832efbbfea754eb00b2b0994c1c",
+          "source": "raw/quality/remaining/http/0040-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "36812869",
+          "code": "717191",
+          "content_bytes": 114171,
+          "content_chars": 114171,
+          "key": "032221",
+          "table_a_entries": 3000,
+          "table_b_distinct_codes": 2999,
+          "table_b_entries": 3000
+        }
+      },
+      {
+        "expected": {
+          "answer": "66459192",
+          "b_pos": 0.388,
+          "depth": 0.3,
+          "ok": true,
+          "out": "66459192",
+          "rows": 3000,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 120362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-35.json",
+          "sha256": "b9e9b5127ac6d5f32c29e4611fca3c2482fd9d91737f206c989ec8605df773ce",
+          "source": "raw/quality/remaining/http/0041-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "66459192",
+          "code": "639774",
+          "content_bytes": 114171,
+          "content_chars": 114171,
+          "key": "910006",
+          "table_a_entries": 3000,
+          "table_b_distinct_codes": 2999,
+          "table_b_entries": 3000
+        }
+      },
+      {
+        "expected": {
+          "answer": "49476037",
+          "b_pos": 0.191,
+          "depth": 0.367,
+          "ok": true,
+          "out": "49476037",
+          "rows": 3000,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 120362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-36.json",
+          "sha256": "39b96c8a318f834c45219be123122d06c4f9a5736c0dbe22f68439de7a552412",
+          "source": "raw/quality/remaining/http/0042-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "49476037",
+          "code": "857947",
+          "content_bytes": 114171,
+          "content_chars": 114171,
+          "key": "052539",
+          "table_a_entries": 3000,
+          "table_b_distinct_codes": 2996,
+          "table_b_entries": 3000
+        }
+      },
+      {
+        "expected": {
+          "answer": "69770104",
+          "b_pos": 0.021,
+          "depth": 0.433,
+          "ok": true,
+          "out": "69770104",
+          "rows": 3000,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 120362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-37.json",
+          "sha256": "318c0940c15121b398ab5b05128a887dbddb0f92dc97c110b425a71f3e17bb46",
+          "source": "raw/quality/remaining/http/0043-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "69770104",
+          "code": "076033",
+          "content_bytes": 114171,
+          "content_chars": 114171,
+          "key": "260872",
+          "table_a_entries": 3000,
+          "table_b_distinct_codes": 2995,
+          "table_b_entries": 3000
+        }
+      },
+      {
+        "expected": {
+          "answer": "78207611",
+          "b_pos": 0.275,
+          "depth": 0.5,
+          "ok": true,
+          "out": "78207611",
+          "rows": 3000,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 120362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-38.json",
+          "sha256": "f96c90d561ceb99b79e1615503656d87843c909190f648171e8d59ce1e30e4c7",
+          "source": "raw/quality/remaining/http/0044-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "78207611",
+          "code": "066813",
+          "content_bytes": 114171,
+          "content_chars": 114171,
+          "key": "958679",
+          "table_a_entries": 3000,
+          "table_b_distinct_codes": 2992,
+          "table_b_entries": 3000
+        }
+      },
+      {
+        "expected": {
+          "answer": "98639918",
+          "b_pos": 0.132,
+          "depth": 0.567,
+          "ok": true,
+          "out": "98639918",
+          "rows": 3000,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 120362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-39.json",
+          "sha256": "d11ddb0b2d513d658e194aac3175f332d9ec6a27cd99fb7ad0fe1c9faa407f73",
+          "source": "raw/quality/remaining/http/0045-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "98639918",
+          "code": "785677",
+          "content_bytes": 114171,
+          "content_chars": 114171,
+          "key": "584425",
+          "table_a_entries": 3000,
+          "table_b_distinct_codes": 2992,
+          "table_b_entries": 3000
+        }
+      },
+      {
+        "expected": {
+          "answer": "57917062",
+          "b_pos": 0.007,
+          "depth": 0.633,
+          "ok": true,
+          "out": "57917062",
+          "rows": 3000,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 120362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-40.json",
+          "sha256": "011e377321aa115c0b8eb9d96f3efedcdabab23f81d38f4c291764f5f6042000",
+          "source": "raw/quality/remaining/http/0046-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "57917062",
+          "code": "199236",
+          "content_bytes": 114171,
+          "content_chars": 114171,
+          "key": "883023",
+          "table_a_entries": 3000,
+          "table_b_distinct_codes": 2996,
+          "table_b_entries": 3000
+        }
+      },
+      {
+        "expected": {
+          "answer": "39556398",
+          "b_pos": 0.057,
+          "depth": 0.7,
+          "ok": true,
+          "out": "39556398",
+          "rows": 3000,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 120362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-41.json",
+          "sha256": "042a376ce29c445153d649928136f7ea1fa789329707f07c2c6010531db82de8",
+          "source": "raw/quality/remaining/http/0047-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "39556398",
+          "code": "991234",
+          "content_bytes": 114171,
+          "content_chars": 114171,
+          "key": "128279",
+          "table_a_entries": 3000,
+          "table_b_distinct_codes": 2995,
+          "table_b_entries": 3000
+        }
+      },
+      {
+        "expected": {
+          "answer": "57704515",
+          "b_pos": 0.802,
+          "depth": 0.767,
+          "ok": true,
+          "out": "57704515",
+          "rows": 3000,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 120362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-42.json",
+          "sha256": "a36089c4663fcad841cedd886e47fc0b1427d6c9a4c7698347e09280b7be49f3",
+          "source": "raw/quality/remaining/http/0048-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "57704515",
+          "code": "394459",
+          "content_bytes": 114171,
+          "content_chars": 114171,
+          "key": "191760",
+          "table_a_entries": 3000,
+          "table_b_distinct_codes": 2998,
+          "table_b_entries": 3000
+        }
+      },
+      {
+        "expected": {
+          "answer": "51145972",
+          "b_pos": 0.472,
+          "depth": 0.833,
+          "ok": true,
+          "out": "51145972",
+          "rows": 3000,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 120362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-43.json",
+          "sha256": "d843e262e042c7b0d1852d70da620f1fcb850977626a36b4d65603eccc8e294f",
+          "source": "raw/quality/remaining/http/0049-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "51145972",
+          "code": "649117",
+          "content_bytes": 114171,
+          "content_chars": 114171,
+          "key": "206566",
+          "table_a_entries": 3000,
+          "table_b_distinct_codes": 2995,
+          "table_b_entries": 3000
+        }
+      },
+      {
+        "expected": {
+          "answer": "10061608",
+          "b_pos": 0.476,
+          "depth": 0.9,
+          "ok": true,
+          "out": "10061608",
+          "rows": 3000,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 120362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-44.json",
+          "sha256": "8fe874999e2ec33991870430c56185463cd2f6e81940748133e4ab2e5149da62",
+          "source": "raw/quality/remaining/http/0050-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "10061608",
+          "code": "946232",
+          "content_bytes": 114171,
+          "content_chars": 114171,
+          "key": "038217",
+          "table_a_entries": 3000,
+          "table_b_distinct_codes": 2993,
+          "table_b_entries": 3000
+        }
+      },
+      {
+        "expected": {
+          "answer": "73584744",
+          "b_pos": 0.627,
+          "depth": 0.967,
+          "ok": true,
+          "out": "73584744",
+          "rows": 3000,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 120362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-45.json",
+          "sha256": "ee44e7d49f71fbe252c27dca8a6b04afdb4a71d74807e61cb7bbb3cffb181b30",
+          "source": "raw/quality/remaining/http/0051-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "73584744",
+          "code": "459587",
+          "content_bytes": 114171,
+          "content_chars": 114171,
+          "key": "367875",
+          "table_a_entries": 3000,
+          "table_b_distinct_codes": 2996,
+          "table_b_entries": 3000
+        }
+      },
+      {
+        "expected": {
+          "answer": "48018455",
+          "b_pos": 0.372,
+          "depth": 0.033,
+          "ok": true,
+          "out": "48018455",
+          "rows": 4800,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 192362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-46.json",
+          "sha256": "52362f8200684609393060bc06383bb453acbb9aff1f0bc7b1f90aac37fe186c",
+          "source": "raw/quality/remaining/http/0052-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "48018455",
+          "code": "631254",
+          "content_bytes": 182571,
+          "content_chars": 182571,
+          "key": "836926",
+          "table_a_entries": 4800,
+          "table_b_distinct_codes": 4790,
+          "table_b_entries": 4800
+        }
+      },
+      {
+        "expected": {
+          "answer": "97973191",
+          "b_pos": 0.617,
+          "depth": 0.1,
+          "ok": true,
+          "out": "97973191",
+          "rows": 4800,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 192362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-47.json",
+          "sha256": "05704b41cc2979ba4776828871267f5639e536d6b63f9f7c1a95d4fcd5e7cdb0",
+          "source": "raw/quality/remaining/http/0053-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "97973191",
+          "code": "123867",
+          "content_bytes": 182571,
+          "content_chars": 182571,
+          "key": "514891",
+          "table_a_entries": 4800,
+          "table_b_distinct_codes": 4788,
+          "table_b_entries": 4800
+        }
+      },
+      {
+        "expected": {
+          "answer": "35112070",
+          "b_pos": 0.725,
+          "depth": 0.167,
+          "ok": true,
+          "out": "35112070",
+          "rows": 4800,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 192362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-48.json",
+          "sha256": "cac774d2824455392a08e7f8cd725c7bc1c8cbad85b609c0d0c27fdb6de96d08",
+          "source": "raw/quality/remaining/http/0054-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "35112070",
+          "code": "505039",
+          "content_bytes": 182571,
+          "content_chars": 182571,
+          "key": "665020",
+          "table_a_entries": 4800,
+          "table_b_distinct_codes": 4792,
+          "table_b_entries": 4800
+        }
+      },
+      {
+        "expected": {
+          "answer": "70907304",
+          "b_pos": 0.917,
+          "depth": 0.233,
+          "ok": true,
+          "out": "70907304",
+          "rows": 4800,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 192362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-49.json",
+          "sha256": "5e3700971e0d1ed31f54df252c23f93ceef891e580ea935b3283f364a627dd67",
+          "source": "raw/quality/remaining/http/0055-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "70907304",
+          "code": "074567",
+          "content_bytes": 182571,
+          "content_chars": 182571,
+          "key": "016926",
+          "table_a_entries": 4800,
+          "table_b_distinct_codes": 4793,
+          "table_b_entries": 4800
+        }
+      },
+      {
+        "expected": {
+          "answer": "73308760",
+          "b_pos": 0.254,
+          "depth": 0.3,
+          "ok": true,
+          "out": "73308760",
+          "rows": 4800,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 192362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-50.json",
+          "sha256": "0b15781609eca829cf54bcc05e26b5a7de7973aa217a3c93ebf1ce29f2c8ba53",
+          "source": "raw/quality/remaining/http/0056-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "73308760",
+          "code": "309744",
+          "content_bytes": 182571,
+          "content_chars": 182571,
+          "key": "290388",
+          "table_a_entries": 4800,
+          "table_b_distinct_codes": 4787,
+          "table_b_entries": 4800
+        }
+      },
+      {
+        "expected": {
+          "answer": "52590382",
+          "b_pos": 0.38,
+          "depth": 0.367,
+          "ok": false,
+          "out": "94207600",
+          "rows": 4800,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 192362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-51.json",
+          "sha256": "a99204cde4031bd706e0b1f5189624e0ed2a13938ce090692de4628d751db434",
+          "source": "raw/quality/remaining/http/0057-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "52590382",
+          "code": "582677",
+          "content_bytes": 182571,
+          "content_chars": 182571,
+          "key": "880253",
+          "table_a_entries": 4800,
+          "table_b_distinct_codes": 4785,
+          "table_b_entries": 4800
+        }
+      },
+      {
+        "expected": {
+          "answer": "29726866",
+          "b_pos": 0.401,
+          "depth": 0.433,
+          "ok": true,
+          "out": "29726866",
+          "rows": 4800,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 192362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-52.json",
+          "sha256": "d2a877e5fbb0507886ebb8f3e56c4e9d536a3397e4eba5a3366edf2b723cc6fe",
+          "source": "raw/quality/remaining/http/0058-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "29726866",
+          "code": "045314",
+          "content_bytes": 182571,
+          "content_chars": 182571,
+          "key": "824335",
+          "table_a_entries": 4800,
+          "table_b_distinct_codes": 4783,
+          "table_b_entries": 4800
+        }
+      },
+      {
+        "expected": {
+          "answer": "68328253",
+          "b_pos": 0.61,
+          "depth": 0.5,
+          "ok": true,
+          "out": "68328253",
+          "rows": 4800,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 192362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-53.json",
+          "sha256": "dbd71ad41fba26afb0a5b4921ef0b42ff006c4e574b8e607e3959663e75e88a8",
+          "source": "raw/quality/remaining/http/0059-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "68328253",
+          "code": "095403",
+          "content_bytes": 182571,
+          "content_chars": 182571,
+          "key": "174676",
+          "table_a_entries": 4800,
+          "table_b_distinct_codes": 4791,
+          "table_b_entries": 4800
+        }
+      },
+      {
+        "expected": {
+          "answer": "51622736",
+          "b_pos": 0.354,
+          "depth": 0.567,
+          "ok": true,
+          "out": "51622736",
+          "rows": 4800,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 192362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-54.json",
+          "sha256": "93f7bdfa8162fa2f09002e5a8f454158ebe1f5626b4eb647313d4b994b4c6c98",
+          "source": "raw/quality/remaining/http/0060-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "51622736",
+          "code": "667597",
+          "content_bytes": 182571,
+          "content_chars": 182571,
+          "key": "821811",
+          "table_a_entries": 4800,
+          "table_b_distinct_codes": 4788,
+          "table_b_entries": 4800
+        }
+      },
+      {
+        "expected": {
+          "answer": "60678541",
+          "b_pos": 0.715,
+          "depth": 0.633,
+          "ok": true,
+          "out": "60678541",
+          "rows": 4800,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 192362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-55.json",
+          "sha256": "b8f9acb5bc2d74791dfb231819e642d6099c1b995fabcd8e7959580a703c079c",
+          "source": "raw/quality/remaining/http/0061-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "60678541",
+          "code": "910745",
+          "content_bytes": 182571,
+          "content_chars": 182571,
+          "key": "572119",
+          "table_a_entries": 4800,
+          "table_b_distinct_codes": 4790,
+          "table_b_entries": 4800
+        }
+      },
+      {
+        "expected": {
+          "answer": "24371183",
+          "b_pos": 0.164,
+          "depth": 0.7,
+          "ok": true,
+          "out": "24371183",
+          "rows": 4800,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 192362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-56.json",
+          "sha256": "ee84101dd364aa226337158b6214f9aa22c2c4328c6bc47e9f69c06159d49c2e",
+          "source": "raw/quality/remaining/http/0062-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "24371183",
+          "code": "580641",
+          "content_bytes": 182571,
+          "content_chars": 182571,
+          "key": "294646",
+          "table_a_entries": 4800,
+          "table_b_distinct_codes": 4786,
+          "table_b_entries": 4800
+        }
+      },
+      {
+        "expected": {
+          "answer": "98802949",
+          "b_pos": 0.45,
+          "depth": 0.767,
+          "ok": true,
+          "out": "98802949",
+          "rows": 4800,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 192362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-57.json",
+          "sha256": "165df18c3f276a6dad088b17374addab102ec452e6060c0573cf01586fd15f3f",
+          "source": "raw/quality/remaining/http/0063-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "98802949",
+          "code": "910072",
+          "content_bytes": 182571,
+          "content_chars": 182571,
+          "key": "710338",
+          "table_a_entries": 4800,
+          "table_b_distinct_codes": 4781,
+          "table_b_entries": 4800
+        }
+      },
+      {
+        "expected": {
+          "answer": "90443144",
+          "b_pos": 0.749,
+          "depth": 0.833,
+          "ok": true,
+          "out": "90443144",
+          "rows": 4800,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 192362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-58.json",
+          "sha256": "c897693af6b6e54496a60f8e607df25b3c677aeb95c5f2578c16bdf83cd938e5",
+          "source": "raw/quality/remaining/http/0064-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "90443144",
+          "code": "556703",
+          "content_bytes": 182571,
+          "content_chars": 182571,
+          "key": "979230",
+          "table_a_entries": 4800,
+          "table_b_distinct_codes": 4785,
+          "table_b_entries": 4800
+        }
+      },
+      {
+        "expected": {
+          "answer": "98254900",
+          "b_pos": 0.985,
+          "depth": 0.9,
+          "ok": true,
+          "out": "98254900",
+          "rows": 4800,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 192362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-59.json",
+          "sha256": "c7b685277862be5919e1b3af826f706306fefc540ac8fe42ef62f0a5e5a224c2",
+          "source": "raw/quality/remaining/http/0065-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "98254900",
+          "code": "133572",
+          "content_bytes": 182571,
+          "content_chars": 182571,
+          "key": "737159",
+          "table_a_entries": 4800,
+          "table_b_distinct_codes": 4788,
+          "table_b_entries": 4800
+        }
+      },
+      {
+        "expected": {
+          "answer": "13803635",
+          "b_pos": 0.578,
+          "depth": 0.967,
+          "ok": true,
+          "out": "13803635",
+          "rows": 4800,
+          "tag": "final-low"
+        },
+        "expected_match": "derived_answer",
+        "fixture": {
+          "bytes": 192362,
+          "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/long/needle-60.json",
+          "sha256": "f0bf252c5fe7b9b9d6e61ef885138a96041e4715893c091264ac915c1d83931f",
+          "source": "raw/quality/remaining/http/0066-needle/request.body"
+        },
+        "ground_truth": {
+          "answer": "13803635",
+          "code": "423755",
+          "content_bytes": 182571,
+          "content_chars": 182571,
+          "key": "689526",
+          "table_a_entries": 4800,
+          "table_b_distinct_codes": 4790,
+          "table_b_entries": 4800
+        }
+      }
+    ],
+    "seed": 20261018
+  },
+  "schema_none_control": {
+    "bytes": 740,
+    "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/schema-none-control.request.json",
+    "sha256": "4ef03b19bdf7822211a68583042bd23da446d7d2ee292bf7e5807dec7d161684",
+    "source": "raw/quality/remaining/http/0005-schema-union-tool-choice-none-control/request.body"
+  },
+  "schema_union": {
+    "bytes": 740,
+    "path": "/home/enntitysparkadmin/qwen-common-20261022/spark/qualification/fixtures/schema-union.request.json",
+    "sha256": "5d3bd84500927fff049ded2fd98dbd205c8d63c7d18e861c9ebf8009ac4dfbfd",
+    "source": "raw/quality/on/http/0077-schema-union/request.body"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "elapsed_ms": 50165.612,
+  "error": null,
+  "name": "mtp",
+  "parse_error": null,
+  "path": "/v1/chat/completions",
+  "request_bytes": 192362,
+  "request_sha256": "a99204cde4031bd706e0b1f5189624e0ed2a13938ce090692de4628d751db434",
+  "response_bytes": 948,
+  "response_sha256": "e97841856ac1e8267660b8c405495a7984eea5bec329afa761e86f650c9786f2",
+  "sse_events": null,
+  "status": 200,
+  "stream": false,
+  "url": "http://127.0.0.1:8893/v1/chat/completions"
+}
