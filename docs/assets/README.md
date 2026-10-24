@@ -1,28 +1,34 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
-# SparkQwen 0.2.0 cards
+# SparkQwen 0.3.0 cards
 
 `banner.png` is the README hero; `social-preview.png` is the social card source.
 `social-preview.jpg` is its upload-ready export, below GitHub's 1 MB limit.
-The cards were redesigned with image generation on 2026-10-23 to feature SparkQwen and leave room around the figures.
-[RigMark measurements](../../results/2026-10-23-rigmark/RESULT.md) are credited
-with a small "Measured with RigMark" note. The former large RigMark wordmark
-was removed to give the metrics and wireframe illustration more space.
+The cards were updated with image generation on 2026-10-24 for the 0.3.0
+hour-video refresh. SparkQwen remains the main brand; RigMark is a small caption.
 
-The cards show the selected best complete run in Spark mode with low reasoning: median code decode 109.4 tok/s,
-prose decode 55.5 tok/s and cold 16K prefill 4,158 tok/s. Decode has three
-repeats per workload; prefill has ten cold/immediate-replay pairs. All 9 basic
-output gates pass. Those gates are completion/shape checks, not a semantic
-code-quality score. The footer retains the known XML and long-context limits;
-the README links the detailed quality results and complete receipts.
+The prominent speed figures are the **published 0.2.0 baseline**, not a new
+0.3.0 benchmark: code decode **109.4 tok/s**, prose decode **55.5 tok/s** and
+cold 16K prefill **4,158 tok/s**. They come from the selected best complete
+Spark / low-reasoning run, with three decode repeats per workload and ten
+cold/immediate-replay prefill pairs. All **9/9 basic output gates** pass;
+these check completion and shape, not semantic code quality.
+See the [RigMark receipt](../../results/2026-10-23-rigmark/RESULT.md) and its
+[complete card](../../results/2026-10-23-rigmark/CARD.md).
 
-The compact comparison is +26% code decode versus published NVFP4 RC16,
-explicitly marked historical and from a different pair/profile. The README
-shows the full comparison and the earlier slower run. The full raw RigMark
-card is published separately as a receipt; the graphics are summaries.
+The +26% code-decode comparison against published NVFP4 RC16 is explicitly
+historical and from a different pair/profile. It is not a matched comparison
+of the current release. The README carries the full comparison and limitations.
 
-The separate quality box was removed. Prefill now has the same visual weight
-as decode, with no internal box to overflow. The smaller benchmark table and
-short footer keep both cards readable.
+The new feature line covers hour-long video and the Max / Saver profiles.
+The hour-video profile passed **11/11 semantic checks on each of two synthetic
+one-hour controls**. It samples visual frames and does not process audio;
+brief events and small text can be missed. These controls do not establish
+reference LVBench parity. See the [hour-video receipt](../../results/2026-10-24-hour-video/RESULT.md)
+and [memory-profile limits](../MEMORY-PROFILES.md).
+
+The figures have no enclosing boxes, and the feature and limitation lines stay
+clear of the wireframe illustration. Prefill retains the same visual weight
+as decode.
 
 The JPEG is a format export of the PNG at the same dimensions:
 

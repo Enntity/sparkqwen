@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/banner.png" alt="SparkQwen 0.2.0 RigMark: code 109.4 tok/s, prose 55.5 tok/s, cold 16K prefill 4,158 tok/s; 9/9 basic output gates" width="100%">
+  <img src="docs/assets/banner.png" alt="SparkQwen 0.3.0: hour-long video and Max / Saver profiles. Published 0.2.0 RigMark baseline: code 109.4 tok/s, prose 55.5 tok/s, cold 16K prefill 4,158 tok/s; 9/9 basic output gates" width="100%">
 </p>
 
 # SparkQwen
