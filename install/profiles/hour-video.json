@@ -114,7 +114,8 @@
   "NCCL_PROTO": "Simple",
   "PATH": "/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
   "RUST_LOG": "info",
-  "ATLAS_MAX_BODY_BYTES": "268435456"
+  "ATLAS_MAX_BODY_BYTES": "268435456",
+  "ATLAS_QWEN4EXP_SNAPSHOT_AUX_MB": "1024"
  },
  "server_argv": [
   "serve",
