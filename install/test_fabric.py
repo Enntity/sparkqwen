@@ -116,7 +116,7 @@ class Fabric(unittest.TestCase):
             self.assertIn('missing or down',result.stderr)
             self.assertFalse((root/'DOCKER_CALLED').exists())
 
-    def run_start(self, env_text, repo):
+    def run_start(self, env_text, repo, smoke_response=None):
         """start.sh with a fake host inventory, transport and Docker, keeping .env
         parsing, common argument construction and both real start-node.sh calls.
         Returns the result and the two `docker run` lines."""
@@ -153,18 +153,33 @@ else
 fi
 ''',
                 'docker': '#!/bin/bash\nprintf "%s\\n" "$*" >> "$DOCKER_CALLS"\n',
-                'curl': '#!/bin/sh\nprintf \'%s\\n\' \'{"choices":[{"message":{"content":"391"}}]}\'\n'
+                'curl': '#!/bin/sh\nprintf \'%s\\n\' \"$SMOKE_RESPONSE\"\n'
             }
             for name, body in scripts.items():
                 path = bindir/name; path.write_text(body); path.chmod(0o755)
             env = {k:v for k,v in os.environ.items() if 'FABRIC' not in k and k != 'LEADER_ADDRESS'}
             env.update(PATH=f'{bindir}:{os.environ["PATH"]}', MODEL_ROOT=str(models),
                        IMAGE='test-image', FABRIC_SYSFS=str(sysfs), HOME=str(root),
-                       DOCKER_CALLS=str(root/'docker.log'))
+                       DOCKER_CALLS=str(root/'docker.log'),
+                       SMOKE_RESPONSE=json.dumps(smoke_response if smoke_response is not None else {
+                           'choices': [{'message': {'content': '391'}, 'finish_reason': 'stop'}]}))
             result = subprocess.run(['bash', str(root/'start.sh')], env=env, capture_output=True, text=True)
             log = root/'docker.log'
             calls = [line for line in log.read_text().splitlines() if line.startswith('run ')] if log.exists() else []
             return result, calls
+
+    def test_ready_requires_correct_normally_completed_inference(self):
+        pin = json.loads((ROOT/'install/checkpoint.json').read_text())['repository']
+        for content, finish, accepted in [('391', 'stop', True), ('392', 'stop', False),
+                                           ('391', 'length', False), (None, 'length', False)]:
+            with self.subTest(content=content, finish=finish):
+                response = {'choices': [{'message': {'content': content}, 'finish_reason': finish}]}
+                result, calls = self.run_start('WORKER=test-peer\n', pin, response)
+                self.assertEqual(len(calls), 2)
+                self.assertEqual(result.returncode == 0, accepted, result.stderr)
+                self.assertEqual('ready: ' in result.stdout, accepted, result.stdout)
+                if not accepted:
+                    self.assertIn('smoke failed:', result.stderr)
 
     def test_sidecar_env_reaches_both_real_rank_launchers(self):
         pin = json.loads((ROOT/'install/checkpoint.json').read_text())['repository']
