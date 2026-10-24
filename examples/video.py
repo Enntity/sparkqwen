@@ -6,6 +6,8 @@ import base64
 import json
 import mimetypes
 import os
+import subprocess
+import tempfile
 from pathlib import Path
 import urllib.error
 import urllib.request
@@ -14,6 +16,8 @@ import urllib.request
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('clip', type=Path)
+    parser.add_argument('--prepare', action='store_true',
+                        help='Use local FFmpeg to make a compact silent 2 fps upload; requires ffmpeg.')
     parser.add_argument('--prompt', default=(
         'Summarize the main visible events in at most six bullets. For each event, '
         'give one approximate start time in seconds using the supplied timestamps. '
@@ -28,7 +32,19 @@ def main():
     if args.timeout <= 0:
         parser.error('--timeout must be positive')
     mime = mimetypes.guess_type(args.clip.name)[0] or 'video/mp4'
-    uri = 'data:' + mime + ';base64,' + base64.b64encode(args.clip.read_bytes()).decode()
+    if args.prepare:
+        with tempfile.TemporaryDirectory(prefix='sparkqwen-video-') as directory:
+            prepared = Path(directory) / 'upload.mp4'
+            subprocess.run(['ffmpeg', '-nostdin', '-hide_banner', '-loglevel', 'error',
+                            '-i', str(args.clip), '-vf', "fps=2,scale='min(640,iw)':-2",
+                            '-an', '-c:v', 'libx264', '-crf', '24', '-preset', 'fast',
+                            '-pix_fmt', 'yuv420p', '-movflags', '+faststart', str(prepared)],
+                           check=True, timeout=args.timeout)
+            clip_bytes = prepared.read_bytes()
+        mime = 'video/mp4'
+    else:
+        clip_bytes = args.clip.read_bytes()
+    uri = 'data:' + mime + ';base64,' + base64.b64encode(clip_bytes).decode()
     payload = {
         'model': 'qwen3.8-flash-next-atlas',
         'messages': [{'role': 'user', 'content': [

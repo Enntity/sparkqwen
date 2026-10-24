@@ -1,7 +1,7 @@
 {
  "schema": "sparkqwen.atlas-install-profile/v1",
- "status": "candidate",
- "note": "SparkQwen 0.3.0 hour-video profile: 262K context with the reference 224K video-token pixel budget, up to 7200 sampled frames, bounded decode and admission. Dedicated pair; lower KV utilization reserves host memory for video preprocessing. Qualification pending.",
+ "status": "qualified-spark",
+ "note": "SparkQwen 0.3.0 dedicated hour-video profile: 262144-token context, reference long-video pixel volume, up to 7,200 sampled frames, native MTP and bounded decode/admission. Spark-mode qualification and sampled-video limits are recorded in results/2026-10-24-hour-video. Lower KV utilization reserves host memory for video preprocessing; large video requests can receive 503 with Retry-After.",
  "environment": {
   "ATLAS_EP_PROTOCOL": "v2",
   "ATLAS_RDMA_ALLREDUCE": "1",

@@ -32,7 +32,8 @@ retain their order in the message; ordinary multi-turn history remains valid.
 ## What the model sees
 
 The decoder samples across the entire clip, including its beginning and end.
-The profile requests 2 frames/s and caps a clip at 128 decoded frames. Short
+The general-purpose profiles request 2 frames/s and cap a clip at 128 decoded frames.
+The dedicated hour-video profile below raises that cap. Short
 clips that fit under the cap can retain their native frame rate. Longer clips
 use wider spacing to cover their full duration. Each pair of sampled frames
 becomes one temporal group, with an averaged source timestamp and its own
@@ -46,11 +47,12 @@ can be missed. This is not a frame-accurate search or tracking API.
 
 ## Bounds and errors
 
-FFmpeg decoder subprocesses have a 60-second timeout. Frame count, decoded pixels, request media
+General-purpose profiles give FFmpeg decoder subprocesses a 60-second timeout. Frame count, decoded pixels, request media
 rows and in-flight vision rows are bounded. Oversized inputs receive a 400;
 vision admission pressure can return 503 with `Retry-After`. Invalid containers
-fail the request. Container formats and codecs depend on the bundled FFmpeg;
-the qualification receipts identify the formats actually exercised. GIFs use
+fail the request. The decoder accepts MP4/MOV, Matroska/WebM, AVI, MPEG-TS,
+MPEG, Ogg and FLV containers; codec support depends on the bundled FFmpeg.
+The qualification receipts identify the formats actually exercised. GIFs use
 a separate in-process decoder without the FFmpeg watchdog. Variable-duration
 GIF sampling has not been qualified by the MP4 video battery.
 
@@ -58,3 +60,52 @@ More frames consume vision memory and prompt tokens, reducing room for other
 requests. Custom profiles may change `--video-fps`, `--video-max-frames`, and
 `--video-decode-timeout-s`, but settings beyond the published qualification
 need their own memory and quality checks.
+
+
+## Hour-long video profile
+
+Use `PROFILE=hour-video MODE=spark ./start.sh` (or copy
+`.env.hour-video.example` to `.env` and set `WORKER`). This dedicated-pair
+profile retains the 262,144-token context and native MTP. It uses the Qwen
+reference long-video pixel volume, 469,762,048 pixels across sampled frames
+(224K merged video tokens before geometry rounding), up to 7,200 frames at
+2 fps, and a ten-minute decode deadline. The per-request video row budget is
+229,376; timestamps, instructions and the answer also consume context. The hour tests
+use 16:9 clips. Aspect ratio and prompt length can change token use; oversized
+total prompts are still rejected rather than silently truncated. This
+uses the [reference long-video setting](https://huggingface.co/Qwen/Qwen3.8-Flash-Next#best-practices);
+it does not establish parity with the reference model's published video benchmark scores.
+
+The 0.85 memory-utilization setting reserves working memory for video pixels.
+It is a separate profile from the maximum-KV and sidecar recipes. Large videos
+share a bounded 262,144-row preprocessing budget; concurrent video requests
+can receive `503 vision_capacity_busy` with `Retry-After` while text requests
+continue through the ordinary scheduler. This reservation is conservative: even
+two short clips submitted together can get a retry response in this profile.
+Use the general-purpose profiles for concurrent short-video work. Video frames are encoded by temporal
+group as prefill advances. The hour profile uses 4K prefill chunks to keep the
+vision encoder within its batched workspace. Sampled-frame resolution decreases as the clip gets longer.
+
+For a large local recording, the example can prepare a compact silent 2 fps
+MP4 before upload (requires FFmpeg on the client):
+
+```sh
+python3 examples/video.py recording.mp4 --prepare --timeout 3600 \
+  --prompt 'Summarize the visible stages and give approximate timestamps.'
+```
+
+`--prepare` samples before upload and scales the width down to at most 640
+pixels. Omit it to send the original clip. The hour-video HTTP body limit is
+256 MiB including base64 and JSON, so the original encoded file must be below
+roughly 192 MiB. Seekable temporary input permits ordinary tail-index MP4s;
+files are private and removed after decoding. Audio is discarded or ignored.
+
+Keep reasoning enabled for timestamp questions; the example uses `reasoning_effort=low`.
+In the hour profile, one controlled short procedure produced inaccurate times
+with thinking disabled; the same request with low reasoning returned the exact
+expected times. This remains a documented quality limitation.
+
+See the [hour-video qualification](../results/2026-10-24-hour-video/RESULT.md)
+for the tested image, actual hour-long controls, original failures and raw
+responses. Sampling does not provide continuous-motion or audio understanding;
+small text and very brief events can still be missed.

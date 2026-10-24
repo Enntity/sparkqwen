@@ -10,6 +10,15 @@ it does not process audio or continuous motion. Short events between samples
 may be missed, and model answers are not frame-accurate. The small controlled
 video battery does not establish general video-understanding accuracy.
 
+The dedicated [hour-video profile](VIDEO.md#hour-long-video-profile) uses the
+reference long-video pixel volume and up to 7,200 samples. Its hour tests are
+synthetic 16:9 controls, not a natural-video or LVBench reproduction. Spatial
+detail falls as duration grows. Keep reasoning enabled for timing questions:
+one short procedure returned inaccurate timestamps with thinking disabled,
+while low reasoning returned the expected times. The hour profile conservatively
+reserves a large video budget before decoding, so concurrent short clips can
+also receive a retry response. Video prefill can delay other requests.
+
 The [new memory profiles](MEMORY-PROFILES.md) use BF16 KV and a shared token
 pool. Sixteen scheduler slots do not reserve sixteen 262,144-token contexts.
 Capacity depends on mode, sidecar residency and other host allocations. The

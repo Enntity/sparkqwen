@@ -249,13 +249,15 @@ sampling limits and the 0.3.0 checks, see [Video](docs/VIDEO.md).
 | `8x262k` | 8 | 262,144 | Existing long-context recipe |
 | `max-16x262k` | 16 | 262,144 | Dedicated pair, display carveout |
 | `saver-8x262k` | 8 | 262,144 | Sidecars, display carveout |
+| `hour-video` | 8 | 262,144 | Dedicated Spark-mode pair, long-video preprocessing headroom |
 
 Context includes input and output. All active requests and cached prefixes
 share one BF16 KV pool. Slots do not reserve that many complete contexts;
 requests that overcommit the pool wait for room. See [Memory profiles](docs/MEMORY-PROFILES.md)
 for measured capacity guidance, sidecar workloads and limits. The copyable examples
 are [`.env.max.example`](.env.max.example) and
-[`.env.sidecars.example`](.env.sidecars.example). Sidecars remain separate
+[`.env.sidecars.example`](.env.sidecars.example); long video uses
+[`.env.hour-video.example`](.env.hour-video.example). Sidecars remain separate
 installations; SparkQwen does not install or manage them.
 
 The versioned comparison uses explicit greedy settings for measurement. For real work leave sampling
