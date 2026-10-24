@@ -3,8 +3,8 @@
   "note": "Exact common Spark engine commit/tree. Integrates the SparkGLM and SparkQwen histories, F32 HC/PLE norms, literal tool-XML text handling and validated Strict/Spark native-MTP modes. Model-specific execution remains gated. Build and qualification receipts identify the tested product image separately.",
   "repository": "https://github.com/Enntity/atlas.git",
   "branch": "spark-shared",
-  "commit": "46134a75086dbb5211960795788b52f0e678cd41",
-  "tree": "8dac62f961e12c7e8b3488c1611f534ea101e1b1",
+  "commit": "6f3d0a71fc0bf63952b100fd4b096348e745e5eb",
+  "tree": "0f5dc5a4f8cfa3b59e75297cbd8259ae6b2a3670",
   "layers": {
     "atlas_inf_main_base": "7ffd183f210708d5b1afba1e046049f14ad498c7",
     "glm_upstream_series": {
@@ -23,8 +23,8 @@
       "note": "The SparkQwen layer (sparkqwen/atlas-20261015-vision, 1954e759) plus the FP4-Local series (sparkqwen/atlas-20261016-fp4local, 9f64bf6b: the lossless NVFP4-CSF scale decoder, exact MXFP8 -> BF16 loading, MXFP8 decode twins for the Gated DeltaNet and attention projections, W8A8 MXFP8 prefill through cuBLASLt, the packed NVFP4 PLE n-gram table, native NVFP4 MTP experts and the ViT's W4A16 linears) and the drafter series: the W8A8 review hardening (MXFP8 per-bucket kernels only on swept shapes, in-order split-K, install and bounds checks), queued first chunks behind prefills in flight (ATLAS_PREFILL_QUEUE_FIRST_CHUNK), the MTP drafter's KV over the target's verified rows and the prompt (ATLAS_QWEN4EXP_MTP_ABSORB, ATLAS_QWEN4EXP_MTP_PREFILL), a BF16 drafter router, the dynamic-depth decision window and copy drafts for the MTP lane (off). and the vision admission series (sparkqwen/atlas-20261017-vision, 92dd5435; sparkqwen#10): a Qwen encoder output window of one prefill chunk's items, per-request and in-flight vision-row limits checked from image headers before any decode (400 vision_input_too_large, 503 vision_capacity_busy with Retry-After), orientation-aware header probes, bounded decode memory, Qwen resizing only of images past the encoder bound, warm multi-chunk prompts splicing their own rows, and pixels released at prefill end. Commits marked `shared:` are model-independent and are candidates for the shared layer; they sit in this layer until it moves."
     },
     "common_engine": {
-      "commit": "46134a75086dbb5211960795788b52f0e678cd41",
-      "tree": "8dac62f961e12c7e8b3488c1611f534ea101e1b1",
+      "commit": "6f3d0a71fc0bf63952b100fd4b096348e745e5eb",
+      "tree": "0f5dc5a4f8cfa3b59e75297cbd8259ae6b2a3670",
       "glm_parent": "471bdc5475f08722f8065250485cc49d16e793a3",
       "qwen_parent": "e0213ed10ec474c490276e9fd0a8ad328292e283",
       "note": "One common source tree with both product histories retained. Earlier layer entries above record historical provenance, not separate active engine copies.",

@@ -46,6 +46,9 @@ RUN mkdir -p /opt/cuda-stubs && \
 # Workspace contracts read source files, fixtures and committed benchmark
 # definitions. Preserve the exact checkout in the builder only.
 COPY engine/ /build/
+# Exercise the real bounded video decoder in CPU regressions as well.
+RUN apt-get update -qq && apt-get install -y -qq --no-install-recommends ffmpeg && \
+    rm -rf /var/lib/apt/lists/*
 # Full native CPU suite. GPU tests remain ignored here and are qualified on
 # the hardware separately. Keep failures fatal; never ship a partial gate.
 RUN --mount=type=cache,target=/build/target,id=atlas-cargo-target-sparkqwen,sharing=shared \
