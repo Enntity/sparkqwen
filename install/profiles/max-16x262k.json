@@ -1,7 +1,7 @@
 {
  "schema": "sparkqwen.atlas-install-profile/v1",
- "status": "candidate",
- "note": "Candidate max-16x262k; shared KV capacity and sidecar headroom require measured qualification. Slots do not guarantee all requests can simultaneously fill their context.",
+ "status": "qualified-spark",
+ "note": "SparkQwen 0.3.0 dedicated-pair profile: sixteen scheduler slots, 262144 tokens per request, native MTP with up to three drafts, and a shared BF16 KV pool. See the release receipt for measured capacity and limits; sixteen slots do not reserve sixteen full contexts.",
  "environment": {
   "ATLAS_EP_PROTOCOL": "v2",
   "ATLAS_RDMA_ALLREDUCE": "1",
@@ -17,7 +17,7 @@
   "ATLAS_QWEN4EXP_MOE_FAST": "1",
   "ATLAS_QWEN4EXP_DECODE_FUSE": "1",
   "ATLAS_QWEN4EXP_BATCH_FAST": "1",
-  "ATLAS_QWEN4EXP_MTP_DEPTH": "7",
+  "ATLAS_QWEN4EXP_MTP_DEPTH": "3",
   "ATLAS_MTP_SINGLE_DEPTH_ADAPT": "1",
   "ATLAS_QWEN4EXP_DRAFT_HEAD_NVFP4": "1",
   "ATLAS_QWEN4EXP_PREFILL_MOE": "1",
@@ -114,7 +114,8 @@
   "NCCL_PROTO": "Simple",
   "PATH": "/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
   "RUST_LOG": "info",
-  "ATLAS_QWEN4EXP_SNAPSHOT_AUX_MB": "1024"
+  "ATLAS_QWEN4EXP_SNAPSHOT_AUX_MB": "512",
+  "ATLAS_QWEN4EXP_SNAPSHOT_SLOTS": "8"
  },
  "server_argv": [
   "serve",
@@ -131,7 +132,7 @@
   "--fast-load-prefetch-shards",
   "--no-tui",
   "--speculative",
-  "--num-drafts=7",
+  "--num-drafts=3",
   "--max-num-seqs=16",
   "--max-batch-size=16",
   "--max-seq-len=262144",

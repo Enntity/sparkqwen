@@ -1,7 +1,7 @@
 {
  "schema": "sparkqwen.atlas-install-profile/v1",
- "status": "candidate",
- "note": "Candidate saver-8x262k; shared KV capacity and sidecar headroom require measured qualification. Slots do not guarantee all requests can simultaneously fill their context.",
+ "status": "qualified-spark",
+ "note": "SparkQwen 0.3.0 sidecar-sharing profile: eight scheduler slots, 262144 tokens per request, native MTP and shared BF16 KV. Exact tested sidecars, pool capacity, paging and latency are in the release receipt; other sidecar workloads need a new budget check.",
  "environment": {
   "ATLAS_EP_PROTOCOL": "v2",
   "ATLAS_RDMA_ALLREDUCE": "1",
@@ -123,7 +123,7 @@
   "--world-size=2",
   "--tp-size=2",
   "--ep-size=2",
-  "--gpu-memory-utilization=0.73",
+  "--gpu-memory-utilization=0.74",
   "--oom-guard-mb=4096",
   "--kv-cache-dtype=bf16",
   "--enable-prefix-caching",
