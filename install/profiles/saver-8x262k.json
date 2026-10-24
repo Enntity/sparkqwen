@@ -113,7 +113,8 @@
   "NCCL_NVLS_ENABLE": "0",
   "NCCL_PROTO": "Simple",
   "PATH": "/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
-  "RUST_LOG": "info"
+  "RUST_LOG": "info",
+  "ATLAS_QWEN4EXP_SNAPSHOT_AUX_MB": "1024"
  },
  "server_argv": [
   "serve",
@@ -122,7 +123,7 @@
   "--world-size=2",
   "--tp-size=2",
   "--ep-size=2",
-  "--gpu-memory-utilization=0.70",
+  "--gpu-memory-utilization=0.72",
   "--oom-guard-mb=4096",
   "--kv-cache-dtype=bf16",
   "--enable-prefix-caching",
