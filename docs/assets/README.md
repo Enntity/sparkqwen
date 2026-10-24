@@ -3,8 +3,10 @@
 
 `banner.png` is the README hero; `social-preview.png` is the social card source.
 `social-preview.jpg` is its upload-ready export, below GitHub's 1 MB limit.
-The cards were redesigned with image generation on 2026-10-23 to lead with
-[RigMark](../../results/2026-10-23-rigmark/RESULT.md) and leave room around the figures.
+The cards were redesigned with image generation on 2026-10-23 to feature SparkQwen and leave room around the figures.
+[RigMark measurements](../../results/2026-10-23-rigmark/RESULT.md) are credited
+with a small "Measured with RigMark" note. The former large RigMark wordmark
+was removed to give the metrics and wireframe illustration more space.
 
 The cards show the selected best complete run in Spark mode with low reasoning: median code decode 109.4 tok/s,
 prose decode 55.5 tok/s and cold 16K prefill 4,158 tok/s. Decode has three
