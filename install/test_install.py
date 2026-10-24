@@ -74,13 +74,14 @@ class LaunchContract(unittest.TestCase):
             with self.subTest(name=bad), self.assertRaises(ValueError):
                 serve.profile_path({'SPARKQWEN_PROFILE': bad}, HERE)
 
-    def test_profiles_share_everything_but_their_size(self):
-        # The long-context profiles drop only the QSA spare-buffer cap: its buffers sit outside
-        # the KV budget and scale with context.
-        size = ('--max-seq-len=', '--max-num-seqs=', '--max-batch-size=', '--tool-max-tokens=')
+    def test_profiles_share_everything_but_size_and_deadline(self):
+        # Long profiles drop the QSA spare-buffer cap and allow queued long prefills
+        # to finish; their target precision and kernel settings remain the same.
+        size = ('--max-seq-len=', '--max-num-seqs=', '--max-batch-size=', '--tool-max-tokens=', '--request-timeout=')
         profiles = [load_profile(name) for name in PROFILES]
         base = profiles[0]
         for other in profiles[1:]:
+            self.assertIn('--request-timeout=3600', other['server_argv'])
             env = dict(base['environment'])
             env.pop('ATLAS_QWEN4EXP_QSA_SPARE_MAX')
             self.assertEqual(env, other['environment'])
