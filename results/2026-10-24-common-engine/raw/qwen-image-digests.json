@@ -1,0 +1,16 @@
+{
+  "product": "qwen",
+  "image": "ghcr.io/enntity/atlas-sparkqwen:f38019f2ac52",
+  "install_tree": "f38019f2ac52c412e378765e2c6540af04f3cc5d",
+  "docker_image_id": "sha256:b2e0ed59f66ebc61f00b6075757f90dc2a0b90100506125d68c4f52749bc6aba",
+  "docker_image_id_kind": "OCI image index digest",
+  "descriptor": {
+    "mediaType": "application/vnd.oci.image.index.v1+json",
+    "digest": "sha256:b2e0ed59f66ebc61f00b6075757f90dc2a0b90100506125d68c4f52749bc6aba",
+    "size": 856
+  },
+  "index_digest": "sha256:b2e0ed59f66ebc61f00b6075757f90dc2a0b90100506125d68c4f52749bc6aba",
+  "arm64_manifest_digest": "sha256:76a76465e9faedcfd43fdc0804c1bac447187505291c7e47a9106fada778f7ab",
+  "config_digest": "sha256:83a04dcbb5de8e3e23b36b6666c87eeb4a8ac35fd8db035f2da03f102804475e",
+  "config_digest_source": "native BuildKit export log; independently verify against public manifest at publication"
+}

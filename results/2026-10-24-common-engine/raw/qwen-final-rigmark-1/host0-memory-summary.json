@@ -1,0 +1,18 @@
+{
+  "start_unix": 1792856789.7616732,
+  "end_unix": 1792857022.6200883,
+  "host": "spark-4562",
+  "sample_first_unix": 1792856789.3982892,
+  "sample_last_unix": 1792857023.514412,
+  "samples": 118,
+  "all_samples_finite": true,
+  "maximum_sample_gap_s": 2.0016930103302,
+  "maximum_allowed_gap_s": 10,
+  "telemetry_coverage_pass": true,
+  "minimum_available_bytes": 10040422400,
+  "swapout_pages_delta": 4,
+  "swapin_pages_delta": 20599,
+  "swap_used_start_bytes": 6985273344,
+  "swap_used_end_bytes": 6971797504,
+  "capacity_memory_pass": false
+}

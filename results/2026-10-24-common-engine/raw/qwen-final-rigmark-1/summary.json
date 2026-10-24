@@ -1,0 +1,122 @@
+{
+  "decode": {
+    "code": {
+      "gate": {
+        "passed": 3,
+        "total": 3
+      },
+      "rate": {
+        "maximum": 109.834,
+        "median": 106.377,
+        "minimum": 100.882,
+        "p90": 109.834
+      }
+    },
+    "prose": {
+      "gate": {
+        "passed": 3,
+        "total": 3
+      },
+      "rate": {
+        "maximum": 56.831,
+        "median": 54.835,
+        "minimum": 53.966,
+        "p90": 56.831
+      }
+    },
+    "structured": {
+      "gate": {
+        "passed": 3,
+        "total": 3
+      },
+      "rate": {
+        "maximum": 122.946,
+        "median": 120.242,
+        "minimum": 120.168,
+        "p90": 122.946
+      }
+    }
+  },
+  "cold_prefill": {
+    "maximum": 4165.851,
+    "median": 4142.153,
+    "minimum": 3666.051,
+    "p90": 4157.452
+  },
+  "warm_prefill": {
+    "maximum": 80066.853,
+    "median": 78757.876,
+    "minimum": 12488.861,
+    "p90": 79533.981
+  },
+  "concurrency": {
+    "1": {
+      "maximum": 75.139,
+      "median": 73.817,
+      "minimum": 72.496,
+      "p90": 75.139
+    },
+    "2": {
+      "maximum": 101.443,
+      "median": 99.923,
+      "minimum": 98.403,
+      "p90": 101.443
+    },
+    "4": {
+      "maximum": 177.394,
+      "median": 172.588,
+      "minimum": 167.782,
+      "p90": 177.394
+    },
+    "8": {
+      "maximum": 252.948,
+      "median": 245.716,
+      "minimum": 238.485,
+      "p90": 252.948
+    }
+  },
+  "concurrency_finishes": {
+    "1": [
+      "length",
+      "length"
+    ],
+    "2": [
+      "length",
+      "length",
+      "length",
+      "length"
+    ],
+    "4": [
+      "length",
+      "length",
+      "length",
+      "length",
+      "length",
+      "length",
+      "length",
+      "length"
+    ],
+    "8": [
+      "length",
+      "length",
+      "length",
+      "length",
+      "length",
+      "length",
+      "length",
+      "length",
+      "length",
+      "length",
+      "length",
+      "length",
+      "length",
+      "length",
+      "length",
+      "length"
+    ]
+  },
+  "basic_gates_passed": 9,
+  "basic_gates_total": 9,
+  "comparison_id": "common-engine-tp2-20261024-round1",
+  "engine": "Atlas adb7a5b381ce0f8cafc29e37d11622c63e6ebdb9, SparkQwen 0.3.1"
+}

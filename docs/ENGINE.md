@@ -7,9 +7,9 @@ pinned in [`install/atlas-source.json`](../install/atlas-source.json), for the
 kernel target `qwen3.8-flash-next` (model type `qwen4_exp`).
 [`install/build.sh`](../install/build.sh) refuses any other tree.
 
-SparkQwen 0.3.0 targets the common `spark-shared` engine tree.
-The pinned snapshot on `spark-shared` is `2837e761`
-(tree `b8b8af1c`). It brings together
+SparkQwen 0.3.1 targets the common `spark-shared` engine tree.
+The pinned snapshot on `spark-shared` is `adb7a5b3`
+(tree `a2965af0`). It brings together
 the SparkGLM literal-XML and grammar fixes, packed-prefill and split-score paths,
 and SparkQwen's native MXFP8 shared expert, F32 HC/PLE norms, row-invariant
 prefill and native MTP. The source history retains both product branches.
@@ -46,6 +46,16 @@ The 0.3.0 additions preserve timestamped Qwen video planes through prompt
 construction and MRoPE, sample actual source frames across a full clip, and
 bound decoded frame area. Display-carveout KV sizing now includes QSA state
 for the additional tokens. See [Video](VIDEO.md) and [Memory profiles](MEMORY-PROFILES.md).
+
+Both Spark products use the common `spark-shared` engine. This candidate pins
+`adb7a5b381ce0f8cafc29e37d11622c63e6ebdb9` (tree `a2965af0d0e9de275523855b7bcf247c0bc0b944`).
+Model-specific execution remains selected by kernel target and checkpoint type.
+The shared media decoder retains GLM's reference frame sampler, canvas sizing,
+normalization and final-frame padding alongside Qwen's timestamped video path.
+Qualification applies to the exact product image, not the branch name alone.
+GLM and Qwen preserve literal XML examples inside streamed reasoning. GLM's
+native tool opener still ends reasoning and enters the validated tool parser;
+legacy model leak guards remain in place.
 
 ## Historical engine layers
 

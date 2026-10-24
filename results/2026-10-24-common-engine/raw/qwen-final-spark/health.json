@@ -1,0 +1,8 @@
+{
+  "start_unix": 1792856431.403319,
+  "ready_unix": 1792856456.441849,
+  "elapsed_s": 25.038530349731445,
+  "status": 200,
+  "body": "{\"status\":\"ready\",\"model\":\"qwen3.8-flash-next-atlas\"}",
+  "failed_attempts": 5
+}

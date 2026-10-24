@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-1586e890-8204-41be-97d2-6f92d4cd2a40",
+  "object": "chat.completion",
+  "created": 1792857026,
+  "model": "qwen3.8-flash-next-atlas",
+  "system_fingerprint": "fp_atlas",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "reasoning_content": "The user asks for a simple multiplication: 17 \u00d7 23.\n\n17 \u00d7 23 = 17 \u00d7 20 + 17 \u00d7 3 = 340 + 51 = 391.\n",
+        "content": "391"
+      },
+      "finish_reason": "stop",
+      "logprobs": null
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 53,
+    "completion_tokens": 60,
+    "total_tokens": 113,
+    "prompt_tokens_details": {
+      "cached_tokens": 48,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 53,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 41,
+      "rejected_prediction_tokens": 0
+    },
+    "time_to_first_token_ms": 145.591609,
+    "response_token/s": 75.50032439802095
+  }
+}

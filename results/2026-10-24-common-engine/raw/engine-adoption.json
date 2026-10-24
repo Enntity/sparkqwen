@@ -1,0 +1,8 @@
+{
+  "old_sparkglm_engine": "095ff2237f0c79bbaaf4c38217c4fd35458e1f41",
+  "new_common_engine": "adb7a5b381ce0f8cafc29e37d11622c63e6ebdb9",
+  "new_engine_tree": "a2965af0d0e9de275523855b7bcf247c0bc0b944",
+  "old_glm_pin_is_ancestor": true,
+  "both_products_pin_same_engine": true,
+  "scope": "Exact source ancestry and product manifests; runtime qualification recorded separately."
+}

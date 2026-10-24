@@ -1,0 +1,53 @@
+{
+  "request": {
+    "model": "qwen3.8-flash-next-atlas",
+    "max_tokens": 1024,
+    "temperature": 0,
+    "top_p": 1,
+    "reasoning_effort": "low",
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is 17*23? Answer with the number."
+      }
+    ]
+  },
+  "response": {
+    "id": "chatcmpl-85eea109-4359-4b16-b1cc-065e1936139a",
+    "object": "chat.completion",
+    "created": 1792856465,
+    "model": "qwen3.8-flash-next-atlas",
+    "system_fingerprint": "fp_atlas",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "reasoning_content": "The user wants me to calculate 17 \u00d7 23.\n\n17 \u00d7 23 = 17 \u00d7 20 + 17 \u00d7 3 = 340 + 51 = 391\n",
+          "content": "391"
+        },
+        "finish_reason": "stop",
+        "logprobs": null
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 54,
+      "completion_tokens": 57,
+      "total_tokens": 111,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 50,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 40,
+        "rejected_prediction_tokens": 0
+      },
+      "time_to_first_token_ms": 255.013955,
+      "response_token/s": 73.3758374664403
+    }
+  },
+  "passed": true,
+  "elapsed_s": 1.0570526123046875
+}

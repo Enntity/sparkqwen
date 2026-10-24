@@ -1,0 +1,164 @@
+[
+  {
+    "name": "order",
+    "file": "order.mp4",
+    "sha256": "04b53c0ccf30345b7da4960bd974a3642c6fe9f6671543a3c5a8608965cb9284",
+    "scenes": [
+      [
+        "RED",
+        3
+      ],
+      [
+        "GREEN",
+        3
+      ],
+      [
+        "BLUE",
+        3
+      ]
+    ],
+    "duration": 9
+  },
+  {
+    "name": "reverse",
+    "file": "reverse.mp4",
+    "sha256": "ad0f8325f3be62324910578d9803f42e62e5274a83cd2158608e51205a852640",
+    "scenes": [
+      [
+        "BLUE",
+        3
+      ],
+      [
+        "GREEN",
+        3
+      ],
+      [
+        "RED",
+        3
+      ]
+    ],
+    "duration": 9
+  },
+  {
+    "name": "duration",
+    "file": "duration.mp4",
+    "sha256": "1929bb672c038581cbd5f8101d513399fe3cbf8a505dba55bff9a8f5044f0c58",
+    "scenes": [
+      [
+        "RED",
+        2
+      ],
+      [
+        "GREEN",
+        6
+      ],
+      [
+        "BLUE",
+        2
+      ]
+    ],
+    "duration": 10
+  },
+  {
+    "name": "still_yellow",
+    "file": "still_yellow.png",
+    "sha256": "801cb32705d1c62cb359632b6155fd13eb21024473e5e7d5c1ac60d3e4eda052",
+    "kind": "image",
+    "description": "deterministic yellow still with a visible label"
+  },
+  {
+    "name": "procedure_sparse",
+    "file": "procedure_sparse.mp4",
+    "sha256": "dbea7362f6e652fc1afa082934704919bc64b087e83fb3a5f63e7d0971d3ade4",
+    "kind": "video",
+    "fps": 2,
+    "duration": 36,
+    "scenes": [
+      [
+        "open",
+        5
+      ],
+      [
+        "pour",
+        6
+      ],
+      [
+        "mix",
+        7
+      ],
+      [
+        "bake",
+        8
+      ],
+      [
+        "serve",
+        10
+      ]
+    ],
+    "description": "36-second deterministic procedure clip at 2 fps"
+  },
+  {
+    "name": "procedure_cap",
+    "file": "procedure_cap.mp4",
+    "sha256": "4f9160756c81cc0b0c6f295d23f6929563ed5abd67285c62d683602f23e56c74",
+    "kind": "video",
+    "fps": 2,
+    "duration": 70,
+    "native_frames": 140,
+    "scenes": [
+      [
+        "load",
+        16
+      ],
+      [
+        "prepare",
+        16
+      ],
+      [
+        "operate",
+        16
+      ],
+      [
+        "inspect",
+        14
+      ],
+      [
+        "finish",
+        8
+      ]
+    ],
+    "description": "70-second, 140-frame procedure clip with no visible timestamps; tests the 128-frame sample cap"
+  },
+  {
+    "name": "procedure_hd",
+    "file": "procedure_hd.mp4",
+    "sha256": "1cc87b29dab1376f630687de02894ae58c8b7dbcffe61687a79b5598477627c8",
+    "kind": "video",
+    "fps": 2,
+    "duration": 70,
+    "native_frames": 140,
+    "scenes": [
+      [
+        "load",
+        16
+      ],
+      [
+        "prepare",
+        16
+      ],
+      [
+        "operate",
+        16
+      ],
+      [
+        "inspect",
+        14
+      ],
+      [
+        "finish",
+        8
+      ]
+    ],
+    "description": "70-second, 140-frame procedure clip with no visible timestamps; tests the 128-frame sample cap"
+  }
+]
