@@ -7,9 +7,9 @@ pinned in [`install/atlas-source.json`](../install/atlas-source.json), for the
 kernel target `qwen3.8-flash-next` (model type `qwen4_exp`).
 [`install/build.sh`](../install/build.sh) refuses any other tree.
 
-SparkQwen 0.2.0 uses the common `spark-shared` engine tree.
-The pinned snapshot on `spark-shared` is `f1fdf272`
-(tree `f3b0524e`). It brings together
+SparkQwen 0.3.0-rc.1 targets the common `spark-shared` engine tree.
+The pinned snapshot on `spark-shared` is `4d75b9ec`
+(tree `2300b0c1`). It brings together
 the SparkGLM literal-XML and grammar fixes, packed-prefill and split-score paths,
 and SparkQwen's native MXFP8 shared expert, F32 HC/PLE norms, row-invariant
 prefill and native MTP. The source history retains both product branches.

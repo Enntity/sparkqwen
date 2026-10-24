@@ -10,7 +10,7 @@ usage() {
   cat >&2 <<'EOF'
 usage: start-node.sh --rank 0|1 --leader-address IP --model-root DIR --image TAG
                      [--fabric-interface IFACE] [--fabric-hca DEVICE[,DEVICE...]]
-                     [--mode strict|spark] [--profile 8x32k|4x262k|8x262k|FILE] [--gpu-memory-utilization 0.70-0.95]
+                     [--mode strict|spark] [--profile 8x32k|4x262k|8x262k|max-16x262k|saver-8x262k|FILE] [--gpu-memory-utilization 0.70-0.95]
                      [--checkpoint NAME] [--cuda-cache DIR] [--ple-cache DIR] [--name NAME]
 
   --leader-address   rank 0's IPv4 address on the direct Spark-to-Spark fabric
@@ -106,6 +106,9 @@ if [[ -f $profile ]]; then
   profile_mount=(--mount "type=bind,src=$(realpath "$profile"),dst=/opt/atlas/profiles/custom.json,readonly")
   profile=custom
 fi
+# Use the engine's cross-product lock directory. Docker creates a missing
+# bind source on the host; permissions remain host-owned.
+lock_dir=/run/lock/sparkglm
 name=${name:-atlas-sparkqwen-rank$rank}
 docker rm -f "$name" >/dev/null 2>&1 || true
 # GB10 memory is shared with the host, and a host that runs out of it hangs
@@ -115,6 +118,7 @@ docker run -d --name "$name" --restart no --network host --ipc host \
   --shm-size 32g --memory 114g --gpus all --device /dev/infiniband:/dev/infiniband \
   --cap-add IPC_LOCK --cap-add SYS_NICE --ulimit memlock=-1:-1 \
   --security-opt no-new-privileges=true --stop-timeout 60 \
+  --volume "$lock_dir:$lock_dir" \
   --mount "type=bind,src=$checkpoint,dst=$checkpoint,readonly" \
   --mount "type=bind,src=$cache,dst=/atlas-cuda-cache" \
   --mount "type=bind,src=$(realpath "$ple_cache"),dst=/atlas-ple" ${profile_mount[@]+"${profile_mount[@]}"} \
