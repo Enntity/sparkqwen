@@ -123,7 +123,7 @@
   "--world-size=2",
   "--tp-size=2",
   "--ep-size=2",
-  "--gpu-memory-utilization=0.91",
+  "--gpu-memory-utilization=0.95",
   "--oom-guard-mb=4096",
   "--kv-cache-dtype=bf16",
   "--enable-prefix-caching",
@@ -139,7 +139,8 @@
   "--video-allow-ffmpeg",
   "--video-fps=2",
   "--video-max-frames=128",
-  "--video-decode-timeout-s=60"
+  "--video-decode-timeout-s=60",
+  "--request-timeout=3600"
  ],
  "display_carveout": true
 }

@@ -40,7 +40,12 @@ The exact engine commit and tree are authoritative in
 [`install/atlas-source.json`](../install/atlas-source.json). A common source tree
 does not repin an already deployed SparkGLM image or qualify an untested model
 configuration. See the [0.2.0 qualification](../results/2026-10-22-common-engine/RESULT.md)
-for the built image, measured scope and limitations.
+for that release's built image, measured scope and limitations.
+
+The 0.3.0 additions preserve timestamped Qwen video planes through prompt
+construction and MRoPE, sample actual source frames across a full clip, and
+bound decoded frame area. Display-carveout KV sizing now includes QSA state
+for the additional tokens. See [Video](VIDEO.md) and [Memory profiles](MEMORY-PROFILES.md).
 
 ## Historical engine layers
 

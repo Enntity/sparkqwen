@@ -26,7 +26,7 @@ usage: start-node.sh --rank 0|1 --leader-address IP --model-root DIR --image TAG
   --profile          a profile shipped in the image (default 8x32k) or a JSON
                      file of your own; use the same one on both ranks
   --gpu-memory-utilization  share of unified memory for the engine, two
-                     decimals from 0.70 to 0.95 (default: the profile's 0.88).
+                     decimals from 0.70 to 0.95 (default: selected profile).
                      A lower share reserves host/service memory but shrinks the
                      shared KV token pool; no context or concurrency promise.
   --cuda-cache       persistent CUDA JIT cache (default: ~/.cache/atlas-cuda)

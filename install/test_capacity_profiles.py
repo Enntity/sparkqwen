@@ -9,14 +9,15 @@ class CapacityProfiles(unittest.TestCase):
            'FABRIC_INTERFACE': 'fabric0', 'FABRIC_HCA': 'rdma0'}
 
     def test_carveout_uses_same_host_lock_as_sparkglm(self):
-        for name, slots, util in [('max-16x262k', 16, '0.91'),
-                                  ('saver-8x262k', 8, '0.70')]:
+        for name, slots, util in [('max-16x262k', 16, '0.95'),
+                                  ('saver-8x262k', 8, '0.73')]:
             argv, env = serve.launch(self.env, load_profile(name))
             self.assertEqual(env['ATLAS_MTP_MAX_SEQS'], str(slots))
+            self.assertEqual(env['ATLAS_QWEN4EXP_SNAPSHOT_AUX_MB'], '1024')
             self.assertEqual(argv[:5], ['/usr/local/bin/spark', 'display-carveout',
                 '--lock=/run/lock/sparkglm/display-carveout.lock', '--', '/usr/local/bin/spark'])
             for flag in [f'--max-num-seqs={slots}', f'--max-batch-size={slots}',
-                         '--max-seq-len=262144', f'--gpu-memory-utilization={util}',
+                         '--max-seq-len=262144', '--request-timeout=3600', f'--gpu-memory-utilization={util}',
                          '--video-allow-ffmpeg', '--video-fps=2', '--video-max-frames=128']:
                 self.assertIn(flag, argv)
 

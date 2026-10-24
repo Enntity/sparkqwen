@@ -138,6 +138,7 @@
   "--video-allow-ffmpeg",
   "--video-fps=2",
   "--video-max-frames=128",
-  "--video-decode-timeout-s=60"
+  "--video-decode-timeout-s=60",
+  "--request-timeout=3600"
  ]
 }
