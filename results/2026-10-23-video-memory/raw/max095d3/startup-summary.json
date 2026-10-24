@@ -1,0 +1,24 @@
+{
+  "arm": "max095d3",
+  "shared_blocks": 231905,
+  "tokens_per_block": 16,
+  "shared_tokens": 3710480,
+  "full_262144_contexts_by_arithmetic": 14,
+  "profile": "max-16x262k",
+  "mode": "spark",
+  "memory_utilization": 0.95,
+  "mtp_depth": 3,
+  "snapshot_slots": 8,
+  "snapshot_aux_mib": 512,
+  "qualification": "pending C16 long test",
+  "image_identity": [
+    {
+      "host": "ennspark03",
+      "identity": "sha256:21318576265668c539f03cc39a56ecbdc1a26a7404949e35191e10d996731e77\n20106c8b07fc5c29c34fc19b33a2c6a989899a55eb2a976a53f6d2709803e06f  /usr/local/bin/spark\nSparkQwen 0.3.0\nAtlas 170540e1fb43904d7cf16c79133e7228582d94ea\nEngine tree af2dbe598c9ee83cf0949ae54ef7389ea3afbd63\n"
+    },
+    {
+      "host": "ennspark04",
+      "identity": "sha256:21318576265668c539f03cc39a56ecbdc1a26a7404949e35191e10d996731e77\n20106c8b07fc5c29c34fc19b33a2c6a989899a55eb2a976a53f6d2709803e06f  /usr/local/bin/spark\nSparkQwen 0.3.0\nAtlas 170540e1fb43904d7cf16c79133e7228582d94ea\nEngine tree af2dbe598c9ee83cf0949ae54ef7389ea3afbd63\n"
+    }
+  ]
+}

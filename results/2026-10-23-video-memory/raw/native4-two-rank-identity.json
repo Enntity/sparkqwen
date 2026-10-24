@@ -1,0 +1,17 @@
+{
+  "hosts": [
+    "ennspark03",
+    "ennspark04"
+  ],
+  "image_id": "sha256:08a35b6ff455c88e671acf28e32bc367eaa099476857bbec661a5d761502c651",
+  "product_version": "0.3.0",
+  "engine_commit": "170540e1fb43904d7cf16c79133e7228582d94ea",
+  "engine_tree": "af2dbe598c9ee83cf0949ae54ef7389ea3afbd63",
+  "binary_sha256": "20106c8b07fc5c29c34fc19b33a2c6a989899a55eb2a976a53f6d2709803e06f",
+  "verification": [
+    "docker image inspect",
+    "docker run --rm IMAGE --version",
+    "docker run --rm --entrypoint sha256sum IMAGE /usr/local/bin/spark"
+  ],
+  "both_hosts_match": true
+}

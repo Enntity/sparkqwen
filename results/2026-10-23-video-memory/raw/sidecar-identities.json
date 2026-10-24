@@ -1,0 +1,211 @@
+[
+  {
+    "host": "ennspark03",
+    "container": "sq-profile-test-embed",
+    "image_id": "sha256:251eba5cc7c12fed0b75da22a9240e582b1c9e39f6fbc064f86781b963bd814f",
+    "image_reference": "sha256:251eba5cc7c12fed0b75da22a9240e582b1c9e39f6fbc064f86781b963bd814f",
+    "entrypoint": [
+      "vllm"
+    ],
+    "command": [
+      "serve",
+      "/models/embedding",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8000",
+      "--served-model-name",
+      "Qwen/Qwen3-Embedding-4B",
+      "--runner",
+      "pooling",
+      "--dtype",
+      "bfloat16",
+      "--gpu-memory-utilization",
+      "0.11",
+      "--max-model-len",
+      "8192",
+      "--max-num-seqs",
+      "16",
+      "--max-num-batched-tokens",
+      "8192"
+    ],
+    "gpu_requests": [
+      {
+        "Driver": "",
+        "Count": -1,
+        "DeviceIDs": null,
+        "Capabilities": [
+          [
+            "gpu"
+          ]
+        ],
+        "Options": {}
+      }
+    ],
+    "port_bindings": {
+      "8000/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "28201"
+        }
+      ]
+    },
+    "mounts": [
+      {
+        "Type": "bind",
+        "Source": "/home/enntitysparkadmin/.lloom/models/Qwen3-Embedding-4B",
+        "Destination": "/models/embedding",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      }
+    ],
+    "environment": {}
+  },
+  {
+    "host": "ennspark03",
+    "container": "sq-profile-test-voice",
+    "image_id": "sha256:7334704239eb6e3953aaf88682154c6b57ca2a020a593453caff5eb26e42966b",
+    "image_reference": "sha256:7334704239eb6e3953aaf88682154c6b57ca2a020a593453caff5eb26e42966b",
+    "entrypoint": [
+      "python"
+    ],
+    "command": [
+      "/opt/lloom-media/audio-backend/lloom_audio_cuda_server.py",
+      "--kind",
+      "tts",
+      "--model",
+      "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+      "--model-path",
+      "/models/model",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8000"
+    ],
+    "gpu_requests": [
+      {
+        "Driver": "",
+        "Count": -1,
+        "DeviceIDs": null,
+        "Capabilities": [
+          [
+            "gpu"
+          ]
+        ],
+        "Options": {}
+      }
+    ],
+    "port_bindings": {
+      "8000/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "28203"
+        }
+      ]
+    },
+    "mounts": [
+      {
+        "Type": "bind",
+        "Source": "/home/enntitysparkadmin/.lloom/models/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+        "Destination": "/models/model",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      },
+      {
+        "Type": "bind",
+        "Source": "/home/enntitysparkadmin/.lloom/backends/spark03-media",
+        "Destination": "/opt/lloom-media",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      }
+    ],
+    "environment": {}
+  },
+  {
+    "host": "ennspark04",
+    "container": "sq-profile-test-image",
+    "image_id": "sha256:da0297cea1add481e84e04f3c3c91875217956dc3134d568e71a0000a8020727",
+    "image_reference": "sha256:da0297cea1add481e84e04f3c3c91875217956dc3134d568e71a0000a8020727",
+    "entrypoint": [
+      "python"
+    ],
+    "command": [
+      "/opt/lloom-media/build/launch.py"
+    ],
+    "gpu_requests": [
+      {
+        "Driver": "",
+        "Count": -1,
+        "DeviceIDs": null,
+        "Capabilities": [
+          [
+            "gpu"
+          ]
+        ],
+        "Options": {}
+      }
+    ],
+    "port_bindings": {
+      "8000/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "28230"
+        }
+      ]
+    },
+    "mounts": [
+      {
+        "Type": "bind",
+        "Source": "/home/enntitysparkadmin/qwen-video-profiles-20261023/sidecars/sq-profile-test-image/data",
+        "Destination": "/data",
+        "Mode": "",
+        "RW": true,
+        "Propagation": "rprivate"
+      },
+      {
+        "Type": "bind",
+        "Source": "/home/enntitysparkadmin/.lloom/models/BennyDaBall--Qwen-Image-2.1-Turbo-NVFP4/text_encoders/qwen3vl_8b_turbo_nvfp4.safetensors",
+        "Destination": "/opt/ComfyUI/models/text_encoders/qwen3vl_8b_turbo_nvfp4.safetensors",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      },
+      {
+        "Type": "bind",
+        "Source": "/home/enntitysparkadmin/.lloom/models/BennyDaBall--Qwen-Image-2.1-Turbo-NVFP4/diffusion_models/qwen_image_2.1_turbo_nvfp4.safetensors",
+        "Destination": "/opt/ComfyUI/models/diffusion_models/qwen_image_2.1_turbo_nvfp4.safetensors",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      },
+      {
+        "Type": "bind",
+        "Source": "/home/enntitysparkadmin/.lloom/models/BennyDaBall--Qwen-Image-2.1-Turbo-NVFP4/vae/qwen_image_2.1_vae_bf16.safetensors",
+        "Destination": "/opt/ComfyUI/models/vae/qwen_image_2.1_vae_bf16.safetensors",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      },
+      {
+        "Type": "bind",
+        "Source": "/home/enntitysparkadmin/.lloom/overlays/qwen-image-21-turbo/graphs.py",
+        "Destination": "/opt/lloom-media/graphs/graphs.py",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      },
+      {
+        "Type": "bind",
+        "Source": "/home/enntitysparkadmin/.lloom/overlays/qwen-image-21-turbo/server.py",
+        "Destination": "/opt/lloom-media/bridge/server.py",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      }
+    ],
+    "environment": {}
+  }
+]

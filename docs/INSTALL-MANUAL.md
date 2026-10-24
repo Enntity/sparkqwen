@@ -6,10 +6,10 @@ time. Run steps 1–3 on **both** Sparks with the same `MODEL_ROOT`.
 
 | Component | Pin |
 |---|---|
-| Engine | [`Enntity/atlas`](https://github.com/Enntity/atlas), the common engine snapshot pinned for SparkQwen 0.3.0 ([`install/atlas-source.json`](../install/atlas-source.json), [docs/ENGINE.md](ENGINE.md)) |
+| Engine | [`Enntity/atlas`](https://github.com/Enntity/atlas), the common engine snapshot pinned for the SparkQwen 0.3.0 ([`install/atlas-source.json`](../install/atlas-source.json), [docs/ENGINE.md](ENGINE.md)) |
 | Model | [`nvidia/Qwen3.8-Flash-Next-FP4-Local`](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local) @ `b9ce18a6887e18c089fdea8509a33e63429a3300` ([`install/checkpoint.json`](../install/checkpoint.json)) |
 | Build dependencies | CUTLASS `cf064d2e`, NCCL 2.31.2, Rust 1.93.1, CUDA 13.0 |
-| Profiles | [`install/profiles/`](../install/profiles/): `8x32k` (default), `4x262k` and `8x262k` (long context) |
+| Profiles | [`install/profiles/`](../install/profiles/): `8x32k` (default), `4x262k` and `8x262k` (legacy long context), `max-16x262k` (dedicated pair), `saver-8x262k` (sidecars) |
 
 ## 1. Get the recipe
 
@@ -78,7 +78,9 @@ until curl -sf http://127.0.0.1:8893/health; do sleep 10; done
 (`~/.cache/atlas-ple`, about a minute); the first requests of each shape also
 compile kernels. Later starts reuse both. Run one warmup pass before measuring.
 
-**Profiles.** `--profile 4x262k` or `--profile 8x262k` selects a long-context profile. A path to a JSON file runs your own profile. Use the same profile
+**Profiles.** `--profile max-16x262k` selects the dedicated-pair profile;
+`--profile saver-8x262k` selects the sidecar profile. Both new profiles were
+sized in Spark mode. The older `4x262k` and `8x262k` profiles remain available. A path to a JSON file runs your own profile. Use the same profile
 on both ranks.
 
 **Mode.** Pass `--mode strict` (the default) or `--mode spark` on both ranks.
@@ -88,7 +90,7 @@ are unsupported.
 
 **Memory share.** `--gpu-memory-utilization` (two decimals, 0.70–0.95) on both
 ranks overrides the selected profile. A lower share leaves room for host and
-sidecar work and shrinks the shared KV pool. The measured profiles and limits
+sidecar work and shrinks the shared KV pool. The profile limits and qualification guidance
 are in [Memory profiles](MEMORY-PROFILES.md).
 
 ## Dedicated pair or sidecars

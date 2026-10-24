@@ -1,0 +1,39 @@
+{
+  "http_status": 200,
+  "elapsed_s": 34.48906993865967,
+  "request_sha256": "960026bdf022c54ecfdcd39f027d0af0d3f66f9dbf97aa0de4323809fb6d8c0d",
+  "same_request_bytes": true,
+  "reference": "native4-saver070 canonical (already exactly matched 0.2.0 Spark)",
+  "logprob_fields": {
+    "tokens": true,
+    "token_logprobs": true,
+    "top_logprobs": true,
+    "text_offset": true
+  },
+  "array_lengths": {
+    "tokens": 27035,
+    "token_logprobs": 27035,
+    "top_logprobs": 27035,
+    "text_offset": 27035
+  },
+  "scored_positions": 27033,
+  "nll": 0.9951030694174534,
+  "usage": {
+    "prompt_tokens": 27034,
+    "completion_tokens": 1,
+    "total_tokens": 27035,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "time_to_first_token_ms": 34355.701091999996,
+    "response_token/s": 0.0
+  },
+  "passed": true
+}

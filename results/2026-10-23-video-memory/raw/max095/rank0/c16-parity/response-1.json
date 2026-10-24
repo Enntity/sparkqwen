@@ -1,0 +1,52 @@
+{
+  "index": 1,
+  "status": 200,
+  "start_unix": 1792818283.0540917,
+  "end_unix": 1792818302.291248,
+  "original_request_sha256": "8ed6e4abaedfff49367f5170b6a1c6f167a8a351245f100524a0543c82e431fb",
+  "request_sha256": "573e025dbea74e1a91dc2fdee73e1bd0ecb7e6f67bd4881b779256da07945354",
+  "only_request_change": "cache_salt",
+  "field_matches": {
+    "content": true,
+    "reasoning_content": true,
+    "tool_calls": true,
+    "finish_reason": true
+  },
+  "passed": true,
+  "response": {
+    "id": "chatcmpl-88398020-541a-460a-bd2c-2f76d946dffb",
+    "object": "chat.completion",
+    "created": 1792818302,
+    "model": "qwen3.8-flash-next-atlas",
+    "system_fingerprint": "fp_atlas",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "reasoning_content": "The user wants a plain-language explanation of how sourdough starter cultures work, written for a home baker. They specifically asked for \"plain paragraphs\" \u2014 so no bullet points, no numbered lists, no headers breaking it into sections. Just flowing prose that a curious home baker could read and understand. I should cover the biology (wild yeast and lactobacillus), the feeding process, what's happening chemically, and practical implications \u2014 all woven together naturally. I want to avoid being too academic but also not oversimplify. The tone should be warm, clear, and grounded in the kitchen experience.\n",
+          "content": "A sourdough starter is a living community of wild yeast and lactic acid bacteria that you keep alive by feeding it flour and water. Unlike commercial yeast, which is a single strain grown in a lab, a starter is a whole ecosystem. The yeast is responsible for the rising \u2014 it eats the sugars in the flour and produces carbon dioxide gas, which gets trapped in the gluten network and makes your dough puff up. The bacteria, mostly lactobacillus, do something different: they eat the same sugars and produce lactic acid and acetic acid, which is what gives sourdough its tangy flavor and also helps preserve the bread by lowering its pH.\n\nWhen you mix flour and water together and leave it out, you're essentially setting a table for whatever microbes happen to be in the environment. Flour carries wild yeast and bacteria on its surface, and your kitchen air contributes more. Over the first several days, you're watching a competition play out. Some microbes"
+        },
+        "finish_reason": "length",
+        "logprobs": null
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 58,
+      "completion_tokens": 320,
+      "total_tokens": 378,
+      "prompt_tokens_details": {
+        "cached_tokens": 32,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 121,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 139,
+        "rejected_prediction_tokens": 0
+      },
+      "time_to_first_token_ms": 501.15765,
+      "response_token/s": 17.63349470596164
+    }
+  }
+}

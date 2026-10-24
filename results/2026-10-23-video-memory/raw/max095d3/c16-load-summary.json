@@ -1,0 +1,20 @@
+{
+  "rank1/memory.jsonl": {
+    "samples": 733,
+    "start_unix": 1792818653.7337255,
+    "end_unix": 1792820118.4113433,
+    "min_available_gib": 11.082969665527344,
+    "last_available_gib": 11.234195709228516,
+    "swap_growth_gib": -7.62939453125e-06,
+    "swap_out_gib": 0.0
+  },
+  "rank0/memory.jsonl": {
+    "samples": 733,
+    "start_unix": 1792818655.143347,
+    "end_unix": 1792820119.7386436,
+    "min_available_gib": 3.0443038940429688,
+    "last_available_gib": 6.653053283691406,
+    "swap_growth_gib": 2.6598129272460938,
+    "swap_out_gib": 12.312175750732422
+  }
+}

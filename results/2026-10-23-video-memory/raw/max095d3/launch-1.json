@@ -1,0 +1,33 @@
+{
+  "command": [
+    "bash",
+    "qwen-video-profiles-20261023/install/start-node.sh",
+    "--rank",
+    "1",
+    "--leader-address",
+    "10.100.112.1",
+    "--model-root",
+    "/home/enntitysparkadmin/.lloom/models",
+    "--image",
+    "atlas-sparkqwen:video-native7",
+    "--fabric-hca",
+    "rocep1s0f1",
+    "--fabric-interface",
+    "enp1s0f1np1",
+    "--no-fabric-siblings",
+    "--mode",
+    "spark",
+    "--profile",
+    "max-16x262k",
+    "--gpu-memory-utilization",
+    "0.95",
+    "--name",
+    "atlas-sparkqwen-video-rank1",
+    "--cuda-cache",
+    "/home/enntitysparkadmin/.cache/sparkqwen-020-cuda",
+    "--ple-cache",
+    "/home/enntitysparkadmin/.cache/sparkqwen-020-ple"
+  ],
+  "stdout": "1ebaea363d7ae5000f4e8de6a4d36407b1937ebea0a245fca5ea2f580fbd01c8\nstarted atlas-sparkqwen-video-rank1 (rank 1); follow with: docker logs -f atlas-sparkqwen-video-rank1\n",
+  "stderr": ""
+}

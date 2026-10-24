@@ -1,0 +1,40 @@
+{
+  "case": "order",
+  "status": 200,
+  "elapsed_s": 2.2421913146972656,
+  "response": {
+    "id": "chatcmpl-2fa2ba49-ee5b-4062-84b9-444dfd9cf779",
+    "object": "chat.completion",
+    "created": 1792811754,
+    "model": "qwen3.8-flash-next-atlas",
+    "system_fingerprint": "fp_atlas",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the images provided:\n\n**Background colors in order:**\n1. Red\n2. Green\n3. Blue\n\n**Which color lasts longest?**\nIt is impossible to determine which color lasts longest because the images are static and do not provide any information about duration or timing.\n\n**Estimated start time in seconds of each color:**\nIt is impossible to estimate the start time of each color because the images are static and do not provide any information about timing."
+        },
+        "finish_reason": "stop",
+        "logprobs": null
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 911,
+      "completion_tokens": 96,
+      "total_tokens": 1007,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 70,
+        "rejected_prediction_tokens": 0
+      },
+      "time_to_first_token_ms": 778.88554,
+      "response_token/s": 81.79517633387755
+    }
+  }
+}

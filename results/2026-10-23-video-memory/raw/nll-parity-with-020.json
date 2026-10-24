@@ -1,0 +1,17 @@
+{
+  "old": "0.2.0 package18-spark",
+  "new": "native4-saver070",
+  "same_request_bytes": true,
+  "logprob_fields": {
+    "tokens": true,
+    "token_logprobs": true,
+    "top_logprobs": true,
+    "text_offset": true
+  },
+  "array_lengths": {
+    "tokens": 27035,
+    "token_logprobs": 27035,
+    "top_logprobs": 27035,
+    "text_offset": 27035
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "max_tokens": 1024,
+  "messages": [
+    {
+      "content": "Call get_weather for Paris.",
+      "role": "user"
+    }
+  ],
+  "model": "qwen3.8-flash-next-atlas",
+  "stream": true,
+  "temperature": 0,
+  "tool_choice": {
+    "name": "get_weather",
+    "type": "tool"
+  },
+  "tools": [
+    {
+      "description": "Get the weather for a city.",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "city": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "city"
+        ],
+        "type": "object"
+      },
+      "name": "get_weather"
+    }
+  ]
+}

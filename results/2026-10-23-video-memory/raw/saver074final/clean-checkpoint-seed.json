@@ -1,0 +1,24 @@
+[
+  {
+    "host": "ennspark03",
+    "checkpoint_revision": "b9ce18a6887e18c089fdea8509a33e63429a3300",
+    "metadata_files_verified": 33,
+    "source": "/home/enntitysparkadmin/.lloom/models/nvidia--Qwen3.8-Flash-Next-FP4-Local",
+    "private_model_root": "/home/enntitysparkadmin/qwen-video-profiles-20261023/clean-model-root",
+    "weights_preseeded": true,
+    "private_hardlink_mirror": true,
+    "container_mount_readonly": true,
+    "download_not_repeated": true
+  },
+  {
+    "host": "ennspark04",
+    "checkpoint_revision": "b9ce18a6887e18c089fdea8509a33e63429a3300",
+    "metadata_files_verified": 33,
+    "source": "/home/enntitysparkadmin/.lloom/models/nvidia--Qwen3.8-Flash-Next-FP4-Local",
+    "private_model_root": "/home/enntitysparkadmin/qwen-video-profiles-20261023/clean-model-root",
+    "weights_preseeded": true,
+    "private_hardlink_mirror": true,
+    "container_mount_readonly": true,
+    "download_not_repeated": true
+  }
+]

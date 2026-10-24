@@ -1,0 +1,2 @@
+name, driver_version, memory.total [MiB], memory.used [MiB]
+NVIDIA GB10, 580.178.04, [N/A], [N/A]

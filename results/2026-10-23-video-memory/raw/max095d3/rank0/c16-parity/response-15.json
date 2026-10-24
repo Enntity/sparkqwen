@@ -1,0 +1,52 @@
+{
+  "index": 15,
+  "status": 200,
+  "start_unix": 1792818615.569332,
+  "end_unix": 1792818635.3392198,
+  "original_request_sha256": "fbde399d92f851bfdd563eee9e949fad009dbab784f3317e1c0dc71d9a4077ad",
+  "request_sha256": "0b0c3210dec7dfbf1926cf46c4f17e165d4bd9f1e24da011b524d326141b377a",
+  "only_request_change": "cache_salt",
+  "field_matches": {
+    "content": true,
+    "reasoning_content": true,
+    "tool_calls": true,
+    "finish_reason": true
+  },
+  "passed": true,
+  "response": {
+    "id": "chatcmpl-15b3bb74-8280-4cd6-812b-9eb6ef496bf7",
+    "object": "chat.completion",
+    "created": 1792818635,
+    "model": "qwen3.8-flash-next-atlas",
+    "system_fingerprint": "fp_atlas",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "reasoning_content": "The user wants an explanation of tides caused by the moon and sun, targeted at a curious teenager. I should write in paragraphs (not bullet points), keep the tone engaging and accessible without being condescending, and cover the key physics: gravitational pull, differential forces (tidal forces), the bulge on both sides of Earth, the sun's contribution, spring and neap tides. I want to make it feel like a cool conversation rather than a textbook entry.\n",
+          "content": "Imagine the Moon pulling on Earth like an invisible rope. That's basically what gravity does, but here's the twist that makes tides happen: the Moon doesn't pull on all of Earth equally. The side of Earth facing the Moon gets pulled a little harder than the center, and the center gets pulled a little harder than the far side. This difference in pull \u2014 called a tidal force \u2014 stretches Earth slightly, like taffy being pulled from both ends. The ocean, being a giant flexible blanket of water on Earth's surface, responds by bulging outward on the side facing the Moon.\n\nNow here's the part that trips a lot of people up: there's a second bulge on the *opposite* side of Earth, the side facing away from the Moon. This happens because the Moon's pull is weakest there, so the water on the far side is essentially \"left behind\" as the solid Earth gets tugged slightly toward the Moon. Think of it like this \u2014 if you're holding a stretchy ball and pull one side, the other side bulges outward too. So"
+        },
+        "finish_reason": "length",
+        "logprobs": null
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 62,
+      "completion_tokens": 320,
+      "total_tokens": 382,
+      "prompt_tokens_details": {
+        "cached_tokens": 32,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 95,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 144,
+        "rejected_prediction_tokens": 0
+      },
+      "time_to_first_token_ms": 810.148028,
+      "response_token/s": 17.614725406050905
+    }
+  }
+}

@@ -11,8 +11,11 @@ python3 examples/video.py demo.mp4 --prompt 'List the steps shown, with approxim
 ```
 
 The example uses Python's standard library. `--base-url` selects another
-OpenAI-compatible endpoint; `OPENAI_API_KEY` is optional for an authenticated
-proxy. The request's content list is:
+SparkQwen/Atlas-compatible endpoint; `OPENAI_API_KEY` is optional for an authenticated
+proxy. The example reports the finish reason and exits unsuccessfully for an
+incomplete answer. Its default request deadline is ten minutes; use
+`--timeout 3600` for a busy long-context queue, and increase `--max-tokens`
+when an answer hits its completion budget. The request's content list is:
 
 ```json
 [
@@ -35,7 +38,7 @@ use wider spacing to cover their full duration. Each pair of sampled frames
 becomes one temporal group, with an averaged source timestamp and its own
 vision-token range. An odd last frame is repeated to complete its group.
 
-Decoded frames are reduced to at most 640 × 640 pixels in area while
+FFmpeg-decoded frames are reduced to at most 409,600 pixels per frame,
 preserving their aspect ratio. The model sees those frames and timestamps.
 It does **not** listen to the soundtrack, transcribe speech, or process continuous motion between samples.
 Timestamps in answers are estimates; events shorter than the sampling interval
@@ -43,11 +46,13 @@ can be missed. This is not a frame-accurate search or tracking API.
 
 ## Bounds and errors
 
-Decoder subprocesses have a 60-second timeout. Frame count, decoded pixels, request media
+FFmpeg decoder subprocesses have a 60-second timeout. Frame count, decoded pixels, request media
 rows and in-flight vision rows are bounded. Oversized inputs receive a 400;
 vision admission pressure can return 503 with `Retry-After`. Invalid containers
 fail the request. Container formats and codecs depend on the bundled FFmpeg;
-the qualification receipts identify the formats actually exercised.
+the qualification receipts identify the formats actually exercised. GIFs use
+a separate in-process decoder without the FFmpeg watchdog. Variable-duration
+GIF sampling has not been qualified by the MP4 video battery.
 
 More frames consume vision memory and prompt tokens, reducing room for other
 requests. Custom profiles may change `--video-fps`, `--video-max-frames`, and

@@ -1,0 +1,8 @@
+{
+  "engine_commit": "170540e1fb43904d7cf16c79133e7228582d94ea",
+  "engine_tree": "af2dbe598c9ee83cf0949ae54ef7389ea3afbd63",
+  "install_tree": "1139c39624d056e0fdea49f60ede6d991c0d42c1",
+  "version": "0.3.0",
+  "image": "atlas-sparkqwen:video-native4",
+  "command": "cd ~/qwen-video-profiles-20261023 && docker build --build-arg BUILD_JOBS=4 --build-arg INSTALL_TREE=1139c39624d056e0fdea49f60ede6d991c0d42c1 --build-arg PRODUCT_VERSION=0.3.0 -f build-context/install/Dockerfile -t atlas-sparkqwen:video-native4 build-context > native4-build.log 2>&1"
+}

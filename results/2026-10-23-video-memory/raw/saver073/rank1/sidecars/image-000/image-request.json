@@ -1,0 +1,8 @@
+{
+  "model": "BennyDaBall/Qwen-Image-2.1-Turbo-NVFP4",
+  "prompt": "A small blue ceramic cup on a wooden desk in warm daylight, clean product photograph.",
+  "size": "1024x1024",
+  "n": 1,
+  "seed": 383685032496239,
+  "response_format": "b64_json"
+}

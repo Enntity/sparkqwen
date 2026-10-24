@@ -1,0 +1,38 @@
+**Sequence of events (approximate timestamps)**
+
+- **0 – ~3.5 s:** Solid dark‑red background filling the frame, with the white word **"RED"** in a sans‑serif font positioned left‑of‑center, vertically centered.
+- **~3.5 – ~5 s:** Background changes to solid dark **green**; the text changes to **"GREEN"** (white, same font/position, now wider to fit five letters).
+- **~5 – ~8 s:** Background changes to solid medium‑dark **blue**; the text changes to **"BLUE"** (white, same font/position).
+
+The text stays at the same vertical height and left margin throughout; only the color word and the background color change in lockstep (RED → GREEN → BLUE).
+
+**Direct observations**
+- Three distinct full‑frame color states, each paired with a matching color name written in white.
+- The color of the background always matches the meaning of the displayed word (a congruent Stroop‑style display, not an incongruent one).
+- Font, size, color of text, and text placement appear constant across all three states.
+- Changes appear as instantaneous cuts (no fade, slide, or morph is visible in the sampled frames).
+
+**Uncertainty / caveats**
+- Exact timestamps are estimates; frames are assumed evenly spaced across the clip, so the actual switch points (red→green and green→blue) could shift by a fraction of a second depending on the true frame rate and total duration.
+- Whether there is a single brief intermediate frame during each cut (e.g., a fade) cannot be confirmed from the sampled stills.
+- The precise hex values of red/green/blue and the exact font name are inferred from appearance, not measured.
+{
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 4741,
+    "completion_tokens": 791,
+    "total_tokens": 5532,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 415,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 496,
+      "rejected_prediction_tokens": 0
+    },
+    "time_to_first_token_ms": 3059.7129449999998,
+    "response_token/s": 31.182191175000554
+  }
+}

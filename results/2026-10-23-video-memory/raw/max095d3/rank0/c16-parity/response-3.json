@@ -1,0 +1,52 @@
+{
+  "index": 3,
+  "status": 200,
+  "start_unix": 1792818615.5649748,
+  "end_unix": 1792818631.033836,
+  "original_request_sha256": "392cc5d8b0f464fed6f3706a039db573c50ad01a8d9c693178d35d01a0016fe3",
+  "request_sha256": "47655eb6b6498d350f36529fca4e8e460c4ce7d007cca9d237c79336878f37f6",
+  "only_request_change": "cache_salt",
+  "field_matches": {
+    "content": true,
+    "reasoning_content": true,
+    "tool_calls": true,
+    "finish_reason": true
+  },
+  "passed": true,
+  "response": {
+    "id": "chatcmpl-bc391d53-4ac8-4b58-8a8a-8d28cddf8730",
+    "object": "chat.completion",
+    "created": 1792818631,
+    "model": "qwen3.8-flash-next-atlas",
+    "system_fingerprint": "fp_atlas",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "reasoning_content": "The user wants me to create a JSON object describing three fictional planets. I need to include the fields: name, radius_km, moons, and atmosphere. I'll create creative, fictional planets with varied and interesting properties.\n",
+          "content": "```json\n{\n  \"planets\": [\n    {\n      \"name\": \"Zytherion\",\n      \"radius_km\": 14200,\n      \"moons\": 7,\n      \"atmosphere\": \"Dense nitrogen-methane mix with bioluminescent cloud layers\"\n    },\n    {\n      \"name\": \"Vaelthorn\",\n      \"radius_km\": 6800,\n      \"moons\": 2,\n      \"atmosphere\": \"Thin carbon dioxide with trace sulfur compounds and perpetual amber haze\"\n    },\n    {\n      \"name\": \"Orrunath\",\n      \"radius_km\": 22500,\n      \"moons\": 14,\n      \"atmosphere\": \"Hydrogen-helium envelope with metallic hydrogen core and crystalline rain\"\n    }\n  ]\n}\n```"
+        },
+        "finish_reason": "stop",
+        "logprobs": null
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 58,
+      "completion_tokens": 250,
+      "total_tokens": 308,
+      "prompt_tokens_details": {
+        "cached_tokens": 48,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 44,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 116,
+        "rejected_prediction_tokens": 0
+      },
+      "time_to_first_token_ms": 784.238832,
+      "response_token/s": 18.040778179959446
+    }
+  }
+}
