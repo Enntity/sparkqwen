@@ -39,3 +39,12 @@ class CapacityProfiles(unittest.TestCase):
         self.assertEqual(argv[1], 'serve')
         with self.assertRaises(ValueError):
             serve.launch(dict(self.env, SPARKQWEN_DISPLAY_CARVEOUT='maybe'), p)
+
+    def test_hour_video_reserves_working_memory_and_reference_budget(self):
+        argv, env = serve.launch(dict(self.env, SPARKQWEN_MODE='spark'), load_profile('hour-video'))
+        for flag in ['--video-max-frames=7200', '--video-max-pixels=469762048',
+                     '--video-decode-timeout-s=600', '--vision-max-request-rows=229376',
+                     '--vision-max-inflight-rows=262144', '--gpu-memory-utilization=0.85',
+                     '--max-seq-len=262144', '--num-drafts=7']:
+            self.assertIn(flag, argv)
+        self.assertEqual(env['ATLAS_MAX_BODY_BYTES'], '268435456')
