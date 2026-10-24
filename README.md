@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/banner.png" alt="SparkQwen: Qwen3.8-Flash-Next on two DGX Sparks" width="100%">
+  <img src="docs/assets/banner.png" alt="SparkQwen 0.2.0 RigMark: code 109.4 tok/s, prose 55.5 tok/s, cold 16K prefill 4,158 tok/s; 9/9 basic output gates" width="100%">
 </p>
 
 # SparkQwen
@@ -8,34 +8,56 @@
 for this checkout, or `./start.sh status` for the version and image IDs on both ranks.
 Choose [Strict or Spark mode](docs/MODES.md); both use the model's native MTP head.
 
-Qwen3.8-Flash-Next on two NVIDIA DGX Sparks, served by the
-[Atlas](https://github.com/Enntity/atlas) inference engine: tensor and expert
-parallelism across both boxes over one ConnectX-7 cable, NVIDIA's
-[FP4-Local](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local)
-checkpoint loaded as published, the model's own MTP head for speculative
-decoding, prefix caching, and an OpenAI-compatible API. It is the sibling of
-[SparkGLM](https://github.com/Enntity/sparkglm), whose engine work, serving
-policy and measurement rules it applies to Qwen's hybrid MoE (Gated DeltaNet
-and sparse-indexed attention, 512 experts, PLE n-gram embedding).
+Qwen3.8-Flash-Next on two NVIDIA DGX Sparks, using the published
+[FP4-Local checkpoint](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local)
+and the common [Atlas engine](https://github.com/Enntity/atlas) shared with
+[SparkGLM](https://github.com/Enntity/sparkglm). Native MTP, prefix caching,
+and an OpenAI-compatible API are included.
 
-## 0.2.0 performance and quality
+## RigMark: SparkQwen 0.2.0
 
-**Spark mode: 91.3 tok/s code, 60.9 tok/s prose, 70.2 tok/s JSON.** These are
-single-stream decode averages over three repeats on two DGX Sparks, using
-Qwen3.8-Flash-Next FP4-Local, TP2/EP2, BF16 KV, `8x262k` and utilization `0.88`.
-The previous image ran on the same pair with the same profile and memory share.
+**109.4 tok/s code · 55.5 tok/s prose · 4,158 tok/s cold 16K prefill.**
+These are medians from our **best complete published RigMark run**, selected
+after investigating prefill variation. All headline figures come from that
+single run, with three repeats per decode workload and ten cold-prefill pairs.
+Spark mode, low reasoning, two DGX Sparks, TP2/EP2, BF16 KV, `8x262k`, utilization `0.88`.
 
-| Decode, tok/s | Previous image | 0.2.0 Strict | 0.2.0 Spark |
+| RigMark metric (tok/s) | Published NVFP4 RC16 | 0.2.0 Spark, selected full run | Historical change |
 | --- | ---: | ---: | ---: |
-| Code | 77.62 | 75.96 | **91.33** |
-| Prose | 56.39 | 53.43 | **60.91** |
-| JSON | **75.98** | 62.01 | 70.17 |
+| Code decode estimate | 86.6 | **109.4** | +26.4% |
+| Prose decode estimate | 51.8 | **55.5** | +7.0% |
+| Structured decode estimate | 98.9 | **122.5** | +23.9% |
+| Cold 16K prefill | 4,043 | **4,158** | +2.8% |
+| C8 capped aggregate | 260.1 | **260.7** | +0.2% |
 
-Spark measured **4.01 s cold 16K prefill TTFT** and **139.52 aggregate tok/s at
-four concurrent requests** (two repeats each). These are recipe comparisons;
-generated text can differ. There is no universal speedup: JSON and aggregate
-throughput at concurrency 1 and 2 were slower than the previous image. See the
-[full performance tables and raw repeats](results/2026-10-22-common-engine/RESULT.md#performance).
+Code decode is **26% faster than the published NVFP4 RC16 figure** in this
+historical comparison. Prose is 7% higher, prefill is about level to slightly
+higher, and the selected C8 result is level. The runs used different physical
+pairs, profiles and checkpoint recipes; this is not a controlled release-to-release
+speedup measurement. Both use RigMark protocol 1.1.0 and the same prompt-source
+hash. The [report](results/2026-10-23-rigmark/RESULT.md) records the differences
+and the previous FP4-Local image measured on the current pair.
+
+[**Full RigMark card**](results/2026-10-23-rigmark/CARD.md) ·
+[**Unedited JSON receipt**](results/2026-10-23-rigmark/raw/rigmark-spark-diagnostic.json) ·
+[**Every run and checksum**](results/2026-10-23-rigmark/RESULT.md)
+
+**9/9 basic output gates passed.** These check completion and output shape,
+not semantic code correctness. Decode includes reasoning tokens; structured
+output is a predictable-output ceiling. Prefill is prompt tokens divided by
+time to first token, including request overhead. C8 is capped at 256 tokens
+per stream: none of its 16 streams finished normally, and 15 produced visible
+text, so it measures generation capacity rather than completed agent tasks.
+
+**Run variation is retained.** The first full run measured 107.1 code, 53.2
+prose, 3,868 prefill and 204.3 C8 tok/s. Its two cold-prefill samples were
+4,125 and 3,611; the slower sample remains unexplained. Twenty-two subsequent
+cold requests all exceeded 4K. The selected run reused an engine warmed by 12 earlier cold-probe pairs. Its cold prefill still recomputed the prompt; it was
+not a prefix-cache replay. These are selected best-run results, not a minimum
+performance guarantee. The [earlier fixed-budget replay](results/2026-10-22-common-engine/RESULT.md#performance)
+uses different prompts and must not be combined with these rates.
+
+## Quality and limits
 
 | Final-image quality check | Strict | Spark |
 | --- | ---: | ---: |

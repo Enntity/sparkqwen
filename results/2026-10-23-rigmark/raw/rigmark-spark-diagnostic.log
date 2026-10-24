@@ -1,0 +1,64 @@
+decode/code: 3 runs
+  1: 105.2 tok/s, TTFT 0.232s, 1844 tokens
+  2: 109.4 tok/s, TTFT 0.216s, 1861 tokens
+  3: 110.7 tok/s, TTFT 0.191s, 1823 tokens
+decode/prose: 3 runs
+  1: 55.5 tok/s, TTFT 0.200s, 1285 tokens
+  2: 55.1 tok/s, TTFT 0.189s, 1298 tokens
+  3: 56.8 tok/s, TTFT 0.202s, 1117 tokens
+decode/structured: 3 runs
+  1: 121.6 tok/s, TTFT 0.191s, 607 tokens
+  2: 122.5 tok/s, TTFT 0.187s, 607 tokens
+  3: 123.9 tok/s, TTFT 0.185s, 607 tokens
+prefill/16384: 10 cold/immediate-replay pairs
+  1: cold 4151.4 tok/s (3.947s), warm 79069.2 tok/s (0.207s)
+  2: cold 4070.3 tok/s (4.025s), warm 74166.3 tok/s (0.221s)
+  3: cold 4161.7 tok/s (3.937s), warm 74798.1 tok/s (0.219s)
+  4: cold 4165.2 tok/s (3.934s), warm 81651.4 tok/s (0.201s)
+  5: cold 4162.3 tok/s (3.936s), warm 76068.8 tok/s (0.215s)
+  6: cold 4137.6 tok/s (3.960s), warm 79201.0 tok/s (0.207s)
+  7: cold 4137.1 tok/s (3.960s), warm 78611.6 tok/s (0.208s)
+  8: cold 4169.8 tok/s (3.929s), warm 82190.8 tok/s (0.199s)
+  9: cold 4159.5 tok/s (3.939s), warm 73444.5 tok/s (0.223s)
+  10: cold 4155.7 tok/s (3.943s), warm 72764.1 tok/s (0.225s)
+concurrency/1: 2 rounds of code
+  1: aggregate 71.7 tok/s, median stream 75.5 tok/s
+  2: aggregate 71.7 tok/s, median stream 75.5 tok/s
+concurrency/2: 2 rounds of code
+  1: aggregate 111.6 tok/s, median stream 60.1 tok/s
+  2: aggregate 115.1 tok/s, median stream 61.0 tok/s
+concurrency/4: 2 rounds of code
+  1: aggregate 184.7 tok/s, median stream 50.2 tok/s
+  2: aggregate 177.8 tok/s, median stream 48.9 tok/s
+concurrency/8: 2 rounds of code
+  1: aggregate 260.2 tok/s, median stream 37.5 tok/s
+  2: aggregate 261.1 tok/s, median stream 36.8 tok/s
+result: ../rigmark-spark-diagnostic.json
+card: ../rigmark-spark-diagnostic.card.txt
+
+╭──────────────────────────────────────────────────────────────────────────────────────────╮
+│  R I G M A R K   //   AGENT WORKLOAD RECEIPT                                             │
+│  BENCHMARKS LOCAL AI HOW CODING AGENTS ACTUALLY USE IT                                   │
+│  ●  9/9 BASIC OUTPUT GATES PASSED                                                        │
+├─ SYSTEM ─────────────────────────────────────────────────────────────────────────────────┤
+│  MODEL      qwen3.8-flash-next-atlas                                                     │
+│  APPLIANCE  2 x NVIDIA DGX Spark, GB10, 128 GB unified memory per appliance              │
+│  RUN        reasoning=low  •  protocol=1.1.0                                             │
+│  SOURCE     git:40fabcaf6e96  •  clean                                                   │
+├─ REAL OUTPUT ────────────────────────────────────────────────────────────────────────────┤
+│  WORKLOAD       DECODE EST.      LAST OUTPUT          RANGE          BASIC GATE          │
+│  CODE             109.4 tok/s      17.2s last    105.2–110.7    ✓ 3/3                    │
+│  PROSE             55.5 tok/s      23.3s last     55.1–56.8     ✓ 3/3                    │
+│  STRUCTURED*      122.5 tok/s       5.1s last    121.6–123.9    ✓ 3/3                    │
+│  * predictable-output ceiling; not a proxy for agent speed                               │
+├─ CONTEXT ────────────────────────────────────────────────────────────────────────────────┤
+│  16K PREFILL   cold 4,158 tok/s  •  immediate replay 77,340 tok/s                        │
+├─ CAPPED CONCURRENT GENERATION ───────────────────────────────────────────────────────────┤
+│  SHORT CODE • END-TO-END • 256-TOKEN CAP PER AGENT                                       │
+│  AGGREGATE   C1 71.7  •  C2 113.4  •  C4 181.2  •  C8 260.7 tok/s                        │
+│  C8 OUTPUT STATE   normal stop 0/16  •  visible 15/16  •  reasoning may be included      │
+├─ RECEIPT ────────────────────────────────────────────────────────────────────────────────┤
+│  JSON       sha256:c4d648793ea9f693…                                                     │
+│  SHARE THE CARD • LINK THE JSON RECEIPT • #RIGMARK                                       │
+│  github.com/alexellis/rigmark                                                            │
+╰──────────────────────────────────────────────────────────────────────────────────────────╯
