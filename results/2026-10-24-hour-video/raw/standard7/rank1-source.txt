@@ -1,0 +1,52 @@
+{
+  "schema": "sparkqwen.atlas-engine-source/v2",
+  "note": "Exact common Spark engine commit/tree. Integrates the SparkGLM and SparkQwen histories, F32 HC/PLE norms, literal tool-XML text handling and validated Strict/Spark native-MTP modes. Model-specific execution remains gated. Build and qualification receipts identify the tested product image separately.",
+  "repository": "https://github.com/Enntity/atlas.git",
+  "branch": "spark-shared",
+  "commit": "2837e761a7087a30884ea33eceb378368ef086e2",
+  "tree": "b8b8af1c4ee5182d47c1ee81991b95ae825347e3",
+  "layers": {
+    "atlas_inf_main_base": "7ffd183f210708d5b1afba1e046049f14ad498c7",
+    "glm_upstream_series": {
+      "branch": "upstream/atlas-shared-20261015-vision",
+      "commit": "236beb9043ff9c901d716cbd7a1996c4172778da",
+      "note": "The GLM-5.3-Flash series inside the shared engine layer (port, RC4 commits): the generic serving, scheduler, grammar, prefix-cache and RDMA pair-communication work; its GLM-only paths are gated by model type or kernel target and stay off for qwen4_exp."
+    },
+    "upstream_candidate": {
+      "branch": "upstream/atlas-shared-20261015-vision",
+      "commit": "a94648109f3c9a9a739e6cdf3d9630acaf45bac8",
+      "note": "The shared Spark engine layer (SparkGLM builds on it too): the GLM series, the Qwen3.8-Flash-Next series (476e2208), the model-independent RC16 commits (speculation == serial with one lowest-index tie rule, shared-prefix admission, loop steering, prefill burst, step trace), the refusal-content fix, batched prefix-cache eviction, the shared vision fixes (every tower encodes per chunk into per-sequence state, vision layout errors fail only their request, MRoPE positions from the whole prompt, vision markup in message text encodes as text) and the vision prefix cache for every tower and the shared-engine fixes."
+    },
+    "sparkqwen_only": {
+      "branch": "sparkqwen/atlas-20261017-vision",
+      "commit": "92dd5435d87535e240dec0f332bbfa4c68bc5740",
+      "note": "The SparkQwen layer (sparkqwen/atlas-20261015-vision, 1954e759) plus the FP4-Local series (sparkqwen/atlas-20261016-fp4local, 9f64bf6b: the lossless NVFP4-CSF scale decoder, exact MXFP8 -> BF16 loading, MXFP8 decode twins for the Gated DeltaNet and attention projections, W8A8 MXFP8 prefill through cuBLASLt, the packed NVFP4 PLE n-gram table, native NVFP4 MTP experts and the ViT's W4A16 linears) and the drafter series: the W8A8 review hardening (MXFP8 per-bucket kernels only on swept shapes, in-order split-K, install and bounds checks), queued first chunks behind prefills in flight (ATLAS_PREFILL_QUEUE_FIRST_CHUNK), the MTP drafter's KV over the target's verified rows and the prompt (ATLAS_QWEN4EXP_MTP_ABSORB, ATLAS_QWEN4EXP_MTP_PREFILL), a BF16 drafter router, the dynamic-depth decision window and copy drafts for the MTP lane (off). and the vision admission series (sparkqwen/atlas-20261017-vision, 92dd5435; sparkqwen#10): a Qwen encoder output window of one prefill chunk's items, per-request and in-flight vision-row limits checked from image headers before any decode (400 vision_input_too_large, 503 vision_capacity_busy with Retry-After), orientation-aware header probes, bounded decode memory, Qwen resizing only of images past the encoder bound, warm multi-chunk prompts splicing their own rows, and pixels released at prefill end. Commits marked `shared:` are model-independent and are candidates for the shared layer; they sit in this layer until it moves."
+    },
+    "common_engine": {
+      "commit": "2837e761a7087a30884ea33eceb378368ef086e2",
+      "tree": "b8b8af1c4ee5182d47c1ee81991b95ae825347e3",
+      "glm_parent": "471bdc5475f08722f8065250485cc49d16e793a3",
+      "qwen_parent": "e0213ed10ec474c490276e9fd0a8ad328292e283",
+      "note": "One common source tree with both product histories retained. Earlier layer entries above record historical provenance, not separate active engine copies.",
+      "qwen_merge": "d824cdc42b9e725beba47fa57653ee5f490ff013"
+    }
+  },
+  "kernel_target": "qwen3.8-flash-next",
+  "model_type": "qwen4_exp",
+  "license": "AGPL-3.0-only"
+}
+{
+  "schema": "sparkqwen.checkpoint/v1",
+  "repository": "nvidia/Qwen3.8-Flash-Next-FP4-Local",
+  "revision": "b9ce18a6887e18c089fdea8509a33e63429a3300",
+  "size_gib": 95.1,
+  "format": "ModelOpt MIXED_PRECISION, quantization-aware distilled: routed experts NVFP4 (group 16, lossless CSF-compressed block scales), Gated DeltaNet / attention / shared-expert projections MXFP8 (E4M3 + UE8M0 per 32), PLE n-gram embedding NVFP4, MTP experts W4A16 NVFP4, ViT MXFP8 + W4A16 NVFP4, lm_head and embeddings BF16",
+  "why": "NVIDIA's own quantization is preferred. Their FP4-Local release is distilled against the BF16 model (GPQA Diamond 91.5 vs 92.2, ToolEvalBench 88.7 vs 89.4 on its card), 28 GiB smaller than their post-training-quantized nvidia/Qwen3.8-Flash-Next-NVFP4 (fc694b54, 123.6 GiB, the RC16 default), and its MXFP8 backbone halves the bytes a decode step reads. The engine still loads the NVFP4 checkpoint.",
+  "served_model_name": "qwen3.8-flash-next-atlas",
+  "license": "other (NVIDIA Open Model Agreement per model card; base model under the Qwen Community License 1.0; check before redistributing)"
+}
+{
+  "_license": "SPDX-License-Identifier: AGPL-3.0-only",
+  "product": "SparkQwen",
+  "version": "0.3.0"
+}

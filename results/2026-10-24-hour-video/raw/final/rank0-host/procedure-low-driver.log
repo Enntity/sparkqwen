@@ -1,0 +1,1 @@
+{"http_status": 200, "elapsed_s": 18.811352968215942, "request_sha256": "3cf366dc7c243ac2d623d13dfa8ea01d54af616315ef07a4c8b48b34c7b3a8dd", "checks": {"order": true, "times": true, "stop": true}, "passed": true, "answers": {"order": ["load", "prepare", "operate", "inspect", "finish"], "starts_seconds": [0, 16, 32, 48, 62]}}

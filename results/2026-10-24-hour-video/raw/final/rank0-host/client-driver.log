@@ -1,0 +1,25 @@
+The colors appear in the following order:
+
+1. **RED** — approximately 0:00 to 0:03
+2. **GREEN** — approximately 0:04 to 0:05
+3. **BLUE** — approximately 0:06 to 0:08
+{
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 990,
+    "completion_tokens": 131,
+    "total_tokens": 1121,
+    "prompt_tokens_details": {
+      "cached_tokens": 32,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 62,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 94,
+      "rejected_prediction_tokens": 0
+    },
+    "time_to_first_token_ms": 788.421709,
+    "response_token/s": 65.50839202613147
+  }
+}

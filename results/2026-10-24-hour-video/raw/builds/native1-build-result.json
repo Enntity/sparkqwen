@@ -1,0 +1,9 @@
+{
+  "engine_commit": "c63b6feb695291587a81b28a2ed4a3975bd55a69",
+  "engine_tree": "b2064b7aa440e1d4fbbdff38790991891a679333",
+  "install_tree": "2c0db0661aaadd1ca071989579357f90579dd707",
+  "version": "0.3.0",
+  "image": "atlas-sparkqwen:hour-native1",
+  "command": "cd ~/qwen-hour-video-20261024 && docker build --build-arg BUILD_JOBS=4 --build-arg INSTALL_TREE=2c0db0661aaadd1ca071989579357f90579dd707 --build-arg PRODUCT_VERSION=0.3.0 -f build-context/install/Dockerfile -t atlas-sparkqwen:hour-native1 build-context > native1-build.log 2>&1",
+  "build_exit_code": 1
+}

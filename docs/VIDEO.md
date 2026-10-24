@@ -77,8 +77,8 @@ uses the [reference long-video setting](https://huggingface.co/Qwen/Qwen3.8-Flas
 it does not establish parity with the reference model's published video benchmark scores.
 
 The 0.85 memory-utilization setting reserves working memory for video pixels.
-A 1 GiB target bounds retained host snapshot data at prefill boundaries;
-in-flight and temporary buffers are separate. It is a separate profile from the
+A 1 GiB target reclaims retained host snapshot data at prefill boundaries;
+active snapshots can exceed that target, and temporary buffers are separate. It is a separate profile from the
 maximum-KV and sidecar recipes. Large videos
 share a bounded 262,144-row preprocessing budget; concurrent video requests
 can receive `503 vision_capacity_busy` with `Retry-After` while text requests

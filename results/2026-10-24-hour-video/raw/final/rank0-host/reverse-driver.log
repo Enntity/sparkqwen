@@ -1,0 +1,99 @@
+request reverse bytes 13472200 start 1792828143.3093572
+{
+  "fixture": "reverse.mp4",
+  "fixture_sha256": "1cc9f064a58d811999e7b0dd3c98278357efe229e19c697539142f446487eeaf",
+  "request_sha256": "07e71f39d77050089c77d1626ab350be63e65f93d479e7bc817d05077c881bec",
+  "start_unix": 1792828143.3093572,
+  "end_unix": 1792828368.9032753,
+  "elapsed_s": 225.54793643951416,
+  "http_status": 200,
+  "questions": {
+    "first_batch": "What batch code is shown at the beginning?",
+    "middle_batch": "What batch code is shown at about 32 minutes?",
+    "last_batch": "What batch code is shown in the final minute?",
+    "first_color": "What color are the objects in the first five minutes?",
+    "middle_shape": "What shape are the objects at about 32 minutes?",
+    "last_count": "How many large colored objects are shown in the final minute?",
+    "brief_symbols": "Two brief full-screen word cards interrupt the inventory. List their words in chronological order.",
+    "brief_times": "Give the approximate start time in seconds of each of those two brief word cards, in chronological order.",
+    "all_batches": "List the twelve batch codes in chronological order, excluding the brief interruptions.",
+    "last_status": "Does the final batch show PASS or HOLD?",
+    "horse_present": "Is a horse visible anywhere? Answer yes or no."
+  },
+  "checks": {
+    "first_batch": true,
+    "middle_batch": true,
+    "last_batch": true,
+    "first_color": true,
+    "middle_shape": true,
+    "last_count": true,
+    "last_status": true,
+    "horse_present": true,
+    "all_batches": true,
+    "brief_symbols": true,
+    "brief_times": true
+  },
+  "passed": true,
+  "scorer_revision": "v3: singular/plural shapes, seconds or colon timestamps, optional BATCH label; exact codes and unchanged +/-3s tolerance",
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 218781,
+    "completion_tokens": 958,
+    "total_tokens": 219739,
+    "prompt_tokens_details": {
+      "cached_tokens": 32,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 752,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 778,
+      "rejected_prediction_tokens": 0
+    },
+    "time_to_first_token_ms": 166784.394132,
+    "response_token/s": 81.61905971516528
+  },
+  "content": "{\n  \"first_batch\": \"BATCH FSED\",\n  \"middle_batch\": \"BATCH YZQK\",\n  \"last_batch\": \"BATCH MFBE\",\n  \"first_color\": \"gray\",\n  \"middle_shape\": \"triangle\",\n  \"last_count\": 1,\n  \"brief_symbols\": [\"STAR\", \"DIAMOND\"],\n  \"brief_times\": [1051, 3534],\n  \"all_batches\": [\"BATCH FSED\", \"BATCH JCQS\", \"BATCH DJPP\", \"BATCH SKNY\", \"BATCH YPAF\", \"BATCH XGXU\", \"BATCH YZQK\", \"BATCH ECQD\", \"BATCH RHJS\", \"BATCH NJFF\", \"BATCH THVB\", \"BATCH MFBE\"],\n  \"last_status\": \"HOLD\",\n  \"horse_present\": \"no\"\n}",
+  "answers": {
+    "first_batch": "BATCH FSED",
+    "middle_batch": "BATCH YZQK",
+    "last_batch": "BATCH MFBE",
+    "first_color": "gray",
+    "middle_shape": "triangle",
+    "last_count": 1,
+    "brief_symbols": [
+      "STAR",
+      "DIAMOND"
+    ],
+    "brief_times": [
+      1051,
+      3534
+    ],
+    "all_batches": [
+      "BATCH FSED",
+      "BATCH JCQS",
+      "BATCH DJPP",
+      "BATCH SKNY",
+      "BATCH YPAF",
+      "BATCH XGXU",
+      "BATCH YZQK",
+      "BATCH ECQD",
+      "BATCH RHJS",
+      "BATCH NJFF",
+      "BATCH THVB",
+      "BATCH MFBE"
+    ],
+    "last_status": "HOLD",
+    "horse_present": "no"
+  },
+  "expected": {
+    "first_batch": "FSED",
+    "middle_batch": "YZQK",
+    "last_batch": "MFBE",
+    "first_color": "gray",
+    "middle_shape": "triangle",
+    "last_count": 1,
+    "last_status": "HOLD",
+    "horse_present": "no"
+  }
+}

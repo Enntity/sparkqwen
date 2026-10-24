@@ -1,0 +1,11 @@
+{
+  "schema": "sparkqwen.registry-release/v1",
+  "version": "0.3.0",
+  "image": "ghcr.io/enntity/atlas-sparkqwen@sha256:21318576265668c539f03cc39a56ecbdc1a26a7404949e35191e10d996731e77",
+  "install_tree_tag": "ghcr.io/enntity/atlas-sparkqwen:6e749d152551",
+  "version_tag": "ghcr.io/enntity/atlas-sparkqwen:0.3.0",
+  "image_id": "sha256:21318576265668c539f03cc39a56ecbdc1a26a7404949e35191e10d996731e77",
+  "binary_sha256": "20106c8b07fc5c29c34fc19b33a2c6a989899a55eb2a976a53f6d2709803e06f",
+  "anonymous_pull_verified": true,
+  "source_release": "https://github.com/Enntity/sparkqwen/releases/tag/v0.3.0"
+}

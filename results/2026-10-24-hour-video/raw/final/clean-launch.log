@@ -1,0 +1,10 @@
+[1m== fabric: rocep1s0f1 (enp1s0f1np1, 10.100.112.1) here; rocep1s0f1 (enp1s0f1np1, 10.100.112.2) on enntitysparkadmin@10.100.112.2[0m
+[1m== image ghcr.io/enntity/atlas-sparkqwen:579bb7478246[0m
+[1m== start rank 1 on enntitysparkadmin@10.100.112.2, then rank 0 here (leader 10.100.112.1, profile hour-video, mode spark)[0m
+fad2465ff770994cd2f0316b46c20b869f5e7e750b16ac854402ba8dc2fd2153
+started atlas-sparkqwen-rank1 (rank 1); follow with: docker logs -f atlas-sparkqwen-rank1
+02913bca59dd5df1b56ebdd603ceb50dd0124753ff3c9b552bf8901694678968
+started atlas-sparkqwen-rank0 (rank 0); follow with: docker logs -f atlas-sparkqwen-rank0
+[1m== loading (a few minutes; the first start also compiles CUDA kernels)[0m
+[1m== ready: http://127.0.0.1:8893/v1 model qwen3.8-flash-next-atlas[0m
+smoke: 17*23 = 391

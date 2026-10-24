@@ -1,0 +1,283 @@
+{
+  "schema": "sparkqwen.release-qualification/v1",
+  "version": "0.3.0",
+  "status": "qualified-spark",
+  "tested_build_commit": "88b782c4ea49f6ef7aac4b37e7007bfb41df5c41",
+  "install_tree": "6e749d1525514fb55b24bc0ad21ebbfc25f5282d",
+  "engine_commit": "170540e1fb43904d7cf16c79133e7228582d94ea",
+  "engine_tree": "af2dbe598c9ee83cf0949ae54ef7389ea3afbd63",
+  "checkpoint": {
+    "schema": "sparkqwen.checkpoint/v1",
+    "repository": "nvidia/Qwen3.8-Flash-Next-FP4-Local",
+    "revision": "b9ce18a6887e18c089fdea8509a33e63429a3300",
+    "size_gib": 95.1,
+    "format": "ModelOpt MIXED_PRECISION, quantization-aware distilled: routed experts NVFP4 (group 16, lossless CSF-compressed block scales), Gated DeltaNet / attention / shared-expert projections MXFP8 (E4M3 + UE8M0 per 32), PLE n-gram embedding NVFP4, MTP experts W4A16 NVFP4, ViT MXFP8 + W4A16 NVFP4, lm_head and embeddings BF16",
+    "why": "NVIDIA's own quantization is preferred. Their FP4-Local release is distilled against the BF16 model (GPQA Diamond 91.5 vs 92.2, ToolEvalBench 88.7 vs 89.4 on its card), 28 GiB smaller than their post-training-quantized nvidia/Qwen3.8-Flash-Next-NVFP4 (fc694b54, 123.6 GiB, the RC16 default), and its MXFP8 backbone halves the bytes a decode step reads. The engine still loads the NVFP4 checkpoint.",
+    "served_model_name": "qwen3.8-flash-next-atlas",
+    "license": "other (NVIDIA Open Model Agreement per model card; base model under the Qwen Community License 1.0; check before redistributing)"
+  },
+  "image_id": "sha256:21318576265668c539f03cc39a56ecbdc1a26a7404949e35191e10d996731e77",
+  "binary_sha256": "20106c8b07fc5c29c34fc19b33a2c6a989899a55eb2a976a53f6d2709803e06f",
+  "native_source_tests": {
+    "passed": 8083,
+    "ignored": 255
+  },
+  "profiles": {
+    "max-16x262k": {
+      "mode": "spark",
+      "memory_utilization": 0.95,
+      "shared_kv_tokens": 3710480,
+      "mtp_depth": 3,
+      "snapshot_slots": 8,
+      "snapshot_aux_mib": 512,
+      "qualification": {
+        "submitted_near_full_context_requests": 16,
+        "normal_correct_completions": 16,
+        "wall_seconds": 1466.515750281047,
+        "cached_resume_tokens": 262064,
+        "exact_total_context_boundary": 262144,
+        "valid_overlapping_streams": 16,
+        "hd_video_passed": true,
+        "memory": {
+          "rank1/memory.jsonl": {
+            "samples": 733,
+            "start_unix": 1792818653.7337255,
+            "end_unix": 1792820118.4113433,
+            "min_available_gib": 11.082969665527344,
+            "last_available_gib": 11.234195709228516,
+            "swap_growth_gib": -7.62939453125e-06,
+            "swap_out_gib": 0.0
+          },
+          "rank0/memory.jsonl": {
+            "samples": 733,
+            "start_unix": 1792818655.143347,
+            "end_unix": 1792820119.7386436,
+            "min_available_gib": 3.0443038940429688,
+            "last_available_gib": 6.653053283691406,
+            "swap_growth_gib": 2.6598129272460938,
+            "swap_out_gib": 12.312175750732422
+          }
+        }
+      }
+    },
+    "saver-8x262k": {
+      "mode": "spark",
+      "memory_utilization": 0.74,
+      "shared_kv_tokens": 1979008,
+      "mtp_depth": 7,
+      "snapshot_aux_mib": 1024,
+      "heavy_trial": {
+        "candidate": "native6",
+        "same_effective_profile_as_release": true,
+        "submitted_near_full_context_requests": 7,
+        "normal_correct_completions": 7,
+        "wall_seconds": 821.9060265399748,
+        "cached_resume_tokens": 262064,
+        "exact_total_context_boundary": 262144,
+        "valid_overlapping_streams": 8,
+        "hd_video_passed": true,
+        "load": {
+          "rank1/sidecars/image-load.jsonl": {
+            "count": 18,
+            "passed": 18,
+            "seconds_min": 14.200125694274902,
+            "seconds_median": 15.15552818775177,
+            "seconds_max": 16.111330032348633,
+            "distinct_output_hashes": 18,
+            "failures": []
+          },
+          "rank0/sidecars/voice-load.jsonl": {
+            "count": 27,
+            "passed": 27,
+            "seconds_min": 4.395132064819336,
+            "seconds_median": 8.389009237289429,
+            "seconds_max": 17.94117259979248,
+            "distinct_output_hashes": 27,
+            "failures": []
+          },
+          "rank0/sidecars/embed-load.jsonl": {
+            "count": 27,
+            "passed": 27,
+            "seconds_min": 0.09957313537597656,
+            "seconds_median": 0.14800214767456055,
+            "seconds_max": 0.2418813705444336,
+            "distinct_output_hashes": 0,
+            "failures": []
+          },
+          "rank1/memory.jsonl": {
+            "samples": 411,
+            "start_unix": 1792817264.7356997,
+            "end_unix": 1792818085.181509,
+            "min_available_gib": 12.76418685913086,
+            "last_available_gib": 14.165267944335938,
+            "swap_growth_gib": 0.0,
+            "swap_out_gib": 0.0
+          },
+          "rank0/memory.jsonl": {
+            "samples": 410,
+            "start_unix": 1792817265.458028,
+            "end_unix": 1792818083.8813753,
+            "min_available_gib": 4.7473602294921875,
+            "last_available_gib": 7.1992950439453125,
+            "swap_growth_gib": 2.7697410583496094,
+            "swap_out_gib": 5.5649261474609375
+          }
+        }
+      },
+      "final_image_shared_kv_tokens": 1854912,
+      "final_image_canary": {
+        "near_full_request": {
+          "concurrency": 1,
+          "target_prompt_tokens": 262080,
+          "start_unix": 1792820389.6096058,
+          "end_unix": 1792820502.7191885,
+          "wall_s": 113.1095848280238,
+          "http_ok": 1,
+          "semantic_ok": 1,
+          "normal_completions": 1,
+          "cases": [
+            {
+              "index": 0,
+              "http_status": 200,
+              "elapsed_s": 113.10076146200299,
+              "prompt_tokens_counted": 262075,
+              "finish_reason": "stop",
+              "semantic_ok": true,
+              "request_sha256": "b256000524a902ed0d6582633f4d8eb12d641ccc08668e9f411dec661a5fbbb3"
+            }
+          ]
+        },
+        "cached_resume": 262064,
+        "overlap": {
+          "valid_streams": 8,
+          "peak_overlapping_output_intervals": 8,
+          "start_unix": 1792820504.0229053,
+          "end_unix": 1792820554.2203496,
+          "streams_exit": 0,
+          "video_exit": 0,
+          "command": [
+            "python3",
+            "stress_capture.py",
+            "capture",
+            "--base-url",
+            "http://127.0.0.1:8893",
+            "--model",
+            "qwen3.8-flash-next-atlas",
+            "--streams",
+            "8",
+            "--max-tokens",
+            "512",
+            "--prompt-tokens",
+            "2048",
+            "--stagger-ms",
+            "0",
+            "--prompt-style",
+            "field-guide",
+            "--cache-salt",
+            "saver074final-overlap",
+            "--engine-commit",
+            "170540e1fb43904d7cf16c79133e7228582d94ea",
+            "--output",
+            "saver074final/overlap/streams.json"
+          ]
+        },
+        "load": {
+          "rank1/sidecars/image-load.jsonl": {
+            "count": 6,
+            "passed": 6,
+            "seconds_min": 9.091701745986938,
+            "seconds_median": 14.220811128616333,
+            "seconds_max": 16.11998677253723,
+            "distinct_output_hashes": 6,
+            "failures": []
+          },
+          "rank0/sidecars/voice-load.jsonl": {
+            "count": 9,
+            "passed": 9,
+            "seconds_min": 3.1580874919891357,
+            "seconds_median": 8.256738424301147,
+            "seconds_max": 10.881826400756836,
+            "distinct_output_hashes": 9,
+            "failures": []
+          },
+          "rank0/sidecars/embed-load.jsonl": {
+            "count": 9,
+            "passed": 9,
+            "seconds_min": 0.10291552543640137,
+            "seconds_median": 0.1272289752960205,
+            "seconds_max": 0.20863914489746094,
+            "distinct_output_hashes": 0,
+            "failures": []
+          },
+          "rank1/memory.jsonl": {
+            "samples": 191,
+            "start_unix": 1792820390.692191,
+            "end_unix": 1792820770.846584,
+            "min_available_gib": 14.530380249023438,
+            "last_available_gib": 15.822086334228516,
+            "swap_growth_gib": -2.288818359375e-05,
+            "swap_out_gib": 0.0
+          },
+          "rank0/memory.jsonl": {
+            "samples": 192,
+            "start_unix": 1792820390.305417,
+            "end_unix": 1792820772.42371,
+            "min_available_gib": 7.663169860839844,
+            "last_available_gib": 8.799667358398438,
+            "swap_growth_gib": 1.9333839416503906,
+            "swap_out_gib": 2.8622703552246094
+          }
+        }
+      }
+    }
+  },
+  "final_image_video": {
+    "total": 12,
+    "passed": 12,
+    "failed": 0,
+    "failed_cases": []
+  },
+  "final_image_nll": {
+    "http_status": 200,
+    "elapsed_s": 34.48906993865967,
+    "request_sha256": "960026bdf022c54ecfdcd39f027d0af0d3f66f9dbf97aa0de4323809fb6d8c0d",
+    "same_request_bytes": true,
+    "reference": "native4-saver070 canonical (already exactly matched 0.2.0 Spark)",
+    "logprob_fields": {
+      "tokens": true,
+      "token_logprobs": true,
+      "top_logprobs": true,
+      "text_offset": true
+    },
+    "array_lengths": {
+      "tokens": 27035,
+      "token_logprobs": 27035,
+      "top_logprobs": 27035,
+      "text_offset": 27035
+    },
+    "scored_positions": 27033,
+    "nll": 0.9951030694174534,
+    "usage": {
+      "prompt_tokens": 27034,
+      "completion_tokens": 1,
+      "total_tokens": 27035,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      },
+      "time_to_first_token_ms": 34355.701091999996,
+      "response_token/s": 0.0
+    },
+    "passed": true
+  },
+  "clean_clone_launcher_smoke_passed": true,
+  "release_commit": "f158513505b8ba9be46fdea42c6ef3dc60dd9b3f",
+  "product_pr": "https://github.com/Enntity/sparkqwen/pull/23",
+  "source_release": "https://github.com/Enntity/sparkqwen/releases/tag/v0.3.0"
+}

@@ -1,0 +1,174 @@
+{
+  "native1": {
+    "engine": "c63b6feb695291587a81b28a2ed4a3975bd55a69",
+    "status": "rejected-native-test",
+    "failure": "7200-sample hour decoder returned7199 due to f32 final-target rounding",
+    "live_gpu_trial": false
+  },
+  "native2": {
+    "engine_commit": "fa8105685f209005fe722fd47729ad5ecf076dc7",
+    "engine_tree": "4690f950974cb67a041944084d1007bfb49b08ac",
+    "install_tree": "354e0a7e44ab37cc9dfa3b7b78e6327f62658e70",
+    "version": "0.3.0",
+    "image": "atlas-sparkqwen:hour-native2",
+    "command": "cd ~/qwen-hour-video-20261024 && docker build --build-arg BUILD_JOBS=4 --build-arg INSTALL_TREE=354e0a7e44ab37cc9dfa3b7b78e6327f62658e70 --build-arg PRODUCT_VERSION=0.3.0 -f build-context/install/Dockerfile -t atlas-sparkqwen:hour-native2 build-context > native2-build.log 2>&1",
+    "status": "rejected-test-fixture",
+    "fixes": [
+      "f64 timestamp filter with f32 rounding inset",
+      "reserve video rows before decode only with explicit aggregate pixel budget",
+      "apply aggregate budget to GIF",
+      "regress short legacy GIF and mixed image/video/image order"
+    ],
+    "decoder_hour_test": "7200/7200 passed",
+    "failure": "two newly added admission tests used invalid embedded GIF bytes; replaced with image-crate generated fixture"
+  },
+  "native3": {
+    "status": "rejected-flaky-test-fixture",
+    "change": "test-only generated GIF fixture",
+    "focused_admission_tests": "15/15 passed (Mac metal bin target)",
+    "failure": "timeout test got ETXTBSY executing just-written shell script under parallel native tests",
+    "admission_tests": "both new regressions passed natively",
+    "decoder_hour_test": "7200/7200 passed"
+  },
+  "native4": {
+    "engine_commit": "8fe99bfeee8e937046bad265f3b5609e186e8dc5",
+    "engine_tree": "3cf0310e426d6305bb3491f8e81c12d316aaaab8",
+    "install_tree": "847023683effea2afafb40a05f60648d9cadaeba",
+    "version": "0.3.0",
+    "image": "atlas-sparkqwen:hour-native4",
+    "command": "cd ~/qwen-hour-video-20261024 && docker build --build-arg BUILD_JOBS=4 --build-arg INSTALL_TREE=847023683effea2afafb40a05f60648d9cadaeba --build-arg PRODUCT_VERSION=0.3.0 -f build-context/install/Dockerfile -t atlas-sparkqwen:hour-native4 build-context > native4-build.log 2>&1",
+    "status": "rejected-lint",
+    "change": "factor production bounded probe reader and test with installed sleep executable",
+    "native_cpu_test_totals": [
+      8098,
+      0,
+      255
+    ],
+    "failure": "constant assertion in new grid capacity test must be const block"
+  },
+  "native5": {
+    "status": "qualified-runtime-before-profile-tuning",
+    "change": "test-only const assertion; runtime unchanged",
+    "native_cpu_tests": {
+      "passed": 8098,
+      "failed": 0,
+      "ignored": 255
+    },
+    "clippy": "passed",
+    "hour_seconds": 240.31513571739197,
+    "scorer_v1": "9/11; two semantically correct answer formats rejected",
+    "scorer_v2": "11/11; plural shape and MM:SS accepted, original response retained",
+    "text_canaries": {
+      "passed": 14,
+      "total": 14,
+      "max_latency_s": 153.91009759902954
+    },
+    "backpressure": "503 vision_capacity_busy Retry-After2",
+    "profile_max_prefill_tokens": 16384
+  },
+  "native6": {
+    "status": "rejected-for-retained-snapshot-pressure",
+    "change": "hour profile max-prefill-tokens4096 retains batched vision encoding",
+    "engine_unchanged": true,
+    "binary_unchanged": true,
+    "native_cpu_tests": {
+      "passed": 8098,
+      "failed": 0,
+      "ignored": 255
+    },
+    "clippy": "passed",
+    "inventory_seconds": 227.83614778518677,
+    "reverse_seconds": 227.35545468330383,
+    "semantic_checks": "11/11 each with documented answer-format normalization; original responses and scores retained",
+    "short_video": {
+      "passed": 10,
+      "total": 12,
+      "failures": [
+        "concurrent distinct videos: conservative hour-profile admission returns503",
+        "nonthinking low-resolution procedure: two inaccurate timestamps; same request low reasoning passed"
+      ]
+    },
+    "nll": "bit-identical canonical full arrays",
+    "minimum_available_gib": [
+      1.536,
+      11.899
+    ],
+    "net_swap_growth_gib": [
+      3.275,
+      0
+    ],
+    "next_change": "Set existing snapshot auxiliary target to1024MiB; retain0.85 utilization. Final candidate also fixes odd frame-cap conservative reservation."
+  },
+  "standard6": {
+    "status": "passed",
+    "short_video_passed": 12,
+    "short_video_total": 12,
+    "profile": "8x262k",
+    "image": "native6"
+  },
+  "native7": {
+    "status": "qualified-spark",
+    "native_cpu_tests": {
+      "passed": 8099,
+      "failed": 0,
+      "ignored": 255
+    },
+    "clippy": "passed",
+    "change": "Round odd frame caps before reservation; hour profile retained snapshot auxiliary1024MiB",
+    "clean_launcher_fixture_retry": "Prior campaign private weight mirror no longer existed. Created new private hardlink mirror after verifying cached HF metadata; no product change.",
+    "hour_requests": {
+      "inventory": {
+        "seconds": 225.49840760231018,
+        "checks_passed": 11,
+        "checks_total": 11
+      },
+      "warm": {
+        "seconds": 66.20039868354797,
+        "checks_passed": 11,
+        "checks_total": 11
+      },
+      "reverse": {
+        "seconds": 225.54793643951416,
+        "checks_passed": 11,
+        "checks_total": 11
+      }
+    },
+    "memory": {
+      "0": {
+        "samples": 328,
+        "start_unix": 1792827793.9708762,
+        "end_unix": 1792828448.2005916,
+        "min_available_gib": 6.329631805419922,
+        "last_available_gib": 12.457538604736328,
+        "net_swap_growth_gib": 2.3706893920898438,
+        "swap_out_gib": 3.6990699768066406,
+        "oom_events": {
+          "oom": 0,
+          "oom_kill": 0,
+          "oom_group_kill": 0
+        }
+      },
+      "1": {
+        "samples": 328,
+        "start_unix": 1792827794.3431613,
+        "end_unix": 1792828448.624308,
+        "min_available_gib": 18.426563262939453,
+        "last_available_gib": 18.532459259033203,
+        "net_swap_growth_gib": 0.0,
+        "swap_out_gib": 0.0,
+        "oom_events": {
+          "oom": 0,
+          "oom_kill": 0,
+          "oom_group_kill": 0
+        }
+      }
+    },
+    "short_video": {
+      "total": 12,
+      "passed": 12,
+      "failed": 0,
+      "failed_cases": []
+    },
+    "canonical_nll_exact": true
+  }
+}

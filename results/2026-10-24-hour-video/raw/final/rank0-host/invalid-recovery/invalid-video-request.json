@@ -1,0 +1,1 @@
+{"model": "qwen3.8-flash-next-atlas", "messages": [{"role": "user", "content": [{"type": "video_url", "video_url": {"url": "data:video/mp4;base64,bm90IGEgdmlkZW8="}}, {"type": "text", "text": "Describe this."}]}], "max_tokens": 128}

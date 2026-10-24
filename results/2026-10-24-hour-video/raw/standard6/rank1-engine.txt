@@ -1,0 +1,846 @@
+{"event": "atlas-recipe-start", "product": "SparkQwen", "version": "0.3.0", "engine_commit": "d873e3c93094cae177532c0a1df6b27410c811f5", "engine_tree": "0ae4f11eaafa777a52965126a761a336594de302", "rank": "1", "profile": "8x262k", "mode": "spark", "opt_ins": [], "source": "https://github.com/Enntity/atlas.git@d873e3c93094cae177532c0a1df6b27410c811f5"}
+[2m2026-10-24T07:32:43.584560Z[0m [32m INFO[0m [2mspark::main_modules::serve[0m[2m:[0m Atlas Spark starting...
+[2m2026-10-24T07:32:43.584593Z[0m [32m INFO[0m [2mspark::main_modules::serve[0m[2m:[0m Licensed under AGPL-3.0-only — see /LICENSE in this container
+[2m2026-10-24T07:32:43.584677Z[0m [32m INFO[0m [2mspark::main_modules::serve_flags[0m[2m:[0m kernel flags: ssm_h_dtype=f32 gdn_fused_norm=false ssm_batched_recurrent=false exact_verify=false ssm_tail_midchunk=true mtp_gate=force ssm_rollback_mode=Snapshot prefill_varlen_batch=false
+[2m2026-10-24T07:32:43.584701Z[0m [32m INFO[0m [2mspark::model_resolver[0m[2m:[0m Model path: /home/enntitysparkadmin/.lloom/models/nvidia--Qwen3.8-Flash-Next-FP4-Local (local directory)
+[2m2026-10-24T07:32:43.584704Z[0m [32m INFO[0m [2mspark::main_modules::serve_load[0m[2m:[0m Port: 8894
+[2m2026-10-24T07:32:43.584706Z[0m [32m INFO[0m [2mspark::main_modules::serve_load[0m[2m:[0m SSM decode h-state dtype: f32 (full precision) (--ssm-h-dtype)
+[2m2026-10-24T07:32:43.586688Z[0m [32m INFO[0m [2mspark::main_modules::processor_pixels[0m[2m:[0m Vision Image bounds DeclaredPixels { min_pixels: Some(65536), max_pixels: 16777216 } from /home/enntitysparkadmin/.lloom/models/nvidia--Qwen3.8-Flash-Next-FP4-Local/preprocessor_config.json
+[2m2026-10-24T07:32:43.587105Z[0m [32m INFO[0m [2mspark::main_modules::processor_pixels[0m[2m:[0m Vision Video bounds DeclaredPixels { min_pixels: Some(4096), max_pixels: 25165824 } from /home/enntitysparkadmin/.lloom/models/nvidia--Qwen3.8-Flash-Next-FP4-Local/video_preprocessor_config.json
+[2m2026-10-24T07:32:43.587119Z[0m [32m INFO[0m [2mspark::main_modules::serve_load[0m[2m:[0m Vision pixel budget: 16777216 px (checkpoint processor config / ATLAS_VISION_MAX_PIXELS)
+[2m2026-10-24T07:32:43.587122Z[0m [32m INFO[0m [2mspark::main_modules::serve_load[0m[2m:[0m Remote image fetching disabled (default); image_url parts carrying an http(s) URL are refused with a 400. Send base64 data: URIs, or pass --vision-allow-remote-images.
+[2m2026-10-24T07:32:43.741548Z[0m [32m INFO[0m [2mspark::main_modules::serve_load[0m[2m:[0m Video decoding ENABLED via ffmpeg (ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers); sampling at 2 fps, max 128 frames
+[2m2026-10-24T07:32:43.741563Z[0m [32m INFO[0m [2mspark::main_modules::serve_load[0m[2m:[0m Quantization config: method="modelopt", algo="MIXED_PRECISION", format="", 10 module(s) in ignore list
+[2m2026-10-24T07:32:43.741566Z[0m [32m INFO[0m [2mspark::main_modules::serve_load[0m[2m:[0m Model config: 48 layers, 12 attention, 36 SSM, 512 experts, rope_theta=10000000, head_dim=256, rotary_dim=64
+[2m2026-10-24T07:32:43.741589Z[0m [32m INFO[0m [2mspark::main_modules::serve_load[0m[2m:[0m Selected kernel target: (sm_121, qwen3.8-flash-next, nvfp4) (229 modules) — quant compat: kernel=nvfp4 model=nvfp4 OK
+[2m2026-10-24T07:32:43.741611Z[0m [32m INFO[0m [2mspark::main_modules::serve_phases::config[0m[2m:[0m num_drafts: 7 (K=8) from --num-drafts, overriding MODEL.toml default_num_drafts=1
+[2m2026-10-24T07:32:43.741632Z[0m [32m INFO[0m [2mspark::main_modules::serve_phases::topology[0m[2m:[0m TP-local head counts: num_attention_heads=12, num_key_value_heads=1, linear_num_key_heads=8, linear_num_value_heads=24
+[2m2026-10-24T07:32:43.741634Z[0m [32m INFO[0m [2mspark::main_modules::serve_phases::topology[0m[2m:[0m Parallelism: global rank 1/2 (tp_rank=1/2, ep_rank=1/2), local experts [256, 512), expert TP false
+[2m2026-10-24T07:32:44.436465Z[0m [32m INFO[0m [2mspark_runtime::cuda_backend[0m[2m:[0m AtlasCudaBackend initialized on GPU 0 with 229 PTX modules
+[2m2026-10-24T07:32:44.452068Z[0m [32m INFO[0m [2mspark::main_modules::serve_phases::preflight::gpu_init[0m[2m:[0m BF16 GEMM fallback installed (gemv<=8 / pipelined WMMA / scalar) for backends without cuBLASLt
+[2m2026-10-24T07:32:44.452119Z[0m [32m INFO[0m [2mspark::main_modules::serve_phases::preflight::gpu_init[0m[2m:[0m GPU 0: 121.7 GB total, 116.7 GB free
+[2m2026-10-24T07:32:44.452142Z[0m [32m INFO[0m [2mspark::main_modules::serve_phases::preflight[0m[2m:[0m Preflight reserve: inference=4451 MB, buffer_arena=4941 MB (pre-load free: 116.7 GB)
+[2m2026-10-24T07:32:44.452154Z[0m [32m INFO[0m [2mspark::main_modules::serve_load[0m[2m:[0m OOM watchdog started (threshold: 2 GB, interval: 2s)
+[2m2026-10-24T07:32:44.452160Z[0m [32m INFO[0m [2mspark::main_modules::serve_phases::kv_cache[0m[2m:[0m Prefill config: ssm_prefill_chunk=16384, args.max_prefill_tokens=16384, prefill_budget=16384, max_batch_tokens=16392
+[2m2026-10-24T07:32:44.452164Z[0m [32m INFO[0m [2mspark::main_modules::serve_load[0m[2m:[0m OOM guard reserve: 4096 MB
+[2m2026-10-24T07:32:44.452202Z[0m [32m INFO[0m [2mspark::main_modules::serve_phases::weights[0m[2m:[0m Using fast weight loader (O_DIRECT + pipelined read/copy)
+[2m2026-10-24T07:32:44.452204Z[0m [32m INFO[0m [2mspark::main_modules::serve_phases::weights[0m[2m:[0m Demand-paged (never resident, read by row at use time): [".ple.ple_embedding.ngram_embedding.shard_"]
+[2m2026-10-24T07:32:44.452206Z[0m [32m INFO[0m [2mspark::main_modules::serve_phases::weights[0m[2m:[0m Fast weight loader shard prefetch/readahead enabled
+[2m2026-10-24T07:32:45.689305Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m Fast-load pre-flight: 38.51 GB on-disk, 1.2x overhead = 46.21 GB peak, 116.47 GB free, 4.0 GB reserve (FP8: false)
+[2m2026-10-24T07:32:45.796248Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m Fast-loading shard 1/21: model-00001-of-00021.safetensors (8740 tensors)
+[2m2026-10-24T07:32:46.119690Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m   Shard 1/21 done — GPU memory: 3.16 GB used, 113.31 GB free
+[2m2026-10-24T07:32:46.120557Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m Fast-loading shard 2/21: model-00002-of-00021.safetensors (22908 tensors)
+[2m2026-10-24T07:32:46.166943Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m   Shard 2/21 done — GPU memory: 3.16 GB used, 113.31 GB free
+[2m2026-10-24T07:32:46.168736Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m Fast-loading shard 3/21: model-00003-of-00021.safetensors (22908 tensors)
+[2m2026-10-24T07:32:46.219473Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m   Shard 3/21 done — GPU memory: 3.16 GB used, 113.31 GB free
+[2m2026-10-24T07:32:46.221306Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m Fast-loading shard 4/21: model-00004-of-00021.safetensors (22908 tensors)
+[2m2026-10-24T07:32:46.278466Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m   Shard 4/21 done — GPU memory: 3.16 GB used, 113.31 GB free
+[2m2026-10-24T07:32:46.280273Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m Fast-loading shard 5/21: model-00005-of-00021.safetensors (22908 tensors)
+[2m2026-10-24T07:32:46.342065Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m   Shard 5/21 done — GPU memory: 3.16 GB used, 113.31 GB free
+[2m2026-10-24T07:32:46.343988Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m Fast-loading shard 6/21: model-00006-of-00021.safetensors (22908 tensors)
+[2m2026-10-24T07:32:46.407728Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m   Shard 6/21 done — GPU memory: 3.16 GB used, 113.31 GB free
+[2m2026-10-24T07:32:46.409753Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m Fast-loading shard 7/21: model-00007-of-00021.safetensors (22908 tensors)
+[2m2026-10-24T07:32:46.476102Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m   Shard 7/21 done — GPU memory: 3.16 GB used, 113.31 GB free
+[2m2026-10-24T07:32:46.478150Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m Fast-loading shard 8/21: model-00008-of-00021.safetensors (22908 tensors)
+[2m2026-10-24T07:32:46.539705Z[0m [32m INFO[0m [2mspark_runtime::fast_weights::shard[0m[2m:[0m   Shard has 16552 tensors (> 5000 cap) — using buffered+pipelined path
+[2m2026-10-24T07:32:46.539742Z[0m [32m INFO[0m [2mspark_runtime::fast_weights::shard[0m[2m:[0m   NFS/shard prefetch requested for /home/enntitysparkadmin/.lloom/models/nvidia--Qwen3.8-Flash-Next-FP4-Local/tensors/model-00008-of-00021.safetensors (4.66 GB)
+[2m2026-10-24T07:32:47.905980Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m   Shard 8/21 done — GPU memory: 7.27 GB used, 109.20 GB free
+[2m2026-10-24T07:32:47.908276Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m Fast-loading shard 9/21: model-00009-of-00021.safetensors (22908 tensors)
+[2m2026-10-24T07:32:47.966607Z[0m [32m INFO[0m [2mspark_runtime::fast_weights::shard[0m[2m:[0m   Shard has 22908 tensors (> 5000 cap) — using buffered+pipelined path
+[2m2026-10-24T07:32:47.966654Z[0m [32m INFO[0m [2mspark_runtime::fast_weights::shard[0m[2m:[0m   NFS/shard prefetch requested for /home/enntitysparkadmin/.lloom/models/nvidia--Qwen3.8-Flash-Next-FP4-Local/tensors/model-00009-of-00021.safetensors (4.66 GB)
+[2m2026-10-24T07:32:50.054218Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m   Shard 9/21 done — GPU memory: 12.93 GB used, 103.54 GB free
+[2m2026-10-24T07:32:50.056423Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m Fast-loading shard 10/21: model-00010-of-00021.safetensors (22908 tensors)
+[2m2026-10-24T07:32:50.115120Z[0m [32m INFO[0m [2mspark_runtime::fast_weights::shard[0m[2m:[0m   Shard has 22908 tensors (> 5000 cap) — using buffered+pipelined path
+[2m2026-10-24T07:32:50.115157Z[0m [32m INFO[0m [2mspark_runtime::fast_weights::shard[0m[2m:[0m   NFS/shard prefetch requested for /home/enntitysparkadmin/.lloom/models/nvidia--Qwen3.8-Flash-Next-FP4-Local/tensors/model-00010-of-00021.safetensors (4.66 GB)
+[2m2026-10-24T07:32:52.016946Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m   Shard 10/21 done — GPU memory: 18.68 GB used, 97.80 GB free
+[2m2026-10-24T07:32:52.018726Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m Fast-loading shard 11/21: model-00011-of-00021.safetensors (22908 tensors)
+[2m2026-10-24T07:32:52.068845Z[0m [32m INFO[0m [2mspark_runtime::fast_weights::shard[0m[2m:[0m   Shard has 22908 tensors (> 5000 cap) — using buffered+pipelined path
+[2m2026-10-24T07:32:52.068880Z[0m [32m INFO[0m [2mspark_runtime::fast_weights::shard[0m[2m:[0m   NFS/shard prefetch requested for /home/enntitysparkadmin/.lloom/models/nvidia--Qwen3.8-Flash-Next-FP4-Local/tensors/model-00011-of-00021.safetensors (4.66 GB)
+[2m2026-10-24T07:32:54.061780Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m   Shard 11/21 done — GPU memory: 24.46 GB used, 92.01 GB free
+[2m2026-10-24T07:32:54.063515Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m Fast-loading shard 12/21: model-00012-of-00021.safetensors (22908 tensors)
+[2m2026-10-24T07:32:54.111241Z[0m [32m INFO[0m [2mspark_runtime::fast_weights::shard[0m[2m:[0m   Shard has 22908 tensors (> 5000 cap) — using buffered+pipelined path
+[2m2026-10-24T07:32:54.111273Z[0m [32m INFO[0m [2mspark_runtime::fast_weights::shard[0m[2m:[0m   NFS/shard prefetch requested for /home/enntitysparkadmin/.lloom/models/nvidia--Qwen3.8-Flash-Next-FP4-Local/tensors/model-00012-of-00021.safetensors (4.66 GB)
+[2m2026-10-24T07:32:55.966567Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m   Shard 12/21 done — GPU memory: 30.23 GB used, 86.24 GB free
+[2m2026-10-24T07:32:55.968514Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m Fast-loading shard 13/21: model-00013-of-00021.safetensors (22908 tensors)
+[2m2026-10-24T07:32:56.017775Z[0m [32m INFO[0m [2mspark_runtime::fast_weights::shard[0m[2m:[0m   Shard has 22908 tensors (> 5000 cap) — using buffered+pipelined path
+[2m2026-10-24T07:32:56.017812Z[0m [32m INFO[0m [2mspark_runtime::fast_weights::shard[0m[2m:[0m   NFS/shard prefetch requested for /home/enntitysparkadmin/.lloom/models/nvidia--Qwen3.8-Flash-Next-FP4-Local/tensors/model-00013-of-00021.safetensors (4.66 GB)
+[2m2026-10-24T07:32:58.025517Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m   Shard 13/21 done — GPU memory: 36.02 GB used, 80.45 GB free
+[2m2026-10-24T07:32:58.027419Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m Fast-loading shard 14/21: model-00014-of-00021.safetensors (16365 tensors)
+[2m2026-10-24T07:32:58.063522Z[0m [32m INFO[0m [2mspark_runtime::fast_weights::shard[0m[2m:[0m   Shard has 16365 tensors (> 5000 cap) — using buffered+pipelined path
+[2m2026-10-24T07:32:58.063559Z[0m [32m INFO[0m [2mspark_runtime::fast_weights::shard[0m[2m:[0m   NFS/shard prefetch requested for /home/enntitysparkadmin/.lloom/models/nvidia--Qwen3.8-Flash-Next-FP4-Local/tensors/model-00014-of-00021.safetensors (4.51 GB)
+[2m2026-10-24T07:33:00.085140Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m   Shard 14/21 done — GPU memory: 41.35 GB used, 75.12 GB free
+[2m2026-10-24T07:33:00.086452Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m Fast-loading shard 15/21: model-00015-of-00021.safetensors (75241 tensors)
+[2m2026-10-24T07:33:00.200014Z[0m [32m INFO[0m [2mspark_runtime::fast_weights::shard[0m[2m:[0m Deferred 73740 tensor(s) in /home/enntitysparkadmin/.lloom/models/nvidia--Qwen3.8-Flash-Next-FP4-Local/tensors/model-00015-of-00021.safetensors — served from disk, not uploaded
+[2m2026-10-24T07:33:00.757695Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m   Shard 15/21 done — GPU memory: 45.17 GB used, 71.30 GB free
+[2m2026-10-24T07:33:00.760704Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m Fast-loading shard 16/21: model-00016-of-00021.safetensors (45 tensors)
+[2m2026-10-24T07:33:00.761877Z[0m [32m INFO[0m [2mspark_runtime::fast_weights::shard[0m[2m:[0m Deferred 44 tensor(s) in /home/enntitysparkadmin/.lloom/models/nvidia--Qwen3.8-Flash-Next-FP4-Local/tensors/model-00016-of-00021.safetensors — served from disk, not uploaded
+[2m2026-10-24T07:33:00.762643Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m   Shard 16/21 done — GPU memory: 45.17 GB used, 71.30 GB free
+[2m2026-10-24T07:33:00.762667Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m Fast-loading shard 17/21: model-00017-of-00021.safetensors (44 tensors)
+[2m2026-10-24T07:33:00.762783Z[0m [32m INFO[0m [2mspark_runtime::fast_weights::shard[0m[2m:[0m Deferred 44 tensor(s) in /home/enntitysparkadmin/.lloom/models/nvidia--Qwen3.8-Flash-Next-FP4-Local/tensors/model-00017-of-00021.safetensors — served from disk, not uploaded
+[2m2026-10-24T07:33:00.763202Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m   Shard 17/21 done — GPU memory: 45.17 GB used, 71.30 GB free
+[2m2026-10-24T07:33:00.763221Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m Fast-loading shard 18/21: model-00018-of-00021.safetensors (44 tensors)
+[2m2026-10-24T07:33:00.763332Z[0m [32m INFO[0m [2mspark_runtime::fast_weights::shard[0m[2m:[0m Deferred 44 tensor(s) in /home/enntitysparkadmin/.lloom/models/nvidia--Qwen3.8-Flash-Next-FP4-Local/tensors/model-00018-of-00021.safetensors — served from disk, not uploaded
+[2m2026-10-24T07:33:00.763916Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m   Shard 18/21 done — GPU memory: 45.17 GB used, 71.30 GB free
+[2m2026-10-24T07:33:00.763935Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m Fast-loading shard 19/21: model-00019-of-00021.safetensors (44 tensors)
+[2m2026-10-24T07:33:00.764034Z[0m [32m INFO[0m [2mspark_runtime::fast_weights::shard[0m[2m:[0m Deferred 44 tensor(s) in /home/enntitysparkadmin/.lloom/models/nvidia--Qwen3.8-Flash-Next-FP4-Local/tensors/model-00019-of-00021.safetensors — served from disk, not uploaded
+[2m2026-10-24T07:33:00.764313Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m   Shard 19/21 done — GPU memory: 45.17 GB used, 71.30 GB free
+[2m2026-10-24T07:33:00.764331Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m Fast-loading shard 20/21: model-00020-of-00021.safetensors (44 tensors)
+[2m2026-10-24T07:33:00.764427Z[0m [32m INFO[0m [2mspark_runtime::fast_weights::shard[0m[2m:[0m Deferred 44 tensor(s) in /home/enntitysparkadmin/.lloom/models/nvidia--Qwen3.8-Flash-Next-FP4-Local/tensors/model-00020-of-00021.safetensors — served from disk, not uploaded
+[2m2026-10-24T07:33:00.764812Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m   Shard 20/21 done — GPU memory: 45.17 GB used, 71.30 GB free
+[2m2026-10-24T07:33:00.764832Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m Fast-loading shard 21/21: model-00021-of-00021.safetensors (24 tensors)
+[2m2026-10-24T07:33:00.764890Z[0m [32m INFO[0m [2mspark_runtime::fast_weights::shard[0m[2m:[0m Deferred 24 tensor(s) in /home/enntitysparkadmin/.lloom/models/nvidia--Qwen3.8-Flash-Next-FP4-Local/tensors/model-00021-of-00021.safetensors — served from disk, not uploaded
+[2m2026-10-24T07:33:00.765254Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m   Shard 21/21 done — GPU memory: 45.17 GB used, 71.30 GB free
+[2m2026-10-24T07:33:00.777195Z[0m [32m INFO[0m [2mspark_runtime::weights::nvfp4_csf::assembler[0m[2m:[0m Decoded 36864 CSF NVFP4 scale matrices: 1.85 GiB compressed -> 3.52 GiB E4M3 in 0.39 s on the load thread
+[2m2026-10-24T07:33:00.781632Z[0m [32m INFO[0m [2mspark_runtime::fast_weights[0m[2m:[0m Fast-loaded 112546 weight tensors
+[2m2026-10-24T07:33:00.834489Z[0m [32m INFO[0m [2mspark::main_modules::serve_phases::weights[0m[2m:[0m Loaded 112546 weight tensors
+[2m2026-10-24T07:33:00.834500Z[0m [32m INFO[0m [2mspark_runtime::weights::prefix_detect[0m[2m:[0m Weight prefix: model.language_model
+[2m2026-10-24T07:33:00.950952Z[0m [32m INFO[0m [2mspark_model::preflight[0m[2m:[0m Pre-flight checks passed
+[2m2026-10-24T07:33:00.950964Z[0m [32m INFO[0m [2mspark_model::quant_format[0m[2m:[0m QuantFormat: modelopt (algo="MIXED_PRECISION"), 10 ignored module(s)
+[2m2026-10-24T07:33:00.950983Z[0m [32m INFO[0m [2mspark::main_modules::serve_load[0m[2m:[0m Quantization format: modelopt (base variant Standard), ignored globs = 10
+[2m2026-10-24T07:33:01.211703Z[0m [32m INFO[0m [2mspark_runtime::cublaslt[0m[2m:[0m cuBLASLt BF16 GEMM live (first matmul status 0 — real library answered; on HIP targets this is the hipBLASLt shim)
+[2m2026-10-24T07:33:01.211740Z[0m [32m INFO[0m [2mspark_runtime::cublaslt[0m[2m:[0m cuBLASLt pre-warmed (handle + workspace + kernel images)
+[2m2026-10-24T07:33:01.231691Z[0m [32m INFO[0m [2mspark::main_modules::serve_phases::preflight::gpu_init[0m[2m:[0m GDN chunked prefill reserve: 355 MB (chunk_size=16384, max_seq_len=262144)
+[2m2026-10-24T07:33:01.231704Z[0m [32m INFO[0m [2mspark::main_modules::serve_phases::preflight::gpu_init[0m[2m:[0m Weights: 38.51 GB, estimated free: 78.1 GB, actual free: 70.7 GB (reserve: 4451 MB)
+[2m2026-10-24T07:33:01.231708Z[0m [32m INFO[0m [2mspark::main_modules::serve_phases::build[0m[2m:[0m Prefix caching: ENABLED (radix tree)
+[2m2026-10-24T07:33:01.231724Z[0m [32m INFO[0m [2mspark::main_modules::serve_phases::topology[0m[2m:[0m Initializing NCCL: rank 1/2, master 10.100.112.1:29510, recv_buffer 80 MiB (max_batch_tokens=16392 × hidden_size=2560 × 2 B)
+[2m2026-10-24T07:33:01.231742Z[0m [32m INFO[0m [2mspark_comm::nccl_backend[0m[2m:[0m NCCL env: NCCL_IB_TIMEOUT=22
+[2m2026-10-24T07:33:01.231744Z[0m [32m INFO[0m [2mspark_comm::nccl_backend[0m[2m:[0m NCCL env: NCCL_IB_RETRY_CNT=7
+[2m2026-10-24T07:33:01.231745Z[0m [32m INFO[0m [2mspark_comm::nccl_backend[0m[2m:[0m NCCL env: NCCL_SOCKET_IFNAME=enp1s0f1np1
+[2m2026-10-24T07:33:01.231746Z[0m [32m INFO[0m [2mspark_comm::nccl_backend[0m[2m:[0m NCCL env: NCCL_DEBUG=WARN
+[2m2026-10-24T07:33:01.231747Z[0m [32m INFO[0m [2mspark_comm::nccl_backend[0m[2m:[0m Rank N: connecting to master at 10.100.112.1:29510
+[2m2026-10-24T07:33:01.232293Z[0m [32m INFO[0m [2mspark_comm::nccl_backend[0m[2m:[0m Connect attempt 1/600: Connection refused (os error 111), retrying in 1s (rank 0 may be loading weights)
+[2m2026-10-24T07:33:02.234137Z[0m [32m INFO[0m [2mspark_comm::nccl_backend[0m[2m:[0m Connect attempt 2/600: Connection refused (os error 111), retrying in 1s (rank 0 may be loading weights)
+[2m2026-10-24T07:33:03.235997Z[0m [32m INFO[0m [2mspark_comm::nccl_backend[0m[2m:[0m Received NCCL unique ID from master
+[2m2026-10-24T07:33:03.734831Z[0m [32m INFO[0m [2mspark_comm::nccl_backend[0m[2m:[0m Registered recv_buffer (81960 KB) with NCCL
+[2m2026-10-24T07:33:04.390057Z[0m [32m INFO[0m [2mspark_comm::nccl_backend::rdma_pair[0m[2m:[0m RDMA pair all-reduce ready: rank 1, rails ["rocep1s0f1"], capacity 80 MB, one-shot Some(Config { max: 8388544, stripe_min: 1048576, timeout_ns: 30000000000, stage_fence: false, sm_stage: 0, pdl: true, fused_seg: 0 })
+[2m2026-10-24T07:33:04.390094Z[0m [32m INFO[0m [2mspark_comm::nccl_backend::rdma_pair[0m[2m:[0m ATLAS_GLM_CMD_RDMA: command words ride the RDMA pair (ring of 1024 words)
+[2m2026-10-24T07:33:04.390116Z[0m [32m INFO[0m [2mspark::main_modules::serve_phases::topology[0m[2m:[0m NCCL initialized: rank 1
+[2m2026-10-24T07:33:04.390159Z[0m [32m INFO[0m [2mspark::ep_peer_lifeline[0m[2m:[0m EP peer lifeline armed
+[2m2026-10-24T07:33:04.390216Z[0m [33m WARN[0m [2mspark_model::model::trait_impl::finish_leaf::flag[0m[2m:[0m ATLAS_QWEN4EXP_FINISH_LEAF (decode leaf; the tail checkpoint still applies)=1 ignored: it also needs ATLAS_PREFIX_SUBBLOCK=0, ATLAS_GLM_PC_EVICT=1
+[2m2026-10-24T07:33:04.391462Z[0m [32m INFO[0m [2mspark_comm::nccl_backend::rdma_pair::proxy[0m[2m:[0m RDMA proxy pinned to cpu 19 (3900 MHz)
+[2m2026-10-24T07:33:04.736329Z[0m [32m INFO[0m [2mspark::main_modules::serve_phases::config[0m[2m:[0m Capping vocab_size from 248320 to 248077 (tokenizer)
+[2m2026-10-24T07:33:04.795420Z[0m [33m WARN[0m [2mspark::main_modules::serve_phases::build[0m[2m:[0m raising --ssm-cache-slots 16 → 24 so Marconi snapshots cover --max-seq-len=262144 (4096 tok/snapshot). Pass a larger --ssm-cache-slots to override the cap (512).
+[2m2026-10-24T07:33:04.799665Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen4_exp::probe[0m[2m:[0m qwen4_exp namespace: 36/48 GDN + 12 full-attention layers, 48 MoE blocks, 96 hc blocks, 12 indexers, 128 PLE shards, 27 ViT blocks, embed=true lm_head=true
+[2m2026-10-24T07:33:04.799673Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen4_exp::probe[0m[2m:[0m qwen4_exp: no per-layer input/post-attention norms, as expected — this architecture keeps normalization inside the hyper-connection blocks
+[2m2026-10-24T07:33:04.799680Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen4_exp::format[0m[2m:[0m qwen4_exp checkpoint format: FP4-Local; backbone MXFP8 (GDN/QSA and shared-expert decode twins, prefill W8A8 on them or on the GDN/QSA exact BF16; indexer and ViT attention exact BF16); ViT MLP W4A16 NVFP4 -> BF16
+[2m2026-10-24T07:33:04.844622Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen4_exp[0m[2m:[0m Qwen3.8-Flash-Next: 48 layers (36 GDN + 12 full attention), 512 experts top-10, hc 4 streams x rank 320, indexer budget 2048, PLE at [2]; NVFP4 variant Standard
+[2m2026-10-24T07:33:04.845304Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen4_exp[0m[2m:[0m GDN projections: the checkpoint's MXFP8 for decode, its exact BF16 dequant for prefill (ATLAS_QWEN4EXP_MXFP8_DECODE=0 decodes the BF16) on the 36 linear-attention layers
+[2m2026-10-24T07:33:04.862070Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:04.873746Z[0m [32m INFO[0m [2mspark_model::layers::moe::w4a4_scales[0m[2m:[0m qwen4_exp routed prefill: W4A4 at the checkpoint's input scales (b12x A4 prefill; first layer g1 = 2.7927e2)
+[2m2026-10-24T07:33:04.897997Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::mx_algo[0m[2m:[0m cuBLASLt MXFP8 640x2560, every row count (one kernel: 640x2560 is not swept on cuBLASLt 130000), tuned at 16384 rows: id=70 tile=20 splitK=1 reduction=0 stages=36 swizzle=0 custom=0 cluster=? at 0.342 ms (2 in-order of 2 offered; the first ran 0.342 ms)
+[2m2026-10-24T07:33:04.899151Z[0m [32m INFO[0m [2mspark_model::layers::ops::mxfp8_w8a8[0m[2m:[0m MXFP8 W8A8: 640x2560 row buckets tuned to 16392 rows in 25 ms (25 ms all shapes)
+[2m2026-10-24T07:33:04.902948Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::mx_algo[0m[2m:[0m cuBLASLt MXFP8 2560x320, every row count (one kernel: 2560x320 is not swept on cuBLASLt 130000), tuned at 16384 rows: id=70 tile=20 splitK=1 reduction=0 stages=36 swizzle=0 custom=0 cluster=? at 0.000 ms (1 in-order of 1 offered; the first ran 0.000 ms)
+[2m2026-10-24T07:33:04.904433Z[0m [32m INFO[0m [2mspark_model::layers::ops::mxfp8_w8a8[0m[2m:[0m MXFP8 W8A8: 2560x320 row buckets tuned to 16392 rows in 5 ms (30 ms all shapes)
+[2m2026-10-24T07:33:04.906531Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 0: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:04.912735Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.0.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:04.912807Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.0.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:04.942190Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:04.960260Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::mx_algo[0m[2m:[0m cuBLASLt MXFP8 8192x2560, the 64-row bucket, tuned at 64 rows: id=70 tile=20 splitK=1 reduction=0 stages=36 swizzle=0 custom=0 cluster=? at 0.064 ms (4 in-order of 4 offered; the first ran 0.064 ms)
+[2m2026-10-24T07:33:04.960379Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::mx_algo[0m[2m:[0m cuBLASLt MXFP8 8192x2560, the 128-row bucket, tuned at 128 rows: id=70 tile=20 splitK=1 reduction=0 stages=36 swizzle=0 custom=0 cluster=? at 0.000 ms (1 in-order of 1 offered; the first ran 0.000 ms)
+[2m2026-10-24T07:33:04.960471Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::mx_algo[0m[2m:[0m cuBLASLt MXFP8 8192x2560, the 256-row bucket, tuned at 256 rows: id=70 tile=20 splitK=1 reduction=0 stages=36 swizzle=0 custom=0 cluster=? at 0.000 ms (1 in-order of 1 offered; the first ran 0.000 ms)
+[2m2026-10-24T07:33:04.960566Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::mx_algo[0m[2m:[0m cuBLASLt MXFP8 8192x2560, the 512-row bucket, tuned at 512 rows: id=70 tile=20 splitK=1 reduction=0 stages=36 swizzle=0 custom=0 cluster=? at 0.000 ms (1 in-order of 1 offered; the first ran 0.000 ms)
+[2m2026-10-24T07:33:04.960653Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::mx_algo[0m[2m:[0m cuBLASLt MXFP8 8192x2560, the 1024-row bucket, tuned at 1024 rows: id=70 tile=20 splitK=1 reduction=0 stages=36 swizzle=0 custom=0 cluster=? at 0.000 ms (1 in-order of 1 offered; the first ran 0.000 ms)
+[2m2026-10-24T07:33:04.960739Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::mx_algo[0m[2m:[0m cuBLASLt MXFP8 8192x2560, the 2048-row bucket, tuned at 2048 rows: id=70 tile=20 splitK=1 reduction=0 stages=36 swizzle=0 custom=0 cluster=? at 0.000 ms (1 in-order of 1 offered; the first ran 0.000 ms)
+[2m2026-10-24T07:33:04.986779Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::mx_algo[0m[2m:[0m cuBLASLt MXFP8 8192x2560, the 4096-row bucket, tuned at 4096 rows: id=70 tile=20 splitK=1 reduction=0 stages=36 swizzle=0 custom=0 cluster=? at 1.082 ms (2 in-order of 2 offered; the first ran 1.082 ms)
+[2m2026-10-24T07:33:05.036607Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::mx_algo[0m[2m:[0m cuBLASLt MXFP8 8192x2560, the 8192-row bucket, tuned at 8192 rows: id=70 tile=20 splitK=1 reduction=0 stages=36 swizzle=0 custom=0 cluster=? at 2.054 ms (2 in-order of 2 offered; the first ran 2.074 ms)
+[2m2026-10-24T07:33:05.133793Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::mx_algo[0m[2m:[0m cuBLASLt MXFP8 8192x2560, the 16384-row bucket, tuned at 16384 rows: id=70 tile=20 splitK=1 reduction=0 stages=36 swizzle=1 custom=0 cluster=? at 3.987 ms (2 in-order of 2 offered; the first ran 4.051 ms)
+[2m2026-10-24T07:33:05.137600Z[0m [32m INFO[0m [2mspark_model::layers::ops::mxfp8_w8a8[0m[2m:[0m MXFP8 W8A8: 8192x2560 row buckets tuned to 16392 rows in 194 ms (224 ms all shapes)
+[2m2026-10-24T07:33:05.145194Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::mx_algo[0m[2m:[0m cuBLASLt MXFP8 2560x3072, the 64-row bucket, tuned at 64 rows: id=70 tile=20 splitK=1 reduction=0 stages=36 swizzle=0 custom=0 cluster=? at 0.029 ms (4 in-order of 4 offered; the first ran 0.029 ms)
+[2m2026-10-24T07:33:05.145267Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::mx_algo[0m[2m:[0m cuBLASLt MXFP8 2560x3072, the 128-row bucket, tuned at 128 rows: id=70 tile=20 splitK=1 reduction=0 stages=36 swizzle=0 custom=0 cluster=? at 0.000 ms (1 in-order of 1 offered; the first ran 0.000 ms)
+[2m2026-10-24T07:33:05.145325Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::mx_algo[0m[2m:[0m cuBLASLt MXFP8 2560x3072, the 256-row bucket, tuned at 256 rows: id=70 tile=20 splitK=1 reduction=0 stages=36 swizzle=0 custom=0 cluster=? at 0.000 ms (1 in-order of 1 offered; the first ran 0.000 ms)
+[2m2026-10-24T07:33:05.145382Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::mx_algo[0m[2m:[0m cuBLASLt MXFP8 2560x3072, the 512-row bucket, tuned at 512 rows: id=70 tile=20 splitK=1 reduction=0 stages=36 swizzle=0 custom=0 cluster=? at 0.000 ms (1 in-order of 1 offered; the first ran 0.000 ms)
+[2m2026-10-24T07:33:05.145434Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::mx_algo[0m[2m:[0m cuBLASLt MXFP8 2560x3072, the 1024-row bucket, tuned at 1024 rows: id=70 tile=20 splitK=1 reduction=0 stages=36 swizzle=0 custom=0 cluster=? at 0.000 ms (1 in-order of 1 offered; the first ran 0.000 ms)
+[2m2026-10-24T07:33:05.150427Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::mx_algo[0m[2m:[0m cuBLASLt MXFP8 2560x3072, the 2048-row bucket, tuned at 2048 rows: id=70 tile=20 splitK=1 reduction=0 stages=36 swizzle=0 custom=0 cluster=? at 0.185 ms (2 in-order of 2 offered; the first ran 0.185 ms)
+[2m2026-10-24T07:33:05.159914Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::mx_algo[0m[2m:[0m cuBLASLt MXFP8 2560x3072, the 4096-row bucket, tuned at 4096 rows: id=70 tile=20 splitK=1 reduction=0 stages=36 swizzle=0 custom=0 cluster=? at 0.378 ms (2 in-order of 2 offered; the first ran 0.388 ms)
+[2m2026-10-24T07:33:05.159999Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::mx_algo[0m[2m:[0m cuBLASLt MXFP8 2560x3072, the 8192-row bucket, tuned at 8192 rows: id=70 tile=20 splitK=1 reduction=0 stages=36 swizzle=0 custom=0 cluster=? at 0.000 ms (1 in-order of 1 offered; the first ran 0.000 ms)
+[2m2026-10-24T07:33:05.160081Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::mx_algo[0m[2m:[0m cuBLASLt MXFP8 2560x3072, the 16384-row bucket, tuned at 16384 rows: id=70 tile=20 splitK=1 reduction=0 stages=36 swizzle=0 custom=0 cluster=? at 0.000 ms (1 in-order of 1 offered; the first ran 0.000 ms)
+[2m2026-10-24T07:33:05.161927Z[0m [32m INFO[0m [2mspark_model::layers::ops::mxfp8_w8a8[0m[2m:[0m MXFP8 W8A8: 2560x3072 row buckets tuned to 16392 rows in 24 ms (248 ms all shapes)
+[2m2026-10-24T07:33:05.171746Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:05.185771Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 1: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:05.193855Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.1.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:05.193926Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.1.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:05.223250Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:05.664459Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen4_exp::ple::nvfp4[0m[2m:[0m PLE n-gram table: NVFP4 (E2M1 + E4M3/16, global 3.324236e-5), 128 shards read through packed /atlas-ple/ngram-nvfp4g16-5a2bf6d19253ea51.bin (96 B rows, one NVMe read per miss)
+[2m2026-10-24T07:33:05.664544Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen4_exp::ple[0m[2m:[0m PLE NVMe keepalive: one 4 KiB read every 10ms while rows were resolved within 2s (ATLAS_PLE_NVME_KEEPALIVE_MS)
+[2m2026-10-24T07:33:05.664556Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen4_exp::ple[0m[2m:[0m PLE at MODEL LAYER 1 (ple_layer_ids=[2], 1-indexed): 128 shards over 7 file(s) x 2500012 rows x 160 values = 320001536 rows of 96 B (30.7 GB UInt8) served off NVMe with 524288 cached slots (50.3 MB, (span + warm_ahead)*heads rounded up: span 8192 x 16 heads, floored at 65536); scratch 8192 tokens = 1.17 GB (ATLAS_PLE_CHUNK=8192); conv k=4 dilation=3 (state 9 steps)
+[2m2026-10-24T07:33:05.718344Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:05.722139Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 2: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:05.729633Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.2.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:05.729702Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.2.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:05.759820Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:05.769638Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:05.773994Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::attention_arms[0m[2m:[0m Layer 3: loading attention projections (Standard)
+[2m2026-10-24T07:33:05.804123Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::attention_arms[0m[2m:[0m Layer 3: Q/K/V/O stay at checkpoint BF16 (--attn-proj-dtype bf16), 68.3 GB free
+[2m2026-10-24T07:33:05.806042Z[0m [32m INFO[0m [2mspark_model::layers::qsa[0m[2m:[0m QSA: indexer capacity 262144 tokens (max_seq_len=262144); per-seq pooled keys grow on demand, 64 B/token
+[2m2026-10-24T07:33:05.819840Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::mx_algo[0m[2m:[0m cuBLASLt MXFP8 6144x2560, the 64-row bucket, tuned at 64 rows: id=70 tile=20 splitK=1 reduction=0 stages=36 swizzle=0 custom=0 cluster=? at 0.027 ms (4 in-order of 4 offered; the first ran 0.027 ms)
+[2m2026-10-24T07:33:05.819950Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::mx_algo[0m[2m:[0m cuBLASLt MXFP8 6144x2560, the 128-row bucket, tuned at 128 rows: id=70 tile=20 splitK=1 reduction=0 stages=36 swizzle=0 custom=0 cluster=? at 0.000 ms (1 in-order of 1 offered; the first ran 0.000 ms)
+[2m2026-10-24T07:33:05.820038Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::mx_algo[0m[2m:[0m cuBLASLt MXFP8 6144x2560, the 256-row bucket, tuned at 256 rows: id=70 tile=20 splitK=1 reduction=0 stages=36 swizzle=0 custom=0 cluster=? at 0.000 ms (1 in-order of 1 offered; the first ran 0.000 ms)
+[2m2026-10-24T07:33:05.820129Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::mx_algo[0m[2m:[0m cuBLASLt MXFP8 6144x2560, the 512-row bucket, tuned at 512 rows: id=70 tile=20 splitK=1 reduction=0 stages=36 swizzle=0 custom=0 cluster=? at 0.000 ms (1 in-order of 1 offered; the first ran 0.000 ms)
+[2m2026-10-24T07:33:05.820214Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::mx_algo[0m[2m:[0m cuBLASLt MXFP8 6144x2560, the 1024-row bucket, tuned at 1024 rows: id=70 tile=20 splitK=1 reduction=0 stages=36 swizzle=0 custom=0 cluster=? at 0.000 ms (1 in-order of 1 offered; the first ran 0.000 ms)
+[2m2026-10-24T07:33:05.820300Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::mx_algo[0m[2m:[0m cuBLASLt MXFP8 6144x2560, the 2048-row bucket, tuned at 2048 rows: id=70 tile=20 splitK=1 reduction=0 stages=36 swizzle=0 custom=0 cluster=? at 0.000 ms (1 in-order of 1 offered; the first ran 0.000 ms)
+[2m2026-10-24T07:33:05.820384Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::mx_algo[0m[2m:[0m cuBLASLt MXFP8 6144x2560, the 4096-row bucket, tuned at 4096 rows: id=70 tile=20 splitK=1 reduction=0 stages=36 swizzle=0 custom=0 cluster=? at 0.000 ms (1 in-order of 1 offered; the first ran 0.000 ms)
+[2m2026-10-24T07:33:05.820467Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::mx_algo[0m[2m:[0m cuBLASLt MXFP8 6144x2560, the 8192-row bucket, tuned at 8192 rows: id=70 tile=20 splitK=1 reduction=0 stages=36 swizzle=0 custom=0 cluster=? at 0.000 ms (1 in-order of 1 offered; the first ran 0.000 ms)
+[2m2026-10-24T07:33:05.820550Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::mx_algo[0m[2m:[0m cuBLASLt MXFP8 6144x2560, the 16384-row bucket, tuned at 16384 rows: id=70 tile=20 splitK=1 reduction=0 stages=36 swizzle=0 custom=0 cluster=? at 0.000 ms (1 in-order of 1 offered; the first ran 0.000 ms)
+[2m2026-10-24T07:33:05.823659Z[0m [32m INFO[0m [2mspark_model::layers::ops::mxfp8_w8a8[0m[2m:[0m MXFP8 W8A8: 6144x2560 row buckets tuned to 16392 rows in 17 ms (265 ms all shapes)
+[2m2026-10-24T07:33:05.826364Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::mx_algo[0m[2m:[0m cuBLASLt MXFP8 256x2560, every row count (one kernel: 256x2560 is not swept on cuBLASLt 130000), tuned at 16384 rows: id=70 tile=20 splitK=1 reduction=0 stages=36 swizzle=0 custom=0 cluster=? at 0.000 ms (1 in-order of 1 offered; the first ran 0.000 ms)
+[2m2026-10-24T07:33:05.827354Z[0m [32m INFO[0m [2mspark_model::layers::ops::mxfp8_w8a8[0m[2m:[0m MXFP8 W8A8: 256x2560 row buckets tuned to 16392 rows in 4 ms (269 ms all shapes)
+[2m2026-10-24T07:33:05.836827Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:05.840617Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 4: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:05.848256Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.4.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:05.848330Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.4.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:05.878703Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:05.888597Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:05.893051Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 5: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:05.900662Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.5.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:05.900731Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.5.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:05.931305Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:05.941204Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:05.945114Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 6: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:05.952672Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.6.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:05.952745Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.6.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:05.983612Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:05.993572Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:05.998112Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::attention_arms[0m[2m:[0m Layer 7: loading attention projections (Standard)
+[2m2026-10-24T07:33:06.026348Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::attention_arms[0m[2m:[0m Layer 7: Q/K/V/O stay at checkpoint BF16 (--attn-proj-dtype bf16), 68.4 GB free
+[2m2026-10-24T07:33:06.027321Z[0m [32m INFO[0m [2mspark_model::layers::qsa[0m[2m:[0m QSA: indexer capacity 262144 tokens (max_seq_len=262144); per-seq pooled keys grow on demand, 64 B/token
+[2m2026-10-24T07:33:06.037124Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:06.040832Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 8: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:06.047488Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.8.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:06.047558Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.8.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:06.078620Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:06.088450Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:06.091977Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 9: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:06.098630Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.9.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:06.098701Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.9.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:06.129672Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:06.139522Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:06.143048Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 10: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:06.149724Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.10.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:06.149794Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.10.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:06.180838Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:06.190783Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:06.195481Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::attention_arms[0m[2m:[0m Layer 11: loading attention projections (Standard)
+[2m2026-10-24T07:33:06.223865Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::attention_arms[0m[2m:[0m Layer 11: Q/K/V/O stay at checkpoint BF16 (--attn-proj-dtype bf16), 68.5 GB free
+[2m2026-10-24T07:33:06.224827Z[0m [32m INFO[0m [2mspark_model::layers::qsa[0m[2m:[0m QSA: indexer capacity 262144 tokens (max_seq_len=262144); per-seq pooled keys grow on demand, 64 B/token
+[2m2026-10-24T07:33:06.234833Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:06.238591Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 12: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:06.245316Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.12.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:06.245387Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.12.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:06.275961Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:06.285756Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:06.290034Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 13: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:06.296783Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.13.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:06.296853Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.13.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:06.327394Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:06.337327Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:06.341270Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 14: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:06.348028Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.14.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:06.348100Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.14.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:06.378752Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:06.388733Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:06.392675Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::attention_arms[0m[2m:[0m Layer 15: loading attention projections (Standard)
+[2m2026-10-24T07:33:06.421007Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::attention_arms[0m[2m:[0m Layer 15: Q/K/V/O stay at checkpoint BF16 (--attn-proj-dtype bf16), 68.6 GB free
+[2m2026-10-24T07:33:06.422001Z[0m [32m INFO[0m [2mspark_model::layers::qsa[0m[2m:[0m QSA: indexer capacity 262144 tokens (max_seq_len=262144); per-seq pooled keys grow on demand, 64 B/token
+[2m2026-10-24T07:33:06.431959Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:06.436159Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 16: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:06.442897Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.16.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:06.442965Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.16.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:06.473593Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:06.483474Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:06.487533Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 17: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:06.494244Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.17.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:06.494305Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.17.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:06.524919Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:06.534982Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:06.539468Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 18: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:06.546213Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.18.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:06.546280Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.18.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:06.576860Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:06.586786Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:06.590820Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::attention_arms[0m[2m:[0m Layer 19: loading attention projections (Standard)
+[2m2026-10-24T07:33:06.619568Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::attention_arms[0m[2m:[0m Layer 19: Q/K/V/O stay at checkpoint BF16 (--attn-proj-dtype bf16), 68.7 GB free
+[2m2026-10-24T07:33:06.620547Z[0m [32m INFO[0m [2mspark_model::layers::qsa[0m[2m:[0m QSA: indexer capacity 262144 tokens (max_seq_len=262144); per-seq pooled keys grow on demand, 64 B/token
+[2m2026-10-24T07:33:06.630680Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:06.634318Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 20: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:06.641033Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.20.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:06.641096Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.20.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:06.671709Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:06.681684Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:06.685581Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 21: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:06.692333Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.21.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:06.692394Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.21.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:06.723019Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:06.732872Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:06.737433Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 22: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:06.744233Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.22.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:06.744297Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.22.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:06.774971Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:06.784931Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:06.789647Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::attention_arms[0m[2m:[0m Layer 23: loading attention projections (Standard)
+[2m2026-10-24T07:33:06.818058Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::attention_arms[0m[2m:[0m Layer 23: Q/K/V/O stay at checkpoint BF16 (--attn-proj-dtype bf16), 68.8 GB free
+[2m2026-10-24T07:33:06.818982Z[0m [32m INFO[0m [2mspark_model::layers::qsa[0m[2m:[0m QSA: indexer capacity 262144 tokens (max_seq_len=262144); per-seq pooled keys grow on demand, 64 B/token
+[2m2026-10-24T07:33:06.828907Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:06.833001Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 24: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:06.839753Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.24.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:06.839814Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.24.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:06.871147Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:06.881149Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:06.885081Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 25: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:06.891820Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.25.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:06.891883Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.25.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:06.923085Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:06.933073Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:06.937032Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 26: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:06.943813Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.26.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:06.943881Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.26.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:06.974538Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:06.984436Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:06.988585Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::attention_arms[0m[2m:[0m Layer 27: loading attention projections (Standard)
+[2m2026-10-24T07:33:07.017144Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::attention_arms[0m[2m:[0m Layer 27: Q/K/V/O stay at checkpoint BF16 (--attn-proj-dtype bf16), 68.9 GB free
+[2m2026-10-24T07:33:07.018145Z[0m [32m INFO[0m [2mspark_model::layers::qsa[0m[2m:[0m QSA: indexer capacity 262144 tokens (max_seq_len=262144); per-seq pooled keys grow on demand, 64 B/token
+[2m2026-10-24T07:33:07.028121Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:07.031800Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 28: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:07.038536Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.28.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:07.038594Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.28.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:07.069447Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:07.079411Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:07.084426Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 29: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:07.091200Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.29.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:07.091259Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.29.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:07.122049Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:07.132023Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:07.136281Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 30: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:07.143050Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.30.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:07.143115Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.30.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:07.173774Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:07.183586Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:07.187537Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::attention_arms[0m[2m:[0m Layer 31: loading attention projections (Standard)
+[2m2026-10-24T07:33:07.216283Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::attention_arms[0m[2m:[0m Layer 31: Q/K/V/O stay at checkpoint BF16 (--attn-proj-dtype bf16), 69.0 GB free
+[2m2026-10-24T07:33:07.217251Z[0m [32m INFO[0m [2mspark_model::layers::qsa[0m[2m:[0m QSA: indexer capacity 262144 tokens (max_seq_len=262144); per-seq pooled keys grow on demand, 64 B/token
+[2m2026-10-24T07:33:07.227218Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:07.231126Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 32: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:07.237884Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.32.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:07.237942Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.32.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:07.268634Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:07.278570Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:07.282320Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 33: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:07.289088Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.33.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:07.289154Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.33.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:07.319775Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:07.329737Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:07.333467Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 34: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:07.340219Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.34.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:07.340290Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.34.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:07.370855Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:07.381010Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:07.385007Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::attention_arms[0m[2m:[0m Layer 35: loading attention projections (Standard)
+[2m2026-10-24T07:33:07.413515Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::attention_arms[0m[2m:[0m Layer 35: Q/K/V/O stay at checkpoint BF16 (--attn-proj-dtype bf16), 69.2 GB free
+[2m2026-10-24T07:33:07.414500Z[0m [32m INFO[0m [2mspark_model::layers::qsa[0m[2m:[0m QSA: indexer capacity 262144 tokens (max_seq_len=262144); per-seq pooled keys grow on demand, 64 B/token
+[2m2026-10-24T07:33:07.424453Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:07.428883Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 36: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:07.435682Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.36.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:07.435740Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.36.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:07.466301Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:07.476162Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:07.479668Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 37: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:07.486359Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.37.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:07.486421Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.37.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:07.516988Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:07.526863Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:07.531337Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 38: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:07.538122Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.38.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:07.538181Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.38.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:07.568704Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:07.578570Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:07.583218Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::attention_arms[0m[2m:[0m Layer 39: loading attention projections (Standard)
+[2m2026-10-24T07:33:07.611643Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::attention_arms[0m[2m:[0m Layer 39: Q/K/V/O stay at checkpoint BF16 (--attn-proj-dtype bf16), 69.3 GB free
+[2m2026-10-24T07:33:07.612568Z[0m [32m INFO[0m [2mspark_model::layers::qsa[0m[2m:[0m QSA: indexer capacity 262144 tokens (max_seq_len=262144); per-seq pooled keys grow on demand, 64 B/token
+[2m2026-10-24T07:33:07.622623Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:07.626273Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 40: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:07.632973Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.40.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:07.633040Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.40.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:07.663741Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:07.673617Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:07.677598Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 41: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:07.684389Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.41.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:07.684452Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.41.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:07.715392Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:07.725348Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:07.729297Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 42: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:07.736095Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.42.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:07.736161Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.42.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:07.765936Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:07.776044Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:07.780589Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::attention_arms[0m[2m:[0m Layer 43: loading attention projections (Standard)
+[2m2026-10-24T07:33:07.809286Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::attention_arms[0m[2m:[0m Layer 43: Q/K/V/O stay at checkpoint BF16 (--attn-proj-dtype bf16), 69.4 GB free
+[2m2026-10-24T07:33:07.810277Z[0m [32m INFO[0m [2mspark_model::layers::qsa[0m[2m:[0m QSA: indexer capacity 262144 tokens (max_seq_len=262144); per-seq pooled keys grow on demand, 64 B/token
+[2m2026-10-24T07:33:07.820330Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:07.824688Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 44: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:07.831086Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.44.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:07.831150Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.44.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:07.861447Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:07.871388Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:07.875488Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 45: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:07.881908Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.45.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:07.881967Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.45.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:07.912371Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:07.922333Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:07.926088Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::linear_attn_arms[0m[2m:[0m Layer 46: loading SSM FP8 projections as BF16 dense (tp=2, local_nk=8, local_nv=24)
+[2m2026-10-24T07:33:07.932909Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.46.linear_attn.A_log from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:07.932971Z[0m [32m INFO[0m [2mspark_model::weight_map::model_a[0m[2m:[0m dense_keep_f32: promoting model.language_model.layers.46.linear_attn.dt_bias from BF16 to FP32 ([48])
+[2m2026-10-24T07:33:07.963759Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::init[0m[2m:[0m GDN state spine: gated_delta_rule_chunk_delta_h_pipe
+[2m2026-10-24T07:33:07.973931Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_moe_rows[0m[2m:[0m qwen4_exp MoE tensor-core units ON (ATLAS_QWEN4EXP_MOE_TC=1): verify rows AND serial decode on qwen4exp_moe_c8_tc.cu -- a new numerics baseline (contract (b))
+[2m2026-10-24T07:33:07.978009Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::attention_arms[0m[2m:[0m Layer 47: loading attention projections (Standard)
+[2m2026-10-24T07:33:08.006543Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35::load_layers::attention_arms[0m[2m:[0m Layer 47: Q/K/V/O stay at checkpoint BF16 (--attn-proj-dtype bf16), 69.5 GB free
+[2m2026-10-24T07:33:08.007472Z[0m [32m INFO[0m [2mspark_model::layers::qsa[0m[2m:[0m QSA: indexer capacity 262144 tokens (max_seq_len=262144); per-seq pooled keys grow on demand, 64 B/token
+[2m2026-10-24T07:33:08.010606Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen4_exp::w8a8[0m[2m:[0m ATLAS_QWEN4EXP_PREFILL_W8A8: 48 GDN/QSA layers prefill MXFP8 W8A8 on the decode twins' bytes; freed 2.67 GB of BF16 copies, 41.8 MB of retiled scales added, GEMM tuning 0.3 s
+[2m2026-10-24T07:33:08.010615Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen4_exp[0m[2m:[0m qwen4_exp: MXFP8 backbone loaded: GDN/QSA decode reads the checkpoint's MXFP8 bytes, prefill as the ATLAS_QWEN4EXP_PREFILL_W8A8 line says; QSA indexer exact BF16; shared expert on the checkpoint's MXFP8 bytes (decode twins; prefill W8A8 on them, or their decode tiers with ATLAS_QWEN4EXP_PREFILL_W8A8 off). Released 3.03 GB of MXFP8 source bytes
+[2m2026-10-24T07:33:08.010618Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen4_exp[0m[2m:[0m qwen4_exp layer construction: MoE 0.07 GB (1.5 MB/layer), attn/GDN arms 4.07 GB (84.9 MB/layer), mHC+PLE 1.16 GB
+[2m2026-10-24T07:33:08.010621Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen4_exp[0m[2m:[0m Qwen3.8-Flash-Next loaded 48 layers with the mHC highway live on all of them (36 GDN + 12 full-attention).
+[2m2026-10-24T07:33:08.010637Z[0m [32m INFO[0m [2mspark_model::factory::build[0m[2m:[0m Layer construction: 0.00 GB consumed (74.60 GB free -> 74.72 GB free) across 48 layers, 0.0 MB/layer average
+[2m2026-10-24T07:33:08.010643Z[0m [33m WARN[0m [2mspark_model::weight_loader::qwen4_exp::attach[0m[2m:[0m qwen4_exp: final norm is a PLACEHOLDER. The real one is `model.language_model.hyper_connection_mixer.hc_norm` [10240], applied while collapsing the 4 residual streams — that is mHC work, not a final-norm substitution.
+[2m2026-10-24T07:33:08.078558Z[0m [33m WARN[0m [2mspark_model::layers::vision_encoder::enc_impl::init[0m[2m:[0m Vision encoder capacity 16384 patches (2048x2048 px) — the resolved area bound wanted 65536 patches, clamped: the ViT score matrix is O(patches^2) and 65536 would need ~24.0 GB of scratch. Lower --vision-max-pixels to reclaim memory, or raise CEILING_MAX_PATCHES only alongside tiled ViT attention.
+[2m2026-10-24T07:33:08.099009Z[0m [32m INFO[0m [2mspark_model::layers::vision_encoder::enc_impl::init[0m[2m:[0m Vision output window 24584 rows (120 MiB) for prefill chunks of up to 16392 tokens
+[2m2026-10-24T07:33:08.160827Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen35[0m[2m:[0m Qwen3.6 vision encoder loaded: depth=27, hidden=1152, heads=16, FP8-blocks>=4
+[2m2026-10-24T07:33:08.164140Z[0m [32m INFO[0m [2mspark_model::weight_loader::qwen4_exp[0m[2m:[0m qwen4_exp ViT: released 147.8 MB of MXFP8 attention source bytes
+[2m2026-10-24T07:33:08.164153Z[0m [32m INFO[0m [2mspark_model::factory::lm_head_setup[0m[2m:[0m LM head kept as BF16 (skip NVFP4 quantization per model config)
+[2m2026-10-24T07:33:08.164384Z[0m [32m INFO[0m [2mspark_model::factory::m2_setup[0m[2m:[0m qwen4_exp prefill MoE: routed K-major prefill copy not built, 33973862400 bytes (31.6 GiB: 256 experts x 48 layers) saved; shared-expert transpose 0.00 GiB, 66.7 GiB free
+[2m2026-10-24T07:33:08.342166Z[0m [32m INFO[0m [2mspark_runtime::buffers[0m[2m:[0m Buffer arena: 16392 tokens × 4945.5 MB total (attn_out=96.0MB, ssm_deint=256.1MB, kv_lora_rank=0)
+[2m2026-10-24T07:33:08.342204Z[0m [32m INFO[0m [2mspark_model::model::drafter_context[0m[2m:[0m MTP drafter context: prefill=ON carry=ON (default). Disable both with ATLAS_NO_MTP_DRAFTER_CONTEXT=1.
+[2m2026-10-24T07:33:08.342212Z[0m [32m INFO[0m [2mspark_model::layers::ops::model_levers[0m[2m:[0m GDN deferred commit on (default; ATLAS_GDN_DEFERRED_COMMIT=0 opts out):                  wyN verify stores nothing; accepted prefix replayed from H0
+[2m2026-10-24T07:33:08.533113Z[0m [32m INFO[0m [2mspark_model::model::ssm_pool[0m[2m:[0m SSM MTP pools (8 intermediates + checkpoints): 4115 MB
+[2m2026-10-24T07:33:08.533123Z[0m [32m INFO[0m [2mspark_model::model::ssm_pool[0m[2m:[0m SSM state pool: 8 slots × 36 layers = 454 MB
+[2m2026-10-24T07:33:08.533131Z[0m [32m INFO[0m [2mspark_model::model::ssm_pools[0m[2m:[0m SSM decode-rollback ring: SKIPPED (speculative decode active) — the ring's save/rollback path only runs on plain decode with watchdogs enabled. Saves 3.8 GB (8 seqs x 8 slots x full SSM blob). If plain-decode loop re-steer is ever reached it fail-opens to decline; ATLAS_SSM_DECODE_RING=1 force-restores the ring.
+[2m2026-10-24T07:33:08.581577Z[0m [32m INFO[0m [2mspark_model::model::ssm_snapshot[0m[2m:[0m SSM snapshot pool: Marconi 24 slots (1363 MB), decode-rollback 0 slots × 8 seqs (0 MB), 36 layers
+[2m2026-10-24T07:33:08.585360Z[0m [32m INFO[0m [2mspark_model::factory::build::kv_budget[0m[2m:[0m KV budget self-relative (auto): baseline-free 116.7 GB − free-now 55.8 GB = Atlas-own 60.8 GB; co-tenants 5.0 GB excluded (set ATLAS_KV_EXTERNAL_RESERVE_GB to override)
+[2m2026-10-24T07:33:08.585368Z[0m [32m INFO[0m [2mspark_model::factory::build::kv_budget[0m[2m:[0m KV own-footprint cross-check: free-memory measure 60.84 GB, tracked 58.98 GB (device 57.16 GB by driver accounting + host 1.82 GB) → 60.84 GB pre-KV
+[2m2026-10-24T07:33:08.585372Z[0m [32m INFO[0m [2mspark_model::factory::build[0m[2m:[0m KV cache: 121.7 GB total × 88% util = 107.1 GB budget; 60.8 GB pre-KV + 4.3 GB reserve → 41.9 GB for KV (incl. 2.5 GB for 768 B/token of per-sequence indexer state) → 215381 blocks × 16 tok/block = 3446096 max KV tokens
+[2m2026-10-24T07:33:08.709397Z[0m [32m INFO[0m [2mspark_model::factory::build::glm[0m[2m:[0m KV cache: rank 1 fits 215381 blocks; all ranks agree on 207327
+[2m2026-10-24T07:33:10.084678Z[0m [32m INFO[0m [2mspark_runtime::kv_cache::paged_impl[0m[2m:[0m KV cache: 207327 blocks × 12 layers = 38.0 GB total
+[2m2026-10-24T07:33:10.084891Z[0m [32m INFO[0m [2mspark_model::model::drafter_context[0m[2m:[0m MTP drafter context: prefill=ON carry=ON (default). Disable both with ATLAS_NO_MTP_DRAFTER_CONTEXT=1.
+[2m2026-10-24T07:33:10.084901Z[0m [32m INFO[0m [2mspark_model::layers::ops::model_levers[0m[2m:[0m GDN deferred commit on (default; ATLAS_GDN_DEFERRED_COMMIT=0 opts out):                  wyN verify stores nothing; accepted prefix replayed from H0
+[2m2026-10-24T07:33:10.084903Z[0m [32m INFO[0m [2mspark_model::model::qwen4exp_exact_verify[0m[2m:[0m qwen4_exp exact verify ON (ATLAS_QWEN4EXP_EXACT_VERIFY=1): K=2/3/4 verify rows run serial decode's arithmetic; speculation may run inside <think>
+[2m2026-10-24T07:33:10.084906Z[0m [32m INFO[0m [2mspark_model::model::qwen4exp_batch_fast[0m[2m:[0m qwen4_exp exact batching ON (ATLAS_QWEN4EXP_BATCH_FAST=1): every row of a batched multi-sequence step runs single-sequence decode's arithmetic
+[2m2026-10-24T07:33:10.084908Z[0m [32m INFO[0m [2mspark_model::model::qwen4exp_mtp_depth[0m[2m:[0m qwen4_exp MTP depth ceiling 7 draft(s) (ATLAS_QWEN4EXP_MTP_DEPTH); serve with --num-drafts 7
+[2m2026-10-24T07:33:10.084909Z[0m [32m INFO[0m [2mspark_model::model::qwen4exp_batch_fast[0m[2m:[0m qwen4_exp exact small-kernel batching ON (ATLAS_QWEN4EXP_BATCH_SMALL=1): MoE top-k, MoE blend and the GDN step one launch over the rows
+[2m2026-10-24T07:33:10.084911Z[0m [32m INFO[0m [2mspark_model::model::impl_a1[0m[2m:[0m TransformerModel: 48 layers, vocab=248077, hidden=2560
+[2m2026-10-24T07:33:10.084912Z[0m [32m INFO[0m [2mspark_model::model::impl_a1[0m[2m:[0m Marconi intermediate checkpoints: every 256 blocks (4096 tokens at block_size=16)
+[2m2026-10-24T07:33:10.086553Z[0m [32m INFO[0m [2mspark_model::model::qwen4exp_lmhead_split[0m[2m:[0m qwen4_exp LM-head vocab split staged (ATLAS_QWEN4EXP_LMHEAD_SPLIT=1) [3mcut[0m[2m=[0m124032 [3mwidth[0m[2m=[0m124045 [3mrows[0m[2m=[0m64 [3mmib[0m[2m=[0m30
+[2m2026-10-24T07:33:10.086624Z[0m [32m INFO[0m [2mspark_model::model::impl_a1_spec_init[0m[2m:[0m MTP drafter context: allocating 1342 MB prompt-hidden capture (262144 x 2560 BF16)
+[2m2026-10-24T07:33:10.132247Z[0m [32m INFO[0m [2mspark_model::model::impl_a1[0m[2m:[0m Registered moe_output (83927040 B) with NCCL
+[2m2026-10-24T07:33:10.132258Z[0m [32m INFO[0m [2mspark_model::model::impl_a1[0m[2m:[0m Registered norm_output (83927040 B) with NCCL
+[2m2026-10-24T07:33:10.132292Z[0m [32m INFO[0m [2mspark_comm::nccl_backend::comm_impl[0m[2m:[0m NCCL backend: bf16_add_inplace kernel set (2-rank send/recv enabled)
+[2m2026-10-24T07:33:10.132307Z[0m [32m INFO[0m [2mspark_comm::nccl_backend::pair_ops[0m[2m:[0m RDMA one-shot kernel set (graph-capturable collectives enabled)
+[2m2026-10-24T07:33:10.135752Z[0m [32m INFO[0m [2mspark_model::model::impl_a1[0m[2m:[0m Pinned metadata staging: 8227 KB
+[2m2026-10-24T07:33:10.149902Z[0m [32m INFO[0m [2mspark_model::model::impl_a1_init[0m[2m:[0m GDN prefill buffers: 355 MB for 16392 tokens (chunked SSM prefill)
+[2m2026-10-24T07:33:10.152872Z[0m [32m INFO[0m [2mspark_model::weight_map::loaders_fp8[0m[2m:[0m quantize_to_nvfp4: n=100000 k=2560 total=256000000 global_max=0.412109 scale2=0.00015331 grid1=1024
+[2m2026-10-24T07:33:10.161184Z[0m [32m INFO[0m [2mspark_model::layers::qwen4exp_draft_head[0m[2m:[0m qwen4_exp MTP draft head: NVFP4 copy of 100000 rows for drafting (ATLAS_QWEN4EXP_DRAFT_HEAD_NVFP4, lossy: acceptance only)
+[2m2026-10-24T07:33:10.161365Z[0m [32m INFO[0m [2mspark_model::factory::build[0m[2m:[0m qwen4_exp MTP draft head installed on rank 1 to serve draft TP
+[2m2026-10-24T07:33:10.201383Z[0m [32m INFO[0m [2mspark::main_modules::serve_phases::kernel_gate[0m[2m:[0m 
+┌─ Kernel load audit ─ 229 kernels embedded · set-hash 22a93e1149b9 ─
+│ MODULE (operation)                 PTX-HASH       RESOLUTION           SHADOWED
+│ ────────────────────────────────────────────────────────────────────────────────────
+│ argmax                             0db62935f368   used                 N
+│ bf16_add                           9ccfff111c1c   used                 N
+│ causal_conv1d                      4c6ef9415ff9   used                 N
+│ dense_gemv_bf16_batch2             8e42d4734916   used                 N
+│ dense_gemv_bf16_batchm             a4364a546a59   used                 N
+│ dense_gemv_fp8w_batch2             345343265bf0   used                 N
+│ dense_gemv_fp8w_batchm             613837fe1f2f   used                 N
+│ dequant_fp8_blockscaled_bf16       112ae266baa4   used                 N
+│ dequant_gguf_bf16                  f8d7ed4a7232   used                 N
+│ dequant_nvfp4_bf16                 34cc9dce8f28   used                 N
+│ dflash2_candidate_selector         2ad1132b4aa6   -                    N
+│ dflash2_conv                       9f020077c495   -                    N
+│ dflash_batch_anchor_add            6a6c6d5fa4cf   -                    N
+│ dflash_batch_markov                7abeae68eb04   -                    N
+│ e2m1                               a9f7db7882e8   -                    N
+│ embed_from_argmax                  9910930cd23e   used                 N
+│ fp8_gemm_t_blockscaled             ccd83dc3175b   used                 N
+│ fused_k_norm_rope_cache            40945835fbe7   used                 N
+│ gated_delta_rule                   7727836c261f   used                 N
+│ gated_delta_rule_fla               3b1f17d91259   used                 N
+│ gated_delta_rule_persistent        119c888ceaa1   used                 N
+│ gated_delta_rule_regresident       f1d7ac7ec2b9   used                 N
+│ gated_delta_rule_wy                2944fa406929   used                 N
+│ gated_delta_rule_wy17              0a0f4f241816   used                 N
+│ gated_delta_rule_wy2_resident      13434e14525a   used                 N
+│ gated_delta_rule_wy2_resident_f16  de9282606c87   used                 N
+│ gated_delta_rule_wy3               f39dfc5fc64c   used                 N
+│ gated_delta_rule_wy3_f16           6f86c5cdca50   used                 N
+│ gated_delta_rule_wy3_resident      2d735fa17437   used                 N
+│ gated_delta_rule_wy3_resident_f16  ca7279841d78   used                 N
+│ gated_delta_rule_wy4               696eacd7fc6f   used                 N
+│ gated_delta_rule_wy4_f16           6117982cee6e   used                 N
+│ gated_delta_rule_wy64_prefill      295277d38edf   used                 N
+│ gated_delta_rule_wy_f16            4e8093d34899   used                 N
+│ gated_delta_rule_wyn               6ff125d1bd34   used                 N
+│ gdn_verify_fused_conv_kn           6d34c1967f19   used                 N
+│ gdn_verify_fused_k2                364133e92759   used                 N
+│ gemm                               ef29bc79a026   used                 N
+│ gemm_splitk                        c3196ada403c   used                 N
+│ gemm_tc                            867449b3a6f2   used                 N
+│ gemv                               8a393e2aee68   used                 N
+│ gemv_fp8w                          cfe758bf0e7d   used                 N
+│ grammar_bitmask                    18765c10e57f   -                    N
+│ hyper_connection                   bbe5cd70e96b   used                 N
+│ inferspark_decode                  af261262bfbf   -                    N
+│ inferspark_prefill                 727ac255e7b6   used                 N
+│ inferspark_prefill_h128            848531341467   -                    N
+│ inferspark_prefill_paged_512       dbb0dff6b267   -                    N
+│ inferspark_prefill_paged_batched   d90bcc613ba0   used                 N
+│ inferspark_prefill_paged_batched_sink 181a9ded386f   -                    N
+│ inferspark_prefill_paged_batched_sink_h128 a7d74763391c   -                    N
+│ inferspark_prefill_paged_fp8_batched 7aa2ada93545   used                 N
+│ inferspark_prefill_paged_nvfp4_batched 8d6a91f11252   used                 N
+│ inferspark_prefill_v47             30c1870d6711   -                    N
+│ kv_cache                           671ff8649e90   -                    N
+│ lora_bgmv                          4c745ed771b5   -                    N
+│ mamba2_ssd_chunk                   f0dbc0b4b3d0   -                    N
+│ mamba2_ssm                         26f1ce59a559   -                    N
+│ marlin_align                       c8912ab9c527   -                    N
+│ marlin_moe_nvfp4                   3db67bc8707a   -                    N
+│ marlin_nvfp4_gemm                  a4df867f66fe   -                    N
+│ marlin_pack_rows                   7899dad7530b   -                    N
+│ marlin_pack_slots                  71d8218c2315   -                    N
+│ marlin_repack                      a508acc54114   -                    N
+│ marlin_row_repeat                  02f547be5f66   -                    N
+│ marlin_scatter_slots               02a0b126a1cf   -                    N
+│ metadata_fill                      4cd48e0860e2   used                 N
+│ moe                                80c985554155   used                 N
+│ moe_bf16_grouped_gemm              b595ccb1a5b5   used                 N
+│ moe_decode_atomic_c4               6c6f857639b5   used                 N
+│ moe_expert_gemv                    4f92cfbebeb4   used                 N
+│ moe_expert_gemv_fused              7b91573b2a01   -                    N
+│ moe_expert_gemv_wide               0173a8c36628   -                    N
+│ moe_expert_gemv_wide_grouped       eee38ad35ec8   -                    N
+│ moe_expert_relu2_down_wide         5046c2f1283e   -                    N
+│ moe_fp8_grouped_gemm               182621af1065   used                 N
+│ moe_fused_batch2                   f3a3774dc1b1   used                 N
+│ moe_fused_batch3                   716fca88de04   used                 N
+│ moe_gate_topk                      05f3ddb5d210   used                 N
+│ moe_hash_route                     b236e1cd8b24   used                 N
+│ moe_lora_gather_bgmv               6ccfd9e689ee   -                    N
+│ moe_lora_grouped_down              fcdd26c27755   -                    N
+│ moe_persist_marker                 46960fc82c3e   used                 N
+│ moe_prefill                        4c4540c33547   used                 N
+│ moe_prefill_q38                    be8508144ebc   -                    N
+│ moe_prefill_w4a4                   93a935defcf8   -                    N
+│ moe_relu2_fused                    f5b158ec76dc   -                    N
+│ moe_shared_expert_fused            41e715ee2e88   used                 N
+│ moe_shared_expert_fused_batch2_t   78ce432df9f5   used                 N
+│ moe_shared_expert_fused_batch3_t   7467a2b88c92   used                 N
+│ moe_shared_expert_fused_bf16       2c42d2c21279   used                 N
+│ moe_shared_expert_fused_bf16_batch2 511eaa0bcb51   used                 N
+│ moe_shared_expert_fused_fp8        45f5a488ad9f   used                 N
+│ moe_shared_expert_fused_fp8_batch2 3b964642816b   used                 N
+│ moe_shared_expert_fused_fp8_batch2_t cac7dc7940d5   used                 N
+│ moe_shared_expert_fused_fp8_batch3 2c01e7fabd07   used                 N
+│ moe_shared_expert_fused_fp8_batch3_t 39e92ce0bd1b   used                 N
+│ moe_shared_expert_fused_fp8_t      4cd0bf5221b4   used                 N
+│ moe_shared_expert_fused_t          a90aae6c52aa   used                 N
+│ moe_silu_mul                       4a5c362629f6   used                 N
+│ moe_sorted                         30a15fee04f9   used                 N
+│ moe_topk                           1f7c99a781c4   used                 N
+│ moe_topk_sig                       78e5a50579e5   used                 N
+│ moe_topk_softmax_bias              e74c9eeebd56   used                 N
+│ moe_topk_sqrt                      946575af8c5f   used                 N
+│ moe_transpose_batched              5e6fa7328d64   used                 N
+│ moe_w4a16                          1902cc9f8626   used                 Y (1 dropped)
+│ moe_w8a8_grouped_gemm              672c54f91493   used                 N
+│ mxfp8_act_quant                    b3e05b776733   used                 N
+│ mxfp8_gemv                         ccc472e03a44   used                 N
+│ nemotron_moe_prefill               8603de61b1b2   -                    N
+│ nllb_encoder                       4e0cefdcb886   -                    N
+│ norm                               54b4b51db347   used                 N
+│ paged_decode                       832219e40f91   used                 N
+│ paged_decode_bf16k_turbo2v         9c490bf07a08   -                    N
+│ paged_decode_bf16k_turbo2v_128     7c83934696fc   -                    N
+│ paged_decode_bf16k_turbo3v         0ca112aafdfd   -                    N
+│ paged_decode_bf16k_turbo3v_128     a85c761cad47   -                    N
+│ paged_decode_bf16k_turbo4v         0d462549a3bf   -                    N
+│ paged_decode_bf16k_turbo4v_128     99ef0985ddd2   -                    N
+│ paged_decode_fp8                   f6abd82dcf50   used                 N
+│ paged_decode_fp8k_turbo2v          4fa993bd5301   -                    N
+│ paged_decode_fp8k_turbo2v_128      f59a4282349b   -                    N
+│ paged_decode_fp8k_turbo3v          1e9ec94e5e3c   -                    N
+│ paged_decode_fp8k_turbo3v_128      f638c88697b2   -                    N
+│ paged_decode_fp8k_turbo4v          0e5bf825245c   -                    N
+│ paged_decode_fp8k_turbo4v_128      4f1ef311e532   -                    N
+│ paged_decode_nvfp4                 c9438db7aac8   -                    N
+│ paged_decode_turbo2                af366bd1d1aa   -                    N
+│ paged_decode_turbo2_128            a54257f08198   -                    N
+│ paged_decode_turbo3                329f86692c5e   -                    N
+│ paged_decode_turbo3_128            b1e6e11fe0d8   -                    N
+│ paged_decode_turbo3k_turbo8v       7353069dec11   -                    N
+│ paged_decode_turbo3k_turbo8v_128   eaee50b401ea   -                    N
+│ paged_decode_turbo4                f52b327a09d9   -                    N
+│ paged_decode_turbo4_128            effd4f08eec2   -                    N
+│ paged_decode_turbo4_512            50334f364bcf   -                    N
+│ paged_decode_turbo4k_turbo3v       5bbeafb8d914   -                    N
+│ paged_decode_turbo4k_turbo3v_128   4419902b39e0   -                    N
+│ paged_decode_turbo4k_turbo8v       3ea0755dd1a8   -                    N
+│ paged_decode_turbo4k_turbo8v_128   72c4e6036610   -                    N
+│ paged_decode_turbo8                e6c66e47e11a   -                    N
+│ paged_decode_turbo8_128            8d806a75bd1c   -                    N
+│ paged_decode_turbo8_512            141c9ebe7930   -                    N
+│ per_token_group_quant_fp8          a740d461be1c   used                 N
+│ ple                                d4bec3d881b3   used                 N
+│ prefill_fp8kv                      da115b003142   -                    N
+│ prefill_paged                      03cd88106502   used                 N
+│ prefill_paged_bf16k_turbo2v        005ea0f5d4a9   used                 N
+│ prefill_paged_bf16k_turbo3v        9c8b11a5983c   used                 N
+│ prefill_paged_bf16k_turbo4v        9181b79e1b49   used                 N
+│ prefill_paged_fp8                  f8d23757aae2   used                 N
+│ prefill_paged_fp8k_turbo2v         8b5e98f87711   used                 N
+│ prefill_paged_fp8k_turbo3v         8be64ac7b696   used                 N
+│ prefill_paged_fp8k_turbo4v         2417946f8951   used                 N
+│ prefill_paged_indirect             7b4a7b86f6b9   -                    N
+│ prefill_paged_indirect_sink        57c3f16ed7c2   -                    N
+│ prefill_paged_indirect_sink_h128   577188858259   -                    N
+│ prefill_paged_nvfp4                4005cf4bfcba   used                 N
+│ prefill_paged_sink                 e0484eaf4df6   -                    N
+│ prefill_paged_sink_h128            7cba4c7e3164   -                    N
+│ prefill_paged_turbo2               69feee696405   used                 N
+│ prefill_paged_turbo3               c2105f6e8bd5   used                 N
+│ prefill_paged_turbo3k_turbo8v      c3911dcbf1c1   used                 N
+│ prefill_paged_turbo4               ed3c1e59e1af   used                 N
+│ prefill_paged_turbo4k_turbo3v      c210060cacf5   used                 N
+│ prefill_paged_turbo4k_turbo8v      007a153a8499   used                 N
+│ prefill_paged_turbo8               c9ff115c3363   used                 N
+│ q2_0_gemv                          5d98978700ab   -                    N
+│ q2_0_gemv_vec                      85aa154a6585   used                 N
+│ qsa_attn_gp                        776b34e27139   -                    N
+│ qsa_attn_tc                        4c1a26452bb3   used                 N
+│ qsa_attn_tc2                       c0ed0d047795   used                 N
+│ qsa_attn_tc2l                      3dfd716e8cd5   -                    N
+│ qsa_attn_tc2r                      1e19d18fc9e2   -                    N
+│ qsa_attn_tc3                       ffa610107407   used                 N
+│ qsa_decode_rows                    bf190edee3cf   used                 N
+│ qsa_indexer                        550719bbf0c9   used                 N
+│ qsa_score_tc                       d0d3baaa6084   used                 N
+│ quant_rowwise_fp8                  498cf54228f3   -                    N
+│ quantize_bf16_to_fp8_blockscaled   ba34cdbc80ef   -                    N
+│ quantize_nvfp4                     8b6cc00fd5e4   used                 N
+│ qwen4exp_attn                      20475966c1c8   -                    N
+│ qwen4exp_decode_fuse               906a133a38c9   -                    N
+│ qwen4exp_fp8_gemm                  743956bf5922   -                    N
+│ qwen4exp_gdn_prefill               b20fe73276c2   -                    N
+│ qwen4exp_hc                        d4220d100ec3   -                    N
+│ qwen4exp_hc_mma                    87222e1680c5   -                    N
+│ qwen4exp_moe_c8                    8b60d2881ae3   -                    N
+│ qwen4exp_moe_c8_tc                 db1b8f8d567b   -                    N
+│ qwen4exp_moe_c8_tc3                1d8bb2d6c789   used                 N
+│ qwen4exp_moe_decode                fc7c598c3355   used                 N
+│ qwen4exp_moe_rows                  b49db9cb1498   used                 N
+│ qwen4exp_moe_tcp                   bdc8444d957f   -                    N
+│ qwen4exp_ple                       ae0676f5ba1a   -                    N
+│ qwen4exp_rows32_tile               bce23d0c4794   used                 N
+│ qwen4exp_w4_rows                   64c03516e5b5   used                 N
+│ qwen4exp_w4_wide                   b3620586d77a   used                 N
+│ qwen4exp_wide_rows                 ff271b87a811   used                 N
+│ rank_split_join                    1c346cfaa158   -                    N
+│ rdma_oneshot                       c8862af91ab5   used                 N
+│ relu2                              0494c7397566   -                    N
+│ reshape_and_cache                  32c2e022fa7f   used                 N
+│ reshape_and_cache_turbo            510485da9044   -                    N
+│ residual_add                       f663d8d1de90   used                 N
+│ rms_norm_vanilla                   02523febe64b   -                    N
+│ rope                               d62f5ca3c030   used                 N
+│ rope_mrope_interleaved             08cb16a14d18   used                 N
+│ ssm_h_dtype                        1857b474be8c   used                 N
+│ ssm_preprocess                     6057e33ef202   used                 N
+│ ssm_state_norm                     5acf60599b06   used                 N
+│ token_overlay                      98e387417c45   used                 N
+│ tq_plus_innerq_apply               28e95d86aea0   used                 N
+│ transpose_u8                       8aa091f067b1   -                    N
+│ vector_add                         aaeea326e703   -                    N
+│ vision_encoder                     1519e14b7127   used                 N
+│ w4a16                              58e961fef9b3   used                 Y (1 dropped)
+│ w4a16_fp8_ldmab                    ef00062efb9a   -                    N
+│ w4a16_gemv                         aa69eccbbd2d   used                 N
+│ w4a16_gemv_fused                   806c83e1c387   used                 N
+│ w8a16_gemm                         099b32ffb0e8   used                 N
+│ w8a16_gemm_pipelined               6877c736e13c   used                 N
+│ w8a16_gemm_t                       2d77c473cf82   used                 N
+│ w8a16_gemm_t_m128                  02ac98f727f2   used                 N
+│ w8a16_gemv                         3d89c168b3f9   used                 N
+│ w8a16_gemv_batch4                  340977e6688b   used                 N
+│ w8a16_gemv_fused                   bd3342f79a99   -                    N
+│ wht_bf16                           e6a015d83736   used                 N
+│ widen_block_scale_f32              79165f4d8859   -                    N
+└─
+
+21 kernel(s) declared expected-absent in this target's MODEL.toml [expected_absent] (no action):
+    gated_delta_rule::gated_delta_rule_decode_f16_norm, gated_delta_rule::gated_delta_rule_decode_f16_strided_norm_half, gated_delta_rule::gated_delta_rule_decode_f32_strided_norm_half, gated_delta_rule::gated_delta_rule_decode_f32_strided_norm_smem, gated_delta_rule_snap::gated_delta_rule_decode_f32_norm_snap, gated_delta_rule_snap::gated_delta_rule_decode_f32_strided_norm_snap, gdn_verify_fused_conv_kn_f32::gdn_verify_fused_conv_kn_f32, hyper_connection::hc_contract, hyper_connection::hc_post_moe_blend, hyper_connection::hc_pre_from_raw_mix, moe_w4a16::moe_w4a16_fused_gate_up_t_e8m0, moe_w4a16::moe_w4a16_fused_gate_up_t_k64_e8m0, moe_w4a16::moe_w4a16_fused_gate_up_t_k64_m128, moe_w4a16::moe_w4a16_grouped_gemm_ptrtable_e8m0, moe_w4a16::moe_w4a16_grouped_gemm_ptrtable_t_e8m0, moe_w4a16::moe_w4a16_grouped_gemm_ptrtable_t_k64_e8m0, w4a16::w4a16_gemm_t_k64_n64_p3, w4a16::w4a16_gemm_t_k64_p3, w4a16::w4a16_gemm_t_m128_bf16, w4a16::w4a16_gemm_t_p3, w4a4::w4a4_gemm_mfast
+
+[2m2026-10-24T07:33:10.201649Z[0m [32m INFO[0m [2mspark::main_modules::serve_phases::runtime[0m[2m:[0m EOS tokens (from generation_config.json): [248046, 248044]
+[2m2026-10-24T07:33:10.201655Z[0m [32m INFO[0m [2mspark_model::traits::eos_ban[0m[2m:[0m qwen4_exp min_tokens end-token ban ON (ATLAS_QWEN4EXP_EOS_BAN=1): below a request's min_tokens the target and the MTP drafter never pick [248046, 248044, 4294967295, 4294967295]
+[2m2026-10-24T07:33:10.231141Z[0m [32m INFO[0m [2mspark::main_modules::serve_phases::build[0m[2m:[0m EP worker ready (rank 1, 8 slots), waiting for commands
+[2m2026-10-24T07:33:14.911408Z[0m [32m INFO[0m [2mspark_model::model::vision_cache[0m[2m:[0m Vision prefix cache: 0 of 45 items cached (0 rows), encoded 4320 rows for positions from 0
+[2m2026-10-24T07:33:14.945871Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::fixed_algo[0m[2m:[0m cuBLASLt fixed algorithm for BF16 320x10240 (picked at 512 rows): id=21 tile=15 splitK=8 reduction=1
+[2m2026-10-24T07:33:14.947302Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::fixed_algo[0m[2m:[0m cuBLASLt fixed algorithm for BF16 4x10240 (picked at 512 rows): id=23 tile=11 splitK=6 reduction=4
+[2m2026-10-24T07:33:14.951492Z[0m [32m INFO[0m [2mspark_model::layers::qwen3_ssm::trait_prefill_recur[0m[2m:[0m GDN prefill: FLA chunked path ACTIVE (baked default: recompute_wu → chunk_delta_h_ksplit → chunk_fwd_o)
+[2m2026-10-24T07:33:14.987101Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 76080 ids, 76080 hits / 0 misses, resolve 956us
+[2m2026-10-24T07:33:14.987152Z[0m [33m WARN[0m [2mspark_runtime::cuda_backend::host_staging[0m[2m:[0m copy_h2d_async was handed a PAGE-LOCKED source. That copy is genuinely asynchronous, so the promise that the caller may drop the buffer on return is now being paid for with a cuStreamSynchronize on every such call. If the source outlives the next sync, switch the call site to copy_h2d_async_retained; if it does not, this sync is what keeps it from being a use-after-free.
+[2m2026-10-24T07:33:14.992230Z[0m [32m INFO[0m [2mspark_runtime::cublaslt::fixed_algo[0m[2m:[0m cuBLASLt fixed algorithm for BF16 640x2560 (picked at 2048 rows): id=21 tile=15 splitK=1 reduction=0
+[2m2026-10-24T07:33:16.263251Z[0m [32m INFO[0m [2mspark_model::model::trait_impl::prefill_b::qwen4exp_ckpt[0m[2m:[0m qwen4_exp mid-chunk SSM checkpoint saved at token 4736 (snapshot_id 0)
+[2m2026-10-24T07:33:16.288986Z[0m [32m INFO[0m [2mspark_model::layers::ops::qwen4exp_decode_fuse[0m[2m:[0m ATLAS_QWEN4EXP_DECODE_FUSE: fused decode groups 0x7
+[2m2026-10-24T07:33:16.305444Z[0m [32m INFO[0m [2mspark_model::model::qwen4exp_lmhead_split[0m[2m:[0m qwen4_exp LM-head vocab split active [3mrank[0m[2m=[0m1 [3mstart[0m[2m=[0m124032 [3mwidth[0m[2m=[0m124045
+[2m2026-10-24T07:33:16.395804Z[0m [32m INFO[0m [2mspark_model::model::trait_impl::gdn_commit_fuse[0m[2m:[0m qwen4_exp GDN commit fuse: 0 commits fused into a verify, 1 flushed
+[2m2026-10-24T07:33:16.398260Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (Verify, false, [0], 4, 0): 1 graphs in 0.3 ms (1 graphs cached)
+[2m2026-10-24T07:33:16.398579Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (Verify, false, [0], 4, 2): 1 graphs in 0.1 ms (2 graphs cached)
+[2m2026-10-24T07:33:16.399337Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (Verify, false, [0], 4, 4): 1 graphs in 0.6 ms (3 graphs cached)
+[2m2026-10-24T07:33:16.399746Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (Verify, false, [0], 4, 8): 1 graphs in 0.3 ms (4 graphs cached)
+[2m2026-10-24T07:33:16.400106Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (Verify, false, [0], 4, 12): 1 graphs in 0.2 ms (5 graphs cached)
+[2m2026-10-24T07:33:16.400790Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (Verify, false, [0], 4, 16): 1 graphs in 0.6 ms (6 graphs cached)
+[2m2026-10-24T07:33:16.401281Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (Verify, false, [0], 4, 20): 1 graphs in 0.3 ms (7 graphs cached)
+[2m2026-10-24T07:33:16.401739Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (Verify, false, [0], 4, 24): 1 graphs in 0.3 ms (8 graphs cached)
+[2m2026-10-24T07:33:16.402527Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (Verify, false, [0], 4, 28): 1 graphs in 0.7 ms (9 graphs cached)
+[2m2026-10-24T07:33:16.403023Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (Verify, false, [0], 4, 32): 1 graphs in 0.3 ms (10 graphs cached)
+[2m2026-10-24T07:33:16.403464Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (Verify, false, [0], 4, 36): 1 graphs in 0.3 ms (11 graphs cached)
+[2m2026-10-24T07:33:16.403840Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (Verify, false, [0], 4, 40): 1 graphs in 0.2 ms (12 graphs cached)
+[2m2026-10-24T07:33:16.404794Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (Verify, false, [0], 4, 44): 1 graphs in 0.8 ms (13 graphs cached)
+[2m2026-10-24T07:33:16.445125Z[0m [32m INFO[0m [2mspark_model::model::trait_impl::gdn_commit_fuse[0m[2m:[0m qwen4_exp GDN commit fuse: 0 commits fused into a verify, 2 flushed
+[2m2026-10-24T07:33:16.541778Z[0m [32m INFO[0m [2mspark_model::model::trait_impl::gdn_commit_fuse[0m[2m:[0m qwen4_exp GDN commit fuse: 0 commits fused into a verify, 4 flushed
+[2m2026-10-24T07:33:16.728183Z[0m [32m INFO[0m [2mspark_model::model::trait_impl::gdn_commit_fuse[0m[2m:[0m qwen4_exp GDN commit fuse: 0 commits fused into a verify, 8 flushed
+[2m2026-10-24T07:33:17.105014Z[0m [32m INFO[0m [2mspark_model::model::trait_impl::gdn_commit_fuse[0m[2m:[0m qwen4_exp GDN commit fuse: 1 commits fused into a verify, 15 flushed
+[2m2026-10-24T07:33:17.108029Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 96 ids, 88 hits / 8 misses, resolve 1271us
+[2m2026-10-24T07:33:17.160543Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (VerifyBatch, false, [0, 6, 4294967295], 6, 0): 1 graphs in 0.2 ms (14 graphs cached)
+[2m2026-10-24T07:33:17.162349Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 96 ids, 72 hits / 24 misses, resolve 1776us
+[2m2026-10-24T07:33:17.163016Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (VerifyBatch, false, [0, 6, 4294967295], 6, 2): 1 graphs in 0.4 ms (15 graphs cached)
+[2m2026-10-24T07:33:17.163721Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (VerifyBatch, false, [0, 6, 4294967295], 6, 4): 1 graphs in 0.4 ms (16 graphs cached)
+[2m2026-10-24T07:33:17.164300Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (VerifyBatch, false, [0, 6, 4294967295], 6, 8): 1 graphs in 0.4 ms (17 graphs cached)
+[2m2026-10-24T07:33:17.165117Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (VerifyBatch, false, [0, 6, 4294967295], 6, 12): 1 graphs in 0.7 ms (18 graphs cached)
+[2m2026-10-24T07:33:17.165618Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (VerifyBatch, false, [0, 6, 4294967295], 6, 16): 1 graphs in 0.4 ms (19 graphs cached)
+[2m2026-10-24T07:33:17.166125Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (VerifyBatch, false, [0, 6, 4294967295], 6, 20): 1 graphs in 0.3 ms (20 graphs cached)
+[2m2026-10-24T07:33:17.167251Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (VerifyBatch, false, [0, 6, 4294967295], 6, 24): 1 graphs in 1.0 ms (21 graphs cached)
+[2m2026-10-24T07:33:17.167847Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (VerifyBatch, false, [0, 6, 4294967295], 6, 28): 1 graphs in 0.4 ms (22 graphs cached)
+[2m2026-10-24T07:33:17.168393Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (VerifyBatch, false, [0, 6, 4294967295], 6, 32): 1 graphs in 0.4 ms (23 graphs cached)
+[2m2026-10-24T07:33:17.168849Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (VerifyBatch, false, [0, 6, 4294967295], 6, 36): 1 graphs in 0.3 ms (24 graphs cached)
+[2m2026-10-24T07:33:17.169287Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (VerifyBatch, false, [0, 6, 4294967295], 6, 40): 1 graphs in 0.3 ms (25 graphs cached)
+[2m2026-10-24T07:33:17.169962Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (VerifyBatch, false, [0, 6, 4294967295], 6, 44): 1 graphs in 0.5 ms (26 graphs cached)
+[2m2026-10-24T07:33:17.216543Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 96 ids, 24 hits / 72 misses, resolve 2114us
+[2m2026-10-24T07:33:17.270546Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 96 ids, 0 hits / 96 misses, resolve 2789us
+[2m2026-10-24T07:33:19.525243Z[0m [32m INFO[0m [2mspark_model::model::vision_cache[0m[2m:[0m Vision prefix cache: 0 of 45 items cached (0 rows), encoded 4320 rows for positions from 0
+[2m2026-10-24T07:33:19.597750Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 76080 ids, 76080 hits / 0 misses, resolve 1001us
+[2m2026-10-24T07:33:20.849905Z[0m [32m INFO[0m [2mspark_model::model::trait_impl::prefill_b::qwen4exp_ckpt[0m[2m:[0m qwen4_exp mid-chunk SSM checkpoint saved at token 4736 (snapshot_id 1)
+[2m2026-10-24T07:33:20.875587Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (Decode, false, [0], 1, 0): 1 graphs in 0.2 ms (27 graphs cached)
+[2m2026-10-24T07:33:20.875836Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (Decode, false, [0], 1, 2): 1 graphs in 0.1 ms (28 graphs cached)
+[2m2026-10-24T07:33:20.876371Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (Decode, false, [0], 1, 4): 1 graphs in 0.3 ms (29 graphs cached)
+[2m2026-10-24T07:33:20.877332Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (Decode, false, [0], 1, 8): 1 graphs in 0.8 ms (30 graphs cached)
+[2m2026-10-24T07:33:20.877738Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (Decode, false, [0], 1, 12): 1 graphs in 0.2 ms (31 graphs cached)
+[2m2026-10-24T07:33:20.878047Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (Decode, false, [0], 1, 16): 1 graphs in 0.2 ms (32 graphs cached)
+[2m2026-10-24T07:33:20.878644Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (Decode, false, [0], 1, 20): 1 graphs in 0.5 ms (33 graphs cached)
+[2m2026-10-24T07:33:20.879027Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (Decode, false, [0], 1, 24): 1 graphs in 0.2 ms (34 graphs cached)
+[2m2026-10-24T07:33:20.879634Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (Decode, false, [0], 1, 28): 1 graphs in 0.5 ms (35 graphs cached)
+[2m2026-10-24T07:33:20.880043Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (Decode, false, [0], 1, 32): 1 graphs in 0.2 ms (36 graphs cached)
+[2m2026-10-24T07:33:20.880911Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (Decode, false, [0], 1, 36): 1 graphs in 0.7 ms (37 graphs cached)
+[2m2026-10-24T07:33:20.881738Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (Decode, false, [0], 1, 40): 1 graphs in 0.7 ms (38 graphs cached)
+[2m2026-10-24T07:33:20.882184Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (Decode, false, [0], 1, 44): 1 graphs in 0.3 ms (39 graphs cached)
+[2m2026-10-24T07:33:21.459823Z[0m [32m INFO[0m [2mspark_model::model::trait_impl::gdn_commit_fuse[0m[2m:[0m qwen4_exp GDN commit fuse: 4 commits fused into a verify, 28 flushed
+[2m2026-10-24T07:33:21.638237Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 96 ids, 96 hits / 0 misses, resolve 19us
+[2m2026-10-24T07:33:21.690471Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 96 ids, 96 hits / 0 misses, resolve 14us
+[2m2026-10-24T07:33:21.745816Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 96 ids, 32 hits / 64 misses, resolve 1694us
+[2m2026-10-24T07:33:24.220002Z[0m [32m INFO[0m [2mspark_model::model::vision_cache[0m[2m:[0m Vision prefix cache: 0 of 50 items cached (0 rows), encoded 4800 rows for positions from 0
+[2m2026-10-24T07:33:24.293945Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 84400 ids, 84400 hits / 0 misses, resolve 1036us
+[2m2026-10-24T07:33:25.669985Z[0m [32m INFO[0m [2mspark_model::model::trait_impl::prefill_b::qwen4exp_ckpt[0m[2m:[0m qwen4_exp mid-chunk SSM checkpoint saved at token 5248 (snapshot_id 2)
+[2m2026-10-24T07:33:26.455276Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 96 ids, 96 hits / 0 misses, resolve 20us
+[2m2026-10-24T07:33:26.509308Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 96 ids, 64 hits / 32 misses, resolve 1452us
+[2m2026-10-24T07:33:26.561027Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 96 ids, 96 hits / 0 misses, resolve 23us
+[2m2026-10-24T07:33:27.134853Z[0m [32m INFO[0m [2mspark_model::model::trait_impl::prefill_b::prefix_lookup[0m[2m:[0m Prefix cache hit: 4672 tokens (292 blocks) but no SSM snapshot — recomputing all KV
+[2m2026-10-24T07:33:28.908877Z[0m [32m INFO[0m [2mspark_model::model::vision_cache[0m[2m:[0m Vision prefix cache: 0 of 46 items cached (0 rows), encoded 4512 rows for positions from 0
+[2m2026-10-24T07:33:28.986848Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 78576 ids, 78576 hits / 0 misses, resolve 1026us
+[2m2026-10-24T07:33:30.395938Z[0m [32m INFO[0m [2mspark_model::model::trait_impl::prefill_b::qwen4exp_ckpt[0m[2m:[0m qwen4_exp mid-chunk SSM checkpoint saved at token 4864 (snapshot_id 3)
+[2m2026-10-24T07:33:30.731101Z[0m [32m INFO[0m [2mspark_model::model::trait_impl::gdn_commit_fuse[0m[2m:[0m qwen4_exp GDN commit fuse: 10 commits fused into a verify, 54 flushed
+[2m2026-10-24T07:33:32.022112Z[0m [32m INFO[0m [2mspark_model::model::trait_impl::prefill_b::prefix_lookup[0m[2m:[0m Prefix cache hit: 4672 tokens (292 blocks) but no SSM snapshot — recomputing all KV
+[2m2026-10-24T07:33:35.431388Z[0m [32m INFO[0m [2mspark_model::model::vision_cache[0m[2m:[0m Vision prefix cache: 0 of 90 items cached (0 rows), encoded 8640 rows for positions from 0
+[2m2026-10-24T07:33:35.542895Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 131072 ids, 131072 hits / 0 misses, resolve 1573us
+[2m2026-10-24T07:33:35.543660Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 19760 ids, 19760 hits / 0 misses, resolve 285us
+[2m2026-10-24T07:33:37.799988Z[0m [32m INFO[0m [2mspark_model::model::trait_impl::prefill_b::qwen4exp_ckpt[0m[2m:[0m qwen4_exp mid-chunk SSM checkpoint saved at token 9408 (snapshot_id 4)
+[2m2026-10-24T07:33:39.523998Z[0m [32m INFO[0m [2mspark_model::model::trait_impl::prefill_b::prefix_lookup[0m[2m:[0m Prefix cache hit: 4672 tokens (292 blocks) but no SSM snapshot — recomputing all KV
+[2m2026-10-24T07:33:42.914639Z[0m [32m INFO[0m [2mspark_model::model::vision_cache[0m[2m:[0m Vision prefix cache: 0 of 90 items cached (0 rows), encoded 8640 rows for positions from 0
+[2m2026-10-24T07:33:43.026648Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 131072 ids, 131072 hits / 0 misses, resolve 1442us
+[2m2026-10-24T07:33:43.027312Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 19728 ids, 19728 hits / 0 misses, resolve 199us
+[2m2026-10-24T07:33:45.287315Z[0m [32m INFO[0m [2mspark_model::model::trait_impl::prefill_b::qwen4exp_ckpt[0m[2m:[0m qwen4_exp mid-chunk SSM checkpoint saved at token 9408 (snapshot_id 5)
+[2m2026-10-24T07:33:46.288599Z[0m [32m INFO[0m [2mspark_model::model::trait_impl::prefill_b::prefix_lookup[0m[2m:[0m Marconi intermediate hit: restored from checkpoint at token 4736 (skipping 4736 tokens, replaying 19 SSM tokens to reach 4755; 16 of those are the anchor->match gap to 4752)
+[2m2026-10-24T07:33:46.289096Z[0m [32m INFO[0m [2mspark_model::model::vision_cache[0m[2m:[0m Vision prefix cache: 45 of 45 items cached (4320 rows), encoded 0 rows for positions from 4736
+[2m2026-10-24T07:33:46.305668Z[0m [32m INFO[0m [2mspark_model::model::trait_impl::prefill_b::qwen4exp_ckpt[0m[2m:[0m qwen4_exp mid-chunk checkpoint: no 64-token boundary in [4736, 4736]
+[2m2026-10-24T07:33:46.306129Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 304 ids, 304 hits / 0 misses, resolve 47us
+[2m2026-10-24T07:33:47.139740Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 96 ids, 96 hits / 0 misses, resolve 11us
+[2m2026-10-24T07:33:47.191659Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 96 ids, 96 hits / 0 misses, resolve 5us
+[2m2026-10-24T07:33:47.242664Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 96 ids, 96 hits / 0 misses, resolve 10us
+[2m2026-10-24T07:33:47.294990Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 96 ids, 64 hits / 32 misses, resolve 1297us
+[2m2026-10-24T07:33:47.347022Z[0m [32m INFO[0m [2mspark_model::model::trait_impl::prefill_b::prefix_lookup[0m[2m:[0m Marconi intermediate hit: restored from checkpoint at token 4736 (skipping 4736 tokens, replaying 19 SSM tokens to reach 4755; 16 of those are the anchor->match gap to 4752)
+[2m2026-10-24T07:33:47.347667Z[0m [32m INFO[0m [2mspark_model::model::vision_cache[0m[2m:[0m Vision prefix cache: 45 of 45 items cached (4320 rows), encoded 0 rows for positions from 4736
+[2m2026-10-24T07:33:47.364890Z[0m [32m INFO[0m [2mspark_model::model::trait_impl::prefill_b::qwen4exp_ckpt[0m[2m:[0m qwen4_exp mid-chunk checkpoint: no 64-token boundary in [4736, 4736]
+[2m2026-10-24T07:33:47.365301Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 304 ids, 304 hits / 0 misses, resolve 47us
+[2m2026-10-24T07:33:48.193297Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 96 ids, 96 hits / 0 misses, resolve 16us
+[2m2026-10-24T07:33:48.246343Z[0m [32m INFO[0m [2mspark_model::model::trait_impl::gdn_commit_fuse[0m[2m:[0m qwen4_exp GDN commit fuse: 16 commits fused into a verify, 112 flushed
+[2m2026-10-24T07:33:48.246412Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 96 ids, 96 hits / 0 misses, resolve 8us
+[2m2026-10-24T07:33:48.296482Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 96 ids, 96 hits / 0 misses, resolve 12us
+[2m2026-10-24T07:33:48.348340Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 96 ids, 96 hits / 0 misses, resolve 12us
+[2m2026-10-24T07:33:52.609149Z[0m [32m INFO[0m [2mspark_model::model::vision_cache[0m[2m:[0m Vision prefix cache: 0 of 36 items cached (0 rows), encoded 7920 rows for positions from 0
+[2m2026-10-24T07:33:52.712001Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 131072 ids, 131072 hits / 0 misses, resolve 1347us
+[2m2026-10-24T07:33:52.712515Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 1520 ids, 1520 hits / 0 misses, resolve 79us
+[2m2026-10-24T07:33:54.676375Z[0m [32m INFO[0m [2mspark_model::model::trait_impl::prefill_b::qwen4exp_ckpt[0m[2m:[0m qwen4_exp mid-chunk SSM checkpoint saved at token 8256 (snapshot_id 6)
+[2m2026-10-24T07:33:55.498084Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 96 ids, 96 hits / 0 misses, resolve 26us
+[2m2026-10-24T07:33:55.550166Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 96 ids, 88 hits / 8 misses, resolve 1207us
+[2m2026-10-24T07:33:55.601628Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 96 ids, 80 hits / 16 misses, resolve 1565us
+[2m2026-10-24T07:33:55.654476Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 96 ids, 56 hits / 40 misses, resolve 1758us
+[2m2026-10-24T07:34:01.752119Z[0m [32m INFO[0m [2mspark_model::model::vision_cache[0m[2m:[0m Vision prefix cache: 0 of 64 items cached (0 rows), encoded 11520 rows for positions from 0
+[2m2026-10-24T07:34:01.891937Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 131072 ids, 131072 hits / 0 misses, resolve 1520us
+[2m2026-10-24T07:34:01.893250Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 63504 ids, 63504 hits / 0 misses, resolve 769us
+[2m2026-10-24T07:34:04.689231Z[0m [32m INFO[0m [2mspark_model::model::trait_impl::prefill_b::qwen4exp_ckpt[0m[2m:[0m qwen4_exp mid-chunk SSM checkpoint saved at token 12096 (snapshot_id 7)
+[2m2026-10-24T07:34:12.013702Z[0m [32m INFO[0m [2mspark_model::model::vision_cache[0m[2m:[0m Vision prefix cache: 0 of 64 items cached (0 rows), encoded 11520 rows for positions from 0
+[2m2026-10-24T07:34:12.153977Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 131072 ids, 131072 hits / 0 misses, resolve 1587us
+[2m2026-10-24T07:34:12.155348Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 63504 ids, 63504 hits / 0 misses, resolve 936us
+[2m2026-10-24T07:34:14.947138Z[0m [32m INFO[0m [2mspark_model::model::trait_impl::prefill_b::qwen4exp_ckpt[0m[2m:[0m qwen4_exp mid-chunk SSM checkpoint saved at token 12096 (snapshot_id 8)
+[2m2026-10-24T07:34:15.803249Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 96 ids, 80 hits / 16 misses, resolve 749us
+[2m2026-10-24T07:34:15.857785Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 96 ids, 72 hits / 24 misses, resolve 1119us
+[2m2026-10-24T07:34:16.521767Z[0m [32m INFO[0m [2mspark_model::model::trait_impl::prefill_b::prefix_lookup[0m[2m:[0m Prefix cache hit: 4672 tokens (292 blocks) but no SSM snapshot — recomputing all KV
+[2m2026-10-24T07:34:18.215946Z[0m [32m INFO[0m [2mspark_model::model::vision_cache[0m[2m:[0m Vision prefix cache: 0 of 45 items cached (0 rows), encoded 4320 rows for positions from 0
+[2m2026-10-24T07:34:18.281988Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 75440 ids, 75440 hits / 0 misses, resolve 1030us
+[2m2026-10-24T07:34:19.509804Z[0m [32m INFO[0m [2mspark_model::model::trait_impl::prefill_b::qwen4exp_ckpt[0m[2m:[0m qwen4_exp mid-chunk SSM checkpoint saved at token 4672 (snapshot_id 9)
+[2m2026-10-24T07:34:20.284541Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 96 ids, 96 hits / 0 misses, resolve 25us
+[2m2026-10-24T07:34:20.881309Z[0m [32m INFO[0m [2mspark_model::model::trait_impl::prefill_b::prefix_lookup[0m[2m:[0m Prefix cache hit: 4672 tokens (292 blocks) but no SSM snapshot — recomputing all KV
+[2m2026-10-24T07:34:22.575507Z[0m [32m INFO[0m [2mspark_model::model::vision_cache[0m[2m:[0m Vision prefix cache: 0 of 45 items cached (0 rows), encoded 4320 rows for positions from 0
+[2m2026-10-24T07:34:22.641178Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 75440 ids, 75440 hits / 0 misses, resolve 893us
+[2m2026-10-24T07:34:23.882658Z[0m [32m INFO[0m [2mspark_model::model::trait_impl::prefill_b::qwen4exp_ckpt[0m[2m:[0m qwen4_exp mid-chunk SSM checkpoint saved at token 4672 (snapshot_id 10)
+[2m2026-10-24T07:34:23.953442Z[0m [32m INFO[0m [2mspark_model::model::trait_impl::prefill_b::prefix_lookup[0m[2m:[0m Marconi intermediate hit: restored from checkpoint at token 4672 (skipping 4672 tokens, replaying 43 SSM tokens to reach 4715; 32 of those are the anchor->match gap to 4704)
+[2m2026-10-24T07:34:23.994245Z[0m [32m INFO[0m [2mspark_model::model::vision_cache[0m[2m:[0m Vision prefix cache: 44 of 45 items cached (4224 rows), encoded 96 rows for positions from 4672
+[2m2026-10-24T07:34:24.011424Z[0m [32m INFO[0m [2mspark_model::model::trait_impl::prefill_b::qwen4exp_ckpt[0m[2m:[0m qwen4_exp mid-chunk checkpoint: no 64-token boundary in [4672, 4688]
+[2m2026-10-24T07:34:24.011981Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 688 ids, 688 hits / 0 misses, resolve 43us
+[2m2026-10-24T07:34:24.132307Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 80 ids, 80 hits / 0 misses, resolve 31us
+[2m2026-10-24T07:34:24.180427Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 128 ids, 128 hits / 0 misses, resolve 28us
+[2m2026-10-24T07:34:24.232444Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (VerifyBatch, false, [0, 4, 1, 4, 4294967295], 8, 0): 1 graphs in 0.2 ms (40 graphs cached)
+[2m2026-10-24T07:34:24.232493Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 128 ids, 128 hits / 0 misses, resolve 26us
+[2m2026-10-24T07:34:24.233643Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (VerifyBatch, false, [0, 4, 1, 4, 4294967295], 8, 2): 1 graphs in 0.1 ms (41 graphs cached)
+[2m2026-10-24T07:34:24.234030Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (VerifyBatch, false, [0, 4, 1, 4, 4294967295], 8, 4): 1 graphs in 0.2 ms (42 graphs cached)
+[2m2026-10-24T07:34:24.234451Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (VerifyBatch, false, [0, 4, 1, 4, 4294967295], 8, 8): 1 graphs in 0.2 ms (43 graphs cached)
+[2m2026-10-24T07:34:24.234880Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (VerifyBatch, false, [0, 4, 1, 4, 4294967295], 8, 12): 1 graphs in 0.3 ms (44 graphs cached)
+[2m2026-10-24T07:34:24.236100Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (VerifyBatch, false, [0, 4, 1, 4, 4294967295], 8, 16): 1 graphs in 1.1 ms (45 graphs cached)
+[2m2026-10-24T07:34:24.236527Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (VerifyBatch, false, [0, 4, 1, 4, 4294967295], 8, 20): 1 graphs in 0.2 ms (46 graphs cached)
+[2m2026-10-24T07:34:24.236915Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (VerifyBatch, false, [0, 4, 1, 4, 4294967295], 8, 24): 1 graphs in 0.2 ms (47 graphs cached)
+[2m2026-10-24T07:34:24.237350Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (VerifyBatch, false, [0, 4, 1, 4, 4294967295], 8, 28): 1 graphs in 0.2 ms (48 graphs cached)
+[2m2026-10-24T07:34:24.237757Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (VerifyBatch, false, [0, 4, 1, 4, 4294967295], 8, 32): 1 graphs in 0.2 ms (49 graphs cached)
+[2m2026-10-24T07:34:24.238587Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (VerifyBatch, false, [0, 4, 1, 4, 4294967295], 8, 36): 1 graphs in 0.6 ms (50 graphs cached)
+[2m2026-10-24T07:34:24.239159Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (VerifyBatch, false, [0, 4, 1, 4, 4294967295], 8, 40): 1 graphs in 0.3 ms (51 graphs cached)
+[2m2026-10-24T07:34:24.240437Z[0m [32m INFO[0m [2mspark_model::model::verify_pieces[0m[2m:[0m piecewise decode graph (step, wide, ssm slots, rows, layer) = (VerifyBatch, false, [0, 4, 1, 4, 4294967295], 8, 44): 1 graphs in 1.1 ms (52 graphs cached)
+[2m2026-10-24T07:34:24.288490Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 128 ids, 128 hits / 0 misses, resolve 60us
+[2m2026-10-24T07:34:24.342138Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 128 ids, 128 hits / 0 misses, resolve 23us
+[2m2026-10-24T07:34:24.396025Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 128 ids, 128 hits / 0 misses, resolve 35us
+[2m2026-10-24T07:34:24.452239Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 128 ids, 128 hits / 0 misses, resolve 27us
+[2m2026-10-24T07:34:24.507796Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 128 ids, 128 hits / 0 misses, resolve 21us
+[2m2026-10-24T07:34:24.563135Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 128 ids, 128 hits / 0 misses, resolve 12us
+[2m2026-10-24T07:34:24.618649Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 128 ids, 128 hits / 0 misses, resolve 22us
+[2m2026-10-24T07:34:24.673937Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 128 ids, 128 hits / 0 misses, resolve 13us
+[2m2026-10-24T07:34:24.723958Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 128 ids, 128 hits / 0 misses, resolve 31us
+[2m2026-10-24T07:34:24.776866Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 128 ids, 128 hits / 0 misses, resolve 37us
+[2m2026-10-24T07:34:24.829012Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 128 ids, 128 hits / 0 misses, resolve 15us
+[2m2026-10-24T07:34:24.889426Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 128 ids, 128 hits / 0 misses, resolve 40us
+[2m2026-10-24T07:34:24.945444Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 128 ids, 128 hits / 0 misses, resolve 20us
+[2m2026-10-24T07:34:24.996125Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 128 ids, 128 hits / 0 misses, resolve 24us
+[2m2026-10-24T07:34:25.057738Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 160 ids, 120 hits / 40 misses, resolve 1377us
+[2m2026-10-24T07:34:25.129543Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 96 ids, 96 hits / 0 misses, resolve 34us
+[2m2026-10-24T07:34:25.183865Z[0m [32m INFO[0m [2mspark_model::layers::ple::layer::verify[0m[2m:[0m PLE gather: 96 ids, 88 hits / 8 misses, resolve 989us

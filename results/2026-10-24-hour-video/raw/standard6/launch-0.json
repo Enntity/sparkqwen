@@ -1,0 +1,33 @@
+{
+  "command": [
+    "bash",
+    "qwen-hour-video-20261024/install/start-node.sh",
+    "--rank",
+    "0",
+    "--leader-address",
+    "10.100.112.1",
+    "--model-root",
+    "/home/enntitysparkadmin/.lloom/models",
+    "--image",
+    "atlas-sparkqwen:hour-native6",
+    "--fabric-hca",
+    "rocep1s0f1",
+    "--fabric-interface",
+    "enp1s0f1np1",
+    "--no-fabric-siblings",
+    "--mode",
+    "spark",
+    "--profile",
+    "8x262k",
+    "--gpu-memory-utilization",
+    "0.88",
+    "--name",
+    "atlas-sparkqwen-hour-rank0",
+    "--cuda-cache",
+    "/home/enntitysparkadmin/.cache/sparkqwen-020-cuda",
+    "--ple-cache",
+    "/home/enntitysparkadmin/.cache/sparkqwen-020-ple"
+  ],
+  "stdout": "500b56a48b285250d6e1ee6cfdcd51ee4eecf7c9675ce7fbf296357734138314\nstarted atlas-sparkqwen-hour-rank0 (rank 0); follow with: docker logs -f atlas-sparkqwen-hour-rank0\n",
+  "stderr": ""
+}
