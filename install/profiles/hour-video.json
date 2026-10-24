@@ -126,7 +126,7 @@
   "--oom-guard-mb=4096",
   "--kv-cache-dtype=bf16",
   "--enable-prefix-caching",
-  "--max-prefill-tokens=16384",
+  "--max-prefill-tokens=4096",
   "--fast-load-prefetch-shards",
   "--no-tui",
   "--speculative",
