@@ -1,0 +1,24 @@
+- A solid red screen with the white word "RED" centered-left is shown, beginning at about 0.0 s.
+- The display switches to a solid green screen with the white word "GREEN", starting at roughly 3.0 s.
+- The display then switches to a solid blue screen with the white word "BLUE", starting at roughly 6.0 s.
+- Timing uncertainty: exact changeover moments are approximate because only spaced-out sample frames are available, so each transition lies somewhere between the last frame of the prior color and the first frame of the new color.
+{
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 4765,
+    "completion_tokens": 378,
+    "total_tokens": 5143,
+    "prompt_tokens_details": {
+      "cached_tokens": 4704,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 253,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 262,
+      "rejected_prediction_tokens": 0
+    },
+    "time_to_first_token_ms": 3017.162565,
+    "response_token/s": 55.92238305028871
+  }
+}

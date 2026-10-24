@@ -6,10 +6,10 @@ time. Run steps 1–3 on **both** Sparks with the same `MODEL_ROOT`.
 
 | Component | Pin |
 |---|---|
-| Engine | [`Enntity/atlas`](https://github.com/Enntity/atlas), the common engine snapshot pinned for SparkQwen 0.2.0 ([`install/atlas-source.json`](../install/atlas-source.json), [docs/ENGINE.md](ENGINE.md)) |
+| Engine | [`Enntity/atlas`](https://github.com/Enntity/atlas), the common engine snapshot pinned for the SparkQwen 0.3.0 ([`install/atlas-source.json`](../install/atlas-source.json), [docs/ENGINE.md](ENGINE.md)) |
 | Model | [`nvidia/Qwen3.8-Flash-Next-FP4-Local`](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local) @ `b9ce18a6887e18c089fdea8509a33e63429a3300` ([`install/checkpoint.json`](../install/checkpoint.json)) |
 | Build dependencies | CUTLASS `cf064d2e`, NCCL 2.31.2, Rust 1.93.1, CUDA 13.0 |
-| Profiles | [`install/profiles/`](../install/profiles/): `8x32k` (default), `4x262k` and `8x262k` (long context) |
+| Profiles | [`install/profiles/`](../install/profiles/): `8x32k` (default), `4x262k` and `8x262k` (legacy long context), `max-16x262k` (dedicated pair), `saver-8x262k` (sidecars) |
 
 ## 1. Get the recipe
 
@@ -52,7 +52,7 @@ published; nothing is converted. On its first start each rank also writes a
 packed copy of the PLE n-gram table, 31 GB, to `--ple-cache` (default
 `~/.cache/atlas-ple`), so leave room for it; later starts check it and reuse it.
 
-The 0.2.0 Strict and Spark modes require this native FP4-Local checkpoint.
+The Strict and Spark modes require this native FP4-Local checkpoint.
 Historical NVFP4 results do not qualify that checkpoint for these modes.
 
 ## 4. Start the pair, worker first
@@ -78,7 +78,9 @@ until curl -sf http://127.0.0.1:8893/health; do sleep 10; done
 (`~/.cache/atlas-ple`, about a minute); the first requests of each shape also
 compile kernels. Later starts reuse both. Run one warmup pass before measuring.
 
-**Profiles.** `--profile 4x262k` or `--profile 8x262k` selects a long-context profile. A path to a JSON file runs your own profile. Use the same profile
+**Profiles.** `--profile max-16x262k` selects the dedicated-pair profile;
+`--profile saver-8x262k` selects the sidecar profile. Both new profiles were
+sized in Spark mode. The older `4x262k` and `8x262k` profiles remain available. A path to a JSON file runs your own profile. Use the same profile
 on both ranks.
 
 **Mode.** Pass `--mode strict` (the default) or `--mode spark` on both ranks.
@@ -87,35 +89,27 @@ Both require the native FP4-Local checkpoint and retain MTP. See
 are unsupported.
 
 **Memory share.** `--gpu-memory-utilization` (two decimals, 0.70–0.95) on both
-ranks overrides the profiles' default 0.88. The sidecar configuration below
-uses 0.70; a lower share leaves memory for other services and shrinks the shared
-KV pool. The default-profile benchmarks do not establish capacity at other settings.
+ranks overrides the selected profile. A lower share leaves room for host and
+sidecar work and shrinks the shared KV pool. The profile limits and qualification guidance
+are in [Memory profiles](MEMORY-PROFILES.md).
 
-## Running beside sidecars at util 0.70
+## Dedicated pair or sidecars
 
-When other services share each Spark, give the engine a smaller memory share
-so the sidecars fit. `.env.sidecars.example` is the measured arrangement; copy
-it over `.env` and edit `WORKER`:
+Use `max-16x262k` for a dedicated pair or `saver-8x262k` when sharing with
+smaller model services. Both retain the 262,144-token request limit, BF16 KV,
+native MTP, a bounded host snapshot cache, and display-memory borrowing.
 
 ```sh
-git clone https://github.com/Enntity/sparkqwen.git
-cd sparkqwen
-cp .env.sidecars.example .env      # edit WORKER to the other Spark's ssh destination
+cp .env.sidecars.example .env      # or .env.max.example; edit WORKER
 ./start.sh fabric                  # read-only fabric preflight on both hosts
-./start.sh
+./start.sh --mode spark
 ```
 
-It sets `PROFILE=8x262k` and `GPU_MEMORY_UTILIZATION=0.70` on **both** ranks:
-the pair uses a common KV capacity, so keep its configuration consistent. The profile still advertises eight requests x 256K context, but the
-pool is shared, not 8x256K guaranteed (see [LIMITATIONS.md](LIMITATIONS.md),
-Long context). At 0.70 the measured pair reported 1,351,648 shared KV tokens
-on the limiting rank (~1.35M). 0.72 is an estimate only and has not been
-qualified. What fits is host-dependent: a lower share reserves host and
-service memory but shrinks the pool, and GB10 hosts can hang when memory runs
-out, so keep several GB free.
-
-The sidecars themselves are separate installations maintained outside this
-repository; `./start.sh` neither installs nor manages them.
+Use the same profile on both ranks. The pair uses the limiting rank's shared
+KV capacity; scheduler slots do not reserve a full context each. Check the
+[qualification and headroom guidance](MEMORY-PROFILES.md) for the tested
+workloads. Sidecars are separate installations; `start.sh` does not install
+or manage them. Send clips with the [video example](VIDEO.md).
 
 **Stopping.** `docker rm -f atlas-sparkqwen-rank0` (and `-rank1`).
 

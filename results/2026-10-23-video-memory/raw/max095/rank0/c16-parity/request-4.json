@@ -1,0 +1,1 @@
+{"model": "qwen3.8-flash-next-atlas", "max_tokens": 320, "temperature": 0, "messages": [{"role": "user", "content": "Describe the history of the printing press and its effect on literacy in Europe, in prose."}], "chat_template_kwargs": {"reasoning_effort": "low"}, "cache_salt": "c16-parity-4"}

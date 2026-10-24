@@ -198,7 +198,16 @@ def launch(environ, profile):
         raise ValueError('Invalid SERVED_MODEL_NAME')
     args += [f'--rank={rank}', f'--master-addr={master}', f'--master-port={port}',
              '--bind=127.0.0.1', f'--port={8893 + int(rank)}', f'--model-name={name}']
-    return ['/usr/local/bin/spark', *args], env
+    argv = ['/usr/local/bin/spark', *args]
+    carveout = environ.get('SPARKQWEN_DISPLAY_CARVEOUT',
+                           '1' if profile.get('display_carveout', False) else '0')
+    if carveout not in ('0', '1'):
+        raise ValueError('SPARKQWEN_DISPLAY_CARVEOUT must be 0 or 1')
+    if carveout == '1':
+        # Same host lock as SparkGLM: the display heap is shared by all products.
+        argv = [argv[0], 'display-carveout',
+                '--lock=/run/lock/sparkglm/display-carveout.lock', '--', *argv]
+    return argv, env
 
 
 def profile_path(environ, here):

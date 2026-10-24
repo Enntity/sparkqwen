@@ -1,0 +1,1 @@
+{"model": "qwen3.8-flash-next-atlas", "max_tokens": 320, "temperature": 0, "messages": [{"role": "user", "content": "Explain how sourdough starter cultures work, as plain paragraphs for a home baker."}], "chat_template_kwargs": {"reasoning_effort": "low"}, "cache_salt": "c16-parity-9"}

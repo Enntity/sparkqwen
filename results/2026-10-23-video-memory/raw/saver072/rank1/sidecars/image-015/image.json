@@ -1,0 +1,9 @@
+{
+  "kind": "image",
+  "status": 200,
+  "seconds": 15.115054845809937,
+  "bytes": 1844567,
+  "content_type": "application/json",
+  "image_bytes": 1383335,
+  "sha256": "c114df5ad7f2e702585cc942aec3b06036c0f6702044e10bdb5e069115156d55"
+}

@@ -1,0 +1,44 @@
+{
+  "index": 4,
+  "http_status": 200,
+  "elapsed_s": 342.7073036968941,
+  "prompt_tokens_counted": 262075,
+  "semantic_ok": false,
+  "response": {
+    "id": "chatcmpl-7fc24ace-a932-4333-9212-9637e9d116d0",
+    "object": "chat.completion",
+    "created": 1792815915,
+    "model": "qwen3.8-flash-next-atlas",
+    "system_fingerprint": "fp_atlas",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "COB"
+        },
+        "finish_reason": "timeout",
+        "guard_stop": "request_timeout",
+        "logprobs": null
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 262075,
+      "completion_tokens": 2,
+      "total_tokens": 262077,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      },
+      "time_to_first_token_ms": 338544.231501,
+      "response_token/s": 18.680296458546433
+    }
+  },
+  "request_sha256": "40e056cf97378f15a7fac9e6d0e3824139538e95edb02073a6bab72d082e630d"
+}

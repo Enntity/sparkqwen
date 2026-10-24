@@ -1,0 +1,34 @@
+**Observed sequence (using supplied frame timestamps):**
+
+1. **Red phase — 0.0 s to 2.8 s:** The frame shows a solid red background with the left‑aligned white uppercase word **RED** positioned in the left‑center area. This state is unchanged across the frames at 0.0, 0.3, 0.7, 1.0, 1.4, 1.7, 2.1, 2.4 and 2.8 s.
+
+2. **Green phase — 3.1 s to 5.9 s:** The background switches to solid green and the label changes to **GREEN**, kept in the same left‑center position and white uppercase style. Stable across 3.1, 3.5, 3.8, 4.2, 4.5, 4.9, 5.2, 5.6 and 5.9 s.
+
+3. **Blue phase — 6.3 s to 9.4 s:** The background switches to solid blue and the label changes to **BLUE**, same layout. Stable across 6.3, 6.6, 7.0, 7.3, 7.7, 8.0, 8.4, 8.7, 9.1 and 9.4 s.
+
+**Summary of events:** Three discrete color/label states (RED → GREEN → BLUE), each holding for roughly 2.5–3 seconds, with the text always left‑aligned, white, uppercase, and centered vertically. The content of the text always matches the background color.
+
+**Separation of uncertainty:**
+- The exact instants of the color/label transitions are **not directly observed**; they are only bracketed between the last red frame (2.8 s) and first green frame (3.1 s), and between the last green frame (5.9 s) and first blue frame (6.3 s). Thus the true switch times lie somewhere in ≈2.8–3.1 s and ≈5.9–6.3 s respectively, with precision limited by the ~0.3–0.4 s frame spacing.
+- No intermediate/blended frames were captured, so it is unknown whether the changes are hard cuts or brief fades; the sampled evidence is consistent with hard cuts.
+- The timing of any further changes beyond 9.4 s is unknown because the supplied frames end there.
+{
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 4755,
+    "completion_tokens": 998,
+    "total_tokens": 5753,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 469,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 743,
+      "rejected_prediction_tokens": 0
+    },
+    "time_to_first_token_ms": 3161.061369,
+    "response_token/s": 52.53035359103261
+  }
+}

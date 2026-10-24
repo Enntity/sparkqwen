@@ -1,0 +1,10 @@
+2804219904
+122406567936
+1918664704
+low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+sock_throttled 5

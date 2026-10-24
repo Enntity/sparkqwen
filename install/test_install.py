@@ -74,13 +74,14 @@ class LaunchContract(unittest.TestCase):
             with self.subTest(name=bad), self.assertRaises(ValueError):
                 serve.profile_path({'SPARKQWEN_PROFILE': bad}, HERE)
 
-    def test_profiles_share_everything_but_their_size(self):
-        # The long-context profiles drop only the QSA spare-buffer cap: its buffers sit outside
-        # the KV budget and scale with context.
-        size = ('--max-seq-len=', '--max-num-seqs=', '--max-batch-size=', '--tool-max-tokens=')
+    def test_profiles_share_everything_but_size_and_deadline(self):
+        # Long profiles drop the QSA spare-buffer cap and allow queued long prefills
+        # to finish; their target precision and kernel settings remain the same.
+        size = ('--max-seq-len=', '--max-num-seqs=', '--max-batch-size=', '--tool-max-tokens=', '--request-timeout=')
         profiles = [load_profile(name) for name in PROFILES]
         base = profiles[0]
         for other in profiles[1:]:
+            self.assertIn('--request-timeout=3600', other['server_argv'])
             env = dict(base['environment'])
             env.pop('ATLAS_QWEN4EXP_QSA_SPARE_MAX')
             self.assertEqual(env, other['environment'])
@@ -383,19 +384,16 @@ class StartNode(unittest.TestCase):
         self.assertIn('-e SPARKQWEN_GPU_MEMORY_UTILIZATION=0.90 ', docker_run[0])
 
     def test_sidecars_example_reaches_both_ranks_with_a_matching_share(self):
-        # The measured sidecar arrangement is 8x262k at 0.70 on BOTH ranks; a
-        # rank that takes a different share would mis-size the shared KV pool.
-        sidecars = ([line for line in (HERE.parent/'.env.sidecars.example').read_text().splitlines()
-                     if line and not line.startswith('#')])
-        self.assertEqual(sidecars, ['WORKER=you@worker.example', 'PROFILE=8x262k',
-                                    'GPU_MEMORY_UTILIZATION=0.70'])
+        # Both ranks use the same profile, including its memory and host-cache budgets.
+        sidecars = [line for line in (HERE.parent/'.env.sidecars.example').read_text().splitlines()
+                    if line and not line.startswith('#')]
+        self.assertEqual(sidecars, ['WORKER=you@worker.example', 'PROFILE=saver-8x262k', 'MODE=spark'])
         for rank in ('0', '1'):
-            run, docker_run = self.start(rank, '--profile', '8x262k',
-                                         '--gpu-memory-utilization', '0.70')
+            run, docker_run = self.start(rank, '--profile', 'saver-8x262k')
             self.assertEqual(run.returncode, 0, run.stderr)
             with self.subTest(rank=rank):
-                self.assertIn('-e SPARKQWEN_PROFILE=8x262k ', docker_run[0])
-                self.assertIn('-e SPARKQWEN_GPU_MEMORY_UTILIZATION=0.70 ', docker_run[0])
+                self.assertIn('-e SPARKQWEN_PROFILE=saver-8x262k ', docker_run[0])
+                self.assertNotIn('SPARKQWEN_GPU_MEMORY_UTILIZATION=', docker_run[0])
 
     def test_refuses_an_incomplete_checkpoint_or_bad_arguments(self):
         (self.checkpoint/'model.safetensors.index.json').unlink()

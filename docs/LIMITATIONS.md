@@ -3,14 +3,43 @@
 
 What to know before relying on SparkQwen.
 
-## Version 0.2.0 scope
+## Version 0.3.0 scope
+
+The new [video path](VIDEO.md) samples visual frames with source timestamps;
+it does not process audio or continuous motion. Short events between samples
+may be missed, and model answers are not frame-accurate. The small controlled
+video battery does not establish general video-understanding accuracy.
+
+The [new memory profiles](MEMORY-PROFILES.md) use BF16 KV and a shared token
+pool. Sixteen scheduler slots do not reserve sixteen 262,144-token contexts.
+Capacity depends on mode, sidecar residency and other host allocations. The
+copyable max/saver examples select Spark mode; Strict must be sized separately.
+Sidecar results apply to the exact tested models, batch sizes and image size.
+A larger image generator or a larger embedding batch needs a new load check.
+The saver trial reached 4.75 GiB minimum available on its busier rank and
+accumulated 2.77 GiB net swap; speech latency reached 17.94 seconds. Sidecar
+functionality is qualified for that workload, not zero paging or real-time speech.
+Max reached 3.04 GiB minimum available on its limiting rank and accumulated
+2.66 GiB net swap during its full-context batch. It reduces MTP depth and snapshot
+retention to increase KV capacity; the older
+0.2.0 single-request speed figures do not qualify this tradeoff.
+
+Max targets 512 MiB and saver 1024 MiB for retained host snapshot blobs, enforced at prefill
+boundaries. A final save can exceed the target until the next pass. In-flight
+snapshots and temporary buffers are excluded; this is not an RSS limit. GB10
+host and GPU memory are shared. Monitor available memory, paging and request
+latency during actual work; idle free memory is not a safe sidecar budget.
+
+The inherited literal-XML limitations below remain. Existing RigMark figures
+belong to 0.2.0 and have not been rerun for the new profiles.
+
+## Historical 0.2.0 scope
 
 See the [common-engine qualification](../results/2026-10-22-common-engine/RESULT.md)
 for the tested image, Strict/Spark results and measured limitations. Both modes
 use TP2/EP2 and native MTP. The campaign uses `8x262k` at memory utilization
 `0.88`; it does not qualify `4x262k`, sidecar operation at `0.70`, a complete
-262,144-token request, or a single-GPU configuration. The image has been built
-locally; registry publication is separate.
+262,144-token request, or a single-GPU configuration. The 0.2.0 image and its versioned registry manifest were published.
 
 The final Strict image scored 59/60 on the long-context set, with the same
 case 51 miss as the prior fidelity release. The final Spark image replayed
@@ -131,9 +160,10 @@ identity.
   the pair.
 - FP8 KV cache is not supported: the QSA sparse-attention indexer requires
   BF16 KV. All profiles use `--kv-cache-dtype bf16`. Prefill MoE reads the
-  checkpoint's own weight planes, so at util 0.88 the pair holds about
-  3.4 million KV tokens with FP4-Local (3.2 million with the NVFP4
-  checkpoint; vLLM on the same pair at util 0.80: 1.5 million).
+  checkpoint's own weight planes. Older util-0.88 observations reported
+  about 3.4 million tokens with FP4-Local and 3.2 million with NVFP4; these
+  are not capacity guarantees for the new profiles. Read the current startup
+  pool and [memory qualification](MEMORY-PROFILES.md).
 
 ## Long context
 
@@ -155,11 +185,11 @@ identity.
   limit, not eight reserved 256K slots: eight requests that together need
   more than the pool holds wait for room.
 
-## Running beside sidecars
+## Historical sidecar observation
 
 [Observation and exact source/image identity](../results/2026-10-13-shared-host/RESULT.md).
 
-- The sidecar arrangement (`.env.sidecars.example`: `8x262k` at
+- The historical sidecar arrangement (`8x262k` at
   `GPU_MEMORY_UTILIZATION=0.70` on both ranks) is the recipe on a smaller
   memory share, so other services fit on the same Sparks. The measured pair
   reported 1,351,648 shared KV tokens on the limiting rank (~1.35M) with a
@@ -242,7 +272,8 @@ identity.
   image passed 21/21 but failed the automatic tool-or-JSON semantic case
   described above. See the 0.2.0 qualification for current results. Real agent
   clients with large tool sets have not been measured in this campaign.
-- Video on the FP4-Local product checkpoint is not qualified by this campaign.
+- The historical campaigns below did not qualify video on FP4-Local. See
+  [Video](VIDEO.md) for the 0.3.0 path and its limits.
   Historical image results cover
   race, conversation, swap and cached-versus-cold checks in
   [results/2026-10-15-shared-engine](../results/2026-10-15-shared-engine/RESULT.md).

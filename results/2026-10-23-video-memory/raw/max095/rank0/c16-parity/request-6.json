@@ -1,0 +1,1 @@
+{"model": "qwen3.8-flash-next-atlas", "max_tokens": 320, "temperature": 0, "messages": [{"role": "user", "content": "List ten practical tips for reducing household energy use, each with a one-sentence reason."}], "chat_template_kwargs": {"reasoning_effort": "low"}, "cache_salt": "c16-parity-6"}

@@ -1,0 +1,52 @@
+{
+  "index": 14,
+  "status": 200,
+  "start_unix": 1792818615.5690365,
+  "end_unix": 1792818634.6300657,
+  "original_request_sha256": "dcfee9f0342e9da9ce4536049fe494ca8e06253945cc7c5d7f06a14c10124c4e",
+  "request_sha256": "7d7a30c3dcbb0d8ebafca9cd0b60b457cd5b8def0e93a32e708e364b3f5b3635",
+  "only_request_change": "cache_salt",
+  "field_matches": {
+    "content": true,
+    "reasoning_content": true,
+    "tool_calls": true,
+    "finish_reason": true
+  },
+  "passed": true,
+  "response": {
+    "id": "chatcmpl-cd751005-3ee6-4f90-94d9-45292ba60b25",
+    "object": "chat.completion",
+    "created": 1792818634,
+    "model": "qwen3.8-flash-next-atlas",
+    "system_fingerprint": "fp_atlas",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "reasoning_content": "The user wants a list of ten practical tips for reducing household energy use, each accompanied by a one-sentence reason. I need to make sure each tip is genuinely practical (actionable for most households) and that the reason is concise and clear. Let me think of a good spread across different areas of home energy use: heating/cooling, lighting, appliances, water, standby power, etc.\n",
+          "content": "1. **Switch to LED bulbs** \u2014 They use up to 80% less energy than incandescent bulbs and last far longer.\n\n2. **Unplug devices when not in use** \u2014 Many electronics continue drawing \"phantom\" power even when switched off.\n\n3. **Wash clothes in cold water** \u2014 Heating water accounts for about 90% of a washing machine's energy consumption.\n\n4. **Seal drafts around doors and windows** \u2014 Preventing air leaks reduces the workload on your heating and cooling systems.\n\n5. **Set your water heater to 120\u00b0F (49\u00b0C)** \u2014 This is hot enough for daily needs while minimizing standby heat loss.\n\n6. **Use a programmable or smart thermostat** \u2014 It automatically reduces heating or cooling when you're asleep or away.\n\n7. **Clean or replace HVAC filters monthly** \u2014 Clogged filters force your system to work harder and use more energy.\n\n8. **Run dishwashers and washing machines only with full loads** \u2014 This maximizes the energy and water used per item cleaned.\n\n9. **Cook with lids on pots and"
+        },
+        "finish_reason": "length",
+        "logprobs": null
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 58,
+      "completion_tokens": 320,
+      "total_tokens": 378,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 81,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 150,
+        "rejected_prediction_tokens": 0
+      },
+      "time_to_first_token_ms": 417.26122999999995,
+      "response_token/s": 17.36786820186608
+    }
+  }
+}

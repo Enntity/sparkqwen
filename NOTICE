@@ -19,6 +19,11 @@ sparkDash (MIT, https://github.com/MiaAI-Lab/sparkDash) and imports its
 prompts from a local checkout at run time; no sparkDash code or text is
 included in this repository.
 
+Video decoding uses the FFmpeg command-line tools from Ubuntu's ffmpeg package
+(https://ffmpeg.org). The qualified Ubuntu build reports GPL-2.0-or-later;
+its package copyright and component notices remain at
+/usr/share/doc/ffmpeg/copyright in the image.
+
 Model weights are not distributed in this repository. The checkpoints
 nvidia/Qwen3.8-Flash-Next-FP4-Local (the default) and
 nvidia/Qwen3.8-Flash-Next-NVFP4 remain under their publisher's licenses; see

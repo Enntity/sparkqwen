@@ -173,8 +173,9 @@ fi
         self.assertEqual(len(calls), 2)
         for rank, call in zip(('1', '0'), calls):
             self.assertIn(f'NODE_RANK={rank}', call)
-            self.assertIn('SPARKQWEN_PROFILE=8x262k', call)
-            self.assertIn('SPARKQWEN_GPU_MEMORY_UTILIZATION=0.70', call)
+            self.assertIn('SPARKQWEN_PROFILE=saver-8x262k', call)
+            self.assertIn('SPARKQWEN_MODE=spark', call)
+            self.assertNotIn('SPARKQWEN_GPU_MEMORY_UTILIZATION=', call)
             self.assertIn('FABRIC_SIBLINGS=0', call)
 
 

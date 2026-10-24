@@ -135,6 +135,10 @@
   "--max-num-seqs=8",
   "--max-batch-size=8",
   "--max-seq-len=32768",
-  "--tool-max-tokens=32768"
+  "--tool-max-tokens=32768",
+  "--video-allow-ffmpeg",
+  "--video-fps=2",
+  "--video-max-frames=128",
+  "--video-decode-timeout-s=60"
  ]
 }

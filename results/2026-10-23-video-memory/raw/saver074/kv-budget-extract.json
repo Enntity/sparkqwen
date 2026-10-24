@@ -1,0 +1,26 @@
+[
+  {
+    "rank": 0,
+    "lines": [
+      "2026-10-24T04:47:11.396247Z  INFO spark_model::model::ssm_snapshot: SSM snapshot pool: Marconi 24 slots (1363 MB), decode-rollback 0 slots \u00d7 8 seqs (0 MB), 36 layers",
+      "2026-10-24T04:47:11.396349Z  INFO spark_model::model::ssm_snapshot_budget: SSM snapshot pool (ATLAS_QWEN4EXP_SNAPSHOT_SLOTS): 24 slots x 56.8 MiB GPU state = 1.33 GiB, out of the KV budget; host aux budget 1024 MiB (768 B/token), reserved out of the KV budget too",
+      "2026-10-24T04:47:11.400484Z  INFO spark_model::factory::build::kv_budget: KV own-footprint cross-check: free-memory measure 62.43 GB, tracked 60.84 GB (device 59.08 GB by driver accounting + host 1.77 GB) \u2192 62.43 GB pre-KV",
+      "2026-10-24T04:47:11.400490Z  INFO spark_model::factory::build: KV cache: 121.7 GB total \u00d7 74% util = 90.0 GB budget; 62.4 GB pre-KV + 5.3 GB reserve \u2192 22.2 GB for KV (incl. 1.3 GB for 768 B/token of per-sequence indexer state) \u2192 113987 blocks \u00d7 16 tok/block = 1823792 max KV tokens",
+      "2026-10-24T04:47:11.401391Z  INFO spark_model::factory::build::kv_carveout: KV cache: display carveout 2044 MiB holds 2 buffers (1933 MiB) \u2192 123688 blocks (+9701, +8.5%) for the same system memory",
+      "2026-10-24T04:47:12.163380Z  INFO spark_runtime::kv_cache::paged_impl: KV cache: 123688 blocks \u00d7 12 layers = 22.6 GB total",
+      "2026-10-24T04:47:12.323622Z  INFO spark_runtime::kv_cache::paged_impl: KV cache: 24577 blocks \u00d7 13 layers = 0.8 GB total"
+    ]
+  },
+  {
+    "rank": 1,
+    "lines": [
+      "2026-10-24T04:47:11.043436Z  INFO spark_model::model::ssm_snapshot: SSM snapshot pool: Marconi 24 slots (1363 MB), decode-rollback 0 slots \u00d7 8 seqs (0 MB), 36 layers",
+      "2026-10-24T04:47:11.043532Z  INFO spark_model::model::ssm_snapshot_budget: SSM snapshot pool (ATLAS_QWEN4EXP_SNAPSHOT_SLOTS): 24 slots x 56.8 MiB GPU state = 1.33 GiB, out of the KV budget; host aux budget 1024 MiB (768 B/token), reserved out of the KV budget too",
+      "2026-10-24T04:47:11.047200Z  INFO spark_model::factory::build::kv_budget: KV own-footprint cross-check: free-memory measure 60.45 GB, tracked 59.00 GB (device 57.16 GB by driver accounting + host 1.84 GB) \u2192 60.45 GB pre-KV",
+      "2026-10-24T04:47:11.047205Z  INFO spark_model::factory::build: KV cache: 121.7 GB total \u00d7 74% util = 90.0 GB budget; 60.4 GB pre-KV + 5.3 GB reserve \u2192 24.3 GB for KV (incl. 1.4 GB for 768 B/token of per-sequence indexer state) \u2192 124658 blocks \u00d7 16 tok/block = 1994528 max KV tokens",
+      "2026-10-24T04:47:11.050331Z  INFO spark_model::factory::build::kv_carveout: KV cache: display carveout 2044 MiB holds 2 buffers (2044 MiB) \u2192 130816 blocks (+6158, +4.9%) for the same system memory",
+      "2026-10-24T04:47:11.411910Z  INFO spark_model::factory::build::glm: KV cache: rank 1 fits 130816 blocks; all ranks agree on 123688",
+      "2026-10-24T04:47:12.083457Z  INFO spark_runtime::kv_cache::paged_impl: KV cache: 123688 blocks \u00d7 12 layers = 22.6 GB total"
+    ]
+  }
+]

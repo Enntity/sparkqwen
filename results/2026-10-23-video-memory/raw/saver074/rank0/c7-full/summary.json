@@ -1,0 +1,75 @@
+{
+  "concurrency": 7,
+  "target_prompt_tokens": 262080,
+  "start_unix": 1792817263.5968404,
+  "end_unix": 1792818085.502865,
+  "wall_s": 821.9060265399748,
+  "http_ok": 7,
+  "semantic_ok": 7,
+  "normal_completions": 7,
+  "cases": [
+    {
+      "index": 0,
+      "http_status": 200,
+      "elapsed_s": 124.01396197406575,
+      "prompt_tokens_counted": 262075,
+      "finish_reason": "stop",
+      "semantic_ok": true,
+      "request_sha256": "95e93c1fb1b99550f7da199ea75c2044cc47332ee59aca799ae0b3274f0702d2"
+    },
+    {
+      "index": 1,
+      "http_status": 200,
+      "elapsed_s": 245.47381702100392,
+      "prompt_tokens_counted": 262075,
+      "finish_reason": "stop",
+      "semantic_ok": true,
+      "request_sha256": "e04080df7aa5ca29bbb8382a843c3fb8c5a623e9c35f9451c95d595a9eea07a8"
+    },
+    {
+      "index": 2,
+      "http_status": 200,
+      "elapsed_s": 359.80227295996156,
+      "prompt_tokens_counted": 262075,
+      "finish_reason": "stop",
+      "semantic_ok": true,
+      "request_sha256": "0225f847c6cafc9676fbf153f644054f60bb08f1a48c9b449dbfa0d170455108"
+    },
+    {
+      "index": 3,
+      "http_status": 200,
+      "elapsed_s": 602.6122434569988,
+      "prompt_tokens_counted": 262075,
+      "finish_reason": "stop",
+      "semantic_ok": true,
+      "request_sha256": "f355a7091d70c17c09a0ab3d974cdba8e554a10fb7e1e7698865901549a5d5d6"
+    },
+    {
+      "index": 4,
+      "http_status": 200,
+      "elapsed_s": 476.0002992990194,
+      "prompt_tokens_counted": 262075,
+      "finish_reason": "stop",
+      "semantic_ok": true,
+      "request_sha256": "fc07394345c145aa5920b5d57f55bb252fa43a7432db1a9e94a428e8edeb2423"
+    },
+    {
+      "index": 5,
+      "http_status": 200,
+      "elapsed_s": 821.8470010459423,
+      "prompt_tokens_counted": 262075,
+      "finish_reason": "stop",
+      "semantic_ok": true,
+      "request_sha256": "7bac90a6d25571998c63641738685db0f7dcd3ce04370f756d4dc2b3d97ae3ca"
+    },
+    {
+      "index": 6,
+      "http_status": 200,
+      "elapsed_s": 712.5023373269942,
+      "prompt_tokens_counted": 262075,
+      "finish_reason": "stop",
+      "semantic_ok": true,
+      "request_sha256": "f474823b0a5e15cfe40e31f29417aed7afd8fba39bc2d7aad227c20c3b07fa87"
+    }
+  ]
+}

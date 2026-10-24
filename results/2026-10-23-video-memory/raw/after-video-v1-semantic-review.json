@@ -1,0 +1,333 @@
+[
+  {
+    "case": "order",
+    "original_passed": true,
+    "semantic": {
+      "choices": 1,
+      "passed": true,
+      "parsed": [
+        {
+          "order": [
+            "red",
+            "green",
+            "blue"
+          ],
+          "longest": "tie",
+          "starts_seconds": {
+            "red": 0.0,
+            "green": 3.0,
+            "blue": 6.0
+          }
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "case": "reverse",
+    "original_passed": true,
+    "semantic": {
+      "choices": 1,
+      "passed": true,
+      "parsed": [
+        {
+          "order": [
+            "blue",
+            "green",
+            "red"
+          ],
+          "longest": "tie",
+          "starts_seconds": {
+            "blue": 0.0,
+            "green": 3.0,
+            "red": 6.0
+          }
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "case": "duration",
+    "original_passed": true,
+    "semantic": {
+      "choices": 1,
+      "passed": true,
+      "parsed": [
+        {
+          "order": [
+            "red",
+            "green",
+            "blue"
+          ],
+          "longest": "green",
+          "starts_seconds": {
+            "red": 0.0,
+            "green": 2.0,
+            "blue": 8.0
+          }
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "case": "mixed-still-video",
+    "original_passed": true,
+    "semantic": {
+      "choices": 1,
+      "passed": true,
+      "parsed": {
+        "video_order": [
+          "RED",
+          "GREEN",
+          "BLUE"
+        ],
+        "still_color": "YELLOW"
+      },
+      "video_order": [
+        "red",
+        "green",
+        "blue"
+      ],
+      "still_color": "yellow"
+    }
+  },
+  {
+    "case": "two-clips-one-prompt",
+    "original_passed": false,
+    "semantic": {
+      "choices": 1,
+      "passed": false,
+      "parsed": {
+        "first_order": "BLUE",
+        "second_order": "RED"
+      },
+      "first_order": [
+        "b",
+        "l",
+        "u",
+        "e"
+      ],
+      "second_order": [
+        "r",
+        "e",
+        "d"
+      ],
+      "error": "two video orders did not remain distinct and ordered"
+    }
+  },
+  {
+    "case": "multiturn-repeated-video",
+    "original_passed": false,
+    "semantic": {
+      "choices": 1,
+      "passed": true,
+      "parsed": [
+        {
+          "order": [
+            "RED",
+            "GREEN",
+            "BLUE"
+          ],
+          "starts_seconds": [
+            0.0,
+            3.0,
+            6.0
+          ]
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "case": "n2-video",
+    "original_passed": true,
+    "semantic": {
+      "choices": 2,
+      "passed": true,
+      "parsed": [
+        {
+          "order": [
+            "red",
+            "green",
+            "blue"
+          ],
+          "longest": "tie",
+          "starts_seconds": {
+            "red": 0.0,
+            "green": 3.0,
+            "blue": 6.0
+          }
+        },
+        {
+          "order": [
+            "red",
+            "green",
+            "blue"
+          ],
+          "longest": "tie",
+          "starts_seconds": {
+            "red": 0.0,
+            "green": 3.0,
+            "blue": 6.0
+          }
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "case": "procedure-sparse",
+    "original_passed": false,
+    "semantic": {
+      "choices": 1,
+      "passed": true,
+      "parsed": [
+        {
+          "order": [
+            "open",
+            "pour",
+            "mix",
+            "bake",
+            "serve"
+          ],
+          "starts_seconds": [
+            0.0,
+            5.0,
+            11.0,
+            18.0,
+            26.0
+          ]
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "case": "procedure-frame-cap",
+    "original_passed": false,
+    "semantic": {
+      "choices": 1,
+      "passed": true,
+      "parsed": [
+        {
+          "order": [
+            "load",
+            "prepare",
+            "operate",
+            "inspect",
+            "finish"
+          ],
+          "starts_seconds": [
+            0,
+            16,
+            32,
+            48,
+            62
+          ]
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "case": "procedure-hd-frame-cap",
+    "original_passed": false,
+    "semantic": {
+      "choices": 1,
+      "passed": true,
+      "parsed": [
+        {
+          "order": [
+            "load",
+            "prepare",
+            "operate",
+            "inspect",
+            "finish"
+          ],
+          "starts_seconds": [
+            0,
+            16,
+            32,
+            48,
+            62
+          ]
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "case": "malformed-video-then-recovery/recovery",
+    "original_passed": false,
+    "semantic": {
+      "choices": 1,
+      "passed": true,
+      "parsed": [
+        {
+          "order": [
+            "RED",
+            "GREEN",
+            "BLUE"
+          ],
+          "longest": "RED",
+          "starts_seconds": [
+            0.0,
+            3.0,
+            6.0
+          ]
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "case": "concurrent-distinct-videos/concurrent-order",
+    "original_passed": false,
+    "semantic": {
+      "choices": 1,
+      "passed": true,
+      "parsed": [
+        {
+          "order": [
+            "RED",
+            "GREEN",
+            "BLUE"
+          ],
+          "longest": "RED",
+          "starts_seconds": [
+            0.0,
+            3.0,
+            6.0
+          ]
+        }
+      ],
+      "errors": []
+    }
+  },
+  {
+    "case": "concurrent-distinct-videos/concurrent-reverse",
+    "original_passed": true,
+    "semantic": {
+      "choices": 1,
+      "passed": true,
+      "parsed": [
+        {
+          "order": [
+            "blue",
+            "green",
+            "red"
+          ],
+          "longest": "blue",
+          "starts_seconds": {
+            "blue": 0.0,
+            "green": 3.0,
+            "red": 6.0
+          }
+        }
+      ],
+      "errors": []
+    }
+  }
+]

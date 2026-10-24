@@ -11,19 +11,19 @@ class ModeContract(unittest.TestCase):
                     'FABRIC_INTERFACE': 'eth0', 'FABRIC_HCA': 'roce0'}
 
     def test_default_strict_uses_mtp_for_every_capacity_and_rank(self):
-        for profile in PROFILES:
+        for profile in PROFILES + ('max-16x262k', 'saver-8x262k'):
             for rank in ('0', '1'):
                 args, env = serve.launch(dict(self.env, NODE_RANK=rank), load_profile(profile))
                 self.assertEqual(env['ATLAS_QWEN4EXP_SERVING_MODE'], 'strict')
                 self.assertEqual(env['SPARKQWEN_MODE'], 'strict')
                 self.assertIn('--speculative', args)
-                self.assertIn('--num-drafts=7', args)
+                self.assertIn('--num-drafts=3' if profile == 'max-16x262k' else '--num-drafts=7', args)
                 self.assertEqual(env['ATLAS_QWEN4EXP_MTP_BF16_ATTN'], '1')
                 self.assertEqual(env['ATLAS_QWEN4EXP_DRAFT_HEAD_NVFP4'], '0')
                 self.assertIn('--enable-prefix-caching', args)
 
     def test_spark_preserves_native_target_and_mtp(self):
-        for profile in PROFILES:
+        for profile in PROFILES + ('max-16x262k', 'saver-8x262k'):
             source = load_profile(profile)
             original = copy.deepcopy(source)
             strict, se = serve.launch(self.env, source)
@@ -33,7 +33,7 @@ class ModeContract(unittest.TestCase):
                 self.assertEqual(se[flag], '0')
                 self.assertEqual(pe[flag], '0')
             self.assertIn('--speculative', spark)
-            self.assertIn('--num-drafts=7', spark)
+            self.assertIn('--num-drafts=3' if profile == 'max-16x262k' else '--num-drafts=7', spark)
             self.assertEqual(pe['ATLAS_QWEN4EXP_MTP_ABSORB'], '1')
             self.assertEqual(pe['ATLAS_QWEN4EXP_MTP_BF16_ATTN'], '0')
             self.assertEqual(pe['ATLAS_QWEN4EXP_DRAFT_HEAD_NVFP4'], '1')

@@ -1,0 +1,33 @@
+{
+  "valid_streams": 8,
+  "peak_overlapping_output_intervals": 8,
+  "start_unix": 1792818095.7925675,
+  "end_unix": 1792818145.402401,
+  "streams_exit": 0,
+  "video_exit": 0,
+  "command": [
+    "python3",
+    "stress_capture.py",
+    "capture",
+    "--base-url",
+    "http://127.0.0.1:8893",
+    "--model",
+    "qwen3.8-flash-next-atlas",
+    "--streams",
+    "8",
+    "--max-tokens",
+    "512",
+    "--prompt-tokens",
+    "2048",
+    "--stagger-ms",
+    "0",
+    "--prompt-style",
+    "field-guide",
+    "--cache-salt",
+    "saver074-overlap",
+    "--engine-commit",
+    "170540e1fb43904d7cf16c79133e7228582d94ea",
+    "--output",
+    "saver074/overlap/streams.json"
+  ]
+}

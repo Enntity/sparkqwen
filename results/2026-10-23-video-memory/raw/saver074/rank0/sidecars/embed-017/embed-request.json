@@ -1,0 +1,8 @@
+{
+  "model": "Qwen/Qwen3-Embedding-4B",
+  "input": [
+    "A cedar desk by the window.",
+    "A wooden desk near a window.",
+    "A storm over the ocean."
+  ]
+}

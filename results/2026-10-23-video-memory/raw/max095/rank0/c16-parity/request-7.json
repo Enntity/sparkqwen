@@ -1,0 +1,1 @@
+{"model": "qwen3.8-flash-next-atlas", "max_tokens": 320, "temperature": 0, "messages": [{"role": "user", "content": "Explain how tides are caused by the moon and the sun, for a curious teenager, in paragraphs."}], "chat_template_kwargs": {"reasoning_effort": "low"}, "cache_salt": "c16-parity-7"}

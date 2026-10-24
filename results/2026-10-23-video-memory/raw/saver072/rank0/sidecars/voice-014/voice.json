@@ -1,0 +1,8 @@
+{
+  "kind": "voice",
+  "status": 200,
+  "seconds": 7.84124755859375,
+  "bytes": 145964,
+  "content_type": "audio/wav",
+  "sha256": "981fc0e29e8e6520c280c6d128aa501af28f22c29f964de39be0605138780625"
+}

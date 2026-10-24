@@ -1,0 +1,40 @@
+{
+  "case": "duration",
+  "status": 200,
+  "elapsed_s": 3.307281494140625,
+  "response": {
+    "id": "chatcmpl-80e93fb1-8b1b-4501-980f-a51590f2de7b",
+    "object": "chat.completion",
+    "created": 1792811760,
+    "model": "qwen3.8-flash-next-atlas",
+    "system_fingerprint": "fp_atlas",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the sequence of images provided:\n\n**Background colors in order:**\n1. Red\n2. Green\n3. Blue\n\n**Which color lasts longest?**\nGreen \u2014 it appears in 4 out of 7 frames, while Red and Blue each appear in 2 frames.\n\n**Estimated start time (assuming uniform frame timing):**\n- Red: starts at 0 seconds\n- Green: starts at ~2 seconds (after 2 red frames)\n- Blue: starts at ~6 seconds (after 2 red + 4 green frames)\n\n*(Note: This assumes each image represents one equal-duration frame. Total duration = 7 frames; if each frame is 1 second, then start times are as above.)*"
+        },
+        "finish_reason": "stop",
+        "logprobs": null
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 1007,
+      "completion_tokens": 153,
+      "total_tokens": 1160,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 104,
+        "rejected_prediction_tokens": 0
+      },
+      "time_to_first_token_ms": 836.996537,
+      "response_token/s": 69.44832365748294
+    }
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "concurrency": 16,
+  "target_prompt_tokens": 262080,
+  "start_unix": 1792818653.7308505,
+  "end_unix": 1792820120.2465987,
+  "wall_s": 1466.515750281047,
+  "http_ok": 16,
+  "semantic_ok": 16,
+  "normal_completions": 16,
+  "cases": [
+    {
+      "index": 0,
+      "http_status": 200,
+      "elapsed_s": 207.09199479804374,
+      "prompt_tokens_counted": 262076,
+      "finish_reason": "stop",
+      "semantic_ok": true,
+      "request_sha256": "3383dee81258ee2fb372836b03c17bac102ad255addd0fe1e2057be0325dc6d0"
+    },
+    {
+      "index": 1,
+      "http_status": 200,
+      "elapsed_s": 114.63938378391322,
+      "prompt_tokens_counted": 262076,
+      "finish_reason": "stop",
+      "semantic_ok": true,
+      "request_sha256": "40a6c28efc96ab68818accc71ba1cbcbf6d1a78aaf8e54c84155fd4dd9505e76"
+    },
+    {
+      "index": 2,
+      "http_status": 200,
+      "elapsed_s": 297.6316267979564,
+      "prompt_tokens_counted": 262076,
+      "finish_reason": "stop",
+      "semantic_ok": true,
+      "request_sha256": "93fc3e02e138c1aec27c3f0e3fbff5d84600209bd22a3ca4db389c84a839e0aa"
+    },
+    {
+      "index": 3,
+      "http_status": 200,
+      "elapsed_s": 572.1375828370219,
+      "prompt_tokens_counted": 262076,
+      "finish_reason": "stop",
+      "semantic_ok": true,
+      "request_sha256": "896aa56df8c169344ff76241dfa3016d825c29c0afc5d99646d9edf6ed081a5b"
+    },
+    {
+      "index": 4,
+      "http_status": 200,
+      "elapsed_s": 1293.7890181100229,
+      "prompt_tokens_counted": 262076,
+      "finish_reason": "stop",
+      "semantic_ok": true,
+      "request_sha256": "b1c7df3c591b9667f44ebd0a720566ff3456657a28e07698930317c5c17d8db0"
+    },
+    {
+      "index": 5,
+      "http_status": 200,
+      "elapsed_s": 1466.4696994810365,
+      "prompt_tokens_counted": 262076,
+      "finish_reason": "stop",
+      "semantic_ok": true,
+      "request_sha256": "13054c54ea6cedd5bd693643704d5898950ceeb9fa047bce0eab2558e5e39561"
+    },
+    {
+      "index": 6,
+      "http_status": 200,
+      "elapsed_s": 856.3579591789749,
+      "prompt_tokens_counted": 262076,
+      "finish_reason": "stop",
+      "semantic_ok": true,
+      "request_sha256": "306dcfef3bbcad60b7f3f81d0dd7b3e3a82daef8d939f16bcdfcd067dc255874"
+    },
+    {
+      "index": 7,
+      "http_status": 200,
+      "elapsed_s": 1206.5168813470518,
+      "prompt_tokens_counted": 262076,
+      "finish_reason": "stop",
+      "semantic_ok": true,
+      "request_sha256": "24974bf5977a6a7c1214ccd61103b213e8b0fce62fb2a9827699ee20306e0495"
+    },
+    {
+      "index": 8,
+      "http_status": 200,
+      "elapsed_s": 479.8987383689964,
+      "prompt_tokens_counted": 262076,
+      "finish_reason": "stop",
+      "semantic_ok": true,
+      "request_sha256": "752c755a14814fb1d2d2a2ba4661a9773e57af10efd139d5485245c5b1789c61"
+    },
+    {
+      "index": 9,
+      "http_status": 200,
+      "elapsed_s": 387.4617376680253,
+      "prompt_tokens_counted": 262076,
+      "finish_reason": "stop",
+      "semantic_ok": true,
+      "request_sha256": "2e0c4294df652291366712f93433d281b8530ae4603bb31a5b1ee19704177465"
+    },
+    {
+      "index": 10,
+      "http_status": 200,
+      "elapsed_s": 768.4661209459882,
+      "prompt_tokens_counted": 262077,
+      "finish_reason": "stop",
+      "semantic_ok": true,
+      "request_sha256": "bebe70043ee4047ef823da0f8067bb602c7ca0af279b20bf0d1ae7596654d762"
+    },
+    {
+      "index": 11,
+      "http_status": 200,
+      "elapsed_s": 1382.3185800410574,
+      "prompt_tokens_counted": 262077,
+      "finish_reason": "stop",
+      "semantic_ok": true,
+      "request_sha256": "c5189717390a249fe8851dfe765ca7fe6e5bb4dcc226fc31af984af0947f7d41"
+    },
+    {
+      "index": 12,
+      "http_status": 200,
+      "elapsed_s": 1030.9866093050223,
+      "prompt_tokens_counted": 262077,
+      "finish_reason": "stop",
+      "semantic_ok": true,
+      "request_sha256": "3cd75c2456e2d9d2bc171c12694847e2d677e92612b71573a77462d1ed014313"
+    },
+    {
+      "index": 13,
+      "http_status": 200,
+      "elapsed_s": 673.4426828370197,
+      "prompt_tokens_counted": 262077,
+      "finish_reason": "stop",
+      "semantic_ok": true,
+      "request_sha256": "705d163fec9f3afed53fa0dbb7218d1398bd2fd832cead6f06c9c5c980ddd287"
+    },
+    {
+      "index": 14,
+      "http_status": 200,
+      "elapsed_s": 944.1182513150852,
+      "prompt_tokens_counted": 262077,
+      "finish_reason": "stop",
+      "semantic_ok": true,
+      "request_sha256": "ade49df9b1b2a2d70ac2ce82b4e5cfd44da916ede164b7d8717eb86c4bc69ee5"
+    },
+    {
+      "index": 15,
+      "http_status": 200,
+      "elapsed_s": 1118.3959370980738,
+      "prompt_tokens_counted": 262077,
+      "finish_reason": "stop",
+      "semantic_ok": true,
+      "request_sha256": "71d01bdb14587e7f081c3e2bb4f60f2df7b8fad914e0a7d1dc9e11639e9965dc"
+    }
+  ]
+}

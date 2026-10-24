@@ -28,7 +28,8 @@ kept unedited.
 | CUTLASS | BSD-3-Clause |
 | The engine's Rust dependencies (`Cargo.lock`) | mostly MIT, Apache-2.0 or BSD |
 | Other models' chat templates in the engine's `jinja-templates/`, copied into the image | their model vendors' terms |
-| CUDA base images and Ubuntu packages | their own terms |
+| FFmpeg command-line tools (Ubuntu package) | qualified build reports GPL-2.0-or-later; component notices in `/usr/share/doc/ffmpeg/copyright` |
+| CUDA base images and other Ubuntu packages | their own terms |
 
 The engine's Qwen3.8-Flash-Next series includes changes picked from Atlas-Inf
 branches not yet on its `main` (AGPL-3.0-only); each carries its origin

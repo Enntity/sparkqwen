@@ -46,6 +46,9 @@ RUN mkdir -p /opt/cuda-stubs && \
 # Workspace contracts read source files, fixtures and committed benchmark
 # definitions. Preserve the exact checkout in the builder only.
 COPY engine/ /build/
+# Exercise the real bounded video decoder in CPU regressions as well.
+RUN apt-get update -qq && apt-get install -y -qq --no-install-recommends ffmpeg && \
+    rm -rf /var/lib/apt/lists/*
 # Full native CPU suite. GPU tests remain ignored here and are qualified on
 # the hardware separately. Keep failures fatal; never ship a partial gate.
 RUN --mount=type=cache,target=/build/target,id=atlas-cargo-target-sparkqwen,sharing=shared \
@@ -60,7 +63,7 @@ RUN --mount=type=cache,target=/build/target,id=atlas-cargo-target-sparkqwen,shar
 
 FROM nvidia/cuda:13.0.0-runtime-ubuntu24.04@sha256:95318efecfd68ab3d109da5277863257b06137c84f34a87f38de970d5cd035d3
 RUN apt-get update -qq && apt-get install -y -qq --no-install-recommends --allow-change-held-packages \
-    python3 ca-certificates libnccl2=2.31.2-1+cuda13.3 libibverbs1 librdmacm1 \
+    python3 ca-certificates ffmpeg libnccl2=2.31.2-1+cuda13.3 libibverbs1 librdmacm1 \
     ibverbs-providers libnl-3-200 libnl-route-3-200 && rm -rf /var/lib/apt/lists/*
 COPY --from=builder /build/dist/spark /usr/local/bin/spark
 COPY --from=builder /build/jinja-templates/ /jinja-templates/

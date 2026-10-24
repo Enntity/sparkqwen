@@ -1,0 +1,44 @@
+{
+  "index": 7,
+  "http_status": 200,
+  "elapsed_s": 1206.5168813470518,
+  "prompt_tokens_counted": 262076,
+  "finish_reason": "stop",
+  "semantic_ok": true,
+  "response": {
+    "id": "chatcmpl-f836df86-0391-4b1d-a64c-1c8247cc7d13",
+    "object": "chat.completion",
+    "created": 1792819860,
+    "model": "qwen3.8-flash-next-atlas",
+    "system_fingerprint": "fp_atlas",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "COBALT-007"
+        },
+        "finish_reason": "stop",
+        "logprobs": null
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 262076,
+      "completion_tokens": 8,
+      "total_tokens": 262084,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 4,
+        "rejected_prediction_tokens": 0
+      },
+      "time_to_first_token_ms": 1193242.790281,
+      "response_token/s": 0.7899872513290642
+    }
+  },
+  "request_sha256": "24974bf5977a6a7c1214ccd61103b213e8b0fce62fb2a9827699ee20306e0495"
+}

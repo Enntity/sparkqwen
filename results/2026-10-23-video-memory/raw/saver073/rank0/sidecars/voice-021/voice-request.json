@@ -1,0 +1,6 @@
+{
+  "model": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "input": "SparkQwen and the voice service are running together.",
+  "voice": "Vivian",
+  "response_format": "wav"
+}

@@ -1,0 +1,47 @@
+{
+  "rank1/sidecars/image-load.jsonl": {
+    "count": 6,
+    "passed": 6,
+    "seconds_min": 9.091701745986938,
+    "seconds_median": 14.220811128616333,
+    "seconds_max": 16.11998677253723,
+    "distinct_output_hashes": 6,
+    "failures": []
+  },
+  "rank0/sidecars/voice-load.jsonl": {
+    "count": 9,
+    "passed": 9,
+    "seconds_min": 3.1580874919891357,
+    "seconds_median": 8.256738424301147,
+    "seconds_max": 10.881826400756836,
+    "distinct_output_hashes": 9,
+    "failures": []
+  },
+  "rank0/sidecars/embed-load.jsonl": {
+    "count": 9,
+    "passed": 9,
+    "seconds_min": 0.10291552543640137,
+    "seconds_median": 0.1272289752960205,
+    "seconds_max": 0.20863914489746094,
+    "distinct_output_hashes": 0,
+    "failures": []
+  },
+  "rank1/memory.jsonl": {
+    "samples": 191,
+    "start_unix": 1792820390.692191,
+    "end_unix": 1792820770.846584,
+    "min_available_gib": 14.530380249023438,
+    "last_available_gib": 15.822086334228516,
+    "swap_growth_gib": -2.288818359375e-05,
+    "swap_out_gib": 0.0
+  },
+  "rank0/memory.jsonl": {
+    "samples": 192,
+    "start_unix": 1792820390.305417,
+    "end_unix": 1792820772.42371,
+    "min_available_gib": 7.663169860839844,
+    "last_available_gib": 8.799667358398438,
+    "swap_growth_gib": 1.9333839416503906,
+    "swap_out_gib": 2.8622703552246094
+  }
+}

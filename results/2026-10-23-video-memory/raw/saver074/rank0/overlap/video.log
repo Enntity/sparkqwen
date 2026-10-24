@@ -1,0 +1,1 @@
+{"status": 200, "elapsed_s": 48.373249, "semantic": {"choices": 1, "passed": true, "parsed": [{"order": ["load", "prepare", "operate", "inspect", "finish"], "starts_seconds": [0, 16, 32, 48, 62]}], "errors": []}}
