@@ -1,25 +1,33 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 # SparkQwen 0.2.0 cards
 
-`banner.png` is the README card; `social-preview.png` is the GitHub social
-preview source card. `social-preview.jpg` is the upload-ready export, below
-GitHub's 1 MB limit. Both cards were updated with image generation on 2026-10-23, retaining
-the existing arcade style. The numbers come from the
-[0.2.0 qualification](../../results/2026-10-22-common-engine/RESULT.md), rounded
-to one decimal place for decode throughput.
+`banner.png` is the README hero; `social-preview.png` is the social card source.
+`social-preview.jpg` is its upload-ready export, below GitHub's 1 MB limit.
+The cards were redesigned with image generation on 2026-10-23 to lead with
+[RigMark](../../results/2026-10-23-rigmark/RESULT.md) and leave room around the figures.
 
-The speed panel describes Spark mode, single-stream decode, three repeats and
-profile `8x262k`. The quality panel describes both final modes. The cards retain
-the 30/32 XML result, Strict's 59/60 long-retrieval result, the missing full
-Spark long-set rerun and the workload-dependent performance caveat. The README
-and qualification report contain the additional limits and full evidence.
+The cards show the selected best complete run in Spark mode with low reasoning: median code decode 109.4 tok/s,
+prose decode 55.5 tok/s and cold 16K prefill 4,158 tok/s. Decode has three
+repeats per workload; prefill has ten cold/immediate-replay pairs. All 9 basic
+output gates pass. Those gates are completion/shape checks, not a semantic
+code-quality score. The footer retains the known XML and long-context limits;
+the README links the detailed quality results and complete receipts.
 
-Updating this file in Git does not update GitHub's saved social preview. Upload
-`social-preview.jpg` under the repository's General settings, then verify the
-saved image separately.
+The compact comparison is +26% code decode versus published NVFP4 RC16,
+explicitly marked historical and from a different pair/profile. The README
+shows the full comparison and the earlier slower run. The full raw RigMark
+card is published separately as a receipt; the graphics are summaries.
 
-The JPEG preserves the PNG's 1774×887 dimensions and was exported with
-`sips -s format jpeg -s formatOptions 85 social-preview.png --out social-preview.jpg`.
-The saved GitHub preview was verified byte-for-byte against this JPEG after
-upload on 2026-10-23 (SHA-256
-`a00bacc923ec9053a5e1732914c56496af1a51907b5c866bcc958df8d9bd52cd`).
+The separate quality box was removed. Prefill now has the same visual weight
+as decode, with no internal box to overflow. The smaller benchmark table and
+short footer keep both cards readable.
+
+The JPEG is a format export of the PNG at the same dimensions:
+
+```sh
+sips -s format jpeg -s formatOptions 85 social-preview.png --out social-preview.jpg
+```
+
+Updating the Git file does not update GitHub's saved social preview. Upload
+`social-preview.jpg` under repository General settings, then verify the served
+image bytes against this file.

@@ -1,0 +1,134 @@
+{
+  "diagnostic_only": true,
+  "purpose": "Replay original two exact prompt token lists after ten fresh cold probes; not pooled into original receipt",
+  "started": 1792803333.323347,
+  "prefill": {
+    "16384": {
+      "cold": {
+        "runs": [
+          {
+            "prompt_tokens": 16384,
+            "completion_tokens": 8,
+            "ttft_seconds": 3.945256,
+            "time_to_first_visible_seconds": 3.945256,
+            "time_to_last_output_seconds": 4.072457,
+            "decode_seconds": 0.127201,
+            "decode_tokens_per_second": 55.031,
+            "measured_sse_events": 8,
+            "wall_seconds": 4.074152,
+            "response_tail_seconds": 0.001694,
+            "stream_done_marker": true,
+            "finish_reason": "length",
+            "output": " evidence, constraints, and the next action",
+            "output_characters": 43,
+            "output_sha256": "8e3f2e62aa1aa8b8a9338c5a37dadb78449ad33a44308ac04b7508596128b638",
+            "reasoning_characters": 0,
+            "reasoning_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "stream_sha256": "8e3f2e62aa1aa8b8a9338c5a37dadb78449ad33a44308ac04b7508596128b638",
+            "requested_prompt_tokens": 16384,
+            "effective_prefill_tokens_per_second": 4152.836,
+            "run": 1
+          },
+          {
+            "prompt_tokens": 16384,
+            "completion_tokens": 8,
+            "ttft_seconds": 3.939341,
+            "time_to_first_visible_seconds": 3.939341,
+            "time_to_last_output_seconds": 4.066004,
+            "decode_seconds": 0.126663,
+            "decode_tokens_per_second": 55.265,
+            "measured_sse_events": 8,
+            "wall_seconds": 4.067577,
+            "response_tail_seconds": 0.001572,
+            "stream_done_marker": true,
+            "finish_reason": "length",
+            "output": " evidence, constraints, and the next action",
+            "output_characters": 43,
+            "output_sha256": "8e3f2e62aa1aa8b8a9338c5a37dadb78449ad33a44308ac04b7508596128b638",
+            "reasoning_characters": 0,
+            "reasoning_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "stream_sha256": "8e3f2e62aa1aa8b8a9338c5a37dadb78449ad33a44308ac04b7508596128b638",
+            "requested_prompt_tokens": 16384,
+            "effective_prefill_tokens_per_second": 4159.071,
+            "run": 2
+          }
+        ],
+        "effective_prefill_tokens_per_second": {
+          "median": 4155.953,
+          "minimum": 4152.836,
+          "maximum": 4159.071,
+          "p90": 4159.071
+        },
+        "ttft_seconds": {
+          "median": 3.942,
+          "minimum": 3.939,
+          "maximum": 3.945,
+          "p90": 3.945
+        }
+      },
+      "warm_replay": {
+        "runs": [
+          {
+            "prompt_tokens": 16384,
+            "completion_tokens": 8,
+            "ttft_seconds": 0.203866,
+            "time_to_first_visible_seconds": 0.203866,
+            "time_to_last_output_seconds": 0.326976,
+            "decode_seconds": 0.12311,
+            "decode_tokens_per_second": 56.86,
+            "measured_sse_events": 8,
+            "wall_seconds": 0.328598,
+            "response_tail_seconds": 0.001621,
+            "stream_done_marker": true,
+            "finish_reason": "length",
+            "output": " evidence, constraints, and the next action",
+            "output_characters": 43,
+            "output_sha256": "8e3f2e62aa1aa8b8a9338c5a37dadb78449ad33a44308ac04b7508596128b638",
+            "reasoning_characters": 0,
+            "reasoning_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "stream_sha256": "8e3f2e62aa1aa8b8a9338c5a37dadb78449ad33a44308ac04b7508596128b638",
+            "requested_prompt_tokens": 16384,
+            "effective_prefill_tokens_per_second": 80366.515,
+            "run": 1
+          },
+          {
+            "prompt_tokens": 16384,
+            "completion_tokens": 8,
+            "ttft_seconds": 0.198825,
+            "time_to_first_visible_seconds": 0.198825,
+            "time_to_last_output_seconds": 0.322822,
+            "decode_seconds": 0.123997,
+            "decode_tokens_per_second": 56.453,
+            "measured_sse_events": 8,
+            "wall_seconds": 0.324458,
+            "response_tail_seconds": 0.001636,
+            "stream_done_marker": true,
+            "finish_reason": "length",
+            "output": " evidence, constraints, and the next action",
+            "output_characters": 43,
+            "output_sha256": "8e3f2e62aa1aa8b8a9338c5a37dadb78449ad33a44308ac04b7508596128b638",
+            "reasoning_characters": 0,
+            "reasoning_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "stream_sha256": "8e3f2e62aa1aa8b8a9338c5a37dadb78449ad33a44308ac04b7508596128b638",
+            "requested_prompt_tokens": 16384,
+            "effective_prefill_tokens_per_second": 82404.124,
+            "run": 2
+          }
+        ],
+        "effective_prefill_tokens_per_second": {
+          "median": 81385.319,
+          "minimum": 80366.515,
+          "maximum": 82404.124,
+          "p90": 82404.124
+        },
+        "ttft_seconds": {
+          "median": 0.201,
+          "minimum": 0.199,
+          "maximum": 0.204,
+          "p90": 0.204
+        }
+      }
+    }
+  },
+  "finished": 1792803342.1378996
+}

@@ -1,0 +1,19 @@
+{
+  "hardware": "2 x NVIDIA DGX Spark, GB10, 128 GB unified memory per appliance",
+  "topology": "TP2/EP2 across a direct ConnectX-7 RoCE pair",
+  "negotiated_link_speed": "200 Gb/s per selected port (2X NDR), read from sysfs",
+  "model": "nvidia/Qwen3.8-Flash-Next-FP4-Local",
+  "model_revision": "b9ce18a6887e18c089fdea8509a33e63429a3300",
+  "quantisation": "Published NVIDIA FP4-Local mixed-precision target; published fidelity draft settings",
+  "kv_cache_dtype": "bf16",
+  "serving_engine": "Atlas 63bebfa60d5086de9fc8cc07c21e5fbe38f3b742, previous published SparkQwen fidelity recipe",
+  "serving_image": "ghcr.io/enntity/atlas-sparkqwen@sha256:a0cebe89737898692964d3923477bef293a4ebde9dd32e27202697c54f763c9d",
+  "drafter": "Native MTP head, dynamic depth up to 7, target verification; published fidelity defaults",
+  "context_limit": 262144,
+  "scheduler": "8 sequences, batch size 8, max-prefill-tokens 16384, prefix caching enabled",
+  "competing_traffic": "none; reserved pair, managed serving drained before benchmark",
+  "recipe": "Enntity/sparkqwen previous published fidelity recipe; install tree 70890529ba64dede889814f99f21b3c9a981d9bc; 8x262k",
+  "gpu_memory_utilisation": 0.88,
+  "chat_template": "Pinned checkpoint template; reasoning_effort=low on all benchmark requests",
+  "power_policy": "No GPU clock or power-limit overrides applied for this run"
+}

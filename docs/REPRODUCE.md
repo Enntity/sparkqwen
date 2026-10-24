@@ -5,20 +5,17 @@ Run the drivers in [`bench/`](../bench/) on rank 0 against the running engine
 ([bench/README.md](../bench/README.md) says what each measures). Run one
 workload at a time, with nothing else using the pair, after one warmup pass.
 
-The README's FP4-Local numbers and their raw receipts are in
-[`results/2026-10-16-fp4local/`](../results/2026-10-16-fp4local/RESULT.md)
-(RigMark cards and JSON receipts, `sq_bench`, the quality, tool, exactness,
-prompt-logprob and NLL gates). They were measured with GPU clocks uncapped.
-The RC16 numbers on the NVFP4 checkpoint they are compared with are in
-[`results/2026-10-10-rc16/`](../results/2026-10-10-rc16/RESULT.md): `raw/recipe/`
-from the recipe's own image (the round that produced them is
-`raw/dev/round_rc16.sh`) and `raw/dev/` from the release gate. vLLM on the
-same pair, on the NVFP4 checkpoint, is in
-[`results/2026-10-08-rc15/raw/vllm/`](../results/2026-10-08-rc15/RESULT.md).
-The historical RC16 recipe image uses install tree `656234c336af` and Atlas
-engine `1c43247d93ca050f02cb67b0603e88edfe3d92a5`. Check out SparkQwen
-commit `bde3af6` to reproduce those pins and settings. Everything below runs
-with the default profile and no opt-ins unless it says otherwise.
+The README leads with [the 0.2.0 RigMark run](../results/2026-10-23-rigmark/RESULT.md):
+the published Spark-mode image and the previous fidelity image on the same
+isolated pair, both using FP4-Local at the pinned revision, `8x262k`, BF16 KV
+and utilization `0.88`. The report links both metadata files, unedited receipts,
+source identities and checksums. The broader [0.2.0 qualification](../results/2026-10-22-common-engine/RESULT.md)
+contains the fixed-budget performance and quality tests.
+
+Older FP4-Local, NVFP4, RC16 and vLLM measurements remain in their dated result
+folders. They do not qualify 0.2.0, and results from different harnesses should
+not be combined into one comparison. The commands below describe individual
+probes; the dated reports define which configurations were actually tested.
 
 To compare W8A8 prefill with exact BF16 prefill on FP4-Local, run the same
 probe on two servers, the second from a profile file that adds
@@ -58,17 +55,32 @@ python3 sq_bench.py mine decode warm
 
 ## RigMark
 
-[RigMark](https://github.com/alexellis/rigmark) (MIT) runs three decode
-workloads with output gates, a cold 16K prefill and end-to-end concurrency.
-We ran it at commit 40fabca with this command; the metadata files are
-`raw/recipe/metadata-sq.json` (RC16) and, for vLLM,
-`results/2026-10-08-rc15/raw/vllm/rerun/metadata-vllm.json`:
+[RigMark](https://github.com/alexellis/rigmark) (MIT) at commit
+`40fabcaf6e963ac27ab347f61d54a225dbd07419`, protocol 1.1.0, produced the current
+headline. Check out that commit in a clean RigMark checkout. Use the report's
+metadata file for the matching image and verify every field against the live
+server. The selected full 0.2.0 run used:
 
 ```sh
-./rigmark run --base-url http://127.0.0.1:8893 --model auto --metadata metadata.json \
-  --runs 3 --prefill-runs 2 --prefill-depths 16384 --concurrency 1,2,4,8 --concurrency-runs 1 \
-  --extra-body '{"chat_template_kwargs":{"reasoning_effort":"low"}}' --output rigmark.json
+./rigmark run --base-url http://127.0.0.1:8893 \
+  --model qwen3.8-flash-next-atlas --label sparkqwen-020-spark-diagnostic \
+  --comparison-id sparkqwen-020-full-diagnostic-20261023 --metadata metadata-spark.json \
+  --runs 3 --decode-tokens 4096 --prefill-runs 10 --prefill-depths 16384 \
+  --concurrency 1,2,4,8 --concurrency-runs 2 \
+  --extra-body '{"chat_template_kwargs":{"reasoning_effort":"low"}}' \
+  --output rigmark-spark-diagnostic.json
 ```
+
+The selected run followed ten isolated prefill probes and two original-prompt
+replays in the same running engine. The initial current/previous-image pair
+used comparison ID `sparkqwen-020-rigmark-20261023`, two prefill repetitions,
+and the corresponding labels/metadata/output paths; compare those two receipts
+for the same-pair baseline. Retain all runs rather than substituting individual
+maximum cells. Each image must
+finish loading and pass the arithmetic warmup before measurement. Do not run
+other model traffic on the pair. Basic output gates are completion/shape
+checks, not semantic code tests. Keep failed gates and all repetitions in the
+published receipt.
 
 ## Tool calling
 
