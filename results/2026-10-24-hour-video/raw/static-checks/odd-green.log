@@ -1,0 +1,10 @@
+   Compiling spark-server v1.0.0-beta-preview (/Volumes/JMac External/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-video-profiles-20261023/crates/spark-server)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 8.05s
+     Running unittests src/main.rs (target/debug/deps/spark-0e3b51d742cd56d6)
+
+running 2 tests
+test api::chat::msg_entry::media::tests::hour_profile_reservation_matches_224k_qwen_rows ... ok
+test api::chat::msg_entry::media::tests::odd_video_cap_reserves_the_padded_temporal_group ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 3001 filtered out; finished in 0.00s
+

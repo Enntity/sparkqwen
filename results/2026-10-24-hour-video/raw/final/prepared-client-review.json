@@ -1,0 +1,5 @@
+{
+  "passed": true,
+  "check": "red, green, blue in chronological order; normal stop; exact client stdout retained",
+  "source": "rank0-host/client-driver.log"
+}

@@ -1,0 +1,19 @@
+{
+  "engine_commit": "2837e761a7087a30884ea33eceb378368ef086e2",
+  "results": {
+    "fmt": 0,
+    "spdx": 0,
+    "kernel-shadows": 0,
+    "typos": 0,
+    "file-size": 1,
+    "harvest-triage": 0
+  },
+  "typos_version": "1.51.1",
+  "product_tests_passed": 50,
+  "notes": [
+    "SPDX rerun with existing PyYAML virtualenv after system Python lacked the module.",
+    "Current ci.yml has no mdBook/cargo-doc job; CONTRIBUTING description of those jobs is stale.",
+    "Pinned native aarch64 build/test/Clippy and matched product GPU tests qualify Qwen only; no all-model or x86_64 release matrix claim.",
+    "File-size workflow reports53 preexisting violations; every violating file has identical Git blob at base andHEAD. Changed-file violations0. Raw full failure and blob comparison retained."
+  ]
+}

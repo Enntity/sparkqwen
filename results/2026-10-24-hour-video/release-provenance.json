@@ -1,0 +1,45 @@
+{
+  "schema": "sparkqwen.version-refresh/v1",
+  "version": "0.3.0",
+  "refresh": "hour-video",
+  "previous_source": "f158513505b8ba9be46fdea42c6ef3dc60dd9b3f",
+  "preserved_source_tag": "v0.3.0-initial",
+  "previous_registry": {
+    "schema": "sparkqwen.registry-release/v1",
+    "version": "0.3.0",
+    "image": "ghcr.io/enntity/atlas-sparkqwen@sha256:21318576265668c539f03cc39a56ecbdc1a26a7404949e35191e10d996731e77",
+    "install_tree_tag": "ghcr.io/enntity/atlas-sparkqwen:6e749d152551",
+    "version_tag": "ghcr.io/enntity/atlas-sparkqwen:0.3.0",
+    "image_id": "sha256:21318576265668c539f03cc39a56ecbdc1a26a7404949e35191e10d996731e77",
+    "binary_sha256": "20106c8b07fc5c29c34fc19b33a2c6a989899a55eb2a976a53f6d2709803e06f",
+    "anonymous_pull_verified": true,
+    "source_release": "https://github.com/Enntity/sparkqwen/releases/tag/v0.3.0"
+  },
+  "current_tested_product_commit": "58258e1c6b53088fa2f8037c521c5e904a7d4953",
+  "current_install_tree": "579bb7478246e8daf141f0d47ce360571abfee9a",
+  "current_engine_commit": "2837e761a7087a30884ea33eceb378368ef086e2",
+  "current_registry": {
+    "schema": "sparkqwen.registry-release/v1",
+    "version": "0.3.0",
+    "image": "ghcr.io/enntity/atlas-sparkqwen@sha256:c636e390085e58277387d7d1c857adae2bf2a88fc32408914fdd987bcc4db61d",
+    "install_tree_tag": "ghcr.io/enntity/atlas-sparkqwen:579bb7478246",
+    "version_tag": "ghcr.io/enntity/atlas-sparkqwen:0.3.0",
+    "image_id": "sha256:c636e390085e58277387d7d1c857adae2bf2a88fc32408914fdd987bcc4db61d",
+    "binary_sha256": "ea63ef8c0dfe961c79a3b01365e20ddd36013fa96c6f1db8e044e7eb3b774b22",
+    "anonymous_pull_verified": true,
+    "source_release": "https://github.com/Enntity/sparkqwen/releases/tag/v0.3.0",
+    "refresh": "hour-video",
+    "supersedes": {
+      "schema": "sparkqwen.registry-release/v1",
+      "version": "0.3.0",
+      "image": "ghcr.io/enntity/atlas-sparkqwen@sha256:21318576265668c539f03cc39a56ecbdc1a26a7404949e35191e10d996731e77",
+      "install_tree_tag": "ghcr.io/enntity/atlas-sparkqwen:6e749d152551",
+      "version_tag": "ghcr.io/enntity/atlas-sparkqwen:0.3.0",
+      "image_id": "sha256:21318576265668c539f03cc39a56ecbdc1a26a7404949e35191e10d996731e77",
+      "binary_sha256": "20106c8b07fc5c29c34fc19b33a2c6a989899a55eb2a976a53f6d2709803e06f",
+      "anonymous_pull_verified": true,
+      "source_release": "https://github.com/Enntity/sparkqwen/releases/tag/v0.3.0"
+    }
+  },
+  "source_release": "https://github.com/Enntity/sparkqwen/releases/tag/v0.3.0"
+}

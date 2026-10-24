@@ -1,0 +1,1 @@
+{"model": "qwen3.8-flash-next-atlas", "messages": [{"role": "user", "content": "Reply with only the result of 18 + 30."}], "temperature": 0, "max_tokens": 128, "reasoning_effort": "low", "timeout": 600}

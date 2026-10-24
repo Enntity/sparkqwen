@@ -1,0 +1,324 @@
+{
+  "baseline": "3e5a05896e489fd8c6cf4eddaf38eb3b7fb6a806",
+  "preexisting_violations": [
+    {
+      "path": "crates/atlas-core/src/config/methods.rs",
+      "baseline_blob": "e70d305c61683fdfad1109358a5c38b1dba2422f",
+      "current_blob": "e70d305c61683fdfad1109358a5c38b1dba2422f",
+      "unchanged": true
+    },
+    {
+      "path": "crates/atlas-kernels/src/lib.rs",
+      "baseline_blob": "1415ca67915ababbc755cebc600bdc6e1ebe9a2b",
+      "current_blob": "1415ca67915ababbc755cebc600bdc6e1ebe9a2b",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-storage/src/ngram_pack/tests.rs",
+      "baseline_blob": "eae503a40ce5d3cae014e91f86a66843918cd12e",
+      "current_blob": "eae503a40ce5d3cae014e91f86a66843918cd12e",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-storage/src/ngram_pack.rs",
+      "baseline_blob": "86bd76f3bfddfac05981eb117199d8ee507417f4",
+      "current_blob": "86bd76f3bfddfac05981eb117199d8ee507417f4",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-runtime/src/gpu/mock.rs",
+      "baseline_blob": "c95e55b327926466d715562acc841e717f6cf025",
+      "current_blob": "c95e55b327926466d715562acc841e717f6cf025",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-runtime/src/cublaslt/mx_algo.rs",
+      "baseline_blob": "c49eb61c3d1c13ccbab67ad7026ae17113c443f0",
+      "current_blob": "c49eb61c3d1c13ccbab67ad7026ae17113c443f0",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-runtime/src/cuda_backend/gpu_impl.rs",
+      "baseline_blob": "7b1b96655962e0cdb66d6663929f7102776e3ddc",
+      "current_blob": "7b1b96655962e0cdb66d6663929f7102776e3ddc",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-server/src/scheduler/preempt.rs",
+      "baseline_blob": "02362d1ef37e57c2bfaff24c6030d09ee8cdf378",
+      "current_blob": "02362d1ef37e57c2bfaff24c6030d09ee8cdf378",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-server/src/api/chat/template.rs",
+      "baseline_blob": "8096cf26cd6529ec27f2fd7ce93c06d28152dfb5",
+      "current_blob": "8096cf26cd6529ec27f2fd7ce93c06d28152dfb5",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-server/src/api/inference_impl.rs",
+      "baseline_blob": "d29e9680049e4d1fa98ad4968ee7c66cc0972288",
+      "current_blob": "d29e9680049e4d1fa98ad4968ee7c66cc0972288",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-comm/src/lib.rs",
+      "baseline_blob": "ec7379227a87569fd4dbd60d8b89c1ae4b94cb2b",
+      "current_blob": "ec7379227a87569fd4dbd60d8b89c1ae4b94cb2b",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-comm/src/nccl_backend/rdma_pair/chain_loopback_tests.rs",
+      "baseline_blob": "5982e4f182609646a12f33d20424c93245ed4b17",
+      "current_blob": "5982e4f182609646a12f33d20424c93245ed4b17",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-comm/src/nccl_backend/rdma_pair/oneshot.rs",
+      "baseline_blob": "07d5d8b040dbc785b7f57f680e5bb37ee7e5af06",
+      "current_blob": "07d5d8b040dbc785b7f57f680e5bb37ee7e5af06",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-comm/src/nccl_backend/rdma_pair/oneshot_gpu_tests.rs",
+      "baseline_blob": "df7c6cf73390b9256a9381a5aadc091c428f0c21",
+      "current_blob": "df7c6cf73390b9256a9381a5aadc091c428f0c21",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-comm/src/nccl_backend/rdma_pair/loopback_tests.rs",
+      "baseline_blob": "47379e3e3bcfde19f987db2f231080aeff171629",
+      "current_blob": "47379e3e3bcfde19f987db2f231080aeff171629",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/tests/dflash2_selector_exact.rs",
+      "baseline_blob": "8fc7d98a9c9baa94e29e3fbe860e4f08d2c031a6",
+      "current_blob": "8fc7d98a9c9baa94e29e3fbe860e4f08d2c031a6",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/examples/glm_fp4l_native_bench.rs",
+      "baseline_blob": "7f39bed620c4e265dd293f34c095a8c9b395e91d",
+      "current_blob": "7f39bed620c4e265dd293f34c095a8c9b395e91d",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/layers/qwen3_ssm/trait_decode_multi_seq/ssm_batched.rs",
+      "baseline_blob": "61d1c5ca7b90d429abe32bcdb8e44985fcac06fd",
+      "current_blob": "61d1c5ca7b90d429abe32bcdb8e44985fcac06fd",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/layers/glm5_kda/projection.rs",
+      "baseline_blob": "15212daad26e461252679937c41727bcf565f925",
+      "current_blob": "15212daad26e461252679937c41727bcf565f925",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/layers/glm_kv_shard.rs",
+      "baseline_blob": "9796def22b806e8e9555c940e7e0dfd2b435de48",
+      "current_blob": "9796def22b806e8e9555c940e7e0dfd2b435de48",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/layers/mod.rs",
+      "baseline_blob": "69bcb53c16aa3797ea3167d1eaffb4ac1d4515c3",
+      "current_blob": "69bcb53c16aa3797ea3167d1eaffb4ac1d4515c3",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/layers/ops/glm_indexer.rs",
+      "baseline_blob": "658c7c2c28c2d85fb3b393e83490894e7bf45e14",
+      "current_blob": "658c7c2c28c2d85fb3b393e83490894e7bf45e14",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/layers/ops/fp8b.rs",
+      "baseline_blob": "1d638ea520b731fe56040cdbeecbf56ca9c24844",
+      "current_blob": "1d638ea520b731fe56040cdbeecbf56ca9c24844",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/layers/ops/mxfp8_gemm_test_gpu.rs",
+      "baseline_blob": "49fe8b19e0b5c82a3a1d32059091c4aef51388fb",
+      "current_blob": "49fe8b19e0b5c82a3a1d32059091c4aef51388fb",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/layers/moe/helpers_a.rs",
+      "baseline_blob": "0915b2589461548ce4b363abd6be0c0043f793c3",
+      "current_blob": "0915b2589461548ce4b363abd6be0c0043f793c3",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/layers/moe/route_fuse_test_gpu.rs",
+      "baseline_blob": "6fc9f2f941397e424517b89abd948800d250a1f9",
+      "current_blob": "6fc9f2f941397e424517b89abd948800d250a1f9",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/layers/moe/decode_m16_tests.rs",
+      "baseline_blob": "8cef75bdf49aba43224b48e628f10f69be931f90",
+      "current_blob": "8cef75bdf49aba43224b48e628f10f69be931f90",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/layers/moe/decode_m16.rs",
+      "baseline_blob": "2595fa3f7c8d57e45afbb9ae69137f71961df744",
+      "current_blob": "2595fa3f7c8d57e45afbb9ae69137f71961df744",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/layers/moe/helpers_c.rs",
+      "baseline_blob": "09d0a1989dbcc7eee747f7e955d913409265d5b5",
+      "current_blob": "09d0a1989dbcc7eee747f7e955d913409265d5b5",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/layers/moe/shared_mxfp8_test_gpu.rs",
+      "baseline_blob": "eeca7a8a5703d91ad17fb7084ee49c65085e0b6e",
+      "current_blob": "eeca7a8a5703d91ad17fb7084ee49c65085e0b6e",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/layers/dflash_head/rank_split_exec.rs",
+      "baseline_blob": "bf37a0d5da81ac6d16cc6add91170355ef6b5b41",
+      "current_blob": "bf37a0d5da81ac6d16cc6add91170355ef6b5b41",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/layers/dflash_head/rank_split.rs",
+      "baseline_blob": "218a416236d07bddc6fb965a8288d29c102095da",
+      "current_blob": "218a416236d07bddc6fb965a8288d29c102095da",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/layers/dflash_head/batch_propose.rs",
+      "baseline_blob": "fcadc3957919cc4c3f6e040fc45b7bb57fed766f",
+      "current_blob": "fcadc3957919cc4c3f6e040fc45b7bb57fed766f",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/layers/dflash_head/rank_split_tests.rs",
+      "baseline_blob": "6cc0632efd371fba9a80394d71af5d1fee3ebf89",
+      "current_blob": "6cc0632efd371fba9a80394d71af5d1fee3ebf89",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/layers/qwen3_attention/types.rs",
+      "baseline_blob": "196bcd551da95a64bd1e1cf6bf687fbfa91e9d48",
+      "current_blob": "196bcd551da95a64bd1e1cf6bf687fbfa91e9d48",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/layers/qwen3_attention/trait_impl.rs",
+      "baseline_blob": "41772cc187e9a964525419611e9824937c9e808a",
+      "current_blob": "41772cc187e9a964525419611e9824937c9e808a",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/layers/qwen3_attention/prefill/paged_glm_shard_chain_gpu_tests.rs",
+      "baseline_blob": "9a9fed05843d190ed3fb1c2b8e00612adb977774",
+      "current_blob": "9a9fed05843d190ed3fb1c2b8e00612adb977774",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/layers/qwen3_attention/prefill/paged_glm_shard_merge_gpu_tests.rs",
+      "baseline_blob": "2fbf9ed999c9227cedacf5aafe82246f4b2441d8",
+      "current_blob": "2fbf9ed999c9227cedacf5aafe82246f4b2441d8",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/layers/qwen3_attention/trait_impl/multi_seq/mla_glm.rs",
+      "baseline_blob": "fb51dee34c2278908bd89886fbf7f94c6be88eeb",
+      "current_blob": "fb51dee34c2278908bd89886fbf7f94c6be88eeb",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/weight_loader/glm5/fp4l_test_gpu.rs",
+      "baseline_blob": "39844eefa9c5b933ca30d66b0107223202815c43",
+      "current_blob": "39844eefa9c5b933ca30d66b0107223202815c43",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/weight_loader/glm5/native_test_gpu.rs",
+      "baseline_blob": "48630735e85d4f733ed9e0f7d26fcf5a5a966856",
+      "current_blob": "48630735e85d4f733ed9e0f7d26fcf5a5a966856",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/weight_loader/glm5/components.rs",
+      "baseline_blob": "6e850335aa20271811dda36414e80663e2fef8ea",
+      "current_blob": "6e850335aa20271811dda36414e80663e2fef8ea",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/weight_loader/qwen4_exp/ple.rs",
+      "baseline_blob": "8f96d3f74f906f57edaac23d7cdd6a03758d6a0b",
+      "current_blob": "8f96d3f74f906f57edaac23d7cdd6a03758d6a0b",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/weight_loader/qwen4_exp/mtp.rs",
+      "baseline_blob": "a24a7c003a063b60e92d22a5151058dc1e7f4256",
+      "current_blob": "a24a7c003a063b60e92d22a5151058dc1e7f4256",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/weight_loader/qwen4_exp.rs",
+      "baseline_blob": "21152fb6526eac0a3bed977681aa292f3831b85a",
+      "current_blob": "21152fb6526eac0a3bed977681aa292f3831b85a",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/model/verify_pieces.rs",
+      "baseline_blob": "2fb61ea25e098b2f69ac8028c3c2099da8ca2675",
+      "current_blob": "2fb61ea25e098b2f69ac8028c3c2099da8ca2675",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/model/glm_packed_prefill.rs",
+      "baseline_blob": "6c042ed3a80a2063d8e3027a3776f0fb8eb52106",
+      "current_blob": "6c042ed3a80a2063d8e3027a3776f0fb8eb52106",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/model/impl_b3_dflash.rs",
+      "baseline_blob": "6476b3978200a1cf7ca627d3e7504d6d3bc918c6",
+      "current_blob": "6476b3978200a1cf7ca627d3e7504d6d3bc918c6",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/model/startup_parity_table.rs",
+      "baseline_blob": "2797ba870eb6957abe9d1960a044fa34ab72581b",
+      "current_blob": "2797ba870eb6957abe9d1960a044fa34ab72581b",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/model/trait_impl/prefill_b/forward_layers.rs",
+      "baseline_blob": "91c071bb8d8f97bad5437fbb64887d6f0a28564c",
+      "current_blob": "91c071bb8d8f97bad5437fbb64887d6f0a28564c",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/model/trait_impl/prefill_b.rs",
+      "baseline_blob": "5cff6b6869213b92926f8f319ca5f1693b5cb8d8",
+      "current_blob": "5cff6b6869213b92926f8f319ca5f1693b5cb8d8",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/model/impl_a3.rs",
+      "baseline_blob": "18e649cb1052323790d471efff4a1c562da91613",
+      "current_blob": "18e649cb1052323790d471efff4a1c562da91613",
+      "unchanged": true
+    },
+    {
+      "path": "crates/spark-model/src/model/qwen4exp_lmhead_split.rs",
+      "baseline_blob": "5e75b53197ed7952221aaa45a47bc1ccdff13c7c",
+      "current_blob": "5e75b53197ed7952221aaa45a47bc1ccdff13c7c",
+      "unchanged": true
+    }
+  ],
+  "changed_file_violations": 0
+}

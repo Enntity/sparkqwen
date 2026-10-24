@@ -14,26 +14,44 @@ and the common [Atlas engine](https://github.com/Enntity/atlas) shared with
 [SparkGLM](https://github.com/Enntity/sparkglm). Native MTP, prefix caching,
 and an OpenAI-compatible API are included.
 
-**New in 0.3.0:** [timestamped video input](docs/VIDEO.md), a
+**New in 0.3.0:** [hour-long timestamped video input](docs/VIDEO.md#hour-long-video-profile), a
 [`max-16x262k` profile](docs/MEMORY-PROFILES.md) for a dedicated pair, and a
 [`saver-8x262k` profile](docs/MEMORY-PROFILES.md) for sharing with model sidecars.
-Both new profiles use display-memory borrowing and a bounded host snapshot
-cache. Context and scheduler limits are separate from the shared KV capacity.
+The max/saver profiles use display-memory borrowing and a host snapshot
+reclaim target. Context and scheduler limits are separate from the shared KV capacity.
 
 
-The 0.3.0 Spark qualification passed **12/12 controlled video cases, 21/21 tool
+The initial 0.3.0 Spark qualification passed **12/12 controlled video cases, 21/21 tool
 cases, 40/40 arithmetic, 12/12 short retrieval and 2/2 schema checks**. Its
 canonical text logprobs match 0.2.0 exactly (NLL **0.9951030694**, 27,033 scored
 positions). Video samples the whole clip with timestamps; it does not process
 audio, and short events between samples can be missed. See the
 [video and memory receipt](results/2026-10-23-video-memory/RESULT.md).
 
+**Hour-video refresh:** the new `hour-video` Spark profile passed **11/11 checks
+on each of two one-hour controls**, plus an identical-request replay. The forward
+and reversed clips took **3.76 and 3.76 minutes** end to end on the qualified image;
+the forward run included concurrent text probes. The final image also passed
+**12/12 short-video cases** and reproduced the canonical text logprobs exactly.
+These are synthetic temporal controls, not reference LVBench parity. No audio;
+brief events and small text can be missed. Use reasoning for timestamps and
+expect retries for simultaneous large videos. [Full measurements, limits and
+all trials](results/2026-10-24-hour-video/RESULT.md).
+
+```sh
+PROFILE=hour-video MODE=spark ./start.sh
+python3 examples/video.py recording.mp4 --prepare --timeout 3600
+```
+
 
 | Spark-mode profile | Scheduler slots × request limit | Measured shared KV pool | Intended use |
 | --- | --- | ---: | --- |
 | `max-16x262k` | 16 × 262,144 | 3,710,480 tokens (~14 full contexts) | Dedicated pair, utilization 0.95 |
 | `saver-8x262k` | 8 × 262,144 | 1.85–1.98M tokens (~7 full contexts) | Tested embedding, voice and image sidecars, utilization 0.74 |
+| `hour-video` | 8 × 262,144 | 3,204,064 tokens | Dedicated video pair, 7,200 samples at 2 fps, utilization 0.85 |
 
+Max/saver figures are from the original 0.3.0 image; hour-video is from this
+refresh. Those capacity/sidecar trials were not repeated for the hour refresh.
 These are measured allocations on our pair, not reserved context slots or
 minimum capacity guarantees. The saver trial completed seven near-full requests
 while all three sidecars worked; the busier rank reached **4.75 GiB available**
@@ -130,15 +148,17 @@ PROFILE=8x262k ./start.sh --mode spark
 
 The [0.3.0 release](https://github.com/Enntity/sparkqwen/releases/tag/v0.3.0)
 and its container are **published**. The launcher pulls
-`ghcr.io/enntity/atlas-sparkqwen:6e749d152551`; the version tag is also available
+`ghcr.io/enntity/atlas-sparkqwen:579bb7478246`; the version tag is also available
 as `ghcr.io/enntity/atlas-sparkqwen:0.3.0`. The
-[registry manifest](results/2026-10-23-video-memory/registry-manifest.json)
+[registry manifest](results/2026-10-24-hour-video/registry-manifest.json)
 records immutable digest
-`sha256:21318576265668c539f03cc39a56ecbdc1a26a7404949e35191e10d996731e77`,
+`sha256:c636e390085e58277387d7d1c857adae2bf2a88fc32408914fdd987bcc4db61d`,
 with anonymous pulls verified on both test ranks. `PULL=0` builds the pinned source.
 
-This image uses common Atlas commit `170540e1`, including the video and
-carveout-accounting fixes. Omitting `--mode` selects Strict; both modes keep
+This image uses common Atlas commit `2837e761`, including bounded
+hour-video decoding and temporal-group encoding. The original 0.3.0 source is
+preserved as `v0.3.0-initial`, with its immutable image and receipts retained.
+Omitting `--mode` selects Strict; both modes keep
 native MTP. The new max/saver examples select Spark, which is the mode qualified
 for their capacity figures. The quick-start example above uses `8x262k`; the
 launcher's default remains `8x32k`.
@@ -249,13 +269,15 @@ sampling limits and the 0.3.0 checks, see [Video](docs/VIDEO.md).
 | `8x262k` | 8 | 262,144 | Existing long-context recipe |
 | `max-16x262k` | 16 | 262,144 | Dedicated pair, display carveout |
 | `saver-8x262k` | 8 | 262,144 | Sidecars, display carveout |
+| `hour-video` | 8 | 262,144 | Dedicated Spark-mode pair, long-video preprocessing headroom |
 
 Context includes input and output. All active requests and cached prefixes
 share one BF16 KV pool. Slots do not reserve that many complete contexts;
 requests that overcommit the pool wait for room. See [Memory profiles](docs/MEMORY-PROFILES.md)
 for measured capacity guidance, sidecar workloads and limits. The copyable examples
 are [`.env.max.example`](.env.max.example) and
-[`.env.sidecars.example`](.env.sidecars.example). Sidecars remain separate
+[`.env.sidecars.example`](.env.sidecars.example); long video uses
+[`.env.hour-video.example`](.env.hour-video.example). Sidecars remain separate
 installations; SparkQwen does not install or manage them.
 
 The versioned comparison uses explicit greedy settings for measurement. For real work leave sampling

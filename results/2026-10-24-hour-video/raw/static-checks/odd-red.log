@@ -1,0 +1,25 @@
+   Compiling spark-model v1.0.0-beta-preview (/Volumes/JMac External/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-video-profiles-20261023/crates/spark-model)
+   Compiling spark-server v1.0.0-beta-preview (/Volumes/JMac External/software/ml/enntity/sparkglm-research/worktrees/atlas-qwen-video-profiles-20261023/crates/spark-server)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 23.55s
+     Running unittests src/main.rs (target/debug/deps/spark-0e3b51d742cd56d6)
+
+running 1 test
+test api::chat::msg_entry::media::tests::odd_video_cap_reserves_the_padded_temporal_group ... FAILED
+
+failures:
+
+---- api::chat::msg_entry::media::tests::odd_video_cap_reserves_the_padded_temporal_group stdout ----
+
+thread 'api::chat::msg_entry::media::tests::odd_video_cap_reserves_the_padded_temporal_group' (333912789) panicked at crates/spark-server/src/api/chat/msg_entry/media.rs:300:9:
+assertion `left == right` failed
+  left: 2048
+ right: 4096
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    api::chat::msg_entry::media::tests::odd_video_cap_reserves_the_padded_temporal_group
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 3002 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p spark-server --bin spark`

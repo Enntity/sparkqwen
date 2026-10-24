@@ -1,0 +1,6 @@
+{
+  "command": "cd /home/enntitysparkadmin/qwen-hour-video-20261024/clean-product && env WORKER=enntitysparkadmin@10.100.112.2 MODEL_ROOT=/home/enntitysparkadmin/qwen-hour-video-20261024/clean-model-root PROFILE=hour-video MODE=spark LEADER_ADDRESS=10.100.112.1 FABRIC_HCA=rocep1s0f1 FABRIC_INTERFACE=enp1s0f1np1 ./start.sh --mode spark",
+  "source_commit": "58258e1c6b53088fa2f8037c521c5e904a7d4953",
+  "install_tree": "579bb7478246e8daf141f0d47ce360571abfee9a",
+  "preinstalled_image": true
+}

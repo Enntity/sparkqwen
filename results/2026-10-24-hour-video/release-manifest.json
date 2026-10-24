@@ -1,0 +1,627 @@
+{
+  "schema": "sparkqwen.release-qualification/v1",
+  "version": "0.3.0",
+  "refresh": "hour-video",
+  "status": "qualified-spark",
+  "tested_build_commit": "58258e1c6b53088fa2f8037c521c5e904a7d4953",
+  "install_tree": "579bb7478246e8daf141f0d47ce360571abfee9a",
+  "engine_commit": "2837e761a7087a30884ea33eceb378368ef086e2",
+  "engine_tree": "b8b8af1c4ee5182d47c1ee81991b95ae825347e3",
+  "checkpoint": {
+    "schema": "sparkqwen.checkpoint/v1",
+    "repository": "nvidia/Qwen3.8-Flash-Next-FP4-Local",
+    "revision": "b9ce18a6887e18c089fdea8509a33e63429a3300",
+    "size_gib": 95.1,
+    "format": "ModelOpt MIXED_PRECISION, quantization-aware distilled: routed experts NVFP4 (group 16, lossless CSF-compressed block scales), Gated DeltaNet / attention / shared-expert projections MXFP8 (E4M3 + UE8M0 per 32), PLE n-gram embedding NVFP4, MTP experts W4A16 NVFP4, ViT MXFP8 + W4A16 NVFP4, lm_head and embeddings BF16",
+    "why": "NVIDIA's own quantization is preferred. Their FP4-Local release is distilled against the BF16 model (GPQA Diamond 91.5 vs 92.2, ToolEvalBench 88.7 vs 89.4 on its card), 28 GiB smaller than their post-training-quantized nvidia/Qwen3.8-Flash-Next-NVFP4 (fc694b54, 123.6 GiB, the RC16 default), and its MXFP8 backbone halves the bytes a decode step reads. The engine still loads the NVFP4 checkpoint.",
+    "served_model_name": "qwen3.8-flash-next-atlas",
+    "license": "other (NVIDIA Open Model Agreement per model card; base model under the Qwen Community License 1.0; check before redistributing)"
+  },
+  "image_id": "sha256:c636e390085e58277387d7d1c857adae2bf2a88fc32408914fdd987bcc4db61d",
+  "binary_sha256": "ea63ef8c0dfe961c79a3b01365e20ddd36013fa96c6f1db8e044e7eb3b774b22",
+  "native_source_tests": {
+    "passed": 8099,
+    "failed": 0,
+    "ignored": 255
+  },
+  "clippy": "passed",
+  "clean_clone_launcher_smoke_passed": true,
+  "final_image_video": {
+    "total": 12,
+    "passed": 12,
+    "failed": 0,
+    "failed_cases": []
+  },
+  "final_image_nll": {
+    "http_status": 200,
+    "elapsed_s": 36.17333769798279,
+    "request_sha256": "960026bdf022c54ecfdcd39f027d0af0d3f66f9dbf97aa0de4323809fb6d8c0d",
+    "same_request_bytes": true,
+    "reference": "native5-saver070 canonical (already exactly matched 0.2.0 Spark)",
+    "logprob_fields": {
+      "tokens": true,
+      "token_logprobs": true,
+      "top_logprobs": true,
+      "text_offset": true
+    },
+    "array_lengths": {
+      "tokens": 27035,
+      "token_logprobs": 27035,
+      "top_logprobs": 27035,
+      "text_offset": 27035
+    },
+    "scored_positions": 27033,
+    "nll": 0.9951030694174534,
+    "usage": {
+      "prompt_tokens": 27034,
+      "completion_tokens": 1,
+      "total_tokens": 27035,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      },
+      "time_to_first_token_ms": 35213.299167000005,
+      "response_token/s": 0.0
+    },
+    "passed": true
+  },
+  "hour_profile": {
+    "mode": "spark",
+    "profile": {
+      "schema": "sparkqwen.atlas-install-profile/v1",
+      "status": "qualified-spark",
+      "note": "SparkQwen 0.3.0 dedicated hour-video profile: 262144-token context, reference long-video pixel volume, up to 7,200 sampled frames, native MTP and bounded decode/admission. Spark-mode qualification and sampled-video limits are recorded in results/2026-10-24-hour-video. Lower KV utilization reserves host memory for video preprocessing; large video requests can receive 503 with Retry-After.",
+      "environment": {
+        "ATLAS_EP_PROTOCOL": "v2",
+        "ATLAS_RDMA_ALLREDUCE": "1",
+        "ATLAS_RDMA_ONESHOT": "1",
+        "ATLAS_RDMA_PAIR_CHAIN": "1",
+        "ATLAS_GLM_CMD_RDMA": "1",
+        "ATLAS_QWEN4EXP_DECODE_GRAPH": "1",
+        "ATLAS_QWEN4EXP_DECODE_GRAPH_COLLECTIVES": "1",
+        "ATLAS_QWEN4EXP_HC_FAST": "1",
+        "ATLAS_QWEN4EXP_LMHEAD_SPLIT": "1",
+        "ATLAS_QWEN4EXP_LMHEAD_BATCHM": "1",
+        "ATLAS_QWEN4EXP_EXACT_VERIFY": "1",
+        "ATLAS_QWEN4EXP_MOE_FAST": "1",
+        "ATLAS_QWEN4EXP_DECODE_FUSE": "1",
+        "ATLAS_QWEN4EXP_BATCH_FAST": "1",
+        "ATLAS_QWEN4EXP_MTP_DEPTH": "7",
+        "ATLAS_MTP_SINGLE_DEPTH_ADAPT": "1",
+        "ATLAS_QWEN4EXP_DRAFT_HEAD_NVFP4": "1",
+        "ATLAS_QWEN4EXP_PREFILL_MOE": "1",
+        "ATLAS_QWEN4EXP_PREFILL_GDN": "1",
+        "ATLAS_QWEN4EXP_PREFILL_QSA_SCORE": "1",
+        "ATLAS_QWEN4EXP_PREFILL_HC": "1",
+        "ATLAS_QWEN4EXP_DECODE_GRAPH_WIDE": "1",
+        "ATLAS_QWEN4EXP_BATCH_SMALL": "1",
+        "ATLAS_QWEN4EXP_PREFILL_SP": "1",
+        "ATLAS_QWEN4EXP_PREFILL_MOE_W2": "1",
+        "ATLAS_LT_KCHAIN_PIN": "1",
+        "ATLAS_QWEN4EXP_PREFILL_BA_ROWS": "1",
+        "ATLAS_QWEN4EXP_PREFILL_FP8_W2": "1",
+        "ATLAS_QWEN4EXP_PREFILL_SP_SHARED": "1",
+        "ATLAS_QWEN4EXP_PREFILL_SP_PIPE": "1",
+        "ATLAS_QWEN4EXP_PREFILL_SP_RS_PIPE": "1",
+        "ATLAS_QWEN4EXP_PREFILL_QSA_SPLIT": "1",
+        "ATLAS_QWEN4EXP_PREFILL_SP_ROUTE": "1",
+        "ATLAS_QWEN4EXP_PREFILL_MIDCHUNK_CKPT": "1",
+        "ATLAS_QWEN4EXP_CKPT_AUX_SHARE": "1",
+        "ATLAS_QWEN4EXP_AUX_PINNED": "1",
+        "ATLAS_QWEN4EXP_PREFILL_HOST_IDS": "1",
+        "ATLAS_QWEN4EXP_QSA_REUSE": "1",
+        "ATLAS_QWEN4EXP_SP_PREALLOC": "1",
+        "ATLAS_PLE_WARM_BG": "1",
+        "ATLAS_PLE_PACKED_DIR": "/atlas-ple",
+        "ATLAS_PREFILL_QUEUE_FIRST_CHUNK": "1",
+        "ATLAS_QWEN4EXP_MTP_ABSORB": "1",
+        "ATLAS_QWEN4EXP_MTP_PREFILL": "16384",
+        "ATLAS_MTP_DEEP_WINDOW": "16",
+        "ATLAS_MTP_MAX_SEQS": "8",
+        "ATLAS_MTP_GATE_FORCE": "1",
+        "ATLAS_MTP_DYNAMIC_DEPTH": "1",
+        "ATLAS_MTP_DEEP_MAX_SEQS": "2",
+        "ATLAS_QWEN4EXP_MTP_KV_KEEP": "1",
+        "ATLAS_NO_MTP_DCUT": "1",
+        "ATLAS_QWEN4EXP_MTP_DRAFT_TP": "1",
+        "ATLAS_PLE_NVME_KEEPALIVE_MS": "10",
+        "ATLAS_PLE_FAULT_POOL": "1",
+        "ATLAS_VERIFY_PICK_PAR": "1",
+        "ATLAS_QWEN4EXP_HC_WIDE": "1",
+        "ATLAS_QWEN4EXP_MTP_GROUPED_NORM": "1",
+        "ATLAS_GLM_ZERO_ROWS": "0",
+        "ATLAS_QWEN4EXP_EOS_BAN": "1",
+        "ATLAS_QWEN4EXP_QKV_ROWS_2D": "1",
+        "ATLAS_QWEN4EXP_VERIFY_BT_PINNED": "1",
+        "ATLAS_QWEN4EXP_EXACT_DEFER": "1",
+        "ATLAS_QWEN4EXP_QSA_KEY_ONLY": "1",
+        "ATLAS_QWEN4EXP_QSA_COMMIT_ROWS": "1",
+        "ATLAS_QWEN4EXP_FINISH_LEAF": "1",
+        "ATLAS_QWEN4EXP_QSA_TOPK_WIDE": "1",
+        "ATLAS_QWEN4EXP_QSA_DECODE_ROWS": "1",
+        "ATLAS_QWEN4EXP_MOE_TC": "1",
+        "ATLAS_QWEN4EXP_MOE_NO_CLAMP": "1",
+        "ATLAS_QWEN4EXP_HC_STAGE_FIT": "1",
+        "ATLAS_QWEN4EXP_HC_MMA": "1",
+        "ATLAS_QWEN4EXP_PREFILL_ROWINV": "1",
+        "ATLAS_QWEN4EXP_GDN_COMMIT_FUSE": "1",
+        "ATLAS_QWEN4EXP_QSA_COMMIT_TABLE": "1",
+        "ATLAS_QWEN4EXP_KV_LOOKAHEAD": "64",
+        "ATLAS_QWEN4EXP_PREFILL_MULTI": "1",
+        "ATLAS_PREFILL_CODISPATCH": "1",
+        "ATLAS_PREFILL_CODISPATCH_WINDOW_MS": "20",
+        "ATLAS_PREFILL_CODISPATCH_SETTLE_MS": "3",
+        "ATLAS_QWEN4EXP_PREFILL_MOE_NODUP": "1",
+        "ATLAS_QWEN4EXP_LMHEAD_SPLIT_VERIFY": "1",
+        "ATLAS_RDMA_ONESHOT_MAX": "8388608",
+        "ATLAS_MTP_DFLASH_CTX_SCOPED": "1",
+        "ATLAS_QWEN4EXP_ROWS32_TILE": "1",
+        "ATLAS_QWEN4EXP_PREFILL_MULTI_CACHED": "1",
+        "ATLAS_QWEN4EXP_W4_ROWS": "1",
+        "ATLAS_QWEN4EXP_W4_ROWS_WIDE": "1",
+        "ATLAS_QWEN4EXP_PREFILL_GEMM_RASTER": "1",
+        "CUDA_CACHE_PATH": "/atlas-cuda-cache",
+        "LD_LIBRARY_PATH": "/usr/local/nvidia/lib:/usr/local/nvidia/lib64:/usr/local/cuda/lib64",
+        "NCCL_ALGO": "Ring",
+        "NCCL_BUFFSIZE": "33554432",
+        "NCCL_CROSS_NIC": "0",
+        "NCCL_CUMEM_ENABLE": "0",
+        "NCCL_CUMEM_HOST_ENABLE": "0",
+        "NCCL_DEBUG": "WARN",
+        "NCCL_DMABUF_ENABLE": "0",
+        "NCCL_IB_ADDR_FAMILY": "AF_INET",
+        "NCCL_IB_DISABLE": "0",
+        "NCCL_IB_RETRY_CNT": "7",
+        "NCCL_IB_ROCE_VERSION_NUM": "2",
+        "NCCL_IB_TIMEOUT": "22",
+        "NCCL_MAX_NCHANNELS": "2",
+        "NCCL_MIN_NCHANNELS": "1",
+        "NCCL_NET": "IB",
+        "NCCL_NET_GDR_C2C": "0",
+        "NCCL_NET_GDR_LEVEL": "0",
+        "NCCL_NVLS_ENABLE": "0",
+        "NCCL_PROTO": "Simple",
+        "PATH": "/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+        "RUST_LOG": "info",
+        "ATLAS_MAX_BODY_BYTES": "268435456",
+        "ATLAS_QWEN4EXP_SNAPSHOT_AUX_MB": "1024"
+      },
+      "server_argv": [
+        "serve",
+        "--model-from-path=${model}",
+        "--kernel-target=qwen3.8-flash-next",
+        "--world-size=2",
+        "--tp-size=2",
+        "--ep-size=2",
+        "--oom-guard-mb=4096",
+        "--kv-cache-dtype=bf16",
+        "--enable-prefix-caching",
+        "--max-prefill-tokens=4096",
+        "--fast-load-prefetch-shards",
+        "--no-tui",
+        "--speculative",
+        "--num-drafts=7",
+        "--max-num-seqs=8",
+        "--max-batch-size=8",
+        "--max-seq-len=262144",
+        "--tool-max-tokens=262144",
+        "--request-timeout=3600",
+        "--video-allow-ffmpeg",
+        "--video-fps=2",
+        "--video-max-frames=7200",
+        "--video-max-pixels=469762048",
+        "--video-decode-timeout-s=600",
+        "--vision-max-request-rows=229376",
+        "--vision-max-inflight-rows=262144",
+        "--gpu-memory-utilization=0.85"
+      ],
+      "display_carveout": true
+    },
+    "shared_kv_tokens": 3204064,
+    "hour_requests": {
+      "inventory": {
+        "fixture": "inventory.mp4",
+        "fixture_sha256": "15b2462e9ff97de089ee76ec6148647b69a0c87ea31243f19f8cdcf493957025",
+        "request_sha256": "14d9f4c2370891000cf96e8aa1fe17c5e6fd053f06971d17af0d8557baaf4b9f",
+        "start_unix": 1792827846.770523,
+        "end_unix": 1792828072.2866156,
+        "elapsed_s": 225.49840760231018,
+        "http_status": 200,
+        "questions": {
+          "first_batch": "What batch code is shown at the beginning?",
+          "middle_batch": "What batch code is shown at about 32 minutes?",
+          "last_batch": "What batch code is shown in the final minute?",
+          "first_color": "What color are the objects in the first five minutes?",
+          "middle_shape": "What shape are the objects at about 32 minutes?",
+          "last_count": "How many large colored objects are shown in the final minute?",
+          "brief_symbols": "Two brief full-screen word cards interrupt the inventory. List their words in chronological order.",
+          "brief_times": "Give the approximate start time in seconds of each of those two brief word cards, in chronological order.",
+          "all_batches": "List the twelve batch codes in chronological order, excluding the brief interruptions.",
+          "last_status": "Does the final batch show PASS or HOLD?",
+          "horse_present": "Is a horse visible anywhere? Answer yes or no."
+        },
+        "checks": {
+          "first_batch": true,
+          "middle_batch": true,
+          "last_batch": true,
+          "first_color": true,
+          "middle_shape": true,
+          "last_count": true,
+          "last_status": true,
+          "horse_present": true,
+          "all_batches": true,
+          "brief_symbols": true,
+          "brief_times": true
+        },
+        "passed": true,
+        "scorer_revision": "v3: singular/plural shapes, seconds or colon timestamps, optional BATCH label; exact codes and unchanged +/-3s tolerance",
+        "finish_reason": "stop",
+        "usage": {
+          "prompt_tokens": 218781,
+          "completion_tokens": 1291,
+          "total_tokens": 220072,
+          "prompt_tokens_details": {
+            "cached_tokens": 32,
+            "audio_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1115,
+            "audio_tokens": 0,
+            "accepted_prediction_tokens": 979,
+            "rejected_prediction_tokens": 0
+          },
+          "time_to_first_token_ms": 159175.817026,
+          "response_token/s": 68.47082268557303
+        },
+        "content": "{\n  \"first_batch\": \"MFBE\",\n  \"middle_batch\": \"XGXU\",\n  \"last_batch\": \"FSED\",\n  \"first_color\": \"red\",\n  \"middle_shape\": \"circles\",\n  \"last_count\": 4,\n  \"brief_symbols\": [\"STAR\", \"DIAMOND\"],\n  \"brief_times\": [\"17:31\", \"58:54\"],\n  \"all_batches\": [\"MFBE\", \"THVB\", \"NJFF\", \"RHJS\", \"ECQD\", \"YZQK\", \"XGXU\", \"YPAF\", \"SKNY\", \"DJPP\", \"JCQS\", \"FSED\"],\n  \"last_status\": \"PASS\",\n  \"horse_present\": \"no\"\n}",
+        "answers": {
+          "first_batch": "MFBE",
+          "middle_batch": "XGXU",
+          "last_batch": "FSED",
+          "first_color": "red",
+          "middle_shape": "circles",
+          "last_count": 4,
+          "brief_symbols": [
+            "STAR",
+            "DIAMOND"
+          ],
+          "brief_times": [
+            "17:31",
+            "58:54"
+          ],
+          "all_batches": [
+            "MFBE",
+            "THVB",
+            "NJFF",
+            "RHJS",
+            "ECQD",
+            "YZQK",
+            "XGXU",
+            "YPAF",
+            "SKNY",
+            "DJPP",
+            "JCQS",
+            "FSED"
+          ],
+          "last_status": "PASS",
+          "horse_present": "no"
+        },
+        "expected": {
+          "first_batch": "MFBE",
+          "middle_batch": "XGXU",
+          "last_batch": "FSED",
+          "first_color": "red",
+          "middle_shape": "circle",
+          "last_count": 4,
+          "last_status": "PASS",
+          "horse_present": "no"
+        }
+      },
+      "warm": {
+        "fixture": "inventory.mp4",
+        "fixture_sha256": "15b2462e9ff97de089ee76ec6148647b69a0c87ea31243f19f8cdcf493957025",
+        "request_sha256": "14d9f4c2370891000cf96e8aa1fe17c5e6fd053f06971d17af0d8557baaf4b9f",
+        "start_unix": 1792828076.2802901,
+        "end_unix": 1792828142.491456,
+        "elapsed_s": 66.20039868354797,
+        "http_status": 200,
+        "questions": {
+          "first_batch": "What batch code is shown at the beginning?",
+          "middle_batch": "What batch code is shown at about 32 minutes?",
+          "last_batch": "What batch code is shown in the final minute?",
+          "first_color": "What color are the objects in the first five minutes?",
+          "middle_shape": "What shape are the objects at about 32 minutes?",
+          "last_count": "How many large colored objects are shown in the final minute?",
+          "brief_symbols": "Two brief full-screen word cards interrupt the inventory. List their words in chronological order.",
+          "brief_times": "Give the approximate start time in seconds of each of those two brief word cards, in chronological order.",
+          "all_batches": "List the twelve batch codes in chronological order, excluding the brief interruptions.",
+          "last_status": "Does the final batch show PASS or HOLD?",
+          "horse_present": "Is a horse visible anywhere? Answer yes or no."
+        },
+        "checks": {
+          "first_batch": true,
+          "middle_batch": true,
+          "last_batch": true,
+          "first_color": true,
+          "middle_shape": true,
+          "last_count": true,
+          "last_status": true,
+          "horse_present": true,
+          "all_batches": true,
+          "brief_symbols": true,
+          "brief_times": true
+        },
+        "passed": true,
+        "scorer_revision": "v3: singular/plural shapes, seconds or colon timestamps, optional BATCH label; exact codes and unchanged +/-3s tolerance",
+        "finish_reason": "stop",
+        "usage": {
+          "prompt_tokens": 218781,
+          "completion_tokens": 1291,
+          "total_tokens": 220072,
+          "prompt_tokens_details": {
+            "cached_tokens": 218768,
+            "audio_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1115,
+            "audio_tokens": 0,
+            "accepted_prediction_tokens": 945,
+            "rejected_prediction_tokens": 0
+          },
+          "time_to_first_token_ms": 706.3218730000001,
+          "response_token/s": 69.06365324776931
+        },
+        "content": "{\n  \"first_batch\": \"MFBE\",\n  \"middle_batch\": \"XGXU\",\n  \"last_batch\": \"FSED\",\n  \"first_color\": \"red\",\n  \"middle_shape\": \"circles\",\n  \"last_count\": 4,\n  \"brief_symbols\": [\"STAR\", \"DIAMOND\"],\n  \"brief_times\": [\"17:31\", \"58:54\"],\n  \"all_batches\": [\"MFBE\", \"THVB\", \"NJFF\", \"RHJS\", \"ECQD\", \"YZQK\", \"XGXU\", \"YPAF\", \"SKNY\", \"DJPP\", \"JCQS\", \"FSED\"],\n  \"last_status\": \"PASS\",\n  \"horse_present\": \"no\"\n}",
+        "answers": {
+          "first_batch": "MFBE",
+          "middle_batch": "XGXU",
+          "last_batch": "FSED",
+          "first_color": "red",
+          "middle_shape": "circles",
+          "last_count": 4,
+          "brief_symbols": [
+            "STAR",
+            "DIAMOND"
+          ],
+          "brief_times": [
+            "17:31",
+            "58:54"
+          ],
+          "all_batches": [
+            "MFBE",
+            "THVB",
+            "NJFF",
+            "RHJS",
+            "ECQD",
+            "YZQK",
+            "XGXU",
+            "YPAF",
+            "SKNY",
+            "DJPP",
+            "JCQS",
+            "FSED"
+          ],
+          "last_status": "PASS",
+          "horse_present": "no"
+        },
+        "expected": {
+          "first_batch": "MFBE",
+          "middle_batch": "XGXU",
+          "last_batch": "FSED",
+          "first_color": "red",
+          "middle_shape": "circle",
+          "last_count": 4,
+          "last_status": "PASS",
+          "horse_present": "no"
+        }
+      },
+      "reverse": {
+        "fixture": "reverse.mp4",
+        "fixture_sha256": "1cc9f064a58d811999e7b0dd3c98278357efe229e19c697539142f446487eeaf",
+        "request_sha256": "07e71f39d77050089c77d1626ab350be63e65f93d479e7bc817d05077c881bec",
+        "start_unix": 1792828143.3093572,
+        "end_unix": 1792828368.9032753,
+        "elapsed_s": 225.54793643951416,
+        "http_status": 200,
+        "questions": {
+          "first_batch": "What batch code is shown at the beginning?",
+          "middle_batch": "What batch code is shown at about 32 minutes?",
+          "last_batch": "What batch code is shown in the final minute?",
+          "first_color": "What color are the objects in the first five minutes?",
+          "middle_shape": "What shape are the objects at about 32 minutes?",
+          "last_count": "How many large colored objects are shown in the final minute?",
+          "brief_symbols": "Two brief full-screen word cards interrupt the inventory. List their words in chronological order.",
+          "brief_times": "Give the approximate start time in seconds of each of those two brief word cards, in chronological order.",
+          "all_batches": "List the twelve batch codes in chronological order, excluding the brief interruptions.",
+          "last_status": "Does the final batch show PASS or HOLD?",
+          "horse_present": "Is a horse visible anywhere? Answer yes or no."
+        },
+        "checks": {
+          "first_batch": true,
+          "middle_batch": true,
+          "last_batch": true,
+          "first_color": true,
+          "middle_shape": true,
+          "last_count": true,
+          "last_status": true,
+          "horse_present": true,
+          "all_batches": true,
+          "brief_symbols": true,
+          "brief_times": true
+        },
+        "passed": true,
+        "scorer_revision": "v3: singular/plural shapes, seconds or colon timestamps, optional BATCH label; exact codes and unchanged +/-3s tolerance",
+        "finish_reason": "stop",
+        "usage": {
+          "prompt_tokens": 218781,
+          "completion_tokens": 958,
+          "total_tokens": 219739,
+          "prompt_tokens_details": {
+            "cached_tokens": 32,
+            "audio_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 752,
+            "audio_tokens": 0,
+            "accepted_prediction_tokens": 778,
+            "rejected_prediction_tokens": 0
+          },
+          "time_to_first_token_ms": 166784.394132,
+          "response_token/s": 81.61905971516528
+        },
+        "content": "{\n  \"first_batch\": \"BATCH FSED\",\n  \"middle_batch\": \"BATCH YZQK\",\n  \"last_batch\": \"BATCH MFBE\",\n  \"first_color\": \"gray\",\n  \"middle_shape\": \"triangle\",\n  \"last_count\": 1,\n  \"brief_symbols\": [\"STAR\", \"DIAMOND\"],\n  \"brief_times\": [1051, 3534],\n  \"all_batches\": [\"BATCH FSED\", \"BATCH JCQS\", \"BATCH DJPP\", \"BATCH SKNY\", \"BATCH YPAF\", \"BATCH XGXU\", \"BATCH YZQK\", \"BATCH ECQD\", \"BATCH RHJS\", \"BATCH NJFF\", \"BATCH THVB\", \"BATCH MFBE\"],\n  \"last_status\": \"HOLD\",\n  \"horse_present\": \"no\"\n}",
+        "answers": {
+          "first_batch": "BATCH FSED",
+          "middle_batch": "BATCH YZQK",
+          "last_batch": "BATCH MFBE",
+          "first_color": "gray",
+          "middle_shape": "triangle",
+          "last_count": 1,
+          "brief_symbols": [
+            "STAR",
+            "DIAMOND"
+          ],
+          "brief_times": [
+            1051,
+            3534
+          ],
+          "all_batches": [
+            "BATCH FSED",
+            "BATCH JCQS",
+            "BATCH DJPP",
+            "BATCH SKNY",
+            "BATCH YPAF",
+            "BATCH XGXU",
+            "BATCH YZQK",
+            "BATCH ECQD",
+            "BATCH RHJS",
+            "BATCH NJFF",
+            "BATCH THVB",
+            "BATCH MFBE"
+          ],
+          "last_status": "HOLD",
+          "horse_present": "no"
+        },
+        "expected": {
+          "first_batch": "FSED",
+          "middle_batch": "YZQK",
+          "last_batch": "MFBE",
+          "first_color": "gray",
+          "middle_shape": "triangle",
+          "last_count": 1,
+          "last_status": "HOLD",
+          "horse_present": "no"
+        }
+      }
+    },
+    "procedure_low_reasoning": {
+      "http_status": 200,
+      "elapsed_s": 18.811352968215942,
+      "request_sha256": "3cf366dc7c243ac2d623d13dfa8ea01d54af616315ef07a4c8b48b34c7b3a8dd",
+      "checks": {
+        "order": true,
+        "times": true,
+        "stop": true
+      },
+      "passed": true,
+      "answers": {
+        "order": [
+          "load",
+          "prepare",
+          "operate",
+          "inspect",
+          "finish"
+        ],
+        "starts_seconds": [
+          0,
+          16,
+          32,
+          48,
+          62
+        ]
+      }
+    },
+    "text_overlap": {
+      "passed": 11,
+      "total": 11,
+      "median_seconds": 0.6927928924560547,
+      "maximum_seconds": 36.67347455024719
+    },
+    "backpressure": {
+      "status": 503,
+      "headers": {
+        "content-type": "application/json",
+        "retry-after": "2",
+        "x-request-id": "req_36a93fb5-4e37-45ea-84d2-e04bd25fb9ff",
+        "openai-processing-ms": "34",
+        "x-ratelimit-limit-requests": "1000000",
+        "x-ratelimit-remaining-requests": "999999",
+        "x-ratelimit-reset-requests": "0s",
+        "x-ratelimit-limit-tokens": "1000000000",
+        "x-ratelimit-remaining-tokens": "999999999",
+        "x-ratelimit-reset-tokens": "0s",
+        "openai-organization": "atlas-local",
+        "openai-version": "2026-01-01",
+        "access-control-allow-origin": "*",
+        "connection": "close",
+        "transfer-encoding": "chunked",
+        "date": "Sat, 24 Oct 2026 07:44:10 GMT"
+      },
+      "start_unix": 1792827850.020272,
+      "end_unix": 1792827850.0716505,
+      "elapsed_s": 0.05137920379638672,
+      "passed": true
+    },
+    "memory": {
+      "0": {
+        "samples": 328,
+        "start_unix": 1792827793.9708762,
+        "end_unix": 1792828448.2005916,
+        "min_available_gib": 6.329631805419922,
+        "last_available_gib": 12.457538604736328,
+        "net_swap_growth_gib": 2.3706893920898438,
+        "swap_out_gib": 3.6990699768066406,
+        "oom_events": {
+          "oom": 0,
+          "oom_kill": 0,
+          "oom_group_kill": 0
+        }
+      },
+      "1": {
+        "samples": 328,
+        "start_unix": 1792827794.3431613,
+        "end_unix": 1792828448.624308,
+        "min_available_gib": 18.426563262939453,
+        "last_available_gib": 18.532459259033203,
+        "net_swap_growth_gib": 0.0,
+        "swap_out_gib": 0.0,
+        "oom_events": {
+          "oom": 0,
+          "oom_kill": 0,
+          "oom_group_kill": 0
+        }
+      }
+    }
+  },
+  "historical_memory_profiles": {
+    "receipt": "../2026-10-23-video-memory/RESULT.md",
+    "image": "sha256:21318576265668c539f03cc39a56ecbdc1a26a7404949e35191e10d996731e77",
+    "max_saver_load_trials_repeated_for_hour_refresh": false
+  },
+  "limitations": [
+    "Synthetic controlled hour videos; not reference LVBench parity or a natural-video benchmark.",
+    "No audio; visual sampling cannot guarantee brief-event or small-text recall.",
+    "Hour profile reserves conservative worst-case video capacity; even concurrent short videos can receive503.",
+    "Nonthinking low-resolution procedure had inaccurate timestamps; low reasoning passed the same request.",
+    "Memory pressure and swap are measured, not zero-swap or latency guarantees."
+  ],
+  "source_release": "https://github.com/Enntity/sparkqwen/releases/tag/v0.3.0",
+  "engine_pr": "https://github.com/Enntity/atlas/pull/12",
+  "engine_merge_commit": "38970f0bdd625bf3bfb0a4ec2e5f577bc7b3e8d3"
+}

@@ -40,3 +40,12 @@ from its `AGENTS.md`, `CONTRIBUTING.md` and CI workflows, including the applicab
 benchmark gates. Keep their results alongside exact-image GPU and model receipts.
 The image build runs native workspace tests and Clippy; it does not run every
 repository hygiene or hardware gate. Record any existing failures explicitly.
+
+## 0.3.0 hour-video refresh
+
+The hour-video update is an explicitly authorized exception: it retains 0.3.0.
+The release records both distributions, their source commits, install-tree tags
+and registry digests. Existing checkouts continue to select their original
+immutable install-tree image. Update the checkout to select the hour-video image;
+the mutable `0.3.0` tag alone cannot identify which build is installed.
+Use `./start.sh status` and the release manifests for exact attribution.

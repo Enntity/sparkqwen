@@ -1,0 +1,5 @@
+fabric: skipping roceP2p1s0f0, no IPv4 RoCE v2 GID (give its netdev an address to use both rails)
+----------------------------------------------------------------------
+Ran 50 tests in 4.366s
+
+OK

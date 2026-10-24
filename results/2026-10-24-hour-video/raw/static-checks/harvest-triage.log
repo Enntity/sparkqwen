@@ -1,0 +1,14 @@
+ok    leave   CLEAN     in_flight=0 broken=0  healthy and idle stays untouched (#574)
+ok    wait    CLEAN     in_flight=3 broken=0  checks in flight are allowed to finish (#574)
+ok    wait    BLOCKED   in_flight=5 broken=0  blocked only because checks have not reported yet
+ok    wait    BEHIND    in_flight=2 broken=0  BEHIND with checks running waits, no livelock (#571)
+ok    repair  BEHIND    in_flight=0 broken=0  BEHIND and idle is terminal, rebuild it (#585)
+ok    repair  CLEAN     in_flight=0 broken=1  a failed check with nothing running is terminal (#585)
+ok    repair  BLOCKED   in_flight=0 broken=2  several broken checks, idle, rebuild (#585)
+ok    wait    CLEAN     in_flight=1 broken=1  one broken but another still running, let it finish
+ok    repair  DIRTY     in_flight=0 broken=0  conflicting PR is not 'idle and healthy' (#595)
+ok    repair  DIRTY     in_flight=4 broken=0  conflict beats in-flight checks, no wasted cycle
+ok    repair  DIRTY     in_flight=0 broken=3  conflicting and broken still rebuilds
+ok    leave   UNKNOWN   in_flight=0 broken=0  transient UNKNOWN is not a reason to rebuild
+ok    exit 2  non-numeric count is refused, not read as zero
+all triage cases pass

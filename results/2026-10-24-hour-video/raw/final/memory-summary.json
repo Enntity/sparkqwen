@@ -1,0 +1,30 @@
+{
+  "0": {
+    "samples": 328,
+    "start_unix": 1792827793.9708762,
+    "end_unix": 1792828448.2005916,
+    "min_available_gib": 6.329631805419922,
+    "last_available_gib": 12.457538604736328,
+    "net_swap_growth_gib": 2.3706893920898438,
+    "swap_out_gib": 3.6990699768066406,
+    "oom_events": {
+      "oom": 0,
+      "oom_kill": 0,
+      "oom_group_kill": 0
+    }
+  },
+  "1": {
+    "samples": 328,
+    "start_unix": 1792827794.3431613,
+    "end_unix": 1792828448.624308,
+    "min_available_gib": 18.426563262939453,
+    "last_available_gib": 18.532459259033203,
+    "net_swap_growth_gib": 0.0,
+    "swap_out_gib": 0.0,
+    "oom_events": {
+      "oom": 0,
+      "oom_kill": 0,
+      "oom_group_kill": 0
+    }
+  }
+}
