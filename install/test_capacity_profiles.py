@@ -11,7 +11,8 @@ class CapacityProfiles(unittest.TestCase):
     def test_carveout_uses_same_host_lock_as_sparkglm(self):
         for name, slots, util in [('max-16x262k', 16, '0.91'),
                                   ('saver-8x262k', 8, '0.70')]:
-            argv, _ = serve.launch(self.env, load_profile(name))
+            argv, env = serve.launch(self.env, load_profile(name))
+            self.assertEqual(env['ATLAS_MTP_MAX_SEQS'], str(slots))
             self.assertEqual(argv[:5], ['/usr/local/bin/spark', 'display-carveout',
                 '--lock=/run/lock/sparkglm/display-carveout.lock', '--', '/usr/local/bin/spark'])
             for flag in [f'--max-num-seqs={slots}', f'--max-batch-size={slots}',

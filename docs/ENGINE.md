@@ -8,8 +8,8 @@ kernel target `qwen3.8-flash-next` (model type `qwen4_exp`).
 [`install/build.sh`](../install/build.sh) refuses any other tree.
 
 SparkQwen 0.3.0 targets the common `spark-shared` engine tree.
-The pinned snapshot on `spark-shared` is `4d75b9ec`
-(tree `2300b0c1`). It brings together
+The pinned snapshot on `spark-shared` is `46134a75`
+(tree `8dac62f9`). It brings together
 the SparkGLM literal-XML and grammar fixes, packed-prefill and split-score paths,
 and SparkQwen's native MXFP8 shared expert, F32 HC/PLE norms, row-invariant
 prefill and native MTP. The source history retains both product branches.
