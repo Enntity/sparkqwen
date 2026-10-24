@@ -1,0 +1,22 @@
+[
+  {
+    "rank": 0,
+    "samples": 108,
+    "gpu_uuids": [
+      "GPU-03b98f96-5913-84d4-72bc-f8382e85632e"
+    ],
+    "sm_clock_mhz_min": 2177,
+    "sm_clock_mhz_max": 2184,
+    "temperature_c_max": 70
+  },
+  {
+    "rank": 1,
+    "samples": 109,
+    "gpu_uuids": [
+      "GPU-922d40d1-c374-a378-2acb-c20750a6bb6f"
+    ],
+    "sm_clock_mhz_min": 2184,
+    "sm_clock_mhz_max": 2190,
+    "temperature_c_max": 71
+  }
+]

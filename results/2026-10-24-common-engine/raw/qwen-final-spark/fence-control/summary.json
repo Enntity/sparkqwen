@@ -1,0 +1,7 @@
+{
+  "serial_mtp_ids_equal": true,
+  "chat_content": "```xml\n<tool_call>record_check<arg_key>value</arg_key><arg_value>42</arg_value>\n</tool_call>\nEND",
+  "expected": "```xml\n<tool_call>record_check<arg_key>value</arg_key><arg_value>42</arg_value></tool_call>\n```\nEND",
+  "serial_raw_text": "```xml\n<tool_call>record_check<arg_key>value</arg_key><arg_value>42</arg_value>\n</tool_call>\nEND",
+  "mtp_raw_text": "```xml\n<tool_call>record_check<arg_key>value</arg_key><arg_value>42</arg_value>\n</tool_call>\nEND"
+}

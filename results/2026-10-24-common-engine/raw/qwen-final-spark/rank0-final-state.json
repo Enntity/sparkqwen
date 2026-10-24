@@ -1,0 +1,19 @@
+{
+  "unix": 1792857275.1225548,
+  "id": "b171e8f404c1bc64c56698e3fdecb11f71ad096135338b18d52b04f25b97f219",
+  "state": {
+    "Status": "running",
+    "Running": true,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 2553585,
+    "ExitCode": 0,
+    "Error": "",
+    "StartedAt": "2026-10-24T15:40:26.872418388Z",
+    "FinishedAt": "0001-01-01T00:00:00Z"
+  },
+  "restart_count": 0,
+  "image": "sha256:b2e0ed59f66ebc61f00b6075757f90dc2a0b90100506125d68c4f52749bc6aba"
+}

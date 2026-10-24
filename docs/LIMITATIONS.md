@@ -3,6 +3,20 @@
 
 What to know before relying on SparkQwen.
 
+## Version 0.3.1 scope
+
+The [common-engine campaign](../results/2026-10-24-common-engine/RESULT.md)
+qualifies Spark mode with `8x262k`: exact canonical scoring, 12 short-video
+checks and two matched RigMark runs. Its shared GLM-style XML battery passes
+28/32 exact-copy cases; the four fenced formatting failures remain visible
+in the raw results. Raw generated tokens reproduce the OpenAI fence omission
+with native MTP both enabled and disabled. This is a different fixture from
+the older Qwen XML battery below.
+
+The speed runs observed some new paging. The max/saver capacity and sidecar
+figures, hour-video controls and wider Strict-mode quality battery retain
+their original dated evidence. They were not rerun for 0.3.1.
+
 ## Version 0.3.0 scope
 
 The new [video path](VIDEO.md) samples visual frames with source timestamps;

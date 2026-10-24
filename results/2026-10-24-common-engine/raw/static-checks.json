@@ -1,0 +1,13 @@
+{
+  "result": "passed",
+  "install_unit_tests": 51,
+  "checks": [
+    "unittest discover install",
+    "shellcheck workflow command",
+    "Python compile bench and install",
+    "node --check sparkDash driver",
+    "install/profile JSON parsing",
+    "all result SHA256SUMS"
+  ],
+  "scope": "Local product static workflow equivalents on release changes; GitHub CI is recorded separately."
+}

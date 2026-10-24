@@ -1,0 +1,11 @@
+{
+  "host": "ennspark03",
+  "product_commit": "59920198a1095878635c46fe87d0d5b80577aa5a",
+  "install_tree": "f38019f2ac52c412e378765e2c6540af04f3cc5d",
+  "engine_commit": "adb7a5b381ce0f8cafc29e37d11622c63e6ebdb9",
+  "engine_tree": "a2965af0d0e9de275523855b7bcf247c0bc0b944",
+  "version": "0.3.1",
+  "image": "ghcr.io/enntity/atlas-sparkqwen:f38019f2ac52",
+  "command": "docker build --progress=plain --build-arg BUILD_JOBS=4 --build-arg INSTALL_TREE=f38019f2ac52c412e378765e2c6540af04f3cc5d --build-arg PRODUCT_VERSION=0.3.1 -f glm-common-20261024/build-qwen/install/Dockerfile -t ghcr.io/enntity/atlas-sparkqwen:f38019f2ac52 glm-common-20261024/build-qwen",
+  "exit_code": 0
+}

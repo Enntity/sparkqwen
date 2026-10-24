@@ -1,0 +1,33 @@
+{
+  "command": [
+    "/tmp/sparkqwen-rigmark-020-20261023/harness/rigmark",
+    "run",
+    "--base-url",
+    "http://127.0.0.1:8893",
+    "--model",
+    "qwen3.8-flash-next-atlas",
+    "--label",
+    "qwen-final-rigmark-2",
+    "--comparison-id",
+    "common-engine-tp2-20261024-round2",
+    "--metadata",
+    "/home/enntitysparkadmin/glm-common-20261024/metadata-qwen.json",
+    "--runs",
+    "3",
+    "--decode-tokens",
+    "4096",
+    "--prefill-runs",
+    "10",
+    "--prefill-depths",
+    "16384",
+    "--concurrency",
+    "1,2,4,8",
+    "--concurrency-runs",
+    "2",
+    "--extra-body",
+    "{\"chat_template_kwargs\":{\"reasoning_effort\":\"low\"}}",
+    "--output",
+    "/home/enntitysparkadmin/glm-common-20261024/qwen-final-rigmark-2/rigmark.json"
+  ],
+  "start_unix": 1792857026.4106667
+}
