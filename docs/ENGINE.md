@@ -7,9 +7,9 @@ pinned in [`install/atlas-source.json`](../install/atlas-source.json), for the
 kernel target `qwen3.8-flash-next` (model type `qwen4_exp`).
 [`install/build.sh`](../install/build.sh) refuses any other tree.
 
-SparkQwen 0.3.2 targets the common `spark-shared` engine tree.
-The pinned snapshot on `spark-shared` is `fa5331b2`
-(tree `7323c679`). It brings together
+SparkQwen 0.3.3 targets the common `spark-shared` engine tree.
+The pinned snapshot on `spark-shared` is `d0cead14`
+(tree `c8ee0b95`). It brings together
 the SparkGLM literal-XML and grammar fixes, packed-prefill and split-score paths,
 and SparkQwen's native MXFP8 shared expert, F32 HC/PLE norms, row-invariant
 prefill and native MTP. The source history retains both product branches.
@@ -51,7 +51,7 @@ construction and MRoPE, sample actual source frames across a full clip, and
 bound decoded frame area. Display-carveout KV sizing now includes QSA state
 for the additional tokens. See [Video](VIDEO.md) and [Memory profiles](MEMORY-PROFILES.md).
 
-Both Spark products use the common `spark-shared` engine. This candidate pins
+The 0.3.1 common-engine qualification pinned
 `adb7a5b381ce0f8cafc29e37d11622c63e6ebdb9` (tree `a2965af0d0e9de275523855b7bcf247c0bc0b944`).
 Model-specific execution remains selected by kernel target and checkpoint type.
 The shared media decoder retains GLM's reference frame sampler, canvas sizing,
