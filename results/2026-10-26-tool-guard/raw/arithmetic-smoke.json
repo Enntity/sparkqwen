@@ -1,0 +1,35 @@
+{
+  "id": "chatcmpl-3d1da8cb-2c1b-41da-8102-0b57c0e403db",
+  "object": "chat.completion",
+  "created": 1793044513,
+  "model": "qwen3.8-flash-next-atlas",
+  "system_fingerprint": "fp_atlas",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "391"
+      },
+      "finish_reason": "stop",
+      "logprobs": null
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 27,
+    "completion_tokens": 4,
+    "total_tokens": 31,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 1,
+      "rejected_prediction_tokens": 0
+    },
+    "time_to_first_token_ms": 123.945816,
+    "response_token/s": 41.52118278569961
+  }
+}

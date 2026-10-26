@@ -31,6 +31,8 @@ before releasing them, with no extra model or GPU pass. Normal text streams as
 before. Configure exact host exceptions and additional blocks in `.env`.
 See [Tool-call protection](docs/TOOL-GUARD.md) for settings and coverage. This
 filter complements the tool executor's sandbox; it does not make arbitrary code safe.
+The [0.3.2 live canary](results/2026-10-26-tool-guard/RESULT.md) passed all eight
+blocking/streaming checks on the exact release image.
 
 The performance and video measurements below belong to 0.3.1 unless explicitly
 identified otherwise; they are not fresh 0.3.2 throughput measurements.
@@ -42,7 +44,7 @@ native MTP. Strict uses BF16 draft projections; Spark uses reviewed NVFP4
 draft copies with target verification. Use `disable_mtp: true` for a serial
 control. [Mode details](docs/MODES.md).
 
-## Current release measurements
+## 0.3.1 performance measurements
 
 **106.4 tok/s code · 54.8 tok/s prose · 4,142 tok/s cold 16K prefill.**
 The headline is the first passing complete run of two scheduled runs.

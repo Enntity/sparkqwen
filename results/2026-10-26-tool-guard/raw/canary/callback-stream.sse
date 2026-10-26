@@ -1,0 +1,8 @@
+data: {"id":"chatcmpl-89c86b2a-4c99-4687-8bc6-a673686cbc1c","object":"chat.completion.chunk","created":1793044495,"model":"qwen3.8-flash-next-atlas","system_fingerprint":"fp_atlas","choices":[{"index":0,"delta":{"role":"assistant"},"finish_reason":null,"logprobs":null}]}
+
+data: {"id":"chatcmpl-89c86b2a-4c99-4687-8bc6-a673686cbc1c","object":"chat.completion.chunk","created":1793044497,"model":"qwen3.8-flash-next-atlas","system_fingerprint":"fp_atlas","choices":[{"index":0,"delta":{"content":"[atlas] A tool call was blocked by the tool-call guard. No blocked call was released. Review the server policy before retrying."},"finish_reason":null,"logprobs":null}]}
+
+data: {"id":"chatcmpl-89c86b2a-4c99-4687-8bc6-a673686cbc1c","object":"chat.completion.chunk","created":1793044497,"model":"qwen3.8-flash-next-atlas","system_fingerprint":"fp_atlas","choices":[{"index":0,"delta":{},"finish_reason":"content_filter","guard_stop":"tool_call_guard","logprobs":null}],"usage":{"prompt_tokens":323,"completion_tokens":44,"total_tokens":367,"prompt_tokens_details":{"cached_tokens":320,"audio_tokens":0},"completion_tokens_details":{"reasoning_tokens":0,"audio_tokens":0,"accepted_prediction_tokens":20,"rejected_prediction_tokens":0},"time_to_first_token_ms":148.276227,"response_token/s":44.21578940184032}}
+
+data: [DONE]
+
