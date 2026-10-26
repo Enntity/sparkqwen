@@ -1,0 +1,16 @@
+{
+  "image": "ghcr.io/enntity/atlas-sparkqwen:0.3.2",
+  "anonymous_pull": true,
+  "index_digest": "sha256:95afb1209c5baa2eafd0097c0bdf82a8095cb9ca79e3fb93c5d1e9b126ca214a",
+  "manifest_digest": "sha256:95afb1209c5baa2eafd0097c0bdf82a8095cb9ca79e3fb93c5d1e9b126ca214a",
+  "config_digest": "sha256:839df85bae93795392c027317edf66ee27f177fe6eaf17aaa28abc5a3f508f0f",
+  "architecture": "arm64",
+  "labels": {
+    "io.enntity.sparkqwen.install-tree": "d81e13b6b5453f7c97978544587e6c54f436a222",
+    "maintainer": "NVIDIA CORPORATION <cudatools@nvidia.com>",
+    "org.opencontainers.image.licenses": "AGPL-3.0-only",
+    "org.opencontainers.image.ref.name": "ubuntu",
+    "org.opencontainers.image.source": "https://github.com/Enntity/sparkqwen",
+    "org.opencontainers.image.version": "0.3.2"
+  }
+}

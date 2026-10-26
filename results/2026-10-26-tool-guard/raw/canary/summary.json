@@ -1,0 +1,115 @@
+[
+  {
+    "tools": [
+      {
+        "id": "call_0000000000000000",
+        "type": "function",
+        "function": {
+          "name": "guard_probe",
+          "arguments": "{\"url\":\"https://example.org/report\"}"
+        }
+      }
+    ],
+    "blocked": false,
+    "guard_marker_observed": false,
+    "finish_reason": "tool_calls",
+    "case": "benign-blocking",
+    "content": "",
+    "stream_complete": true,
+    "elapsed_seconds": 4.008415083997534,
+    "pass": true
+  },
+  {
+    "tools": [],
+    "blocked": true,
+    "guard_marker_observed": true,
+    "finish_reason": "content_filter",
+    "case": "metadata-blocking",
+    "content": "[atlas] A tool call was blocked by the tool-call guard. No blocked call was released. Review the server policy before retrying.",
+    "stream_complete": true,
+    "elapsed_seconds": 1.3055779159913072,
+    "pass": true
+  },
+  {
+    "tools": [],
+    "blocked": true,
+    "guard_marker_observed": true,
+    "finish_reason": "content_filter",
+    "case": "callback-blocking",
+    "content": "[atlas] A tool call was blocked by the tool-call guard. No blocked call was released. Review the server policy before retrying.",
+    "stream_complete": true,
+    "elapsed_seconds": 1.254433499998413,
+    "pass": true
+  },
+  {
+    "tools": [
+      {
+        "index": 0,
+        "id": "call_0000000000000003",
+        "type": "function",
+        "function": {
+          "name": "guard_probe",
+          "arguments": ""
+        }
+      },
+      {
+        "index": 0,
+        "function": {
+          "arguments": "{\"url\":\"https://example.org/report\"}"
+        }
+      }
+    ],
+    "blocked": false,
+    "guard_marker_observed": false,
+    "finish_reason": "tool_calls",
+    "case": "benign-stream",
+    "content": "",
+    "stream_complete": true,
+    "elapsed_seconds": 0.8907435830042232,
+    "pass": true
+  },
+  {
+    "tools": [],
+    "blocked": true,
+    "guard_marker_observed": true,
+    "finish_reason": "content_filter",
+    "case": "metadata-stream",
+    "content": "[atlas] A tool call was blocked by the tool-call guard. No blocked call was released. Review the server policy before retrying.",
+    "stream_complete": true,
+    "elapsed_seconds": 1.1637251670035766,
+    "pass": true
+  },
+  {
+    "tools": [],
+    "blocked": true,
+    "guard_marker_observed": true,
+    "finish_reason": "content_filter",
+    "case": "callback-stream",
+    "content": "[atlas] A tool call was blocked by the tool-call guard. No blocked call was released. Review the server policy before retrying.",
+    "stream_complete": true,
+    "elapsed_seconds": 1.1631095000047935,
+    "pass": true
+  },
+  {
+    "tools": [],
+    "blocked": false,
+    "guard_marker_observed": false,
+    "finish_reason": "stop",
+    "case": "prose-after-block-blocking",
+    "content": "http://169.254.169.254/",
+    "stream_complete": true,
+    "elapsed_seconds": 0.41635574999963865,
+    "pass": true
+  },
+  {
+    "tools": [],
+    "blocked": false,
+    "guard_marker_observed": false,
+    "finish_reason": "stop",
+    "case": "prose-after-block-stream",
+    "content": "http://169.254.169.254/",
+    "stream_complete": true,
+    "elapsed_seconds": 0.40068512500147335,
+    "pass": true
+  }
+]

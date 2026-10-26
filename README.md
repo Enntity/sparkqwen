@@ -1,11 +1,11 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <p align="center">
-  <img src="docs/assets/banner.png" alt="SparkQwen 0.3.1: code 106.4 tok/s, prose 54.8 tok/s, cold 16K prefill 4,142 tok/s; common Atlas engine" width="100%">
+  <img src="docs/assets/banner.png" alt="Historical SparkQwen 0.3.1 measurements: code 106.4 tok/s, prose 54.8 tok/s, cold 16K prefill 4,142 tok/s; common Atlas engine" width="100%">
 </p>
 
 # SparkQwen
 
-**SparkQwen 0.3.1** · [Versioning](docs/VERSIONING.md). Run `./start.sh --version`
+**SparkQwen 0.3.2** · [Versioning](docs/VERSIONING.md). Run `./start.sh --version`
 for this checkout, or `./start.sh status` for the version and image IDs on both ranks.
 Choose [Strict or Spark mode](docs/MODES.md); both use the model's native MTP head.
 
@@ -22,6 +22,21 @@ reasoning. Model-specific kernels, video layouts and precision policies remain
 selected by checkpoint type. Both products publish the same
 [benchmark method](docs/BENCHMARKS.md).
 
+## Automatic tool-call protection
+
+**SparkQwen and Atlas block suspicious data-exfiltration tool calls by default.**
+Version 0.3.2 adds a lightweight CPU guard for metadata probes, reported callback
+hosts, and recognizable credential transfers. It checks complete tool calls
+before releasing them, with no extra model or GPU pass. Normal text streams as
+before. Configure exact host exceptions and additional blocks in `.env`.
+See [Tool-call protection](docs/TOOL-GUARD.md) for settings and coverage. This
+filter complements the tool executor's sandbox; it does not make arbitrary code safe.
+The [0.3.2 live canary](results/2026-10-26-tool-guard/RESULT.md) passed all eight
+blocking/streaming checks on the exact release image.
+
+The performance and video measurements below belong to 0.3.1 unless explicitly
+identified otherwise; they are not fresh 0.3.2 throughput measurements.
+
 ## Strict and Spark modes
 
 Both modes preserve the checkpoint's native target precision, BF16 KV and
@@ -29,7 +44,7 @@ native MTP. Strict uses BF16 draft projections; Spark uses reviewed NVFP4
 draft copies with target verification. Use `disable_mtp: true` for a serial
 control. [Mode details](docs/MODES.md).
 
-## Current release measurements
+## 0.3.1 performance measurements
 
 **106.4 tok/s code · 54.8 tok/s prose · 4,142 tok/s cold 16K prefill.**
 The headline is the first passing complete run of two scheduled runs.
@@ -104,12 +119,11 @@ cp .env.example .env      # set WORKER to the other Spark's ssh destination
 PROFILE=8x262k ./start.sh --mode spark
 ```
 
-Version 0.3.1 uses `ghcr.io/enntity/atlas-sparkqwen:f38019f2ac52`, also
-tagged `0.3.1`. The release records the immutable index, arm64 manifest and
-configuration identities separately. `PULL=0` builds the pinned source.
-[Release and registry identity](results/2026-10-24-common-engine/RESULT.md#qualified-image-and-scope).
+Version 0.3.2 uses `ghcr.io/enntity/atlas-sparkqwen:d81e13b6b545`, also
+tagged `0.3.2`. The release records the immutable registry digest and image identity. `PULL=0` builds the pinned source.
+[Release and registry identity](https://github.com/Enntity/sparkqwen/releases/tag/v0.3.2).
 
-This image pins common Atlas commit `adb7a5b3`. Omitting `--mode` selects
+This image pins common Atlas commit `fa5331b2`. Omitting `--mode` selects
 Strict; both modes keep native MTP. Max/saver examples select Spark, the mode
 used for their original capacity trials. The quick start uses `8x262k`;
 the launcher's default remains `8x32k`.
@@ -256,7 +270,7 @@ See [docs/REPRODUCE.md](docs/REPRODUCE.md) for the exact commands.
 
 ## The engine
 
-SparkQwen 0.3.1 builds from the common Spark engine in
+SparkQwen 0.3.2 builds from the common Spark engine in
 [`Enntity/atlas`](https://github.com/Enntity/atlas), pinned by commit and tree in
 [`install/atlas-source.json`](install/atlas-source.json). The source history
 contains both product branches. It brings SparkGLM's serving, grammar, scheduler

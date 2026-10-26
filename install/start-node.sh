@@ -11,6 +11,8 @@ usage() {
 usage: start-node.sh --rank 0|1 --leader-address IP --model-root DIR --image TAG
                      [--fabric-interface IFACE] [--fabric-hca DEVICE[,DEVICE...]]
                      [--mode strict|spark] [--profile 8x32k|4x262k|8x262k|max-16x262k|saver-8x262k|hour-video|FILE] [--gpu-memory-utilization 0.70-0.95]
+                     [--tool-guard on|off] [--tool-guard-allow-hosts HOST,...]
+                     [--tool-guard-deny-hosts HOST,...] [--tool-guard-max-bytes BYTES]
                      [--checkpoint NAME] [--cuda-cache DIR] [--ple-cache DIR] [--name NAME]
 
   --leader-address   rank 0's IPv4 address on the direct Spark-to-Spark fabric
@@ -37,6 +39,7 @@ EOF
 }
 rank="" leader="" iface="" model_root="" image="" hca=""
 cache="$HOME/.cache/atlas-cuda" ple_cache="$HOME/.cache/atlas-ple" name="" profile=8x32k mode=strict util="" siblings=0
+guard=on guard_allow="" guard_deny="" guard_max=1048576
 checkpoint_name=nvidia--Qwen3.8-Flash-Next-FP4-Local
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -52,6 +55,10 @@ while [[ $# -gt 0 ]]; do
     --name) name=$2; shift 2 ;;
     --profile) profile=$2; shift 2 ;;
     --mode) mode=$2; shift 2 ;;
+    --tool-guard) guard=$2; shift 2 ;;
+    --tool-guard-allow-hosts) guard_allow=$2; shift 2 ;;
+    --tool-guard-deny-hosts) guard_deny=$2; shift 2 ;;
+    --tool-guard-max-bytes) guard_max=$2; shift 2 ;;
     --gpu-memory-utilization) util=$2; shift 2 ;;
     --no-fabric-siblings) siblings=0; shift ;;
     *) usage ;;
@@ -61,6 +68,8 @@ done
 [[ $mode == strict || $mode == spark ]] || { echo '--mode must be strict or spark' >&2; exit 2; }
 [[ -z $util || $util =~ ^0\.(7[0-9]|8[0-9]|9[0-5])$ ]] ||
   { echo '--gpu-memory-utilization must be 0.70 to 0.95' >&2; exit 2; }
+[[ $guard == on || $guard == off ]] || { echo '--tool-guard must be on or off' >&2; exit 2; }
+[[ $guard_max =~ ^[1-9][0-9]{0,7}$ && $guard_max -le 67108864 ]] || { echo 'invalid --tool-guard-max-bytes' >&2; exit 2; }
 sysfs=${FABRIC_SYSFS:-/sys/class/infiniband}
 if [[ -z $hca ]]; then
   [[ -n $iface ]] || { echo "pass --fabric-hca or --fabric-interface; no port is assumed" >&2; exit 2; }
@@ -124,6 +133,8 @@ docker run -d --name "$name" --restart no --network host --ipc host \
   --mount "type=bind,src=$(realpath "$ple_cache"),dst=/atlas-ple" ${profile_mount[@]+"${profile_mount[@]}"} \
   -e NODE_RANK="$rank" -e MASTER_ADDR="$leader" -e MASTER_PORT=29510 \
   -e FABRIC_INTERFACE="$iface" -e FABRIC_HCA="$hca" -e FABRIC_SIBLINGS="$siblings" -e MODEL_PATH="$checkpoint" \
+  -e SPARKQWEN_TOOL_GUARD="$guard" -e SPARKQWEN_TOOL_GUARD_MAX_BYTES="$guard_max" \
+  -e SPARKQWEN_TOOL_GUARD_ALLOW_HOSTS="$guard_allow" -e SPARKQWEN_TOOL_GUARD_DENY_HOSTS="$guard_deny" \
   -e SERVED_MODEL_NAME=qwen3.8-flash-next-atlas -e SPARKQWEN_PROFILE="$profile" -e SPARKQWEN_MODE="$mode" \
   ${util:+-e SPARKQWEN_GPU_MEMORY_UTILIZATION="$util"} \
   -e NCCL_SOCKET_IFNAME="$iface" -e GLOO_SOCKET_IFNAME="$iface" \

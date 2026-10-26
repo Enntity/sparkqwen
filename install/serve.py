@@ -150,6 +150,26 @@ def serving_mode(environ, profile):
     return mode, dict(required, ATLAS_QWEN4EXP_SERVING_MODE=mode), args
 
 
+def tool_guard_args(environ, profile_args):
+    """Operator policy is explicit and independent of model/performance profiles."""
+    if any(arg.split('=', 1)[0].startswith('--tool-guard') for arg in profile_args):
+        raise ValueError('Configure the tool guard with SPARKQWEN_TOOL_GUARD variables, not profile arguments')
+    mode = environ.get('SPARKQWEN_TOOL_GUARD', 'on')
+    if mode not in ('on', 'off'):
+        raise ValueError('SPARKQWEN_TOOL_GUARD must be on or off')
+    limit = environ.get('SPARKQWEN_TOOL_GUARD_MAX_BYTES', '1048576')
+    if not re.fullmatch(r'[1-9][0-9]{0,7}', limit) or int(limit) > 67108864:
+        raise ValueError('SPARKQWEN_TOOL_GUARD_MAX_BYTES must be 1 to 67108864')
+    result = [f'--tool-guard={mode}', f'--tool-guard-max-bytes={limit}']
+    for action in ('ALLOW', 'DENY'):
+        value = environ.get(f'SPARKQWEN_TOOL_GUARD_{action}_HOSTS', '')
+        for host in value.split(',') if value else []:
+            if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9.-]*|\[[A-Fa-f0-9:.]+\]', host):
+                raise ValueError(f'SPARKQWEN_TOOL_GUARD_{action}_HOSTS requires comma-separated exact hosts, without schemes, ports or wildcards')
+            result.append(f'--tool-guard-{action.lower()}-host={host}')
+    return result
+
+
 def launch(environ, profile):
     mode, precision, args = serving_mode(environ, profile)
     rank = environ.get('NODE_RANK', '')
@@ -198,6 +218,7 @@ def launch(environ, profile):
         raise ValueError('Invalid SERVED_MODEL_NAME')
     args += [f'--rank={rank}', f'--master-addr={master}', f'--master-port={port}',
              '--bind=127.0.0.1', f'--port={8893 + int(rank)}', f'--model-name={name}']
+    args += tool_guard_args(environ, args)
     argv = ['/usr/local/bin/spark', *args]
     carveout = environ.get('SPARKQWEN_DISPLAY_CARVEOUT',
                            '1' if profile.get('display_carveout', False) else '0')

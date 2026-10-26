@@ -150,6 +150,8 @@ serve() {
   address=$ip0
   common=(--leader-address "$address" --model-root "$MODEL_ROOT" --checkpoint "${CHECKPOINT_REPO/\//--}" --image "$IMAGE"
           --profile "$PROFILE" --mode "$MODE"
+          --tool-guard "${TOOL_GUARD:-on}" --tool-guard-max-bytes "${TOOL_GUARD_MAX_BYTES:-1048576}"
+          --tool-guard-allow-hosts "${TOOL_GUARD_ALLOW_HOSTS:-}" --tool-guard-deny-hosts "${TOOL_GUARD_DENY_HOSTS:-}"
           ${GPU_MEMORY_UTILIZATION:+--gpu-memory-utilization "$GPU_MEMORY_UTILIZATION"})
   say "start rank 1 on $WORKER, then rank 0 here (leader $address, profile $PROFILE, mode $MODE)"
   stop
@@ -182,7 +184,12 @@ print("smoke: 17*23 =", text)'
 }
 
 if [[ ${1:-up} == fabric ]]; then pick_fabric; exit; fi
-if [[ ${1:-up} == up ]]; then pick_fabric; fi
+if [[ ${1:-up} == up ]]; then
+  SPARKQWEN_TOOL_GUARD="${TOOL_GUARD:-on}" SPARKQWEN_TOOL_GUARD_MAX_BYTES="${TOOL_GUARD_MAX_BYTES:-1048576}" \
+  SPARKQWEN_TOOL_GUARD_ALLOW_HOSTS="${TOOL_GUARD_ALLOW_HOSTS:-}" SPARKQWEN_TOOL_GUARD_DENY_HOSTS="${TOOL_GUARD_DENY_HOSTS:-}" \
+    python3 -c 'import os,sys; sys.path.insert(0,"install"); import serve; serve.tool_guard_args(os.environ, [])'
+  pick_fabric
+fi
 # .env may name another checkpoint (both values or neither); the image stays the same.
 if [[ -n ${CHECKPOINT_REPO:-} || -n ${CHECKPOINT_REVISION:-} ]]; then
   [[ ${CHECKPOINT_REPO:-} =~ ^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$ && ${CHECKPOINT_REVISION:-} =~ ^[0-9a-f]{40}$ ]] ||
