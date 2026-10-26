@@ -117,12 +117,12 @@ cp .env.example .env      # set WORKER to the other Spark's ssh destination
 PROFILE=8x262k ./start.sh --mode spark
 ```
 
-Version 0.3.1 uses `ghcr.io/enntity/atlas-sparkqwen:f38019f2ac52`, also
-tagged `0.3.1`. The release records the immutable index, arm64 manifest and
+Version 0.3.2 uses `ghcr.io/enntity/atlas-sparkqwen:d81e13b6b545`, also
+tagged `0.3.2`. The release records the immutable index, arm64 manifest and
 configuration identities separately. `PULL=0` builds the pinned source.
-[Release and registry identity](results/2026-10-24-common-engine/RESULT.md#qualified-image-and-scope).
+[Release and registry identity](https://github.com/Enntity/sparkqwen/releases/tag/v0.3.2).
 
-This image pins common Atlas commit `adb7a5b3`. Omitting `--mode` selects
+This image pins common Atlas commit `fa5331b2`. Omitting `--mode` selects
 Strict; both modes keep native MTP. Max/saver examples select Spark, the mode
 used for their original capacity trials. The quick start uses `8x262k`;
 the launcher's default remains `8x32k`.
@@ -269,7 +269,7 @@ See [docs/REPRODUCE.md](docs/REPRODUCE.md) for the exact commands.
 
 ## The engine
 
-SparkQwen 0.3.1 builds from the common Spark engine in
+SparkQwen 0.3.2 builds from the common Spark engine in
 [`Enntity/atlas`](https://github.com/Enntity/atlas), pinned by commit and tree in
 [`install/atlas-source.json`](install/atlas-source.json). The source history
 contains both product branches. It brings SparkGLM's serving, grammar, scheduler
