@@ -9,7 +9,9 @@ The default policy checks literal cloud metadata destinations, specific reported
 callback hosts, recognizable credential-file/environment uploads, private-key
 transfers, structured credential payloads, custom-header exports and recognizable
 credentials in URLs. Standard Authorization, Proxy-Authorization and X-API-Key
-headers remain available for normal API authentication. It also rejects malformed,
+headers remain available for normal API authentication, even without a host
+exception. For a strict credential-egress boundary, restrict destinations in the
+tool runner. It also rejects malformed,
 truncated recognized calls and arguments over the configured limit. It applies
 to parsed tool calls, including the existing reasoning-to-tool recovery path.
 
