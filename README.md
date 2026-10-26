@@ -5,7 +5,7 @@
 
 # SparkQwen
 
-**SparkQwen 0.3.2** · [Versioning](docs/VERSIONING.md). Run `./start.sh --version`
+**SparkQwen 0.3.3** · [Versioning](docs/VERSIONING.md). Run `./start.sh --version`
 for this checkout, or `./start.sh status` for the version and image IDs on both ranks.
 Choose [Strict or Spark mode](docs/MODES.md); both use the model's native MTP head.
 
@@ -22,20 +22,22 @@ reasoning. Model-specific kernels, video layouts and precision policies remain
 selected by checkpoint type. Both products publish the same
 [benchmark method](docs/BENCHMARKS.md).
 
-## Automatic tool-call protection
+## Tool-call pattern guard
 
-**SparkQwen and Atlas block suspicious data-exfiltration tool calls by default.**
-Version 0.3.2 adds a lightweight CPU guard for metadata probes, reported callback
-hosts, and recognizable credential transfers. It checks complete tool calls
-before releasing them, with no extra model or GPU pass. Normal text streams as
-before. Configure exact host exceptions and additional blocks in `.env`.
-See [Tool-call protection](docs/TOOL-GUARD.md) for settings and coverage. This
-filter complements the tool executor's sandbox; it does not make arbitrary code safe.
-The [0.3.2 live canary](results/2026-10-26-tool-guard/RESULT.md) passed all eight
-blocking/streaming checks on the exact release image.
+**SparkQwen and Atlas block recognizable exfiltration patterns in tool calls by default.**
+Version 0.3.3 checks supported destination, command and payload fields for literal
+metadata access, specific reported callback hosts and recognizable credential
+transfers. It fixes bare-host/command parsing gaps and stops treating ordinary
+document content or unrelated fields as executable requests.
+
+There is no extra model or GPU pass. Normal prose streams as before; complete
+tool calls are checked before release. This filter does not inspect tool results,
+block all private-data transfers, or bind normal authentication headers to
+approved destinations. Custom argument schemas may be outside its coverage.
+See [exact coverage, configuration and remaining limits](docs/TOOL-GUARD.md).
 
 The performance and video measurements below belong to 0.3.1 unless explicitly
-identified otherwise; they are not fresh 0.3.2 throughput measurements.
+identified otherwise; they are not fresh 0.3.3 throughput measurements.
 
 ## Strict and Spark modes
 
@@ -119,11 +121,11 @@ cp .env.example .env      # set WORKER to the other Spark's ssh destination
 PROFILE=8x262k ./start.sh --mode spark
 ```
 
-Version 0.3.2 uses `ghcr.io/enntity/atlas-sparkqwen:d81e13b6b545`, also
-tagged `0.3.2`. The release records the immutable registry digest and image identity. `PULL=0` builds the pinned source.
-[Release and registry identity](https://github.com/Enntity/sparkqwen/releases/tag/v0.3.2).
+Version 0.3.3 uses `ghcr.io/enntity/atlas-sparkqwen:e11549bf2ad1`, also
+tagged `0.3.3`. The release records the immutable registry digest and image identity. `PULL=0` builds the pinned source.
+[Release and registry identity](https://github.com/Enntity/sparkqwen/releases/tag/v0.3.3).
 
-This image pins common Atlas commit `fa5331b2`. Omitting `--mode` selects
+This image pins common Atlas commit `d0cead14`. Omitting `--mode` selects
 Strict; both modes keep native MTP. Max/saver examples select Spark, the mode
 used for their original capacity trials. The quick start uses `8x262k`;
 the launcher's default remains `8x32k`.
@@ -270,7 +272,7 @@ See [docs/REPRODUCE.md](docs/REPRODUCE.md) for the exact commands.
 
 ## The engine
 
-SparkQwen 0.3.2 builds from the common Spark engine in
+SparkQwen 0.3.3 builds from the common Spark engine in
 [`Enntity/atlas`](https://github.com/Enntity/atlas), pinned by commit and tree in
 [`install/atlas-source.json`](install/atlas-source.json). The source history
 contains both product branches. It brings SparkGLM's serving, grammar, scheduler
