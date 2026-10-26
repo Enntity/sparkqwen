@@ -38,6 +38,10 @@ The default checks block:
 - Invalid JSON/object arguments, incomplete recognized calls and calls exceeding
   the byte limit.
 
+Credential patterns include `.env` files, common SSH/cloud credential paths,
+private-key PEM markers, secret environment-variable names and token prefixes
+`ghp_`, `github_pat_`, `xoxb-` and `xoxp-`. This is a finite pattern set.
+
 Destination and payload checks are scoped to the same request object. Nested
 request/batch objects are checked independently. Document `content`, `text`,
 `code`, notes and descriptions are not interpreted as destinations or commands.
