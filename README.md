@@ -1,11 +1,11 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <p align="center">
-  <img src="docs/assets/banner.png" alt="SparkQwen 0.3.1: code 106.4 tok/s, prose 54.8 tok/s, cold 16K prefill 4,142 tok/s; common Atlas engine" width="100%">
+  <img src="docs/assets/banner.png" alt="Historical SparkQwen 0.3.1 measurements: code 106.4 tok/s, prose 54.8 tok/s, cold 16K prefill 4,142 tok/s; common Atlas engine" width="100%">
 </p>
 
 # SparkQwen
 
-**SparkQwen 0.3.1** · [Versioning](docs/VERSIONING.md). Run `./start.sh --version`
+**SparkQwen 0.3.2** · [Versioning](docs/VERSIONING.md). Run `./start.sh --version`
 for this checkout, or `./start.sh status` for the version and image IDs on both ranks.
 Choose [Strict or Spark mode](docs/MODES.md); both use the model's native MTP head.
 
@@ -21,6 +21,19 @@ fixes include GLM reference video processing and literal XML inside streamed
 reasoning. Model-specific kernels, video layouts and precision policies remain
 selected by checkpoint type. Both products publish the same
 [benchmark method](docs/BENCHMARKS.md).
+
+## Automatic tool-call protection
+
+**SparkQwen and Atlas block suspicious data-exfiltration tool calls by default.**
+Version 0.3.2 adds a lightweight CPU guard for metadata probes, reported callback
+hosts, and recognizable credential transfers. It checks complete tool calls
+before releasing them, with no extra model or GPU pass. Normal text streams as
+before. Configure exact host exceptions and additional blocks in `.env`.
+See [Tool-call protection](docs/TOOL-GUARD.md) for settings and coverage. This
+filter complements the tool executor's sandbox; it does not make arbitrary code safe.
+
+The performance and video measurements below belong to 0.3.1 unless explicitly
+identified otherwise; they are not fresh 0.3.2 throughput measurements.
 
 ## Strict and Spark modes
 
