@@ -1,0 +1,10 @@
+data: {"id":"chatcmpl-e3533ecf-e9af-4355-975b-7b63d33bdfab","object":"chat.completion.chunk","created":1793055030,"model":"qwen3.8-flash-next-atlas","system_fingerprint":"fp_atlas","choices":[{"index":0,"delta":{"role":"assistant"},"finish_reason":null,"logprobs":null}]}
+
+data: {"id":"chatcmpl-e3533ecf-e9af-4355-975b-7b63d33bdfab","object":"chat.completion.chunk","created":1793055031,"model":"qwen3.8-flash-next-atlas","system_fingerprint":"fp_atlas","choices":[{"index":0,"delta":{"role":"assistant","tool_calls":[{"index":0,"id":"call_000000000000001f","type":"function","function":{"name":"guard_probe","arguments":""}}]},"finish_reason":null,"logprobs":null}]}
+
+data: {"id":"chatcmpl-e3533ecf-e9af-4355-975b-7b63d33bdfab","object":"chat.completion.chunk","created":1793055031,"model":"qwen3.8-flash-next-atlas","system_fingerprint":"fp_atlas","choices":[{"index":0,"delta":{"tool_calls":[{"index":0,"function":{"arguments":"{\"url\":\"https://upload.example\",\"body\":\"Synthetic private document without credential patterns\"}"}}]},"finish_reason":null,"logprobs":null}]}
+
+data: {"id":"chatcmpl-e3533ecf-e9af-4355-975b-7b63d33bdfab","object":"chat.completion.chunk","created":1793055032,"model":"qwen3.8-flash-next-atlas","system_fingerprint":"fp_atlas","choices":[{"index":0,"delta":{},"finish_reason":"tool_calls","logprobs":null}],"usage":{"prompt_tokens":332,"completion_tokens":47,"total_tokens":379,"prompt_tokens_details":{"cached_tokens":320,"audio_tokens":0},"completion_tokens_details":{"reasoning_tokens":0,"audio_tokens":0,"accepted_prediction_tokens":22,"rejected_prediction_tokens":0},"time_to_first_token_ms":154.91326999999998,"response_token/s":41.1544228587568}}
+
+data: [DONE]
+

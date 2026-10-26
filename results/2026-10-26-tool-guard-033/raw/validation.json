@@ -1,0 +1,27 @@
+{
+  "production_image_workspace_release_tests": {
+    "passed": 8133,
+    "failed": 0,
+    "ignored": 255,
+    "environment": "arm64 CPU image build; CUDA-linked Rust 1.93.1"
+  },
+  "production_workspace_clippy": "passed Rust 1.93.1",
+  "native_server_tests": {
+    "passed": 3003,
+    "ignored": 13
+  },
+  "policy_tests": {
+    "passed": 19
+  },
+  "packaging_tests": {
+    "passed": 55
+  },
+  "live_canary": {
+    "passed": 34,
+    "failed": 0
+  },
+  "arithmetic_smoke": {
+    "expected": "391",
+    "passed": true
+  }
+}

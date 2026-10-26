@@ -35,6 +35,8 @@ tool calls are checked before release. This filter does not inspect tool results
 block all private-data transfers, or bind normal authentication headers to
 approved destinations. Custom argument schemas may be outside its coverage.
 See [exact coverage, configuration and remaining limits](docs/TOOL-GUARD.md).
+The [0.3.3 canary](results/2026-10-26-tool-guard-033/RESULT.md) passed all 34
+blocking/streaming checks on the exact release image.
 
 The performance and video measurements below belong to 0.3.1 unless explicitly
 identified otherwise; they are not fresh 0.3.3 throughput measurements.

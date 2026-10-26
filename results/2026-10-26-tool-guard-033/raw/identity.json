@@ -1,0 +1,41 @@
+{
+  "product_version": "0.3.3",
+  "product_source_commit": "f34dc13ae631a5356a049e0651b1186e0eb9a4ab",
+  "engine_commit": "d0cead146eedbf8848c7f5da49f83e183228830c",
+  "engine_tree": "c8ee0b9505afb2680fa21dc40bf14c872b8879c1",
+  "install_tree": "e11549bf2ad151bb955de3fa4d8f5138d7a4b9b7",
+  "binary_sha256": "08dc0ebb2b83c1a4704f36f34f87fd39d0aee24fec4c0da768822e81a5ec8abd",
+  "checkpoint": "nvidia/Qwen3.8-Flash-Next-FP4-Local",
+  "checkpoint_config_sha256": "b50dbc52a0c83b0cd2a44a372c1fb6b5e0e6827d22f2611c97d4d030f92f6b28",
+  "checkpoint_index_sha256": "5fa166bbb1cf25adda455117563efa72a2072272001f459eedece131ffc913e1",
+  "gpu": "NVIDIA GB10",
+  "driver": "580.173.02",
+  "ranks": [
+    {
+      "rank": 0,
+      "image_config_digest": "sha256:9998a29e70ae924c4da79fe3ff3ecf647fc762df8f0f031aa895662a044b4301",
+      "mode": "spark",
+      "profile": "8x32k",
+      "gpu_memory_utilization": 0.7,
+      "started_at": "2026-10-26T22:48:51.312385025Z",
+      "oom_killed": false,
+      "rdma_hca_count": 2
+    },
+    {
+      "rank": 1,
+      "image_config_digest": "sha256:9998a29e70ae924c4da79fe3ff3ecf647fc762df8f0f031aa895662a044b4301",
+      "mode": "spark",
+      "profile": "8x32k",
+      "gpu_memory_utilization": 0.7,
+      "started_at": "2026-10-26T22:48:50.545869679Z",
+      "oom_killed": false,
+      "rdma_hca_count": 2
+    }
+  ],
+  "tool_guard": {
+    "enabled": true,
+    "max_bytes": 1048576,
+    "allow_hosts": [],
+    "deny_hosts": []
+  }
+}

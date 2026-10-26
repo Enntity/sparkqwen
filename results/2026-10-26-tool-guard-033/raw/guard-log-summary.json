@@ -1,0 +1,9 @@
+{
+  "blocked_responses": 18,
+  "reason_counts": {
+    "metadata_access": 4,
+    "blocked_host": 6,
+    "credential_transfer": 8
+  },
+  "guard_events_contain_arguments": false
+}
