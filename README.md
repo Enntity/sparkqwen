@@ -1,6 +1,6 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <p align="center">
-  <img src="docs/assets/banner.png" alt="Historical SparkQwen 0.3.1 measurements: code 106.4 tok/s, prose 54.8 tok/s, cold 16K prefill 4,142 tok/s; common Atlas engine" width="100%">
+  <img src="docs/assets/banner.png" alt="SparkQwen 0.3.3 with tool-call exfiltration guard on by default; historical 0.3.1 measurements: code 106.4 tok/s, prose 54.8 tok/s, cold 16K prefill 4,142 tok/s; common Atlas engine" width="100%">
 </p>
 
 # SparkQwen
