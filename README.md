@@ -118,8 +118,7 @@ PROFILE=8x262k ./start.sh --mode spark
 ```
 
 Version 0.3.2 uses `ghcr.io/enntity/atlas-sparkqwen:d81e13b6b545`, also
-tagged `0.3.2`. The release records the immutable index, arm64 manifest and
-configuration identities separately. `PULL=0` builds the pinned source.
+tagged `0.3.2`. The release records the immutable registry digest and image identity. `PULL=0` builds the pinned source.
 [Release and registry identity](https://github.com/Enntity/sparkqwen/releases/tag/v0.3.2).
 
 This image pins common Atlas commit `fa5331b2`. Omitting `--mode` selects
