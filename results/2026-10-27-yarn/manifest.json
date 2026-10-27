@@ -1,0 +1,41 @@
+{
+  "_license": "SPDX-License-Identifier: AGPL-3.0-only",
+  "date": "2026-10-27",
+  "product": "SparkQwen",
+  "engine_commit": "9b25f57596d1ba05b75bdc5c62d22fb75e1736c0",
+  "engine_tree": "d4654484c50de05b197c20d458c3b49ed96378a0",
+  "engine_pr": "https://github.com/Enntity/atlas/pull/17",
+  "install_tree": "3e0d9e7e4b2975e4802ab44beab87e002f9e8c2c",
+  "image_id": "sha256:939277f01cfc9fd529876d3db8675143d19d781f1b331f8e6fc67f348838bd05",
+  "engine_binary_sha256": "c431a6fe18f4c856fe1923c9d3be8273ad3c352529554f261efa2b1a815196ec",
+  "checkpoint_revision": "b9ce18a6887e18c089fdea8509a33e63429a3300",
+  "checkpoint_config_sha256": "b50dbc52a0c83b0cd2a44a372c1fb6b5e0e6827d22f2611c97d4d030f92f6b28",
+  "checkpoint_index_sha256": "5fa166bbb1cf25adda455117563efa72a2072272001f459eedece131ffc913e1",
+  "cpu_tests": {
+    "passed": 8147,
+    "failed": 0,
+    "ignored": 257
+  },
+  "gpu_yarn_tests": {
+    "passed": 2,
+    "failed": 0
+  },
+  "qualification_status": "passed",
+  "version": "0.4.0",
+  "engine_merge_commit": "086e2de56aeef6210aaef14843a2004e8e7b36a2",
+  "kv_tokens": {
+    "native-strict": 3883632,
+    "yarn2-strict": 3874624,
+    "yarn4-strict": 3862592,
+    "final-yarn4-strict": 3292528,
+    "final-yarn4-spark": 3264272,
+    "final-yarn2-strict": 3417376,
+    "final-yarn2-spark": 3404448
+  },
+  "registry_digest": "sha256:939277f01cfc9fd529876d3db8675143d19d781f1b331f8e6fc67f348838bd05",
+  "registry_tags": [
+    "3e0d9e7e4b29",
+    "0.4.0"
+  ],
+  "anonymous_registry_verified": true
+}

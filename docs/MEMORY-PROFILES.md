@@ -106,6 +106,58 @@ requirements or sidecar working sets need more margin. See the
 [full qualification](../results/2026-10-23-video-memory/RESULT.md) for identities,
 request counts, timings, working-memory minima and paging.
 
+## Extended context with YaRN
+
+`4x512k` and `4x1m` are opt-in experimental profiles in 0.4.0. Both use four
+scheduler slots, native MTP with up to three drafts, BF16 KV, utilization
+0.85 and the display carveout. They are
+intended for a dedicated pair. Existing profiles keep native RoPE.
+
+| Profile | Per-request input + output | Static YaRN factor |
+| --- | ---: | ---: |
+| `4x512k` | 524,288 tokens | 2 |
+| `4x1m` | 1,000,000 tokens | 4 |
+
+The final 0.4.0 image measured these pools at utilization 0.85 (one startup
+per row):
+
+| Profile / mode | Shared KV tokens | BF16 KV GiB per rank |
+| --- | ---: | ---: |
+| `4x512k` Strict | 3,417,376 | 39.11 |
+| `4x512k` Spark | 3,404,448 | 38.96 |
+| `4x1m` Strict | 3,292,528 | 37.68 |
+| `4x1m` Spark | 3,264,272 | 37.36 |
+
+The byte figures include display-carveout KV and exclude QSA, MTP,
+snapshots and other working memory. The [receipts](../results/2026-10-27-yarn/RESULT.md)
+record host headroom and paging. Leave `GPU_MEMORY_UTILIZATION` unset to
+use the profile's tested 0.85 setting; an explicit override takes precedence.
+
+Select `PROFILE=4x512k` or `PROFILE=4x1m` in
+`.env`, with `MODE=strict` or `MODE=spark`. The launcher passes the explicit
+`--qwen-yarn-factor` to both ranks. This changes the in-memory positional
+configuration without modifying the model's checkpoint files. An engine
+without that option refuses the launch rather than silently serving native
+RoPE at the larger limit.
+
+YaRN stretches the positional frequency schedule and adjusts the rotated
+dimensions' amplitude. It does not compress KV or add token capacity. Four
+slots are a scheduler limit: four 1M contexts require at least four million
+KV tokens, more than the 1M profile's measured 3.26–3.29M-token pool.
+The 512K profile reserves 512 MiB of snapshot auxiliary memory; the 1M
+profile reserves 1024 MiB so a full-length QSA snapshot fits. Requests may
+queue; leave room within each request's limit for generated output.
+
+Static YaRN also applies to short requests and can change their quality.
+Use native profiles for workloads that fit 262K, and factor 2 when 512K is
+sufficient. Qwen's [official guidance](https://huggingface.co/Qwen/Qwen3.8-Flash-Next#best-practices)
+recommends factors 2 and 4 for these lengths. Long-document reasoning,
+retrieval, MTP/serial consistency, cached-prefix behavior and peak memory
+have distinct limits. The [focused qualification](../results/2026-10-27-yarn/RESULT.md)
+records what was tested, every repetition and the rejected 0.95 memory setting.
+It does not qualify broad million-token reasoning or four simultaneous
+maximum-length requests.
+
 ## Request deadlines
 
 Long-context profiles set a one-hour server request deadline. The inherited
