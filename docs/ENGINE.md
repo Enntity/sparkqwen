@@ -7,9 +7,9 @@ pinned in [`install/atlas-source.json`](../install/atlas-source.json), for the
 kernel target `qwen3.8-flash-next` (model type `qwen4_exp`).
 [`install/build.sh`](../install/build.sh) refuses any other tree.
 
-SparkQwen 0.3.3 targets the common `spark-shared` engine tree.
-The pinned snapshot on `spark-shared` is `d0cead14`
-(tree `c8ee0b95`). It brings together
+SparkQwen 0.4.0 targets the common `spark-shared` engine tree.
+The pinned snapshot on `spark-shared` is `9b25f575`
+(tree `d4654484`). It brings together
 the SparkGLM literal-XML and grammar fixes, packed-prefill and split-score paths,
 and SparkQwen's native MXFP8 shared expert, F32 HC/PLE norms, row-invariant
 prefill and native MTP. The source history retains both product branches.
@@ -60,6 +60,17 @@ Qualification applies to the exact product image, not the branch name alone.
 GLM and Qwen preserve literal XML examples inside streamed reasoning. GLM's
 native tool opener still ends reasoning and enters the validated tool parser;
 legacy model leak guards remain in place.
+
+## Static YaRN profiles
+
+The opt-in `4x512k` and `4x1m` profiles apply factors 2 and 4 to target
+attention, native MTP and QSA together. Partial interleaved MRoPE is retained,
+and both ranks agree on the effective parameters before loading weights.
+Native profiles keep their existing positional paths. Checkpoint files are
+not edited. The [0.4.0 qualification](../results/2026-10-27-yarn/RESULT.md)
+records the exact image, numerical checks, focused accuracy/performance
+comparisons and limits. This release also includes the shared forced-tool
+selection fixes inherited from `spark-shared`.
 
 ## Historical engine layers
 

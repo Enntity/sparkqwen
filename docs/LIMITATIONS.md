@@ -3,6 +3,20 @@
 
 What to know before relying on SparkQwen.
 
+## Version 0.4.0 extended-context scope
+
+`4x512k` and `4x1m` are opt-in static YaRN profiles. The
+[focused qualification](../results/2026-10-27-yarn/RESULT.md) covers short
+arithmetic, two-hop lookup, forced tools, serial/MTP comparisons, and single
+near-limit synthetic retrieval requests with cached follow-ups. It does not
+establish unchanged quality on all tasks, long image/video fidelity, or four
+simultaneous maximum-length requests. Existing native profiles remain available.
+
+Four slots share one KV pool. The 1M profile measured about 3.26–3.29M tokens,
+so four full 1M contexts cannot reside together. Cold 1M prefill took about
+10.3 minutes in the one measured Spark-mode fixture; its cached follow-up
+started in about 2.9 seconds. See the receipts for host memory and paging.
+
 ## Version 0.3.1 scope
 
 The [common-engine campaign](../results/2026-10-24-common-engine/RESULT.md)

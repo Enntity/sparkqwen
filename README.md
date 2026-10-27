@@ -1,11 +1,7 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
-<p align="center">
-  <img src="docs/assets/banner.png" alt="SparkQwen 0.3.3 with tool-call exfiltration guard on by default; historical 0.3.1 measurements: code 106.4 tok/s, prose 54.8 tok/s, cold 16K prefill 4,142 tok/s; common Atlas engine" width="100%">
-</p>
-
 # SparkQwen
 
-**SparkQwen 0.3.3** · [Versioning](docs/VERSIONING.md). Run `./start.sh --version`
+**SparkQwen 0.4.0** · [Versioning](docs/VERSIONING.md). Run `./start.sh --version`
 for this checkout, or `./start.sh status` for the version and image IDs on both ranks.
 Choose [Strict or Spark mode](docs/MODES.md); both use the model's native MTP head.
 
@@ -14,6 +10,10 @@ Qwen3.8-Flash-Next on two NVIDIA DGX Sparks, using the published
 and the common [Atlas engine](https://github.com/Enntity/atlas) shared with
 [SparkGLM](https://github.com/Enntity/sparkglm). Native MTP, prefix caching,
 and an OpenAI-compatible API are included.
+
+Version 0.4.0 adds opt-in `4x512k` and `4x1m` profiles with static YaRN.
+See the [focused qualification and limits](results/2026-10-27-yarn/RESULT.md);
+existing profiles keep native RoPE.
 
 **0.3.1 shares the exact Atlas engine with
 [SparkGLM 0.2.0](https://github.com/Enntity/sparkglm).** The common serving
@@ -39,7 +39,7 @@ The [0.3.3 canary](results/2026-10-26-tool-guard-033/RESULT.md) passed all 34
 blocking/streaming checks on the exact release image.
 
 The performance and video measurements below belong to 0.3.1 unless explicitly
-identified otherwise; they are not fresh 0.3.3 throughput measurements.
+identified otherwise; they are not fresh 0.4.0 throughput measurements.
 
 ## Strict and Spark modes
 
@@ -104,6 +104,8 @@ many full contexts in the shared KV pool.
 
 | Spark profile | Slots × request limit | Prior measured shared KV | Intended use |
 |---|---|---:|---|
+| `4x512k` | 4 × 524,288 | 3.40–3.42M tokens | Experimental YaRN 2×, utilization 0.85 |
+| `4x1m` | 4 × 1,000,000 | 3.26–3.29M tokens | Experimental YaRN 4×, utilization 0.85 |
 | `max-16x262k` | 16 × 262,144 | 3,710,480 tokens | Dedicated pair, utilization 0.95 |
 | `saver-8x262k` | 8 × 262,144 | 1.85–1.98M tokens | Sidecars, utilization 0.74 |
 | `hour-video` | 8 × 262,144 | 3,204,064 tokens | Up to 7,200 video samples, utilization 0.85 |
@@ -123,11 +125,11 @@ cp .env.example .env      # set WORKER to the other Spark's ssh destination
 PROFILE=8x262k ./start.sh --mode spark
 ```
 
-Version 0.3.3 uses `ghcr.io/enntity/atlas-sparkqwen:e11549bf2ad1`, also
-tagged `0.3.3`. The release records the immutable registry digest and image identity. `PULL=0` builds the pinned source.
-[Release and registry identity](https://github.com/Enntity/sparkqwen/releases/tag/v0.3.3).
+Version 0.4.0 uses `ghcr.io/enntity/atlas-sparkqwen:3e0d9e7e4b29`, also
+tagged `0.4.0`. The release records the immutable registry digest and image identity. `PULL=0` builds the pinned source.
+[Release and registry identity](https://github.com/Enntity/sparkqwen/releases/tag/v0.4.0).
 
-This image pins common Atlas commit `d0cead14`. Omitting `--mode` selects
+This image pins common Atlas commit `9b25f575`. Omitting `--mode` selects
 Strict; both modes keep native MTP. Max/saver examples select Spark, the mode
 used for their original capacity trials. The quick start uses `8x262k`;
 the launcher's default remains `8x32k`.
@@ -236,6 +238,8 @@ sampling limits and the 0.3.0 checks, see [Video](docs/VIDEO.md).
 | `8x32k` (default) | 8 | 32,768 | Shorter contexts |
 | `4x262k` | 4 | 262,144 | Existing long-context recipe |
 | `8x262k` | 8 | 262,144 | Existing long-context recipe |
+| `4x512k` | 4 | 524,288 | Experimental YaRN 2×, dedicated pair |
+| `4x1m` | 4 | 1,000,000 | Experimental YaRN 4×, dedicated pair |
 | `max-16x262k` | 16 | 262,144 | Dedicated pair, display carveout |
 | `saver-8x262k` | 8 | 262,144 | Sidecars, display carveout |
 | `hour-video` | 8 | 262,144 | Dedicated Spark-mode pair, long-video preprocessing headroom |
@@ -248,6 +252,12 @@ are [`.env.max.example`](.env.max.example) and
 [`.env.sidecars.example`](.env.sidecars.example); long video uses
 [`.env.hour-video.example`](.env.hour-video.example). Sidecars remain separate
 installations; SparkQwen does not install or manage them.
+
+The extended-context profiles are opt-in and experimental. They retain BF16 KV
+and native MTP in Strict or Spark mode, with utilization 0.85 for working
+headroom. Their four slots share the KV pool; four million-token requests
+exceed its measured capacity.
+See [YaRN profile requirements](docs/MEMORY-PROFILES.md#extended-context-with-yarn).
 
 The versioned comparison uses explicit greedy settings for measurement. For real work leave sampling
 unset (the defaults above) or use the model card's values; greedy decoding can
@@ -274,7 +284,7 @@ See [docs/REPRODUCE.md](docs/REPRODUCE.md) for the exact commands.
 
 ## The engine
 
-SparkQwen 0.3.3 builds from the common Spark engine in
+SparkQwen 0.4.0 builds from the common Spark engine in
 [`Enntity/atlas`](https://github.com/Enntity/atlas), pinned by commit and tree in
 [`install/atlas-source.json`](install/atlas-source.json). The source history
 contains both product branches. It brings SparkGLM's serving, grammar, scheduler
