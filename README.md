@@ -1,6 +1,6 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <p align="center">
-  <img src="docs/assets/banner.png" alt="SparkQwen 0.4.0: experimental, opt-in 4x512k and 4x1m context profiles with YaRN 2x and 4x. Strict and Spark modes, native MTP and BF16 KV. Four slots share the KV pool; per-request limits include input and output." width="100%">
+  <img src="docs/assets/banner.png" alt="SparkQwen 0.4.0. Historical 0.3.1 benchmarks: code 106.4 tok/s, prose 54.8 tok/s, cold 16K prefill 4,142 tok/s. Common Atlas engine, Strict and Spark modes, tool-call guard on by default. Experimental opt-in 512K and 1M context options." width="100%">
 </p>
 
 # SparkQwen
