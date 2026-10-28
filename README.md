@@ -1,4 +1,8 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<p align="center">
+  <img src="docs/assets/banner.png" alt="SparkQwen 0.4.0: experimental, opt-in 4x512k and 4x1m context profiles with YaRN 2x and 4x. Strict and Spark modes, native MTP and BF16 KV. Four slots share the KV pool; per-request limits include input and output." width="100%">
+</p>
+
 # SparkQwen
 
 **SparkQwen 0.4.0** · [Versioning](docs/VERSIONING.md). Run `./start.sh --version`
