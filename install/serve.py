@@ -109,6 +109,7 @@ def serving_mode(environ, profile):
         'ATLAS_QWEN4EXP_BF16_GDN': '1',
         'ATLAS_QWEN4EXP_FP8_GDN': '0',
         'ATLAS_QWEN4EXP_PREFILL_W8A8': '1',
+        'ATLAS_QWEN4EXP_MXFP8_SHARED': '1',
         'ATLAS_QWEN4EXP_PREFILL_MOE': '1',
         'ATLAS_QWEN4EXP_PREFILL_MOE_BF16': '0',
         'ATLAS_QWEN4EXP_PREFILL_BF16_PROJ': '0',
@@ -196,6 +197,9 @@ def launch(environ, profile):
     env = {key: value for key, value in environ.items()
            if not key.startswith('ATLAS_') or key.startswith('ATLAS_LOG_')
            or key == 'ATLAS_LOOP_NO_SUPPRESS'}
+    # The MTP depth ladder 0.4.0's engine defaulted to; Atlas main defaults
+    # to unbounded depth at four rows. A profile may set its own.
+    env['ATLAS_MTP_K_LADDER'] = '4:3,8:3,16:1,32:1'
     env.update(profile['environment'])
     env.update(precision)
     env['SPARKQWEN_MODE'] = mode

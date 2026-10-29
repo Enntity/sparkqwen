@@ -37,15 +37,25 @@ class ModeContract(unittest.TestCase):
             self.assertEqual(pe['ATLAS_QWEN4EXP_MTP_ABSORB'], '1')
             self.assertEqual(pe['ATLAS_QWEN4EXP_MTP_BF16_ATTN'], '0')
             self.assertEqual(pe['ATLAS_QWEN4EXP_DRAFT_HEAD_NVFP4'], '1')
-            for flag in ('MXFP8_DECODE', 'BF16_GDN', 'PREFILL_W8A8', 'PREFILL_MOE'):
+            for flag in ('MXFP8_DECODE', 'BF16_GDN', 'PREFILL_W8A8', 'MXFP8_SHARED', 'PREFILL_MOE'):
                 self.assertEqual(se['ATLAS_QWEN4EXP_' + flag], '1')
                 self.assertEqual(pe['ATLAS_QWEN4EXP_' + flag], '1')
             for mode in ('strict', 'spark'):
-                for flag in ('MXFP8_DECODE', 'PREFILL_W8A8', 'PREFILL_MOE'):
+                for flag in ('MXFP8_DECODE', 'PREFILL_W8A8', 'MXFP8_SHARED', 'PREFILL_MOE'):
                     changed = copy.deepcopy(source)
                     changed['environment']['ATLAS_QWEN4EXP_' + flag] = '0'
                     with self.assertRaises(ValueError):
                         serve.launch(dict(self.env, SPARKQWEN_MODE=mode), changed)
+
+    def test_the_040_depth_ladder_is_the_default_a_profile_may_override(self):
+        _, env = serve.launch(self.env, load_profile('8x32k'))
+        self.assertEqual(env['ATLAS_MTP_K_LADDER'], '4:3,8:3,16:1,32:1')
+        _, env = serve.launch(dict(self.env, ATLAS_MTP_K_LADDER='4:9'), load_profile('8x32k'))
+        self.assertEqual(env['ATLAS_MTP_K_LADDER'], '4:3,8:3,16:1,32:1')
+        profile = load_profile('8x32k')
+        profile['environment']['ATLAS_MTP_K_LADDER'] = '4:2'
+        _, env = serve.launch(self.env, profile)
+        self.assertEqual(env['ATLAS_MTP_K_LADDER'], '4:2')
 
     def test_unknown_modes_and_wrong_topologies_fail(self):
         for mode in ('', 'fast', 'STRICT', 'spark '):
