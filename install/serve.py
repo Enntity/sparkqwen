@@ -110,6 +110,7 @@ def serving_mode(environ, profile):
         'ATLAS_QWEN4EXP_FP8_GDN': '0',
         'ATLAS_QWEN4EXP_PREFILL_W8A8': '1',
         'ATLAS_QWEN4EXP_MXFP8_SHARED': '1',
+        'ATLAS_QWEN4EXP_PREFILL_W4A4': '1',
         'ATLAS_QWEN4EXP_PREFILL_MOE': '1',
         'ATLAS_QWEN4EXP_PREFILL_MOE_BF16': '0',
         'ATLAS_QWEN4EXP_PREFILL_BF16_PROJ': '0',

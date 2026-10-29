@@ -3,8 +3,8 @@
   "note": "Candidate engine: Atlas-Inf main a12bffa0 plus the SparkQwen parity ports (enntity-stack/sq-integ). For speed and identity measurement against 0.4.0; not a release pin.",
   "repository": "https://github.com/Enntity/atlas.git",
   "branch": "enntity-stack/sq-integ",
-  "commit": "e11989cef664120dead8252b8c428c6f2ecfb2ee",
-  "tree": "70c12b683dd92f2be579091f90151e19d48250b2",
+  "commit": "46dda013b719f66409f96a2bc8e8be80c00bbadc",
+  "tree": "9e3a0ec113acacad34e607a753ef3ed0d164e5ef",
   "layers": {
     "atlas_inf_main": {
       "branch": "upstream/main",
@@ -13,8 +13,8 @@
     },
     "sq_parity": {
       "branch": "enntity-stack/sq-integ",
-      "commit": "e11989cef664120dead8252b8c428c6f2ecfb2ee",
-      "note": "MXFP8 tensor-core decode, W8A8 prefill, MXFP8 shared expert (EP split, side lane), packed PLE, RDMA proxy pin + inline flag, MTP drafter precision"
+      "commit": "46dda013b719f66409f96a2bc8e8be80c00bbadc",
+      "note": "MXFP8 tensor-core decode, W8A8 prefill, MXFP8 shared expert (EP split, side lane), packed PLE, RDMA proxy pin + inline flag, MTP drafter precision, W4A4 routed prefill, reference serving behaviour (verbatim prompt, no server think budget, eos ends thinking, no tool steering)"
     }
   },
   "kernel_target": "qwen3.8-flash-next",

@@ -37,11 +37,11 @@ class ModeContract(unittest.TestCase):
             self.assertEqual(pe['ATLAS_QWEN4EXP_MTP_ABSORB'], '1')
             self.assertEqual(pe['ATLAS_QWEN4EXP_MTP_BF16_ATTN'], '0')
             self.assertEqual(pe['ATLAS_QWEN4EXP_DRAFT_HEAD_NVFP4'], '1')
-            for flag in ('MXFP8_DECODE', 'BF16_GDN', 'PREFILL_W8A8', 'MXFP8_SHARED', 'PREFILL_MOE'):
+            for flag in ('MXFP8_DECODE', 'BF16_GDN', 'PREFILL_W8A8', 'MXFP8_SHARED', 'PREFILL_W4A4', 'PREFILL_MOE'):
                 self.assertEqual(se['ATLAS_QWEN4EXP_' + flag], '1')
                 self.assertEqual(pe['ATLAS_QWEN4EXP_' + flag], '1')
             for mode in ('strict', 'spark'):
-                for flag in ('MXFP8_DECODE', 'PREFILL_W8A8', 'MXFP8_SHARED', 'PREFILL_MOE'):
+                for flag in ('MXFP8_DECODE', 'PREFILL_W8A8', 'MXFP8_SHARED', 'PREFILL_W4A4', 'PREFILL_MOE'):
                     changed = copy.deepcopy(source)
                     changed['environment']['ATLAS_QWEN4EXP_' + flag] = '0'
                     with self.assertRaises(ValueError):
