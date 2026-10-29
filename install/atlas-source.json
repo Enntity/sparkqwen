@@ -1,21 +1,15 @@
 {
   "schema": "sparkqwen.atlas-engine-source/v2",
-  "note": "Candidate engine for Atlas-Inf #220: Azeez's linear port stack (main 87df79b2 + #198 + #223 + #224 #226 #227 #229 #230 #231 #232 #233 #234 #236, top bdc9c035), plus Enntity's spark-shared #16 (forced-call closed argument values, spelled markup in streams) and #17 (opt-in static YaRN) and two small fixes to the stack top (a clippy lint and an FP4-Local parse test). Under qualification; not a release pin.",
+  "note": "Candidate engine: Atlas-Inf main c998a49a (all of Azeez's #220 SparkQwen ports merged). For speed measurement against 0.4.0; not a release pin.",
   "repository": "https://github.com/Enntity/atlas.git",
-  "branch": "enntity-stack/qwen-yarn",
-  "commit": "cc251cfa611b6afc155720a7bd1def6791fb04a2",
-  "tree": "c061c73fbb71a058096acfaaa448268b141dc0af",
+  "branch": "enntity-stack/main-c998a49a",
+  "commit": "c998a49a725269dc9a49b2cd091fe44e350d590a",
+  "tree": "7efd7a7cf7cbce1eecb33d7c0bf0ba65a1f0f4ca",
   "layers": {
-    "atlas_inf_main_base": "87df79b2f",
-    "atlas_inf_stack": {
-      "branch": "enntity-stack/base-20261028",
-      "commit": "bdc9c035afacdc56c862ee99273071c5b9c5086d",
-      "note": "Atlas-Inf PR #236 head (stack/vision-admission): main + #198 ← #223 ← #224 ← #226 ← #227 ← #229 ← #230 ← #231 ← #232 ← #233 ← #234 ← #236."
-    },
-    "enntity_on_stack": {
-      "branch": "enntity-stack/qwen-yarn",
-      "commit": "cc251cfa611b6afc155720a7bd1def6791fb04a2",
-      "note": "clippy fix b43ea51a, FP4-Local parse-test fix 0e10b1e8, spark-shared #16 (a2011653, c8beb8aa), spark-shared #17 (86c93e33, 5f02bdc6, cc251cfa)."
+    "atlas_inf_main": {
+      "branch": "enntity-stack/main-c998a49a",
+      "commit": "c998a49a725269dc9a49b2cd091fe44e350d590a",
+      "note": "Atlas-Inf main as of 2026-10-29: #198, #224, #226, #227, #229, #232, #233, #236, #237, #252 merged."
     }
   },
   "kernel_target": "qwen3.8-flash-next",
