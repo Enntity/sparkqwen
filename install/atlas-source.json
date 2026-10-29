@@ -3,8 +3,8 @@
   "note": "Candidate engine: Atlas-Inf main a12bffa0 plus the SparkQwen parity ports (enntity-stack/sq-integ). For speed and identity measurement against 0.4.0; not a release pin.",
   "repository": "https://github.com/Enntity/atlas.git",
   "branch": "enntity-stack/sq-integ",
-  "commit": "a08a5065ce150ad96aa976cf98e2aeb3eae3d08b",
-  "tree": "768947bb9d7c7aea9632547937d8de7f564ee92f",
+  "commit": "cf4200e85a2e0ec4f8621f91c62dfe52de2d912a",
+  "tree": "d968aadb2b4c539e7ea53c87debadc87f48f2f10",
   "layers": {
     "atlas_inf_main": {
       "branch": "upstream/main",
@@ -13,7 +13,7 @@
     },
     "sq_parity": {
       "branch": "enntity-stack/sq-integ",
-      "commit": "a08a5065ce150ad96aa976cf98e2aeb3eae3d08b",
+      "commit": "cf4200e85a2e0ec4f8621f91c62dfe52de2d912a",
       "note": "MXFP8 tensor-core decode, W8A8 prefill, MXFP8 shared expert (EP split, side lane), packed PLE, RDMA proxy pin + inline flag, MTP drafter precision, W4A4 routed prefill, reference serving behaviour (verbatim prompt, no server think budget, eos ends thinking, no tool steering)"
     }
   },
