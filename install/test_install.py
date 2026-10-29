@@ -283,9 +283,29 @@ class LaunchContract(unittest.TestCase):
             self.assertEqual(serve.fabric_hcas('rocep1s0f0,roceP2p1s0f0', root),
                              ['rocep1s0f0', 'roceP2p1s0f0'])
 
+    def test_per_node_bootstrap_socket_and_gid_overrides(self):
+        # A link netdev can also carry an address the peer reaches only off the
+        # link (listed first, so NCCL advertises it). Such a node picks its
+        # bootstrap socket interface and RoCE GID itself; rails are unchanged.
+        _, env = serve.launch(dict(self.environment, FABRIC_SOCKET_INTERFACE='eno1',
+                                   FABRIC_GID_INDEX='5'), self.profile)
+        self.assertEqual((env['NCCL_SOCKET_IFNAME'], env['GLOO_SOCKET_IFNAME']), ('eno1', 'eno1'))
+        self.assertEqual((env['NCCL_IB_GID_INDEX'], env['ATLAS_RDMA_GID']), ('5', '5'))
+        self.assertEqual(env['NCCL_IB_HCA'], 'rocep1s0f0')
+        _, env = serve.launch(dict(self.environment, FABRIC_SOCKET_INTERFACE='', FABRIC_GID_INDEX=''),
+                              self.profile)
+        self.assertEqual((env['NCCL_SOCKET_IFNAME'], env['GLOO_SOCKET_IFNAME']), ('enp1s0f0np0', 'enp1s0f0np0'))
+        self.assertNotIn('NCCL_IB_GID_INDEX', env)
+        self.assertNotIn('ATLAS_RDMA_GID', env)
+        # Only the per-node setting reaches the engine; an ambient pin does not.
+        _, env = serve.launch(dict(self.environment, ATLAS_RDMA_GID='3'), self.profile)
+        self.assertNotIn('ATLAS_RDMA_GID', env)
+
     def test_invalid_cluster_configuration_fails_before_process_launch(self):
         for key, value in [('NODE_RANK', '2'), ('MASTER_ADDR', 'not-an-address'),
                            ('MASTER_PORT', '0'), ('FABRIC_INTERFACE', 'eth0\nINJECTED=1'),
+                           ('FABRIC_SOCKET_INTERFACE', 'eth0\nINJECTED=1'), ('FABRIC_SOCKET_INTERFACE', '^eth0'),
+                           ('FABRIC_GID_INDEX', '256'), ('FABRIC_GID_INDEX', '05'), ('FABRIC_GID_INDEX', 'x'),
                            ('MODEL_PATH', 'relative'), ('SERVED_MODEL_NAME', 'bad\nname')]:
             with self.subTest(key=key), self.assertRaises(ValueError):
                 serve.launch(dict(self.environment, **{key: value}), self.profile)
@@ -316,7 +336,8 @@ class StartNode(unittest.TestCase):
             ['bash', str(HERE/'start-node.sh'), '--rank', rank, '--leader-address', '192.0.2.1',
              '--model-root', str(self.root/'models'), '--image', 'img', '--fabric-interface', 'enp1s0f0np0',
              '--cuda-cache', str(self.root/'cuda'), '--ple-cache', str(self.root/'ple'), *extra],
-            capture_output=True, text=True, env=dict(os.environ, PATH=f'{self.bin}:{os.environ["PATH"]}', FABRIC_SYSFS=str(self.sysfs)))
+            capture_output=True, text=True, env=dict(os.environ, PATH=f'{self.bin}:{os.environ["PATH"]}',
+                                                     FABRIC_SYSFS=str(self.sysfs), NET_SYSFS=str(self.root/'net')))
         lines = log.read_text().splitlines() if log.exists() else []
         return run, [line for line in lines if line.startswith('run ')]
 
@@ -341,6 +362,29 @@ class StartNode(unittest.TestCase):
                 self.assertNotIn('SPARKQWEN_FP8_GDN', cmd)
                 self.assertNotIn('QSA_TC2R', cmd)
                 self.assertTrue(cmd.endswith(' img'))
+
+    def test_bootstrap_overrides_reach_the_container(self):
+        (self.root/'net'/'eno1').mkdir(parents=True)
+        run, docker_run = self.start('1', '--socket-interface', 'eno1', '--gid-index', '5')
+        self.assertEqual(run.returncode, 0, run.stderr)
+        for item in ('-e FABRIC_INTERFACE=enp1s0f0np0 ', '-e FABRIC_SOCKET_INTERFACE=eno1 ',
+                     '-e FABRIC_GID_INDEX=5 ', '-e NCCL_SOCKET_IFNAME=eno1 ', '-e GLOO_SOCKET_IFNAME=eno1 '):
+            self.assertIn(item, docker_run[0])
+        run, docker_run = self.start('1')
+        self.assertEqual(run.returncode, 0, run.stderr)
+        self.assertIn('-e NCCL_SOCKET_IFNAME=enp1s0f0np0 ', docker_run[0])
+        self.assertIn('-e FABRIC_SOCKET_INTERFACE=enp1s0f0np0 ', docker_run[0])
+        self.assertNotIn('GID', docker_run[0])
+
+    def test_bad_bootstrap_overrides_fail_before_container_mutation(self):
+        (self.root/'net'/'eno1').mkdir(parents=True)
+        for extra in (['--socket-interface', 'eno9'], ['--socket-interface', 'eno1 x'],
+                      ['--socket-interface', ''], ['--gid-index', '256'], ['--gid-index', '05'],
+                      ['--gid-index', 'x'], ['--gid-index', '']):
+            with self.subTest(extra=extra):
+                run, _ = self.start('0', *extra)
+                self.assertNotEqual(run.returncode, 0)
+                self.assertFalse((self.root/'docker.log').exists(), 'validation must precede docker rm')
 
     def test_invalid_modes_and_lossy_switch_fail_before_container_mutation(self):
         for args in [('--mode', 'fast'), ('--mode', ''), ('--fp8-gdn',)]:
