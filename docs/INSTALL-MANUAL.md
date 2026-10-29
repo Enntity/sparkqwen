@@ -150,6 +150,17 @@ one host can use `rocep1s0f1,roceP2p1s0f1` and the other
 The same physical port number or HCA name on both machines is not required.
 `LEADER_ADDRESS`, if supplied, must match the selected leader interface.
 
+NCCL's socket bootstrap uses the selected fabric interface and advertises its
+first IPv4 address. If a node's link netdev also carries an address the peer
+reaches only off the link (for example a LAN address listed first), boots can
+stop after `Rank 0: sent unique ID to worker 1`. Set that node's
+`LEADER_SOCKET_INTERFACE` or `WORKER_SOCKET_INTERFACE` to an interface whose
+first IPv4 the peer reaches, and its `LEADER_GID_INDEX` or `WORKER_GID_INDEX`
+to the RoCE v2 GID of the link address. The GID index applies to every rail on
+that node, for NCCL and the engine's RDMA pair. Unset, the fabric interface
+and per-rail GID discovery are used. Hand launches pass `--socket-interface`
+and `--gid-index` to `install/start-node.sh`.
+
 The launch scripts pass exact lists with `FABRIC_SIBLINGS=0`. In particular,
 select both intended rails explicitly on dual-domain systems; automatic sibling
 expansion could select a backchannel on other board layouts. Direct container

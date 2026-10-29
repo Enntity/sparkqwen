@@ -102,6 +102,36 @@ class Fabric(unittest.TestCase):
             self.assertIn('right8 (net8, 198.51.100.2)', result.stdout)
             self.assertFalse((root/'models').exists())
 
+    def test_per_node_bootstrap_overrides_reach_only_their_rank(self):
+        # serve() as shipped, with the two rank launches recorded instead of run.
+        text = (ROOT/'start.sh').read_text()
+        start = text.index('serve() {')
+        body = text[start:text.index('  say "loading', start)] + '}\n'
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            log = root/'ranks.log'
+            (root/'install').mkdir()
+            node = root/'install'/'start-node.sh'
+            node.write_text(f'#!/bin/sh\necho "rank0 $*" >> {log}\n')
+            node.chmod(0o755)
+            script = ('say() { :; }\nstop() { :; }\n'
+                      f'script_on_worker() {{ shift; echo "rank1 $*" >> {log}; }}\n'
+                      'ip0=192.0.2.1 hca0=left0 iface0=nic0 hca1=right7 iface1=net7\n'
+                      'MODEL_ROOT=/m CHECKPOINT_REPO=o/n IMAGE=img PROFILE=8x32k MODE=strict\n'
+                      + body + 'serve\n')
+            for side, other, iface in (('WORKER', 'rank0', 'eno1'), ('LEADER', 'rank1', 'lan0')):
+                with self.subTest(side=side):
+                    log.unlink(missing_ok=True)
+                    env = {k: v for k, v in os.environ.items() if not k.endswith(('_SOCKET_INTERFACE', '_GID_INDEX'))}
+                    env.update({f'{side}_SOCKET_INTERFACE': iface, f'{side}_GID_INDEX': '5'})
+                    result = subprocess.run(['bash', '-c', script], cwd=root, env=env, capture_output=True, text=True)
+                    self.assertEqual(result.returncode, 0, result.stderr)
+                    lines = dict(line.split(' ', 1) for line in log.read_text().splitlines())
+                    mine = lines['rank1' if side == 'WORKER' else 'rank0']
+                    self.assertIn(f'--socket-interface {iface} --gid-index 5', mine)
+                    self.assertNotIn('--socket-interface', lines[other])
+                    self.assertNotIn('--gid-index', lines[other])
+
     def test_low_level_invalid_selection_never_calls_docker(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp);bindir=root/'bin';bindir.mkdir()
