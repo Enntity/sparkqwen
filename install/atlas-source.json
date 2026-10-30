@@ -1,20 +1,20 @@
 {
   "schema": "sparkqwen.atlas-engine-source/v2",
-  "note": "Candidate engine: Atlas-Inf main a12bffa0 plus the SparkQwen parity ports (enntity-stack/sq-integ). For speed and identity measurement against 0.4.0; not a release pin.",
+  "note": "Gate candidate: Atlas-Inf main f1c8e556f (#265, #266 merged) plus #267-#271 (Enntity/atlas sq-pr/series). For the FP4-Local PR gates; not a release pin.",
   "repository": "https://github.com/Enntity/atlas.git",
-  "branch": "enntity-stack/sq-integ",
-  "commit": "cf4200e85a2e0ec4f8621f91c62dfe52de2d912a",
-  "tree": "d968aadb2b4c539e7ea53c87debadc87f48f2f10",
+  "branch": "sq-pr/series",
+  "commit": "753b80a24476ce4476b8a2d24d2a4c0b86563606",
+  "tree": "c4a3901c97a537410f729030b0152a6b37814782",
   "layers": {
     "atlas_inf_main": {
       "branch": "upstream/main",
-      "commit": "a12bffa0",
-      "note": "Atlas-Inf main as of 2026-10-29"
+      "commit": "f1c8e556f",
+      "note": "#265 and #266 merged"
     },
-    "sq_parity": {
-      "branch": "enntity-stack/sq-integ",
-      "commit": "cf4200e85a2e0ec4f8621f91c62dfe52de2d912a",
-      "note": "MXFP8 tensor-core decode, W8A8 prefill, MXFP8 shared expert (EP split, side lane), packed PLE, RDMA proxy pin + inline flag, MTP drafter precision, W4A4 routed prefill, reference serving behaviour (verbatim prompt, no server think budget, eos ends thinking, no tool steering)"
+    "open_prs": {
+      "branch": "sq-pr/series",
+      "commit": "753b80a24476ce4476b8a2d24d2a4c0b86563606",
+      "note": "#267 MTP drafter, #268 mode contract, #269 packed PLE, #270 RDMA, #271 reference behaviour"
     }
   },
   "kernel_target": "qwen3.8-flash-next",
