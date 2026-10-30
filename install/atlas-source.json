@@ -1,22 +1,10 @@
 {
-  "schema": "sparkqwen.atlas-engine-source/v2",
-  "note": "Candidate engine: Atlas-Inf main a12bffa0 plus the SparkQwen parity ports (enntity-stack/sq-integ). For speed and identity measurement against 0.4.0; not a release pin.",
-  "repository": "https://github.com/Enntity/atlas.git",
-  "branch": "enntity-stack/sq-integ",
-  "commit": "cf4200e85a2e0ec4f8621f91c62dfe52de2d912a",
-  "tree": "d968aadb2b4c539e7ea53c87debadc87f48f2f10",
-  "layers": {
-    "atlas_inf_main": {
-      "branch": "upstream/main",
-      "commit": "a12bffa0",
-      "note": "Atlas-Inf main as of 2026-10-29"
-    },
-    "sq_parity": {
-      "branch": "enntity-stack/sq-integ",
-      "commit": "cf4200e85a2e0ec4f8621f91c62dfe52de2d912a",
-      "note": "MXFP8 tensor-core decode, W8A8 prefill, MXFP8 shared expert (EP split, side lane), packed PLE, RDMA proxy pin + inline flag, MTP drafter precision, W4A4 routed prefill, reference serving behaviour (verbatim prompt, no server think budget, eos ends thinking, no tool steering)"
-    }
-  },
+  "schema": "sparkqwen.atlas-engine-source/v3",
+  "note": "Atlas-Inf main with every SparkQwen engine port merged upstream (#265-#271, #273, #274). Candidate until the exact image is qualified on our pair against 0.4.0.",
+  "repository": "https://github.com/Atlas-Inf/atlas.git",
+  "branch": "main",
+  "commit": "48f73b27c5684965d9ca2072427cf83bb28bc343",
+  "tree": "75c0cc1c96966114e601373958c8afa7191821fe",
   "kernel_target": "qwen3.8-flash-next",
   "model_type": "qwen4_exp",
   "license": "AGPL-3.0-only"

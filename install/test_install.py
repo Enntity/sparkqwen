@@ -414,25 +414,17 @@ class EnginePin(unittest.TestCase):
 
     def test_pin_is_whole_or_pending(self):
         pin = self.pin
-        self.assertEqual(pin['schema'], 'sparkqwen.atlas-engine-source/v2')
-        self.assertEqual(pin['repository'], 'https://github.com/Enntity/atlas.git')
+        self.assertEqual(pin['schema'], 'sparkqwen.atlas-engine-source/v3')
+        self.assertEqual(pin['repository'], 'https://github.com/Atlas-Inf/atlas.git')
         self.assertEqual((pin['kernel_target'], pin['model_type']), ('qwen3.8-flash-next', 'qwen4_exp'))
-        self.assertEqual(pin['branch'], 'spark-shared')
-        layers = pin['layers']
-        commits = [pin['commit'], pin['tree'], layers['atlas_inf_main_base']] + [
-            layers[k]['commit'] for k in ('glm_upstream_series', 'upstream_candidate', 'sparkqwen_only')]
+        self.assertEqual(pin['branch'], 'main')
         pending = pin['commit'] == 'PENDING'
-        for value in commits:
+        for value in (pin['commit'], pin['tree']):
             # A half-filled pin is a mistake: either the series is cut or it is not.
             self.assertTrue(value == 'PENDING' if pending else SHA.fullmatch(value), value)
-        self.assertEqual(pending, pin['branch'].endswith('-PENDING'))
 
-    def test_common_engine_docs_and_parents_match_source_identity(self):
+    def test_engine_docs_match_source_identity(self):
         pin = self.pin
-        common = pin['layers']['common_engine']
-        self.assertEqual((common['commit'], common['tree']), (pin['commit'], pin['tree']))
-        for parent in ('glm_parent', 'qwen_parent'):
-            self.assertRegex(common[parent], r'^[0-9a-f]{40}$')
         docs = (HERE.parent/'docs/ENGINE.md').read_text()
         self.assertIn(f"`{pin['branch']}`", docs)
         self.assertIn(f"`{pin['commit'][:8]}`", docs)

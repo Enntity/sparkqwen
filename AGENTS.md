@@ -13,11 +13,10 @@ claim.
   identities before starting a qualification run.
 - The image tag is the git tree of `install/`. Anything that changes the image
   must live in `install/`, and nothing else should.
-- Engine changes belong in `Enntity/atlas`, on the shared `spark-shared`
-  engine used by SparkGLM and SparkQwen. Open and merge PRs only in Enntity's
-  repositories. Never push or open PRs in Atlas-Inf. Update the exact commit
-  and tree together in `install/atlas-source.json` and `docs/ENGINE.md` after
-  qualification; keep product packaging here.
+- Engine changes belong upstream: branch in `Enntity/atlas`, then open a PR to
+  Atlas-Inf `main` with the owner's go-ahead. Never push to Atlas-Inf. Update
+  the exact commit and tree together in `install/atlas-source.json` and
+  `docs/ENGINE.md` after qualification; keep product packaging here.
 - This repository holds accepted work only. Plans, porting logs, WIP and
   host-specific notes go to a private notes repository. Keep host names, user names, private addresses and home
   paths out of everything here except the unedited receipts in

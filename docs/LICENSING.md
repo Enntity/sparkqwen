@@ -24,7 +24,7 @@ kept unedited.
 
 | Component | License |
 |---|---|
-| Atlas engine, [`Enntity/atlas`](https://github.com/Enntity/atlas) at the pinned commit | AGPL-3.0-only |
+| Atlas engine, [`Atlas-Inf/atlas`](https://github.com/Atlas-Inf/atlas) at the pinned commit | AGPL-3.0-only |
 | CUTLASS | BSD-3-Clause |
 | The engine's Rust dependencies (`Cargo.lock`) | mostly MIT, Apache-2.0 or BSD |
 | Other models' chat templates in the engine's `jinja-templates/`, copied into the image | their model vendors' terms |

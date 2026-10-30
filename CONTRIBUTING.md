@@ -18,7 +18,7 @@ node --check bench/sd_bench.mjs
 **Performance changes** need raw receipts under `results/`, with the baseline
 run on the same pair (see [results/README.md](results/README.md)).
 
-**Engine changes** go to [Enntity/atlas](https://github.com/Enntity/atlas)
+**Engine changes** go upstream to [Atlas-Inf/atlas](https://github.com/Atlas-Inf/atlas)
 first; here you then update the pin in `install/atlas-source.json`.
 
 Credit other people's work with a `Provenance:` line naming the source and

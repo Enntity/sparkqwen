@@ -6,7 +6,7 @@ time. Run steps 1–3 on **both** Sparks with the same `MODEL_ROOT`.
 
 | Component | Pin |
 |---|---|
-| Engine | [`Enntity/atlas`](https://github.com/Enntity/atlas), the common engine snapshot pinned for the SparkQwen 0.3.0 ([`install/atlas-source.json`](../install/atlas-source.json), [docs/ENGINE.md](ENGINE.md)) |
+| Engine | [`Atlas-Inf/atlas`](https://github.com/Atlas-Inf/atlas) `main` at the pinned commit ([`install/atlas-source.json`](../install/atlas-source.json), [docs/ENGINE.md](ENGINE.md)) |
 | Model | [`nvidia/Qwen3.8-Flash-Next-FP4-Local`](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local) @ `b9ce18a6887e18c089fdea8509a33e63429a3300` ([`install/checkpoint.json`](../install/checkpoint.json)) |
 | Build dependencies | CUTLASS `cf064d2e`, NCCL 2.31.2, Rust 1.93.1, CUDA 13.0 |
 | Profiles | [`install/profiles/`](../install/profiles/): `8x32k` (default), `4x262k` and `8x262k` (legacy long context), `max-16x262k` (dedicated pair), `saver-8x262k` (sidecars), `hour-video` (long video) |
@@ -26,7 +26,7 @@ IMAGE=$(install/build.sh)
 
 `install/build.sh --tag` prints the tag without building: the git tree hash of
 `install/`. The build needs a clean `install/` directory. It fetches
-`Enntity/atlas` at the pinned commit, refuses any other tree, and builds the
+`Atlas-Inf/atlas` at the pinned commit, refuses any other tree, and builds the
 engine for `qwen3.8-flash-next` and its build-time tests.
 
 When an image for your recipe has been published, `docker pull "$IMAGE"`

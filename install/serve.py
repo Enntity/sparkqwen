@@ -198,9 +198,6 @@ def launch(environ, profile):
     env = {key: value for key, value in environ.items()
            if not key.startswith('ATLAS_') or key.startswith('ATLAS_LOG_')
            or key == 'ATLAS_LOOP_NO_SUPPRESS'}
-    # The MTP depth ladder 0.4.0's engine defaulted to; Atlas main defaults
-    # to unbounded depth at four rows. A profile may set its own.
-    env['ATLAS_MTP_K_LADDER'] = '4:3,8:3,16:1,32:1'
     env.update(profile['environment'])
     env.update(precision)
     env['SPARKQWEN_MODE'] = mode

@@ -1,18 +1,17 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 # The engine
 
-SparkQwen runs [Atlas](https://github.com/Atlas-Inf/atlas), built from the
-public fork [`Enntity/atlas`](https://github.com/Enntity/atlas) at the commit
-pinned in [`install/atlas-source.json`](../install/atlas-source.json), for the
-kernel target `qwen3.8-flash-next` (model type `qwen4_exp`).
+SparkQwen runs [Atlas](https://github.com/Atlas-Inf/atlas), built from its
+`main` branch at the commit pinned in
+[`install/atlas-source.json`](../install/atlas-source.json), for the kernel
+target `qwen3.8-flash-next` (model type `qwen4_exp`).
 [`install/build.sh`](../install/build.sh) refuses any other tree.
 
-SparkQwen 0.4.0 targets the common `spark-shared` engine tree.
-The pinned snapshot on `spark-shared` is `9b25f575`
-(tree `d4654484`). It brings together
-the SparkGLM literal-XML and grammar fixes, packed-prefill and split-score paths,
-and SparkQwen's native MXFP8 shared expert, F32 HC/PLE norms, row-invariant
-prefill and native MTP. The source history retains both product branches.
+The pinned snapshot on `main` is `48f73b27` (tree `75c0cc1c`). SparkQwen's
+engine work reached `main` through Atlas-Inf PRs #265-#271, #273 and #274:
+native MXFP8 shared expert, W8A8 and W4A4 prefill, packed PLE, the MTP drafter,
+the Strict and Spark contract, reference serving behaviour and static YaRN.
+Releases through 0.4.0 pinned `Enntity/atlas` `spark-shared`.
 Model-specific kernels and serving policies remain gated by model type and
 kernel target.
 
@@ -263,8 +262,8 @@ prompt logprobs).
 
 ## Changing the engine
 
-Engine changes go to `Enntity/atlas` first. Integrate reviewed GLM and Qwen
-changes into `spark-shared`, retaining model-specific gates. Update the product
+Engine changes go upstream to Atlas-Inf `main` first, retaining model-specific
+gates. Update the product
 source pin, version and profiles together, then build and qualify that exact
 image. Historical product branches and tags remain provenance references.
 

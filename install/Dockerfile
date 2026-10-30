@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: AGPL-3.0-only
-# Context: build.sh's pinned Enntity/atlas engine checkout and packaged install assets.
+# Context: build.sh's pinned Atlas engine checkout and packaged install assets.
 # Adapted from SparkGLM's image. Qwen3.8-Flash-Next loads NVIDIA's checkpoint
 # directly, so there is no converter and no native bridge stage.
 FROM nvidia/cuda:13.0.0-devel-ubuntu24.04@sha256:1e8ac7a54c184a1af8ef2167f28fa98281892a835c981ebcddb1fad04bdd452d AS builder

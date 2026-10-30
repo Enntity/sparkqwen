@@ -2,10 +2,8 @@ SparkQwen
 Copyright 2026 the SparkQwen contributors
 Licensed under AGPL-3.0-only (LICENSE).
 
-The Atlas engine is fetched at build time from Enntity/atlas at the commit in
-install/atlas-source.json (AGPL-3.0-only): Atlas-Inf, SparkGLM's GLM-5.3-Flash
-series, and the Qwen3.8-Flash-Next series, which includes changes picked from
-unmerged Atlas-Inf branches (docs/ENGINE.md).
+The Atlas engine is fetched at build time from Atlas-Inf/atlas at the commit in
+install/atlas-source.json (AGPL-3.0-only).
 
 CUTLASS (BSD-3-Clause) is fetched at build time. The image ships its notice
 and the notices of the engine's Rust dependencies under /opt/atlas/notices/.

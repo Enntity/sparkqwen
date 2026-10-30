@@ -47,11 +47,11 @@ class ModeContract(unittest.TestCase):
                     with self.assertRaises(ValueError):
                         serve.launch(dict(self.env, SPARKQWEN_MODE=mode), changed)
 
-    def test_the_040_depth_ladder_is_the_default_a_profile_may_override(self):
+    def test_the_depth_ladder_is_the_engine_default_a_profile_may_override(self):
         _, env = serve.launch(self.env, load_profile('8x32k'))
-        self.assertEqual(env['ATLAS_MTP_K_LADDER'], '4:3,8:3,16:1,32:1')
+        self.assertNotIn('ATLAS_MTP_K_LADDER', env)
         _, env = serve.launch(dict(self.env, ATLAS_MTP_K_LADDER='4:9'), load_profile('8x32k'))
-        self.assertEqual(env['ATLAS_MTP_K_LADDER'], '4:3,8:3,16:1,32:1')
+        self.assertNotIn('ATLAS_MTP_K_LADDER', env)
         profile = load_profile('8x32k')
         profile['environment']['ATLAS_MTP_K_LADDER'] = '4:2'
         _, env = serve.launch(self.env, profile)

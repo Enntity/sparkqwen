@@ -11,7 +11,7 @@ Choose [Strict or Spark mode](docs/MODES.md); both use the model's native MTP he
 
 Qwen3.8-Flash-Next on two NVIDIA DGX Sparks, using the published
 [FP4-Local checkpoint](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local)
-and the common [Atlas engine](https://github.com/Enntity/atlas) shared with
+and the [Atlas engine](https://github.com/Atlas-Inf/atlas) shared with
 [SparkGLM](https://github.com/Enntity/sparkglm). Native MTP, prefix caching,
 and an OpenAI-compatible API are included.
 
@@ -288,11 +288,11 @@ See [docs/REPRODUCE.md](docs/REPRODUCE.md) for the exact commands.
 
 ## The engine
 
-SparkQwen 0.4.0 builds from the common Spark engine in
-[`Enntity/atlas`](https://github.com/Enntity/atlas), pinned by commit and tree in
-[`install/atlas-source.json`](install/atlas-source.json). The source history
-contains both product branches. It brings SparkGLM's serving, grammar, scheduler
-and communication fixes together with Qwen's native checkpoint loader,
+SparkQwen builds from `main` of
+[`Atlas-Inf/atlas`](https://github.com/Atlas-Inf/atlas), pinned by commit and tree in
+[`install/atlas-source.json`](install/atlas-source.json). It brings SparkGLM's
+serving, grammar, scheduler and communication fixes together with Qwen's native
+checkpoint loader,
 row-invariant prefill, shared experts, F32 norms and MTP implementation.
 Model-specific kernels remain gated by model and target.
 
