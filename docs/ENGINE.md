@@ -7,7 +7,7 @@ SparkQwen runs [Atlas](https://github.com/Atlas-Inf/atlas), built from its
 target `qwen3.8-flash-next` (model type `qwen4_exp`).
 [`install/build.sh`](../install/build.sh) refuses any other tree.
 
-The pinned snapshot on `main` is `48f73b27` (tree `75c0cc1c`). SparkQwen's
+The pinned snapshot is `7c72d7fb` (tree `887afdd9`) on Enntity/atlas `sq/main-stack-20261031`: Atlas-Inf main `170c3ed3` plus the open SparkQwen stack and #294. SparkQwen's
 engine work reached `main` through Atlas-Inf PRs #265-#271, #273 and #274:
 native MXFP8 shared expert, W8A8 and W4A4 prefill, packed PLE, the MTP drafter,
 the Strict and Spark contract, reference serving behaviour and static YaRN.
