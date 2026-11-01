@@ -1,10 +1,10 @@
 {
   "schema": "sparkqwen.atlas-engine-source/v3",
-  "note": "Candidate: Atlas-Inf main 170c3ed3a plus the open SparkQwen stack (#284 1395b5b13, #293 d385b39eb) and #294, merged on Enntity/atlas. Repin to Atlas-Inf main once those land.",
-  "repository": "https://github.com/Enntity/atlas.git",
-  "branch": "sq/main-stack-20261031",
-  "commit": "7c72d7fbb3be62a0669420e29a1ae4cb6504cf68",
-  "tree": "887afdd9c3cb9a60a6f631564f360d6e162c732b",
+  "note": "Atlas-Inf main with the SparkQwen 0.4.0 stack merged (#284..#287, #290, #293, #294).",
+  "repository": "https://github.com/Atlas-Inf/atlas.git",
+  "branch": "main",
+  "commit": "8c2b672188a522d9f8df413b5da79fbdb9442ff4",
+  "tree": "4d4bcc2b08a9cde72d6bbe44a8a5bd5ed6f99743",
   "kernel_target": "qwen3.8-flash-next",
   "model_type": "qwen4_exp",
   "license": "AGPL-3.0-only"
