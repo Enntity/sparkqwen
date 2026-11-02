@@ -1,10 +1,10 @@
 {
   "schema": "sparkqwen.atlas-engine-source/v3",
-  "note": "Atlas-Inf main with the SparkQwen 0.4.0 stack, the vision prefix cache (#303) and the fast loader (#308).",
+  "note": "Atlas-Inf main with the SparkQwen 0.4.0 stack, the vision prefix cache (#303), the fast loader (#308) and its slab fix (#314).",
   "repository": "https://github.com/Atlas-Inf/atlas.git",
   "branch": "main",
-  "commit": "88010baee4274191d8fbc060432ecbe525f9e1d1",
-  "tree": "1f78cfa4e7c1851fa0080bdb11495e876631c499",
+  "commit": "9b3473f059dce6b0c0a6faaf49e92504422eb23e",
+  "tree": "8f9fe6a7f1024ebcdc065832d35cd771857e5f2e",
   "kernel_target": "qwen3.8-flash-next",
   "model_type": "qwen4_exp",
   "license": "AGPL-3.0-only"
