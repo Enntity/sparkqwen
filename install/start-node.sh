@@ -10,6 +10,7 @@ usage() {
   cat >&2 <<'EOF'
 usage: start-node.sh --rank 0|1 --leader-address IP --model-root DIR --image TAG
                      [--fabric-interface IFACE] [--fabric-hca DEVICE[,DEVICE...]]
+                     [--socket-interface IFACE] [--gid-index N]
                      [--mode strict|spark] [--profile 8x32k|4x262k|8x262k|4x512k|4x1m|max-16x262k|saver-8x262k|hour-video|FILE] [--gpu-memory-utilization 0.70-0.95]
                      [--tool-guard on|off] [--tool-guard-allow-hosts HOST,...]
                      [--tool-guard-deny-hosts HOST,...] [--tool-guard-max-bytes BYTES]
@@ -23,6 +24,12 @@ usage: start-node.sh --rank 0|1 --leader-address IP --model-root DIR --image TAG
   --image            the image tag, install/build.sh --tag
   --fabric-interface the fabric's network interface on THIS node (default: the
                      interface of the first --fabric-hca; otherwise required)
+  --socket-interface THIS node's NCCL/Gloo bootstrap interface (default:
+                     --fabric-interface). NCCL advertises an interface's first
+                     IPv4; use this when the link netdev also carries an
+                     address the peer reaches only off the link.
+  --gid-index        THIS node's RoCE GID index on every rail, for NCCL and the
+                     engine's RDMA pair (default: discovered per rail)
   --mode             strict (default): BF16 draft attention/head; spark: NVFP4 draft copies
                      Both require the pinned FP4-Local native target format.
   --profile          a profile shipped in the image (default 8x32k) or a JSON
@@ -47,6 +54,8 @@ while [[ $# -gt 0 ]]; do
     --leader-address) leader=$2; shift 2 ;;
     --fabric-interface) iface=$2; shift 2 ;;
     --fabric-hca) hca=$2; shift 2 ;;
+    --socket-interface) socket_iface=$2; shift 2 ;;
+    --gid-index) gid=$2; shift 2 ;;
     --model-root) model_root=$2; shift 2 ;;
     --image) image=$2; shift 2 ;;
     --cuda-cache) cache=$2; shift 2 ;;
@@ -91,6 +100,14 @@ if [[ -z $iface ]]; then
 fi
 [[ $iface =~ ^[a-zA-Z0-9_][a-zA-Z0-9_.-]*$ && -e $sysfs/${hca%%,*}/device/net/$iface ]] ||
   { echo "--fabric-interface must belong to the first --fabric-hca device" >&2; exit 2; }
+if [[ -n ${socket_iface+set} ]]; then
+  [[ $socket_iface =~ ^[a-zA-Z0-9_][a-zA-Z0-9_.-]*$ && -e ${NET_SYSFS:-/sys/class/net}/$socket_iface ]] ||
+    { echo "--socket-interface must name a network interface on this node" >&2; exit 2; }
+else
+  socket_iface=$iface
+fi
+[[ -z ${gid+set} || ( $gid =~ ^(0|[1-9][0-9]{0,2})$ && $gid -le 255 ) ]] ||
+  { echo '--gid-index must be 0 to 255' >&2; exit 2; }
 IFS=',' read -r -a rails <<< "$hca"
 seen=,
 for rail in "${rails[@]}"; do
@@ -133,11 +150,12 @@ docker run -d --name "$name" --restart no --network host --ipc host \
   --mount "type=bind,src=$(realpath "$ple_cache"),dst=/atlas-ple" ${profile_mount[@]+"${profile_mount[@]}"} \
   -e NODE_RANK="$rank" -e MASTER_ADDR="$leader" -e MASTER_PORT=29510 \
   -e FABRIC_INTERFACE="$iface" -e FABRIC_HCA="$hca" -e FABRIC_SIBLINGS="$siblings" -e MODEL_PATH="$checkpoint" \
+  -e FABRIC_SOCKET_INTERFACE="$socket_iface" ${gid:+-e FABRIC_GID_INDEX="$gid"} \
   -e SPARKQWEN_TOOL_GUARD="$guard" -e SPARKQWEN_TOOL_GUARD_MAX_BYTES="$guard_max" \
   -e SPARKQWEN_TOOL_GUARD_ALLOW_HOSTS="$guard_allow" -e SPARKQWEN_TOOL_GUARD_DENY_HOSTS="$guard_deny" \
   -e SERVED_MODEL_NAME=qwen3.8-flash-next-atlas -e SPARKQWEN_PROFILE="$profile" -e SPARKQWEN_MODE="$mode" \
   ${util:+-e SPARKQWEN_GPU_MEMORY_UTILIZATION="$util"} \
-  -e NCCL_SOCKET_IFNAME="$iface" -e GLOO_SOCKET_IFNAME="$iface" \
+  -e NCCL_SOCKET_IFNAME="$socket_iface" -e GLOO_SOCKET_IFNAME="$socket_iface" \
   -e HF_HUB_OFFLINE=1 -e TRANSFORMERS_OFFLINE=1 \
   -e CUDA_CACHE_PATH=/atlas-cuda-cache -e CUDA_CACHE_MAXSIZE=4294967296 \
   "$image"

@@ -155,8 +155,12 @@ serve() {
           ${GPU_MEMORY_UTILIZATION:+--gpu-memory-utilization "$GPU_MEMORY_UTILIZATION"})
   say "start rank 1 on $WORKER, then rank 0 here (leader $address, profile $PROFILE, mode $MODE)"
   stop
-  script_on_worker install/start-node.sh --rank 1 --fabric-hca "$hca1" --fabric-interface "$iface1" --no-fabric-siblings "${common[@]}"
-  install/start-node.sh --rank 0 --fabric-hca "$hca0" --fabric-interface "$iface0" --no-fabric-siblings "${common[@]}"
+  script_on_worker install/start-node.sh --rank 1 --fabric-hca "$hca1" --fabric-interface "$iface1" --no-fabric-siblings \
+    ${WORKER_SOCKET_INTERFACE:+--socket-interface "$WORKER_SOCKET_INTERFACE"} \
+    ${WORKER_GID_INDEX:+--gid-index "$WORKER_GID_INDEX"} "${common[@]}"
+  install/start-node.sh --rank 0 --fabric-hca "$hca0" --fabric-interface "$iface0" --no-fabric-siblings \
+    ${LEADER_SOCKET_INTERFACE:+--socket-interface "$LEADER_SOCKET_INTERFACE"} \
+    ${LEADER_GID_INDEX:+--gid-index "$LEADER_GID_INDEX"} "${common[@]}"
   say "loading (a few minutes; the first start also compiles CUDA kernels)"
   for ((i = 0; i < 90; i++)); do
     if curl -sf "$API/health" >/dev/null; then
