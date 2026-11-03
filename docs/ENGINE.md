@@ -8,8 +8,8 @@ target `qwen3.8-flash-next` (model type `qwen4_exp`).
 [`install/build.sh`](../install/build.sh) refuses any other tree.
 
 `spark` is Atlas-Inf `main` plus Enntity's open Atlas-Inf pull requests,
-merged in; SparkGLM pins the same commit. The pinned snapshot is `5d99d92b`
-(tree `ac7bcb0e`): Atlas-Inf `main` `9c4519131` with #321 (SparkGLM on four
+merged in; SparkGLM pins the same commit. The pinned snapshot is `162b4226`
+(tree `2b015cc5`): Atlas-Inf `main` `9c4519131` with #321 (SparkGLM on four
 Sparks), #322 (GLM native calls to undeclared tools) and #323 (write paths with
 spaces). #321's shared changes were checked on Qwen at TP2 (output identical);
 0.5.0 itself is not qualified yet, so 0.4.0 stays the release to install. 0.4.0 pinned Atlas-Inf
