@@ -415,9 +415,9 @@ class EnginePin(unittest.TestCase):
     def test_pin_is_whole_or_pending(self):
         pin = self.pin
         self.assertEqual(pin['schema'], 'sparkqwen.atlas-engine-source/v3')
-        self.assertEqual(pin['repository'], 'https://github.com/Atlas-Inf/atlas.git')
+        self.assertEqual(pin['repository'], 'https://github.com/Enntity/atlas.git')
         self.assertEqual((pin['kernel_target'], pin['model_type']), ('qwen3.8-flash-next', 'qwen4_exp'))
-        self.assertEqual(pin['branch'], 'main')
+        self.assertEqual(pin['branch'], 'spark')
         pending = pin['commit'] == 'PENDING'
         for value in (pin['commit'], pin['tree']):
             # A half-filled pin is a mistake: either the series is cut or it is not.

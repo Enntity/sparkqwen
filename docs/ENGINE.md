@@ -1,14 +1,20 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 # The engine
 
-SparkQwen runs [Atlas](https://github.com/Atlas-Inf/atlas), built from its
-`main` branch at the commit pinned in
+SparkQwen runs [Atlas](https://github.com/Atlas-Inf/atlas), built from
+[Enntity/atlas](https://github.com/Enntity/atlas) `spark` at the commit pinned in
 [`install/atlas-source.json`](../install/atlas-source.json), for the kernel
 target `qwen3.8-flash-next` (model type `qwen4_exp`).
 [`install/build.sh`](../install/build.sh) refuses any other tree.
 
-The pinned snapshot is `9b3473f0` (tree `8f9fe6a7`) on Atlas-Inf `main`, with the
-SparkQwen 0.4.0 stack merged (#284..#287, #290, #293, #294). The earlier
+`spark` is Atlas-Inf `main` plus Enntity's open Atlas-Inf pull requests,
+merged in; SparkGLM pins the same commit. The pinned snapshot is `5d99d92b`
+(tree `ac7bcb0e`): Atlas-Inf `main` `9c4519131` with #321 (SparkGLM on four
+Sparks), #322 (GLM native calls to undeclared tools) and #323 (write paths with
+spaces). #321's shared changes were checked on Qwen at TP2 (output identical);
+0.5.0 itself is not qualified yet, so 0.4.0 stays the release to install. 0.4.0 pinned Atlas-Inf
+`main` `9b3473f0` with the SparkQwen 0.4.0 stack merged (#284..#287, #290,
+#293, #294). The earlier
 engine work reached `main` through Atlas-Inf PRs #265-#271, #273 and #274:
 native MXFP8 shared expert, W8A8 and W4A4 prefill, packed PLE, the MTP drafter,
 the Strict and Spark contract, reference serving behaviour and static YaRN.
