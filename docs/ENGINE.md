@@ -8,11 +8,16 @@ target `qwen3.8-flash-next` (model type `qwen4_exp`).
 [`install/build.sh`](../install/build.sh) refuses any other tree.
 
 `spark` is Atlas-Inf `main` plus Enntity's open Atlas-Inf pull requests,
-merged in; SparkGLM pins the same commit. The pinned snapshot is `162b4226`
-(tree `2b015cc5`): Atlas-Inf `main` `9c4519131` with #321 (SparkGLM on four
-Sparks), #322 (GLM native calls to undeclared tools) and #323 (write paths with
-spaces). #321's shared changes were checked on Qwen at TP2 (output identical);
-0.5.0 itself qualified on a DGX Spark pair on 2026-11-03 against 0.4.0 (greedy output and prompt logprobs identical, speed within 2%) and is the release to install. 0.4.0 pinned Atlas-Inf
+merged in; SparkGLM pins the same commit. The pinned snapshot is `5f79b46b`
+(tree `38c21dec`): Atlas-Inf `main` `2f9c37083`, which now carries #321
+(SparkGLM on four Sparks), #322 (GLM native calls to undeclared tools) and
+#323 (write paths with spaces). No Enntity pull request is open, so `spark`
+adds only its own `.spark/` scripts. Since 0.5.0, `main` also ships
+`verbatim_prompt = false` for this target (#319) and bans the `<tool_call>`
+opener when a request declares no tools (#320). 0.5.1 is not qualified yet,
+so 0.5.0 (`162b4226`, qualified on a DGX Spark pair on 2026-11-03 against
+0.4.0: greedy output and prompt logprobs identical, speed within 2%) stays the
+release to install. 0.4.0 pinned Atlas-Inf
 `main` `9b3473f0` with the SparkQwen 0.4.0 stack merged (#284..#287, #290,
 #293, #294). The earlier
 engine work reached `main` through Atlas-Inf PRs #265-#271, #273 and #274:
