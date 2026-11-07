@@ -29,14 +29,19 @@ COPY engine/jinja-templates/ jinja-templates/
 COPY engine/tests/fixtures/ tests/fixtures/
 # The build-time tests compile every atlas-core test module, which include_str! these.
 COPY engine/test_data/ test_data/
-ENV ATLAS_TARGET_HW=gb10 ATLAS_TARGET_MODEL=qwen3.8-flash-next ATLAS_TARGET_QUANT=nvfp4
+# The kernel target: qwen3.8-flash-next (the pair) or qwen3.8-27b (one Spark).
+ARG ATLAS_TARGET_MODEL=qwen3.8-flash-next
+ENV ATLAS_TARGET_HW=gb10 ATLAS_TARGET_MODEL=$ATLAS_TARGET_MODEL ATLAS_TARGET_QUANT=nvfp4
+# One cargo target directory per kernel target inside the shared cache mount,
+# so building one product variant never invalidates the other's kernels.
+ENV CARGO_TARGET_DIR=/build/target/$ATLAS_TARGET_MODEL
 ARG BUILD_JOBS=4
 # BuildKit cache mount for the cargo target directory, so iterating on the
 # engine does not recompile every kernel. Every cargo step mounts the same
 # cache, and the binary is copied out because mounted paths never reach a layer.
 RUN --mount=type=cache,target=/build/target,id=atlas-cargo-target-sparkqwen,sharing=shared \
     cargo build --locked --release -j "$BUILD_JOBS" -p spark-server && \
-    install -D target/release/spark /build/dist/spark
+    install -D "$CARGO_TARGET_DIR/release/spark" /build/dist/spark
 # License notices of every third-party crate compiled into the binary.
 COPY install/rust-notices.py /product/install/rust-notices.py
 RUN python3 /product/install/rust-notices.py /build /build/dist/notices-rust

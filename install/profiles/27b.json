@@ -1,0 +1,33 @@
+{
+ "schema": "sparkqwen.atlas-install-profile/v1",
+ "model": "qwen3.8-27b",
+ "status": "candidate",
+ "note": "Qwen3.8-27B on one DGX Spark (TP=1). Engine defaults with native MTP (K=4), BF16 KV and LM head, prefix caching. Configured limits: eight concurrent requests, 131,072 tokens each. A starting point for the 27B serving work; not yet qualified.",
+ "environment": {
+  "CUDA_CACHE_PATH": "/atlas-cuda-cache",
+  "LD_LIBRARY_PATH": "/usr/local/nvidia/lib:/usr/local/nvidia/lib64:/usr/local/cuda/lib64",
+  "PATH": "/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+  "RUST_LOG": "info"
+ },
+ "server_argv": [
+  "serve",
+  "--model-from-path=${model}",
+  "--kernel-target=qwen3.8-27b",
+  "--gpu-memory-utilization=0.85",
+  "--oom-guard-mb=4096",
+  "--kv-cache-dtype=bf16",
+  "--lm-head-dtype=bf16",
+  "--enable-prefix-caching",
+  "--ssm-cache-slots=32",
+  "--max-prefill-tokens=16384",
+  "--fast-load-prefetch-shards",
+  "--no-tui",
+  "--speculative",
+  "--num-drafts=3",
+  "--mtp-quantization=bf16",
+  "--max-num-seqs=8",
+  "--max-batch-size=8",
+  "--max-seq-len=131072",
+  "--tool-max-tokens=32768"
+ ]
+}

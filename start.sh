@@ -10,10 +10,19 @@
 #   ./start.sh status       container state and health
 #   ./start.sh logs [worker]
 #   ./start.sh build | download    run one preparation step
+#   ./start.sh --model 27b [up|stop|status|logs|build|download]
+#                           Qwen3.8-27B on this one Spark instead (SPARKQWEN_MODEL=27b)
 set -euo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")"
 if [[ ${1:-} == --version ]]; then exec python3 install/serve.py --version; fi
 if [[ -f .env ]]; then set -a; . ./.env; set +a; fi
+# SPARKQWEN_MODEL=27b (or --model 27b) serves Qwen3.8-27B on this one Spark.
+if [[ ${1:-} == --model ]]; then SPARKQWEN_MODEL=${2:?--model needs flash-next or 27b}; shift 2; fi
+case ${SPARKQWEN_MODEL:-flash-next} in
+  flash-next) ;;
+  27b) export SPARKQWEN_MODEL; exec install/start-27b.sh "$@" ;;
+  *) echo 'SPARKQWEN_MODEL (--model) must be flash-next or 27b' >&2; exit 2 ;;
+esac
 : "${WORKER:?set WORKER in .env to the ssh destination of the other Spark (see .env.example)}"
 [[ $WORKER != -* ]] || { echo "WORKER must be an ssh destination, not an option: $WORKER" >&2; exit 2; }
 MODEL_ROOT=${MODEL_ROOT:-$HOME/models/sparkqwen}
@@ -35,7 +44,8 @@ MODEL=qwen3.8-flash-next-atlas
 API=http://127.0.0.1:8893
 NAME=atlas-sparkqwen-rank
 
-say() { printf '\033[1m== %s\033[0m\n' "$*"; }
+# shellcheck source=install/common.sh
+. install/common.sh
 # Run a command on the worker; ssh joins its arguments into one shell line, so quote each.
 on_worker() { ssh -o BatchMode=yes "$WORKER" "$(printf '%q ' "$@")"; }
 # Run a local script on the worker with safely quoted arguments.
@@ -103,18 +113,6 @@ build() {
   fi
 }
 
-hf_download() {  # repo revision dir; uses a throwaway container when hf is not installed
-  if command -v hf >/dev/null; then
-    hf download "$1" --revision "$2" --local-dir "$3"
-  else
-    # The image by digest and every package by hash (install/hf-requirements.txt).
-    docker run --rm --user "$(id -u):$(id -g)" -e HOME=/tmp -e HF_TOKEN -v "$MODEL_ROOT:$MODEL_ROOT" \
-      -v "$PWD/install/hf-requirements.txt:/hf-requirements.txt:ro" \
-      python:3.12-slim@sha256:05cda9777409a9c3ffddd94a4c476b79f0769a0b4857f0c7ed9226b6800b0d6f \
-      sh -c 'pip install -q --disable-pip-version-check --require-hashes --target /tmp/hf -r /hf-requirements.txt &&
-        PYTHONPATH=/tmp/hf /tmp/hf/bin/hf download "$0" --revision "$1" --local-dir "$2"' "$1" "$2" "$3"
-  fi
-}
 
 # One ssh stream moves ~0.5 GB/s; eight parallel streams fill ~3.5 GB/s of the
 # cable. The final rsync picks up the small files and anything left over.

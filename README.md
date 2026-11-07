@@ -281,6 +281,18 @@ obsolete: tensor-core QSA prefill became the two-Spark default in RC15.
 The benchmark drivers are in [`bench/`](bench/) ([bench/README.md](bench/README.md)).
 See [docs/REPRODUCE.md](docs/REPRODUCE.md) for the exact commands.
 
+## One Spark: Qwen3.8-27B (candidate)
+
+`./start.sh --model 27b` (or `SPARKQWEN_MODEL=27b` in `.env`) serves
+[nvidia/Qwen3.8-27B-NVFP4](https://huggingface.co/nvidia/Qwen3.8-27B-NVFP4)
+on the Spark you run it on, with no worker and no fabric. It builds or pulls its
+own image (the `qwen3.8-27b` kernel target, tag suffix `-27b`), downloads the
+20 GiB checkpoint pinned in `install/checkpoint-27b.json` and serves the
+OpenAI API on `127.0.0.1:8893` as `qwen3.8-27b-atlas`, with native MTP and the
+tool-call guard. `stop`, `status`, `logs`, `build` and `download` work as
+for the pair. The profile (`install/profiles/27b.json`) is a candidate: it is
+not yet qualified, and its speed work is in progress.
+
 ## Other ways to run it
 
 **By hand:** every step of `./start.sh` as a separate command, in

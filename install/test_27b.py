@@ -1,0 +1,89 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+"""CPU checks for the single-Spark Qwen3.8-27B variant's launch contract."""
+import importlib.util
+import json
+import os
+from pathlib import Path
+import re
+import subprocess
+import unittest
+
+HERE = Path(__file__).resolve().parent
+spec = importlib.util.spec_from_file_location('atlas_serve', HERE/'serve.py')
+serve = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(serve)
+
+
+def profile():
+    return json.loads((HERE/'profiles'/'27b.json').read_text())
+
+
+def flag(argv, name):
+    hits = [a.split('=', 1)[1] for a in argv if a.startswith(name + '=')]
+    return hits[0] if len(hits) == 1 else None
+
+
+class SingleSpark(unittest.TestCase):
+    def launch(self, **env):
+        return serve.launch({'MODEL_PATH': '/models/nvidia--Qwen3.8-27B-NVFP4', **env}, profile())
+
+    def test_one_rank_on_the_27b_kernel_target_without_fabric(self):
+        argv, env = self.launch()
+        self.assertEqual(argv[0], '/usr/local/bin/spark')
+        self.assertEqual(flag(argv, '--kernel-target'), 'qwen3.8-27b')
+        self.assertEqual(flag(argv, '--model-from-path'), '/models/nvidia--Qwen3.8-27B-NVFP4')
+        for multi in ('--world-size', '--tp-size', '--ep-size', '--rank', '--master-addr'):
+            self.assertFalse(any(a.split('=', 1)[0] == multi for a in argv), multi)
+        self.assertFalse(any(k.startswith('NCCL_') or k == 'ATLAS_RDMA_RAILS' for k in env))
+
+    def test_serves_the_api_on_loopback_8893_under_the_27b_name(self):
+        argv, _ = self.launch()
+        self.assertEqual(flag(argv, '--bind'), '127.0.0.1')
+        self.assertEqual(flag(argv, '--port'), '8893')
+        self.assertEqual(flag(argv, '--model-name'), 'qwen3.8-27b-atlas')
+        self.assertIn('--tool-guard=on', argv)
+
+    def test_native_mtp_and_bf16_kv(self):
+        argv, _ = self.launch()
+        self.assertIn('--speculative', argv)
+        self.assertTrue(re.fullmatch(r'[1-9][0-9]*', flag(argv, '--num-drafts') or ''))
+        self.assertEqual(flag(argv, '--kv-cache-dtype'), 'bf16')
+
+    def test_ambient_engine_switches_cannot_change_the_profile(self):
+        _, env = self.launch(ATLAS_DENSE_PREFILL_LOWP='all', ATLAS_LOG_LEVEL='debug')
+        self.assertNotIn('ATLAS_DENSE_PREFILL_LOWP', env)
+        self.assertEqual(env['ATLAS_LOG_LEVEL'], 'debug')
+
+    def test_memory_share_override(self):
+        argv, _ = self.launch(SPARKQWEN_GPU_MEMORY_UTILIZATION='0.90')
+        self.assertEqual(flag(argv, '--gpu-memory-utilization'), '0.90')
+        with self.assertRaises(ValueError):
+            self.launch(SPARKQWEN_GPU_MEMORY_UTILIZATION='0.99')
+
+    def test_a_27b_profile_cannot_become_a_multi_rank_launch(self):
+        for extra in (['--world-size=2'], ['--tp-size=2'], ['--kernel-target=qwen3.8-flash-next']):
+            bad = profile()
+            bad['server_argv'] = [a for a in bad['server_argv'] if not a.startswith(extra[0].split('=')[0] + '=')] + extra
+            with self.subTest(extra=extra), self.assertRaises(ValueError):
+                serve.launch({'MODEL_PATH': '/m'}, bad)
+
+    def test_the_pair_profile_still_requires_its_cluster_contract(self):
+        pair = json.loads((HERE/'profiles'/'8x32k.json').read_text())
+        with self.assertRaises((KeyError, ValueError)):
+            serve.launch({'MODEL_PATH': '/m'}, pair)  # no NODE_RANK or fabric
+
+    def test_build_tags_the_27b_image_separately(self):
+        tag = lambda **e: subprocess.run([str(HERE/'build.sh'), '--tag'], capture_output=True, text=True,
+                                         env={**os.environ, **e}, check=True).stdout.strip()
+        pair, single = tag(), tag(SPARKQWEN_MODEL='27b')
+        self.assertEqual(single, pair + '-27b')
+
+    def test_checkpoint_pin_is_whole(self):
+        pin = json.loads((HERE/'checkpoint-27b.json').read_text())
+        self.assertEqual(pin['repository'], 'nvidia/Qwen3.8-27B-NVFP4')
+        self.assertRegex(pin['revision'], r'^[0-9a-f]{40}$')
+        self.assertEqual(pin['served_model_name'], 'qwen3.8-27b-atlas')
+
+
+if __name__ == '__main__':
+    unittest.main()
