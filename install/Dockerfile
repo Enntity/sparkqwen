@@ -62,6 +62,8 @@ RUN apt-get update -qq && apt-get install -y -qq --no-install-recommends ffmpeg 
 #   #198/#199 fast_weights CSF deferral and U32 staging tests: 2
 #   closure attestation in a single-target build: 1 (Atlas-Inf #250)
 #   cmd_ring under build CPU load: 1 (Atlas-Inf #251)
+#   dflash2_selector_abi HIP hash: 1 (Atlas-Inf b75da4a76/#329 changed the HIP
+#   kernel without updating the test's hash; fails on Atlas-Inf main itself)
 RUN --mount=type=cache,target=/build/target,id=atlas-cargo-target-sparkqwen,sharing=shared \
     LD_LIBRARY_PATH=/opt/cuda-stubs:/usr/local/cuda/lib64 \
     cargo test --locked --workspace --release --no-fail-fast -j "$BUILD_JOBS" -- --exact \
@@ -73,7 +75,8 @@ RUN --mount=type=cache,target=/build/target,id=atlas-cargo-target-sparkqwen,shar
       --skip fast_weights::expert_filter_tests::host_decoded_tensors_are_deferred \
       --skip fast_weights::header::tests::u32_stages_as_a_raw_four_byte_container \
       --skip the_baked_attestation_reproduces_from_the_tree \
-      --skip nccl_backend::rdma_pair::cmd_ring::tests::words_arrive_in_order_exactly_once_in_both_directions
+      --skip nccl_backend::rdma_pair::cmd_ring::tests::words_arrive_in_order_exactly_once_in_both_directions \
+      --skip hip_kernel_is_the_unmodified_upstream_implementation
 
 # Run the workspace lint gate with the same pinned Rust compiler as the image.
 RUN --mount=type=cache,target=/build/target,id=atlas-cargo-target-sparkqwen,sharing=shared \
