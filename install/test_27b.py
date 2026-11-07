@@ -51,7 +51,7 @@ class SingleSpark(unittest.TestCase):
 
     def test_ambient_engine_switches_cannot_change_the_profile(self):
         _, env = self.launch(ATLAS_DENSE_PREFILL_LOWP='all', ATLAS_LOG_LEVEL='debug')
-        self.assertNotIn('ATLAS_DENSE_PREFILL_LOWP', env)
+        self.assertEqual(env['ATLAS_DENSE_PREFILL_LOWP'], '1')  # the profile's W4A8 wins over ambient 'all'
         self.assertEqual(env['ATLAS_LOG_LEVEL'], 'debug')
 
     def test_memory_share_override(self):
@@ -77,6 +77,26 @@ class SingleSpark(unittest.TestCase):
                                          env={**os.environ, **e}, check=True).stdout.strip()
         pair, single = tag(), tag(SPARKQWEN_MODEL='27b')
         self.assertEqual(single, pair + '-27b')
+
+    def test_the_27b_engine_pin_is_its_own_and_whole(self):
+        pin = json.loads((HERE/'atlas-source-27b.json').read_text())
+        self.assertRegex(pin['commit'], r'^[0-9a-f]{40}$')
+        self.assertRegex(pin['tree'], r'^[0-9a-f]{40}$')
+        self.assertEqual(pin['kernel_target'], 'qwen3.8-27b')
+        pair = json.loads((HERE/'atlas-source.json').read_text())
+        self.assertEqual(pair['kernel_target'], 'qwen3.8-flash-next')
+        build = (HERE/'build.sh').read_text()
+        self.assertIn('pin=atlas-source-27b.json', build)
+
+    def test_profile_carries_the_measured_levers(self):
+        env = profile()['environment']
+        for lever in ('ATLAS_EXACT_VERIFY', 'ATLAS_DENSE_PREFILL_BF16MMA', 'ATLAS_GDN_CHUNK_TC',
+                      'ATLAS_QWEN38_PDL', 'ATLAS_QWEN38_DECODE_FUSE'):
+            self.assertEqual(env.get(lever), '1', lever)
+        # W4A8, not W4A4: W4A4 cost NLL in chat (see the 27B results).
+        self.assertEqual(env.get('ATLAS_DENSE_PREFILL_LOWP'), '1')
+        argv, _ = SingleSpark().launch()
+        self.assertEqual(flag(argv, '--mtp-quantization'), 'nvfp4')
 
     def test_checkpoint_pin_is_whole(self):
         pin = json.loads((HERE/'checkpoint-27b.json').read_text())

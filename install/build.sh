@@ -14,8 +14,8 @@ tree=$(git -C "$product" rev-parse HEAD:install)
 # SPARKQWEN_MODEL picks the variant: flash-next (default, the pair) or 27b
 # (Qwen3.8-27B on one Spark). Each has its own kernel target and image tag.
 case ${SPARKQWEN_MODEL:-flash-next} in
-  flash-next) target=qwen3.8-flash-next suffix="" ;;
-  27b) target=qwen3.8-27b suffix=-27b ;;
+  flash-next) target=qwen3.8-flash-next suffix="" pin=atlas-source.json ;;
+  27b) target=qwen3.8-27b suffix=-27b pin=atlas-source-27b.json ;;
   *) echo 'SPARKQWEN_MODEL must be flash-next or 27b' >&2; exit 2 ;;
 esac
 image=${SPARKQWEN_IMAGE_REPO:-ghcr.io/enntity/atlas-sparkqwen}:${tree:0:12}$suffix
@@ -24,9 +24,9 @@ image=${SPARKQWEN_IMAGE_REPO:-ghcr.io/enntity/atlas-sparkqwen}:${tree:0:12}$suff
 [[ -z $(git -C "$product" status --porcelain --untracked-files=all -- install) ]] || {
   echo 'install/ has local changes; commit them first (the image tag is its git tree)' >&2; exit 2; }
 version=$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["version"])' "$here/release.json")
-read -r repo commit pin_tree < <(python3 -c 'import json,sys; m=json.load(open(sys.argv[1])); print(m["repository"], m["commit"], m["tree"])' "$here/atlas-source.json")
+read -r repo commit pin_tree < <(python3 -c 'import json,sys; m=json.load(open(sys.argv[1])); print(m["repository"], m["commit"], m["tree"])' "$here/$pin")
 [[ $commit =~ ^[0-9a-f]{40}$ && $pin_tree =~ ^[0-9a-f]{40}$ ]] || {
-  echo "install/atlas-source.json pins no engine yet (commit '$commit', tree '$pin_tree')." >&2
+  echo "install/$pin pins no engine yet (commit '$commit', tree '$pin_tree')." >&2
   echo 'The SparkQwen engine series is still being cut; there is nothing to build until the pin is filled in.' >&2
   exit 2; }
 
@@ -44,7 +44,7 @@ git -C "$product" archive HEAD install | tar -x -C "$context"
 cp "$here/dockerignore" "$context/.dockerignore"
 
 docker build --build-arg "INSTALL_TREE=$tree" --build-arg "PRODUCT_VERSION=$version" \
-  --build-arg "BUILD_JOBS=${ATLAS_BUILD_JOBS:-4}" --build-arg "ATLAS_TARGET_MODEL=$target" \
+  --build-arg "BUILD_JOBS=${ATLAS_BUILD_JOBS:-4}" --build-arg "ATLAS_TARGET_MODEL=$target" --build-arg "ENGINE_PIN=$pin" \
   -f "$context/install/Dockerfile" -t "$image" "$context" >&2
 [[ $(docker image inspect -f '{{.Architecture}} {{index .Config.Labels "io.enntity.sparkqwen.install-tree"}}' "$image") == "arm64 $tree" ]] || {
   echo "built image $image has the wrong architecture or install-tree label" >&2; exit 1; }

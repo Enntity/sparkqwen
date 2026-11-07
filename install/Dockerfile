@@ -91,7 +91,9 @@ COPY --from=builder /opt/cutlass/LICENSE.txt /opt/atlas/notices/CUTLASS-LICENSE.
 COPY --from=builder /build/dist/notices-rust/ /opt/atlas/notices/rust/
 COPY install/serve.py install/release.json /opt/atlas/
 COPY install/profiles/ /opt/atlas/profiles/
-COPY install/atlas-source.json /opt/atlas/source-manifest.json
+# The variant's engine pin (build.sh passes atlas-source.json or atlas-source-27b.json).
+ARG ENGINE_PIN=atlas-source.json
+COPY install/$ENGINE_PIN /opt/atlas/source-manifest.json
 COPY install/checkpoint.json /opt/atlas/checkpoint.json
 COPY engine/LICENSE /LICENSE
 ENV LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64:/usr/local/cuda/lib64
