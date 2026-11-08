@@ -206,14 +206,19 @@ def launch_single(environ, profile):
     for flag in ('--world-size', '--tp-size', '--ep-size', '--rank', '--master-addr'):
         if _flag_values(args, flag):
             raise ValueError(f'the 27B profile runs on one Spark; {flag} is not allowed')
-    if '--speculative' not in args or not re.fullmatch(r'[1-9][0-9]*', (_flag_values(args, '--num-drafts') or [''])[0] or ''):
-        raise ValueError('the 27B profile requires --speculative and a positive --num-drafts')
-    model = environ.get('MODEL_PATH', '/models/checkpoint')
-    if not Path(model).is_absolute() or any(c in model for c in '\r\n\0'):
-        raise ValueError('MODEL_PATH must be an absolute path')
+    if '--dflash' not in args or _flag_values(args, '--draft-model') != ['${draft}'] or \
+            not re.fullmatch(r'[1-9][0-9]*', (_flag_values(args, '--dflash-gamma') or [''])[0] or ''):
+        raise ValueError('the 27B profile requires --dflash, --draft-model=${draft} and a positive --dflash-gamma')
+    paths = {}
+    for key, default in (('MODEL_PATH', '/models/checkpoint'), ('DRAFT_PATH', None)):
+        path = environ.get(key, default) or ''
+        if not Path(path).is_absolute() or any(c in path for c in '\r\n\0'):
+            raise ValueError(f'{key} must be an absolute path')
+        paths[key] = path
     env = _engine_env(environ, profile)
     env['SPARKQWEN_MODE'] = 'single'
-    args = _memory_share(environ, [str(a).replace('${model}', model) for a in args])
+    args = _memory_share(environ, [str(a).replace('${model}', paths['MODEL_PATH']).replace('${draft}', paths['DRAFT_PATH'])
+                                   for a in args])
     name = environ.get('SERVED_MODEL_NAME', 'qwen3.8-27b-atlas')
     if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._/-]{0,127}', name):
         raise ValueError('Invalid SERVED_MODEL_NAME')

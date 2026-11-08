@@ -3,8 +3,15 @@
   "repository": "nvidia/Qwen3.8-27B-NVFP4",
   "revision": "482ca0f3832238542f8f5295dde86b5f22711d80",
   "size_gib": 20.4,
-  "format": "ModelOpt MIXED_PRECISION: MLP NVFP4 W4A16 (group 16), Gated DeltaNet and attention projections FP8 per-tensor, lm_head NVFP4; the native MTP head is kept in BF16",
+  "format": "ModelOpt MIXED_PRECISION: MLP NVFP4 W4A16 (group 16), Gated DeltaNet and attention projections FP8 per-tensor, lm_head NVFP4",
   "why": "NVIDIA's own quantization is preferred, as for the pair's checkpoint. Apache-2.0 and ungated; context up to 262K tokens per its card.",
   "served_model_name": "qwen3.8-27b-atlas",
-  "license": "apache-2.0"
+  "license": "apache-2.0",
+  "draft": {
+    "repository": "incoai/Qwen3.8-27B-DFlash2",
+    "revision": "015e795645c74b1a0eeef3b570031fb62e769bc5",
+    "size_gib": 3.6,
+    "why": "The published DFlash2 block drafter for Qwen3.8-27B. Atlas verifies its blocks exactly, so it changes speed, not text.",
+    "license": "apache-2.0"
+  }
 }

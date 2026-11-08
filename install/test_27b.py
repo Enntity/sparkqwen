@@ -25,7 +25,8 @@ def flag(argv, name):
 
 class SingleSpark(unittest.TestCase):
     def launch(self, **env):
-        return serve.launch({'MODEL_PATH': '/models/nvidia--Qwen3.8-27B-NVFP4', **env}, profile())
+        return serve.launch({'MODEL_PATH': '/models/nvidia--Qwen3.8-27B-NVFP4',
+                             'DRAFT_PATH': '/models/incoai--Qwen3.8-27B-DFlash2', **env}, profile())
 
     def test_one_rank_on_the_27b_kernel_target_without_fabric(self):
         argv, env = self.launch()
@@ -43,11 +44,24 @@ class SingleSpark(unittest.TestCase):
         self.assertEqual(flag(argv, '--model-name'), 'qwen3.8-27b-atlas')
         self.assertIn('--tool-guard=on', argv)
 
-    def test_native_mtp_and_bf16_kv(self):
+    def test_dflash2_drafter_and_bf16_kv(self):
         argv, _ = self.launch()
-        self.assertIn('--speculative', argv)
-        self.assertTrue(re.fullmatch(r'[1-9][0-9]*', flag(argv, '--num-drafts') or ''))
+        self.assertIn('--dflash', argv)
+        self.assertEqual(flag(argv, '--draft-model'), '/models/incoai--Qwen3.8-27B-DFlash2')
+        self.assertEqual(flag(argv, '--dflash-gamma'), '8')
+        self.assertNotIn('--speculative', argv)
         self.assertEqual(flag(argv, '--kv-cache-dtype'), 'bf16')
+
+    def test_the_drafter_path_must_be_given_and_absolute(self):
+        for bad in ({'DRAFT_PATH': ''}, {'DRAFT_PATH': 'models/draft'}, {'DRAFT_PATH': '/m\n--x'}):
+            with self.subTest(bad=bad), self.assertRaises(ValueError):
+                self.launch(**bad)
+
+    def test_a_27b_profile_must_speculate(self):
+        bad = profile()
+        bad['server_argv'] = [a for a in bad['server_argv'] if a.split('=')[0] not in ('--dflash', '--draft-model', '--dflash-gamma')]
+        with self.assertRaises(ValueError):
+            serve.launch({'MODEL_PATH': '/m', 'DRAFT_PATH': '/d'}, bad)
 
     def test_ambient_engine_switches_cannot_change_the_profile(self):
         _, env = self.launch(ATLAS_DENSE_PREFILL_LOWP='all', ATLAS_LOG_LEVEL='debug')
@@ -65,7 +79,7 @@ class SingleSpark(unittest.TestCase):
             bad = profile()
             bad['server_argv'] = [a for a in bad['server_argv'] if not a.startswith(extra[0].split('=')[0] + '=')] + extra
             with self.subTest(extra=extra), self.assertRaises(ValueError):
-                serve.launch({'MODEL_PATH': '/m'}, bad)
+                serve.launch({'MODEL_PATH': '/m', 'DRAFT_PATH': '/d'}, bad)
 
     def test_the_pair_profile_still_requires_its_cluster_contract(self):
         pair = json.loads((HERE/'profiles'/'8x32k.json').read_text())
@@ -91,18 +105,18 @@ class SingleSpark(unittest.TestCase):
     def test_profile_carries_the_measured_levers(self):
         env = profile()['environment']
         for lever in ('ATLAS_EXACT_VERIFY', 'ATLAS_DENSE_PREFILL_BF16MMA', 'ATLAS_GDN_CHUNK_TC',
-                      'ATLAS_QWEN38_PDL', 'ATLAS_QWEN38_DECODE_FUSE'):
+                      'ATLAS_QWEN38_PDL', 'ATLAS_QWEN38_DECODE_FUSE', 'ATLAS_WIDE_GEMV'):
             self.assertEqual(env.get(lever), '1', lever)
         # W4A8, not W4A4: W4A4 cost NLL in chat (see the 27B results).
         self.assertEqual(env.get('ATLAS_DENSE_PREFILL_LOWP'), '1')
-        argv, _ = SingleSpark().launch()
-        self.assertEqual(flag(argv, '--mtp-quantization'), 'nvfp4')
 
     def test_checkpoint_pin_is_whole(self):
         pin = json.loads((HERE/'checkpoint-27b.json').read_text())
         self.assertEqual(pin['repository'], 'nvidia/Qwen3.8-27B-NVFP4')
         self.assertRegex(pin['revision'], r'^[0-9a-f]{40}$')
         self.assertEqual(pin['served_model_name'], 'qwen3.8-27b-atlas')
+        self.assertEqual(pin['draft']['repository'], 'incoai/Qwen3.8-27B-DFlash2')
+        self.assertRegex(pin['draft']['revision'], r'^[0-9a-f]{40}$')
 
 
 if __name__ == '__main__':

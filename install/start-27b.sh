@@ -20,10 +20,11 @@ MODEL_ROOT=${MODEL_ROOT:-$HOME/models/sparkqwen}
 PROFILE=${PROFILE:-27b}
 NAME=atlas-sparkqwen-27b
 API=http://127.0.0.1:8893
-read -r CHECKPOINT_REPO CHECKPOINT_REVISION SERVED < <(python3 -c 'import json,sys; m=json.load(open(sys.argv[1])); print(m["repository"], m["revision"], m["served_model_name"])' install/checkpoint-27b.json)
+read -r CHECKPOINT_REPO CHECKPOINT_REVISION SERVED DRAFT_REPO DRAFT_REVISION < <(python3 -c 'import json,sys; m=json.load(open(sys.argv[1])); print(m["repository"], m["revision"], m["served_model_name"], m["draft"]["repository"], m["draft"]["revision"])' install/checkpoint-27b.json)
 IMAGE=${IMAGE:-$(install/build.sh --tag)}
 mkdir -p "$MODEL_ROOT"; MODEL_ROOT=$(realpath "$MODEL_ROOT")
 checkpoint=$MODEL_ROOT/${CHECKPOINT_REPO/\//--}
+draft=$MODEL_ROOT/${DRAFT_REPO/\//--}
 [[ -z ${GPU_MEMORY_UTILIZATION:-} || $GPU_MEMORY_UTILIZATION =~ ^0\.(7[0-9]|8[0-9]|9[0-5])$ ]] ||
   { echo 'GPU_MEMORY_UTILIZATION must be 0.70 to 0.95' >&2; exit 2; }
 
@@ -36,11 +37,16 @@ build() {
   fi
 }
 
+fetch() {  # REPO REVISION DIR
+  [[ $(cat "$3/.sparkqwen-revision" 2>/dev/null) == "$2" ]] && return
+  say "download $1 @ $2"
+  hf_download "$1" "$2" "$3"
+  echo "$2" > "$3/.sparkqwen-revision"
+}
+
 download() {
-  [[ $(cat "$checkpoint/.sparkqwen-revision" 2>/dev/null) == "$CHECKPOINT_REVISION" ]] && return
-  say "download $CHECKPOINT_REPO @ $CHECKPOINT_REVISION"
-  hf_download "$CHECKPOINT_REPO" "$CHECKPOINT_REVISION" "$checkpoint"
-  echo "$CHECKPOINT_REVISION" > "$checkpoint/.sparkqwen-revision"
+  fetch "$CHECKPOINT_REPO" "$CHECKPOINT_REVISION" "$checkpoint"
+  fetch "$DRAFT_REPO" "$DRAFT_REVISION" "$draft"
 }
 
 stop() { docker rm -f "$NAME" >/dev/null 2>&1 || true; }
@@ -59,8 +65,9 @@ serve() {
   docker run -d --name "$NAME" --restart no --network host --ipc host \
     --shm-size 16g --memory 114g --gpus all --security-opt no-new-privileges=true --stop-timeout 60 \
     --mount "type=bind,src=$checkpoint,dst=$checkpoint,readonly" \
+    --mount "type=bind,src=$draft,dst=$draft,readonly" \
     --mount "type=bind,src=$HOME/.cache/atlas-cuda,dst=/atlas-cuda-cache" ${profile_mount[@]+"${profile_mount[@]}"} \
-    -e MODEL_PATH="$checkpoint" -e SPARKQWEN_PROFILE="$profile" -e SERVED_MODEL_NAME="$SERVED" \
+    -e MODEL_PATH="$checkpoint" -e DRAFT_PATH="$draft" -e SPARKQWEN_PROFILE="$profile" -e SERVED_MODEL_NAME="$SERVED" \
     -e SPARKQWEN_TOOL_GUARD="${TOOL_GUARD:-on}" -e SPARKQWEN_TOOL_GUARD_MAX_BYTES="${TOOL_GUARD_MAX_BYTES:-1048576}" \
     -e SPARKQWEN_TOOL_GUARD_ALLOW_HOSTS="${TOOL_GUARD_ALLOW_HOSTS:-}" -e SPARKQWEN_TOOL_GUARD_DENY_HOSTS="${TOOL_GUARD_DENY_HOSTS:-}" \
     ${GPU_MEMORY_UTILIZATION:+-e SPARKQWEN_GPU_MEMORY_UTILIZATION="$GPU_MEMORY_UTILIZATION"} \

@@ -1,10 +1,10 @@
 {
   "schema": "sparkqwen.atlas-engine-source/v3",
-  "note": "Enntity/atlas q27/integ: the Qwen3.8-27B single-Spark serving work (exact MTP verify, MTP drafter prefill on tensor cores, fused GDN decode, native FP8 attention option) on the score-path branch proposed as Atlas-Inf/atlas#331. The pair keeps install/atlas-source.json.",
+  "note": "Enntity/atlas q27/dflash-wide: the Qwen3.8-27B single-Spark serving work (exact MTP and DFlash2 verify, MTP drafter prefill on tensor cores, fused GDN decode, wide row-exact verify GEMVs, native FP8 attention option) on the score-path branch proposed as Atlas-Inf/atlas#331. The pair keeps install/atlas-source.json.",
   "repository": "https://github.com/Enntity/atlas.git",
-  "branch": "q27/integ",
-  "commit": "090caeea7cf264286b6ff3e59d02092cb6ce0988",
-  "tree": "4f9766d0c784957bca71243cc6aae8be1e79614b",
+  "branch": "q27/dflash-wide",
+  "commit": "5e82fcf866068e4489b97c863ebc6f8c99393be3",
+  "tree": "8e1d36498ad405db59eb4e0d995fe852e8f0123c",
   "kernel_target": "qwen3.8-27b",
   "model_type": "qwen3_5",
   "license": "AGPL-3.0-only"
