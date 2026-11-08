@@ -77,6 +77,27 @@ class SingleSpark(unittest.TestCase):
         self.assertEqual(flag(argv, '--dflash-gamma'), '16')
         self.assertEqual(argv.count('--dflash'), 1)
 
+    def test_the_three_27b_profiles(self):
+        def launch(name, **env):
+            p = json.loads((HERE/'profiles'/f'{name}.json').read_text())
+            return serve.launch({'MODEL_PATH': '/m', 'DRAFT_PATH': '/d', 'DSPINE_PATH': self.DSPINE, **env}, p)
+        for name, util, seqs, alt in (('27b', '0.85', '64', None), ('27b-max', '0.92', '32', self.DSPINE),
+                                      ('27b-saver', '0.56', '8', None)):
+            with self.subTest(profile=name):
+                argv, _ = launch(name)
+                self.assertEqual(flag(argv, '--gpu-memory-utilization'), util)
+                self.assertEqual(flag(argv, '--max-num-seqs'), seqs)
+                self.assertEqual(flag(argv, '--max-batch-size'), seqs)
+                self.assertEqual(flag(argv, '--max-seq-len'), '262144')
+                self.assertEqual(flag(argv, '--kv-cache-dtype'), 'bf16')
+                self.assertEqual(flag(argv, '--draft-model-alt'), alt)
+        argv, _ = launch('27b-max', SPARKQWEN_DRAFTER='dflash2')  # the environment overrides the profile
+        self.assertIsNone(flag(argv, '--draft-model-alt'))
+        argv, _ = launch('27b-saver', SPARKQWEN_GPU_MEMORY_UTILIZATION='0.45')  # the 27B floor is 0.40
+        self.assertEqual(flag(argv, '--gpu-memory-utilization'), '0.45')
+        with self.assertRaises(ValueError):
+            launch('27b-saver', SPARKQWEN_GPU_MEMORY_UTILIZATION='0.39')
+
     def test_an_unknown_drafter_or_a_missing_dspine_path_is_refused(self):
         for bad in ({'SPARKQWEN_DRAFTER': 'eagle'}, {'SPARKQWEN_DRAFTER': 'dspine'},
                     {'SPARKQWEN_DRAFTER': 'both', 'DSPINE_PATH': 'models/dspine'}):
@@ -202,6 +223,7 @@ class SingleSpark(unittest.TestCase):
     def test_start_offers_the_checked_drafters(self):
         start = (HERE/'start-27b.sh').read_text()
         self.assertIn('DRAFTER=${DRAFTER:-dflash2}', start)
+        self.assertIn('.get("drafter", "dflash2")', start)
         self.assertIn('^(dflash2|dspine|both)$', start)
         self.assertIn('python3 install/check_files.py install/checkpoint-27b.json dspine "$dspine"', start)
         self.assertIn('dspine_mount=(--mount "type=bind,src=$dspine,dst=$dspine,readonly")', start)

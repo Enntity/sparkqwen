@@ -189,12 +189,14 @@ def _engine_env(environ, profile):
     return env
 
 
-def _memory_share(environ, args):
+def _memory_share(environ, args, low=7):
+    """The SPARKQWEN_GPU_MEMORY_UTILIZATION override, 0.{low}0 to 0.95: the
+    pair's floor is 0.70; the 27B's saver profile runs at 0.56, so its floor is 0.40."""
     util = environ.get('SPARKQWEN_GPU_MEMORY_UTILIZATION')
     if not util:
         return args
-    if not re.fullmatch(r'0\.(7[0-9]|8[0-9]|9[0-5])', util):
-        raise ValueError('SPARKQWEN_GPU_MEMORY_UTILIZATION must be 0.70 to 0.95')
+    if not re.fullmatch(r'0\.([0-8][0-9]|9[0-5])', util) or int(util[2]) < low:
+        raise ValueError(f'SPARKQWEN_GPU_MEMORY_UTILIZATION must be 0.{low}0 to 0.95')
     return [f'--gpu-memory-utilization={util}' if a.startswith('--gpu-memory-utilization=') else a for a in args]
 
 
@@ -233,7 +235,8 @@ def launch_single(environ, profile):
     if '--dflash' not in args or _flag_values(args, '--draft-model') != ['${draft}'] or \
             not re.fullmatch(r'[1-9][0-9]*', (_flag_values(args, '--dflash-gamma') or [''])[0] or ''):
         raise ValueError('the 27B profile requires --dflash, --draft-model=${draft} and a positive --dflash-gamma')
-    drafter = environ.get('SPARKQWEN_DRAFTER') or 'dflash2'
+    # The profile names its drafter (27b-max: both); SPARKQWEN_DRAFTER overrides.
+    drafter = environ.get('SPARKQWEN_DRAFTER') or profile.get('drafter') or 'dflash2'
     if drafter not in DRAFTERS:
         raise ValueError(f'SPARKQWEN_DRAFTER must be one of {", ".join(DRAFTERS)}')
     args = _with_drafter(args, drafter)
@@ -249,7 +252,7 @@ def launch_single(environ, profile):
     env = _engine_env(environ, profile)
     env['SPARKQWEN_MODE'] = 'single'
     args = _memory_share(environ, [str(a).replace('${model}', paths['MODEL_PATH']).replace('${draft}', paths['DRAFT_PATH'])
-                                   .replace('${dspine}', paths.get('DSPINE_PATH', '')) for a in args])
+                                   .replace('${dspine}', paths.get('DSPINE_PATH', '')) for a in args], low=4)
     name = environ.get('SERVED_MODEL_NAME', 'qwen3.8-27b-atlas')
     if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._/-]{0,127}', name):
         raise ValueError('Invalid SERVED_MODEL_NAME')

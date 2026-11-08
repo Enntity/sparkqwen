@@ -1,10 +1,10 @@
 {
   "schema": "sparkqwen.atlas-engine-source/v3",
-  "note": "Enntity/atlas q27/rc1: q27/gdn-defer (the Qwen3.8-27B single-Spark serving work: exact MTP and DFlash2 verify, single-sequence and batched, MTP drafter prefill on tensor cores, fused GDN decode and verify with a deferred exact commit, wide row-exact verify GEMVs, row-invariant tensor-core skinny GEMMs for decode and verify, native FP8 attention option) merged with q27/fp4-gdn (native NVFP4 GDN projections: BF16 tensor-core prefill, the loader arms and their bit-parity gates), on the score-path branch proposed as Atlas-Inf/atlas#331. The pair keeps install/atlas-source.json.",
+  "note": "Enntity/atlas q27/conc: q27/rc1 (q27/gdn-defer, the Qwen3.8-27B single-Spark serving work: exact MTP and DFlash2 verify, single-sequence and batched, fused GDN decode and verify with a deferred exact commit, row-invariant tensor-core skinny GEMMs; merged with q27/fp4-gdn, native NVFP4 GDN projections) with q27/dspine (the DSpine drafter and --draft-model-alt) and the concurrency series: deferred-commit-only verify pools, no MTP head under DFlash, the GDN qkv/z sources freed, the drafter's per-sequence pools in the KV budget, DFlash verify width that follows the batch (plain decode past sixteen sequences) and an exact LM head for batched decode past sixteen. The pair keeps install/atlas-source.json.",
   "repository": "https://github.com/Enntity/atlas.git",
-  "branch": "q27/rc1",
-  "commit": "3ef62d4d1a18adc3516e592edfc9dfd501397211",
-  "tree": "9d0ff8d85d8cf9732ebcd14201348d743059ee56",
+  "branch": "q27/conc",
+  "commit": "8d53114761ad637e5e176475467659518f35a720",
+  "tree": "c18463ca31408429a4068f345feac96bfe9c5bdf",
   "kernel_target": "qwen3.8-27b",
   "model_type": "qwen3_5",
   "license": "AGPL-3.0-only"

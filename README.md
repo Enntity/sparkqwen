@@ -301,12 +301,21 @@ tool-call guard. `DRAFTER=dspine` drafts with Tencent's
 [tencent/Qwen3.8-27B-DSpine-b16](https://huggingface.co/tencent/Qwen3.8-27B-DSpine-b16)
 instead (Apache-2.0, 3.8 GiB, 16-token blocks that reach further on code and
 JSON), and `DRAFTER=both` loads both drafters and lets each request use
-whichever its recent rounds favour; `dflash2` stays the default. Its verify is exact: alone or in a batch of up to eight, each
+whichever its recent rounds favour; `dflash2` stays the default. Its verify is exact: alone or in a batch, each
 request's text is byte-identical to plain serial decoding of that request
-alone, with thinking on or off. `stop`,
-`status`, `logs`, `build` and `download` work as for the pair. The profile
-(`install/profiles/27b.json`) is a candidate: it is not yet qualified, and its
-speed work is in progress.
+alone, with thinking on or off. Speculation follows the batch (full 8-token
+blocks up to eight live requests, 4-token ones up to sixteen, plain batched
+decode past that). `stop`, `status`, `logs`, `build` and `download` work as for
+the pair. Three profiles (`PROFILE=`, in `install/profiles/`), every one with
+262,144-token requests:
+
+| profile | drafter | GPU memory share | concurrent requests |
+|---|---|---|---|
+| `27b` (default) | DFlash2 | 0.85 | 64 |
+| `27b-max` | DFlash2 + DSpine | 0.92 | 32 |
+| `27b-saver` | DFlash2 | 0.56 | 8 |
+
+They are candidates: not yet qualified.
 
 ## Other ways to run it
 

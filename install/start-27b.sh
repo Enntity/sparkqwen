@@ -9,10 +9,11 @@
 #   stop | status | logs
 #
 # Settings (environment or .env): MODEL_ROOT (default ~/models/sparkqwen),
-# PROFILE (default 27b, or a JSON file of your own), DRAFTER (dflash2, the
-# default; dspine; or both: DFlash2 and DSpine, each request on whichever its
-# recent rounds favour), GPU_MEMORY_UTILIZATION (0.70-0.95), IMAGE, PULL=0
-# (always build), TOOL_GUARD* as for the pair.
+# PROFILE (27b, the default; 27b-max; 27b-saver; or a JSON file of your own),
+# DRAFTER (the profile's: dflash2, or both for 27b-max; dspine; both: DFlash2
+# and DSpine, each request on whichever its recent rounds favour),
+# GPU_MEMORY_UTILIZATION (0.40-0.95), IMAGE, PULL=0 (always build), TOOL_GUARD*
+# as for the pair.
 set -euo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
 # shellcheck source=install/common.sh
@@ -28,14 +29,17 @@ mkdir -p "$MODEL_ROOT"; MODEL_ROOT=$(realpath "$MODEL_ROOT")
 checkpoint=$MODEL_ROOT/${CHECKPOINT_REPO/\//--}
 draft=$MODEL_ROOT/${DRAFT_REPO/\//--}
 dspine=$MODEL_ROOT/${DSPINE_REPO/\//--}
+profile_file=$PROFILE; [[ -f $profile_file ]] || profile_file=install/profiles/$PROFILE.json
+[[ -f $profile_file ]] || { echo "PROFILE: no $profile_file" >&2; exit 2; }
+DRAFTER=${DRAFTER:-$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1])).get("drafter", "dflash2"))' "$profile_file")}
 DRAFTER=${DRAFTER:-dflash2}
 [[ $DRAFTER =~ ^(dflash2|dspine|both)$ ]] || { echo 'DRAFTER must be dflash2, dspine or both' >&2; exit 2; }
 weights=$MODEL_ROOT/${OVERLAY_REPO/\//--}
 # The served checkpoint: NVIDIA's files linked, TandemLLM's GDN and attention
 # projections re-keyed in (install/tandem_overlay.py). It sits next to $checkpoint.
 overlay=$checkpoint+tandem-gdn-attn
-[[ -z ${GPU_MEMORY_UTILIZATION:-} || $GPU_MEMORY_UTILIZATION =~ ^0\.(7[0-9]|8[0-9]|9[0-5])$ ]] ||
-  { echo 'GPU_MEMORY_UTILIZATION must be 0.70 to 0.95' >&2; exit 2; }
+[[ -z ${GPU_MEMORY_UTILIZATION:-} || $GPU_MEMORY_UTILIZATION =~ ^0\.([4-8][0-9]|9[0-5])$ ]] ||
+  { echo 'GPU_MEMORY_UTILIZATION must be 0.40 to 0.95' >&2; exit 2; }
 
 build() {
   say "image $IMAGE"
