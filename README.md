@@ -291,8 +291,9 @@ own image (the `qwen3.8-27b` kernel target, tag suffix `-27b`), downloads the
 [incoai/Qwen3.8-27B-DFlash2](https://huggingface.co/incoai/Qwen3.8-27B-DFlash2)
 drafter pinned in `install/checkpoint-27b.json`, and serves the OpenAI API on
 `127.0.0.1:8893` as `qwen3.8-27b-atlas`, with DFlash2 speculation and the
-tool-call guard. Its verify is exact: one request at a time, the text is
-byte-identical to plain serial decoding, with thinking on or off. `stop`,
+tool-call guard. Its verify is exact: alone or in a batch of up to eight, each
+request's text is byte-identical to plain serial decoding of that request
+alone, with thinking on or off. `stop`,
 `status`, `logs`, `build` and `download` work as for the pair. The profile
 (`install/profiles/27b.json`) is a candidate: it is not yet qualified, and its
 speed work is in progress.
