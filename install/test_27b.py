@@ -89,6 +89,7 @@ class SingleSpark(unittest.TestCase):
                 self.assertEqual(flag(argv, '--max-num-seqs'), seqs)
                 self.assertEqual(flag(argv, '--max-batch-size'), seqs)
                 self.assertEqual(flag(argv, '--max-seq-len'), '262144')
+                self.assertEqual(flag(argv, '--request-timeout'), '3600')
                 self.assertEqual(flag(argv, '--kv-cache-dtype'), 'bf16')
                 self.assertEqual(flag(argv, '--draft-model-alt'), alt)
         argv, _ = launch('27b-max', SPARKQWEN_DRAFTER='dflash2')  # the environment overrides the profile
@@ -161,6 +162,7 @@ class SingleSpark(unittest.TestCase):
                       'ATLAS_QWEN38_VERIFY_DEFER',
                       'ATLAS_SKINNY_MMA'):
             self.assertEqual(env.get(lever), '1', lever)
+        self.assertEqual(env.get('ATLAS_DECODE_TIME_SHARE'), '0.3')
         # W4A8, not W4A4: W4A4 cost NLL in chat (see the 27B results).
         self.assertEqual(env.get('ATLAS_DENSE_PREFILL_LOWP'), '1')
         # The skinny kernels supersede the wide twins; one verify path.
