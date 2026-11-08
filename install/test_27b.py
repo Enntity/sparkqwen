@@ -106,6 +106,7 @@ class SingleSpark(unittest.TestCase):
         env = profile()['environment']
         for lever in ('ATLAS_EXACT_VERIFY', 'ATLAS_DENSE_PREFILL_BF16MMA', 'ATLAS_GDN_CHUNK_TC',
                       'ATLAS_QWEN38_PDL', 'ATLAS_QWEN38_DECODE_FUSE', 'ATLAS_QWEN38_VERIFY_FUSE',
+                      'ATLAS_QWEN38_VERIFY_DEFER',
                       'ATLAS_SKINNY_MMA'):
             self.assertEqual(env.get(lever), '1', lever)
         # W4A8, not W4A4: W4A4 cost NLL in chat (see the 27B results).
