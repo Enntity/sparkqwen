@@ -14,6 +14,9 @@ HERE = Path(__file__).resolve().parent
 spec = importlib.util.spec_from_file_location('atlas_serve', HERE/'serve.py')
 serve = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(serve)
+cspec = importlib.util.spec_from_file_location('check_files', HERE/'check_files.py')
+check_files = importlib.util.module_from_spec(cspec)
+cspec.loader.exec_module(check_files)
 ospec = importlib.util.spec_from_file_location('tandem_overlay', HERE/'tandem_overlay.py')
 overlay = importlib.util.module_from_spec(ospec)
 ospec.loader.exec_module(overlay)
@@ -57,6 +60,28 @@ class SingleSpark(unittest.TestCase):
         self.assertEqual(flag(argv, '--dflash-gamma'), '8')
         self.assertNotIn('--speculative', argv)
         self.assertEqual(flag(argv, '--kv-cache-dtype'), 'bf16')
+
+    DSPINE = '/models/tencent--Qwen3.8-27B-DSpine-b16'
+
+    def test_drafter_choice(self):
+        argv, _ = self.launch()  # the default stays DFlash2 at gamma 8
+        self.assertEqual(flag(argv, '--dflash-gamma'), '8')
+        self.assertIsNone(flag(argv, '--draft-model-alt'))
+        argv, _ = self.launch(SPARKQWEN_DRAFTER='dspine', DSPINE_PATH=self.DSPINE)
+        self.assertEqual(flag(argv, '--draft-model'), self.DSPINE)
+        self.assertEqual(flag(argv, '--dflash-gamma'), '16')
+        self.assertIsNone(flag(argv, '--draft-model-alt'))
+        argv, _ = self.launch(SPARKQWEN_DRAFTER='both', DSPINE_PATH=self.DSPINE)
+        self.assertEqual(flag(argv, '--draft-model'), '/models/incoai--Qwen3.8-27B-DFlash2')
+        self.assertEqual(flag(argv, '--draft-model-alt'), self.DSPINE)
+        self.assertEqual(flag(argv, '--dflash-gamma'), '16')
+        self.assertEqual(argv.count('--dflash'), 1)
+
+    def test_an_unknown_drafter_or_a_missing_dspine_path_is_refused(self):
+        for bad in ({'SPARKQWEN_DRAFTER': 'eagle'}, {'SPARKQWEN_DRAFTER': 'dspine'},
+                    {'SPARKQWEN_DRAFTER': 'both', 'DSPINE_PATH': 'models/dspine'}):
+            with self.subTest(bad=bad), self.assertRaises(ValueError):
+                self.launch(**bad)
 
     def test_the_drafter_path_must_be_given_and_absolute(self):
         for bad in ({'DRAFT_PATH': ''}, {'DRAFT_PATH': 'models/draft'}, {'DRAFT_PATH': '/m\n--x'}):
@@ -151,6 +176,48 @@ class SingleSpark(unittest.TestCase):
                 self.assertRegex(text, r'Apache(-2\.0| License 2\.0)')
                 self.assertRegex(text, r'(not|never) TandemLLM.s code')
         self.assertIn('ab09c92fa4a90d5cfd9d012fe92831c886efd9b2', (ROOT/'NOTICE').read_text())
+
+    def test_dspine_pin_is_whole(self):
+        d = json.loads((HERE/'checkpoint-27b.json').read_text())['dspine']
+        self.assertEqual(d['repository'], 'tencent/Qwen3.8-27B-DSpine-b16')
+        self.assertEqual(d['revision'], 'ea909c0f5fab8865f9e14600334f55f7ce47308f')
+        self.assertEqual(d['license'], 'apache-2.0')
+        self.assertEqual(d['gamma'], int(serve.DSPINE_GAMMA))
+        self.assertEqual(set(d['files']), {'config.json', 'model.safetensors', 'LICENSE', 'README.md'})
+        for name, digest in d['files'].items():
+            self.assertRegex(digest, r'^[0-9a-f]{64}$', name)
+        # The weights' sha256 is Hugging Face's LFS object id for that revision.
+        self.assertEqual(d['files']['model.safetensors'],
+                         'ac90f1df842ea66b23e4224f3e86624add547526f689ffe9e9c6b7a5937116b1')
+
+    def test_dspine_is_attributed(self):
+        for doc in ('NOTICE', 'docs/LICENSING.md', 'README.md'):
+            text = ' '.join((ROOT/doc).read_text().split())
+            with self.subTest(doc=doc):
+                self.assertIn('tencent/Qwen3.8-27B-DSpine-b16', text)
+                self.assertIn('2609.36173', text)  # the method's paper
+                self.assertRegex(text, r'Apache(-2\.0| License 2\.0)')
+        self.assertIn('ea909c0f5fab8865f9e14600334f55f7ce47308f', (ROOT/'NOTICE').read_text())
+
+    def test_start_offers_the_checked_drafters(self):
+        start = (HERE/'start-27b.sh').read_text()
+        self.assertIn('DRAFTER=${DRAFTER:-dflash2}', start)
+        self.assertIn('^(dflash2|dspine|both)$', start)
+        self.assertIn('python3 install/check_files.py install/checkpoint-27b.json dspine "$dspine"', start)
+        self.assertIn('dspine_mount=(--mount "type=bind,src=$dspine,dst=$dspine,readonly")', start)
+        self.assertIn('-e SPARKQWEN_DRAFTER="$DRAFTER" -e DSPINE_PATH="$dspine"', start)
+
+    def test_check_files_matches_the_pin(self):
+        with tempfile.TemporaryDirectory() as d:
+            (Path(d)/'a.bin').write_bytes(b'weights')
+            pin = Path(d)/'pin.json'
+            digest = check_files.sha256(Path(d)/'a.bin')
+            pin.write_text(json.dumps({'k': {'files': {'a.bin': digest}}}))
+            self.assertEqual(check_files.check(pin, 'k', d), [])
+            (Path(d)/'a.bin').write_bytes(b'weightz')
+            self.assertEqual(check_files.check(pin, 'k', d), ['a.bin'])
+            pin.write_text(json.dumps({'k': {'files': {'a.bin': digest, 'b.bin': digest}}}))
+            self.assertEqual(check_files.check(pin, 'k', d), ['a.bin', 'b.bin'])
 
     def test_start_serves_the_checked_overlay(self):
         start = (HERE/'start-27b.sh').read_text()

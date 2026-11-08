@@ -297,7 +297,11 @@ GDN ones and the engine's load-time NVFP4 attention, so a decode step reads
 2.4 GB less (serial step 78.9 to 69.2 ms) at +0.004 nats/token held-out NLL.
 It serves the OpenAI API on
 `127.0.0.1:8893` as `qwen3.8-27b-atlas`, with DFlash2 speculation and the
-tool-call guard. Its verify is exact: alone or in a batch of up to eight, each
+tool-call guard. `DRAFTER=dspine` drafts with Tencent's
+[tencent/Qwen3.8-27B-DSpine-b16](https://huggingface.co/tencent/Qwen3.8-27B-DSpine-b16)
+instead (Apache-2.0, 3.8 GiB, 16-token blocks that reach further on code and
+JSON), and `DRAFTER=both` loads both drafters and lets each request use
+whichever its recent rounds favour; `dflash2` stays the default. Its verify is exact: alone or in a batch of up to eight, each
 request's text is byte-identical to plain serial decoding of that request
 alone, with thinking on or off. `stop`,
 `status`, `logs`, `build` and `download` work as for the pair. The profile
@@ -340,7 +344,11 @@ Weights: the 27B variant serves the NVFP4 Gated DeltaNet and attention
 projections Khaled Bakeer quantized for
 [TandemLLM](https://huggingface.co/0xBakeer/TandemLLM-Qwen3.8-27B-NVFP4)
 (GPTQ from Qwen's BF16 Qwen/Qwen3.8-27B, Apache-2.0), downloaded at install
-time; only the weights are used, not TandemLLM's code ([NOTICE](NOTICE)).
+time; only the weights are used, not TandemLLM's code ([NOTICE](NOTICE)). With `DRAFTER=dspine` or `both` it
+downloads Tencent's DSpine drafter weights (tencent/Qwen3.8-27B-DSpine-b16,
+Apache-2.0); the engine's DSpine kernels follow the method of Zhang et al.,
+[arXiv 2609.36173](https://arxiv.org/abs/2609.36173) (Tencent/DSpine), without
+its code.
 
 ## License
 

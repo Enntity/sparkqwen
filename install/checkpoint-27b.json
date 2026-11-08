@@ -35,5 +35,21 @@
     "base_model": "Qwen/Qwen3.8-27B",
     "license": "apache-2.0",
     "why": "TandemLLM's NVFP4 Gated DeltaNet and attention projections, quantized once from Qwen's BF16 release with GPTQ on about 150K tokens. In place of the checkpoint's FP8 GDN and the engine's load-time NVFP4 attention they cut the bytes a decode step reads by 2.4 GB (serial step 78.9 -> 69.2 ms) at +0.004 nats/token held-out NLL (code, prose, long context), with GSM8K-200 and the quality probe level. Weights only; no TandemLLM code is used."
+  },
+  "dspine": {
+    "repository": "tencent/Qwen3.8-27B-DSpine-b16",
+    "revision": "ea909c0f5fab8865f9e14600334f55f7ce47308f",
+    "files": {
+      "config.json": "c2aa9e3ff22766ea7df0fa5b5f5f7d2035ae722671c6b7eb58b65578705e6815",
+      "model.safetensors": "ac90f1df842ea66b23e4224f3e86624add547526f689ffe9e9c6b7a5937116b1",
+      "LICENSE": "bbedc3fda3305820b977265f01b8619d87570a6739de3a5582c3464840f1e57a",
+      "README.md": "2df6198c3150dd9c2b65c708fc5d144c970fd90b8c1393c45a9eafe4b764ee54"
+    },
+    "gamma": 16,
+    "size_gib": 3.8,
+    "base_model": "Qwen/Qwen3.8-27B",
+    "license": "apache-2.0",
+    "method": "DSpine (Zhang et al., arXiv 2609.36173, github.com/Tencent/DSpine)",
+    "why": "Tencent's DSpine block drafter for Qwen3.8-27B: 16-row blocks whose layers each pass a row its predecessor's predicted feature, so it guesses much further ahead on code, JSON and tool calls (8.4 tokens a round on the code probe against DFlash2's 6.1). Atlas verifies its blocks exactly, so it changes speed, not text. DRAFTER=dspine serves it alone; DRAFTER=both serves it beside DFlash2, each request on whichever its recent rounds favour."
   }
 }

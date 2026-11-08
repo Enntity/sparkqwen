@@ -35,6 +35,16 @@ install/tandem_overlay.py, our own code, re-keys them to the checkpoint's tensor
 names and re-expresses in_proj_z's block scales against in_proj_qkv's
 weight_scale_2, the only change made to them.
 
+With DRAFTER=dspine or DRAFTER=both, the same variant also downloads Tencent's
+DSpine drafter for Qwen3.8-27B, tencent/Qwen3.8-27B-DSpine-b16 at commit
+ea909c0f5fab8865f9e14600334f55f7ce47308f (Copyright (C) 2026 Tencent),
+distributed under the Apache License 2.0 (its LICENSE is kept in the
+downloaded directory; sha256 checked by install/check_files.py). The engine's
+DSpine drafting kernels are written for Atlas from the DSpine method (Zhang et
+al., "Draft in Parallel, Condition Through Depth: Adjacent Causal Injection for
+Speculative Decoding", arXiv 2609.36173; reference code at
+github.com/Tencent/DSpine, Apache-2.0); no DSpine code is included.
+
 Model weights are not distributed in this repository. The checkpoints
 nvidia/Qwen3.8-Flash-Next-FP4-Local (the default) and
 nvidia/Qwen3.8-Flash-Next-NVFP4 remain under their publisher's licenses; see

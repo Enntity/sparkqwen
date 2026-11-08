@@ -198,6 +198,30 @@ def _memory_share(environ, args):
     return [f'--gpu-memory-utilization={util}' if a.startswith('--gpu-memory-utilization=') else a for a in args]
 
 
+# The 27B drafter choice (SPARKQWEN_DRAFTER): the profile's DFlash2 drafter,
+# Tencent's DSpine drafter (16-row blocks) in its place, or both, each request
+# routed between them by the engine (--draft-model-alt).
+DRAFTERS = ('dflash2', 'dspine', 'both')
+DSPINE_GAMMA = '16'
+
+
+def _with_drafter(args, drafter):
+    """The profile's argv (DFlash2 at its gamma) for `drafter`."""
+    if drafter == 'dflash2':
+        return args
+    out = []
+    for a in args:
+        if a == '--draft-model=${draft}':
+            out.append('--draft-model=${dspine}' if drafter == 'dspine' else a)
+            if drafter == 'both':
+                out.append('--draft-model-alt=${dspine}')
+        elif a.startswith('--dflash-gamma='):
+            out.append('--dflash-gamma=' + DSPINE_GAMMA)
+        else:
+            out.append(a)
+    return out
+
+
 def launch_single(environ, profile):
     """Qwen3.8-27B on one Spark: one engine process, no ranks, no fabric."""
     args = list(profile['server_argv'])
@@ -209,8 +233,15 @@ def launch_single(environ, profile):
     if '--dflash' not in args or _flag_values(args, '--draft-model') != ['${draft}'] or \
             not re.fullmatch(r'[1-9][0-9]*', (_flag_values(args, '--dflash-gamma') or [''])[0] or ''):
         raise ValueError('the 27B profile requires --dflash, --draft-model=${draft} and a positive --dflash-gamma')
+    drafter = environ.get('SPARKQWEN_DRAFTER') or 'dflash2'
+    if drafter not in DRAFTERS:
+        raise ValueError(f'SPARKQWEN_DRAFTER must be one of {", ".join(DRAFTERS)}')
+    args = _with_drafter(args, drafter)
     paths = {}
-    for key, default in (('MODEL_PATH', '/models/checkpoint'), ('DRAFT_PATH', None)):
+    keys = [('MODEL_PATH', '/models/checkpoint'), ('DRAFT_PATH', None)]
+    if drafter != 'dflash2':
+        keys.append(('DSPINE_PATH', None))
+    for key, default in keys:
         path = environ.get(key, default) or ''
         if not Path(path).is_absolute() or any(c in path for c in '\r\n\0'):
             raise ValueError(f'{key} must be an absolute path')
@@ -218,7 +249,7 @@ def launch_single(environ, profile):
     env = _engine_env(environ, profile)
     env['SPARKQWEN_MODE'] = 'single'
     args = _memory_share(environ, [str(a).replace('${model}', paths['MODEL_PATH']).replace('${draft}', paths['DRAFT_PATH'])
-                                   for a in args])
+                                   .replace('${dspine}', paths.get('DSPINE_PATH', '')) for a in args])
     name = environ.get('SERVED_MODEL_NAME', 'qwen3.8-27b-atlas')
     if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._/-]{0,127}', name):
         raise ValueError('Invalid SERVED_MODEL_NAME')

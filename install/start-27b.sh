@@ -9,8 +9,10 @@
 #   stop | status | logs
 #
 # Settings (environment or .env): MODEL_ROOT (default ~/models/sparkqwen),
-# PROFILE (default 27b, or a JSON file of your own), GPU_MEMORY_UTILIZATION
-# (0.70-0.95), IMAGE, PULL=0 (always build), TOOL_GUARD* as for the pair.
+# PROFILE (default 27b, or a JSON file of your own), DRAFTER (dflash2, the
+# default; dspine; or both: DFlash2 and DSpine, each request on whichever its
+# recent rounds favour), GPU_MEMORY_UTILIZATION (0.70-0.95), IMAGE, PULL=0
+# (always build), TOOL_GUARD* as for the pair.
 set -euo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
 # shellcheck source=install/common.sh
@@ -20,11 +22,14 @@ MODEL_ROOT=${MODEL_ROOT:-$HOME/models/sparkqwen}
 PROFILE=${PROFILE:-27b}
 NAME=atlas-sparkqwen-27b
 API=http://127.0.0.1:8893
-read -r CHECKPOINT_REPO CHECKPOINT_REVISION SERVED DRAFT_REPO DRAFT_REVISION OVERLAY_REPO OVERLAY_REVISION OVERLAY_FILES < <(python3 -c 'import json,sys; m=json.load(open(sys.argv[1])); o=m["overlay"]; print(m["repository"], m["revision"], m["served_model_name"], m["draft"]["repository"], m["draft"]["revision"], o["repository"], o["revision"], ",".join(o["files"]))' install/checkpoint-27b.json)
+read -r CHECKPOINT_REPO CHECKPOINT_REVISION SERVED DRAFT_REPO DRAFT_REVISION OVERLAY_REPO OVERLAY_REVISION OVERLAY_FILES DSPINE_REPO DSPINE_REVISION DSPINE_FILES < <(python3 -c 'import json,sys; m=json.load(open(sys.argv[1])); o=m["overlay"]; d=m["dspine"]; print(m["repository"], m["revision"], m["served_model_name"], m["draft"]["repository"], m["draft"]["revision"], o["repository"], o["revision"], ",".join(o["files"]), d["repository"], d["revision"], ",".join(d["files"]))' install/checkpoint-27b.json)
 IMAGE=${IMAGE:-$(install/build.sh --tag)}
 mkdir -p "$MODEL_ROOT"; MODEL_ROOT=$(realpath "$MODEL_ROOT")
 checkpoint=$MODEL_ROOT/${CHECKPOINT_REPO/\//--}
 draft=$MODEL_ROOT/${DRAFT_REPO/\//--}
+dspine=$MODEL_ROOT/${DSPINE_REPO/\//--}
+DRAFTER=${DRAFTER:-dflash2}
+[[ $DRAFTER =~ ^(dflash2|dspine|both)$ ]] || { echo 'DRAFTER must be dflash2, dspine or both' >&2; exit 2; }
 weights=$MODEL_ROOT/${OVERLAY_REPO/\//--}
 # The served checkpoint: NVIDIA's files linked, TandemLLM's GDN and attention
 # projections re-keyed in (install/tandem_overlay.py). It sits next to $checkpoint.
@@ -51,6 +56,15 @@ fetch() {  # REPO REVISION DIR [FILE...]
 download() {
   fetch "$CHECKPOINT_REPO" "$CHECKPOINT_REVISION" "$checkpoint"
   fetch "$DRAFT_REPO" "$DRAFT_REVISION" "$draft"
+  if [[ $DRAFTER != dflash2 ]]; then
+    local dspine_files; IFS=, read -r -a dspine_files <<< "$DSPINE_FILES"
+    if [[ $(cat "$dspine/.sparkqwen-revision" 2>/dev/null) != "$DSPINE_REVISION" ]]; then
+      say "download $DSPINE_REPO @ $DSPINE_REVISION (sha256 checked)"
+      hf_download "$DSPINE_REPO" "$DSPINE_REVISION" "$dspine" "${dspine_files[@]}"
+      python3 install/check_files.py install/checkpoint-27b.json dspine "$dspine"
+      echo "$DSPINE_REVISION" > "$dspine/.sparkqwen-revision"
+    fi
+  fi
   local files; IFS=, read -r -a files <<< "$OVERLAY_FILES"
   fetch "$OVERLAY_REPO" "$OVERLAY_REVISION" "$weights" "${files[@]}"
   if [[ $(cat "$overlay/.sparkqwen-overlay" 2>/dev/null) != "$OVERLAY_REVISION" ]]; then
@@ -63,14 +77,15 @@ download() {
 stop() { docker rm -f "$NAME" >/dev/null 2>&1 || true; }
 
 serve() {
-  local profile_mount=() profile=$PROFILE
+  local profile_mount=() profile=$PROFILE dspine_mount=()
+  [[ $DRAFTER == dflash2 ]] || dspine_mount=(--mount "type=bind,src=$dspine,dst=$dspine,readonly")
   if [[ -f $profile ]]; then
     profile_mount=(--mount "type=bind,src=$(realpath "$profile"),dst=/opt/atlas/profiles/custom.json,readonly")
     profile=custom
   fi
   mkdir -p "$HOME/.cache/atlas-cuda"
   stop
-  say "serving $CHECKPOINT_REPO with $OVERLAY_REPO's GDN and attention on this Spark (profile $PROFILE)"
+  say "serving $CHECKPOINT_REPO with $OVERLAY_REPO's GDN and attention on this Spark (profile $PROFILE, drafter $DRAFTER)"
   # GB10 memory is shared with the host, and a host that runs out of it hangs
   # instead of killing a process: the container is capped at 114 GiB.
   docker run -d --name "$NAME" --restart no --network host --ipc host \
@@ -79,6 +94,7 @@ serve() {
     --mount "type=bind,src=$overlay,dst=$overlay,readonly" \
     --mount "type=bind,src=$draft,dst=$draft,readonly" \
     --mount "type=bind,src=$HOME/.cache/atlas-cuda,dst=/atlas-cuda-cache" ${profile_mount[@]+"${profile_mount[@]}"} \
+    ${dspine_mount[@]+"${dspine_mount[@]}"} -e SPARKQWEN_DRAFTER="$DRAFTER" -e DSPINE_PATH="$dspine" \
     -e MODEL_PATH="$overlay" -e DRAFT_PATH="$draft" -e SPARKQWEN_PROFILE="$profile" -e SERVED_MODEL_NAME="$SERVED" \
     -e SPARKQWEN_TOOL_GUARD="${TOOL_GUARD:-on}" -e SPARKQWEN_TOOL_GUARD_MAX_BYTES="${TOOL_GUARD_MAX_BYTES:-1048576}" \
     -e SPARKQWEN_TOOL_GUARD_ALLOW_HOSTS="${TOOL_GUARD_ALLOW_HOSTS:-}" -e SPARKQWEN_TOOL_GUARD_DENY_HOSTS="${TOOL_GUARD_DENY_HOSTS:-}" \
@@ -120,5 +136,5 @@ case ${1:-up} in
     echo "server $(docker inspect -f '{{.State.Status}}' "$NAME" 2>/dev/null || echo absent)"
     curl -sf "$API/health" >/dev/null && echo "health ok ($API)" || echo 'health: not serving' ;;
   logs) docker logs -f --tail 100 "$NAME" ;;
-  *) sed -n '2,13p' "$0" >&2; exit 2 ;;
+  *) sed -n '2,15p' "$0" >&2; exit 2 ;;
 esac

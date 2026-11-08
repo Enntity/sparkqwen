@@ -76,6 +76,16 @@ scales against `in_proj_qkv`'s `weight_scale_2` (the engine concatenates the
 two), and keeps their `LICENSE` and `README.md` next to the overlay as
 `TandemLLM-LICENSE` and `TandemLLM-README.md`.
 
+With `DRAFTER=dspine` or `DRAFTER=both` it also downloads Tencent's
+[`tencent/Qwen3.8-27B-DSpine-b16`](https://huggingface.co/tencent/Qwen3.8-27B-DSpine-b16)
+drafter at commit `ea909c0f5fab` (Apache License 2.0, Copyright Tencent);
+`install/check_files.py` checks every file's sha256 against
+`install/checkpoint-27b.json`, and its `LICENSE` stays in the downloaded
+directory. The engine's DSpine kernels are Atlas's own, written from the method
+in [arXiv 2609.36173](https://arxiv.org/abs/2609.36173) (Zhang et al.,
+"Draft in Parallel, Condition Through Depth"); Tencent's reference code
+([Tencent/DSpine](https://github.com/Tencent/DSpine), Apache-2.0) is not copied.
+
 The packed PLE table the engine writes to `~/.cache/atlas-ple` is derived from
 the checkpoint's weights; it stays on your Sparks and falls under the same
 terms.
