@@ -3,8 +3,8 @@
   "note": "Enntity/atlas q27/dflash-wide: the Qwen3.8-27B single-Spark serving work (exact MTP and DFlash2 verify, MTP drafter prefill on tensor cores, fused GDN decode, wide row-exact verify GEMVs, native FP8 attention option) on the score-path branch proposed as Atlas-Inf/atlas#331. The pair keeps install/atlas-source.json.",
   "repository": "https://github.com/Enntity/atlas.git",
   "branch": "q27/dflash-wide",
-  "commit": "5e82fcf866068e4489b97c863ebc6f8c99393be3",
-  "tree": "8e1d36498ad405db59eb4e0d995fe852e8f0123c",
+  "commit": "abfca9e2f1f622eda80708e306daeadce5f22a10",
+  "tree": "2de8029b6f5735fc0a7a0545f98f8a0b7979fce5",
   "kernel_target": "qwen3.8-27b",
   "model_type": "qwen3_5",
   "license": "AGPL-3.0-only"
