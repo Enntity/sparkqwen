@@ -105,10 +105,12 @@ class SingleSpark(unittest.TestCase):
     def test_profile_carries_the_measured_levers(self):
         env = profile()['environment']
         for lever in ('ATLAS_EXACT_VERIFY', 'ATLAS_DENSE_PREFILL_BF16MMA', 'ATLAS_GDN_CHUNK_TC',
-                      'ATLAS_QWEN38_PDL', 'ATLAS_QWEN38_DECODE_FUSE', 'ATLAS_WIDE_GEMV'):
+                      'ATLAS_QWEN38_PDL', 'ATLAS_QWEN38_DECODE_FUSE', 'ATLAS_SKINNY_MMA'):
             self.assertEqual(env.get(lever), '1', lever)
         # W4A8, not W4A4: W4A4 cost NLL in chat (see the 27B results).
         self.assertEqual(env.get('ATLAS_DENSE_PREFILL_LOWP'), '1')
+        # The skinny kernels supersede the wide twins; one verify path.
+        self.assertNotIn('ATLAS_WIDE_GEMV', env)
 
     def test_checkpoint_pin_is_whole(self):
         pin = json.loads((HERE/'checkpoint-27b.json').read_text())

@@ -2,7 +2,7 @@
  "schema": "sparkqwen.atlas-install-profile/v1",
  "model": "qwen3.8-27b",
  "status": "candidate",
- "note": "Qwen3.8-27B on one DGX Spark (TP=1), engine install/atlas-source-27b.json. DFlash2 block drafting (incoai/Qwen3.8-27B-DFlash2, gamma 8) with exact verify, so it also speculates inside <think> with output byte-identical to serial decode; wide verify GEMVs; W4A8 prefill on BF16 tensor cores (NLL equal to or better than the default path), fused GDN decode. BF16 KV, prefix caching. Configured limits: eight concurrent requests, 131,072 tokens each. Not yet qualified.",
+ "note": "Qwen3.8-27B on one DGX Spark (TP=1), engine install/atlas-source-27b.json. DFlash2 block drafting (incoai/Qwen3.8-27B-DFlash2, gamma 8) with exact verify, so it also speculates inside <think> with output byte-identical to serial decode; row-invariant tensor-core projection kernels for decode and verify (ATLAS_SKINNY_MMA); W4A8 prefill on BF16 tensor cores (NLL equal to or better than the default path), fused GDN decode. BF16 KV, prefix caching. Configured limits: eight concurrent requests, 131,072 tokens each. Not yet qualified.",
  "environment": {
   "ATLAS_DENSE_PREFILL_BF16MMA": "1",
   "ATLAS_DENSE_PREFILL_LOWP": "1",
@@ -10,7 +10,7 @@
   "ATLAS_GDN_CHUNK_TC": "1",
   "ATLAS_QWEN38_DECODE_FUSE": "1",
   "ATLAS_QWEN38_PDL": "1",
-  "ATLAS_WIDE_GEMV": "1",
+  "ATLAS_SKINNY_MMA": "1",
   "CUDA_CACHE_PATH": "/atlas-cuda-cache",
   "LD_LIBRARY_PATH": "/usr/local/nvidia/lib:/usr/local/nvidia/lib64:/usr/local/cuda/lib64",
   "PATH": "/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
