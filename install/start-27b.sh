@@ -20,11 +20,15 @@ MODEL_ROOT=${MODEL_ROOT:-$HOME/models/sparkqwen}
 PROFILE=${PROFILE:-27b}
 NAME=atlas-sparkqwen-27b
 API=http://127.0.0.1:8893
-read -r CHECKPOINT_REPO CHECKPOINT_REVISION SERVED DRAFT_REPO DRAFT_REVISION < <(python3 -c 'import json,sys; m=json.load(open(sys.argv[1])); print(m["repository"], m["revision"], m["served_model_name"], m["draft"]["repository"], m["draft"]["revision"])' install/checkpoint-27b.json)
+read -r CHECKPOINT_REPO CHECKPOINT_REVISION SERVED DRAFT_REPO DRAFT_REVISION OVERLAY_REPO OVERLAY_REVISION OVERLAY_FILES < <(python3 -c 'import json,sys; m=json.load(open(sys.argv[1])); o=m["overlay"]; print(m["repository"], m["revision"], m["served_model_name"], m["draft"]["repository"], m["draft"]["revision"], o["repository"], o["revision"], ",".join(o["files"]))' install/checkpoint-27b.json)
 IMAGE=${IMAGE:-$(install/build.sh --tag)}
 mkdir -p "$MODEL_ROOT"; MODEL_ROOT=$(realpath "$MODEL_ROOT")
 checkpoint=$MODEL_ROOT/${CHECKPOINT_REPO/\//--}
 draft=$MODEL_ROOT/${DRAFT_REPO/\//--}
+weights=$MODEL_ROOT/${OVERLAY_REPO/\//--}
+# The served checkpoint: NVIDIA's files linked, TandemLLM's GDN and attention
+# projections re-keyed in (install/tandem_overlay.py). It sits next to $checkpoint.
+overlay=$checkpoint+tandem-gdn-attn
 [[ -z ${GPU_MEMORY_UTILIZATION:-} || $GPU_MEMORY_UTILIZATION =~ ^0\.(7[0-9]|8[0-9]|9[0-5])$ ]] ||
   { echo 'GPU_MEMORY_UTILIZATION must be 0.70 to 0.95' >&2; exit 2; }
 
@@ -37,16 +41,23 @@ build() {
   fi
 }
 
-fetch() {  # REPO REVISION DIR
+fetch() {  # REPO REVISION DIR [FILE...]
   [[ $(cat "$3/.sparkqwen-revision" 2>/dev/null) == "$2" ]] && return
-  say "download $1 @ $2"
-  hf_download "$1" "$2" "$3"
+  say "download $1 @ $2${4:+ (${*:4})}"
+  hf_download "$@"
   echo "$2" > "$3/.sparkqwen-revision"
 }
 
 download() {
   fetch "$CHECKPOINT_REPO" "$CHECKPOINT_REVISION" "$checkpoint"
   fetch "$DRAFT_REPO" "$DRAFT_REVISION" "$draft"
+  local files; IFS=, read -r -a files <<< "$OVERLAY_FILES"
+  fetch "$OVERLAY_REPO" "$OVERLAY_REVISION" "$weights" "${files[@]}"
+  if [[ $(cat "$overlay/.sparkqwen-overlay" 2>/dev/null) != "$OVERLAY_REVISION" ]]; then
+    say "overlay: $OVERLAY_REPO GDN + attention into $CHECKPOINT_REPO (sha256 checked)"
+    rm -rf "$overlay"
+    python3 install/tandem_overlay.py install/checkpoint-27b.json "$checkpoint" "$weights" "$overlay"
+  fi
 }
 
 stop() { docker rm -f "$NAME" >/dev/null 2>&1 || true; }
@@ -59,15 +70,16 @@ serve() {
   fi
   mkdir -p "$HOME/.cache/atlas-cuda"
   stop
-  say "serving $CHECKPOINT_REPO on this Spark (profile $PROFILE)"
+  say "serving $CHECKPOINT_REPO with $OVERLAY_REPO's GDN and attention on this Spark (profile $PROFILE)"
   # GB10 memory is shared with the host, and a host that runs out of it hangs
   # instead of killing a process: the container is capped at 114 GiB.
   docker run -d --name "$NAME" --restart no --network host --ipc host \
     --shm-size 16g --memory 114g --gpus all --security-opt no-new-privileges=true --stop-timeout 60 \
     --mount "type=bind,src=$checkpoint,dst=$checkpoint,readonly" \
+    --mount "type=bind,src=$overlay,dst=$overlay,readonly" \
     --mount "type=bind,src=$draft,dst=$draft,readonly" \
     --mount "type=bind,src=$HOME/.cache/atlas-cuda,dst=/atlas-cuda-cache" ${profile_mount[@]+"${profile_mount[@]}"} \
-    -e MODEL_PATH="$checkpoint" -e DRAFT_PATH="$draft" -e SPARKQWEN_PROFILE="$profile" -e SERVED_MODEL_NAME="$SERVED" \
+    -e MODEL_PATH="$overlay" -e DRAFT_PATH="$draft" -e SPARKQWEN_PROFILE="$profile" -e SERVED_MODEL_NAME="$SERVED" \
     -e SPARKQWEN_TOOL_GUARD="${TOOL_GUARD:-on}" -e SPARKQWEN_TOOL_GUARD_MAX_BYTES="${TOOL_GUARD_MAX_BYTES:-1048576}" \
     -e SPARKQWEN_TOOL_GUARD_ALLOW_HOSTS="${TOOL_GUARD_ALLOW_HOSTS:-}" -e SPARKQWEN_TOOL_GUARD_DENY_HOSTS="${TOOL_GUARD_DENY_HOSTS:-}" \
     ${GPU_MEMORY_UTILIZATION:+-e SPARKQWEN_GPU_MEMORY_UTILIZATION="$GPU_MEMORY_UTILIZATION"} \

@@ -60,6 +60,22 @@ License 1.0. The NVFP4 checkpoint the earlier releases downloaded,
 is under the NVIDIA Open Model License. Read the model card before use, and
 before redistributing anything derived from it.
 
+The single-Spark Qwen3.8-27B variant downloads
+[`nvidia/Qwen3.8-27B-NVFP4`](https://huggingface.co/nvidia/Qwen3.8-27B-NVFP4)
+(Apache-2.0), the
+[`incoai/Qwen3.8-27B-DFlash2`](https://huggingface.co/incoai/Qwen3.8-27B-DFlash2)
+drafter (Apache-2.0), and the Gated DeltaNet and attention projections of
+[`0xBakeer/TandemLLM-Qwen3.8-27B-NVFP4`](https://huggingface.co/0xBakeer/TandemLLM-Qwen3.8-27B-NVFP4)
+at commit `ab09c92fa4a9` (`gdn.safetensors`, `attn.safetensors`): NVFP4
+weights quantized by Khaled Bakeer from Qwen's BF16
+[`Qwen/Qwen3.8-27B`](https://huggingface.co/Qwen/Qwen3.8-27B) and published
+under the Apache License 2.0. Only those weights are used, never TandemLLM's
+code (AGPL-3.0). `install/tandem_overlay.py` checks their sha256, re-keys them
+to the checkpoint's tensor names and re-expresses `in_proj_z`'s E4M3 block
+scales against `in_proj_qkv`'s `weight_scale_2` (the engine concatenates the
+two), and keeps their `LICENSE` and `README.md` next to the overlay as
+`TandemLLM-LICENSE` and `TandemLLM-README.md`.
+
 The packed PLE table the engine writes to `~/.cache/atlas-ple` is derived from
 the checkpoint's weights; it stays on your Sparks and falls under the same
 terms.

@@ -289,7 +289,13 @@ on the Spark you run it on, with no worker and no fabric. It builds or pulls its
 own image (the `qwen3.8-27b` kernel target, tag suffix `-27b`), downloads the
 20 GiB checkpoint and the 3.6 GiB
 [incoai/Qwen3.8-27B-DFlash2](https://huggingface.co/incoai/Qwen3.8-27B-DFlash2)
-drafter pinned in `install/checkpoint-27b.json`, and serves the OpenAI API on
+drafter and the NVFP4 Gated DeltaNet and attention projections of
+[TandemLLM](https://huggingface.co/0xBakeer/TandemLLM-Qwen3.8-27B-NVFP4)'s
+Qwen3.8-27B set (Apache-2.0, weights only), all pinned in
+`install/checkpoint-27b.json`. Those projections replace the checkpoint's FP8
+GDN ones and the engine's load-time NVFP4 attention, so a decode step reads
+2.4 GB less (serial step 78.9 to 69.2 ms) at +0.004 nats/token held-out NLL.
+It serves the OpenAI API on
 `127.0.0.1:8893` as `qwen3.8-27b-atlas`, with DFlash2 speculation and the
 tool-call guard. Its verify is exact: alone or in a batch of up to eight, each
 request's text is byte-identical to plain serial decoding of that request
@@ -329,6 +335,12 @@ MiaAI-Lab's dual-Spark vLLM recipe, whose settings the vLLM baseline in our
 earlier results ([2026-10-08-rc15](results/2026-10-08-rc15/RESULT.md)) uses.
 The engine's Flash-Next fixes from Atlas-Inf name their origin commits in
 [docs/ENGINE.md](docs/ENGINE.md).
+
+Weights: the 27B variant serves the NVFP4 Gated DeltaNet and attention
+projections Khaled Bakeer quantized for
+[TandemLLM](https://huggingface.co/0xBakeer/TandemLLM-Qwen3.8-27B-NVFP4)
+(GPTQ from Qwen's BF16 Qwen/Qwen3.8-27B, Apache-2.0), downloaded at install
+time; only the weights are used, not TandemLLM's code ([NOTICE](NOTICE)).
 
 ## License
 

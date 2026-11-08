@@ -5,13 +5,19 @@ import json
 import os
 from pathlib import Path
 import re
+import struct
 import subprocess
+import tempfile
 import unittest
 
 HERE = Path(__file__).resolve().parent
 spec = importlib.util.spec_from_file_location('atlas_serve', HERE/'serve.py')
 serve = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(serve)
+ospec = importlib.util.spec_from_file_location('tandem_overlay', HERE/'tandem_overlay.py')
+overlay = importlib.util.module_from_spec(ospec)
+ospec.loader.exec_module(overlay)
+ROOT = HERE.parent
 
 
 def profile():
@@ -121,6 +127,149 @@ class SingleSpark(unittest.TestCase):
         self.assertEqual(pin['served_model_name'], 'qwen3.8-27b-atlas')
         self.assertEqual(pin['draft']['repository'], 'incoai/Qwen3.8-27B-DFlash2')
         self.assertRegex(pin['draft']['revision'], r'^[0-9a-f]{40}$')
+
+    def test_overlay_pin_is_whole(self):
+        o = json.loads((HERE/'checkpoint-27b.json').read_text())['overlay']
+        self.assertEqual(o['repository'], '0xBakeer/TandemLLM-Qwen3.8-27B-NVFP4')
+        self.assertEqual(o['revision'], 'ab09c92fa4a90d5cfd9d012fe92831c886efd9b2')
+        self.assertEqual(o['license'], 'apache-2.0')
+        self.assertEqual(o['base_model'], 'Qwen/Qwen3.8-27B')
+        self.assertEqual(set(o['files']), {'gdn.safetensors', 'attn.safetensors', 'LICENSE', 'README.md'})
+        for name, digest in o['files'].items():
+            self.assertRegex(digest, r'^[0-9a-f]{64}$', name)
+        self.assertEqual(o['files']['gdn.safetensors'], '7ac37e6ed289caf0d8c2f4a0c719570b1df17c881dbb297c4b017f3f769aa961')
+        self.assertEqual(o['files']['attn.safetensors'], '2898b0721452142f5d39074109d113034f96f503c4bfcdc132902f75fa23dd1e')
+        self.assertEqual(o['serve'], ['gdn.safetensors', 'attn.safetensors'])  # never their MLP, head or mixes
+        self.assertEqual(o['attribution'], ['LICENSE', 'README.md'])
+
+    def test_overlay_is_attributed(self):
+        for doc in ('NOTICE', 'docs/LICENSING.md', 'README.md'):
+            text = ' '.join((ROOT/doc).read_text().split())
+            with self.subTest(doc=doc):
+                self.assertIn('TandemLLM-Qwen3.8-27B-NVFP4', text)
+                self.assertIn('Qwen/Qwen3.8-27B', text)
+                self.assertRegex(text, r'Apache(-2\.0| License 2\.0)')
+                self.assertRegex(text, r'(not|never) TandemLLM.s code')
+        self.assertIn('ab09c92fa4a90d5cfd9d012fe92831c886efd9b2', (ROOT/'NOTICE').read_text())
+
+    def test_start_serves_the_checked_overlay(self):
+        start = (HERE/'start-27b.sh').read_text()
+        self.assertIn('overlay=$checkpoint+tandem-gdn-attn', start)
+        self.assertIn('python3 install/tandem_overlay.py install/checkpoint-27b.json "$checkpoint" "$weights" "$overlay"', start)
+        self.assertIn('-e MODEL_PATH="$overlay"', start)
+        for path in ('$checkpoint', '$overlay', '$draft'):
+            self.assertIn(f'--mount "type=bind,src={path},dst={path},readonly"', start)
+
+
+def write_st(path, tensors):
+    """tensors: name -> (dtype, shape, bytes)"""
+    head, off = {}, 0
+    for k, (dt, shape, raw) in tensors.items():
+        head[k] = {'dtype': dt, 'shape': shape, 'data_offsets': [off, off + len(raw)]}
+        off += len(raw)
+    blob = json.dumps(head).encode()
+    blob += b' ' * (-len(blob) % 8)
+    with open(path, 'wb') as f:
+        f.write(struct.pack('<Q', len(blob)) + blob + b''.join(t[2] for t in tensors.values()))
+
+
+def read_st(path):
+    meta, start = overlay.header(path)
+    raw = Path(path).read_bytes()
+    return {k: (v['dtype'], v['shape'], raw[start + v['data_offsets'][0]:start + v['data_offsets'][1]])
+            for k, v in meta.items() if k != '__metadata__'}
+
+
+def nearest_e4m3(v):
+    """Brute-force reference: the E4M3 code nearest v (ties to the even code), saturating."""
+    v = min(v, 448.0)
+    return min(range(0x7F), key=lambda c: (abs(overlay.e4m3(c) - v), c % 2))
+
+
+class Overlay(unittest.TestCase):
+    def test_scale_rescaling_matches_a_brute_force_reference(self):
+        for ratio in (0.5470851995787291, 0.7953216086611024, 1.227053132151002, 1.0, 3.9, 0.01):
+            table = overlay.rescale_table(ratio)
+            for c in range(0x7F):
+                want = nearest_e4m3(overlay.f32(overlay.f32(overlay.e4m3(c)) * overlay.f32(ratio)))
+                self.assertEqual(table[c], want, (ratio, c))
+
+    def build(self, s2q, s2z, tamper=False):
+        tmp = Path(tempfile.mkdtemp())
+        ck, w, ov = tmp/'ck', tmp/'w', tmp/'ck+tandem-gdn-attn'
+        ck.mkdir(); w.mkdir()
+        f32 = lambda x: struct.pack('<f', x)
+        L = 'model.language_model.layers.'
+        write_st(ck/'model-1.safetensors', {
+            L + '0.linear_attn.in_proj_qkv.weight': ('F8_E4M3', [2, 16], bytes(32)),
+            L + '0.linear_attn.in_proj_qkv.weight_scale': ('F32', [], f32(1.0)),
+            L + '0.linear_attn.in_proj_qkv.input_scale': ('F32', [], f32(1.0)),
+            L + '0.linear_attn.in_proj_z.weight': ('F8_E4M3', [2, 16], bytes(32)),
+            L + '0.linear_attn.in_proj_z.weight_scale': ('F32', [], f32(1.0)),
+            L + '0.mlp.down_proj.weight': ('U8', [2, 8], bytes(16))})
+        index = {'weight_map': {k: 'model-1.safetensors' for k in read_st(ck/'model-1.safetensors')}}
+        (ck/'model.safetensors.index.json').write_text(json.dumps(index))
+        (ck/'hf_quant_config.json').write_text(json.dumps({'quantization': {'quantized_layers': {}}}))
+        (ck/'config.json').write_text('{}')
+        zs = bytes(range(0x30, 0x34))
+        write_st(w/'gdn.safetensors', {
+            'layers.0.linear_attn.in_proj_qkv.weight': ('U8', [2, 8], bytes(range(16))),
+            'layers.0.linear_attn.in_proj_qkv.weight_scale': ('F8_E4M3', [2, 1], b'\x38\x39'),
+            'layers.0.linear_attn.in_proj_qkv.weight_scale_2': ('F32', [], f32(s2q)),
+            'layers.0.linear_attn.in_proj_z.weight': ('U8', [2, 8], bytes(range(16, 32))),
+            'layers.0.linear_attn.in_proj_z.weight_scale': ('F8_E4M3', [4, 1], zs),
+            'layers.0.linear_attn.in_proj_z.weight_scale_2': ('F32', [], f32(s2z))})
+        write_st(w/'attn.safetensors', {'layers.3.self_attn.o_proj.weight': ('U8', [2, 8], bytes(16))})
+        (w/'LICENSE').write_text('Apache License 2.0')
+        (w/'README.md').write_text('license: apache-2.0')
+        if tamper:
+            (w/'README.md').write_text('changed')
+        files = {n: overlay.sha256(w/n) for n in ('gdn.safetensors', 'attn.safetensors', 'LICENSE', 'README.md')}
+        if tamper:
+            files['README.md'] = '0' * 64
+        pin = tmp/'pin.json'
+        pin.write_text(json.dumps({'overlay': {'revision': 'a' * 40, 'files': files,
+                                               'serve': ['gdn.safetensors', 'attn.safetensors'],
+                                               'attribution': ['LICENSE', 'README.md']}}))
+        overlay.build(str(pin), str(ck), str(w), str(ov))
+        return ck, w, ov, zs
+
+    def test_rekeys_reexpresses_z_and_rewrites_the_index(self):
+        s2q, s2z = 1.25e-4, 0.875e-4
+        ck, w, ov, zs = self.build(s2q, s2z)
+        L = 'model.language_model.layers.'
+        g = read_st(ov/'tandem-gdn.safetensors')
+        src = read_st(w/'gdn.safetensors')
+        self.assertEqual(sorted(g), sorted(L + k[len('layers.'):] for k in src))
+        for k in src:  # every byte but z's scales and scale_2 is copied unchanged
+            if 'in_proj_z.weight_scale' not in k:
+                self.assertEqual(g[L + k[len('layers.'):]], src[k], k)
+        q2 = struct.unpack('<f', g[L + '0.linear_attn.in_proj_qkv.weight_scale_2'][2])[0]
+        z2 = struct.unpack('<f', g[L + '0.linear_attn.in_proj_z.weight_scale_2'][2])[0]
+        self.assertEqual(q2, z2)
+        self.assertEqual(q2, struct.unpack('<f', struct.pack('<f', s2q))[0])
+        r = struct.unpack('<f', struct.pack('<f', s2z))[0] / q2
+        want = bytes(nearest_e4m3(overlay.f32(overlay.f32(overlay.e4m3(c)) * overlay.f32(r))) for c in zs)
+        self.assertEqual(g[L + '0.linear_attn.in_proj_z.weight_scale'][2], want)
+        wm = json.loads((ov/'model.safetensors.index.json').read_text())['weight_map']
+        self.assertNotIn(L + '0.linear_attn.in_proj_qkv.input_scale', wm)  # the FP8 module is gone whole
+        self.assertEqual(wm[L + '0.linear_attn.in_proj_qkv.weight'], 'tandem-gdn.safetensors')
+        self.assertEqual(wm[L + '3.self_attn.o_proj.weight'], 'tandem-attn.safetensors')
+        self.assertEqual(wm[L + '0.mlp.down_proj.weight'], 'model-1.safetensors')  # NVIDIA's MLP stays
+        q = json.loads((ov/'hf_quant_config.json').read_text())['quantization']['quantized_layers']
+        self.assertEqual(q[L + '0.linear_attn.in_proj_z'], {'quant_algo': 'NVFP4', 'group_size': 16})
+        self.assertEqual(os.readlink(ov/'model-1.safetensors'), '../ck/model-1.safetensors')
+        self.assertEqual((ov/'TandemLLM-LICENSE').read_text(), 'Apache License 2.0')
+        self.assertEqual((ov/'.sparkqwen-overlay').read_text().strip(), 'a' * 40)
+
+    def test_equal_scales_are_left_alone(self):
+        _, w, ov, zs = self.build(1e-4, 1e-4)
+        g = read_st(ov/'tandem-gdn.safetensors')
+        self.assertEqual(g['model.language_model.layers.0.linear_attn.in_proj_z.weight_scale'][2], zs)
+
+    def test_a_file_that_does_not_match_its_pin_is_refused(self):
+        with self.assertRaises(SystemExit):
+            self.build(1e-4, 2e-4, tamper=True)
 
 
 if __name__ == '__main__':
