@@ -1,10 +1,10 @@
 {
   "schema": "sparkqwen.atlas-engine-source/v3",
-  "note": "Enntity/atlas q27/conc: q27/rc1 (q27/gdn-defer, the Qwen3.8-27B single-Spark serving work: exact MTP and DFlash2 verify, single-sequence and batched, fused GDN decode and verify with a deferred exact commit, row-invariant tensor-core skinny GEMMs; merged with q27/fp4-gdn, native NVFP4 GDN projections) with q27/dspine (the DSpine drafter and --draft-model-alt) and the concurrency series: deferred-commit-only verify pools, no MTP head under DFlash, the GDN qkv/z sources freed, the drafter's per-sequence pools in the KV budget, DFlash verify width that follows the batch (plain decode past sixteen sequences) an exact LM head for batched decode past sixteen, a wall-time decode share during long prefills (ATLAS_DECODE_TIME_SHARE), and the drafter built inside the KV budget. The pair keeps install/atlas-source.json.",
+  "note": "Enntity/atlas q27/snap-ladder (q27/conc plus the restore ladder): q27/rc1 (q27/gdn-defer, the Qwen3.8-27B single-Spark serving work: exact MTP and DFlash2 verify, single-sequence and batched, fused GDN decode and verify with a deferred exact commit, row-invariant tensor-core skinny GEMMs; merged with q27/fp4-gdn, native NVFP4 GDN projections) with q27/dspine (the DSpine drafter and --draft-model-alt) and the concurrency series: deferred-commit-only verify pools, no MTP head under DFlash, the GDN qkv/z sources freed, the drafter's per-sequence pools in the KV budget, DFlash verify width that follows the batch (plain decode past sixteen sequences) an exact LM head for batched decode past sixteen, a wall-time decode share during long prefills (ATLAS_DECODE_TIME_SHARE), and the drafter built inside the KV budget. The pair keeps install/atlas-source.json, and a restore ladder in the SSM snapshot pool (log-spaced snapshots kept behind each conversation's newest save, so a prefix match that lands behind the tail restores nearby instead of recomputing the whole prompt).",
   "repository": "https://github.com/Enntity/atlas.git",
-  "branch": "q27/conc",
-  "commit": "9cd23195b689abbcb32077d1bf19e21f2d730a2a",
-  "tree": "8ed808eb22ab119253e21680f51642a4b4b60293",
+  "branch": "q27/snap-ladder",
+  "commit": "629cf01229a0bc0f87adaaa8a38ceac1b0875d67",
+  "tree": "a7a6cdde1b46b0201a90a492eacd4ce317ac2f5b",
   "kernel_target": "qwen3.8-27b",
   "model_type": "qwen3_5",
   "license": "AGPL-3.0-only"
