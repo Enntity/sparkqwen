@@ -81,8 +81,8 @@ class SingleSpark(unittest.TestCase):
         def launch(name, **env):
             p = json.loads((HERE/'profiles'/f'{name}.json').read_text())
             return serve.launch({'MODEL_PATH': '/m', 'DRAFT_PATH': '/d', 'DSPINE_PATH': self.DSPINE, **env}, p)
-        for name, util, seqs, alt in (('27b', '0.85', '64', None), ('27b-max', '0.92', '32', self.DSPINE),
-                                      ('27b-saver', '0.56', '8', None)):
+        for name, util, seqs, alt in (('27b', '0.85', '64', None), ('27b-max', '0.84', '32', self.DSPINE),
+                                      ('27b-saver', '0.59', '8', None)):
             with self.subTest(profile=name):
                 argv, _ = launch(name)
                 self.assertEqual(flag(argv, '--gpu-memory-utilization'), util)

@@ -191,7 +191,7 @@ def _engine_env(environ, profile):
 
 def _memory_share(environ, args, low=7):
     """The SPARKQWEN_GPU_MEMORY_UTILIZATION override, 0.{low}0 to 0.95: the
-    pair's floor is 0.70; the 27B's saver profile runs at 0.56, so its floor is 0.40."""
+    pair's floor is 0.70; the 27B's saver profile runs at 0.59, so its floor is 0.40."""
     util = environ.get('SPARKQWEN_GPU_MEMORY_UTILIZATION')
     if not util:
         return args

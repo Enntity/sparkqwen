@@ -312,8 +312,8 @@ the pair. Three profiles (`PROFILE=`, in `install/profiles/`), every one with
 | profile | drafter | GPU memory share | concurrent requests |
 |---|---|---|---|
 | `27b` (default) | DFlash2 | 0.85 | 64 |
-| `27b-max` | DFlash2 + DSpine | 0.92 | 32 |
-| `27b-saver` | DFlash2 | 0.56 | 8 |
+| `27b-max` | DFlash2 + DSpine | 0.84 | 32 |
+| `27b-saver` | DFlash2 | 0.59 | 8 |
 
 They are candidates: not yet qualified.
 
