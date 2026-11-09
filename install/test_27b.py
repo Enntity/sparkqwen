@@ -163,8 +163,8 @@ class SingleSpark(unittest.TestCase):
                       'ATLAS_SKINNY_MMA'):
             self.assertEqual(env.get(lever), '1', lever)
         self.assertEqual(env.get('ATLAS_DECODE_TIME_SHARE'), '0.3')
-        # The gate's 1,024-token serial refresh cost ~10% at C1 here.
-        self.assertEqual(env.get('ATLAS_MTP_GATE_REFRESH'), '1048576')
+        # The gate's serial probes cost ~10% at C1 here; off, as in Flash-Next.
+        self.assertEqual(env.get('ATLAS_MTP_GATE_FORCE'), '1')
         # W4A8, not W4A4: W4A4 cost NLL in chat (see the 27B results).
         self.assertEqual(env.get('ATLAS_DENSE_PREFILL_LOWP'), '1')
         # The skinny kernels supersede the wide twins; one verify path.
