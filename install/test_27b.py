@@ -160,7 +160,7 @@ class SingleSpark(unittest.TestCase):
         for lever in ('ATLAS_EXACT_VERIFY', 'ATLAS_DENSE_PREFILL_BF16MMA', 'ATLAS_GDN_CHUNK_TC',
                       'ATLAS_QWEN38_PDL', 'ATLAS_QWEN38_DECODE_FUSE', 'ATLAS_QWEN38_VERIFY_FUSE',
                       'ATLAS_QWEN38_VERIFY_DEFER',
-                      'ATLAS_SKINNY_MMA'):
+                      'ATLAS_SKINNY_MMA', 'ATLAS_ATTN_SHARED_SCAN'):
             self.assertEqual(env.get(lever), '1', lever)
         self.assertEqual(env.get('ATLAS_DECODE_TIME_SHARE'), '0.3')
         # The gate's serial probes cost ~10% at C1 here; off, as in Flash-Next.
