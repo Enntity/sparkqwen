@@ -1,0 +1,17 @@
+[1m== fabric: rocep1s0f1,roceP2p1s0f1 (enp1s0f1np1, 10.100.112.1) here; rocep1s0f1,roceP2p1s0f1 (enp1s0f1np1, 10.100.112.2) on 10.100.112.2[0m
+[1m== image ghcr.io/enntity/atlas-sparkqwen:be82343bb26b[0m
+[1m== download nvidia/Qwen3.8-Flash-Next-FP4-Local @ b9ce18a6887e18c089fdea8509a33e63429a3300[0m
+A new version of huggingface_hub (2.4.0) is available! You are using version 1.7.1.
+To update, run: pip install -U huggingface_hub
+
+Fetching 33 files:   0%|          | 0/33 [00:00<?, ?it/s]Fetching 33 files: 100%|██████████| 33/33 [00:00<00:00, 853.60it/s]
+/home/enntitysparkadmin/.lloom/models/nvidia--Qwen3.8-Flash-Next-FP4-Local
+[1m== copy nvidia/Qwen3.8-Flash-Next-FP4-Local to 10.100.112.2:/home/enntitysparkadmin/.lloom/models[0m
+[1m== start rank 1 on 10.100.112.2, then rank 0 here (leader 10.100.112.1, profile 8x262k, mode spark)[0m
+1977a78912c5f1d0078c228c6ce976f578644ebb1eb91248930420d40cc2e1b3
+started atlas-sparkqwen-rank1 (rank 1); follow with: docker logs -f atlas-sparkqwen-rank1
+e859c4fde55dc240333d8c6b723bff6e2d54de8b48c4722d1bc4a69662a3b56b
+started atlas-sparkqwen-rank0 (rank 0); follow with: docker logs -f atlas-sparkqwen-rank0
+[1m== loading (a few minutes; the first start also compiles CUDA kernels)[0m
+smoke: 17*23 = 391
+[1m== ready: http://127.0.0.1:8893/v1 model qwen3.8-flash-next-atlas[0m

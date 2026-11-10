@@ -1,0 +1,33 @@
+{
+  "command": [
+    "/home/enntitysparkadmin/qual-20261110/rigmark/rigmark",
+    "run",
+    "--base-url",
+    "http://127.0.0.1:8893",
+    "--model",
+    "qwen3.8-flash-next-atlas",
+    "--label",
+    "run",
+    "--comparison-id",
+    "sparkqwen-070-20261110-round2",
+    "--metadata",
+    "/home/enntitysparkadmin/qual-20261110/fn-rc-spark-8x262k/metadata.json",
+    "--runs",
+    "3",
+    "--decode-tokens",
+    "4096",
+    "--prefill-runs",
+    "10",
+    "--prefill-depths",
+    "16384",
+    "--concurrency",
+    "1,2,4,8",
+    "--concurrency-runs",
+    "2",
+    "--extra-body",
+    "{\"chat_template_kwargs\":{\"reasoning_effort\":\"low\"}}",
+    "--output",
+    "/home/enntitysparkadmin/qual-20261110/fn-rc-spark-8x262k/rigmark-2/run/rigmark.json"
+  ],
+  "start_unix": 1794324752.0021982
+}

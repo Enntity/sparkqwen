@@ -1,0 +1,15 @@
+{"name": "P", "tag": "prime", "serial": false, "tokens": 1, "prompt": 21368, "ttft_s": 14.45, "decode_tok_s": null, "chars": 3, "sha": "1b9345fd177ec52f"}
+{"name": "P", "tag": "alone", "serial": false, "tokens": 300, "prompt": 21368, "ttft_s": 0.21, "decode_tok_s": 35.85, "chars": 1136, "sha": "ca268e1f48dcf658"}
+{"name": "P", "tag": "alone", "serial": true, "tokens": 300, "prompt": 21368, "ttft_s": 0.21, "decode_tok_s": 13.27, "chars": 1136, "sha": "ca268e1f48dcf658"}
+{"name": "D1", "tag": "alone", "serial": true, "tokens": 600, "prompt": 35, "ttft_s": 0.26, "decode_tok_s": 14.47, "chars": 1717, "sha": "72d1f17c68aa9119"}
+{"name": "D2", "tag": "alone", "serial": true, "tokens": 600, "prompt": 36, "ttft_s": 0.26, "decode_tok_s": 14.51, "chars": 2105, "sha": "1a5c298154b194e6"}
+{"name": "P", "tag": "warm-join", "serial": false, "tokens": 300, "prompt": 21368, "ttft_s": 0.45, "decode_tok_s": 21.99, "chars": 1136, "sha": "ca268e1f48dcf658"}
+{"name": "D2", "tag": "warm-join", "serial": false, "tokens": 600, "prompt": 36, "ttft_s": 0.64, "decode_tok_s": 34.15, "chars": 2105, "sha": "1a5c298154b194e6"}
+{"name": "D1", "tag": "warm-join", "serial": false, "tokens": 600, "prompt": 35, "ttft_s": 0.27, "decode_tok_s": 31.59, "chars": 1717, "sha": "72d1f17c68aa9119"}
+{"name": "P2", "tag": "cold-join", "serial": false, "tokens": 300, "prompt": 23940, "ttft_s": 16.83, "decode_tok_s": 24.48, "chars": 1062, "sha": "b57cbc591f12ecfa"}
+{"name": "D4", "tag": "cold-join", "serial": false, "tokens": 600, "prompt": 31, "ttft_s": 0.14, "decode_tok_s": 17.44, "chars": 2184, "sha": "6daef654449fd537"}
+{"name": "D3", "tag": "cold-join", "serial": false, "tokens": 600, "prompt": 31, "ttft_s": 0.29, "decode_tok_s": 15.72, "chars": 2673, "sha": "714b68cb35802551"}
+P alone speculative vs alone serial: IDENTICAL
+P joining two decoders vs alone serial: IDENTICAL
+D1 beside the join vs alone serial: IDENTICAL
+D2 beside the join vs alone serial: IDENTICAL

@@ -5,9 +5,15 @@
 
 # SparkQwen
 
-**SparkQwen 0.6.1** · [Versioning](docs/VERSIONING.md). Run `./start.sh --version`
+**SparkQwen 0.7.0** · [Versioning](docs/VERSIONING.md). Run `./start.sh --version`
 for this checkout, or `./start.sh status` for the version and image IDs on both ranks.
-Choose [Strict or Spark mode](docs/MODES.md); both use the model's native MTP head.
+[Spark mode](docs/MODES.md) is the default; both modes use the model's native MTP head.
+
+Version 0.7.0 adds a [prefix cache on disk](#prefix-cache-on-disk) for
+Flash-Next, makes Spark mode and the `8x262k` profile the defaults, and turns
+off two engine loop guards that cut 27B answers short. Both models were
+measured on the release images:
+[results/2026-11-10-release-0.7.0](results/2026-11-10-release-0.7.0/RESULT.md).
 
 Version 0.6 adds Qwen3.8-27B on one Spark, a candidate, behind `--model 27b`.
 The Flash-Next engine is 0.5.1's: the same Atlas commit, and an engine binary
@@ -76,8 +82,8 @@ See [exact coverage, configuration and remaining limits](docs/TOOL-GUARD.md).
 The [0.3.3 canary](results/2026-10-26-tool-guard-033/RESULT.md) passed all 34
 blocking/streaming checks on the exact release image.
 
-The performance and video measurements below belong to 0.3.1 unless explicitly
-identified otherwise; they are not fresh 0.6.1 throughput measurements.
+The video and capacity measurements below belong to the release they name;
+the performance section is 0.7.0's.
 
 ## Strict and Spark modes
 
@@ -86,32 +92,36 @@ native MTP. Strict uses BF16 draft projections; Spark uses reviewed NVFP4
 draft copies with target verification. Use `disable_mtp: true` for a serial
 control. [Mode details](docs/MODES.md).
 
-## 0.3.1 performance measurements
+## 0.7.0 performance measurements
 
-**106.4 tok/s code · 54.8 tok/s prose · 4,142 tok/s cold 16K prefill.**
-The headline is the first passing complete run of two scheduled runs.
-All medians below are tok/s; no cells are selected across runs.
+**101.6 tok/s code · 53.6 tok/s prose · 4,187 tok/s cold 16K prefill.**
+This is the default install (`./start.sh`, Spark mode, `8x262k`) on the
+release image. The headline is the first passing complete run of two
+scheduled runs. All medians below are tok/s; no cells are selected across runs.
 
 | RigMark metric | Run 1: headline | Run 2 |
 |---|---:|---:|
-| Code decode estimate | **106.377** | 108.810 |
-| Prose decode estimate | **54.835** | 54.207 |
-| Structured decode estimate | **120.242** | 122.991 |
-| Cold 16K prefill | **4,142.153** | 4,084.679 |
-| C8 capped aggregate | **245.716** | 249.084 |
+| Code decode estimate | **101.6** | 105.7 |
+| Prose decode estimate | **53.6** | 53.7 |
+| Structured decode estimate | **120.6** | 119.1 |
+| Cold 16K prefill | **4,187** | 4,186 |
+| C8 capped aggregate | **261.1** | 239.8 |
 
-Spark mode, low reasoning, TP2/EP2, BF16 KV, `8x262k`, utilization 0.88;
-one 200 Gb/s HCA per rank and a 2,200 MHz GPU clock cap. SparkGLM uses the
-same physical pair, protocol, prompt source and repetition counts. The
-checkpoints and speculative recipes differ, so this compares appliances.
+Low reasoning, TP2/EP2, BF16 KV, utilization 0.88, both rails of one
+ConnectX-7 port per rank, no clock override. The same protocol as the
+[0.3.1 run](results/2026-10-24-common-engine/RESULT.md) (106.4 code, 54.8
+prose, 4,142 prefill, 245.7 at C8), which used one rail and a clock cap.
 
 Both runs passed **9/9 basic output gates**. Those gates check completion and
 shape, not semantic code correctness. Decode includes reasoning; structured
 output is a predictable-output ceiling. All C8 streams hit their 256-token
-cap, so that rate does not measure completed agent tasks. Rank 0 recorded
-some new swap-out during both runs; these are speed measurements, not
-zero-paging capacity tests.
-[Every repetition, raw receipt and limitation](results/2026-10-24-common-engine/RESULT.md).
+cap, so that rate does not measure completed agent tasks. Four- and
+eight-stream rounds varied between runs (212 to 267 tok/s at C8 across the
+day's arms) and rank 0 paged out in several; these are speed measurements,
+not zero-paging capacity tests. The 0.6.1 image measured level with 0.7.0 on
+the same pair the same day, and Strict mode gave the same text 10 to 16%
+slower.
+[Every repetition, raw receipt and limitation](results/2026-11-10-release-0.7.0/RESULT.md).
 
 ## Quality and video
 
@@ -160,18 +170,18 @@ retain the earlier selection methods, results and failures.
 git clone https://github.com/Enntity/sparkqwen.git
 cd sparkqwen
 cp .env.example .env      # set WORKER to the other Spark's ssh destination
-PROFILE=8x262k ./start.sh --mode spark
+./start.sh
 ```
 
-Version 0.6.1 uses `ghcr.io/enntity/atlas-sparkqwen:b2995a9621e2` for
-Flash-Next and `ghcr.io/enntity/atlas-sparkqwen:b2995a9621e2-27b` for the
-27B, also tagged `0.6.1` and `0.6.1-27b`. The release records the immutable registry digests and image identities. `PULL=0` builds the pinned source.
-[Release and registry identity](https://github.com/Enntity/sparkqwen/releases/tag/v0.6.1).
+Version 0.7.0 uses `ghcr.io/enntity/atlas-sparkqwen:5b9fecbcf5d9` for
+Flash-Next and `ghcr.io/enntity/atlas-sparkqwen:5b9fecbcf5d9-27b` for the
+27B, also tagged `0.7.0` and `0.7.0-27b`. The release records the immutable registry digests and image identities. `PULL=0` builds the pinned source.
+[Release and registry identity](https://github.com/Enntity/sparkqwen/releases/tag/v0.7.0).
 
-This image pins common Atlas commit `9b25f575`. Omitting `--mode` selects
-Strict; both modes keep native MTP. Max/saver examples select Spark, the mode
-used for their original capacity trials. The quick start uses `8x262k`;
-the launcher's default remains `8x32k`.
+The Flash-Next image pins Atlas commit `8a193a86`. Omitting `--mode` selects
+Spark and omitting `PROFILE` selects `8x262k` (Strict and `8x32k` until
+0.7.0); both modes keep native MTP. Max/saver examples select Spark, the mode
+used for their original capacity trials.
 
 ### Choosing a checkpoint
 
@@ -274,9 +284,9 @@ sampling limits and the 0.3.0 checks, see [Video](docs/VIDEO.md).
 
 | Profile | Scheduler slots | Per-request context | Intended use |
 | --- | ---: | ---: | --- |
-| `8x32k` (default) | 8 | 32,768 | Shorter contexts |
-| `4x262k` | 4 | 262,144 | Existing long-context recipe |
-| `8x262k` | 8 | 262,144 | Existing long-context recipe |
+| `8x262k` (default) | 8 | 262,144 | General use |
+| `4x262k` | 4 | 262,144 | Four slots |
+| `8x32k` | 8 | 32,768 | Requests capped at 32,768 tokens |
 | `4x512k` | 4 | 524,288 | Experimental YaRN 2×, dedicated pair |
 | `4x1m` | 4 | 1,000,000 | Experimental YaRN 4×, dedicated pair |
 | `max-16x262k` | 16 | 262,144 | Dedicated pair, display carveout |
@@ -346,8 +356,9 @@ loop ([docs/LIMITATIONS.md](docs/LIMITATIONS.md), Behavior).
 
 ## Mode selection
 
-Use `MODE=strict` for native BF16 draft projections or `MODE=spark` for
-NVFP4 draft projections. Both retain native target precision and MTP; see
+`MODE=spark`, the default, drafts with NVFP4 projections; `MODE=strict`
+drafts with native BF16 ones and decoded 10 to 16% slower for the same text
+in the 0.7.0 run. Both retain native target precision and MTP; see
 [Strict and Spark](docs/MODES.md) for the contract and serial test control.
 
 The historical `FP8_GDN` opt-in is rejected by both modes. `QSA_TC2R` is also
@@ -397,6 +408,17 @@ the pair. Three profiles (`PROFILE=`, in `install/profiles/`), every one with
 | `27b` (default) | DFlash2 | 0.85 | 64 |
 | `27b-max` | DFlash2 + DSpine | 0.84 | 32 |
 | `27b-saver` | DFlash2 | 0.59 | 8 |
+
+On the 0.7.0 image the default profile's first passing RigMark run read
+**65.6 tok/s code, 29.3 prose, 85.2 structured, 1,573 tok/s cold 16K
+prefill and 108.3 tok/s at eight streams**, with speculative text identical
+to serial on every checked cell. `27b-max` read 75 to 79 on code and 120 on
+structured output, level elsewhere. The profiles turn off the engine's
+content-loop watchdog and stream loop guards, which had ended a JSON array
+after 48 tokens and Go tests at about 1,700; a greedy answer that does not
+stop now runs to the request's `max_tokens`. An identical prompt sent twice
+is not served from the prefix cache yet (a follow-up turn is).
+[All of it](results/2026-11-10-release-0.7.0/RESULT.md#qwen38-27b-on-one-spark).
 
 They are candidates: not yet qualified.
 

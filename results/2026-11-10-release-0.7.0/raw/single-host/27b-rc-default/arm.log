@@ -1,0 +1,13 @@
+2026-11-10T16:24:52Z up (27b MODE= PROFILE=27b DRAFTER= IMAGE=)
+2026-11-10T16:25:03Z start exit 0: [1m== ready: http://127.0.0.1:8893/v1 model qwen3.8-27b-atlas[0m
+2026-11-10T16:25:04Z step greedy
+2026-11-10T16:25:37Z step bench
+2026-11-10T16:30:40Z step rig1
+2026-11-10T16:39:43Z step rig2
+2026-11-10T16:48:53Z step keep
+2026-11-10T16:48:53Z left running
+2026-11-10T16:48:53Z up (27b MODE= PROFILE=27b DRAFTER= IMAGE=)
+2026-11-10T16:48:53Z step checks
+2026-11-10T16:57:57Z step c8
+2026-11-10T16:58:57Z step keep
+2026-11-10T16:58:57Z left running

@@ -1,0 +1,21 @@
+{
+  "hardware": "2 x NVIDIA DGX Spark, GB10, 128 GB unified memory per appliance",
+  "topology": "TP2/EP2 across a direct ConnectX-7 RoCE pair, HCAs rocep1s0f1,roceP2p1s0f1 per rank",
+  "negotiated_link_speed": "200 Gb/s per port (2X NDR), read from sysfs",
+  "quantisation": "Published NVIDIA FP4-Local mixed-precision target; Spark mode: NVFP4 draft projections",
+  "drafter": "Native MTP head, dynamic depth up to 7, target verification; Spark mode",
+  "scheduler": "8 sequences, batch size 8, max-prefill-tokens 16384, prefix caching enabled",
+  "kv_cache_dtype": "bf16",
+  "context_limit": 262144,
+  "gpu_memory_utilisation": 0.88,
+  "serving_engine": "Atlas 5f79b46ba7b0e8b14f8b2966cca9e2546f18560d (Enntity/atlas spark), SparkQwen 0.6.1",
+  "serving_image": "ghcr.io/enntity/atlas-sparkqwen:b2995a9621e2; local image ID sha256:2c880892baefcea477df3a7157b877a944fa3e9cbab27439568950f1e244110f",
+  "recipe": "Enntity/sparkqwen 0.6.1; install tree b2995a9621e2f748f04ac0ced8e6dd6f5c0488f3; profile 8x262k, Spark mode",
+  "binary_sha256": "c719a0b1a5808511d780b65a2b3021336dbf702ff3bfe1591f7da01c379cd9a8",
+  "model": "nvidia/Qwen3.8-Flash-Next-FP4-Local",
+  "model_revision": "b9ce18a6887e18c089fdea8509a33e63429a3300",
+  "competing_traffic": "none; both Sparks reserved, managed serving drained, builds and image transfers finished before timed runs",
+  "chat_template": "Pinned checkpoint template; reasoning_effort=low on all benchmark requests",
+  "power_policy": "No clock or power override applied in this session; observed clocks recorded in telemetry",
+  "headline_selection": "First passing complete run of two scheduled runs; no per-cell selection"
+}

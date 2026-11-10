@@ -1,0 +1,40 @@
+{
+ "think_off_code": {
+  "reps": [
+   {
+    "tokens": 887,
+    "ttft_ms": 266.4061118848622,
+    "decode_tok_s": 69.92175132799474,
+    "think_chars": 0,
+    "text_chars": 3449
+   },
+   {
+    "tokens": 887,
+    "ttft_ms": 265.8882038667798,
+    "decode_tok_s": 69.8999843619809,
+    "think_chars": 0,
+    "text_chars": 3449
+   }
+  ],
+  "median_tok_s": 69.91086784498782
+ },
+ "think_on": {
+  "reps": [
+   {
+    "tokens": 519,
+    "ttft_ms": 231.9251587614417,
+    "decode_tok_s": 72.43969414818842,
+    "think_chars": 604,
+    "text_chars": 434
+   },
+   {
+    "tokens": 519,
+    "ttft_ms": 231.12471401691437,
+    "decode_tok_s": 72.30825587179245,
+    "think_chars": 604,
+    "text_chars": 434
+   }
+  ],
+  "median_tok_s": 72.37397500999043
+ }
+}

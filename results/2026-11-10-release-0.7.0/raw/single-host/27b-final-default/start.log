@@ -1,0 +1,5 @@
+[1m== image ghcr.io/enntity/atlas-sparkqwen:5b9fecbcf5d9-27b[0m
+[1m== serving nvidia/Qwen3.8-27B-NVFP4 with 0xBakeer/TandemLLM-Qwen3.8-27B-NVFP4's GDN and attention on this Spark (profile 27b, drafter dflash2)[0m
+[1m== loading (about a minute; the first start also compiles CUDA kernels)[0m
+smoke: 17*23 = 391
+[1m== ready: http://127.0.0.1:8893/v1 model qwen3.8-27b-atlas[0m

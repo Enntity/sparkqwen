@@ -1,0 +1,52 @@
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "-16698", "out": " 450600 \u00f7 4\n= **112650**\n\n**Step 3:** Combine all terms\n95047 \u2212 112650 + 905\n= \u221217603 + 905\n= **\u221216698**\n\nAnswer: -16698"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "249536", "out": " \u00d7 5\n= 210,350 + 21,035\n= **231,385**\n\n**Step 3:** 480,298 \u2212 231,385 + 623\n= 248,913 + 623\n= **249,536**\n\nAnswer: 249536"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "42473", "out": "6 = 8,856\n- Sum = **67,896**\n\n**Step 3:** Combine\n- 109,584 \u2212 67,896 = 41,688\n- 41,688 + 785 = **42,473**\n\nAnswer: 42473"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "487820", "out": "\u00d7 5\n= 192860 + 48215\n= **241075**\n\n**Step 3:** Combine\n728736 \u2212 241075 + 159\n= 487661 + 159\n= **487820**\n\nAnswer: 487820"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "132000", "out": "\n= 56,360 + 4,227\n= **60,587**\n\n**Step 3:** Combine\n191,995 \u2212 60,587 + 592\n= 131,408 + 592\n= **132,000**\n\nAnswer: 132000"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "-37503", "out": "344,970 + 7,666\n= **352,636**\n\n**Step 3:** Combine\n314,820 \u2212 352,636 + 313\n= \u221237,816 + 313\n= **\u221237,503**\n\nAnswer: -37503"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "47947", "out": "\n= 105,920 + 7,944\n= **113,864**\n\n**Step 3:** Combine\n161,540 \u2212 113,864 + 271\n= 47,676 + 271\n= **47,947**\n\nAnswer: 47947"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "204581", "out": "3,901\n= **103,571**\n\n**Step 3:** Combine all terms\n307,260 \u2212 103,571 + 892\n= 203,689 + 892\n= **204,581**\n\nAnswer: 204581"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "-403100", "out": "(70 + 7) = 469210 + 46921 = **516131**\n\n**Step 3:** 112326 \u2212 516131 + 705 = \u2212403805 + 705 = **\u2212403100**\n\nAnswer: -403100"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "10293", "out": " \u00d7 3\n= 49 820 + 14 946\n= **64 766**\n\n**Step 3:** Combine\n74 340 \u2212 64 766 + 719\n= 9 574 + 719\n= **10 293**\n\nAnswer: 10293"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "220276", "out": " \u00d7 7\n= 474,900 + 55,405\n= **530,305**\n\n**Step 3:** 750,465 \u2212 530,305 + 116\n= 220,160 + 116\n= **220,276**\n\nAnswer: 220276"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "-67255", "out": "50 + 25220\n= **214370**\n\n**Step 3:** Combine all terms\n146379 \u2212 214370 + 736\n= \u221267991 + 736\n= **\u221267255**\n\nAnswer: -67255"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "-119926", "out": " 4\n= 203300 \u2212 8132\n= **195168**\n\n**Step 3:** Combine\n74616 \u2212 195168 + 626\n= \u2212120552 + 626\n= **\u2212119926**\n\nAnswer: -119926"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "344512", "out": " = 54,620 + 10,924 = 65,544\n\n**Step 3:** 409,440 \u2212 65,544 = 343,896\n\n**Step 4:** 343,896 + 616 = 344,512\n\nAnswer: 344512"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "233610", "out": "0 + 9786 \u00d7 5\n= 97860 + 48930\n= 146790\n\n**Step 3:** Combine\n380016 \u2212 146790 + 384\n= 233226 + 384\n= 233610\n\nAnswer: 233610"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "81469", "out": "2602 \u00d7 (90 \u2212 3) = 234180 \u2212 7806 = **226374**\n\n**Step 3:** 306912 \u2212 226374 + 931\n= 80538 + 931 = **81469**\n\nAnswer: 81469"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "543092", "out": "4 \u00d7 4\n= 140,320 + 7,016\n= **147,336**\n\n**Step 3:** 689,552 \u2212 147,336 + 876\n= 542,216 + 876\n= **543,092**\n\nAnswer: 543092"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "115412", "out": "\n= 79 110 + 7 911\n= **87 021**\n\n**Step 3:** Combine\n201 768 \u2212 87 021 + 665\n= 114 747 + 665\n= **115 412**\n\nAnswer: 115412"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "-69792", "out": "26,000\n= **156,000**\n\n**Step 3:** Combine all terms\n85,404 \u2212 156,000 + 804\n= \u221270,596 + 804\n= **\u221269,792**\n\nAnswer: -69792"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "-391996", "out": "(100 \u2212 6) = 674,900 \u2212 40,494 = 634,406\n\n**Step 3:** 242,040 \u2212 634,406 + 370 = \u2212392,366 + 370 = \u2212391,996\n\nAnswer: -391996"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "146275", "out": " = 47,070 + 14,121 = 61,191\n\n**Step 3:** 207,160 \u2212 61,191 = 145,969\n\n**Step 4:** 145,969 + 306 = 146,275\n\nAnswer: 146275"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "290830", "out": "\n= 79,260 + 3,963\n= **83,223**\n\n**Step 3:** Combine\n373,934 \u2212 83,223 + 119\n= 290,711 + 119\n= **290,830**\n\nAnswer: 290830"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "-487763", "out": " 250 \u2212 7 525\n= **669 725**\n\n**Step 3:** Combine\n181 740 \u2212 669 725 + 222\n= \u2212487 985 + 222\n= **\u2212487 763**\n\nAnswer: -487763"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "470504", "out": "141 760 + 7 088\n= **148 848**\n\n**Step 3:** Combine\n618 936 \u2212 148 848 + 416\n= 470 088 + 416\n= **470 504**\n\nAnswer: 470504"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "455071", "out": "\n= 35,730 + 1,191\n= **36,921**\n\n**Step 3:** Combine\n491,400 \u2212 36,921 + 592\n= 454,479 + 592\n= **455,071**\n\nAnswer: 455071"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "63826", "out": "+ 37,840\n= **605,440**\n\n**Step 3:** Combine all terms\n668,355 \u2212 605,440 + 911\n= 62,915 + 911\n= **63,826**\n\nAnswer: 63826"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "409135", "out": "61,400 + 56,490\n= **217,890**\n\n**Step 3:** Combine\n626,535 \u2212 217,890 + 490\n= 408,645 + 490\n= **409,135**\n\nAnswer: 409135"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "-211629", "out": "0 + 7820\n= **281520**\n\n**Step 3:** Combine all terms\n69479 \u2212 281520 + 412\n= \u2212212041 + 412\n= **\u2212211629**\n\nAnswer: -211629"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "-569970", "out": "+ 52360\n= **668360**\n\n**Step 3:** Combine all terms\n97584 \u2212 668360 + 806\n= 98390 \u2212 668360\n= **\u2212569970**\n\nAnswer: -569970"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "198197", "out": "5,704\n- Sum = **54,964**\n\n**Step 3:** Combine\n- 252,539 \u2212 54,964 = 197,575\n- 197,575 + 622 = **198,197**\n\nAnswer: 198197"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "525870", "out": "963 \u00d7 5\n= 59,630 + 29,815\n= **89,445**\n\n**Step 3:** 615,208 \u2212 89,445 + 107\n= 525,763 + 107\n= **525,870**\n\nAnswer: 525870"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "-493732", "out": "740 + 16,772\n= **771,512**\n\n**Step 3:** Combine\n277,312 \u2212 771,512 + 468\n= \u2212494,200 + 468\n= **\u2212493,732**\n\nAnswer: -493732"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "-102623", "out": "(100 \u2212 4) = 397,900 \u2212 15,916 = 381,984\n\n**Step 3:** 279,000 \u2212 381,984 + 361\n= \u2212102,984 + 361\n= \u2212102,623\n\nAnswer: -102623"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "-626410", "out": "ultiply by 83\n$$83 \\times (-7559) = -627{,}397$$\n\n**Step 4:** Add 987\n$$-627{,}397 + 987 = -626{,}410$$\n\nAnswer: -626410"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "-199039", "out": "+ 8855 \u00d7 1 = 354,200 + 8,855 = 363,055\n\n**Step 3:** 163,100 \u2212 363,055 + 916\n= \u2212199,955 + 916\n= \u2212199,039\n\nAnswer: -199039"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "334864", "out": " \u00d7 5\n= 330 500 + 33 050\n= **363 550**\n\n**Step 3:** 698 205 \u2212 363 550 + 209\n= 334 655 + 209\n= **334 864**\n\nAnswer: 334864"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "29972", "out": "+ 37,480\n= **224,880**\n\n**Step 3:** Combine all terms\n254,138 \u2212 224,880 + 714\n= 29,258 + 714\n= **29,972**\n\nAnswer: 29972"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "-49432", "out": "52,300 + 12,615\n= **264,915**\n\n**Step 3:** Combine\n214,598 \u2212 264,915 + 885\n= \u221250,317 + 885\n= **\u221249,432**\n\nAnswer: -49432"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "35952", "out": "tep 2:** 6225 \u00d7 30\n= **186,750**\n\n**Step 3:** Combine\n222,431 \u2212 186,750 + 271\n= 35,681 + 271\n= **35,952**\n\nAnswer: 35952"}
+{"tag": "27b-final-default", "kind": "arith", "ok": true, "answer": "-381530", "out": "\n= 435360 + 50792\n= **486152**\n\n**Step 3:** Combine\n104027 \u2212 486152 + 595\n= \u2212382125 + 595\n= **\u2212381530**\n\nAnswer: -381530"}
+{"tag": "27b-final-default", "kind": "needle", "ok": true, "answer": "79098087", "out": "79098087"}
+{"tag": "27b-final-default", "kind": "needle", "ok": true, "answer": "06704974", "out": "06704974"}
+{"tag": "27b-final-default", "kind": "needle", "ok": true, "answer": "69595526", "out": "69595526"}
+{"tag": "27b-final-default", "kind": "needle", "ok": true, "answer": "97820892", "out": "97820892"}
+{"tag": "27b-final-default", "kind": "needle", "ok": true, "answer": "58884302", "out": "58884302"}
+{"tag": "27b-final-default", "kind": "needle", "ok": true, "answer": "23532875", "out": "23532875"}
+{"tag": "27b-final-default", "kind": "needle", "ok": true, "answer": "94000233", "out": "94000233"}
+{"tag": "27b-final-default", "kind": "needle", "ok": true, "answer": "85365588", "out": "85365588"}
+{"tag": "27b-final-default", "kind": "needle", "ok": true, "answer": "85523407", "out": "85523407"}
+{"tag": "27b-final-default", "kind": "needle", "ok": true, "answer": "34022437", "out": "34022437"}
+{"tag": "27b-final-default", "kind": "needle", "ok": true, "answer": "39767714", "out": "39767714"}
+{"tag": "27b-final-default", "kind": "needle", "ok": true, "answer": "52903839", "out": "52903839"}

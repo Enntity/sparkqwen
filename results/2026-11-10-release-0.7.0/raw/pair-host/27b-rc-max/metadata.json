@@ -1,0 +1,20 @@
+{
+  "hardware": "1 x NVIDIA DGX Spark, GB10, 128 GB unified memory",
+  "topology": "single appliance, TP1",
+  "quantisation": "NVIDIA NVFP4 checkpoint with TandemLLM NVFP4 Gated DeltaNet and attention projections (install/checkpoint-27b.json overlay)",
+  "drafter": "DFlash2 incoai/Qwen3.8-27B-DFlash2 (gamma 8) and DSpine tencent/Qwen3.8-27B-DSpine-b16, routed per request, exact verify",
+  "scheduler": "32 sequences, batch size 32, max-prefill-tokens 16384, prefix caching enabled",
+  "kv_cache_dtype": "bf16",
+  "context_limit": 262144,
+  "gpu_memory_utilisation": 0.84,
+  "serving_engine": "Atlas 32e4295ca8ae243b10341cd8cde2c700f96dc5f2 (Enntity/atlas q27/conc), SparkQwen 0.7.0",
+  "serving_image": "ghcr.io/enntity/atlas-sparkqwen:be82343bb26b-27b; local image ID sha256:7cb32f7c71d944d51e80886286a157b9446977fa2bd1d57c097b86fd6f5b646b",
+  "recipe": "Enntity/sparkqwen 0.7.0; install tree be82343bb26b62fdc5ac6d7082e25a9ed5a995a1; profile 27b-max",
+  "binary_sha256": "69cb8d313da84e78f61c265de18b5c24aef402b261c06a905c9f173494a2ca57",
+  "model": "nvidia/Qwen3.8-27B-NVFP4",
+  "model_revision": "482ca0f3832238542f8f5295dde86b5f22711d80",
+  "competing_traffic": "none; both Sparks reserved, managed serving drained, builds and image transfers finished before timed runs",
+  "chat_template": "Pinned checkpoint template; reasoning_effort=low on all benchmark requests",
+  "power_policy": "No clock or power override applied in this session; observed clocks recorded in telemetry",
+  "headline_selection": "First passing complete run of two scheduled runs; no per-cell selection"
+}

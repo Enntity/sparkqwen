@@ -1,0 +1,8 @@
+C=1 think=on serial=True wall=139.4s tokens=2000 agg=14.3 tok/s f4b6c53e dffd924b e4fd3fc6 aa9ac485 6483568b eadebff6 55bb1a83 cedce7cf
+C=1 think=off serial=True wall=139.2s tokens=1999 agg=14.4 tok/s 488449e5 3d17c971 e546cda6 92466928 b4f4aefe 80108241 c743fdc3 470c361d
+C=1 think=on serial=False wall=36.4s tokens=2000 agg=55.0 tok/s f4b6c53e dffd924b e4fd3fc6 aa9ac485 6483568b eadebff6 55bb1a83 cedce7cf
+C=1 think=off serial=False wall=36.1s tokens=1999 agg=55.3 tok/s 488449e5 3d17c971 e546cda6 92466928 b4f4aefe 80108241 c743fdc3 470c361d
+C=8 think=on serial=False wall=15.6s tokens=2000 agg=128.3 tok/s f4b6c53e dffd924b e4fd3fc6 aa9ac485 6483568b eadebff6 55bb1a83 cedce7cf
+C=8 think=off serial=False wall=15.8s tokens=1999 agg=126.8 tok/s 488449e5 3d17c971 e546cda6 92466928 b4f4aefe 80108241 c743fdc3 470c361d
+spec.json: 16/16 identical  on0:= on1:= on2:= on3:= on4:= on5:= on6:= on7:= off0:= off1:= off2:= off3:= off4:= off5:= off6:= off7:=
+c8.json: 16/16 identical  on0:= on1:= on2:= on3:= on4:= on5:= on6:= on7:= off0:= off1:= off2:= off3:= off4:= off5:= off6:= off7:=

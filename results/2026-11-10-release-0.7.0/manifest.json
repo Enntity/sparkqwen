@@ -1,0 +1,48 @@
+{
+ "_license": "SPDX-License-Identifier: AGPL-3.0-only",
+ "date": "2026-11-10",
+ "product": "SparkQwen",
+ "version": "0.7.0",
+ "install_tree": "5b9fecbcf5d9f9318611db0f380338a3ccf37e9e",
+ "image_source_commit": "b234234f5255c8697c6a3d5ebeed9fe31de88286",
+ "flash_next": {
+  "kernel_target": "qwen3.8-flash-next",
+  "engine_repository": "https://github.com/Enntity/atlas.git",
+  "engine_branch": "spark",
+  "engine_commit": "8a193a8667997274096cedd62b13de0d5334c079",
+  "engine_tree": "6b6125af5fb648f6d596b6febb551aec61ef349e",
+  "registry_tags": [
+   "5b9fecbcf5d9",
+   "0.7.0"
+  ],
+  "local_image_id": "sha256:e79f1904dfa9d5b07ab0cb6fc08cbaf17cda774bf471a6625e6e1b810f07b213",
+  "engine_binary_sha256": "50e9fd5bd8efe93090738f05c4646e9c59190ff733bd245a905131e1420346ee",
+  "cpu_tests": {
+   "passed": 8483,
+   "failed": 0,
+   "ignored": 300
+  },
+  "gpu_run_of_this_image": true
+ },
+ "qwen38_27b": {
+  "kernel_target": "qwen3.8-27b",
+  "engine_repository": "https://github.com/Enntity/atlas.git",
+  "engine_branch": "q27/conc",
+  "engine_commit": "6a7091b3b54e52d797ec59429903c8c617974376",
+  "engine_tree": "41d299bde672d6a33720f392535c631b1f8426e0",
+  "registry_tags": [
+   "5b9fecbcf5d9-27b",
+   "0.7.0-27b"
+  ],
+  "local_image_id": "sha256:954b26f12ffee271ad2b6c7b15d74d422804ba5dc2a853942bcf050b1ef64bc9",
+  "engine_binary_sha256": "c333ddbff7f1caf6c9d08651d0765e45c4d061bf0f30c5817cf00c63d391ea1e",
+  "cpu_tests": {
+   "passed": 8581,
+   "failed": 0,
+   "ignored": 304
+  },
+  "gpu_run_of_this_image": true,
+  "qualification_status": "candidate"
+ },
+ "note": "Registry digests are recorded in the GitHub release once the images are pushed."
+}
