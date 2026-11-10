@@ -1,0 +1,37 @@
+A spark-0.5.1 99950488 bytes sha256 dbc209eeb9edc3e6fac7fec6aa1e6b861d44b137c9f17b303efd7eb82be89973
+B spark-0.6.0 99950488 bytes sha256 c719a0b1a5808511d780b65a2b3021336dbf702ff3bfe1591f7da01c379cd9a8
+(null)                          0 bytes  not loaded  same       e3b0c44298fc1c14 e3b0c44298fc1c14
+.interp                        27 bytes  loaded      same       be23adc91ec8582e be23adc91ec8582e
+.note.gnu.build-id             36 bytes  loaded      same       c9fac5b17ad5976c c9fac5b17ad5976c
+.note.ABI-tag                  32 bytes  loaded      same       247e0b50371ed3e4 247e0b50371ed3e4
+.gnu.hash                      36 bytes  loaded      same       c5f0b32ff87b620b c5f0b32ff87b620b
+.dynsym                      8448 bytes  loaded      same       349cb196a9a0aa35 349cb196a9a0aa35
+.dynstr                      5539 bytes  loaded      same       b701e3952557924b b701e3952557924b
+.gnu.version                  704 bytes  loaded      same       8e538a245122cda1 8e538a245122cda1
+.gnu.version_r                528 bytes  loaded      same       13cf976bafc1e8b2 13cf976bafc1e8b2
+.rela.dyn                 1784952 bytes  loaded      same       35ed29a4f5a64e5a 35ed29a4f5a64e5a
+.rela.plt                    8112 bytes  loaded      same       8a668e32c59d463d 8a668e32c59d463d
+.init                          24 bytes  loaded      same       a93ec86c0c5d29fc a93ec86c0c5d29fc
+.plt                         5440 bytes  loaded      same       ee13de4b6db79e64 ee13de4b6db79e64
+.text                    21643304 bytes  loaded      same       6a14dd273bec1b56 6a14dd273bec1b56
+.fini                          20 bytes  loaded      same       7d39706b791b17f4 7d39706b791b17f4
+.rodata                  57508412 bytes  loaded      same       83d430c603bb22d1 83d430c603bb22d1
+.nv_fatbin                1792256 bytes  loaded      same       68238d642eaa1ac5 68238d642eaa1ac5
+.eh_frame_hdr              350212 bytes  loaded      same       27be1c57ed292c28 27be1c57ed292c28
+.eh_frame                 2668980 bytes  loaded      same       ee6441009bbd525a ee6441009bbd525a
+.gcc_except_table         1079256 bytes  loaded      same       37c0d48fbc65a823 37c0d48fbc65a823
+.tdata                       3345 bytes  loaded      same       108824f9b4141612 108824f9b4141612
+.tbss                        1496 bytes  loaded      same       e3b0c44298fc1c14 e3b0c44298fc1c14
+.init_array                    64 bytes  loaded      same       3b321c8ddf016493 3b321c8ddf016493
+.fini_array                     8 bytes  loaded      same       d42f9068203f70a4 d42f9068203f70a4
+.data.rel.ro              1329784 bytes  loaded      same       f7799667d7b52a56 f7799667d7b52a56
+.dynamic                      640 bytes  loaded      same       072362c33f990427 072362c33f990427
+.got                         7016 bytes  loaded      same       a1ef168cb15f8a68 a1ef168cb15f8a68
+.data                       98076 bytes  loaded      same       a235c33fe1e084ce a235c33fe1e084ce
+.nvFatBinSegment               96 bytes  loaded      same       0593259ed0fc940d 0593259ed0fc940d
+.bss                         5456 bytes  loaded      same       e3b0c44298fc1c14 e3b0c44298fc1c14
+.comment                      114 bytes  not loaded  same       226885db200996e7 226885db200996e7
+.symtab                   5051544 bytes  not loaded  DIFFERENT  f4b3744401bd6045 2c08e149b32fb8e1
+.strtab                   6586687 bytes  not loaded  DIFFERENT  1b0d2029a9c76fc7 50ba0810a118231b
+.shstrtab                     322 bytes  not loaded  same       3fd7c53c9a513734 3fd7c53c9a513734
+differing sections: [('.symtab', 'not loaded'), ('.strtab', 'not loaded')]
