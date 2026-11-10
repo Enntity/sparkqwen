@@ -16,11 +16,13 @@ adds only its own `.spark/` scripts. Since 0.5.0, `main` also ships
 `verbatim_prompt = false` for this target (#319) and bans the `<tool_call>`
 opener when a request declares no tools (#320). 0.5.1 qualified on a DGX
 Spark pair on 2026-11-03 against 0.5.0 (greedy output and prompt logprobs
-identical, tool calls 21/21, speed within 1%). 0.6.0 keeps that pin and is
-the release to install: its Flash-Next image was rebuilt because the 27B
+identical, tool calls 21/21, speed within 1%). 0.6.0 keeps that pin:
+its Flash-Next image was rebuilt because the 27B
 variant changed `install/`, and its engine binary's loaded sections are
 byte-identical to 0.5.1's
-([receipts](../results/2026-11-10-release-0.6.0/RESULT.md)).
+([receipts](../results/2026-11-10-release-0.6.0/RESULT.md)). 0.6.1 changes
+only the 27B engine pin; its Flash-Next image is again a rebuild of the same
+engine ([receipts](../results/2026-11-10-release-0.6.1/RESULT.md)).
 0.5.0 pinned `162b4226` (Atlas-Inf `main` `9c4519131` plus #321, #322 and
 #323). 0.4.0 pinned Atlas-Inf
 `main` `9b3473f0` with the SparkQwen 0.4.0 stack merged (#284..#287, #290,
@@ -37,15 +39,18 @@ kernel target.
 `--model 27b` builds the `qwen3.8-27b` kernel target (model type `qwen3_5`)
 from Enntity/atlas `q27/conc` at the commit pinned in
 [`install/atlas-source-27b.json`](../install/atlas-source-27b.json):
-`c125bf9a8` (tree `372e0379`). That branch is the single-Spark serving series
+`32e4295ca` (tree `3f953643`). That branch is the single-Spark serving series
 proposed upstream as Atlas-Inf/atlas#333 (exact MTP and DFlash2 verify, fused
 GDN decode and verify, row-invariant tensor-core GEMMs, the DSpine drafter,
 the concurrency series) plus work that is not upstream yet: three prefix-cache
-fixes for long conversations (Enntity/atlas#18, #19) and the shared-scan
-decode attention (#20, #21), which the 27B profiles switch on. The variant is
-a candidate: its image passes the engine's workspace tests and Clippy, and
-[one focused before and after](../results/2026-11-10-27b-shared-scan/RESULT.md)
-is recorded, but it has no qualification run.
+fixes for long conversations (Enntity/atlas#18, #19), the shared-scan
+decode attention (#20, #21), which the 27B profiles switch on, and a scheduler
+fix that keeps a DFlash serve out of the mixed prefill-and-decode forward
+(#22, new in 0.6.1). The variant is a candidate: its image passes the engine's
+workspace tests and Clippy, and two focused before-and-after checks are
+recorded ([shared scan](../results/2026-11-10-27b-shared-scan/RESULT.md),
+[a request joining two decoders](../results/2026-11-10-27b-mixed-forward/RESULT.md)),
+but it has no qualification run.
 
 The [tool-call guard](TOOL-GUARD.md) runs by default after parsing, before
 returning calls to clients. It is shared serving code; model decoding and GPU

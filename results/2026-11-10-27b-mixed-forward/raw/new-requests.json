@@ -1,0 +1,123 @@
+[
+ {
+  "name": "P",
+  "tag": "prime",
+  "serial": false,
+  "tokens": 1,
+  "prompt": 21368,
+  "ttft_s": 14.44,
+  "decode_tok_s": null,
+  "chars": 3,
+  "text_sha256": "1b9345fd177ec52fefbe4cb0e04781413cd34969e02c4743ef36c980950af0a6"
+ },
+ {
+  "name": "P",
+  "tag": "alone",
+  "serial": false,
+  "tokens": 300,
+  "prompt": 21368,
+  "ttft_s": 0.21,
+  "decode_tok_s": 36.56,
+  "chars": 1136,
+  "text_sha256": "ca268e1f48dcf65807395928b1f8c3e2cfc660740e7d5e5156b5c70f97f054ee"
+ },
+ {
+  "name": "P",
+  "tag": "alone",
+  "serial": true,
+  "tokens": 300,
+  "prompt": 21368,
+  "ttft_s": 0.21,
+  "decode_tok_s": 13.26,
+  "chars": 1136,
+  "text_sha256": "ca268e1f48dcf65807395928b1f8c3e2cfc660740e7d5e5156b5c70f97f054ee"
+ },
+ {
+  "name": "D1",
+  "tag": "alone",
+  "serial": true,
+  "tokens": 600,
+  "prompt": 35,
+  "ttft_s": 0.27,
+  "decode_tok_s": 14.44,
+  "chars": 1717,
+  "text_sha256": "72d1f17c68aa9119da40bc7090a0301b090fe57aa90df15d6432288da9e76d34"
+ },
+ {
+  "name": "D2",
+  "tag": "alone",
+  "serial": true,
+  "tokens": 600,
+  "prompt": 36,
+  "ttft_s": 0.27,
+  "decode_tok_s": 14.5,
+  "chars": 2105,
+  "text_sha256": "1a5c298154b194e6a3587521b8a7ea7b165d6d6d47e4c9d5fc56f23c3de25c85"
+ },
+ {
+  "name": "D1",
+  "tag": "warm-join",
+  "serial": false,
+  "tokens": 600,
+  "prompt": 35,
+  "ttft_s": 0.52,
+  "decode_tok_s": 32.0,
+  "chars": 1717,
+  "text_sha256": "72d1f17c68aa9119da40bc7090a0301b090fe57aa90df15d6432288da9e76d34"
+ },
+ {
+  "name": "D2",
+  "tag": "warm-join",
+  "serial": false,
+  "tokens": 600,
+  "prompt": 36,
+  "ttft_s": 0.26,
+  "decode_tok_s": 33.55,
+  "chars": 2105,
+  "text_sha256": "1a5c298154b194e6a3587521b8a7ea7b165d6d6d47e4c9d5fc56f23c3de25c85"
+ },
+ {
+  "name": "P",
+  "tag": "warm-join",
+  "serial": false,
+  "tokens": 300,
+  "prompt": 21368,
+  "ttft_s": 0.46,
+  "decode_tok_s": 21.95,
+  "chars": 1136,
+  "text_sha256": "ca268e1f48dcf65807395928b1f8c3e2cfc660740e7d5e5156b5c70f97f054ee"
+ },
+ {
+  "name": "D3",
+  "tag": "cold-join",
+  "serial": false,
+  "tokens": 600,
+  "prompt": 31,
+  "ttft_s": 0.15,
+  "decode_tok_s": 15.68,
+  "chars": 2673,
+  "text_sha256": "714b68cb3580255175f369529aa27f23f8f06127f3d3b58398d5a3098ca741d5"
+ },
+ {
+  "name": "D4",
+  "tag": "cold-join",
+  "serial": false,
+  "tokens": 600,
+  "prompt": 31,
+  "ttft_s": 0.29,
+  "decode_tok_s": 17.54,
+  "chars": 2184,
+  "text_sha256": "6daef654449fd537b8ddeb98bfd013780878872a5851cdeb82f0f40df5ded739"
+ },
+ {
+  "name": "P2",
+  "tag": "cold-join",
+  "serial": false,
+  "tokens": 300,
+  "prompt": 23940,
+  "ttft_s": 16.82,
+  "decode_tok_s": 25.14,
+  "chars": 1062,
+  "text_sha256": "b57cbc591f12ecfacacf2b8929a35c5bdbded3a11e3723f814176ef213454894"
+ }
+]

@@ -1,0 +1,96 @@
+2026-11-10T08:23:55Z start rel
+image sha256:5d5dddde62bee256fa60d928e698c5cd5ff2d65ec2c905caf22ae94a28f2ba23 version 0.6.1 install-tree b2995a9621e2f748f04ac0ced8e6dd6f5c0488f3
+spark 1.0.0-beta-preview
+think_off_code [70.4, 70.2] tokens [887, 887] think/text chars [(0, 3449), (0, 3449)]
+think_on [72.7, 72.8] tokens [519, 519] think/text chars [(604, 434), (604, 434)]
+C=1 think=on serial=True wall=139.4s tokens=2000 agg=14.3 tok/s f4b6c53e dffd924b e4fd3fc6 aa9ac485 6483568b eadebff6 55bb1a83 cedce7cf
+C=1 think=off serial=True wall=139.6s tokens=1999 agg=14.3 tok/s 488449e5 3d17c971 e546cda6 92466928 b4f4aefe 80108241 c743fdc3 470c361d
+C=1 think=on serial=False wall=36.4s tokens=2000 agg=55.0 tok/s f4b6c53e dffd924b e4fd3fc6 aa9ac485 6483568b eadebff6 55bb1a83 cedce7cf
+C=1 think=off serial=False wall=36.2s tokens=1999 agg=55.2 tok/s 488449e5 3d17c971 e546cda6 92466928 b4f4aefe 80108241 c743fdc3 470c361d
+C=8 think=on serial=False wall=15.7s tokens=2000 agg=127.6 tok/s f4b6c53e dffd924b e4fd3fc6 aa9ac485 6483568b eadebff6 55bb1a83 cedce7cf
+C=8 think=off serial=False wall=15.7s tokens=1999 agg=127.1 tok/s 488449e5 3d17c971 e546cda6 92466928 b4f4aefe 80108241 c743fdc3 470c361d
+spec.json: 16/16 identical  on0:= on1:= on2:= on3:= on4:= on5:= on6:= on7:= off0:= off1:= off2:= off3:= off4:= off5:= off6:= off7:=
+c8.json: 16/16 identical  on0:= on1:= on2:= on3:= on4:= on5:= on6:= on7:= off0:= off1:= off2:= off3:= off4:= off5:= off6:= off7:=
+{"name": "P", "tag": "prime", "serial": false, "tokens": 1, "prompt": 21368, "ttft_s": 14.45, "decode_tok_s": null, "chars": 3, "sha": "1b9345fd177ec52f"}
+{"name": "P", "tag": "alone", "serial": false, "tokens": 300, "prompt": 21368, "ttft_s": 0.21, "decode_tok_s": 35.76, "chars": 1136, "sha": "ca268e1f48dcf658"}
+{"name": "P", "tag": "alone", "serial": true, "tokens": 300, "prompt": 21368, "ttft_s": 0.21, "decode_tok_s": 13.26, "chars": 1136, "sha": "ca268e1f48dcf658"}
+{"name": "D1", "tag": "alone", "serial": true, "tokens": 600, "prompt": 35, "ttft_s": 0.27, "decode_tok_s": 14.42, "chars": 1717, "sha": "72d1f17c68aa9119"}
+{"name": "D2", "tag": "alone", "serial": true, "tokens": 600, "prompt": 36, "ttft_s": 0.26, "decode_tok_s": 14.46, "chars": 2105, "sha": "1a5c298154b194e6"}
+{"name": "P", "tag": "warm-join", "serial": false, "tokens": 300, "prompt": 21368, "ttft_s": 0.46, "decode_tok_s": 21.75, "chars": 1136, "sha": "ca268e1f48dcf658"}
+{"name": "D2", "tag": "warm-join", "serial": false, "tokens": 600, "prompt": 36, "ttft_s": 0.53, "decode_tok_s": 34.08, "chars": 2105, "sha": "1a5c298154b194e6"}
+{"name": "D1", "tag": "warm-join", "serial": false, "tokens": 600, "prompt": 35, "ttft_s": 0.27, "decode_tok_s": 31.57, "chars": 1717, "sha": "72d1f17c68aa9119"}
+{"name": "P2", "tag": "cold-join", "serial": false, "tokens": 300, "prompt": 23940, "ttft_s": 16.81, "decode_tok_s": 24.46, "chars": 1062, "sha": "b57cbc591f12ecfa"}
+{"name": "D4", "tag": "cold-join", "serial": false, "tokens": 600, "prompt": 31, "ttft_s": 0.39, "decode_tok_s": 17.45, "chars": 2184, "sha": "6daef654449fd537"}
+{"name": "D3", "tag": "cold-join", "serial": false, "tokens": 600, "prompt": 31, "ttft_s": 0.14, "decode_tok_s": 15.64, "chars": 2673, "sha": "714b68cb35802551"}
+P alone speculative vs alone serial: IDENTICAL
+P joining two decoders vs alone serial: IDENTICAL
+D1 beside the join vs alone serial: IDENTICAL
+D2 beside the join vs alone serial: IDENTICAL
+mixed forwards: 0   ctx_ptr errors: 0   failed copies: 0   other ERROR lines: 0
+08:24:06 64 tok length 61.8 tok/s ttft 272.0 ms serial=0.00 tok_step=5.333
+08:24:19 887 tok stop 70.5 tok/s ttft 263.7 ms serial=0.00 tok_step=6.153
+08:24:32 887 tok stop 70.3 tok/s ttft 263.2 ms serial=0.00 tok_step=6.153
+08:24:34 64 tok length 56.8 tok/s ttft 230.2 ms serial=0.00 tok_step=5.077
+08:24:41 519 tok stop 72.8 tok/s ttft 235.4 ms serial=0.00 tok_step=6.329
+08:24:48 519 tok stop 72.9 tok/s ttft 230.8 ms serial=0.00 tok_step=6.329
+08:25:06 250 tok length 14.6 tok/s ttft 238.0 ms serial=1.00 tok_step=1.000
+08:25:23 250 tok length 14.5 tok/s ttft 261.6 ms serial=1.00 tok_step=1.000
+08:25:41 250 tok length 14.5 tok/s ttft 140.5 ms serial=1.00 tok_step=1.000
+08:25:58 250 tok length 14.5 tok/s ttft 139.2 ms serial=1.00 tok_step=1.000
+08:26:15 250 tok length 14.5 tok/s ttft 140.0 ms serial=1.00 tok_step=1.000
+08:26:33 250 tok length 14.5 tok/s ttft 140.1 ms serial=1.00 tok_step=1.000
+08:26:50 250 tok length 14.5 tok/s ttft 265.0 ms serial=1.00 tok_step=1.000
+08:27:08 250 tok length 14.5 tok/s ttft 269.6 ms serial=1.00 tok_step=1.000
+08:27:25 250 tok length 14.5 tok/s ttft 228.5 ms serial=1.00 tok_step=1.000
+08:27:43 250 tok length 14.5 tok/s ttft 270.0 ms serial=1.00 tok_step=1.000
+08:28:00 249 tok stop 14.5 tok/s ttft 140.9 ms serial=1.00 tok_step=1.000
+08:28:18 250 tok length 14.5 tok/s ttft 139.9 ms serial=1.00 tok_step=1.000
+08:28:35 250 tok length 14.5 tok/s ttft 144.2 ms serial=1.00 tok_step=1.000
+08:28:52 250 tok length 14.5 tok/s ttft 139.1 ms serial=1.00 tok_step=1.000
+08:29:10 250 tok length 14.5 tok/s ttft 262.1 ms serial=1.00 tok_step=1.000
+08:29:27 250 tok length 14.5 tok/s ttft 262.2 ms serial=1.00 tok_step=1.000
+08:29:31 250 tok length 68.4 tok/s ttft 228.8 ms serial=0.00 tok_step=6.000
+08:29:36 250 tok length 63.5 tok/s ttft 268.0 ms serial=0.00 tok_step=5.689
+08:29:40 250 tok length 63.6 tok/s ttft 141.3 ms serial=0.00 tok_step=5.578
+08:29:44 250 tok length 63.7 tok/s ttft 141.0 ms serial=0.00 tok_step=5.533
+08:29:49 250 tok length 50.5 tok/s ttft 152.0 ms serial=0.00 tok_step=4.368
+08:29:54 250 tok length 51.3 tok/s ttft 140.4 ms serial=0.00 tok_step=4.482
+08:29:59 250 tok length 50.5 tok/s ttft 269.0 ms serial=0.00 tok_step=4.368
+08:30:04 250 tok length 56.1 tok/s ttft 261.9 ms serial=0.00 tok_step=5.000
+08:30:08 250 tok length 69.7 tok/s ttft 228.6 ms serial=0.00 tok_step=6.073
+08:30:12 250 tok length 62.2 tok/s ttft 268.4 ms serial=0.00 tok_step=5.500
+08:30:17 249 tok stop 49.4 tok/s ttft 141.6 ms serial=0.00 tok_step=4.293
+08:30:21 250 tok length 60.8 tok/s ttft 140.6 ms serial=0.00 tok_step=5.447
+08:30:25 250 tok length 77.1 tok/s ttft 141.7 ms serial=0.00 tok_step=6.919
+08:30:30 250 tok length 48.7 tok/s ttft 141.6 ms serial=0.00 tok_step=4.322
+08:30:36 250 tok length 47.8 tok/s ttft 263.7 ms serial=0.00 tok_step=4.150
+08:30:40 250 tok length 59.8 tok/s ttft 262.3 ms serial=0.00 tok_step=5.229
+08:30:53 250 tok length 20.1 tok/s ttft 230.5 ms serial=0.00 tok_step=6.000
+08:30:54 250 tok length 18.3 tok/s ttft 140.4 ms serial=0.00 tok_step=5.533
+08:30:54 250 tok length 19.9 tok/s ttft 269.1 ms serial=0.00 tok_step=5.818
+08:30:54 250 tok length 19.8 tok/s ttft 140.4 ms serial=0.00 tok_step=5.578
+08:30:55 250 tok length 19.1 tok/s ttft 261.8 ms serial=0.00 tok_step=5.100
+08:30:55 250 tok length 16.9 tok/s ttft 262.2 ms serial=0.00 tok_step=4.611
+08:30:55 250 tok length 17.0 tok/s ttft 140.0 ms serial=0.00 tok_step=4.648
+08:30:56 250 tok length 17.2 tok/s ttft 140.4 ms serial=0.00 tok_step=4.446
+08:31:08 250 tok length 23.1 tok/s ttft 141.8 ms serial=0.00 tok_step=6.919
+08:31:08 250 tok length 20.6 tok/s ttft 226.5 ms serial=0.00 tok_step=6.073
+08:31:09 250 tok length 18.9 tok/s ttft 270.8 ms serial=0.00 tok_step=5.622
+08:31:10 250 tok length 20.2 tok/s ttft 262.6 ms serial=0.00 tok_step=5.340
+08:31:10 250 tok length 18.6 tok/s ttft 140.4 ms serial=0.00 tok_step=5.333
+08:31:11 249 tok stop 16.9 tok/s ttft 141.3 ms serial=0.00 tok_step=4.293
+08:31:11 250 tok length 17.7 tok/s ttft 138.9 ms serial=0.00 tok_step=4.397
+08:31:11 250 tok length 17.4 tok/s ttft 262.9 ms serial=0.00 tok_step=4.220
+08:31:26 1 tok length 202265.4 tok/s ttft 14410.8 ms serial=0.00 tok_step=1.000
+08:31:34 300 tok length 35.9 tok/s ttft 185.0 ms serial=0.00 tok_step=3.477
+08:31:57 300 tok length 13.3 tok/s ttft 191.0 ms serial=1.00 tok_step=1.000
+08:32:39 600 tok length 14.4 tok/s ttft 269.5 ms serial=1.00 tok_step=1.000
+08:33:21 600 tok length 14.5 tok/s ttft 262.0 ms serial=1.00 tok_step=1.000
+08:33:36 300 tok length 21.8 tok/s ttft 309.7 ms serial=0.00 tok_step=3.188
+08:33:39 600 tok length 34.1 tok/s ttft 259.7 ms serial=0.00 tok_step=4.792
+08:33:40 600 tok length 31.6 tok/s ttft 263.4 ms serial=0.00 tok_step=4.348
+08:34:09 300 tok length 24.5 tok/s ttft 16670.3 ms serial=0.00 tok_step=3.607
+08:34:15 600 tok length 17.5 tok/s ttft 142.1 ms serial=0.00 tok_step=4.659
+08:34:18 600 tok length 15.7 tok/s ttft 142.1 ms serial=0.00 tok_step=3.474
+2026-11-10T08:34:20Z done rel
+2026-11-10T08:34:25Z runner-exit

@@ -1,0 +1,61 @@
+2026-11-10T07:30:12Z start old
+{"name": "P", "tag": "prime", "serial": false, "tokens": 1, "prompt": 21368, "ttft_s": 14.42, "decode_tok_s": null, "chars": 3, "sha": "1b9345fd177ec52f"}
+{"name": "P", "tag": "alone", "serial": false, "tokens": 300, "prompt": 21368, "ttft_s": 0.21, "decode_tok_s": 36.76, "chars": 1136, "sha": "ca268e1f48dcf658"}
+{"name": "P", "tag": "alone", "serial": true, "tokens": 300, "prompt": 21368, "ttft_s": 0.21, "decode_tok_s": 13.29, "chars": 1136, "sha": "ca268e1f48dcf658"}
+{"name": "D1", "tag": "alone", "serial": true, "tokens": 600, "prompt": 35, "ttft_s": 0.27, "decode_tok_s": 14.46, "chars": 1717, "sha": "72d1f17c68aa9119"}
+{"name": "D2", "tag": "alone", "serial": true, "tokens": 600, "prompt": 36, "ttft_s": 0.28, "decode_tok_s": 14.47, "chars": 2105, "sha": "1a5c298154b194e6"}
+{"name": "D2", "tag": "warm-join", "serial": false, "tokens": 600, "prompt": 36, "ttft_s": 0.53, "decode_tok_s": 20.63, "chars": 2105, "sha": "1a5c298154b194e6"}
+{"name": "D1", "tag": "warm-join", "serial": false, "tokens": 600, "prompt": 35, "ttft_s": 0.26, "decode_tok_s": 18.96, "chars": 1717, "sha": "72d1f17c68aa9119"}
+{"name": "P", "tag": "warm-join", "serial": false, "tokens": 300, "prompt": 21368, "ttft_s": 4.3, "decode_tok_s": 7.62, "chars": 1241, "sha": "42997aeb9b0df5e2"}
+{"name": "P2", "tag": "cold-join", "serial": false, "tokens": 300, "prompt": 23940, "ttft_s": 16.74, "decode_tok_s": 21.86, "chars": 1033, "sha": "287e704e49a315f1"}
+{"name": "D4", "tag": "cold-join", "serial": false, "tokens": 600, "prompt": 31, "ttft_s": 0.14, "decode_tok_s": 17.12, "chars": 2184, "sha": "6daef654449fd537"}
+{"name": "D3", "tag": "cold-join", "serial": false, "tokens": 600, "prompt": 31, "ttft_s": 0.39, "decode_tok_s": 15.64, "chars": 2673, "sha": "714b68cb35802551"}
+P alone speculative vs alone serial: IDENTICAL
+P joining two decoders vs alone serial: DIFFERENT (first 108 of 1242/1137 chars agree)
+D1 beside the join vs alone serial: IDENTICAL
+D2 beside the join vs alone serial: IDENTICAL
+mixed forwards: 2   ctx_ptr errors: 1194   failed copies: 0   other ERROR lines: 0
+07:30:37 1 tok length 204918.0 tok/s ttft 14368.9 ms serial=0.00 tok_step=1.000
+07:30:45 300 tok length 36.9 tok/s ttft 185.1 ms serial=0.00 tok_step=3.558
+07:31:08 300 tok length 13.3 tok/s ttft 185.6 ms serial=1.00 tok_step=1.000
+07:31:50 600 tok length 14.5 tok/s ttft 262.5 ms serial=1.00 tok_step=1.000
+07:32:32 600 tok length 14.5 tok/s ttft 273.6 ms serial=1.00 tok_step=1.000
+07:33:01 600 tok length 20.7 tok/s ttft 261.7 ms serial=0.00 tok_step=4.784
+07:33:03 600 tok length 19.0 tok/s ttft 262.5 ms serial=0.00 tok_step=4.309
+07:33:16 300 tok length 7.6 tok/s ttft 4155.0 ms serial=0.00 tok_step=1.000
+07:33:46 300 tok length 21.9 tok/s ttft 16599.3 ms serial=0.00 tok_step=3.181
+07:33:51 600 tok length 17.1 tok/s ttft 140.5 ms serial=0.00 tok_step=4.545
+07:33:54 600 tok length 15.7 tok/s ttft 142.7 ms serial=0.00 tok_step=3.488
+2026-11-10T07:33:56Z done old
+2026-11-10T07:34:01Z start new
+{"name": "P", "tag": "prime", "serial": false, "tokens": 1, "prompt": 21368, "ttft_s": 14.44, "decode_tok_s": null, "chars": 3, "sha": "1b9345fd177ec52f"}
+{"name": "P", "tag": "alone", "serial": false, "tokens": 300, "prompt": 21368, "ttft_s": 0.21, "decode_tok_s": 36.56, "chars": 1136, "sha": "ca268e1f48dcf658"}
+{"name": "P", "tag": "alone", "serial": true, "tokens": 300, "prompt": 21368, "ttft_s": 0.21, "decode_tok_s": 13.26, "chars": 1136, "sha": "ca268e1f48dcf658"}
+{"name": "D1", "tag": "alone", "serial": true, "tokens": 600, "prompt": 35, "ttft_s": 0.27, "decode_tok_s": 14.44, "chars": 1717, "sha": "72d1f17c68aa9119"}
+{"name": "D2", "tag": "alone", "serial": true, "tokens": 600, "prompt": 36, "ttft_s": 0.27, "decode_tok_s": 14.5, "chars": 2105, "sha": "1a5c298154b194e6"}
+{"name": "P", "tag": "warm-join", "serial": false, "tokens": 300, "prompt": 21368, "ttft_s": 0.46, "decode_tok_s": 21.95, "chars": 1136, "sha": "ca268e1f48dcf658"}
+{"name": "D2", "tag": "warm-join", "serial": false, "tokens": 600, "prompt": 36, "ttft_s": 0.26, "decode_tok_s": 33.55, "chars": 2105, "sha": "1a5c298154b194e6"}
+{"name": "D1", "tag": "warm-join", "serial": false, "tokens": 600, "prompt": 35, "ttft_s": 0.52, "decode_tok_s": 32.0, "chars": 1717, "sha": "72d1f17c68aa9119"}
+{"name": "P2", "tag": "cold-join", "serial": false, "tokens": 300, "prompt": 23940, "ttft_s": 16.82, "decode_tok_s": 25.14, "chars": 1062, "sha": "b57cbc591f12ecfa"}
+{"name": "D4", "tag": "cold-join", "serial": false, "tokens": 600, "prompt": 31, "ttft_s": 0.29, "decode_tok_s": 17.54, "chars": 2184, "sha": "6daef654449fd537"}
+{"name": "D3", "tag": "cold-join", "serial": false, "tokens": 600, "prompt": 31, "ttft_s": 0.15, "decode_tok_s": 15.68, "chars": 2673, "sha": "714b68cb35802551"}
+P alone speculative vs alone serial: IDENTICAL
+P joining two decoders vs alone serial: IDENTICAL
+D1 beside the join vs alone serial: IDENTICAL
+D2 beside the join vs alone serial: IDENTICAL
+mixed forwards: 0   ctx_ptr errors: 0   failed copies: 0   other ERROR lines: 0
+07:34:26 1 tok length 193498.5 tok/s ttft 14395.9 ms serial=0.00 tok_step=1.000
+07:34:34 300 tok length 36.7 tok/s ttft 184.3 ms serial=0.00 tok_step=3.558
+07:34:57 300 tok length 13.3 tok/s ttft 186.4 ms serial=1.00 tok_step=1.000
+07:35:39 600 tok length 14.5 tok/s ttft 267.6 ms serial=1.00 tok_step=1.000
+07:36:20 600 tok length 14.5 tok/s ttft 263.5 ms serial=1.00 tok_step=1.000
+07:36:35 300 tok length 22.0 tok/s ttft 309.4 ms serial=0.00 tok_step=3.221
+07:36:39 600 tok length 33.6 tok/s ttft 261.8 ms serial=0.00 tok_step=4.792
+07:36:40 600 tok length 32.1 tok/s ttft 260.0 ms serial=0.00 tok_step=4.348
+07:37:09 300 tok length 25.2 tok/s ttft 16674.6 ms serial=0.00 tok_step=3.695
+07:37:14 600 tok length 17.6 tok/s ttft 142.7 ms serial=0.00 tok_step=4.695
+07:37:18 600 tok length 15.7 tok/s ttft 142.9 ms serial=0.00 tok_step=3.474
+2026-11-10T07:37:20Z done new
+2026-11-10T07:37:25Z runner-exit
+
+[exited with code 0]

@@ -5,14 +5,18 @@
 
 # SparkQwen
 
-**SparkQwen 0.6.0** · [Versioning](docs/VERSIONING.md). Run `./start.sh --version`
+**SparkQwen 0.6.1** · [Versioning](docs/VERSIONING.md). Run `./start.sh --version`
 for this checkout, or `./start.sh status` for the version and image IDs on both ranks.
 Choose [Strict or Spark mode](docs/MODES.md); both use the model's native MTP head.
 
-Version 0.6.0 adds Qwen3.8-27B on one Spark, a candidate, behind `--model 27b`.
+Version 0.6 adds Qwen3.8-27B on one Spark, a candidate, behind `--model 27b`.
 The Flash-Next engine is 0.5.1's: the same Atlas commit, and an engine binary
 whose loaded sections are byte-identical
 ([what was checked](results/2026-11-10-release-0.6.0/RESULT.md)).
+0.6.1 fixes the 27B engine for a long request that joins two or more decoding
+requests: on 0.6.0 it ran with no speculation and could differ from serial
+decode ([before and after](results/2026-11-10-27b-mixed-forward/RESULT.md),
+[release checks](results/2026-11-10-release-0.6.1/RESULT.md)).
 
 ## Two models, one entry point
 
@@ -73,7 +77,7 @@ The [0.3.3 canary](results/2026-10-26-tool-guard-033/RESULT.md) passed all 34
 blocking/streaming checks on the exact release image.
 
 The performance and video measurements below belong to 0.3.1 unless explicitly
-identified otherwise; they are not fresh 0.6.0 throughput measurements.
+identified otherwise; they are not fresh 0.6.1 throughput measurements.
 
 ## Strict and Spark modes
 
@@ -159,10 +163,10 @@ cp .env.example .env      # set WORKER to the other Spark's ssh destination
 PROFILE=8x262k ./start.sh --mode spark
 ```
 
-Version 0.6.0 uses `ghcr.io/enntity/atlas-sparkqwen:f6bb0a3cd40d` for
-Flash-Next and `ghcr.io/enntity/atlas-sparkqwen:f6bb0a3cd40d-27b` for the
-27B, also tagged `0.6.0` and `0.6.0-27b`. The release records the immutable registry digests and image identities. `PULL=0` builds the pinned source.
-[Release and registry identity](https://github.com/Enntity/sparkqwen/releases/tag/v0.6.0).
+Version 0.6.1 uses `ghcr.io/enntity/atlas-sparkqwen:b2995a9621e2` for
+Flash-Next and `ghcr.io/enntity/atlas-sparkqwen:b2995a9621e2-27b` for the
+27B, also tagged `0.6.1` and `0.6.1-27b`. The release records the immutable registry digests and image identities. `PULL=0` builds the pinned source.
+[Release and registry identity](https://github.com/Enntity/sparkqwen/releases/tag/v0.6.1).
 
 This image pins common Atlas commit `9b25f575`. Omitting `--mode` selects
 Strict; both modes keep native MTP. Max/saver examples select Spark, the mode
