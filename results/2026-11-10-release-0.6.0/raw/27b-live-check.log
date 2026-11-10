@@ -1,0 +1,42 @@
+2026-11-10T03:45:56Z start
+image sha256:06bc69b4dfc3cb4d433293d2794bfab6c5bad33a48651ac49558173f6d8dc403 version 0.6.0 install-tree f6bb0a3cd40d5f14f599431399f87f1e8f27973b
+spark 1.0.0-beta-preview
+think_off_code [70.5, 70.3] tokens [887, 887] think/text chars [(0, 3449), (0, 3449)]
+think_on [72.8, 72.8] tokens [519, 519] think/text chars [(604, 434), (604, 434)]
+C=1 think=on serial=True wall=139.1s tokens=2000 agg=14.4 tok/s f4b6c53e dffd924b e4fd3fc6 aa9ac485 6483568b eadebff6 55bb1a83 cedce7cf
+C=1 think=off serial=True wall=139.5s tokens=1999 agg=14.3 tok/s 488449e5 3d17c971 e546cda6 92466928 b4f4aefe 80108241 c743fdc3 470c361d
+C=1 think=on serial=False wall=36.4s tokens=2000 agg=54.9 tok/s f4b6c53e dffd924b e4fd3fc6 aa9ac485 6483568b eadebff6 55bb1a83 cedce7cf
+C=1 think=off serial=False wall=36.2s tokens=1999 agg=55.2 tok/s 488449e5 3d17c971 e546cda6 92466928 b4f4aefe 80108241 c743fdc3 470c361d
+C=8 think=on serial=False wall=15.4s tokens=2000 agg=129.7 tok/s f4b6c53e dffd924b e4fd3fc6 aa9ac485 6483568b eadebff6 55bb1a83 cedce7cf
+C=8 think=off serial=False wall=15.6s tokens=1999 agg=128.3 tok/s 488449e5 3d17c971 e546cda6 92466928 b4f4aefe 80108241 c743fdc3 470c361d
+spec.json: 16/16 identical  on0:= on1:= on2:= on3:= on4:= on5:= on6:= on7:= off0:= off1:= off2:= off3:= off4:= off5:= off6:= off7:=
+c8.json: 16/16 identical  on0:= on1:= on2:= on3:= on4:= on5:= on6:= on7:= off0:= off1:= off2:= off3:= off4:= off5:= off6:= off7:=
+{"turn": "t00", "serial": false, "tokens": 1, "prompt": 206968, "ttft_s": 416.18, "decode_tok_s": null}
+{"turn": "t06", "serial": false, "tokens": 521, "prompt": 210382, "ttft_s": 13.37, "decode_tok_s": 38.3}
+{"turn": "t07", "serial": false, "tokens": 512, "prompt": 210882, "ttft_s": 2.85, "decode_tok_s": 32.93}
+{"turn": "t08", "serial": false, "tokens": 697, "prompt": 211437, "ttft_s": 3.2, "decode_tok_s": 19.79}
+{"turn": "t08", "serial": true, "tokens": 250, "prompt": 211437, "ttft_s": 0.86, "decode_tok_s": 6.79}
+{"turn": "t08", "serial": false, "tokens": 250, "prompt": 211437, "ttft_s": 0.85, "decode_tok_s": 18.24}
+long.json:
+  t08 serial vs speculative, same start, 250 tokens: IDENTICAL (1054 / 1054 reasoning chars; serial 6.79 tok/s)
+  t08 first run (from t07's checkpoint) vs second (from its own): part at reasoning char 187
+  t06: 521 tok, 38.3 tok/s, ttft 13.37 s
+  t07: 512 tok, 32.93 tok/s, ttft 2.85 s
+  t08: 697 tok, 19.79 tok/s, ttft 3.2 s
+  t08: 250 tok, 18.24 tok/s, ttft 0.85 s
+INFO spark_model::layers::dflash_head::warm_ctx: DFlash warm context: Legacy (ATLAS_DFLASH_WARM_CTX=legacy|exact|seed|restore)
+INFO spark_model::layers::ops::shared_scan: ATLAS_ATTN_SHARED_SCAN: BF16 paged decode attention reads each KV head once for the rows that share its blocks
+INFO spark_model::layers::ops::shared_scan: shared-scan attention workspace: 48 MiB (64 rows)
+  250 tok  19.6 tok/s  tok_step 5.750  step 293.4 ms  serial 0.00
+  250 tok  19.8 tok/s  tok_step 5.340  step 269.7 ms  serial 0.00
+  250 tok  18.7 tok/s  tok_step 5.333  step 285.2 ms  serial 0.00
+  249 tok  17.1 tok/s  tok_step 4.293  step 251.1 ms  serial 0.00
+  250 tok  17.8 tok/s  tok_step 4.220  step 237.1 ms  serial 0.00
+  250 tok  18.0 tok/s  tok_step 4.322  step 240.1 ms  serial 0.00
+  1 tok  200964.6 tok/s  tok_step 1.000  step 0.0 ms  serial 0.00
+  521 tok  37.9 tok/s  tok_step 6.766  step 178.5 ms  serial 0.00
+  512 tok  33.0 tok/s  tok_step 5.753  step 174.3 ms  serial 0.00
+  697 tok  19.8 tok/s  tok_step 3.400  step 171.7 ms  serial 0.00
+  250 tok  6.7 tok/s  tok_step 1.000  step 149.3 ms  serial 1.00
+  250 tok  18.1 tok/s  tok_step 3.049  step 168.5 ms  serial 0.00
+2026-11-10T04:02:15Z done

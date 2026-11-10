@@ -1,13 +1,43 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <p align="center">
-  <img src="docs/assets/banner.png" alt="SparkQwen 0.4.0. Historical 0.3.1 benchmarks: code 106.4 tok/s, prose 54.8 tok/s, cold 16K prefill 4,142 tok/s. Common Atlas engine, Strict and Spark modes, tool-call guard on by default. Experimental opt-in 512K and 1M context options." width="100%">
+  <img src="docs/assets/banner.png" alt="SparkQwen: one repo, two models, switched with --model. Qwen3.8-27B on one DGX Spark (./start.sh --model 27b; candidate; NVFP4, DFlash2, exact verify, 262K) and Qwen3.8-Flash-Next on two DGX Sparks at TP=2 (./start.sh --model flash-next; FP4-Local, native MTP, 262K). Common Atlas engine, prefix caching, tool-call exfiltration guard on by default. Flash-Next historical 0.3.1 benchmarks: 106.4 tok/s code, 4,142 tok/s cold 16K prefill." width="100%">
 </p>
 
 # SparkQwen
 
-**SparkQwen 0.4.0** · [Versioning](docs/VERSIONING.md). Run `./start.sh --version`
+**SparkQwen 0.6.0** · [Versioning](docs/VERSIONING.md). Run `./start.sh --version`
 for this checkout, or `./start.sh status` for the version and image IDs on both ranks.
 Choose [Strict or Spark mode](docs/MODES.md); both use the model's native MTP head.
+
+Version 0.6.0 adds Qwen3.8-27B on one Spark, a candidate, behind `--model 27b`.
+The Flash-Next engine is 0.5.1's: the same Atlas commit, and an engine binary
+whose loaded sections are byte-identical
+([what was checked](results/2026-11-10-release-0.6.0/RESULT.md)).
+
+## Two models, one entry point
+
+SparkQwen serves either of two Qwen3.8 models on NVIDIA DGX Spark. Pick one
+with `--model` (or `SPARKQWEN_MODEL` in `.env`):
+
+| | Qwen3.8-Flash-Next | Qwen3.8-27B |
+|---|---|---|
+| DGX Sparks | two (TP=2; the second is driven over ssh) | one |
+| Start | `./start.sh` (`--model flash-next`, the default) | `./start.sh --model 27b` |
+| Checkpoint | [nvidia/Qwen3.8-Flash-Next-FP4-Local](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local) | [nvidia/Qwen3.8-27B-NVFP4](https://huggingface.co/nvidia/Qwen3.8-27B-NVFP4) |
+| Speculation | the model's native MTP head | DFlash2 drafter (DSpine optional), exact verify |
+| Context per request | 32K to 262K by profile; 512K and 1M opt-in | 262,144 tokens in every profile |
+| Served as | `qwen3.8-flash-next-atlas` | `qwen3.8-27b-atlas` |
+| Status | released | candidate, not yet qualified |
+
+Both serve the OpenAI API on `127.0.0.1:8893` with prefix caching and the
+tool-call guard, each on its own image and pinned Atlas commit
+(`install/atlas-source.json`, `install/atlas-source-27b.json`). A Spark runs
+one of them at a time: stop the one that is up (`./start.sh stop` or
+`./start.sh --model 27b stop`), then start the other. The sections below
+describe the Flash-Next pair until
+[One Spark: Qwen3.8-27B](#one-spark-qwen38-27b-candidate).
+
+## Qwen3.8-Flash-Next on two Sparks
 
 Qwen3.8-Flash-Next on two NVIDIA DGX Sparks, using the published
 [FP4-Local checkpoint](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local)
@@ -43,7 +73,7 @@ The [0.3.3 canary](results/2026-10-26-tool-guard-033/RESULT.md) passed all 34
 blocking/streaming checks on the exact release image.
 
 The performance and video measurements below belong to 0.3.1 unless explicitly
-identified otherwise; they are not fresh 0.4.0 throughput measurements.
+identified otherwise; they are not fresh 0.6.0 throughput measurements.
 
 ## Strict and Spark modes
 
@@ -129,9 +159,10 @@ cp .env.example .env      # set WORKER to the other Spark's ssh destination
 PROFILE=8x262k ./start.sh --mode spark
 ```
 
-Version 0.4.0 uses `ghcr.io/enntity/atlas-sparkqwen:3e0d9e7e4b29`, also
-tagged `0.4.0`. The release records the immutable registry digest and image identity. `PULL=0` builds the pinned source.
-[Release and registry identity](https://github.com/Enntity/sparkqwen/releases/tag/v0.4.0).
+Version 0.6.0 uses `ghcr.io/enntity/atlas-sparkqwen:f6bb0a3cd40d` for
+Flash-Next and `ghcr.io/enntity/atlas-sparkqwen:f6bb0a3cd40d-27b` for the
+27B, also tagged `0.6.0` and `0.6.0-27b`. The release records the immutable registry digests and image identities. `PULL=0` builds the pinned source.
+[Release and registry identity](https://github.com/Enntity/sparkqwen/releases/tag/v0.6.0).
 
 This image pins common Atlas commit `9b25f575`. Omitting `--mode` selects
 Strict; both modes keep native MTP. Max/saver examples select Spark, the mode
@@ -281,6 +312,48 @@ obsolete: tensor-core QSA prefill became the two-Spark default in RC15.
 The benchmark drivers are in [`bench/`](bench/) ([bench/README.md](bench/README.md)).
 See [docs/REPRODUCE.md](docs/REPRODUCE.md) for the exact commands.
 
+## One Spark: Qwen3.8-27B (candidate)
+
+`./start.sh --model 27b` (or `SPARKQWEN_MODEL=27b` in `.env`) serves
+[nvidia/Qwen3.8-27B-NVFP4](https://huggingface.co/nvidia/Qwen3.8-27B-NVFP4)
+on the Spark you run it on, with no worker and no fabric. It builds or pulls its
+own image (the `qwen3.8-27b` kernel target, tag suffix `-27b`), downloads the
+20 GiB checkpoint and the 3.6 GiB
+[incoai/Qwen3.8-27B-DFlash2](https://huggingface.co/incoai/Qwen3.8-27B-DFlash2)
+drafter and the NVFP4 Gated DeltaNet and attention projections of
+[TandemLLM](https://huggingface.co/0xBakeer/TandemLLM-Qwen3.8-27B-NVFP4)'s
+Qwen3.8-27B set (Apache-2.0, weights only), all pinned in
+`install/checkpoint-27b.json`. Those projections replace the checkpoint's FP8
+GDN ones and the engine's load-time NVFP4 attention, so a decode step reads
+2.4 GB less (serial step 78.9 to 69.2 ms) at +0.004 nats/token held-out NLL.
+It serves the OpenAI API on
+`127.0.0.1:8893` as `qwen3.8-27b-atlas`, with DFlash2 speculation and the
+tool-call guard. `DRAFTER=dspine` drafts with Tencent's
+[tencent/Qwen3.8-27B-DSpine-b16](https://huggingface.co/tencent/Qwen3.8-27B-DSpine-b16)
+instead (Apache-2.0, 3.8 GiB, 16-token blocks that reach further on code and
+JSON), and `DRAFTER=both` loads both drafters and lets each request use
+whichever its recent rounds favour; `dflash2` stays the default. Its verify is exact: alone or in a batch, each
+request's text is byte-identical to plain serial decoding of that request
+alone, with thinking on or off. Decode attention reads each KV head's cached
+keys and values once for all the rows of a step, instead of once per query
+head and row: on three real agentic turns at about 210K tokens, greedy, decode
+went from 18.5, 15.4 and 9.5 tok/s to 38.2, 32.9 and 19.8 tok/s with the step
+on short prompts unchanged
+([receipts and limits](results/2026-11-10-27b-shared-scan/RESULT.md)).
+Speculation follows the batch (full 8-token
+blocks up to eight live requests, 4-token ones up to sixteen, plain batched
+decode past that). `stop`, `status`, `logs`, `build` and `download` work as for
+the pair. Three profiles (`PROFILE=`, in `install/profiles/`), every one with
+262,144-token requests:
+
+| profile | drafter | GPU memory share | concurrent requests |
+|---|---|---|---|
+| `27b` (default) | DFlash2 | 0.85 | 64 |
+| `27b-max` | DFlash2 + DSpine | 0.84 | 32 |
+| `27b-saver` | DFlash2 | 0.59 | 8 |
+
+They are candidates: not yet qualified.
+
 ## Other ways to run it
 
 **By hand:** every step of `./start.sh` as a separate command, in
@@ -312,6 +385,16 @@ MiaAI-Lab's dual-Spark vLLM recipe, whose settings the vLLM baseline in our
 earlier results ([2026-10-08-rc15](results/2026-10-08-rc15/RESULT.md)) uses.
 The engine's Flash-Next fixes from Atlas-Inf name their origin commits in
 [docs/ENGINE.md](docs/ENGINE.md).
+
+Weights: the 27B variant serves the NVFP4 Gated DeltaNet and attention
+projections Khaled Bakeer quantized for
+[TandemLLM](https://huggingface.co/0xBakeer/TandemLLM-Qwen3.8-27B-NVFP4)
+(GPTQ from Qwen's BF16 Qwen/Qwen3.8-27B, Apache-2.0), downloaded at install
+time; only the weights are used, not TandemLLM's code ([NOTICE](NOTICE)). With `DRAFTER=dspine` or `both` it
+downloads Tencent's DSpine drafter weights (tencent/Qwen3.8-27B-DSpine-b16,
+Apache-2.0); the engine's DSpine kernels follow the method of Zhang et al.,
+[arXiv 2609.36173](https://arxiv.org/abs/2609.36173) (Tencent/DSpine), without
+its code.
 
 ## License
 

@@ -1,0 +1,175 @@
+kernel set: qwen3.8-27b
+base      0: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base      1: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base     14: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base     16: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base     56: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base    250: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base    255: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base    256: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base    500: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base   2040: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base   4090: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base   8185: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base   8192: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base  12345: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base  16375: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base  16384: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base  20000: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+vs scalar kernel: 3016 of 1671168 elements differ (0.18%), worst 1.00 BF16 steps
+timing one layer at 300 tokens (1 MiB of K+V):
+  1 row(s)      scalar:    0.017 ms a layer,     0.3 ms for 16 layers,   82.2 GB/s of K+V
+  1 row(s) shared scan:    0.023 ms a layer,     0.4 ms for 16 layers,   59.8 GB/s of K+V
+  8 row(s)      scalar:    0.029 ms a layer,     0.5 ms for 16 layers,   47.3 GB/s of K+V
+  8 row(s) shared scan:    0.045 ms a layer,     0.7 ms for 16 layers,   30.3 GB/s of K+V
+PASS
+kernel set: qwen3.8-27b
+base      0: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base      1: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base     14: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base     16: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base     56: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base    250: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base    255: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base    256: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base    500: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base   2040: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base   4090: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base   8185: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base   8192: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base  12345: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base  16375: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base  16384: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base  20000: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+vs scalar kernel: 3016 of 1671168 elements differ (0.18%), worst 1.00 BF16 steps
+timing one layer at 1000 tokens (4 MiB of K+V):
+  1 row(s)      scalar:    0.041 ms a layer,     0.7 ms for 16 layers,  103.2 GB/s of K+V
+  1 row(s) shared scan:    0.033 ms a layer,     0.5 ms for 16 layers,  129.2 GB/s of K+V
+  8 row(s)      scalar:    0.081 ms a layer,     1.3 ms for 16 layers,   52.3 GB/s of K+V
+  8 row(s) shared scan:    0.069 ms a layer,     1.1 ms for 16 layers,   61.6 GB/s of K+V
+PASS
+kernel set: qwen3.8-27b
+base      0: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base      1: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base     14: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base     16: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base     56: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base    250: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base    255: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base    256: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base    500: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base   2040: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base   4090: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base   8185: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base   8192: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base  12345: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base  16375: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base  16384: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base  20000: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+vs scalar kernel: 3016 of 1671168 elements differ (0.18%), worst 1.00 BF16 steps
+timing one layer at 2000 tokens (7 MiB of K+V):
+  1 row(s)      scalar:    0.074 ms a layer,     1.2 ms for 16 layers,  112.0 GB/s of K+V
+  1 row(s) shared scan:    0.058 ms a layer,     0.9 ms for 16 layers,  144.6 GB/s of K+V
+  8 row(s)      scalar:    0.155 ms a layer,     2.5 ms for 16 layers,   53.7 GB/s of K+V
+  8 row(s) shared scan:    0.106 ms a layer,     1.7 ms for 16 layers,   78.8 GB/s of K+V
+PASS
+kernel set: qwen3.8-27b
+base      0: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base      1: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base     14: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base     16: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base     56: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base    250: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base    255: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base    256: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base    500: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base   2040: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base   4090: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base   8185: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base   8192: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base  12345: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base  16375: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base  16384: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base  20000: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+vs scalar kernel: 3016 of 1671168 elements differ (0.18%), worst 1.00 BF16 steps
+timing one layer at 4000 tokens (15 MiB of K+V):
+  1 row(s)      scalar:    0.146 ms a layer,     2.3 ms for 16 layers,  113.0 GB/s of K+V
+  1 row(s) shared scan:    0.099 ms a layer,     1.6 ms for 16 layers,  167.5 GB/s of K+V
+  8 row(s)      scalar:    0.311 ms a layer,     5.0 ms for 16 layers,   53.2 GB/s of K+V
+  8 row(s) shared scan:    0.147 ms a layer,     2.4 ms for 16 layers,  112.4 GB/s of K+V
+PASS
+kernel set: qwen3.8-27b
+base      0: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base      1: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base     14: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base     16: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base     56: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base    250: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base    255: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base    256: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base    500: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base   2040: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base   4090: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base   8185: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base   8192: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base  12345: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base  16375: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base  16384: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base  20000: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+vs scalar kernel: 3016 of 1671168 elements differ (0.18%), worst 1.00 BF16 steps
+timing one layer at 16000 tokens (62 MiB of K+V):
+  1 row(s)      scalar:    1.120 ms a layer,    17.9 ms for 16 layers,   58.6 GB/s of K+V
+  1 row(s) shared scan:    0.357 ms a layer,     5.7 ms for 16 layers,  183.9 GB/s of K+V
+  8 row(s)      scalar:    1.260 ms a layer,    20.2 ms for 16 layers,   52.1 GB/s of K+V
+  8 row(s) shared scan:    0.361 ms a layer,     5.8 ms for 16 layers,  182.1 GB/s of K+V
+PASS
+kernel set: qwen3.8-27b
+base      0: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base      1: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base     14: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base     16: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base     56: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base    250: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base    255: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base    256: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base    500: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base   2040: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base   4090: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base   8185: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base   8192: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base  12345: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base  16375: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base  16384: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base  20000: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+vs scalar kernel: 3016 of 1671168 elements differ (0.18%), worst 1.00 BF16 steps
+timing one layer at 60000 tokens (234 MiB of K+V):
+  1 row(s)      scalar:    4.207 ms a layer,    67.3 ms for 16 layers,   58.4 GB/s of K+V
+  1 row(s) shared scan:    1.325 ms a layer,    21.2 ms for 16 layers,  185.6 GB/s of K+V
+  8 row(s)      scalar:    4.907 ms a layer,    78.5 ms for 16 layers,   50.1 GB/s of K+V
+  8 row(s) shared scan:    1.320 ms a layer,    21.1 ms for 16 layers,  186.3 GB/s of K+V
+PASS
+kernel set: qwen3.8-27b
+base      0: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base      1: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base     14: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base     16: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base     56: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base    250: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base    255: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base    256: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base    500: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base   2040: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base   4090: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base   8185: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base   8192: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base  12345: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base  16375: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base  16384: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+base  20000: rows byte-identical to serial (vs scalar: worst 1.00 BF16 steps)
+vs scalar kernel: 3016 of 1671168 elements differ (0.18%), worst 1.00 BF16 steps
+timing one layer at 210000 tokens (820 MiB of K+V):
+  1 row(s)      scalar:   15.504 ms a layer,   248.1 ms for 16 layers,   55.5 GB/s of K+V
+  1 row(s) shared scan:    5.706 ms a layer,    91.3 ms for 16 layers,  150.8 GB/s of K+V
+  8 row(s)      scalar:   18.166 ms a layer,   290.7 ms for 16 layers,   47.4 GB/s of K+V
+  8 row(s) shared scan:    5.714 ms a layer,    91.4 ms for 16 layers,  150.6 GB/s of K+V
+PASS

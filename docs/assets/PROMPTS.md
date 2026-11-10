@@ -1,6 +1,10 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 # Card prompts
 
+These prompts produced the 0.4.0 cards. The current two-model cards were
+composed from those images by [`make_cards.py`](make_cards.py), not generated;
+see the [cards note](README.md).
+
 Revised for 0.4.0 with the built-in image generation tool on 2026-10-27.
 The performance-led 0.3.3 cards from commit `70c6c845` were the edit targets.
 Both outputs were visually checked. Performance figures remain prominent;

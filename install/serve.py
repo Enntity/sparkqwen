@@ -172,7 +172,98 @@ def tool_guard_args(environ, profile_args):
     return result
 
 
+SINGLE_MODEL = 'qwen3.8-27b'
+
+
+def _flag_values(args, flag):
+    return [a.split('=', 1)[1] if '=' in a else None for a in args if a.split('=', 1)[0] == flag]
+
+
+def _engine_env(environ, profile):
+    # Profile values win over ambient optimization flags; only the reviewed
+    # logging knobs and the loop-recovery escape hatch pass through.
+    env = {key: value for key, value in environ.items()
+           if not key.startswith('ATLAS_') or key.startswith('ATLAS_LOG_')
+           or key == 'ATLAS_LOOP_NO_SUPPRESS'}
+    env.update(profile['environment'])
+    return env
+
+
+def _memory_share(environ, args, low=7):
+    """The SPARKQWEN_GPU_MEMORY_UTILIZATION override, 0.{low}0 to 0.95: the
+    pair's floor is 0.70; the 27B's saver profile runs at 0.59, so its floor is 0.40."""
+    util = environ.get('SPARKQWEN_GPU_MEMORY_UTILIZATION')
+    if not util:
+        return args
+    if not re.fullmatch(r'0\.([0-8][0-9]|9[0-5])', util) or int(util[2]) < low:
+        raise ValueError(f'SPARKQWEN_GPU_MEMORY_UTILIZATION must be 0.{low}0 to 0.95')
+    return [f'--gpu-memory-utilization={util}' if a.startswith('--gpu-memory-utilization=') else a for a in args]
+
+
+# The 27B drafter choice (SPARKQWEN_DRAFTER): the profile's DFlash2 drafter,
+# Tencent's DSpine drafter (16-row blocks) in its place, or both, each request
+# routed between them by the engine (--draft-model-alt).
+DRAFTERS = ('dflash2', 'dspine', 'both')
+DSPINE_GAMMA = '16'
+
+
+def _with_drafter(args, drafter):
+    """The profile's argv (DFlash2 at its gamma) for `drafter`."""
+    if drafter == 'dflash2':
+        return args
+    out = []
+    for a in args:
+        if a == '--draft-model=${draft}':
+            out.append('--draft-model=${dspine}' if drafter == 'dspine' else a)
+            if drafter == 'both':
+                out.append('--draft-model-alt=${dspine}')
+        elif a.startswith('--dflash-gamma='):
+            out.append('--dflash-gamma=' + DSPINE_GAMMA)
+        else:
+            out.append(a)
+    return out
+
+
+def launch_single(environ, profile):
+    """Qwen3.8-27B on one Spark: one engine process, no ranks, no fabric."""
+    args = list(profile['server_argv'])
+    if _flag_values(args, '--kernel-target') != [SINGLE_MODEL]:
+        raise ValueError(f'the 27B profile requires --kernel-target={SINGLE_MODEL}')
+    for flag in ('--world-size', '--tp-size', '--ep-size', '--rank', '--master-addr'):
+        if _flag_values(args, flag):
+            raise ValueError(f'the 27B profile runs on one Spark; {flag} is not allowed')
+    if '--dflash' not in args or _flag_values(args, '--draft-model') != ['${draft}'] or \
+            not re.fullmatch(r'[1-9][0-9]*', (_flag_values(args, '--dflash-gamma') or [''])[0] or ''):
+        raise ValueError('the 27B profile requires --dflash, --draft-model=${draft} and a positive --dflash-gamma')
+    # The profile names its drafter (27b-max: both); SPARKQWEN_DRAFTER overrides.
+    drafter = environ.get('SPARKQWEN_DRAFTER') or profile.get('drafter') or 'dflash2'
+    if drafter not in DRAFTERS:
+        raise ValueError(f'SPARKQWEN_DRAFTER must be one of {", ".join(DRAFTERS)}')
+    args = _with_drafter(args, drafter)
+    paths = {}
+    keys = [('MODEL_PATH', '/models/checkpoint'), ('DRAFT_PATH', None)]
+    if drafter != 'dflash2':
+        keys.append(('DSPINE_PATH', None))
+    for key, default in keys:
+        path = environ.get(key, default) or ''
+        if not Path(path).is_absolute() or any(c in path for c in '\r\n\0'):
+            raise ValueError(f'{key} must be an absolute path')
+        paths[key] = path
+    env = _engine_env(environ, profile)
+    env['SPARKQWEN_MODE'] = 'single'
+    args = _memory_share(environ, [str(a).replace('${model}', paths['MODEL_PATH']).replace('${draft}', paths['DRAFT_PATH'])
+                                   .replace('${dspine}', paths.get('DSPINE_PATH', '')) for a in args], low=4)
+    name = environ.get('SERVED_MODEL_NAME', 'qwen3.8-27b-atlas')
+    if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._/-]{0,127}', name):
+        raise ValueError('Invalid SERVED_MODEL_NAME')
+    args += ['--bind=127.0.0.1', '--port=8893', f'--model-name={name}']
+    args += tool_guard_args(environ, args)
+    return ['/usr/local/bin/spark', *args], env
+
+
 def launch(environ, profile):
+    if profile.get('model') == SINGLE_MODEL:
+        return launch_single(environ, profile)
     mode, precision, args = serving_mode(environ, profile)
     rank = environ.get('NODE_RANK', '')
     if rank not in ('0', '1'):
@@ -193,28 +284,17 @@ def launch(environ, profile):
         raise ValueError('MODEL_PATH must be an absolute path')
     # Profile values intentionally win over ambient optimization flags. Runtime
     # changes require a new reviewed image/profile instead of accidental tuning.
-    # Keep the reviewed logging knobs and exact loop-recovery escape hatch,
-    # as in SparkGLM. The profile still overrides these operational choices.
-    env = {key: value for key, value in environ.items()
-           if not key.startswith('ATLAS_') or key.startswith('ATLAS_LOG_')
-           or key == 'ATLAS_LOOP_NO_SUPPRESS'}
-    env.update(profile['environment'])
+    env = _engine_env(environ, profile)
     env.update(precision)
     env['SPARKQWEN_MODE'] = mode
     env['NCCL_SOCKET_IFNAME'] = interface
     env['NCCL_IB_HCA'] = ','.join(hcas)
     # The engine's direct RDMA all-reduce stripes over the same devices.
     env['ATLAS_RDMA_RAILS'] = env['NCCL_IB_HCA']
-    args = [str(arg).replace('${model}', model) for arg in args]
     # A dedicated pair can give the KV pool more of the unified memory than the
     # shipped default leaves free; a lower share reserves host/service memory
     # but shrinks the shared KV token pool. No context or concurrency promise.
-    util = environ.get('SPARKQWEN_GPU_MEMORY_UTILIZATION')
-    if util:
-        if not re.fullmatch(r'0\.(7[0-9]|8[0-9]|9[0-5])', util):
-            raise ValueError('SPARKQWEN_GPU_MEMORY_UTILIZATION must be 0.70 to 0.95')
-        args = [f'--gpu-memory-utilization={util}' if a.startswith('--gpu-memory-utilization=') else a
-                for a in args]
+    args = _memory_share(environ, [str(arg).replace('${model}', model) for arg in args])
     name = environ.get('SERVED_MODEL_NAME', 'qwen3.8-flash-next-atlas')
     if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._/-]{0,127}', name):
         raise ValueError('Invalid SERVED_MODEL_NAME')
@@ -269,7 +349,7 @@ def main():
     if not (model/'config.json').is_file() or not (model/'model.safetensors.index.json').is_file():
         raise ValueError(f'Incomplete checkpoint at {model}')
     source = json.loads((here/'source-manifest.json').read_text())
-    print(json.dumps({'event': 'atlas-recipe-start', **release_info(here), 'rank': env['NODE_RANK'], 'profile': profile.stem, 'mode': env['SPARKQWEN_MODE'],
+    print(json.dumps({'event': 'atlas-recipe-start', **release_info(here), 'rank': env.get('NODE_RANK', '0'), 'profile': profile.stem, 'mode': env['SPARKQWEN_MODE'],
                       'opt_ins': sorted(k for k in OPT_INS if env.get(k) == '1'),
                       'source': f"{source['repository']}@{source['commit']}"}), flush=True)
     os.execve(argv[0], argv, env)
