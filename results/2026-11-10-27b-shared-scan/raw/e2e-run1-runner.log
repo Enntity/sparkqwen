@@ -1,0 +1,55 @@
+2026-11-10T01:41:31Z start off
+bc3ae57292935cda8094d2dfcbb373a806d31b7a20b82d9f7f4feac1c8ad2486
+think_off_code [71.1, 71.3] tokens [900, 900] think/text chars [(0, 3467), (0, 3467)]
+think_on [70.2, 70.1] tokens [523, 523] think/text chars [(614, 433), (614, 433)]
+{"turn": "t00", "serial": false, "tokens": 1, "prompt": 206968, "ttft_s": 412.56, "decode_tok_s": null}
+{"turn": "t06", "serial": false, "tokens": 521, "prompt": 210382, "ttft_s": 13.19, "decode_tok_s": 18.52}
+{"turn": "t07", "serial": false, "tokens": 512, "prompt": 210882, "ttft_s": 2.81, "decode_tok_s": 15.37}
+{"turn": "t07", "serial": true, "tokens": 250, "prompt": 210882, "ttft_s": 0.9, "decode_tok_s": 3.23}
+{"turn": "t08", "serial": false, "tokens": 700, "prompt": 211437, "ttft_s": 3.15, "decode_tok_s": 9.5}
+523 tokens (stop) 70.3 tok/s, TTFT=229.9ms, serial=0.00 mtp=1.00 p1=0.930 mean_na=5.081 tok_step=6.081 regime_reprobes=0 depth=k5 depth_switches=0 acc
+1 tokens (length) 224014.3 tok/s, TTFT=408174.8ms, serial=0.00 mtp=0.00 p1=0.000 mean_na=0.000 tok_step=1.000 regime_reprobes=0 depth=k5 depth_switche
+521 tokens (stop) 18.3 tok/s, TTFT=12760.9ms, serial=0.00 mtp=1.00 p1=0.935 mean_na=5.766 tok_step=6.766 regime_reprobes=0 depth=k5 depth_switches=0 a
+512 tokens (stop) 15.4 tok/s, TTFT=2437.5ms, serial=0.00 mtp=1.00 p1=0.857 mean_na=4.626 tok_step=5.626 regime_reprobes=0 depth=k5 depth_switches=0 ac
+250 tokens (length) 3.2 tok/s, TTFT=569.8ms, serial=1.00 mtp=0.00 p1=0.000 mean_na=0.000 tok_step=1.000 regime_reprobes=0 depth=k5 depth_switches=0 ac
+700 tokens (length) 9.5 tok/s, TTFT=2832.2ms, serial=0.00 mtp=1.00 p1=0.783 mean_na=2.453 tok_step=3.453 regime_reprobes=0 depth=k5 depth_switches=0 a
+server log error lines: 0
+2026-11-10T01:53:11Z done off
+2026-11-10T01:53:16Z start on
+68643d0f82910d81a52dc2ab6ec6a051b20748cbafd293ef9fc0af723df1248b
+think_off_code [68.8, 69.1] tokens [887, 887] think/text chars [(0, 3453), (0, 3453)]
+think_on [69.8, 69.2] tokens [523, 523] think/text chars [(614, 433), (614, 433)]
+C=1 think=on serial=True wall=140.3s tokens=2000 agg=14.3 tok/s f4b6c53e dffd924b 49a3965c 04de1957 6483568b 48d5ffc3 55bb1a83 33aa40a3
+C=1 think=off serial=True wall=140.5s tokens=2000 agg=14.2 tok/s 488449e5 3d17c971 bfd864f3 92466928 b4f4aefe 25a378f3 9943670d c9509022
+C=1 think=on serial=False wall=37.4s tokens=2000 agg=53.5 tok/s f4b6c53e dffd924b 49a3965c 04de1957 6483568b 48d5ffc3 55bb1a83 33aa40a3
+C=1 think=off serial=False wall=36.4s tokens=2000 agg=55.0 tok/s 488449e5 3d17c971 bfd864f3 92466928 b4f4aefe 25a378f3 9943670d c9509022
+C=8 think=on serial=False wall=16.1s tokens=2000 agg=123.9 tok/s f4b6c53e dffd924b 49a3965c 04de1957 6483568b 48d5ffc3 55bb1a83 33aa40a3
+C=8 think=off serial=False wall=15.8s tokens=2000 agg=126.6 tok/s 488449e5 3d17c971 bfd864f3 92466928 b4f4aefe 25a378f3 9943670d c9509022
+spec.json: 16/16 identical  on0:= on1:= on2:= on3:= on4:= on5:= on6:= on7:= off0:= off1:= off2:= off3:= off4:= off5:= off6:= off7:=
+c8.json: 16/16 identical  on0:= on1:= on2:= on3:= on4:= on5:= on6:= on7:= off0:= off1:= off2:= off3:= off4:= off5:= off6:= off7:=
+{"turn": "t00", "serial": false, "tokens": 1, "prompt": 206968, "ttft_s": 416.05, "decode_tok_s": null}
+{"turn": "t06", "serial": false, "tokens": 521, "prompt": 210382, "ttft_s": 13.35, "decode_tok_s": 38.03}
+{"turn": "t07", "serial": false, "tokens": 512, "prompt": 210882, "ttft_s": 2.8, "decode_tok_s": 32.81}
+{"turn": "t07", "serial": true, "tokens": 250, "prompt": 210882, "ttft_s": 0.9, "decode_tok_s": 6.65}
+{"turn": "t08", "serial": false, "tokens": 697, "prompt": 211437, "ttft_s": 3.14, "decode_tok_s": 19.68}
+250 tokens (length) 17.4 tok/s, TTFT=140.2ms, serial=0.00 mtp=1.00 p1=0.850 mean_na=3.250 tok_step=4.250 regime_reprobes=0 depth=k5 depth_switches=0 a
+1 tokens (length) 186011.9 tok/s, TTFT=411267.8ms, serial=0.00 mtp=0.00 p1=0.000 mean_na=0.000 tok_step=1.000 regime_reprobes=0 depth=k5 depth_switche
+521 tokens (stop) 37.6 tok/s, TTFT=12847.4ms, serial=0.00 mtp=1.00 p1=0.935 mean_na=5.766 tok_step=6.766 regime_reprobes=0 depth=k5 depth_switches=0 a
+512 tokens (stop) 32.9 tok/s, TTFT=2434.4ms, serial=0.00 mtp=1.00 p1=0.865 mean_na=4.753 tok_step=5.753 regime_reprobes=0 depth=k5 depth_switches=0 ac
+250 tokens (length) 6.7 tok/s, TTFT=569.2ms, serial=1.00 mtp=0.00 p1=0.000 mean_na=0.000 tok_step=1.000 regime_reprobes=0 depth=k5 depth_switches=0 ac
+697 tokens (stop) 19.7 tok/s, TTFT=2854.0ms, serial=0.00 mtp=1.00 p1=0.800 mean_na=2.400 tok_step=3.400 regime_reprobes=0 depth=k5 depth_switches=0 ac
+server log error lines: 6
+2026-11-10T02:09:38Z done on
+/home/enntitysparkadmin/q27/sscan/out/off/long.json: t07 serial (250 tok, 3.23 tok/s) vs speculative: DIFFERENT  [reasoning 285/286 chars, content 129/2 chars]
+   t06: 521 tok, 18.52 tok/s, ttft 13.19 s
+   t07: 512 tok, 15.37 tok/s, ttft 2.81 s
+   t08: 700 tok, 9.5 tok/s, ttft 3.15 s
+/home/enntitysparkadmin/q27/sscan/out/on/long.json: t07 serial (250 tok, 6.65 tok/s) vs speculative: DIFFERENT  [reasoning 285/285 chars, content 129/2 chars]
+   t06: 521 tok, 38.03 tok/s, ttft 13.35 s
+   t07: 512 tok, 32.81 tok/s, ttft 2.8 s
+   t08: 697 tok, 19.68 tok/s, ttft 3.14 s
+t06: same text in both arms (521 vs 521 tokens)
+t07: texts part at char 208 (512 vs 512 tokens)
+t07 serial: same text in both arms (250 vs 250 tokens)
+t08: texts part at char 423 (700 vs 697 tokens)
+2026-11-10T02:09:43Z runner-exit

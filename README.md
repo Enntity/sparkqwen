@@ -1,6 +1,6 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <p align="center">
-  <img src="docs/assets/banner.png" alt="SparkQwen 0.4.0. Historical 0.3.1 benchmarks: code 106.4 tok/s, prose 54.8 tok/s, cold 16K prefill 4,142 tok/s. Common Atlas engine, Strict and Spark modes, tool-call guard on by default. Experimental opt-in 512K and 1M context options." width="100%">
+  <img src="docs/assets/banner.png" alt="SparkQwen: one repo, two models, switched with --model. Qwen3.8-27B on one DGX Spark (./start.sh --model 27b; candidate; NVFP4, DFlash2, exact verify, 262K) and Qwen3.8-Flash-Next on two DGX Sparks at TP=2 (./start.sh --model flash-next; FP4-Local, native MTP, 262K). Common Atlas engine, prefix caching, tool-call exfiltration guard on by default. Flash-Next historical 0.3.1 benchmarks: 106.4 tok/s code, 4,142 tok/s cold 16K prefill." width="100%">
 </p>
 
 # SparkQwen
@@ -8,6 +8,31 @@
 **SparkQwen 0.4.0** · [Versioning](docs/VERSIONING.md). Run `./start.sh --version`
 for this checkout, or `./start.sh status` for the version and image IDs on both ranks.
 Choose [Strict or Spark mode](docs/MODES.md); both use the model's native MTP head.
+
+## Two models, one entry point
+
+SparkQwen serves either of two Qwen3.8 models on NVIDIA DGX Spark. Pick one
+with `--model` (or `SPARKQWEN_MODEL` in `.env`):
+
+| | Qwen3.8-Flash-Next | Qwen3.8-27B |
+|---|---|---|
+| DGX Sparks | two (TP=2; the second is driven over ssh) | one |
+| Start | `./start.sh` (`--model flash-next`, the default) | `./start.sh --model 27b` |
+| Checkpoint | [nvidia/Qwen3.8-Flash-Next-FP4-Local](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local) | [nvidia/Qwen3.8-27B-NVFP4](https://huggingface.co/nvidia/Qwen3.8-27B-NVFP4) |
+| Speculation | the model's native MTP head | DFlash2 drafter (DSpine optional), exact verify |
+| Context per request | 32K to 262K by profile; 512K and 1M opt-in | 262,144 tokens in every profile |
+| Served as | `qwen3.8-flash-next-atlas` | `qwen3.8-27b-atlas` |
+| Status | released | candidate, not yet qualified |
+
+Both serve the OpenAI API on `127.0.0.1:8893` with prefix caching and the
+tool-call guard, each on its own image and pinned Atlas commit
+(`install/atlas-source.json`, `install/atlas-source-27b.json`). A Spark runs
+one of them at a time: stop the one that is up (`./start.sh stop` or
+`./start.sh --model 27b stop`), then start the other. The sections below
+describe the Flash-Next pair until
+[One Spark: Qwen3.8-27B](#one-spark-qwen38-27b-candidate).
+
+## Qwen3.8-Flash-Next on two Sparks
 
 Qwen3.8-Flash-Next on two NVIDIA DGX Sparks, using the published
 [FP4-Local checkpoint](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local)
@@ -303,7 +328,13 @@ instead (Apache-2.0, 3.8 GiB, 16-token blocks that reach further on code and
 JSON), and `DRAFTER=both` loads both drafters and lets each request use
 whichever its recent rounds favour; `dflash2` stays the default. Its verify is exact: alone or in a batch, each
 request's text is byte-identical to plain serial decoding of that request
-alone, with thinking on or off. Speculation follows the batch (full 8-token
+alone, with thinking on or off. Decode attention reads each KV head's cached
+keys and values once for all the rows of a step, instead of once per query
+head and row: on three real agentic turns at about 210K tokens, greedy, decode
+went from 18.5, 15.4 and 9.5 tok/s to 38.2, 32.9 and 19.8 tok/s with the step
+on short prompts unchanged
+([receipts and limits](results/2026-11-10-27b-shared-scan/RESULT.md)).
+Speculation follows the batch (full 8-token
 blocks up to eight live requests, 4-token ones up to sixteen, plain batched
 decode past that). `stop`, `status`, `logs`, `build` and `download` work as for
 the pair. Three profiles (`PROFILE=`, in `install/profiles/`), every one with

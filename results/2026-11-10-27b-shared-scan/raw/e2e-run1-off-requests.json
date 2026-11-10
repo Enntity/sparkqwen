@@ -1,0 +1,62 @@
+[
+ {
+  "turn": "t00",
+  "serial": false,
+  "prompt_tokens": 206968,
+  "completion_tokens": 1,
+  "ttft_s": 412.56,
+  "decode_tok_s": null,
+  "reasoning_sha256": "a83dd0ccbffe39d071cc317ddf6e97f5c6b1c87af91919271f9fa140b0508c6c",
+  "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "tool_calls_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "reasoning_chars": 1
+ },
+ {
+  "turn": "t06",
+  "serial": false,
+  "prompt_tokens": 210382,
+  "completion_tokens": 521,
+  "ttft_s": 13.19,
+  "decode_tok_s": 18.52,
+  "reasoning_sha256": "a5000ee3fc44846a336e68a6d8e33f9eefeeb8dc0f424ec3fc78c77fc0d18285",
+  "content_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+  "tool_calls_sha256": "529751f58a31e754367a56e494e7698bafc145c09861c39b680bfd8b4f9486a9",
+  "reasoning_chars": 95
+ },
+ {
+  "turn": "t07",
+  "serial": false,
+  "prompt_tokens": 210882,
+  "completion_tokens": 512,
+  "ttft_s": 2.81,
+  "decode_tok_s": 15.37,
+  "reasoning_sha256": "6dd7b228b478db16332c1e6f24048f82aef8e904b68f4feebcbc9ee337921985",
+  "content_sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+  "tool_calls_sha256": "270eea39e40fb44410e9aeb815e1c808bb233998b116b4960e82dd9d65b1f1f8",
+  "reasoning_chars": 286
+ },
+ {
+  "turn": "t07",
+  "serial": true,
+  "prompt_tokens": 210882,
+  "completion_tokens": 250,
+  "ttft_s": 0.9,
+  "decode_tok_s": 3.23,
+  "reasoning_sha256": "7b766853ab0fbddbcb7fdafda5b88cc970f0e0bddd2f091d1153b269165fadb6",
+  "content_sha256": "4a93663ffdc7031cf48968bdfe5dbfd3a555cd5512f336ba8cccf8bbbcc9e1ce",
+  "tool_calls_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "reasoning_chars": 285
+ },
+ {
+  "turn": "t08",
+  "serial": false,
+  "prompt_tokens": 211437,
+  "completion_tokens": 700,
+  "ttft_s": 3.15,
+  "decode_tok_s": 9.5,
+  "reasoning_sha256": "7bb32e278cef9570dcd38bde9debb2969e77b949e98de9827d19a84e314857df",
+  "content_sha256": "4a93663ffdc7031cf48968bdfe5dbfd3a555cd5512f336ba8cccf8bbbcc9e1ce",
+  "tool_calls_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "reasoning_chars": 2330
+ }
+]
