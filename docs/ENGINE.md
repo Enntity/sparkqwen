@@ -8,11 +8,16 @@ target `qwen3.8-flash-next` (model type `qwen4_exp`).
 [`install/build.sh`](../install/build.sh) refuses any other tree.
 
 `spark` is Atlas-Inf `main` plus Enntity's open Atlas-Inf pull requests,
-merged in; SparkGLM pins the same commit. The pinned snapshot is `5f79b46b`
-(tree `38c21dec`): Atlas-Inf `main` `2f9c37083`, which now carries #321
-(SparkGLM on four Sparks), #322 (GLM native calls to undeclared tools) and
-#323 (write paths with spaces). No Enntity pull request is open, so `spark`
-adds only its own `.spark/` scripts. Since 0.5.0, `main` also ships
+merged in. 0.7.0 pins `8a193a86` (tree `6b6125af`): `5f79b46b`, the
+commit SparkGLM pins, plus Enntity/atlas#23. That change sends a snapshot's
+PLE history and QSA keys to the disk tier with its recurrent state, so the
+prefix cache on disk can restore Qwen3.8-Flash-Next; it is not yet an
+Atlas-Inf pull request. `5f79b46b` (tree `38c21dec`) is Atlas-Inf `main`
+`2f9c37083`, which carries #321 (SparkGLM on four Sparks), #322 (GLM native
+calls to undeclared tools) and #323 (write paths with spaces), plus `spark`'s
+own `.spark/` scripts. 0.7.0 is not yet qualified on hardware as a release;
+the one disk-tier check ran on the same engine tree (README, "Prefix cache
+on disk"). Since 0.5.0, `main` also ships
 `verbatim_prompt = false` for this target (#319) and bans the `<tool_call>`
 opener when a request declares no tools (#320). 0.5.1 qualified on a DGX
 Spark pair on 2026-11-03 against 0.5.0 (greedy output and prompt logprobs

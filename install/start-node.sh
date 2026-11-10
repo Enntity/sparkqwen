@@ -14,6 +14,7 @@ usage: start-node.sh --rank 0|1 --leader-address IP --model-root DIR --image TAG
                      [--tool-guard on|off] [--tool-guard-allow-hosts HOST,...]
                      [--tool-guard-deny-hosts HOST,...] [--tool-guard-max-bytes BYTES]
                      [--checkpoint NAME] [--cuda-cache DIR] [--ple-cache DIR] [--name NAME]
+                     [--prefix-cache-dir DIR [--prefix-cache-gb 16-100]]
 
   --leader-address   rank 0's IPv4 address on the direct Spark-to-Spark fabric
   --model-root       directory holding the checkpoint directory
@@ -34,12 +35,16 @@ usage: start-node.sh --rank 0|1 --leader-address IP --model-root DIR --image TAG
   --cuda-cache       persistent CUDA JIT cache (default: ~/.cache/atlas-cuda)
   --ple-cache        persistent packed PLE n-gram table, ~29 GB, written on the
                      first start of an NVFP4-PLE checkpoint (default: ~/.cache/atlas-ple)
+  --prefix-cache-dir keep evicted prefix-cache entries in this directory on
+                     this node's disk (default: off; nothing carries over a
+                     restart)
+  --prefix-cache-gb  their disk budget in GiB (default 48); the same on both ranks
 EOF
   exit 2
 }
 rank="" leader="" iface="" model_root="" image="" hca=""
 cache="$HOME/.cache/atlas-cuda" ple_cache="$HOME/.cache/atlas-ple" name="" profile=8x32k mode=strict util="" siblings=0
-guard=on guard_allow="" guard_deny="" guard_max=1048576
+guard=on guard_allow="" guard_deny="" guard_max=1048576 pc_dir="" pc_gb=""
 checkpoint_name=nvidia--Qwen3.8-Flash-Next-FP4-Local
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -61,6 +66,8 @@ while [[ $# -gt 0 ]]; do
     --tool-guard-max-bytes) guard_max=$2; shift 2 ;;
     --gpu-memory-utilization) util=$2; shift 2 ;;
     --no-fabric-siblings) siblings=0; shift ;;
+    --prefix-cache-dir) pc_dir=$2; shift 2 ;;
+    --prefix-cache-gb) pc_gb=$2; shift 2 ;;
     *) usage ;;
   esac
 done
@@ -70,6 +77,12 @@ done
   { echo '--gpu-memory-utilization must be 0.70 to 0.95' >&2; exit 2; }
 [[ $guard == on || $guard == off ]] || { echo '--tool-guard must be on or off' >&2; exit 2; }
 [[ $guard_max =~ ^[1-9][0-9]{0,7}$ && $guard_max -le 67108864 ]] || { echo 'invalid --tool-guard-max-bytes' >&2; exit 2; }
+if [[ -n $pc_dir || -n $pc_gb ]]; then
+  pc_gb=${pc_gb:-48}
+  [[ $pc_dir == /* && $pc_dir != *,* ]] || { echo "--prefix-cache-dir must be set to an absolute path without commas" >&2; exit 2; }
+  [[ $pc_gb =~ ^[1-9][0-9]{1,2}$ ]] && (( pc_gb >= 16 && pc_gb <= 100 )) ||
+    { echo "--prefix-cache-gb must be a whole number from 16 to 100" >&2; exit 2; }
+fi
 sysfs=${FABRIC_SYSFS:-/sys/class/infiniband}
 if [[ -z $hca ]]; then
   [[ -n $iface ]] || { echo "pass --fabric-hca or --fabric-interface; no port is assumed" >&2; exit 2; }
@@ -119,6 +132,20 @@ fi
 # bind source on the host; permissions remain host-owned.
 lock_dir=/run/lock/sparkglm
 name=${name:-atlas-sparkqwen-rank$rank}
+# The engine unlinks its cache files while they are open and sweeps any a crash
+# left behind, so nothing carries over a restart.
+pc_args=()
+if [[ -n $pc_dir ]]; then
+  mkdir -p "$pc_dir/$mode/kv" "$pc_dir/$mode/ssm"
+  pc_dir=$(realpath "$pc_dir")
+  case $(stat -f -c %T "$pc_dir" 2>/dev/null) in
+    tmpfs | ramfs | overlayfs) echo "--prefix-cache-dir $pc_dir is not on a disk" >&2; exit 2 ;;
+  esac
+  free_kb=$(df -Pk "$pc_dir" | awk 'NR == 2 {print $4}')
+  (( free_kb >= pc_gb * 1048576 )) ||
+    { echo "--prefix-cache-dir $pc_dir has $((free_kb / 1048576)) GiB free; --prefix-cache-gb needs $pc_gb" >&2; exit 2; }
+  pc_args=(--mount "type=bind,src=$pc_dir,dst=/prefix-cache" -e SPARKQWEN_PREFIX_CACHE_GB="$pc_gb")
+fi
 docker rm -f "$name" >/dev/null 2>&1 || true
 # GB10 memory is shared with the host, and a host that runs out of it hangs
 # instead of killing a process. The container is capped at 114 GiB, and the
@@ -131,6 +158,7 @@ docker run -d --name "$name" --restart no --network host --ipc host \
   --mount "type=bind,src=$checkpoint,dst=$checkpoint,readonly" \
   --mount "type=bind,src=$cache,dst=/atlas-cuda-cache" \
   --mount "type=bind,src=$(realpath "$ple_cache"),dst=/atlas-ple" ${profile_mount[@]+"${profile_mount[@]}"} \
+  ${pc_args[@]+"${pc_args[@]}"} \
   -e NODE_RANK="$rank" -e MASTER_ADDR="$leader" -e MASTER_PORT=29510 \
   -e FABRIC_INTERFACE="$iface" -e FABRIC_HCA="$hca" -e FABRIC_SIBLINGS="$siblings" -e MODEL_PATH="$checkpoint" \
   -e SPARKQWEN_TOOL_GUARD="$guard" -e SPARKQWEN_TOOL_GUARD_MAX_BYTES="$guard_max" \

@@ -217,6 +217,13 @@ identity.
   conversations that arrive together and share a long prompt prefix do not
   yet share its computation, so their first turns queue (6-12 s for four
   conversations over a shared ~20K-token system prompt).
+- The prefix cache on disk (`PREFIX_CACHE_DIR`, off by default) has been
+  checked once: Spark mode, `8x32k`, ~20K-token conversations, a pool held
+  to 3,072 blocks and 8 snapshot slots so that conversations were evicted.
+  Disk restores near the context limit, Strict mode, many simultaneous
+  restores, eviction latency imposed on another request, and endurance are
+  not measured. Each snapshot takes two 59.6 MB disk records (three past
+  about 75K tokens), so the default snapshot half holds about 215.
 - Every profile, `8x262k` included, draws all requests and the prefix cache
   from one shared KV pool. `8x262k` is a concurrency and per-request context
   limit, not eight reserved 256K slots: eight requests that together need

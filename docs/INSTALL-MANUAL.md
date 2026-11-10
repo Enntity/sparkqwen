@@ -95,6 +95,10 @@ ranks overrides the selected profile. A lower share leaves room for host and
 sidecar work and shrinks the shared KV pool. The profile limits and qualification guidance
 are in [Memory profiles](MEMORY-PROFILES.md).
 
+**Prefix cache on disk.** `--prefix-cache-dir DIR` (and optionally
+`--prefix-cache-gb 48`) on both ranks keeps evicted prefix-cache entries on
+each node's disk; see the README ("Prefix cache on disk") for what it costs.
+
 ## Dedicated pair or sidecars
 
 Use `max-16x262k` for a dedicated pair or `saver-8x262k` when sharing with

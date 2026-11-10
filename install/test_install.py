@@ -16,6 +16,7 @@ serve = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(serve)
 PROFILES = ('8x32k', '4x262k', '8x262k')
 SHA = re.compile(r'[0-9a-f]{40}')
+DISK_TIER = ('ATLAS_KV_NVME', 'ATLAS_SSM_TIER', 'ATLAS_GLM_NVME')
 
 
 def load_profile(name):
@@ -283,6 +284,29 @@ class LaunchContract(unittest.TestCase):
             self.assertEqual(serve.fabric_hcas('rocep1s0f0,roceP2p1s0f0', root),
                              ['rocep1s0f0', 'roceP2p1s0f0'])
 
+    def test_disk_prefix_cache_is_off_unless_sized(self):
+        # Ambient tier variables are dropped like any other ATLAS_* flag.
+        for extra in ({}, {'SPARKQWEN_PREFIX_CACHE_GB': ''}, {'SPARKQWEN_PREFIX_CACHE_GB': '0'},
+                      {'ATLAS_KV_NVME_DIR': '/tmp/kv', 'ATLAS_KV_NVME_GB': '24', 'ATLAS_SSM_TIER': '1'}):
+            _, env = serve.launch(dict(self.environment, **extra), self.profile)
+            with self.subTest(extra=extra):
+                self.assertEqual([k for k in env if k.startswith(DISK_TIER)], [])
+
+    def test_disk_prefix_cache_splits_the_size_on_both_ranks(self):
+        for rank in ('0', '1'):
+            _, env = serve.launch(dict(self.environment, NODE_RANK=rank, SPARKQWEN_PREFIX_CACHE_GB='48'),
+                                  self.profile)
+            self.assertEqual({k: v for k, v in env.items() if k.startswith(DISK_TIER)}, {
+                'ATLAS_KV_NVME_DIR': '/prefix-cache/spark/kv', 'ATLAS_KV_NVME_GB': '24',
+                'ATLAS_GLM_NVME_FAST': '1', 'ATLAS_SSM_TIER': '1', 'ATLAS_SSM_TIER_UNIFIED': '1',
+                'ATLAS_SSM_TIER_SWAP_DIR': '/prefix-cache/spark/ssm', 'ATLAS_SSM_TIER_DISK_GB': '24',
+                'ATLAS_SSM_TIER_SLOTS': '2'})
+        _, env = serve.launch(dict(self.environment, SPARKQWEN_PREFIX_CACHE_GB='17'), self.profile)
+        self.assertEqual((env['ATLAS_KV_NVME_GB'], env['ATLAS_SSM_TIER_DISK_GB']), ('8', '9'))
+        for bad in ('15', '101', '048', '48.5', '-48', ' 48', '48\n', 'x'):
+            with self.subTest(gb=bad), self.assertRaises(ValueError):
+                serve.launch(dict(self.environment, SPARKQWEN_PREFIX_CACHE_GB=bad), self.profile)
+
     def test_invalid_cluster_configuration_fails_before_process_launch(self):
         for key, value in [('NODE_RANK', '2'), ('MASTER_ADDR', 'not-an-address'),
                            ('MASTER_PORT', '0'), ('FABRIC_INTERFACE', 'eth0\nINJECTED=1'),
@@ -306,17 +330,22 @@ class StartNode(unittest.TestCase):
         (self.sysfs/'rocep1s0f0/ports/1/state').write_text('4: ACTIVE')
         self.bin = self.root/'bin'
         self.bin.mkdir()
-        (self.bin/'docker').write_text(f'#!/bin/sh\necho "$*" >> {self.root}/docker.log\n')
-        (self.bin/'docker').chmod(0o755)
+        # A recording docker; stat and df report ext4 and 100 GiB free unless told otherwise.
+        for tool, body in (('docker', f'echo "$*" >> {self.root}/docker.log'),
+                           ('stat', 'echo "${FSTYPE:-ext2/ext3}"'),
+                           ('df', 'echo "Filesystem 1024-blocks Used Available Capacity Mounted"; '
+                                  'echo "disk 0 0 ${FREE_KB:-104857600} 0 /"')):
+            (self.bin/tool).write_text(f'#!/bin/sh\n{body}\n')
+            (self.bin/tool).chmod(0o755)
 
-    def start(self, rank, *extra):
+    def start(self, rank, *extra, **fake):
         log = self.root/'docker.log'
         log.unlink(missing_ok=True)
         run = subprocess.run(
             ['bash', str(HERE/'start-node.sh'), '--rank', rank, '--leader-address', '192.0.2.1',
              '--model-root', str(self.root/'models'), '--image', 'img', '--fabric-interface', 'enp1s0f0np0',
              '--cuda-cache', str(self.root/'cuda'), '--ple-cache', str(self.root/'ple'), *extra],
-            capture_output=True, text=True, env=dict(os.environ, PATH=f'{self.bin}:{os.environ["PATH"]}', FABRIC_SYSFS=str(self.sysfs)))
+            capture_output=True, text=True, env=dict(os.environ, PATH=f'{self.bin}:{os.environ["PATH"]}', FABRIC_SYSFS=str(self.sysfs), **fake))
         lines = log.read_text().splitlines() if log.exists() else []
         return run, [line for line in lines if line.startswith('run ')]
 
@@ -394,6 +423,35 @@ class StartNode(unittest.TestCase):
             with self.subTest(rank=rank):
                 self.assertIn('-e SPARKQWEN_PROFILE=saver-8x262k ', docker_run[0])
                 self.assertNotIn('SPARKQWEN_GPU_MEMORY_UTILIZATION=', docker_run[0])
+
+    def test_prefix_cache_dir_mounts_a_disk_on_both_ranks(self):
+        run, docker_run = self.start('0')
+        self.assertNotIn('prefix-cache', docker_run[0])
+        cache = self.root/'nvme'
+        for rank in ('0', '1'):
+            run, docker_run = self.start(rank, '--prefix-cache-dir', str(cache))
+            with self.subTest(rank=rank):
+                self.assertEqual(run.returncode, 0, run.stderr)
+                self.assertIn(f'--mount type=bind,src={cache.resolve()},dst=/prefix-cache ', docker_run[0])
+                self.assertIn('-e SPARKQWEN_PREFIX_CACHE_GB=48 ', docker_run[0])
+                self.assertTrue((cache/'strict'/'kv').is_dir() and (cache/'strict'/'ssm').is_dir())
+        run, docker_run = self.start('1', '--prefix-cache-dir', str(cache), '--prefix-cache-gb', '100')
+        self.assertIn('-e SPARKQWEN_PREFIX_CACHE_GB=100 ', docker_run[0])
+        for extra in (['--prefix-cache-dir', 'relative/nvme'], ['--prefix-cache-dir', f'{cache},readonly'],
+                      ['--prefix-cache-gb', '48'], ['--prefix-cache-dir', str(cache), '--prefix-cache-gb', '8'],
+                      ['--prefix-cache-dir', str(cache), '--prefix-cache-gb', '101']):
+            run, docker_run = self.start('0', *extra)
+            with self.subTest(extra=extra):
+                self.assertNotEqual(run.returncode, 0)
+                self.assertEqual(docker_run, [])
+                self.assertFalse((self.root/'docker.log').exists(), 'invalid cache must not stop a container')
+                self.assertIn('prefix-cache', run.stderr)
+        for fake in ({'FSTYPE': 'tmpfs'}, {'FSTYPE': 'overlayfs'}, {'FREE_KB': str(47 * 1048576)}):
+            run, docker_run = self.start('0', '--prefix-cache-dir', str(cache), **fake)
+            with self.subTest(fake=fake):
+                self.assertNotEqual(run.returncode, 0)
+                self.assertEqual(docker_run, [])
+                self.assertFalse((self.root/'docker.log').exists(), 'invalid cache must not stop a container')
 
     def test_refuses_an_incomplete_checkpoint_or_bad_arguments(self):
         (self.checkpoint/'model.safetensors.index.json').unlink()
