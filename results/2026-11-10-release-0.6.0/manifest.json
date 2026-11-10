@@ -1,0 +1,68 @@
+{
+ "_license": "SPDX-License-Identifier: AGPL-3.0-only",
+ "date": "2026-11-10",
+ "product": "SparkQwen",
+ "version": "0.6.0",
+ "image_source_commit": "85ac2ef1e849a97802e570be492d1e4b8951df64",
+ "install_tree": "f6bb0a3cd40d5f14f599431399f87f1e8f27973b",
+ "flash_next": {
+  "kernel_target": "qwen3.8-flash-next",
+  "engine_repository": "https://github.com/Enntity/atlas.git",
+  "engine_branch": "spark",
+  "engine_commit": "5f79b46ba7b0e8b14f8b2966cca9e2546f18560d",
+  "engine_tree": "38c21decf794bd9921081d022a6720a933431eaf",
+  "registry_tags": [
+   "f6bb0a3cd40d",
+   "0.6.0"
+  ],
+  "registry_digest": "sha256:02a0ffaed9e4c51c6eedc0d1309de1dc8c58f0e41075d1fda80efa4e0b447fad",
+  "arm64_manifest": "sha256:e00f5542b7c68464ae04b46f1120c400c63f88f14c7356fad0bb3fe0837ce8e3",
+  "engine_binary_sha256": "c719a0b1a5808511d780b65a2b3021336dbf702ff3bfe1591f7da01c379cd9a8",
+  "cpu_tests": {
+   "passed": 8477,
+   "failed": 0,
+   "ignored": 300
+  },
+  "compared_with": {
+   "version": "0.5.1",
+   "registry_digest": "sha256:37272dc6dcb3d1c6d4b8027b8876edf9ba36b1988d85ea6accde22848d5e11e7",
+   "engine_binary_sha256": "dbc209eeb9edc3e6fac7fec6aa1e6b861d44b137c9f17b303efd7eb82be89973",
+   "loaded_sections_identical": true,
+   "differing_sections": [
+    ".symtab",
+    ".strtab"
+   ],
+   "launcher_cases": 256,
+   "launcher_differences": 0
+  },
+  "gpu_run_of_this_image": false,
+  "qualification_status": "0.5.1's, by engine identity; not re-run"
+ },
+ "qwen38_27b": {
+  "kernel_target": "qwen3.8-27b",
+  "engine_repository": "https://github.com/Enntity/atlas.git",
+  "engine_branch": "q27/conc",
+  "engine_commit": "c125bf9a87db35033939342815e239d8a36541d9",
+  "engine_tree": "372e03793dc82d3aab0a7a89f6c8380b69761ab7",
+  "registry_tags": [
+   "f6bb0a3cd40d-27b",
+   "0.6.0-27b"
+  ],
+  "registry_digest": "sha256:06bc69b4dfc3cb4d433293d2794bfab6c5bad33a48651ac49558173f6d8dc403",
+  "arm64_manifest": "sha256:6945983799a4f9e722b32b308d28ec733fb432ed893b45bec18127ec86d333a3",
+  "engine_binary_sha256": "0194e72732fd199ea03623ba9e4ee6f15acea95d1e03ed57660774d06b7330e0",
+  "cpu_tests": {
+   "passed": 8577,
+   "failed": 0,
+   "ignored": 304
+  },
+  "checkpoint": "nvidia/Qwen3.8-27B-NVFP4@482ca0f3832238542f8f5295dde86b5f22711d80 with the TandemLLM GDN and attention overlay (install/checkpoint-27b.json)",
+  "live_check": {
+   "profile": "27b",
+   "short_exact_cells": "16/16 alone, 16/16 eight at a time",
+   "serial_equals_speculative_at_211k_tokens": true
+  },
+  "qualification_status": "candidate; not qualified"
+ },
+ "anonymous_registry_verified": true
+}
