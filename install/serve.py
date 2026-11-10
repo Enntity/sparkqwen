@@ -96,6 +96,23 @@ def opt_ins(environ):
     return env
 
 
+def disk_prefix_cache(gb, mode):
+    """Engine settings that keep evicted prefix-cache blocks and Gated DeltaNet
+    state snapshots on the node's disk, in the directory start-node.sh mounts
+    at /prefix-cache, one subdirectory per mode. The size (GiB per node) is
+    split evenly between the two; empty or 0 leaves the tier off. Same engine
+    tier and settings as SparkGLM."""
+    if gb in ('', '0'):
+        return {}
+    if not re.fullmatch(r'[1-9][0-9]{1,2}', gb) or not 16 <= int(gb) <= 100:
+        raise ValueError('SPARKQWEN_PREFIX_CACHE_GB must be a whole number from 16 to 100')
+    kv = int(gb) // 2
+    return {'ATLAS_KV_NVME_DIR': f'/prefix-cache/{mode}/kv', 'ATLAS_KV_NVME_GB': str(kv),
+            'ATLAS_GLM_NVME_FAST': '1', 'ATLAS_SSM_TIER': '1', 'ATLAS_SSM_TIER_UNIFIED': '1',
+            'ATLAS_SSM_TIER_SWAP_DIR': f'/prefix-cache/{mode}/ssm', 'ATLAS_SSM_TIER_DISK_GB': str(int(gb) - kv),
+            'ATLAS_SSM_TIER_SLOTS': '2'}
+
+
 def serving_mode(environ, profile):
     """Both modes preserve the native target and use target-verified native MTP."""
     mode = environ.get('SPARKQWEN_MODE', 'strict')
@@ -287,6 +304,7 @@ def launch(environ, profile):
     env = _engine_env(environ, profile)
     env.update(precision)
     env['SPARKQWEN_MODE'] = mode
+    env.update(disk_prefix_cache(environ.get('SPARKQWEN_PREFIX_CACHE_GB', ''), mode))
     env['NCCL_SOCKET_IFNAME'] = interface
     env['NCCL_IB_HCA'] = ','.join(hcas)
     # The engine's direct RDMA all-reduce stripes over the same devices.

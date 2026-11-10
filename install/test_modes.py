@@ -107,3 +107,12 @@ class ModeContract(unittest.TestCase):
         for mode in ('strict', 'spark'):
             args, _ = serve.launch(dict(self.env, SPARKQWEN_MODE=mode), profile)
             self.assertEqual(args[args.index('--num-drafts') + 1], '1')
+
+    def test_disk_cache_cannot_cross_modes(self):
+        dirs = {}
+        for mode in ('strict', 'spark'):
+            _, env = serve.launch(dict(self.env, SPARKQWEN_MODE=mode, SPARKQWEN_PREFIX_CACHE_GB='48'),
+                                  load_profile('8x32k'))
+            dirs[mode] = (env['ATLAS_KV_NVME_DIR'], env['ATLAS_SSM_TIER_SWAP_DIR'])
+            self.assertEqual(dirs[mode], (f'/prefix-cache/{mode}/kv', f'/prefix-cache/{mode}/ssm'))
+        self.assertFalse(set(dirs['strict']) & set(dirs['spark']))

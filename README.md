@@ -298,6 +298,48 @@ headroom. Their four slots share the KV pool; four million-token requests
 exceed its measured capacity.
 See [YaRN profile requirements](docs/MEMORY-PROFILES.md#extended-context-with-yarn).
 
+### Prefix cache on disk
+
+When the KV pool fills up, the prefix cache drops the conversations used
+least recently, and one that comes back is prefilled again from the start.
+With `PREFIX_CACHE_DIR` set, each Spark writes what it drops to its own disk
+instead and reads it back when the conversation returns. The engine tier and
+settings are SparkGLM's. In one check on 2026-11-10 (Spark mode, ~20K-token
+conversations pushed out of a pool held to 3,072 blocks), the time to first
+token of turn 2 went from 5.4 s to 0.44 s. All 16 answers were identical to
+a run with the tier off. Each restore read its 1,268 KV blocks in about 42 ms
+on rank 0 and 75 ms on rank 1.
+
+To turn it on, add to `.env` and rerun `./start.sh`:
+
+```sh
+PREFIX_CACHE_DIR=/srv/sparkqwen/prefix-cache  # same path on both Sparks, on their own disks
+PREFIX_CACHE_GB=48                            # GiB per Spark, 16-100 (default 48)
+```
+
+`start.sh` creates `<mode>/kv/` and `<mode>/ssm/` in the directory on both
+Sparks. It refuses a directory on tmpfs, or one without that much space
+free, and mounts it into each rank. Half of the size holds KV blocks
+(12,544 B per token; 24 GiB holds about 2.05M tokens). The other half
+holds the recurrent-state snapshots a restore starts from.
+
+Each snapshot is two 59.6 MB records: the Gated DeltaNet state, then its PLE
+history and QSA keys (768 B per token, so a third record past about 75K
+tokens). At the default, 24 GiB holds about 215 snapshots. A restore needs
+both halves.
+
+What it costs, per Spark:
+
+- **KV pool.** The engine sets 273 MiB of host memory aside for the tier at
+  the default size and takes it out of the pool: about 23K tokens, under 1%
+  of the `8x32k` pool.
+- **Disk.** The KV half is reserved when the engine starts; the snapshot
+  half fills as needed. Nothing is kept across a restart: the engine
+  deletes its files as soon as it has them open, and clears leftovers from a
+  crash when it starts.
+
+`--model 27b` does not use it.
+
 The versioned comparison uses explicit greedy settings for measurement. For real work leave sampling
 unset (the defaults above) or use the model card's values; greedy decoding can
 loop ([docs/LIMITATIONS.md](docs/LIMITATIONS.md), Behavior).

@@ -21,6 +21,7 @@ Every driver reads `SQ_URL` (default `http://127.0.0.1:8893`) and `SQ_MODEL`
 | `nll_probe.py` | Teacher-forced negative log-likelihood of 32 fixed ~1,800-token chunks of code and prose from the host's own files; `compare` reports the mean per category and paired per-chunk wins | `python3 nll_probe.py TAG` → `nll-TAG.json`, then `python3 nll_probe.py compare TAG_A TAG_B` |
 | `agentic_probe.py` | Agent-shaped serving: conversations sharing one ~20K system prompt, sequential turns within each and concurrent across them; TTFT per turn, cached tokens, answer correctness | `python3 agentic_probe.py TAG [CONV=4] [TURNS=5]` → `agentic-TAG.json` |
 | `long_probe.py` | A ~77K-token needle with a warm follow-up, or four concurrent distinct ~100K prompts that exhaust the KV pool | `python3 long_probe.py needle` or `python3 long_probe.py exhaust` (needs `PROFILE=4x262k`) |
+| `evict_probe.py` | Prefix cache on disk: ~20K-token conversations pushed out of a small diagnostic pool, then asked a second turn; TTFT, cached tokens, answer text and token count, so a run with `PREFIX_CACHE_DIR` and one without can be compared exactly | `python3 evict_probe.py TAG [CONVS=12] [RECORDS=600]` → `evict-TAG.json` |
 
 ## sparkDash
 

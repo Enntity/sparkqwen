@@ -150,7 +150,8 @@ serve() {
           --profile "$PROFILE" --mode "$MODE"
           --tool-guard "${TOOL_GUARD:-on}" --tool-guard-max-bytes "${TOOL_GUARD_MAX_BYTES:-1048576}"
           --tool-guard-allow-hosts "${TOOL_GUARD_ALLOW_HOSTS:-}" --tool-guard-deny-hosts "${TOOL_GUARD_DENY_HOSTS:-}"
-          ${GPU_MEMORY_UTILIZATION:+--gpu-memory-utilization "$GPU_MEMORY_UTILIZATION"})
+          ${GPU_MEMORY_UTILIZATION:+--gpu-memory-utilization "$GPU_MEMORY_UTILIZATION"}
+          ${PREFIX_CACHE_DIR:+--prefix-cache-dir "$PREFIX_CACHE_DIR"} ${PREFIX_CACHE_GB:+--prefix-cache-gb "$PREFIX_CACHE_GB"})
   say "start rank 1 on $WORKER, then rank 0 here (leader $address, profile $PROFILE, mode $MODE)"
   stop
   script_on_worker install/start-node.sh --rank 1 --fabric-hca "$hca1" --fabric-interface "$iface1" --no-fabric-siblings "${common[@]}"
