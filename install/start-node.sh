@@ -31,9 +31,9 @@ usage: start-node.sh --rank 0|1 --leader-address IP --model-root DIR --image TAG
                      address the peer reaches only off the link.
   --gid-index        THIS node's RoCE GID index on every rail, for NCCL and the
                      engine's RDMA pair (default: discovered per rail)
-  --mode             strict (default): BF16 draft attention/head; spark: NVFP4 draft copies
+  --mode             spark (default): NVFP4 draft copies; strict: BF16 draft attention/head
                      Both require the pinned FP4-Local native target format.
-  --profile          a profile shipped in the image (default 8x32k) or a JSON
+  --profile          a profile shipped in the image (default 8x262k) or a JSON
                      file of your own; use the same one on both ranks
   --gpu-memory-utilization  share of unified memory for the engine, two
                      decimals from 0.70 to 0.95 (default: selected profile).
@@ -50,7 +50,7 @@ EOF
   exit 2
 }
 rank="" leader="" iface="" model_root="" image="" hca=""
-cache="$HOME/.cache/atlas-cuda" ple_cache="$HOME/.cache/atlas-ple" name="" profile=8x32k mode=strict util="" siblings=0
+cache="$HOME/.cache/atlas-cuda" ple_cache="$HOME/.cache/atlas-ple" name="" profile=8x262k mode=spark util="" siblings=0
 guard=on guard_allow="" guard_deny="" guard_max=1048576 pc_dir="" pc_gb=""
 checkpoint_name=nvidia--Qwen3.8-Flash-Next-FP4-Local
 while [[ $# -gt 0 ]]; do

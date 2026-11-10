@@ -44,7 +44,7 @@ kernel target.
 `--model 27b` builds the `qwen3.8-27b` kernel target (model type `qwen3_5`)
 from Enntity/atlas `q27/conc` at the commit pinned in
 [`install/atlas-source-27b.json`](../install/atlas-source-27b.json):
-`32e4295ca` (tree `3f953643`). That branch is the single-Spark serving series
+`6a7091b3b` (tree `41d299bd`). That branch is the single-Spark serving series
 proposed upstream as Atlas-Inf/atlas#333 (exact MTP and DFlash2 verify, fused
 GDN decode and verify, row-invariant tensor-core GEMMs, the DSpine drafter,
 the concurrency series) plus work that is not upstream yet: three prefix-cache

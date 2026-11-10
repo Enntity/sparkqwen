@@ -26,8 +26,8 @@ esac
 : "${WORKER:?set WORKER in .env to the ssh destination of the other Spark (see .env.example)}"
 [[ $WORKER != -* ]] || { echo "WORKER must be an ssh destination, not an option: $WORKER" >&2; exit 2; }
 MODEL_ROOT=${MODEL_ROOT:-$HOME/models/sparkqwen}
-PROFILE=${PROFILE:-8x32k}
-MODE=${MODE:-strict}
+PROFILE=${PROFILE:-8x262k}
+MODE=${MODE:-spark}
 if [[ ${1:-} == --mode ]]; then
   [[ $# -ge 2 ]] || { echo '--mode requires strict or spark' >&2; exit 2; }
   MODE=$2; shift 2

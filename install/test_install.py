@@ -62,10 +62,13 @@ class LaunchContract(unittest.TestCase):
             self.assertNotIn('NCCL_IB_GID_INDEX', env)
 
     def test_default_profile_sizes_and_status_are_admissible(self):
-        self.assertEqual(serve.profile_path({}, HERE), HERE/'profiles'/'8x32k.json')
+        self.assertEqual(serve.profile_path({}, HERE), HERE/'profiles'/'8x262k.json')
         argv, _ = serve.launch(self.environment, self.profile)
-        for arg in ('--max-seq-len=32768', '--max-num-seqs=8', '--max-batch-size=8'):
+        for arg in ('--max-seq-len=262144', '--max-num-seqs=8', '--max-batch-size=8'):
             self.assertIn(arg, argv)
+        short_argv, _ = serve.launch(self.environment, load_profile('8x32k'))
+        for arg in ('--max-seq-len=32768', '--max-num-seqs=8', '--max-batch-size=8'):
+            self.assertIn(arg, short_argv)
         long_argv, _ = serve.launch(self.environment, load_profile('4x262k'))
         for arg in ('--max-seq-len=262144', '--max-num-seqs=4', '--max-batch-size=4'):
             self.assertIn(arg, long_argv)
@@ -386,8 +389,8 @@ class StartNode(unittest.TestCase):
                 self.assertIn(f'--mount type=bind,src={(self.root/"ple").resolve()},dst=/atlas-ple ', cmd)
                 self.assertTrue((self.root/'ple').is_dir())
                 self.assertIn(f'-e NODE_RANK={rank} ', cmd)
-                self.assertIn('-e SPARKQWEN_PROFILE=8x32k ', cmd)
-                self.assertIn('-e SPARKQWEN_MODE=strict ', cmd)
+                self.assertIn('-e SPARKQWEN_PROFILE=8x262k ', cmd)
+                self.assertIn('-e SPARKQWEN_MODE=spark ', cmd)
                 self.assertNotIn('SPARKQWEN_FP8_GDN', cmd)
                 self.assertNotIn('QSA_TC2R', cmd)
                 self.assertTrue(cmd.endswith(' img'))
@@ -478,7 +481,7 @@ class StartNode(unittest.TestCase):
                 self.assertEqual(run.returncode, 0, run.stderr)
                 self.assertIn(f'--mount type=bind,src={cache.resolve()},dst=/prefix-cache ', docker_run[0])
                 self.assertIn('-e SPARKQWEN_PREFIX_CACHE_GB=48 ', docker_run[0])
-                self.assertTrue((cache/'strict'/'kv').is_dir() and (cache/'strict'/'ssm').is_dir())
+                self.assertTrue((cache/'spark'/'kv').is_dir() and (cache/'spark'/'ssm').is_dir())
         run, docker_run = self.start('1', '--prefix-cache-dir', str(cache), '--prefix-cache-gb', '100')
         self.assertIn('-e SPARKQWEN_PREFIX_CACHE_GB=100 ', docker_run[0])
         for extra in (['--prefix-cache-dir', 'relative/nvme'], ['--prefix-cache-dir', f'{cache},readonly'],

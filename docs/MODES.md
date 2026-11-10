@@ -1,8 +1,8 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 # Strict and Spark
 
-Set `MODE=strict` (the default) or `MODE=spark` in `.env`, or run
-`./start.sh --mode spark`. Managed launchers pass `SPARKQWEN_MODE`; the per-node
+Set `MODE=spark` (the default since 0.7.0) or `MODE=strict` in `.env`, or run
+`./start.sh --mode strict`. Managed launchers pass `SPARKQWEN_MODE`; the per-node
 entry point accepts `--mode strict|spark`. Use the same mode on both ranks. Custom profiles must select the Qwen kernel
 target exactly once, retain TP2/EP2 and BF16 KV, and enable native speculation
 with a positive draft count. Conflicting duplicate mode arguments are rejected.

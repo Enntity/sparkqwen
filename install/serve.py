@@ -115,7 +115,7 @@ def disk_prefix_cache(gb, mode):
 
 def serving_mode(environ, profile):
     """Both modes preserve the native target and use target-verified native MTP."""
-    mode = environ.get('SPARKQWEN_MODE', 'strict')
+    mode = environ.get('SPARKQWEN_MODE', 'spark')
     if mode not in ('strict', 'spark'):
         raise ValueError('SPARKQWEN_MODE must be strict or spark')
     required = {
@@ -344,8 +344,8 @@ def launch(environ, profile):
 
 
 def profile_path(environ, here):
-    """The launch profile named by SPARKQWEN_PROFILE (default 8x32k)."""
-    name = environ.get('SPARKQWEN_PROFILE', '8x32k')
+    """The launch profile named by SPARKQWEN_PROFILE (default 8x262k)."""
+    name = environ.get('SPARKQWEN_PROFILE', '8x262k')
     if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.-]{0,63}', name):
         raise ValueError('Invalid SPARKQWEN_PROFILE')
     return here/'profiles'/f'{name}.json'

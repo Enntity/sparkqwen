@@ -9,7 +9,7 @@ time. Run steps 1–3 on **both** Sparks with the same `MODEL_ROOT`.
 | Engine | [`Atlas-Inf/atlas`](https://github.com/Atlas-Inf/atlas) `main` at the pinned commit ([`install/atlas-source.json`](../install/atlas-source.json), [docs/ENGINE.md](ENGINE.md)) |
 | Model | [`nvidia/Qwen3.8-Flash-Next-FP4-Local`](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local) @ `b9ce18a6887e18c089fdea8509a33e63429a3300` ([`install/checkpoint.json`](../install/checkpoint.json)) |
 | Build dependencies | CUTLASS `cf064d2e`, NCCL 2.31.2, Rust 1.93.1, CUDA 13.0 |
-| Profiles | [`install/profiles/`](../install/profiles/): `8x32k` (default), `4x262k` and `8x262k` (legacy long context), `max-16x262k` (dedicated pair), `saver-8x262k` (sidecars), `hour-video` (long video) |
+| Profiles | [`install/profiles/`](../install/profiles/): `8x262k` (default), `4x262k` (four slots) and `8x32k` (32,768-token requests), `max-16x262k` (dedicated pair), `saver-8x262k` (sidecars), `hour-video` (long video) |
 
 ## 1. Get the recipe
 
@@ -85,7 +85,7 @@ sized in Spark mode. `--profile hour-video --mode spark` selects the dedicated
 for decoding and temporal-group encoding. The older `4x262k` and `8x262k` profiles remain available. A path to a JSON file runs your own profile. Use the same profile
 on both ranks.
 
-**Mode.** Pass `--mode strict` (the default) or `--mode spark` on both ranks.
+**Mode.** Pass `--mode spark` (the default) or `--mode strict` on both ranks.
 Both require the native FP4-Local checkpoint and retain MTP. See
 [Strict and Spark](MODES.md). Historical `--fp8-gdn` and `--qsa-tc2r` switches
 are unsupported.

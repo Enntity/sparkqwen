@@ -10,23 +10,25 @@ class ModeContract(unittest.TestCase):
         self.env = {'NODE_RANK': '0', 'MASTER_ADDR': '192.0.2.1',
                     'FABRIC_INTERFACE': 'eth0', 'FABRIC_HCA': 'roce0'}
 
-    def test_default_strict_uses_mtp_for_every_capacity_and_rank(self):
+    def test_default_spark_and_explicit_strict_use_mtp_for_every_capacity_and_rank(self):
+        # Spark is the default: the same text as Strict, measured 10-16% faster decode.
         for profile in PROFILES + ('max-16x262k', 'saver-8x262k'):
             for rank in ('0', '1'):
-                args, env = serve.launch(dict(self.env, NODE_RANK=rank), load_profile(profile))
-                self.assertEqual(env['ATLAS_QWEN4EXP_SERVING_MODE'], 'strict')
-                self.assertEqual(env['SPARKQWEN_MODE'], 'strict')
-                self.assertIn('--speculative', args)
-                self.assertIn('--num-drafts=3' if profile == 'max-16x262k' else '--num-drafts=7', args)
-                self.assertEqual(env['ATLAS_QWEN4EXP_MTP_BF16_ATTN'], '1')
-                self.assertEqual(env['ATLAS_QWEN4EXP_DRAFT_HEAD_NVFP4'], '0')
-                self.assertIn('--enable-prefix-caching', args)
+                for extra, mode, bf16 in (({}, 'spark', '0'), ({'SPARKQWEN_MODE': 'strict'}, 'strict', '1')):
+                    args, env = serve.launch(dict(self.env, NODE_RANK=rank, **extra), load_profile(profile))
+                    self.assertEqual(env['ATLAS_QWEN4EXP_SERVING_MODE'], mode)
+                    self.assertEqual(env['SPARKQWEN_MODE'], mode)
+                    self.assertIn('--speculative', args)
+                    self.assertIn('--num-drafts=3' if profile == 'max-16x262k' else '--num-drafts=7', args)
+                    self.assertEqual(env['ATLAS_QWEN4EXP_MTP_BF16_ATTN'], bf16)
+                    self.assertEqual(env['ATLAS_QWEN4EXP_DRAFT_HEAD_NVFP4'], '1' if mode == 'spark' else '0')
+                    self.assertIn('--enable-prefix-caching', args)
 
     def test_spark_preserves_native_target_and_mtp(self):
         for profile in PROFILES + ('max-16x262k', 'saver-8x262k'):
             source = load_profile(profile)
             original = copy.deepcopy(source)
-            strict, se = serve.launch(self.env, source)
+            strict, se = serve.launch(dict(self.env, SPARKQWEN_MODE='strict'), source)
             spark, pe = serve.launch(dict(self.env, SPARKQWEN_MODE='spark'), source)
             self.assertEqual(source, original)
             for flag in ('ATLAS_QWEN4EXP_NO_PLE', 'ATLAS_MTP_DRAFTER_QSA', 'ATLAS_QSA_DISABLE'):
@@ -68,9 +70,9 @@ class ModeContract(unittest.TestCase):
             serve.launch(self.env, profile)
 
     def test_ambient_flags_cannot_change_mode(self):
-        _, env = serve.launch(dict(self.env, ATLAS_QWEN4EXP_SERVING_MODE='spark',
+        _, env = serve.launch(dict(self.env, ATLAS_QWEN4EXP_SERVING_MODE='strict',
                                  ATLAS_QWEN4EXP_MXFP8_DECODE='0'), load_profile('8x32k'))
-        self.assertEqual(env['ATLAS_QWEN4EXP_SERVING_MODE'], 'strict')
+        self.assertEqual(env['ATLAS_QWEN4EXP_SERVING_MODE'], 'spark')
         self.assertEqual(env['ATLAS_QWEN4EXP_MXFP8_DECODE'], '1')
 
     def test_custom_profile_rejects_invalid_or_duplicate_mtp_arguments(self):
