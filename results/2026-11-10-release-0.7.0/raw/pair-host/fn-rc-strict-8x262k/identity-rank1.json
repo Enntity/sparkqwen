@@ -1,0 +1,22 @@
+{
+ "container": "/atlas-sparkqwen-rank1",
+ "image": "ghcr.io/enntity/atlas-sparkqwen:be82343bb26b",
+ "imageId": "sha256:c13b3e3ebd3422bc84237be8941949920093e644925de2898a63c8c28f8ea1ae",
+ "version": "0.7.0",
+ "installTree": "be82343bb26b62fdc5ac6d7082e25a9ed5a995a1",
+ "env": [
+  "FABRIC_HCA=rocep1s0f1,roceP2p1s0f1",
+  "FABRIC_INTERFACE=enp1s0f1np1",
+  "FABRIC_SIBLINGS=0",
+  "FABRIC_SOCKET_INTERFACE=enp1s0f1np1",
+  "NCCL_SOCKET_IFNAME=enp1s0f1np1",
+  "NCCL_VERSION=2.27.7-1",
+  "SPARKQWEN_MODE=strict",
+  "SPARKQWEN_PROFILE=8x262k",
+  "SPARKQWEN_TOOL_GUARD=on",
+  "SPARKQWEN_TOOL_GUARD_ALLOW_HOSTS=",
+  "SPARKQWEN_TOOL_GUARD_DENY_HOSTS=",
+  "SPARKQWEN_TOOL_GUARD_MAX_BYTES=1048576"
+ ]
+}
+50e9fd5bd8efe93090738f05c4646e9c59190ff733bd245a905131e1420346ee  /usr/local/bin/spark

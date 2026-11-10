@@ -9,7 +9,7 @@ time. Run steps 1–3 on **both** Sparks with the same `MODEL_ROOT`.
 | Engine | [`Atlas-Inf/atlas`](https://github.com/Atlas-Inf/atlas) `main` at the pinned commit ([`install/atlas-source.json`](../install/atlas-source.json), [docs/ENGINE.md](ENGINE.md)) |
 | Model | [`nvidia/Qwen3.8-Flash-Next-FP4-Local`](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local) @ `b9ce18a6887e18c089fdea8509a33e63429a3300` ([`install/checkpoint.json`](../install/checkpoint.json)) |
 | Build dependencies | CUTLASS `cf064d2e`, NCCL 2.31.2, Rust 1.93.1, CUDA 13.0 |
-| Profiles | [`install/profiles/`](../install/profiles/): `8x32k` (default), `4x262k` and `8x262k` (legacy long context), `max-16x262k` (dedicated pair), `saver-8x262k` (sidecars), `hour-video` (long video) |
+| Profiles | [`install/profiles/`](../install/profiles/): `8x262k` (default), `4x262k` (four slots) and `8x32k` (32,768-token requests), `max-16x262k` (dedicated pair), `saver-8x262k` (sidecars), `hour-video` (long video) |
 
 ## 1. Get the recipe
 
@@ -85,7 +85,7 @@ sized in Spark mode. `--profile hour-video --mode spark` selects the dedicated
 for decoding and temporal-group encoding. The older `4x262k` and `8x262k` profiles remain available. A path to a JSON file runs your own profile. Use the same profile
 on both ranks.
 
-**Mode.** Pass `--mode strict` (the default) or `--mode spark` on both ranks.
+**Mode.** Pass `--mode spark` (the default) or `--mode strict` on both ranks.
 Both require the native FP4-Local checkpoint and retain MTP. See
 [Strict and Spark](MODES.md). Historical `--fp8-gdn` and `--qsa-tc2r` switches
 are unsupported.
@@ -153,6 +153,17 @@ one host can use `rocep1s0f1,roceP2p1s0f1` and the other
 `rocep1s0f0,roceP2p1s0f0`. Each listed pair must have a unique matching IPv4 subnet.
 The same physical port number or HCA name on both machines is not required.
 `LEADER_ADDRESS`, if supplied, must match the selected leader interface.
+
+NCCL's socket bootstrap uses the selected fabric interface and advertises its
+first IPv4 address. If a node's link netdev also carries an address the peer
+reaches only off the link (for example a LAN address listed first), boots can
+stop after `Rank 0: sent unique ID to worker 1`. Set that node's
+`LEADER_SOCKET_INTERFACE` or `WORKER_SOCKET_INTERFACE` to an interface whose
+first IPv4 the peer reaches, and its `LEADER_GID_INDEX` or `WORKER_GID_INDEX`
+to the RoCE v2 GID of the link address. The GID index applies to every rail on
+that node, for NCCL and the engine's RDMA pair. Unset, the fabric interface
+and per-rail GID discovery are used. Hand launches pass `--socket-interface`
+and `--gid-index` to `install/start-node.sh`.
 
 The launch scripts pass exact lists with `FABRIC_SIBLINGS=0`. In particular,
 select both intended rails explicitly on dual-domain systems; automatic sibling

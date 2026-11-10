@@ -1,0 +1,3 @@
+image  ghcr.io/enntity/atlas-sparkqwen:5b9fecbcf5d9-27b
+server running
+health ok (http://127.0.0.1:8893)

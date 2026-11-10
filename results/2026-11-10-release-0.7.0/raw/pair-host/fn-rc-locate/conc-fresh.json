@@ -1,0 +1,801 @@
+{
+  "concurrency": {
+    "4": {
+      "aggregate_end_to_end_tokens_per_second": {
+        "maximum": 177.575,
+        "median": 177.115,
+        "minimum": 176.655,
+        "p90": 177.575
+      },
+      "per_stream_decode_tokens_per_second": {
+        "maximum": 52.277,
+        "median": 48.081,
+        "minimum": 46.903,
+        "p90": 51.285
+      },
+      "per_stream_ttft_seconds": {
+        "maximum": 0.356,
+        "median": 0.355,
+        "minimum": 0.354,
+        "p90": 0.356
+      },
+      "rounds": [
+        {
+          "aggregate_end_to_end_tokens_per_second": 176.655,
+          "completion_tokens": 1024,
+          "round": 1,
+          "streams": [
+            {
+              "completion_tokens": 256,
+              "decode_seconds": 5.070675,
+              "decode_tokens_per_second": 50.289,
+              "finish_reason": "length",
+              "measured_sse_events": 255,
+              "output": "\n\n```go\n// ratelimit/ratelimit.go\npackage ratelimit\n\nimport (\n\t\"errors\"\n\t\"sync\"\n\t\"time\"\n)\n\n// Clock abstracts time for testability.\ntype Clock interface {\n\tNow() time.Time\n}\n\n// RealClock uses the system clock.\ntype RealClock struct{}\n\nfunc (",
+              "output_characters": 242,
+              "output_sha256": "13ee9f6c7bc93b34f226564b67fdb5c00e6b789b1afa4a7dcdbc449812bb7bbd",
+              "prompt_tokens": 168,
+              "reasoning_characters": 723,
+              "reasoning_sha256": "607334ddb842ff434a86f196006d2bfa354be5f746d34f4628169f80b3af8e96",
+              "response_tail_seconds": 0.007264,
+              "stream_done_marker": true,
+              "stream_sha256": "e7a16d77e582756e40e1a49f9369372a29a487a60829c5352fa1c562b13eec80",
+              "time_to_first_visible_seconds": 4.116676,
+              "time_to_last_output_seconds": 5.425351,
+              "ttft_seconds": 0.354676,
+              "wall_seconds": 5.432615
+            },
+            {
+              "completion_tokens": 256,
+              "decode_seconds": 4.877845,
+              "decode_tokens_per_second": 52.277,
+              "finish_reason": "length",
+              "measured_sse_events": 255,
+              "output": "\n\n```go\n// ratelimit/ratelimit.go\npackage ratelimit\n\nimport (\n\t\"errors\"\n\t\"sync\"\n\t\"time\"\n)\n\n// Clock abstracts time for testability.\ntype Clock interface {\n\tNow() time.Time\n}\n\n//",
+              "output_characters": 177,
+              "output_sha256": "fb3957ed97fafde20a14f2d6e8641582e89bda6be9e0b58ef8cab7ca5b119d5c",
+              "prompt_tokens": 170,
+              "reasoning_characters": 770,
+              "reasoning_sha256": "5c8333b39490e27892ec385f406a22cc59c8c9e0a5310ec84214259f195be2b2",
+              "response_tail_seconds": 0.008103,
+              "stream_done_marker": true,
+              "stream_sha256": "9a41fc517cfb0d1707d5d60abf94512e8470e8107f759bb11ed6cc932e8b56e7",
+              "time_to_first_visible_seconds": 4.247426,
+              "time_to_last_output_seconds": 5.232706,
+              "ttft_seconds": 0.354861,
+              "wall_seconds": 5.240809
+            },
+            {
+              "completion_tokens": 256,
+              "decode_seconds": 5.303571,
+              "decode_tokens_per_second": 48.081,
+              "finish_reason": "length",
+              "measured_sse_events": 255,
+              "output": "\n\n```go\n// ratelimit/tokenbucket.go\npackage ratelimit\n\nimport (\n\t\"errors\"\n\t\"sync\"\n\t\"time\"\n)\n\n// Clock abstracts time for testability.\ntype Clock interface {\n\tNow() time.Time\n}\n\n// RealClock uses the system clock.\ntype RealClock struct{}\n\nfunc (RealClock) Now() time.Time { return time.Now() }\n\n// TokenBucket is a concurrency-safe token bucket",
+              "output_characters": 343,
+              "output_sha256": "89fa089eb532d4c6d0515d880858f16fb12731ebb41e6a33d55ad7ffcbba365d",
+              "prompt_tokens": 169,
+              "reasoning_characters": 684,
+              "reasoning_sha256": "e9ced0d2ee025907dc96735547054aebc8aba183a71b653ef45bb90c41e975dd",
+              "response_tail_seconds": 0.009829,
+              "stream_done_marker": true,
+              "stream_sha256": "c7d550f6a8d9df64cd96a3ce80fa46151a89e902fb36e56f417d205cd6697311",
+              "time_to_first_visible_seconds": 4.116278,
+              "time_to_last_output_seconds": 5.657701,
+              "ttft_seconds": 0.35413,
+              "wall_seconds": 5.66753
+            },
+            {
+              "completion_tokens": 256,
+              "decode_seconds": 5.436799,
+              "decode_tokens_per_second": 46.903,
+              "finish_reason": "length",
+              "measured_sse_events": 255,
+              "output": "\n\n```go\n// ratelimit/limiter.go\npackage ratelimit\n\nimport (\n\t\"errors\"\n\t\"sync\"\n\t\"time\"\n)\n\n// Clock provides the",
+              "output_characters": 110,
+              "output_sha256": "26ffbab7b477cb8f9a23336545e7b16abecb1bc8e1f52922d0328590e669cb17",
+              "prompt_tokens": 169,
+              "reasoning_characters": 890,
+              "reasoning_sha256": "d4ad398e2ce497dbda87e7e7f79bf7b23022373d8f56b6a15bd6279df31fe32e",
+              "response_tail_seconds": 0.00244,
+              "stream_done_marker": true,
+              "stream_sha256": "32301c63f155f77ff68f45b2141fcd5e4884722859191277a6dd74136a883202",
+              "time_to_first_visible_seconds": 5.233642,
+              "time_to_last_output_seconds": 5.792023,
+              "ttft_seconds": 0.355224,
+              "wall_seconds": 5.794463
+            }
+          ],
+          "wall_seconds": 5.796617
+        },
+        {
+          "aggregate_end_to_end_tokens_per_second": 177.575,
+          "completion_tokens": 1024,
+          "round": 2,
+          "streams": [
+            {
+              "completion_tokens": 256,
+              "decode_seconds": 5.303658,
+              "decode_tokens_per_second": 48.08,
+              "finish_reason": "length",
+              "measured_sse_events": 255,
+              "output": "\n\n```go\n// tokenbucket/tokenbucket.go\npackage tokenbucket\n\nimport (\n\t\"errors\"\n\t\"sync\"\n\t\"time\"\n)\n\n// Clock is an injectable time source for deterministic testing.\ntype",
+              "output_characters": 166,
+              "output_sha256": "e325bcc0e910b7fa883683f9fd2626f2d94250ac4d8a847cae2cb2afa49d6f20",
+              "prompt_tokens": 167,
+              "reasoning_characters": 906,
+              "reasoning_sha256": "3ab5d9eb4fcd9c84487c00d6c4a9a3273692220c878b908792f6d0b3a6cc07bb",
+              "response_tail_seconds": 0.006927,
+              "stream_done_marker": true,
+              "stream_sha256": "a4866bc691659b53540827e55d0aa08ebecae5cc24df333ef45aa3f129090741",
+              "time_to_first_visible_seconds": 4.944148,
+              "time_to_last_output_seconds": 5.659458,
+              "ttft_seconds": 0.355799,
+              "wall_seconds": 5.666385
+            },
+            {
+              "completion_tokens": 256,
+              "decode_seconds": 5.303779,
+              "decode_tokens_per_second": 48.079,
+              "finish_reason": "length",
+              "measured_sse_events": 255,
+              "output": "\n\n```go\n// ratelimit/tokenbucket.go\npackage ratelimit\n\nimport (\n\t\"errors\"\n\t\"sync\"\n\t\"time\"\n)\n\n// Clock is an injectable time source for deterministic testing.",
+              "output_characters": 157,
+              "output_sha256": "0b2b4016eb2ff3565eca4761718093642545b25107d2f335175dbe9c7ad9684c",
+              "prompt_tokens": 162,
+              "reasoning_characters": 897,
+              "reasoning_sha256": "c44421031031475656e22bc812140bc2824fbb6585226880a3d21000159e9686",
+              "response_tail_seconds": 0.008278,
+              "stream_done_marker": true,
+              "stream_sha256": "c5d52b15be44ab3aae37f4d29c1229c13bb9d9c51f5a6e7101d48932746bf6f3",
+              "time_to_first_visible_seconds": 4.943921,
+              "time_to_last_output_seconds": 5.659499,
+              "ttft_seconds": 0.355721,
+              "wall_seconds": 5.667778
+            },
+            {
+              "completion_tokens": 256,
+              "decode_seconds": 5.406695,
+              "decode_tokens_per_second": 47.164,
+              "finish_reason": "length",
+              "measured_sse_events": 255,
+              "output": "\n\n```go\n// ratelimit/ratelimit.go\npackage ratelimit\n\nimport (\n\t\"errors\"\n\t\"sync\"\n\t\"time\"\n)\n\n// Clock provides the current time.\ntype Clock interface {\n\tNow() time.Time\n}\n\n// RealClock uses the system clock.\ntype RealClock struct",
+              "output_characters": 227,
+              "output_sha256": "1455b48f0885cfe42373fa13f37301335b0abdbf1a8ba8c443cbfef28f87a7b4",
+              "prompt_tokens": 170,
+              "reasoning_characters": 729,
+              "reasoning_sha256": "b7c1d64b08b29c48a7125309b46d36918ec9d6e3ccdfcba1b342135aabfd1777",
+              "response_tail_seconds": 0.002011,
+              "stream_done_marker": true,
+              "stream_sha256": "c049ace0be8b0cc56a9d708d97eb7e869d5ba75a6895842637acda1f67988752",
+              "time_to_first_visible_seconds": 4.562781,
+              "time_to_last_output_seconds": 5.762336,
+              "ttft_seconds": 0.355641,
+              "wall_seconds": 5.764347
+            },
+            {
+              "completion_tokens": 256,
+              "decode_seconds": 4.972206,
+              "decode_tokens_per_second": 51.285,
+              "finish_reason": "length",
+              "measured_sse_events": 255,
+              "output": "\n\n```go\n// ratelimit/bucket.go\npackage ratelimit\n\nimport (\n\t\"errors\"\n\t\"sync\"\n\t\"time\"\n)\n\n// Clock abstracts time for testability.\ntype Clock interface {\n\tNow() time.Time\n}\n\n// RealClock uses the system clock.\ntype RealClock struct{}\n\nfunc (RealClock) Now() time.Time { return time.Now() }\n\n// TokenBucket is a concurrency-safe token-bucket rate limiter.",
+              "output_characters": 352,
+              "output_sha256": "1781f42605653d99f4ce858774e2a31d756d7106074daa3f2e3329f63e86cf03",
+              "prompt_tokens": 166,
+              "reasoning_characters": 641,
+              "reasoning_sha256": "217abaf4ca326f704e9a064f7743423de1cbc962cf6200dba88742cbdd9c1222",
+              "response_tail_seconds": 0.007852,
+              "stream_done_marker": true,
+              "stream_sha256": "757fd4a95009649714ad9b0c77ed31a62735696ab94b39cbd8269ec2e8647912",
+              "time_to_first_visible_seconds": 3.583991,
+              "time_to_last_output_seconds": 5.328532,
+              "ttft_seconds": 0.356326,
+              "wall_seconds": 5.336384
+            }
+          ],
+          "wall_seconds": 5.766563
+        }
+      ]
+    },
+    "8": {
+      "aggregate_end_to_end_tokens_per_second": {
+        "maximum": 268.529,
+        "median": 262.304,
+        "minimum": 256.079,
+        "p90": 268.529
+      },
+      "per_stream_decode_tokens_per_second": {
+        "maximum": 39.942,
+        "median": 36.754,
+        "minimum": 34.279,
+        "p90": 38.703
+      },
+      "per_stream_ttft_seconds": {
+        "maximum": 0.554,
+        "median": 0.553,
+        "minimum": 0.552,
+        "p90": 0.554
+      },
+      "rounds": [
+        {
+          "aggregate_end_to_end_tokens_per_second": 256.079,
+          "completion_tokens": 2048,
+          "round": 1,
+          "streams": [
+            {
+              "completion_tokens": 256,
+              "decode_seconds": 6.862827,
+              "decode_tokens_per_second": 37.157,
+              "finish_reason": "length",
+              "measured_sse_events": 255,
+              "output": "\n\n```go\n// ratelimit/limiter.go\npackage ratelimit\n\nimport (\n\t\"errors\"\n\t\"sync\"\n\t\"time\"\n)\n\n// Clock is an injectable time source for deterministic testing.\ntype Clock interface {\n\tNow() time.Time\n}\n\n//",
+              "output_characters": 199,
+              "output_sha256": "b204b1df1e414a67c5fdeb0999ecb62bb106b34770d56b2ccb527613d7779346",
+              "prompt_tokens": 167,
+              "reasoning_characters": 739,
+              "reasoning_sha256": "e5bdab6abf9529bee80978f56ccc7931210f700340167cdb2c38666a2e9aa1a5",
+              "response_tail_seconds": 0.011741,
+              "stream_done_marker": true,
+              "stream_sha256": "b1f408f709251f690e18a04a4750d4528dfb7ff2c372707a9ef3339286addb26",
+              "time_to_first_visible_seconds": 5.941429,
+              "time_to_last_output_seconds": 7.415278,
+              "ttft_seconds": 0.552451,
+              "wall_seconds": 7.427019
+            },
+            {
+              "completion_tokens": 256,
+              "decode_seconds": 7.438947,
+              "decode_tokens_per_second": 34.279,
+              "finish_reason": "length",
+              "measured_sse_events": 255,
+              "output": "\n\n```go\n// ratelimit/limiter.go\npackage ratelimit\n\nimport (\n\t\"errors\"\n\t\"sync\"\n\t\"time\"",
+              "output_characters": 85,
+              "output_sha256": "e1363d75fbb07d662fdd218ffd63f6233063f6a8965a6bf9a35ce4418a45e434",
+              "prompt_tokens": 168,
+              "reasoning_characters": 914,
+              "reasoning_sha256": "b3fbb92fd34b5a7d22d505b7f6b7c1b2e9031d8ba4988852b0b3024bdbb16b87",
+              "response_tail_seconds": 0.002699,
+              "stream_done_marker": true,
+              "stream_sha256": "0cc3dc248580b31cbdd285a95faa488d4e6311eaf38dc17245868efe94e3afe5",
+              "time_to_first_visible_seconds": 7.595828,
+              "time_to_last_output_seconds": 7.992185,
+              "ttft_seconds": 0.553238,
+              "wall_seconds": 7.994884
+            },
+            {
+              "completion_tokens": 256,
+              "decode_seconds": 6.673987,
+              "decode_tokens_per_second": 38.208,
+              "finish_reason": "length",
+              "measured_sse_events": 255,
+              "output": "\n\n```go\n// ratelimit/tokenbucket.go\npackage ratelimit\n\nimport (\n\t\"errors\"\n\t\"sync\"\n\t\"time\"\n)\n\n// Clock abstracts time for testability.\ntype Clock interface {\n\tNow() time.Time\n}\n\n// TokenBucket is a concurrency-safe token-b",
+              "output_characters": 221,
+              "output_sha256": "584e443dfede1ee9f968be37b3d6547340814753979aadebc9763e6e425bf27a",
+              "prompt_tokens": 170,
+              "reasoning_characters": 776,
+              "reasoning_sha256": "0a10c78eaf86e33bc4739e597b38012f6ecdab3275d96fbdc18ca0d5ed3ad689",
+              "response_tail_seconds": 0.011324,
+              "stream_done_marker": true,
+              "stream_sha256": "e35325a214707eefaa9d3095cdb92dea70eabef8a7cde888941e1c89ecd19874",
+              "time_to_first_visible_seconds": 5.66026,
+              "time_to_last_output_seconds": 7.225651,
+              "ttft_seconds": 0.551664,
+              "wall_seconds": 7.236975
+            },
+            {
+              "completion_tokens": 256,
+              "decode_seconds": 6.38433,
+              "decode_tokens_per_second": 39.942,
+              "finish_reason": "length",
+              "measured_sse_events": 255,
+              "output": "\n\n```go\n// ratelimit/ratelimit.go\npackage ratelimit\n\nimport (\n\t\"errors\"\n\t\"sync\"\n\t\"time\"\n)\n\n// Clock",
+              "output_characters": 99,
+              "output_sha256": "bd6c3098990a45d326e22f5f4bbe25226c0fa11a2e7acf6e477a3e912d0fe213",
+              "prompt_tokens": 165,
+              "reasoning_characters": 836,
+              "reasoning_sha256": "3ded3e8633ef1280891fa8ae6ef968b2d22094ea7370c93a9f300195b18080a1",
+              "response_tail_seconds": 0.012658,
+              "stream_done_marker": true,
+              "stream_sha256": "91cdd44a46fd094b9ec9951971eb7c9af2e8f905136dbb0fd7db70aab7560bb1",
+              "time_to_first_visible_seconds": 6.12277,
+              "time_to_last_output_seconds": 6.936457,
+              "ttft_seconds": 0.552127,
+              "wall_seconds": 6.949115
+            },
+            {
+              "completion_tokens": 256,
+              "decode_seconds": 7.04277,
+              "decode_tokens_per_second": 36.207,
+              "finish_reason": "length",
+              "measured_sse_events": 255,
+              "output": "\n\n```go\n// tokenbucket/tokenbucket.go\npackage tokenbucket\n\nimport (\n\t\"errors\"\n\t\"sync\"\n\t\"time\"\n)\n\n// Clock abstracts time for testability.\ntype Clock interface {\n\tNow() time.Time\n}\n\n",
+              "output_characters": 181,
+              "output_sha256": "be39a2eec851ed681be38bc910282966879c34fc148960442a70e0b2fa02e29f",
+              "prompt_tokens": 170,
+              "reasoning_characters": 866,
+              "reasoning_sha256": "02e76fbe1a4a497b7d23b79cf10a13aca877cea7b40e238f3611b8da47d64090",
+              "response_tail_seconds": 0.010366,
+              "stream_done_marker": true,
+              "stream_sha256": "4442245f2681a9e5f77402c2c9c19a23e175cdf70fb1809306c9717591a82868",
+              "time_to_first_visible_seconds": 6.21489,
+              "time_to_last_output_seconds": 7.595747,
+              "ttft_seconds": 0.552977,
+              "wall_seconds": 7.606113
+            },
+            {
+              "completion_tokens": 256,
+              "decode_seconds": 7.253778,
+              "decode_tokens_per_second": 35.154,
+              "finish_reason": "length",
+              "measured_sse_events": 255,
+              "output": "\n\n```go\n// ratelimit/limiter.go\npackage ratelimit\n\nimport (\n\t\"errors\"\n\t\"sync\"\n\t\"time\"\n)\n\n// Clock provides the current time.\ntype Clock interface {\n\tNow() time.Time\n}\n\n// Limiter",
+              "output_characters": 178,
+              "output_sha256": "7347d771e43533ed620d4b87510e018bd9dbcd97bb6c1864e447ee2fd9c53454",
+              "prompt_tokens": 168,
+              "reasoning_characters": 797,
+              "reasoning_sha256": "be438f36009a26b222fe4948b186adb7c62d1757f0927d39198c2a623cc6956d",
+              "response_tail_seconds": 0.010173,
+              "stream_done_marker": true,
+              "stream_sha256": "cf2754e2d8023de908ff19adc6fc8127556d010fbe24a73e1dbfb9bec31e8e15",
+              "time_to_first_visible_seconds": 6.303457,
+              "time_to_last_output_seconds": 7.806018,
+              "ttft_seconds": 0.55224,
+              "wall_seconds": 7.816191
+            },
+            {
+              "completion_tokens": 256,
+              "decode_seconds": 7.125701,
+              "decode_tokens_per_second": 35.786,
+              "finish_reason": "length",
+              "measured_sse_events": 255,
+              "output": "\n\n```go\n// tokenbucket/tokenbucket.go\npackage tokenbucket\n\nimport (\n\t\"errors\"\n\t\"sync\"\n\t\"time\"\n)\n\n// Clock is an injectable",
+              "output_characters": 122,
+              "output_sha256": "550b9da0ededf7b07b3c96dd278e3edd72d0571c33e9f2690cde32875370f2ce",
+              "prompt_tokens": 167,
+              "reasoning_characters": 934,
+              "reasoning_sha256": "f14ae2ebba961b65708bfbb484a3b304456885262292446ac1cc344f7dc2a517",
+              "response_tail_seconds": 0.007747,
+              "stream_done_marker": true,
+              "stream_sha256": "a34f19ad69f36c49b02d20b676baa86828c1525f82bb4d6049e5040106574fde",
+              "time_to_first_visible_seconds": 6.754962,
+              "time_to_last_output_seconds": 7.677846,
+              "ttft_seconds": 0.552145,
+              "wall_seconds": 7.685593
+            },
+            {
+              "completion_tokens": 256,
+              "decode_seconds": 7.126378,
+              "decode_tokens_per_second": 35.783,
+              "finish_reason": "length",
+              "measured_sse_events": 255,
+              "output": "\n\n```go\n// ratelimit/tokenbucket.go\npackage ratelimit\n\nimport (\n\t\"errors\"\n\t\"sync\"\n\t\"time\"\n)\n\n// Clock is an injectable time source for deterministic testing.",
+              "output_characters": 157,
+              "output_sha256": "0b2b4016eb2ff3565eca4761718093642545b25107d2f335175dbe9c7ad9684c",
+              "prompt_tokens": 166,
+              "reasoning_characters": 906,
+              "reasoning_sha256": "3ab5d9eb4fcd9c84487c00d6c4a9a3273692220c878b908792f6d0b3a6cc07bb",
+              "response_tail_seconds": 0.00862,
+              "stream_done_marker": true,
+              "stream_sha256": "006ce1b52170416d66240f12a0c767c7d2eb55274222ebcaca41c40b40a30baf",
+              "time_to_first_visible_seconds": 6.573514,
+              "time_to_last_output_seconds": 7.679773,
+              "ttft_seconds": 0.553396,
+              "wall_seconds": 7.688393
+            }
+          ],
+          "wall_seconds": 7.997539
+        },
+        {
+          "aggregate_end_to_end_tokens_per_second": 268.529,
+          "completion_tokens": 2048,
+          "round": 2,
+          "streams": [
+            {
+              "completion_tokens": 256,
+              "decode_seconds": 6.937715,
+              "decode_tokens_per_second": 36.756,
+              "finish_reason": "length",
+              "measured_sse_events": 255,
+              "output": "\n\n```go\n// ratelimit/tokenbucket.go\npackage ratelimit\n\nimport (\n\t\"errors\"\n\t\"sync\"\n\t\"time\"\n)\n\n// Clock is an injectable time source.\ntype Clock interface {\n\tNow() time.Time\n}\n\n// TokenBucket is a concurrency-safe token-bucket rate limiter.\ntype TokenBucket struct {\n",
+              "output_characters": 265,
+              "output_sha256": "e1627eec7f619021abfd492bd77bb223ee63aee47965e0594ebc076b7e75f550",
+              "prompt_tokens": 170,
+              "reasoning_characters": 809,
+              "reasoning_sha256": "6f0e683feab1b4f6a445da95de17c6dc01b04c10fa89504ca7a5b6178071e119",
+              "response_tail_seconds": 0.008801,
+              "stream_done_marker": true,
+              "stream_sha256": "5ba209c438f2a84a87f50baab3f45e7ef4029dff2208b994049f562c0e6973bc",
+              "time_to_first_visible_seconds": 5.700413,
+              "time_to_last_output_seconds": 7.491042,
+              "ttft_seconds": 0.553328,
+              "wall_seconds": 7.499843
+            },
+            {
+              "completion_tokens": 256,
+              "decode_seconds": 7.065104,
+              "decode_tokens_per_second": 36.093,
+              "finish_reason": "length",
+              "measured_sse_events": 255,
+              "output": "\n\n```go\n// ratelimit/limiter.go\npackage ratelimit\n\nimport (\n\t\"errors\"\n\t\"sync\"",
+              "output_characters": 77,
+              "output_sha256": "fd172a044165b52ef59baa62aca1587c735ef1a4cdecad7b3b4170b882560b6b",
+              "prompt_tokens": 163,
+              "reasoning_characters": 923,
+              "reasoning_sha256": "80bc54fa13cc845ae514f261e5fce573e67aa1edbbc02ea34da2cf0b6d931b5c",
+              "response_tail_seconds": 0.006181,
+              "stream_done_marker": true,
+              "stream_sha256": "15aef4c399b43f32c89010162d460618f2a4d8c815ea87f08a70554f03cb677c",
+              "time_to_first_visible_seconds": 7.140935,
+              "time_to_last_output_seconds": 7.617459,
+              "ttft_seconds": 0.552356,
+              "wall_seconds": 7.62364
+            },
+            {
+              "completion_tokens": 256,
+              "decode_seconds": 6.684285,
+              "decode_tokens_per_second": 38.149,
+              "finish_reason": "length",
+              "measured_sse_events": 255,
+              "output": "\n\n```go\n// ratelimit/ratelimit.go\npackage ratelimit\n\nimport (\n\t\"errors\"\n\t\"sync\"\n\t\"time\"\n)\n\n// Clock abstracts time for testability.\ntype Clock interface {\n\tNow() time.Time\n}",
+              "output_characters": 173,
+              "output_sha256": "17e43e0c89faf9ce86f500c768d49b8800c47a40e42f4b68d21c1b76117d543f",
+              "prompt_tokens": 169,
+              "reasoning_characters": 807,
+              "reasoning_sha256": "a435c8ec3d83bbdf39eda3dd4f5b10fe90d2c19d044955393ff06b35850247a3",
+              "response_tail_seconds": 0.011982,
+              "stream_done_marker": true,
+              "stream_sha256": "537b37f6c1567a1b1b33c3abef092a5c9e570f8866aef5b4ff68f25a0bbd87a6",
+              "time_to_first_visible_seconds": 5.893557,
+              "time_to_last_output_seconds": 7.238383,
+              "ttft_seconds": 0.554098,
+              "wall_seconds": 7.250365
+            },
+            {
+              "completion_tokens": 256,
+              "decode_seconds": 6.864052,
+              "decode_tokens_per_second": 37.15,
+              "finish_reason": "length",
+              "measured_sse_events": 255,
+              "output": "\n\n```go\n// ratelimit/ratelimit.go\npackage ratelimit\n\nimport (\n\t\"errors\"\n\t\"sync\"\n\t\"time\"\n)\n\n// Clock abstracts time for testability.\ntype Clock interface {\n\tNow() time",
+              "output_characters": 166,
+              "output_sha256": "202859fa315cb2d6442e043287e9806b3ed75192324fb2412e45e9e3f95bc581",
+              "prompt_tokens": 168,
+              "reasoning_characters": 824,
+              "reasoning_sha256": "e61381988472d55857cbda791d9258034c8e89d9da07cfa4ad3095e6cd465ea1",
+              "response_tail_seconds": 0.008883,
+              "stream_done_marker": true,
+              "stream_sha256": "dde04fdd283daafbadead02b8bae54bd6532c6c00f7446893a65d26d8f585a62",
+              "time_to_first_visible_seconds": 6.255395,
+              "time_to_last_output_seconds": 7.418063,
+              "ttft_seconds": 0.554011,
+              "wall_seconds": 7.426946
+            },
+            {
+              "completion_tokens": 256,
+              "decode_seconds": 6.776512,
+              "decode_tokens_per_second": 37.63,
+              "finish_reason": "length",
+              "measured_sse_events": 255,
+              "output": "\n\n```go\n// ratelimit/limiter.go\npackage ratelimit\n\nimport (\n\t\"errors\"\n\t\"sync\"\n\t\"time\"\n)\n\n// Clock provides the current time.\ntype Clock interface {\n\tNow() time.Time\n}\n\n// RealClock uses time.Now.\ntype RealClock struct{}\n\nfunc",
+              "output_characters": 225,
+              "output_sha256": "bf3eb1a750d642a8bb8160cecbf02c210f47842858ac6aa00c1d66b7a9266c85",
+              "prompt_tokens": 169,
+              "reasoning_characters": 708,
+              "reasoning_sha256": "d3d86527ff7828fbcf90d1a8e01541cb36aa6b40d7f0271423d3da232800bde8",
+              "response_tail_seconds": 0.010692,
+              "stream_done_marker": true,
+              "stream_sha256": "e246e347cdc8747c40a222e64d174cf62a82682a1c4f1b48c56c1e4ed4d70ce9",
+              "time_to_first_visible_seconds": 5.604002,
+              "time_to_last_output_seconds": 7.329448,
+              "ttft_seconds": 0.552936,
+              "wall_seconds": 7.34014
+            },
+            {
+              "completion_tokens": 256,
+              "decode_seconds": 7.064112,
+              "decode_tokens_per_second": 36.098,
+              "finish_reason": "length",
+              "measured_sse_events": 255,
+              "output": "\n\n```go\n// tokenbucket/tokenbucket.go\npackage tokenbucket\n\nimport (\n\t\"errors\"\n\t\"sync\"\n\t\"time\"\n)\n\n// Clock is an injectable time source",
+              "output_characters": 134,
+              "output_sha256": "6390d9f993a31d134e602d965c0ebd3c368fef8a1ce7bcfa33b54c8aff41e94c",
+              "prompt_tokens": 165,
+              "reasoning_characters": 925,
+              "reasoning_sha256": "8c1edd208522247402648eb2e3b1a5fe0f9e850f3d142c582a39fa1848095978",
+              "response_tail_seconds": 0.004533,
+              "stream_done_marker": true,
+              "stream_sha256": "d4df0a3e6e1779fe7328d7572fc79a4fe18c1e9548c9791adedecd79af2bd561",
+              "time_to_first_visible_seconds": 6.783194,
+              "time_to_last_output_seconds": 7.617752,
+              "ttft_seconds": 0.55364,
+              "wall_seconds": 7.622285
+            },
+            {
+              "completion_tokens": 256,
+              "decode_seconds": 6.588655,
+              "decode_tokens_per_second": 38.703,
+              "finish_reason": "length",
+              "measured_sse_events": 255,
+              "output": "\n\n```go\n// ratelimit/ratelimit.go\npackage ratelimit\n\nimport (\n\t\"errors\"\n\t\"sync\"\n\t\"time\"\n)\n\n// Clock abstracts time for testability.\ntype Clock interface {\n\tNow() time",
+              "output_characters": 166,
+              "output_sha256": "202859fa315cb2d6442e043287e9806b3ed75192324fb2412e45e9e3f95bc581",
+              "prompt_tokens": 168,
+              "reasoning_characters": 809,
+              "reasoning_sha256": "cfc27de1211f589a8ad61ea8ab9222ed9d73de77a979723743fc65b7450c8988",
+              "response_tail_seconds": 0.011803,
+              "stream_done_marker": true,
+              "stream_sha256": "a3f8f368df62461748338e3257190c638819c38fdc5a94e443c44fffba7d69e1",
+              "time_to_first_visible_seconds": 5.891404,
+              "time_to_last_output_seconds": 7.14095,
+              "ttft_seconds": 0.552296,
+              "wall_seconds": 7.152754
+            },
+            {
+              "completion_tokens": 256,
+              "decode_seconds": 6.938609,
+              "decode_tokens_per_second": 36.751,
+              "finish_reason": "length",
+              "measured_sse_events": 255,
+              "output": "\n\n```go\n// ratelimit/ratelimit.go\npackage ratelimit\n\nimport (\n\t\"errors\"\n\t\"sync\"\n\t\"time\"\n)\n\n// Clock abstracts time for testability.\ntype Clock interface {\n\tNow() time.Time\n}\n\n//",
+              "output_characters": 177,
+              "output_sha256": "fb3957ed97fafde20a14f2d6e8641582e89bda6be9e0b58ef8cab7ca5b119d5c",
+              "prompt_tokens": 166,
+              "reasoning_characters": 759,
+              "reasoning_sha256": "799aaacdbd913a3227f4a7415a97339a87fd742dce56f14490f634cfa53c7636",
+              "response_tail_seconds": 0.009994,
+              "stream_done_marker": true,
+              "stream_sha256": "37d84d015a75e0f650532b1605fd34f39247baa478dbfe07c926680db03f6cf8",
+              "time_to_first_visible_seconds": 6.165095,
+              "time_to_last_output_seconds": 7.491937,
+              "ttft_seconds": 0.553328,
+              "wall_seconds": 7.501931
+            }
+          ],
+          "wall_seconds": 7.626741
+        }
+      ]
+    }
+  },
+  "decode": {
+    "code": {
+      "completion_gate": {
+        "passed": 0,
+        "total": 1
+      },
+      "decode_tokens_per_second": {
+        "maximum": 73.863,
+        "median": 73.863,
+        "minimum": 73.863,
+        "p90": 73.863
+      },
+      "runs": [
+        {
+          "completion_tokens": 64,
+          "completion_validation": {
+            "error": "no visible answer",
+            "valid": false
+          },
+          "decode_seconds": 0.852934,
+          "decode_tokens_per_second": 73.863,
+          "finish_reason": "length",
+          "measured_sse_events": 64,
+          "output": "",
+          "output_characters": 0,
+          "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "prompt_tokens": 167,
+          "reasoning_characters": 277,
+          "reasoning_sha256": "47134c147d24db377f7ddd91661b47f970d85b0021f6a9d0ffb40ff859f094d7",
+          "response_tail_seconds": 0.001113,
+          "run": 1,
+          "stream_done_marker": true,
+          "stream_sha256": "47134c147d24db377f7ddd91661b47f970d85b0021f6a9d0ffb40ff859f094d7",
+          "time_to_first_visible_seconds": null,
+          "time_to_last_output_seconds": 1.072893,
+          "ttft_seconds": 0.219959,
+          "wall_seconds": 1.074006
+        }
+      ],
+      "time_to_last_output_seconds": {
+        "maximum": 1.073,
+        "median": 1.073,
+        "minimum": 1.073,
+        "p90": 1.073
+      },
+      "ttft_seconds": {
+        "maximum": 0.22,
+        "median": 0.22,
+        "minimum": 0.22,
+        "p90": 0.22
+      },
+      "wall_seconds": {
+        "maximum": 1.074,
+        "median": 1.074,
+        "minimum": 1.074,
+        "p90": 1.074
+      }
+    },
+    "prose": {
+      "completion_gate": {
+        "passed": 0,
+        "total": 1
+      },
+      "decode_tokens_per_second": {
+        "maximum": 67.17,
+        "median": 67.17,
+        "minimum": 67.17,
+        "p90": 67.17
+      },
+      "runs": [
+        {
+          "completion_tokens": 64,
+          "completion_validation": {
+            "error": "no visible answer",
+            "valid": false
+          },
+          "decode_seconds": 0.937922,
+          "decode_tokens_per_second": 67.17,
+          "finish_reason": "length",
+          "measured_sse_events": 64,
+          "output": "",
+          "output_characters": 0,
+          "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "prompt_tokens": 157,
+          "reasoning_characters": 329,
+          "reasoning_sha256": "7933363876a22f74b34a7682609ba1bae146715f1d9d54cf17686cba308302a8",
+          "response_tail_seconds": 0.001697,
+          "run": 1,
+          "stream_done_marker": true,
+          "stream_sha256": "7933363876a22f74b34a7682609ba1bae146715f1d9d54cf17686cba308302a8",
+          "time_to_first_visible_seconds": null,
+          "time_to_last_output_seconds": 1.139156,
+          "ttft_seconds": 0.201234,
+          "wall_seconds": 1.140853
+        }
+      ],
+      "time_to_last_output_seconds": {
+        "maximum": 1.139,
+        "median": 1.139,
+        "minimum": 1.139,
+        "p90": 1.139
+      },
+      "ttft_seconds": {
+        "maximum": 0.201,
+        "median": 0.201,
+        "minimum": 0.201,
+        "p90": 0.201
+      },
+      "wall_seconds": {
+        "maximum": 1.141,
+        "median": 1.141,
+        "minimum": 1.141,
+        "p90": 1.141
+      }
+    },
+    "structured": {
+      "completion_gate": {
+        "passed": 0,
+        "total": 1
+      },
+      "decode_tokens_per_second": {
+        "maximum": 69.473,
+        "median": 69.473,
+        "minimum": 69.473,
+        "p90": 69.473
+      },
+      "runs": [
+        {
+          "completion_tokens": 64,
+          "completion_validation": {
+            "error": "non-normal finish reason: 'length'",
+            "valid": false
+          },
+          "decode_seconds": 0.906823,
+          "decode_tokens_per_second": 69.473,
+          "finish_reason": "length",
+          "measured_sse_events": 63,
+          "output": "\n\n[{\"index\":1,\"square\":1",
+          "output_characters": 24,
+          "output_sha256": "4f2fe2cd29240b1bdfc8eadf04bf67ce97543bb4ade422dc430869def04db79f",
+          "prompt_tokens": 147,
+          "reasoning_characters": 196,
+          "reasoning_sha256": "660e525341369c6a729e5b2c35df6a99a2cb14edc5695d28c65125e8650d810f",
+          "response_tail_seconds": 0.001144,
+          "run": 1,
+          "stream_done_marker": true,
+          "stream_sha256": "b3b0237ce48c6c791c53926a872663e1b1b2502bd473c0da73f6b4ae1ed102ac",
+          "time_to_first_visible_seconds": 1.009549,
+          "time_to_last_output_seconds": 1.100359,
+          "ttft_seconds": 0.193536,
+          "wall_seconds": 1.101503
+        }
+      ],
+      "time_to_last_output_seconds": {
+        "maximum": 1.1,
+        "median": 1.1,
+        "minimum": 1.1,
+        "p90": 1.1
+      },
+      "ttft_seconds": {
+        "maximum": 0.194,
+        "median": 0.194,
+        "minimum": 0.194,
+        "p90": 0.194
+      },
+      "wall_seconds": {
+        "maximum": 1.102,
+        "median": 1.102,
+        "minimum": 1.102,
+        "p90": 1.102
+      }
+    }
+  },
+  "protocol": {
+    "prompts_sha256": "0c3ac4015813af6a1b967659bd2289990fde895a5e43ae065b894d1e1f909ecb",
+    "prompts_version": "1.0.0",
+    "repository_dirty": false,
+    "repository_revision": "40fabcaf6e963ac27ab347f61d54a225dbd07419",
+    "repository_source": "git-worktree",
+    "repository_source_sha256": "71cf88ee30ff5e0c976ad5b1d8221af9115447a690039ac9aa020a85015fe300",
+    "version": "1.1.0"
+  },
+  "run": {
+    "appliance": {
+      "binary_sha256": "50e9fd5bd8efe93090738f05c4646e9c59190ff733bd245a905131e1420346ee",
+      "chat_template": "Pinned checkpoint template; reasoning_effort=low on all benchmark requests",
+      "competing_traffic": "none; both Sparks reserved, managed serving drained, builds and image transfers finished before timed runs",
+      "context_limit": 262144,
+      "drafter": "Native MTP head, dynamic depth up to 7, target verification; Spark mode",
+      "gpu_memory_utilisation": 0.88,
+      "hardware": "2 x NVIDIA DGX Spark, GB10, 128 GB unified memory per appliance",
+      "headline_selection": "First passing complete run of two scheduled runs; no per-cell selection",
+      "kv_cache_dtype": "bf16",
+      "model": "nvidia/Qwen3.8-Flash-Next-FP4-Local",
+      "model_revision": "b9ce18a6887e18c089fdea8509a33e63429a3300",
+      "negotiated_link_speed": "200 Gb/s per port (2X NDR), read from sysfs",
+      "power_policy": "No clock or power override applied in this session; observed clocks recorded in telemetry",
+      "quantisation": "Published NVIDIA FP4-Local mixed-precision target; Spark mode: NVFP4 draft projections",
+      "recipe": "Enntity/sparkqwen 0.7.0; install tree be82343bb26b62fdc5ac6d7082e25a9ed5a995a1; profile 8x262k, Spark mode",
+      "scheduler": "8 sequences, batch size 8, max-prefill-tokens 16384, prefix caching enabled",
+      "serving_engine": "Atlas 8a193a8667997274096cedd62b13de0d5334c079 (Enntity/atlas spark), SparkQwen 0.7.0",
+      "serving_image": "ghcr.io/enntity/atlas-sparkqwen:be82343bb26b; local image ID sha256:c13b3e3ebd3422bc84237be8941949920093e644925de2898a63c8c28f8ea1ae",
+      "topology": "TP2/EP2 across a direct ConnectX-7 RoCE pair, HCAs rocep1s0f1,roceP2p1s0f1 per rank"
+    },
+    "comparison_id": "sparkqwen-070-locate-fresh",
+    "finished_at": "2026-11-10T16:13:16.482499+00:00",
+    "label": "loc-fresh",
+    "model": "qwen3.8-flash-next-atlas",
+    "platform": "Linux-7.0.0-1019-nvidia-aarch64-with-glibc2.39",
+    "python": "3.12.3",
+    "started_at": "2026-11-10T16:12:45.976133+00:00"
+  },
+  "schema": 1,
+  "settings": {
+    "concurrency": [
+      4,
+      8
+    ],
+    "concurrency_runs": 2,
+    "concurrency_tokens": 256,
+    "concurrency_workload": "code",
+    "decode_tokens": 64,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "reasoning_effort": "low"
+      }
+    },
+    "prefill_depths": [],
+    "prefill_runs": 3,
+    "runs": 1,
+    "seed": 20260905,
+    "staggered": [],
+    "staggered_arrival_tokens": 256,
+    "staggered_delay_seconds": 1.0,
+    "staggered_depth": 32768,
+    "staggered_incumbent_tokens": 1024,
+    "staggered_runs": 3,
+    "staggered_workload": "code",
+    "temperature": 0.0,
+    "top_p": 1.0
+  }
+}

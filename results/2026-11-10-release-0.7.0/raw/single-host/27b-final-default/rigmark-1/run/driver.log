@@ -1,0 +1,64 @@
+decode/code: 3 runs
+  1: 68.0 tok/s, TTFT 0.278s, 4096 tokens
+  2: 66.7 tok/s, TTFT 0.266s, 2197 tokens
+  3: 66.7 tok/s, TTFT 0.278s, 2125 tokens
+decode/prose: 3 runs
+  1: 28.7 tok/s, TTFT 0.260s, 1322 tokens
+  2: 27.3 tok/s, TTFT 0.266s, 1355 tokens
+  3: 28.3 tok/s, TTFT 0.223s, 1226 tokens
+decode/structured: 3 runs
+  1: 82.6 tok/s, TTFT 0.259s, 1047 tokens
+  2: 85.1 tok/s, TTFT 0.232s, 988 tokens
+  3: 83.0 tok/s, TTFT 0.259s, 988 tokens
+prefill/16384: 10 cold/immediate-replay pairs
+  1: cold 1563.1 tok/s (10.481s), warm 1550.3 tok/s (10.568s)
+  2: cold 1574.6 tok/s (10.405s), warm 1577.5 tok/s (10.386s)
+  3: cold 1571.7 tok/s (10.425s), warm 1573.8 tok/s (10.411s)
+  4: cold 1574.3 tok/s (10.407s), warm 1575.4 tok/s (10.400s)
+  5: cold 1574.1 tok/s (10.409s), warm 1574.9 tok/s (10.403s)
+  6: cold 1574.9 tok/s (10.403s), warm 1573.2 tok/s (10.414s)
+  7: cold 1572.7 tok/s (10.417s), warm 1576.4 tok/s (10.393s)
+  8: cold 1573.2 tok/s (10.415s), warm 1574.4 tok/s (10.407s)
+  9: cold 1574.3 tok/s (10.407s), warm 1572.7 tok/s (10.418s)
+  10: cold 1574.1 tok/s (10.408s), warm 1574.7 tok/s (10.404s)
+concurrency/1: 2 rounds of code
+  1: aggregate 43.4 tok/s, median stream 45.4 tok/s
+  2: aggregate 44.2 tok/s, median stream 46.2 tok/s
+concurrency/2: 2 rounds of code
+  1: aggregate 62.4 tok/s, median stream 32.9 tok/s
+  2: aggregate 60.9 tok/s, median stream 32.2 tok/s
+concurrency/4: 2 rounds of code
+  1: aggregate 95.1 tok/s, median stream 26.1 tok/s
+  2: aggregate 91.9 tok/s, median stream 24.6 tok/s
+concurrency/8: 2 rounds of code
+  1: aggregate 108.9 tok/s, median stream 15.0 tok/s
+  2: aggregate 106.4 tok/s, median stream 14.5 tok/s
+result: /home/enntitysparkadmin/qual-20261110/27b-final-default/rigmark-1/run/rigmark.json
+card: /home/enntitysparkadmin/qual-20261110/27b-final-default/rigmark-1/run/rigmark.card.txt
+
+╭──────────────────────────────────────────────────────────────────────────────────────────╮
+│  R I G M A R K   //   AGENT WORKLOAD RECEIPT                                             │
+│  BENCHMARKS LOCAL AI HOW CODING AGENTS ACTUALLY USE IT                                   │
+│  ▲  8/9 BASIC OUTPUT GATES PASSED — DO NOT HEADLINE                                      │
+├─ SYSTEM ─────────────────────────────────────────────────────────────────────────────────┤
+│  MODEL      qwen3.8-27b-atlas                                                            │
+│  APPLIANCE  1 x NVIDIA DGX Spark, GB10, 128 GB unified memory                            │
+│  RUN        reasoning=low  •  protocol=1.1.0                                             │
+│  SOURCE     git:40fabcaf6e96  •  clean                                                   │
+├─ REAL OUTPUT ────────────────────────────────────────────────────────────────────────────┤
+│  WORKLOAD       DECODE EST.      LAST OUTPUT          RANGE          BASIC GATE          │
+│  CODE              66.7 tok/s      33.2s last     66.7–68.0     ✗ 2/3                    │
+│  PROSE             28.3 tok/s      46.2s last     27.3–28.7     ✓ 3/3                    │
+│  STRUCTURED*       83.0 tok/s      12.1s last     82.6–85.1     ✓ 3/3                    │
+│  * predictable-output ceiling; not a proxy for agent speed                               │
+├─ CONTEXT ────────────────────────────────────────────────────────────────────────────────┤
+│  16K PREFILL   cold 1,574 tok/s  •  immediate replay 1,575 tok/s                         │
+├─ CAPPED CONCURRENT GENERATION ───────────────────────────────────────────────────────────┤
+│  SHORT CODE • END-TO-END • 256-TOKEN CAP PER AGENT                                       │
+│  AGGREGATE   C1 43.8  •  C2 61.6  •  C4 93.5  •  C8 107.6 tok/s                          │
+│  C8 OUTPUT STATE   normal stop 0/16  •  visible 12/16  •  reasoning may be included      │
+├─ RECEIPT ────────────────────────────────────────────────────────────────────────────────┤
+│  JSON       sha256:92665fab33f79754…                                                     │
+│  SHARE THE CARD • LINK THE JSON RECEIPT • #RIGMARK                                       │
+│  github.com/alexellis/rigmark                                                            │
+╰──────────────────────────────────────────────────────────────────────────────────────────╯

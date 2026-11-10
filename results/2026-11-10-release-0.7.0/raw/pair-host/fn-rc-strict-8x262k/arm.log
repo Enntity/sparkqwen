@@ -1,0 +1,6 @@
+2026-11-10T15:44:20Z up (fn MODE=strict PROFILE=8x262k DRAFTER= IMAGE=)
+2026-11-10T15:45:05Z start exit 0: [1m== ready: http://127.0.0.1:8893/v1 model qwen3.8-flash-next-atlas[0m
+2026-11-10T15:45:06Z step greedy
+2026-11-10T15:45:26Z step bench
+2026-11-10T15:48:09Z step rig1
+2026-11-10T15:52:39Z done: greedy_eq 0 sq_bench 0 rig1 0 

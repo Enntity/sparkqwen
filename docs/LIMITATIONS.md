@@ -3,6 +3,25 @@
 
 What to know before relying on SparkQwen.
 
+## Version 0.7.0 scope
+
+Both models were measured on the release images
+([results](../results/2026-11-10-release-0.7.0/RESULT.md)). Flash-Next's
+video, long-context, capacity and XML batteries keep their dated receipts.
+For Qwen3.8-27B, still a candidate:
+
+- An identical prompt sent twice is prefilled again in full; only a request
+  that extends an earlier one reuses the prefix cache.
+- Cold prefill is about 1,575 tok/s, so a 16K prompt waits about 10 s.
+- The engine's content-loop watchdog and stream loop guards are off, as for
+  Flash-Next. A greedy answer that does not stop runs to `max_tokens`; one of
+  six RigMark code answers did.
+- The thinking budget, the confidence early stop that closes `<think>` and
+  the default reasoning effort are the engine's choices for this model, not
+  the checkpoint template's.
+- Four- and eight-stream throughput on the pair varied between rounds and was
+  lower in a long-lived server; the cause was not found.
+
 ## Version 0.4.0 extended-context scope
 
 `4x512k` and `4x1m` are opt-in static YaRN profiles. The

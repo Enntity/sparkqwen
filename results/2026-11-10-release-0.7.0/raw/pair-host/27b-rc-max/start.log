@@ -1,0 +1,17 @@
+[1m== image ghcr.io/enntity/atlas-sparkqwen:be82343bb26b-27b[0m
+[1m== download nvidia/Qwen3.8-27B-NVFP4 @ 482ca0f3832238542f8f5295dde86b5f22711d80[0m
+Fetching 19 files:   0%|          | 0/19 [00:00<?, ?it/s]Fetching 19 files: 100%|██████████| 19/19 [00:00<00:00, 513.44it/s]
+/home/enntitysparkadmin/models/sparkqwen/nvidia--Qwen3.8-27B-NVFP4
+[1m== download incoai/Qwen3.8-27B-DFlash2 @ 015e795645c74b1a0eeef3b570031fb62e769bc5[0m
+Fetching 5 files:   0%|          | 0/5 [00:00<?, ?it/s]Fetching 5 files: 100%|██████████| 5/5 [00:00<00:00, 204.26it/s]
+/home/enntitysparkadmin/models/sparkqwen/incoai--Qwen3.8-27B-DFlash2
+[1m== download tencent/Qwen3.8-27B-DSpine-b16 @ ea909c0f5fab8865f9e14600334f55f7ce47308f (sha256 checked)[0m
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 294.38it/s]
+/home/enntitysparkadmin/models/sparkqwen/tencent--Qwen3.8-27B-DSpine-b16
+[1m== download 0xBakeer/TandemLLM-Qwen3.8-27B-NVFP4 @ ab09c92fa4a90d5cfd9d012fe92831c886efd9b2 (gdn.safetensors attn.safetensors LICENSE README.md)[0m
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 157.13it/s]
+/home/enntitysparkadmin/models/sparkqwen/0xBakeer--TandemLLM-Qwen3.8-27B-NVFP4
+[1m== serving nvidia/Qwen3.8-27B-NVFP4 with 0xBakeer/TandemLLM-Qwen3.8-27B-NVFP4's GDN and attention on this Spark (profile 27b-max, drafter both)[0m
+[1m== loading (about a minute; the first start also compiles CUDA kernels)[0m
+smoke: 17*23 = 391
+[1m== ready: http://127.0.0.1:8893/v1 model qwen3.8-27b-atlas[0m

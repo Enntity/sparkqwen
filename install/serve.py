@@ -115,7 +115,7 @@ def disk_prefix_cache(gb, mode):
 
 def serving_mode(environ, profile):
     """Both modes preserve the native target and use target-verified native MTP."""
-    mode = environ.get('SPARKQWEN_MODE', 'strict')
+    mode = environ.get('SPARKQWEN_MODE', 'spark')
     if mode not in ('strict', 'spark'):
         raise ValueError('SPARKQWEN_MODE must be strict or spark')
     required = {
@@ -292,6 +292,15 @@ def launch(environ, profile):
     interface = environ['FABRIC_INTERFACE']
     if not re.fullmatch(r'[A-Za-z0-9_.:-]+', interface):
         raise ValueError('Invalid fabric interface or HCA')
+    # NCCL advertises the first IPv4 of its socket interface. A node whose link
+    # netdev also carries an address the peer reaches only off the link names
+    # another bootstrap interface, and pins the RoCE GID on its rails.
+    socket_interface = environ.get('FABRIC_SOCKET_INTERFACE') or interface
+    if not re.fullmatch(r'[A-Za-z0-9_.:-]+', socket_interface):
+        raise ValueError('Invalid fabric socket interface')
+    gid = environ.get('FABRIC_GID_INDEX', '')
+    if gid and not (re.fullmatch(r'0|[1-9][0-9]{0,2}', gid) and int(gid) <= 255):
+        raise ValueError('FABRIC_GID_INDEX must be 0 to 255')
     siblings = environ.get('FABRIC_SIBLINGS', '0')
     if siblings not in ('0', '1'):
         raise ValueError('FABRIC_SIBLINGS must be 0 or 1')
@@ -305,10 +314,13 @@ def launch(environ, profile):
     env.update(precision)
     env['SPARKQWEN_MODE'] = mode
     env.update(disk_prefix_cache(environ.get('SPARKQWEN_PREFIX_CACHE_GB', ''), mode))
-    env['NCCL_SOCKET_IFNAME'] = interface
+    env['NCCL_SOCKET_IFNAME'] = env['GLOO_SOCKET_IFNAME'] = socket_interface
     env['NCCL_IB_HCA'] = ','.join(hcas)
     # The engine's direct RDMA all-reduce stripes over the same devices.
     env['ATLAS_RDMA_RAILS'] = env['NCCL_IB_HCA']
+    if gid:
+        # NCCL's IB transport and the engine's RDMA pair use the same GID.
+        env['NCCL_IB_GID_INDEX'] = env['ATLAS_RDMA_GID'] = gid
     # A dedicated pair can give the KV pool more of the unified memory than the
     # shipped default leaves free; a lower share reserves host/service memory
     # but shrinks the shared KV token pool. No context or concurrency promise.
@@ -332,8 +344,8 @@ def launch(environ, profile):
 
 
 def profile_path(environ, here):
-    """The launch profile named by SPARKQWEN_PROFILE (default 8x32k)."""
-    name = environ.get('SPARKQWEN_PROFILE', '8x32k')
+    """The launch profile named by SPARKQWEN_PROFILE (default 8x262k)."""
+    name = environ.get('SPARKQWEN_PROFILE', '8x262k')
     if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.-]{0,63}', name):
         raise ValueError('Invalid SPARKQWEN_PROFILE')
     return here/'profiles'/f'{name}.json'

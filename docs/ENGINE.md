@@ -44,18 +44,23 @@ kernel target.
 `--model 27b` builds the `qwen3.8-27b` kernel target (model type `qwen3_5`)
 from Enntity/atlas `q27/conc` at the commit pinned in
 [`install/atlas-source-27b.json`](../install/atlas-source-27b.json):
-`32e4295ca` (tree `3f953643`). That branch is the single-Spark serving series
+`6a7091b3b` (tree `41d299bd`). That branch is the single-Spark serving series
 proposed upstream as Atlas-Inf/atlas#333 (exact MTP and DFlash2 verify, fused
 GDN decode and verify, row-invariant tensor-core GEMMs, the DSpine drafter,
 the concurrency series) plus work that is not upstream yet: three prefix-cache
 fixes for long conversations (Enntity/atlas#18, #19), the shared-scan
 decode attention (#20, #21), which the 27B profiles switch on, and a scheduler
 fix that keeps a DFlash serve out of the mixed prefill-and-decode forward
-(#22, new in 0.6.1). The variant is a candidate: its image passes the engine's
-workspace tests and Clippy, and two focused before-and-after checks are
+(#22, new in 0.6.1), and `--stream-loop-guards` (#24, new in 0.7.0), which
+the 27B profiles use with `--content-loop-watchdog=false`. The shared scan
+and the scheduler fix are proposed upstream as Atlas-Inf/atlas#335 and #337;
+#24 is not proposed yet. The variant is a candidate: its image passes the
+engine's workspace tests and Clippy, two focused before-and-after checks are
 recorded ([shared scan](../results/2026-11-10-27b-shared-scan/RESULT.md),
 [a request joining two decoders](../results/2026-11-10-27b-mixed-forward/RESULT.md)),
-but it has no qualification run.
+and 0.7.0 has its first RigMark and exactness run
+([results](../results/2026-11-10-release-0.7.0/RESULT.md)), but it has no
+long-context or capacity qualification.
 
 The [tool-call guard](TOOL-GUARD.md) runs by default after parsing, before
 returning calls to clients. It is shared serving code; model decoding and GPU

@@ -1,0 +1,7 @@
+2026-11-10T16:00:19Z up (fn MODE=spark PROFILE=8x262k DRAFTER= IMAGE=)
+2026-11-10T16:01:04Z start exit 0: [1m== ready: http://127.0.0.1:8893/v1 model qwen3.8-flash-next-atlas[0m
+2026-11-10T16:01:05Z step greedy
+2026-11-10T16:01:24Z step bench
+2026-11-10T16:03:54Z step rig1
+2026-11-10T16:07:52Z step rig2
+2026-11-10T16:11:48Z done: greedy_eq 0 sq_bench 0 rig1 0 rig2 0 

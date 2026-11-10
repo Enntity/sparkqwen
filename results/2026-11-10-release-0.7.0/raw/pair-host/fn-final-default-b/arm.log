@@ -1,0 +1,5 @@
+2026-11-10T18:31:51Z up (fn MODE= PROFILE= DRAFTER= IMAGE=)
+2026-11-10T18:32:36Z start exit 0: [1m== ready: http://127.0.0.1:8893/v1 model qwen3.8-flash-next-atlas[0m
+2026-11-10T18:32:37Z step bench
+2026-11-10T18:35:08Z step keep
+2026-11-10T18:35:08Z left running

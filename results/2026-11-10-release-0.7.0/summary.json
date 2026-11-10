@@ -1,0 +1,3204 @@
+{
+ "27b-final-max": {
+  "host": "pair-host",
+  "rigmark1": {
+   "code": {
+    "median": 79.175,
+    "all": [
+     82.864,
+     74.921,
+     79.175
+    ],
+    "gate": "2/3",
+    "tokens": [
+     4096,
+     2197,
+     2125
+    ],
+    "finish": [
+     "length",
+     "stop",
+     "stop"
+    ]
+   },
+   "prose": {
+    "median": 27.936,
+    "all": [
+     28.133,
+     26.883,
+     27.936
+    ],
+    "gate": "3/3",
+    "tokens": [
+     1322,
+     1355,
+     1226
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "structured": {
+    "median": 120.631,
+    "all": [
+     120.631,
+     116.038,
+     121.684
+    ],
+    "gate": "3/3",
+    "tokens": [
+     1047,
+     988,
+     988
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "cold16k": {
+    "median": 1564.05,
+    "all": [
+     1562.3,
+     1559.0,
+     1565.0,
+     1563.0,
+     1567.5,
+     1565.3,
+     1565.1,
+     1564.8,
+     1563.3,
+     1562.9
+    ]
+   },
+   "replay16k": {
+    "median": 1565.2
+   },
+   "conc": {
+    "1": [
+     42.526,
+     41.802
+    ],
+    "2": [
+     62.41,
+     62.521
+    ],
+    "4": [
+     93.104,
+     90.419
+    ],
+    "8": [
+     107.369,
+     105.652
+    ]
+   },
+   "gates": "8/9",
+   "host0": {
+    "min_available_gib": 18.07,
+    "swap_out_pages": 0,
+    "sm_clock_mhz": [
+     2145,
+     2184
+    ]
+   }
+  },
+  "rigmark2": {
+   "code": {
+    "median": 75.122,
+    "all": [
+     75.122,
+     77.076,
+     72.51
+    ],
+    "gate": "3/3",
+    "tokens": [
+     2225,
+     2274,
+     2177
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "prose": {
+    "median": 28.513,
+    "all": [
+     28.513,
+     27.33,
+     29.166
+    ],
+    "gate": "3/3",
+    "tokens": [
+     1594,
+     1331,
+     1350
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "structured": {
+    "median": 120.398,
+    "all": [
+     118.9,
+     123.73,
+     120.398
+    ],
+    "gate": "3/3",
+    "tokens": [
+     988,
+     987,
+     1047
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "cold16k": {
+    "median": 1563.65,
+    "all": [
+     1557.9,
+     1560.7,
+     1563.9,
+     1564.6,
+     1563.8,
+     1564.8,
+     1563.3,
+     1565.5,
+     1563.5,
+     1563.2
+    ]
+   },
+   "replay16k": {
+    "median": 1565.1
+   },
+   "conc": {
+    "1": [
+     46.124,
+     43.666
+    ],
+    "2": [
+     63.549,
+     62.912
+    ],
+    "4": [
+     93.047,
+     92.062
+    ],
+    "8": [
+     105.79,
+     107.15
+    ]
+   },
+   "gates": "9/9",
+   "host0": {
+    "min_available_gib": 18.05,
+    "swap_out_pages": 0,
+    "sm_clock_mhz": [
+     2145,
+     2184
+    ]
+   }
+  },
+  "bench-27b-final-max": {
+   "decode prose tok/s": {
+    "median": 32.26,
+    "all": [
+     31.59,
+     32.26,
+     32.28
+    ]
+   },
+   "decode code tok/s": {
+    "median": 60.14,
+    "all": [
+     60.12,
+     60.31,
+     60.14
+    ]
+   },
+   "decode json tok/s": {
+    "median": 41.18,
+    "all": [
+     41.69,
+     41.18,
+     41.13
+    ]
+   },
+   "cold TTFT 2K s": {
+    "median": 1.308,
+    "all": [
+     1.309,
+     1.308
+    ]
+   },
+   "cold TTFT 8K s": {
+    "median": 4.944,
+    "all": [
+     4.943,
+     4.944
+    ]
+   },
+   "cold TTFT 16K s": {
+    "median": 10.494,
+    "all": [
+     10.485,
+     10.503
+    ]
+   },
+   "cold TTFT 28K s": {
+    "median": 20.971,
+    "all": [
+     20.977,
+     20.964
+    ]
+   },
+   "C1 aggregate tok/s": {
+    "median": 32.04,
+    "all": [
+     32.97,
+     31.11
+    ]
+   },
+   "C2 aggregate tok/s": {
+    "median": 51.415,
+    "all": [
+     52.36,
+     50.47
+    ]
+   },
+   "C4 aggregate tok/s": {
+    "median": 74.195,
+    "all": [
+     72.97,
+     75.42
+    ]
+   },
+   "C8 aggregate tok/s": {
+    "median": 91.48,
+    "all": [
+     89.9,
+     93.06
+    ]
+   },
+   "warm TTFT 8K s": {
+    "median": 0.28,
+    "all": [
+     0.309,
+     0.284,
+     0.277,
+     0.28,
+     0.279
+    ]
+   },
+   "warm TTFT 20K s": {
+    "median": 0.342,
+    "all": [
+     0.335,
+     0.342,
+     0.345,
+     0.346,
+     0.341
+    ]
+   }
+  }
+ },
+ "27b-rc-max": {
+  "host": "pair-host",
+  "rigmark1": {
+   "code": {
+    "median": 72.002,
+    "all": [
+     66.988,
+     72.002,
+     74.733
+    ],
+    "gate": "0/3",
+    "tokens": [
+     1688,
+     1636,
+     1697
+    ],
+    "finish": [
+     "length",
+     "length",
+     "length"
+    ]
+   },
+   "prose": {
+    "median": 27.924,
+    "all": [
+     28.12,
+     26.833,
+     27.924
+    ],
+    "gate": "3/3",
+    "tokens": [
+     1322,
+     1355,
+     1226
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "structured": {
+    "median": 105.418,
+    "all": [
+     105.559,
+     97.187,
+     105.418
+    ],
+    "gate": "0/3",
+    "tokens": [
+     543,
+     484,
+     484
+    ],
+    "finish": [
+     "length",
+     "length",
+     "length"
+    ]
+   },
+   "cold16k": {
+    "median": 1563.1999999999998,
+    "all": [
+     1560.7,
+     1563.3,
+     1560.3,
+     1563.1,
+     1562.3,
+     1561.4,
+     1564.3,
+     1563.7,
+     1563.5,
+     1564.2
+    ]
+   },
+   "replay16k": {
+    "median": 1563.65
+   },
+   "conc": {
+    "1": [
+     42.364,
+     41.733
+    ],
+    "2": [
+     62.676,
+     61.204
+    ],
+    "4": [
+     92.612,
+     90.976
+    ],
+    "8": [
+     108.262,
+     105.982
+    ]
+   },
+   "gates": "3/9",
+   "host0": {
+    "min_available_gib": 18.44,
+    "swap_out_pages": 0,
+    "sm_clock_mhz": [
+     2145,
+     2184
+    ]
+   }
+  },
+  "rigmark2": {
+   "code": {
+    "median": 71.697,
+    "all": [
+     75.257,
+     67.453,
+     71.697
+    ],
+    "gate": "1/3",
+    "tokens": [
+     2225,
+     1120,
+     1727
+    ],
+    "finish": [
+     "stop",
+     "length",
+     "length"
+    ]
+   },
+   "prose": {
+    "median": 28.788,
+    "all": [
+     28.788,
+     27.23,
+     29.166
+    ],
+    "gate": "3/3",
+    "tokens": [
+     1594,
+     1331,
+     1350
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "structured": {
+    "median": 105.473,
+    "all": [
+     102.546,
+     108.766,
+     105.473
+    ],
+    "gate": "0/3",
+    "tokens": [
+     484,
+     483,
+     543
+    ],
+    "finish": [
+     "length",
+     "length",
+     "length"
+    ]
+   },
+   "cold16k": {
+    "median": 1562.4,
+    "all": [
+     1559.9,
+     1560.8,
+     1557.3,
+     1563.0,
+     1563.3,
+     1561.1,
+     1564.1,
+     1566.1,
+     1562.4,
+     1562.4
+    ]
+   },
+   "replay16k": {
+    "median": 1563.6
+   },
+   "conc": {
+    "1": [
+     46.129,
+     43.44
+    ],
+    "2": [
+     62.907,
+     63.457
+    ],
+    "4": [
+     92.065,
+     93.701
+    ],
+    "8": [
+     107.782,
+     107.628
+    ]
+   },
+   "gates": "4/9",
+   "host0": {
+    "min_available_gib": 18.25,
+    "swap_out_pages": 0,
+    "sm_clock_mhz": [
+     2145,
+     2184
+    ]
+   }
+  },
+  "bench-27b-rc-max": {
+   "decode prose tok/s": {
+    "median": 32.13,
+    "all": [
+     31.39,
+     32.13,
+     32.16
+    ]
+   },
+   "decode code tok/s": {
+    "median": 60.01,
+    "all": [
+     60.15,
+     59.9,
+     60.01
+    ]
+   },
+   "decode json tok/s": {
+    "median": 41.14,
+    "all": [
+     41.53,
+     41.14,
+     41.0
+    ]
+   },
+   "cold TTFT 2K s": {
+    "median": 1.315,
+    "all": [
+     1.315,
+     1.315
+    ]
+   },
+   "cold TTFT 8K s": {
+    "median": 4.947,
+    "all": [
+     4.944,
+     4.949
+    ]
+   },
+   "cold TTFT 16K s": {
+    "median": 10.518,
+    "all": [
+     10.5,
+     10.535
+    ]
+   },
+   "cold TTFT 28K s": {
+    "median": 21.026,
+    "all": [
+     21.033,
+     21.018
+    ]
+   },
+   "C1 aggregate tok/s": {
+    "median": 32.02,
+    "all": [
+     33.03,
+     31.01
+    ]
+   },
+   "C2 aggregate tok/s": {
+    "median": 50.875,
+    "all": [
+     51.28,
+     50.47
+    ]
+   },
+   "C4 aggregate tok/s": {
+    "median": 73.655,
+    "all": [
+     72.05,
+     75.26
+    ]
+   },
+   "C8 aggregate tok/s": {
+    "median": 92.1,
+    "all": [
+     90.4,
+     93.8
+    ]
+   },
+   "warm TTFT 8K s": {
+    "median": 0.28,
+    "all": [
+     0.312,
+     0.284,
+     0.278,
+     0.28,
+     0.28
+    ]
+   },
+   "warm TTFT 20K s": {
+    "median": 0.34,
+    "all": [
+     0.332,
+     0.344,
+     0.345,
+     0.34,
+     0.34
+    ]
+   }
+  }
+ },
+ "fn-061-spark-8x262k": {
+  "host": "pair-host",
+  "rigmark1": {
+   "code": {
+    "median": 105.07,
+    "all": [
+     105.07,
+     105.986,
+     104.485
+    ],
+    "gate": "3/3",
+    "tokens": [
+     2095,
+     1794,
+     1882
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "prose": {
+    "median": 55.368,
+    "all": [
+     55.368,
+     56.662,
+     53.609
+    ],
+    "gate": "3/3",
+    "tokens": [
+     1237,
+     1248,
+     1422
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "structured": {
+    "median": 120.886,
+    "all": [
+     122.166,
+     120.834,
+     120.886
+    ],
+    "gate": "3/3",
+    "tokens": [
+     607,
+     606,
+     599
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "cold16k": {
+    "median": 4200.6,
+    "all": [
+     4183.7,
+     4200.2,
+     4201.0,
+     4212.6,
+     4209.7,
+     4192.8,
+     4192.4,
+     4181.5,
+     4206.5,
+     4226.1
+    ]
+   },
+   "replay16k": {
+    "median": 78273.35
+   },
+   "conc": {
+    "1": [
+     77.875,
+     67.553
+    ],
+    "2": [
+     114.815,
+     116.914
+    ],
+    "4": [
+     181.315,
+     168.009
+    ],
+    "8": [
+     263.401,
+     260.448
+    ]
+   },
+   "gates": "9/9",
+   "host0": {
+    "min_available_gib": 5.22,
+    "swap_out_pages": 1,
+    "sm_clock_mhz": [
+     2164,
+     2177
+    ]
+   },
+   "host1": {
+    "min_available_gib": 13.82,
+    "swap_out_pages": 0,
+    "sm_clock_mhz": [
+     2190,
+     2190
+    ]
+   }
+  },
+  "bench-fn-061-spark-8x262k": {
+   "decode prose tok/s": {
+    "median": 60.8,
+    "all": [
+     59.03,
+     61.01,
+     60.8
+    ]
+   },
+   "decode code tok/s": {
+    "median": 91.84,
+    "all": [
+     89.09,
+     91.84,
+     92.41
+    ]
+   },
+   "decode json tok/s": {
+    "median": 69.8,
+    "all": [
+     68.75,
+     69.8,
+     71.24
+    ]
+   },
+   "cold TTFT 2K s": {
+    "median": 0.682,
+    "all": [
+     0.68,
+     0.684
+    ]
+   },
+   "cold TTFT 8K s": {
+    "median": 2.02,
+    "all": [
+     2.009,
+     2.031
+    ]
+   },
+   "cold TTFT 16K s": {
+    "median": 3.998,
+    "all": [
+     3.986,
+     4.011
+    ]
+   },
+   "cold TTFT 28K s": {
+    "median": 6.925,
+    "all": [
+     6.935,
+     6.916
+    ]
+   },
+   "C1 aggregate tok/s": {
+    "median": 58.75,
+    "all": [
+     59.9,
+     57.6
+    ]
+   },
+   "C2 aggregate tok/s": {
+    "median": 90.57,
+    "all": [
+     88.27,
+     92.87
+    ]
+   },
+   "C4 aggregate tok/s": {
+    "median": 140.09,
+    "all": [
+     138.37,
+     141.81
+    ]
+   },
+   "C8 aggregate tok/s": {
+    "median": 203.745,
+    "all": [
+     204.35,
+     203.14
+    ]
+   },
+   "warm TTFT 8K s": {
+    "median": 0.166,
+    "all": [
+     0.198,
+     0.184,
+     0.166,
+     0.163,
+     0.158
+    ]
+   },
+   "warm TTFT 20K s": {
+    "median": 0.201,
+    "all": [
+     0.223,
+     0.181,
+     0.206,
+     0.201,
+     0.198
+    ]
+   }
+  }
+ },
+ "fn-final-default": {
+  "host": "pair-host",
+  "rigmark1": {
+   "code": {
+    "median": 101.618,
+    "all": [
+     101.618,
+     105.589,
+     99.781
+    ],
+    "gate": "3/3",
+    "tokens": [
+     2095,
+     1794,
+     1882
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "prose": {
+    "median": 53.636,
+    "all": [
+     53.636,
+     56.782,
+     52.174
+    ],
+    "gate": "3/3",
+    "tokens": [
+     1237,
+     1248,
+     1422
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "structured": {
+    "median": 120.643,
+    "all": [
+     122.5,
+     119.817,
+     120.643
+    ],
+    "gate": "3/3",
+    "tokens": [
+     607,
+     606,
+     599
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "cold16k": {
+    "median": 4187.25,
+    "all": [
+     3106.9,
+     4185.7,
+     4175.4,
+     4193.1,
+     4189.1,
+     4188.8,
+     4210.3,
+     3816.1,
+     3825.1,
+     4190.6
+    ]
+   },
+   "replay16k": {
+    "median": 78185.15
+   },
+   "conc": {
+    "1": [
+     77.865,
+     67.182
+    ],
+    "2": [
+     114.462,
+     116.534
+    ],
+    "4": [
+     181.661,
+     147.079
+    ],
+    "8": [
+     260.899,
+     261.259
+    ]
+   },
+   "gates": "9/9",
+   "host0": {
+    "min_available_gib": 6.14,
+    "swap_out_pages": 491,
+    "sm_clock_mhz": [
+     2177,
+     2184
+    ]
+   },
+   "host1": {
+    "min_available_gib": 13.52,
+    "swap_out_pages": 0,
+    "sm_clock_mhz": [
+     2190,
+     2190
+    ]
+   }
+  },
+  "rigmark2": {
+   "code": {
+    "median": 105.678,
+    "all": [
+     102.187,
+     108.145,
+     105.678
+    ],
+    "gate": "3/3",
+    "tokens": [
+     1642,
+     1778,
+     1933
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "prose": {
+    "median": 53.661,
+    "all": [
+     56.578,
+     53.661,
+     52.815
+    ],
+    "gate": "3/3",
+    "tokens": [
+     1408,
+     1173,
+     1218
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "structured": {
+    "median": 119.126,
+    "all": [
+     119.126,
+     120.975,
+     118.802
+    ],
+    "gate": "3/3",
+    "tokens": [
+     606,
+     599,
+     607
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "cold16k": {
+    "median": 4185.75,
+    "all": [
+     4130.2,
+     4201.8,
+     3141.0,
+     4190.5,
+     4181.0,
+     4207.3,
+     4210.4,
+     4204.4,
+     4160.6,
+     3511.5
+    ]
+   },
+   "replay16k": {
+    "median": 78557.9
+   },
+   "conc": {
+    "1": [
+     69.702,
+     72.196
+    ],
+    "2": [
+     112.116,
+     115.41
+    ],
+    "4": [
+     174.923,
+     175.062
+    ],
+    "8": [
+     221.745,
+     257.847
+    ]
+   },
+   "gates": "9/9",
+   "host0": {
+    "min_available_gib": 5.62,
+    "swap_out_pages": 69,
+    "sm_clock_mhz": [
+     2171,
+     2184
+    ]
+   },
+   "host1": {
+    "min_available_gib": 13.04,
+    "swap_out_pages": 0,
+    "sm_clock_mhz": [
+     2190,
+     2190
+    ]
+   }
+  },
+  "bench-fn-final-default": {
+   "decode prose tok/s": {
+    "median": 61.35,
+    "all": [
+     57.94,
+     61.48,
+     61.35
+    ]
+   },
+   "decode code tok/s": {
+    "median": 90.91,
+    "all": [
+     86.25,
+     91.38,
+     90.91
+    ]
+   },
+   "decode json tok/s": {
+    "median": 70.31,
+    "all": [
+     68.42,
+     71.29,
+     70.31
+    ]
+   },
+   "cold TTFT 2K s": {
+    "median": 0.692,
+    "all": [
+     0.699,
+     0.685
+    ]
+   },
+   "cold TTFT 8K s": {
+    "median": 2.785,
+    "all": [
+     2.668,
+     2.903
+    ]
+   },
+   "cold TTFT 16K s": {
+    "median": 4.691,
+    "all": [
+     5.369,
+     4.013
+    ]
+   },
+   "cold TTFT 28K s": {
+    "median": 6.999,
+    "all": [
+     7.044,
+     6.954
+    ]
+   },
+   "C1 aggregate tok/s": {
+    "median": 57.61,
+    "all": [
+     59.14,
+     56.08
+    ]
+   },
+   "C2 aggregate tok/s": {
+    "median": 83.89,
+    "all": [
+     75.78,
+     92.0
+    ]
+   },
+   "C4 aggregate tok/s": {
+    "median": 138.62,
+    "all": [
+     136.85,
+     140.39
+    ]
+   },
+   "C8 aggregate tok/s": {
+    "median": 190.785,
+    "all": [
+     203.56,
+     178.01
+    ]
+   },
+   "warm TTFT 8K s": {
+    "median": 0.171,
+    "all": [
+     0.168,
+     0.198,
+     0.175,
+     0.171,
+     0.167
+    ]
+   },
+   "warm TTFT 20K s": {
+    "median": 0.217,
+    "all": [
+     0.227,
+     0.194,
+     0.22,
+     0.215,
+     0.217
+    ]
+   }
+  }
+ },
+ "fn-final-default-b": {
+  "host": "pair-host",
+  "bench-fn-final-default-b": {
+   "decode prose tok/s": {
+    "median": 61.33,
+    "all": [
+     61.25,
+     61.38,
+     61.33
+    ]
+   },
+   "decode code tok/s": {
+    "median": 92.6,
+    "all": [
+     91.9,
+     92.6,
+     92.71
+    ]
+   },
+   "decode json tok/s": {
+    "median": 71.01,
+    "all": [
+     70.96,
+     71.13,
+     71.01
+    ]
+   },
+   "cold TTFT 2K s": {
+    "median": 0.14,
+    "all": [
+     0.138,
+     0.141
+    ]
+   },
+   "cold TTFT 8K s": {
+    "median": 0.154,
+    "all": [
+     0.155,
+     0.154
+    ]
+   },
+   "cold TTFT 16K s": {
+    "median": 0.171,
+    "all": [
+     0.184,
+     0.158
+    ]
+   },
+   "cold TTFT 28K s": {
+    "median": 0.184,
+    "all": [
+     0.214,
+     0.155
+    ]
+   },
+   "C1 aggregate tok/s": {
+    "median": 59.915,
+    "all": [
+     61.44,
+     58.39
+    ]
+   },
+   "C2 aggregate tok/s": {
+    "median": 91.355,
+    "all": [
+     89.24,
+     93.47
+    ]
+   },
+   "C4 aggregate tok/s": {
+    "median": 140.68,
+    "all": [
+     139.57,
+     141.79
+    ]
+   },
+   "C8 aggregate tok/s": {
+    "median": 205.97,
+    "all": [
+     207.32,
+     204.62
+    ]
+   },
+   "warm TTFT 8K s": {
+    "median": 0.149,
+    "all": [
+     0.167,
+     0.149,
+     0.142,
+     0.13,
+     0.163
+    ]
+   },
+   "warm TTFT 20K s": {
+    "median": 0.174,
+    "all": [
+     0.163,
+     0.149,
+     0.186,
+     0.182,
+     0.174
+    ]
+   }
+  },
+  "bench1": {
+   "decode prose tok/s": {
+    "median": 61.4,
+    "all": [
+     59.17,
+     61.44,
+     61.4
+    ]
+   },
+   "decode code tok/s": {
+    "median": 92.49,
+    "all": [
+     90.32,
+     92.49,
+     92.77
+    ]
+   },
+   "decode json tok/s": {
+    "median": 70.92,
+    "all": [
+     69.35,
+     70.92,
+     71.2
+    ]
+   },
+   "cold TTFT 2K s": {
+    "median": 0.685,
+    "all": [
+     0.685,
+     0.684
+    ]
+   },
+   "cold TTFT 8K s": {
+    "median": 1.994,
+    "all": [
+     1.995,
+     1.993
+    ]
+   },
+   "cold TTFT 16K s": {
+    "median": 3.929,
+    "all": [
+     3.893,
+     3.965
+    ]
+   },
+   "cold TTFT 28K s": {
+    "median": 6.945,
+    "all": [
+     6.944,
+     6.946
+    ]
+   },
+   "C1 aggregate tok/s": {
+    "median": 58.56,
+    "all": [
+     59.86,
+     57.26
+    ]
+   },
+   "C2 aggregate tok/s": {
+    "median": 90.55,
+    "all": [
+     88.3,
+     92.8
+    ]
+   },
+   "C4 aggregate tok/s": {
+    "median": 139.755,
+    "all": [
+     138.27,
+     141.24
+    ]
+   },
+   "C8 aggregate tok/s": {
+    "median": 205.72,
+    "all": [
+     206.38,
+     205.06
+    ]
+   },
+   "warm TTFT 8K s": {
+    "median": 0.163,
+    "all": [
+     0.16,
+     0.185,
+     0.167,
+     0.163,
+     0.162
+    ]
+   },
+   "warm TTFT 20K s": {
+    "median": 0.205,
+    "all": [
+     0.215,
+     0.182,
+     0.205,
+     0.203,
+     0.209
+    ]
+   }
+  }
+ },
+ "fn-rc-locate": {
+  "host": "pair-host",
+  "bench-fn-rc-locate": {
+   "decode prose tok/s": {
+    "median": 61.53,
+    "all": [
+     59.31,
+     61.53,
+     61.66
+    ]
+   },
+   "decode code tok/s": {
+    "median": 92.09,
+    "all": [
+     90.02,
+     92.09,
+     92.82
+    ]
+   },
+   "decode json tok/s": {
+    "median": 71.17,
+    "all": [
+     69.58,
+     71.17,
+     71.22
+    ]
+   },
+   "cold TTFT 2K s": {
+    "median": 0.675,
+    "all": [
+     0.683,
+     0.668
+    ]
+   },
+   "cold TTFT 8K s": {
+    "median": 1.985,
+    "all": [
+     1.981,
+     1.989
+    ]
+   },
+   "cold TTFT 16K s": {
+    "median": 3.936,
+    "all": [
+     3.905,
+     3.966
+    ]
+   },
+   "cold TTFT 28K s": {
+    "median": 6.952,
+    "all": [
+     6.946,
+     6.959
+    ]
+   },
+   "C1 aggregate tok/s": {
+    "median": 58.56,
+    "all": [
+     59.85,
+     57.27
+    ]
+   },
+   "C2 aggregate tok/s": {
+    "median": 89.33,
+    "all": [
+     87.34,
+     91.32
+    ]
+   },
+   "C4 aggregate tok/s": {
+    "median": 139.425,
+    "all": [
+     138.04,
+     140.81
+    ]
+   },
+   "C8 aggregate tok/s": {
+    "median": 203.61,
+    "all": [
+     204.56,
+     202.66
+    ]
+   },
+   "warm TTFT 8K s": {
+    "median": 0.166,
+    "all": [
+     0.165,
+     0.184,
+     0.169,
+     0.166,
+     0.163
+    ]
+   },
+   "warm TTFT 20K s": {
+    "median": 0.212,
+    "all": [
+     0.219,
+     0.188,
+     0.212,
+     0.213,
+     0.204
+    ]
+   }
+  }
+ },
+ "fn-rc-spark-8x262k": {
+  "host": "pair-host",
+  "rigmark1": {
+   "code": {
+    "median": 103.027,
+    "all": [
+     104.154,
+     102.565,
+     103.027
+    ],
+    "gate": "3/3",
+    "tokens": [
+     2095,
+     1794,
+     1882
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "prose": {
+    "median": 54.801,
+    "all": [
+     54.801,
+     56.816,
+     53.187
+    ],
+    "gate": "3/3",
+    "tokens": [
+     1237,
+     1248,
+     1422
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "structured": {
+    "median": 120.144,
+    "all": [
+     122.528,
+     120.144,
+     115.728
+    ],
+    "gate": "3/3",
+    "tokens": [
+     607,
+     606,
+     599
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "cold16k": {
+    "median": 4185.25,
+    "all": [
+     4165.7,
+     4136.9,
+     4154.1,
+     4212.8,
+     4202.3,
+     4208.9,
+     4190.5,
+     4180.0,
+     3753.5,
+     4212.5
+    ]
+   },
+   "replay16k": {
+    "median": 78822.4
+   },
+   "conc": {
+    "1": [
+     77.66,
+     67.719
+    ],
+    "2": [
+     114.04,
+     114.793
+    ],
+    "4": [
+     151.755,
+     167.258
+    ],
+    "8": [
+     224.291,
+     241.06
+    ]
+   },
+   "gates": "9/9",
+   "host0": {
+    "min_available_gib": 5.59,
+    "swap_out_pages": 2,
+    "sm_clock_mhz": [
+     2171,
+     2177
+    ]
+   },
+   "host1": {
+    "min_available_gib": 13.53,
+    "swap_out_pages": 11,
+    "sm_clock_mhz": [
+     2190,
+     2190
+    ]
+   }
+  },
+  "rigmark2": {
+   "code": {
+    "median": 106.927,
+    "all": [
+     106.927,
+     99.212,
+     109.683
+    ],
+    "gate": "3/3",
+    "tokens": [
+     1642,
+     1778,
+     1933
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "prose": {
+    "median": 54.192,
+    "all": [
+     54.461,
+     54.192,
+     51.515
+    ],
+    "gate": "3/3",
+    "tokens": [
+     1408,
+     1173,
+     1218
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "structured": {
+    "median": 121.124,
+    "all": [
+     115.253,
+     122.121,
+     121.124
+    ],
+    "gate": "3/3",
+    "tokens": [
+     606,
+     599,
+     607
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "cold16k": {
+    "median": 4192.049999999999,
+    "all": [
+     3512.2,
+     3369.9,
+     4214.0,
+     4195.2,
+     4213.1,
+     4213.0,
+     4215.1,
+     4188.9,
+     3594.5,
+     4178.0
+    ]
+   },
+   "replay16k": {
+    "median": 78896.85
+   },
+   "conc": {
+    "1": [
+     72.667,
+     72.284
+    ],
+    "2": [
+     113.001,
+     97.015
+    ],
+    "4": [
+     149.301,
+     161.806
+    ],
+    "8": [
+     211.542,
+     256.852
+    ]
+   },
+   "gates": "9/9",
+   "host0": {
+    "min_available_gib": 5.02,
+    "swap_out_pages": 22603,
+    "sm_clock_mhz": [
+     2164,
+     2177
+    ]
+   },
+   "host1": {
+    "min_available_gib": 13.59,
+    "swap_out_pages": 13,
+    "sm_clock_mhz": [
+     2184,
+     2190
+    ]
+   }
+  },
+  "bench-fn-rc-spark-8x262k": {
+   "decode prose tok/s": {
+    "median": 61.17,
+    "all": [
+     58.61,
+     61.17,
+     61.39
+    ]
+   },
+   "decode code tok/s": {
+    "median": 92.25,
+    "all": [
+     90.29,
+     92.25,
+     92.47
+    ]
+   },
+   "decode json tok/s": {
+    "median": 70.86,
+    "all": [
+     69.44,
+     70.94,
+     70.86
+    ]
+   },
+   "cold TTFT 2K s": {
+    "median": 0.671,
+    "all": [
+     0.67,
+     0.673
+    ]
+   },
+   "cold TTFT 8K s": {
+    "median": 2.003,
+    "all": [
+     2.021,
+     1.985
+    ]
+   },
+   "cold TTFT 16K s": {
+    "median": 3.942,
+    "all": [
+     3.926,
+     3.957
+    ]
+   },
+   "cold TTFT 28K s": {
+    "median": 6.929,
+    "all": [
+     6.937,
+     6.921
+    ]
+   },
+   "C1 aggregate tok/s": {
+    "median": 58.655,
+    "all": [
+     59.96,
+     57.35
+    ]
+   },
+   "C2 aggregate tok/s": {
+    "median": 89.58,
+    "all": [
+     87.6,
+     91.56
+    ]
+   },
+   "C4 aggregate tok/s": {
+    "median": 137.97,
+    "all": [
+     135.75,
+     140.19
+    ]
+   },
+   "C8 aggregate tok/s": {
+    "median": 201.78,
+    "all": [
+     202.41,
+     201.15
+    ]
+   },
+   "warm TTFT 8K s": {
+    "median": 0.167,
+    "all": [
+     0.163,
+     0.23,
+     0.178,
+     0.167,
+     0.162
+    ]
+   },
+   "warm TTFT 20K s": {
+    "median": 0.206,
+    "all": [
+     0.22,
+     0.19,
+     0.21,
+     0.206,
+     0.204
+    ]
+   }
+  }
+ },
+ "fn-rc-spark-8x262k-b": {
+  "host": "pair-host",
+  "rigmark1": {
+   "code": {
+    "median": 105.323,
+    "all": [
+     105.323,
+     105.715,
+     104.315
+    ],
+    "gate": "3/3",
+    "tokens": [
+     2095,
+     1794,
+     1882
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "prose": {
+    "median": 55.45,
+    "all": [
+     55.45,
+     56.535,
+     53.739
+    ],
+    "gate": "3/3",
+    "tokens": [
+     1237,
+     1248,
+     1422
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "structured": {
+    "median": 121.153,
+    "all": [
+     123.098,
+     120.435,
+     121.153
+    ],
+    "gate": "3/3",
+    "tokens": [
+     607,
+     606,
+     599
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "cold16k": {
+    "median": 4207.0,
+    "all": [
+     4207.7,
+     4215.6,
+     4213.7,
+     4188.1,
+     4206.3,
+     4222.8,
+     4201.3,
+     4182.3,
+     4179.9,
+     4226.8
+    ]
+   },
+   "replay16k": {
+    "median": 78173.29999999999
+   },
+   "conc": {
+    "1": [
+     78.187,
+     67.568
+    ],
+    "2": [
+     114.525,
+     117.105
+    ],
+    "4": [
+     180.446,
+     168.65
+    ],
+    "8": [
+     263.512,
+     263.374
+    ]
+   },
+   "gates": "9/9",
+   "host0": {
+    "min_available_gib": 4.55,
+    "swap_out_pages": 10543,
+    "sm_clock_mhz": [
+     2171,
+     2184
+    ]
+   },
+   "host1": {
+    "min_available_gib": 13.26,
+    "swap_out_pages": 0,
+    "sm_clock_mhz": [
+     2190,
+     2190
+    ]
+   }
+  },
+  "rigmark2": {
+   "code": {
+    "median": 108.487,
+    "all": [
+     107.116,
+     108.487,
+     109.687
+    ],
+    "gate": "3/3",
+    "tokens": [
+     1642,
+     1778,
+     1933
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "prose": {
+    "median": 55.509,
+    "all": [
+     56.625,
+     55.509,
+     54.172
+    ],
+    "gate": "3/3",
+    "tokens": [
+     1408,
+     1173,
+     1218
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "structured": {
+    "median": 121.73,
+    "all": [
+     119.903,
+     123.08,
+     121.73
+    ],
+    "gate": "3/3",
+    "tokens": [
+     606,
+     599,
+     607
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "cold16k": {
+    "median": 4196.2,
+    "all": [
+     4223.4,
+     4183.5,
+     4227.2,
+     4208.9,
+     4214.2,
+     4130.6,
+     4071.6,
+     4170.1,
+     4125.6,
+     4217.4
+    ]
+   },
+   "replay16k": {
+    "median": 78774.9
+   },
+   "conc": {
+    "1": [
+     72.848,
+     72.454
+    ],
+    "2": [
+     112.087,
+     114.088
+    ],
+    "4": [
+     171.755,
+     173.776
+    ],
+    "8": [
+     256.042,
+     256.621
+    ]
+   },
+   "gates": "9/9",
+   "host0": {
+    "min_available_gib": 4.06,
+    "swap_out_pages": 102625,
+    "sm_clock_mhz": [
+     2171,
+     2184
+    ]
+   },
+   "host1": {
+    "min_available_gib": 12.8,
+    "swap_out_pages": 0,
+    "sm_clock_mhz": [
+     2190,
+     2190
+    ]
+   }
+  },
+  "bench-fn-rc-spark-8x262k-b": {
+   "decode prose tok/s": {
+    "median": 61.59,
+    "all": [
+     59.62,
+     61.59,
+     61.63
+    ]
+   },
+   "decode code tok/s": {
+    "median": 92.51,
+    "all": [
+     90.48,
+     92.51,
+     92.66
+    ]
+   },
+   "decode json tok/s": {
+    "median": 71.15,
+    "all": [
+     69.74,
+     71.15,
+     71.27
+    ]
+   },
+   "cold TTFT 2K s": {
+    "median": 0.679,
+    "all": [
+     0.682,
+     0.677
+    ]
+   },
+   "cold TTFT 8K s": {
+    "median": 2.032,
+    "all": [
+     2.071,
+     1.993
+    ]
+   },
+   "cold TTFT 16K s": {
+    "median": 3.933,
+    "all": [
+     3.904,
+     3.961
+    ]
+   },
+   "cold TTFT 28K s": {
+    "median": 6.932,
+    "all": [
+     6.926,
+     6.938
+    ]
+   },
+   "C1 aggregate tok/s": {
+    "median": 58.58,
+    "all": [
+     59.74,
+     57.42
+    ]
+   },
+   "C2 aggregate tok/s": {
+    "median": 90.685,
+    "all": [
+     88.62,
+     92.75
+    ]
+   },
+   "C4 aggregate tok/s": {
+    "median": 140.345,
+    "all": [
+     139.5,
+     141.19
+    ]
+   },
+   "C8 aggregate tok/s": {
+    "median": 205.25,
+    "all": [
+     205.9,
+     204.6
+    ]
+   },
+   "warm TTFT 8K s": {
+    "median": 0.172,
+    "all": [
+     0.167,
+     0.192,
+     0.172,
+     0.17,
+     0.19
+    ]
+   },
+   "warm TTFT 20K s": {
+    "median": 0.218,
+    "all": [
+     0.227,
+     0.194,
+     0.218,
+     0.212,
+     0.218
+    ]
+   }
+  }
+ },
+ "fn-rc-spark-8x32k": {
+  "host": "pair-host",
+  "rigmark1": {
+   "code": {
+    "median": 105.433,
+    "all": [
+     105.433,
+     106.495,
+     105.009
+    ],
+    "gate": "3/3",
+    "tokens": [
+     2095,
+     1794,
+     1882
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "prose": {
+    "median": 55.78,
+    "all": [
+     55.78,
+     57.144,
+     54.024
+    ],
+    "gate": "3/3",
+    "tokens": [
+     1237,
+     1248,
+     1422
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "structured": {
+    "median": 122.137,
+    "all": [
+     123.123,
+     120.88,
+     122.137
+    ],
+    "gate": "3/3",
+    "tokens": [
+     607,
+     606,
+     599
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "cold16k": {
+    "median": 4205.9,
+    "all": [
+     4174.7,
+     4213.1,
+     4205.9,
+     4205.9,
+     4225.9,
+     4211.9,
+     4206.9,
+     4203.7,
+     4204.5,
+     4197.1
+    ]
+   },
+   "replay16k": {
+    "median": 78387.29999999999
+   },
+   "conc": {
+    "1": [
+     77.849,
+     67.76
+    ],
+    "2": [
+     115.133,
+     116.066
+    ],
+    "4": [
+     183.056,
+     169.334
+    ],
+    "8": [
+     267.225,
+     263.821
+    ]
+   },
+   "gates": "9/9",
+   "host0": {
+    "min_available_gib": 8.05,
+    "swap_out_pages": 4270,
+    "sm_clock_mhz": [
+     2164,
+     2184
+    ]
+   },
+   "host1": {
+    "min_available_gib": 16.58,
+    "swap_out_pages": 0,
+    "sm_clock_mhz": [
+     2190,
+     2190
+    ]
+   }
+  },
+  "bench-fn-rc-spark-8x32k": {
+   "decode prose tok/s": {
+    "median": 61.21,
+    "all": [
+     59.82,
+     61.21,
+     61.7
+    ]
+   },
+   "decode code tok/s": {
+    "median": 92.91,
+    "all": [
+     91.07,
+     92.91,
+     93.35
+    ]
+   },
+   "decode json tok/s": {
+    "median": 71.59,
+    "all": [
+     69.98,
+     71.63,
+     71.59
+    ]
+   },
+   "cold TTFT 2K s": {
+    "median": 0.683,
+    "all": [
+     0.694,
+     0.672
+    ]
+   },
+   "cold TTFT 8K s": {
+    "median": 1.988,
+    "all": [
+     1.986,
+     1.989
+    ]
+   },
+   "cold TTFT 16K s": {
+    "median": 3.933,
+    "all": [
+     3.915,
+     3.95
+    ]
+   },
+   "cold TTFT 28K s": {
+    "median": 6.922,
+    "all": [
+     6.929,
+     6.915
+    ]
+   },
+   "C1 aggregate tok/s": {
+    "median": 58.935,
+    "all": [
+     60.12,
+     57.75
+    ]
+   },
+   "C2 aggregate tok/s": {
+    "median": 90.965,
+    "all": [
+     88.83,
+     93.1
+    ]
+   },
+   "C4 aggregate tok/s": {
+    "median": 140.525,
+    "all": [
+     139.36,
+     141.69
+    ]
+   },
+   "C8 aggregate tok/s": {
+    "median": 206.635,
+    "all": [
+     207.2,
+     206.07
+    ]
+   },
+   "warm TTFT 8K s": {
+    "median": 0.178,
+    "all": [
+     0.178,
+     0.193,
+     0.178,
+     0.171,
+     0.167
+    ]
+   },
+   "warm TTFT 20K s": {
+    "median": 0.212,
+    "all": [
+     0.239,
+     0.196,
+     0.215,
+     0.212,
+     0.212
+    ]
+   }
+  }
+ },
+ "fn-rc-strict-8x262k": {
+  "host": "pair-host",
+  "rigmark1": {
+   "code": {
+    "median": 88.392,
+    "all": [
+     88.392,
+     89.431,
+     88.358
+    ],
+    "gate": "3/3",
+    "tokens": [
+     2095,
+     1794,
+     1882
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "prose": {
+    "median": 48.951,
+    "all": [
+     48.951,
+     50.747,
+     47.438
+    ],
+    "gate": "3/3",
+    "tokens": [
+     1237,
+     1248,
+     1422
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "structured": {
+    "median": 101.294,
+    "all": [
+     101.223,
+     101.294,
+     102.262
+    ],
+    "gate": "3/3",
+    "tokens": [
+     607,
+     606,
+     599
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "cold16k": {
+    "median": 4189.299999999999,
+    "all": [
+     4173.0,
+     4202.0,
+     4186.5,
+     4179.0,
+     4182.8,
+     4193.8,
+     4191.7,
+     4193.5,
+     4186.9,
+     4192.0
+    ]
+   },
+   "replay16k": {
+    "median": 78259.35
+   },
+   "conc": {
+    "1": [
+     69.94,
+     61.645
+    ],
+    "2": [
+     102.936,
+     103.705
+    ],
+    "4": [
+     165.071,
+     155.7
+    ],
+    "8": [
+     235.492,
+     240.536
+    ]
+   },
+   "gates": "9/9",
+   "host0": {
+    "min_available_gib": 6.23,
+    "swap_out_pages": 2,
+    "sm_clock_mhz": [
+     2171,
+     2177
+    ]
+   },
+   "host1": {
+    "min_available_gib": 13.91,
+    "swap_out_pages": 0,
+    "sm_clock_mhz": [
+     2190,
+     2190
+    ]
+   }
+  },
+  "bench-fn-rc-strict-8x262k": {
+   "decode prose tok/s": {
+    "median": 54.29,
+    "all": [
+     51.9,
+     54.29,
+     54.46
+    ]
+   },
+   "decode code tok/s": {
+    "median": 77.88,
+    "all": [
+     75.82,
+     78.04,
+     77.88
+    ]
+   },
+   "decode json tok/s": {
+    "median": 63.52,
+    "all": [
+     62.54,
+     63.52,
+     63.55
+    ]
+   },
+   "cold TTFT 2K s": {
+    "median": 0.69,
+    "all": [
+     0.699,
+     0.681
+    ]
+   },
+   "cold TTFT 8K s": {
+    "median": 2.011,
+    "all": [
+     2.005,
+     2.018
+    ]
+   },
+   "cold TTFT 16K s": {
+    "median": 3.962,
+    "all": [
+     3.936,
+     3.987
+    ]
+   },
+   "cold TTFT 28K s": {
+    "median": 6.955,
+    "all": [
+     6.962,
+     6.948
+    ]
+   },
+   "C1 aggregate tok/s": {
+    "median": 51.635,
+    "all": [
+     52.17,
+     51.1
+    ]
+   },
+   "C2 aggregate tok/s": {
+    "median": 84.055,
+    "all": [
+     83.5,
+     84.61
+    ]
+   },
+   "C4 aggregate tok/s": {
+    "median": 131.005,
+    "all": [
+     126.98,
+     135.03
+    ]
+   },
+   "C8 aggregate tok/s": {
+    "median": 190.035,
+    "all": [
+     187.42,
+     192.65
+    ]
+   },
+   "warm TTFT 8K s": {
+    "median": 0.171,
+    "all": [
+     0.166,
+     0.193,
+     0.174,
+     0.171,
+     0.167
+    ]
+   },
+   "warm TTFT 20K s": {
+    "median": 0.23,
+    "all": [
+     0.23,
+     0.195,
+     0.254,
+     0.216,
+     0.247
+    ]
+   }
+  }
+ },
+ "27b-final-default": {
+  "host": "single-host",
+  "rigmark1": {
+   "code": {
+    "median": 66.725,
+    "all": [
+     67.975,
+     66.725,
+     66.663
+    ],
+    "gate": "2/3",
+    "tokens": [
+     4096,
+     2197,
+     2125
+    ],
+    "finish": [
+     "length",
+     "stop",
+     "stop"
+    ]
+   },
+   "prose": {
+    "median": 28.297,
+    "all": [
+     28.746,
+     27.323,
+     28.297
+    ],
+    "gate": "3/3",
+    "tokens": [
+     1322,
+     1355,
+     1226
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "structured": {
+    "median": 83.022,
+    "all": [
+     82.555,
+     85.116,
+     83.022
+    ],
+    "gate": "3/3",
+    "tokens": [
+     1047,
+     988,
+     988
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "cold16k": {
+    "median": 1574.1,
+    "all": [
+     1563.1,
+     1574.6,
+     1571.7,
+     1574.3,
+     1574.1,
+     1574.9,
+     1572.7,
+     1573.2,
+     1574.3,
+     1574.1
+    ]
+   },
+   "replay16k": {
+    "median": 1574.5500000000002
+   },
+   "conc": {
+    "1": [
+     43.442,
+     44.23
+    ],
+    "2": [
+     62.373,
+     60.865
+    ],
+    "4": [
+     95.055,
+     91.874
+    ],
+    "8": [
+     108.896,
+     106.374
+    ]
+   },
+   "gates": "8/9",
+   "host0": {
+    "min_available_gib": 23.34,
+    "swap_out_pages": 0,
+    "sm_clock_mhz": [
+     2171,
+     2190
+    ]
+   }
+  },
+  "rigmark2": {
+   "code": {
+    "median": 65.625,
+    "all": [
+     65.106,
+     65.625,
+     66.785
+    ],
+    "gate": "3/3",
+    "tokens": [
+     2225,
+     2274,
+     2177
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "prose": {
+    "median": 29.292,
+    "all": [
+     29.292,
+     27.816,
+     29.686
+    ],
+    "gate": "3/3",
+    "tokens": [
+     1594,
+     1331,
+     1350
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "structured": {
+    "median": 85.157,
+    "all": [
+     85.157,
+     85.856,
+     83.746
+    ],
+    "gate": "3/3",
+    "tokens": [
+     988,
+     987,
+     1047
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "cold16k": {
+    "median": 1573.3000000000002,
+    "all": [
+     1575.1,
+     1570.5,
+     1577.5,
+     1573.4,
+     1570.0,
+     1574.2,
+     1572.6,
+     1561.9,
+     1573.2,
+     1574.7
+    ]
+   },
+   "replay16k": {
+    "median": 1575.6
+   },
+   "conc": {
+    "1": [
+     47.627,
+     44.055
+    ],
+    "2": [
+     63.653,
+     62.962
+    ],
+    "4": [
+     93.269,
+     95.184
+    ],
+    "8": [
+     107.917,
+     108.668
+    ]
+   },
+   "gates": "9/9",
+   "host0": {
+    "min_available_gib": 23.3,
+    "swap_out_pages": 0,
+    "sm_clock_mhz": [
+     2171,
+     2190
+    ]
+   }
+  },
+  "bench-27b-final-default": {
+   "decode prose tok/s": {
+    "median": 32.6,
+    "all": [
+     31.98,
+     32.68,
+     32.6
+    ]
+   },
+   "decode code tok/s": {
+    "median": 57.11,
+    "all": [
+     57.02,
+     57.2,
+     57.11
+    ]
+   },
+   "decode json tok/s": {
+    "median": 45.3,
+    "all": [
+     45.51,
+     45.1,
+     45.3
+    ]
+   },
+   "cold TTFT 2K s": {
+    "median": 1.269,
+    "all": [
+     1.274,
+     1.264
+    ]
+   },
+   "cold TTFT 8K s": {
+    "median": 4.915,
+    "all": [
+     4.886,
+     4.945
+    ]
+   },
+   "cold TTFT 16K s": {
+    "median": 10.418,
+    "all": [
+     10.414,
+     10.422
+    ]
+   },
+   "cold TTFT 28K s": {
+    "median": 20.926,
+    "all": [
+     20.953,
+     20.9
+    ]
+   },
+   "C1 aggregate tok/s": {
+    "median": 32.79,
+    "all": [
+     34.4,
+     31.18
+    ]
+   },
+   "C2 aggregate tok/s": {
+    "median": 52.175,
+    "all": [
+     53.18,
+     51.17
+    ]
+   },
+   "C4 aggregate tok/s": {
+    "median": 74.845,
+    "all": [
+     73.25,
+     76.44
+    ]
+   },
+   "C8 aggregate tok/s": {
+    "median": 92.855,
+    "all": [
+     91.29,
+     94.42
+    ]
+   },
+   "warm TTFT 8K s": {
+    "median": 0.283,
+    "all": [
+     0.31,
+     0.283,
+     0.279,
+     0.285,
+     0.279
+    ]
+   },
+   "warm TTFT 20K s": {
+    "median": 0.341,
+    "all": [
+     0.341,
+     0.339,
+     0.353,
+     0.343,
+     0.335
+    ]
+   }
+  }
+ },
+ "27b-rc-default": {
+  "host": "single-host",
+  "rigmark1": {
+   "code": {
+    "median": 64.002,
+    "all": [
+     60.066,
+     65.903,
+     64.002
+    ],
+    "gate": "0/3",
+    "tokens": [
+     1680,
+     1636,
+     1691
+    ],
+    "finish": [
+     "length",
+     "length",
+     "length"
+    ]
+   },
+   "prose": {
+    "median": 28.562,
+    "all": [
+     28.681,
+     27.311,
+     28.562
+    ],
+    "gate": "3/3",
+    "tokens": [
+     1322,
+     1355,
+     1226
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "structured": {
+    "median": 79.447,
+    "all": [
+     78.725,
+     80.562,
+     79.447
+    ],
+    "gate": "0/3",
+    "tokens": [
+     543,
+     484,
+     484
+    ],
+    "finish": [
+     "length",
+     "length",
+     "length"
+    ]
+   },
+   "cold16k": {
+    "median": 1575.55,
+    "all": [
+     1577.9,
+     1576.7,
+     1575.6,
+     1577.1,
+     1573.8,
+     1572.6,
+     1573.3,
+     1576.3,
+     1575.5,
+     1568.2
+    ]
+   },
+   "replay16k": {
+    "median": 1575.8000000000002
+   },
+   "conc": {
+    "1": [
+     43.068,
+     44.182
+    ],
+    "2": [
+     61.024,
+     59.996
+    ],
+    "4": [
+     94.347,
+     91.473
+    ],
+    "8": [
+     109.796,
+     107.55
+    ]
+   },
+   "gates": "3/9",
+   "host0": {
+    "min_available_gib": 23.71,
+    "swap_out_pages": 0,
+    "sm_clock_mhz": [
+     2171,
+     2190
+    ]
+   }
+  },
+  "rigmark2": {
+   "code": {
+    "median": 65.158,
+    "all": [
+     65.158,
+     61.587,
+     65.907
+    ],
+    "gate": "1/3",
+    "tokens": [
+     2225,
+     1120,
+     1732
+    ],
+    "finish": [
+     "stop",
+     "length",
+     "length"
+    ]
+   },
+   "prose": {
+    "median": 29.208,
+    "all": [
+     29.208,
+     27.862,
+     29.723
+    ],
+    "gate": "3/3",
+    "tokens": [
+     1594,
+     1331,
+     1350
+    ],
+    "finish": [
+     "stop",
+     "stop",
+     "stop"
+    ]
+   },
+   "structured": {
+    "median": 79.306,
+    "all": [
+     79.306,
+     81.441,
+     78.81
+    ],
+    "gate": "0/3",
+    "tokens": [
+     484,
+     483,
+     543
+    ],
+    "finish": [
+     "length",
+     "length",
+     "length"
+    ]
+   },
+   "cold16k": {
+    "median": 1574.85,
+    "all": [
+     1575.4,
+     1575.5,
+     1575.6,
+     1573.8,
+     1574.3,
+     1578.6,
+     1576.7,
+     1574.0,
+     1574.0,
+     1572.3
+    ]
+   },
+   "replay16k": {
+    "median": 1576.1
+   },
+   "conc": {
+    "1": [
+     47.739,
+     44.202
+    ],
+    "2": [
+     63.142,
+     62.985
+    ],
+    "4": [
+     93.713,
+     93.249
+    ],
+    "8": [
+     107.819,
+     109.14
+    ]
+   },
+   "gates": "4/9",
+   "host0": {
+    "min_available_gib": 23.95,
+    "swap_out_pages": 0,
+    "sm_clock_mhz": [
+     2171,
+     2190
+    ]
+   }
+  },
+  "bench-27b-rc-default": {
+   "decode prose tok/s": {
+    "median": 32.58,
+    "all": [
+     31.9,
+     32.58,
+     32.61
+    ]
+   },
+   "decode code tok/s": {
+    "median": 56.98,
+    "all": [
+     56.96,
+     57.03,
+     56.98
+    ]
+   },
+   "decode json tok/s": {
+    "median": 45.14,
+    "all": [
+     45.61,
+     45.14,
+     45.14
+    ]
+   },
+   "cold TTFT 2K s": {
+    "median": 1.268,
+    "all": [
+     1.27,
+     1.266
+    ]
+   },
+   "cold TTFT 8K s": {
+    "median": 4.891,
+    "all": [
+     4.885,
+     4.898
+    ]
+   },
+   "cold TTFT 16K s": {
+    "median": 10.412,
+    "all": [
+     10.395,
+     10.429
+    ]
+   },
+   "cold TTFT 28K s": {
+    "median": 20.883,
+    "all": [
+     20.862,
+     20.903
+    ]
+   },
+   "C1 aggregate tok/s": {
+    "median": 32.765,
+    "all": [
+     34.43,
+     31.1
+    ]
+   },
+   "C2 aggregate tok/s": {
+    "median": 52.205,
+    "all": [
+     53.17,
+     51.24
+    ]
+   },
+   "C4 aggregate tok/s": {
+    "median": 75.16,
+    "all": [
+     73.65,
+     76.67
+    ]
+   },
+   "C8 aggregate tok/s": {
+    "median": 93.6,
+    "all": [
+     91.96,
+     95.24
+    ]
+   },
+   "warm TTFT 8K s": {
+    "median": 0.281,
+    "all": [
+     0.307,
+     0.283,
+     0.279,
+     0.281,
+     0.278
+    ]
+   },
+   "warm TTFT 20K s": {
+    "median": 0.334,
+    "all": [
+     0.326,
+     0.333,
+     0.343,
+     0.334,
+     0.342
+    ]
+   }
+  }
+ }
+}

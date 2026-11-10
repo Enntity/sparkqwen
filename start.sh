@@ -26,8 +26,8 @@ esac
 : "${WORKER:?set WORKER in .env to the ssh destination of the other Spark (see .env.example)}"
 [[ $WORKER != -* ]] || { echo "WORKER must be an ssh destination, not an option: $WORKER" >&2; exit 2; }
 MODEL_ROOT=${MODEL_ROOT:-$HOME/models/sparkqwen}
-PROFILE=${PROFILE:-8x32k}
-MODE=${MODE:-strict}
+PROFILE=${PROFILE:-8x262k}
+MODE=${MODE:-spark}
 if [[ ${1:-} == --mode ]]; then
   [[ $# -ge 2 ]] || { echo '--mode requires strict or spark' >&2; exit 2; }
   MODE=$2; shift 2
@@ -154,8 +154,12 @@ serve() {
           ${PREFIX_CACHE_DIR:+--prefix-cache-dir "$PREFIX_CACHE_DIR"} ${PREFIX_CACHE_GB:+--prefix-cache-gb "$PREFIX_CACHE_GB"})
   say "start rank 1 on $WORKER, then rank 0 here (leader $address, profile $PROFILE, mode $MODE)"
   stop
-  script_on_worker install/start-node.sh --rank 1 --fabric-hca "$hca1" --fabric-interface "$iface1" --no-fabric-siblings "${common[@]}"
-  install/start-node.sh --rank 0 --fabric-hca "$hca0" --fabric-interface "$iface0" --no-fabric-siblings "${common[@]}"
+  script_on_worker install/start-node.sh --rank 1 --fabric-hca "$hca1" --fabric-interface "$iface1" --no-fabric-siblings \
+    ${WORKER_SOCKET_INTERFACE:+--socket-interface "$WORKER_SOCKET_INTERFACE"} \
+    ${WORKER_GID_INDEX:+--gid-index "$WORKER_GID_INDEX"} "${common[@]}"
+  install/start-node.sh --rank 0 --fabric-hca "$hca0" --fabric-interface "$iface0" --no-fabric-siblings \
+    ${LEADER_SOCKET_INTERFACE:+--socket-interface "$LEADER_SOCKET_INTERFACE"} \
+    ${LEADER_GID_INDEX:+--gid-index "$LEADER_GID_INDEX"} "${common[@]}"
   say "loading (a few minutes; the first start also compiles CUDA kernels)"
   for ((i = 0; i < 90; i++)); do
     if curl -sf "$API/health" >/dev/null; then

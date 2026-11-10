@@ -1,0 +1,7 @@
+checkout: SparkQwen 0.7.0
+running rank 0: version=0.7.0 image=sha256:e79f1904dfa9d5b07ab0cb6fc08cbaf17cda774bf471a6625e6e1b810f07b213
+running rank 1: version=0.7.0 image=sha256:e79f1904dfa9d5b07ab0cb6fc08cbaf17cda774bf471a6625e6e1b810f07b213
+image  ghcr.io/enntity/atlas-sparkqwen:5b9fecbcf5d9
+rank 0 running
+rank 1 running (10.100.112.2)
+health ok (http://127.0.0.1:8893)

@@ -1,0 +1,4 @@
+2026-11-10T16:12:10Z up (fn MODE=spark PROFILE=8x262k DRAFTER= IMAGE=)
+2026-11-10T16:12:44Z start exit 0: [1m== ready: http://127.0.0.1:8893/v1 model qwen3.8-flash-next-atlas[0m
+2026-11-10T16:12:45Z step keep
+2026-11-10T16:12:45Z left running
