@@ -1,0 +1,54 @@
+2026-11-10T07:30:33.191286Z  INFO spark::scheduler::phase_start_prefills: Prefill chunk 0/21368: 16448/21368 tokens
+2026-11-10T07:30:37.498048Z  INFO spark_model::model::trait_impl::prefill_b::finalize_last: Saved SSM snapshot 2 for 21368 tokens (1336 blocks) [chunk]
+2026-11-10T07:30:37.498168Z  INFO spark::scheduler::phase_continue_prefills::run_standard: Prefill chunk 21368/21368 tokens
+2026-11-10T07:30:37.635063Z  INFO spark::scheduler::phase_continue_prefills::run_standard: Prefill first token: 760
+2026-11-10T07:30:37.635090Z  INFO spark::scheduler::mtp_accept_debug: Done: 1 tokens (length) 204918.0 tok/s, TTFT=14368.9ms, serial=0.00 mtp=0.00 p1=0.000 mean_na=0.000 tok_step=1.000 regime_reprobes=0 depth=k5 depth_switches=0 acc=-,-,-,-,-,-,- surv=0.00,0.00,0.00,0.00,0.00,0.00,0.00
+2026-11-10T07:30:37.674738Z  INFO spark_model::model::trait_impl::prefill_b::prefix_lookup: Marconi intermediate hit: restored from checkpoint at token 21344 (skipping 21344 tokens, replaying 24 SSM tokens to reach 21368; 16 of those are the anchor->match gap to 21360)
+2026-11-10T07:30:37.674772Z  INFO spark::scheduler::phase_start_prefills: Prefill chunk 0/21368: 16448/21368 tokens
+2026-11-10T07:30:37.700282Z  INFO spark_model::model::trait_impl::prefill_b::finalize_last: Saved SSM snapshot 2 for 21368 tokens (1336 blocks) [chunk]
+2026-11-10T07:30:37.700391Z  INFO spark::scheduler::phase_continue_prefills::run_standard: Prefill chunk 21368/21368 tokens
+2026-11-10T07:30:37.848214Z  INFO spark::scheduler::phase_continue_prefills::run_standard: Prefill first token: 760
+2026-11-10T07:30:45.981333Z  INFO spark::scheduler::mtp_accept_debug: Done: 300 tokens (length) 36.9 tok/s, TTFT=185.1ms, serial=0.00 mtp=1.00 p1=0.814 mean_na=2.558 tok_step=3.558 regime_reprobes=0 depth=k5 depth_switches=0 acc=-,-,-,-,-,-,- surv=0.81,0.56,0.43,0.26,0.22,0.16,0.12
+2026-11-10T07:30:46.021921Z  INFO spark_model::model::trait_impl::prefill_b::prefix_lookup: Marconi intermediate hit: restored from checkpoint at token 21344 (skipping 21344 tokens, replaying 24 SSM tokens to reach 21368; 16 of those are the anchor->match gap to 21360)
+2026-11-10T07:30:46.021948Z  INFO spark::scheduler::phase_start_prefills: Prefill chunk 0/21368: 16448/21368 tokens
+2026-11-10T07:30:46.046742Z  INFO spark_model::model::trait_impl::prefill_b::finalize_last: Saved SSM snapshot 4 for 21368 tokens (1336 blocks) [chunk]
+2026-11-10T07:30:46.046845Z  INFO spark::scheduler::phase_continue_prefills::run_standard: Prefill chunk 21368/21368 tokens
+2026-11-10T07:30:46.195149Z  INFO spark::scheduler::phase_continue_prefills::run_standard: Prefill first token: 760
+2026-11-10T07:31:08.691529Z  INFO spark::scheduler::mtp_accept_debug: Done: 300 tokens (length) 13.3 tok/s, TTFT=185.6ms, serial=1.00 mtp=0.00 p1=0.000 mean_na=0.000 tok_step=1.000 regime_reprobes=0 depth=k5 depth_switches=0 acc=-,-,-,-,-,-,- surv=0.00,0.00,0.00,0.00,0.00,0.00,0.00
+2026-11-10T07:31:08.855573Z  INFO spark_model::model::trait_impl::prefill_b::finalize_last: Saved SSM snapshot 7 for 35 tokens (3 blocks) [chunk]
+2026-11-10T07:31:08.959471Z  INFO spark::scheduler::prefill_a_step: Prefill first token: 760
+2026-11-10T07:31:50.372944Z  INFO spark::scheduler::mtp_accept_debug: Done: 600 tokens (length) 14.5 tok/s, TTFT=262.5ms, serial=1.00 mtp=0.00 p1=0.000 mean_na=0.000 tok_step=1.000 regime_reprobes=0 depth=k5 depth_switches=0 acc=-,-,-,-,-,-,- surv=0.00,0.00,0.00,0.00,0.00,0.00,0.00
+2026-11-10T07:31:50.549392Z  INFO spark_model::model::trait_impl::prefill_b::finalize_last: Saved SSM snapshot 11 for 36 tokens (3 blocks) [chunk]
+2026-11-10T07:31:50.652163Z  INFO spark::scheduler::prefill_a_step: Prefill first token: 760
+2026-11-10T07:32:32.036674Z  INFO spark::scheduler::mtp_accept_debug: Done: 600 tokens (length) 14.5 tok/s, TTFT=273.6ms, serial=1.00 mtp=0.00 p1=0.000 mean_na=0.000 tok_step=1.000 regime_reprobes=0 depth=k5 depth_switches=0 acc=-,-,-,-,-,-,- surv=0.00,0.00,0.00,0.00,0.00,0.00,0.00
+2026-11-10T07:32:32.203435Z  INFO spark_model::model::trait_impl::prefill_b::finalize_last: Saved SSM snapshot 6 for 35 tokens (3 blocks) [chunk]
+2026-11-10T07:32:32.305913Z  INFO spark::scheduler::prefill_a_step: Prefill first token: 760
+2026-11-10T07:32:32.465584Z  INFO spark_model::model::trait_impl::prefill_b::finalize_last: Saved SSM snapshot 10 for 36 tokens (3 blocks) [chunk]
+2026-11-10T07:32:32.567644Z  INFO spark::scheduler::prefill_a_step: Prefill first token: 760
+2026-11-10T07:32:32.718163Z  INFO spark_model::model::trait_impl::prefill_b::prefix_lookup: Marconi intermediate hit: restored from checkpoint at token 21344 (skipping 21344 tokens, replaying 24 SSM tokens to reach 21368; 16 of those are the anchor->match gap to 21360)
+2026-11-10T07:32:32.718187Z  INFO spark::scheduler::phase_start_prefills: Prefill chunk 0/21368: 16384/21368 tokens
+2026-11-10T07:32:36.701407Z  INFO spark::scheduler::phase_continue_prefills::run_standard: Mixed forward: prefill 21368/21368 tokens + 2 decode
+2026-11-10T07:32:36.867751Z  INFO spark::scheduler::phase_continue_prefills::run_standard: Mixed prefill first token: 760
+2026-11-10T07:33:01.618995Z  INFO spark::scheduler::mtp_accept_debug: Done: 600 tokens (length) 20.7 tok/s, TTFT=261.7ms, serial=0.00 mtp=1.00 p1=0.872 mean_na=3.784 tok_step=4.784 regime_reprobes=0 depth=k5 depth_switches=0 acc=-,-,-,-,-,-,- surv=0.87,0.73,0.61,0.54,0.44,0.34,0.25
+2026-11-10T07:33:03.896712Z  INFO spark::scheduler::mtp_accept_debug: Done: 600 tokens (length) 19.0 tok/s, TTFT=262.5ms, serial=0.00 mtp=1.00 p1=0.878 mean_na=3.309 tok_step=4.309 regime_reprobes=0 depth=k5 depth_switches=0 acc=-,-,-,-,-,-,- surv=0.88,0.71,0.56,0.42,0.32,0.24,0.17
+2026-11-10T07:33:16.107975Z  INFO spark::scheduler::mtp_accept_debug: Done: 300 tokens (length) 7.6 tok/s, TTFT=4155.0ms, serial=0.00 mtp=1.00 p1=0.000 mean_na=0.000 tok_step=1.000 regime_reprobes=0 depth=k5 depth_switches=0 acc=-,-,-,-,-,-,- surv=0.00,0.00,0.00,0.00,0.00,0.00,0.00
+2026-11-10T07:33:16.155059Z  INFO spark_model::model::trait_impl::prefill_b::finalize_last: Saved SSM snapshot 19 for 31 tokens (2 blocks) [chunk]
+2026-11-10T07:33:16.255667Z  INFO spark::scheduler::prefill_a_step: Prefill first token: 760
+2026-11-10T07:33:16.405699Z  INFO spark_model::model::trait_impl::prefill_b::finalize_last: Saved SSM snapshot 20 for 31 tokens (2 blocks) [chunk]
+2026-11-10T07:33:16.507058Z  INFO spark::scheduler::prefill_a_step: Prefill first token: 760
+2026-11-10T07:33:26.534794Z  INFO spark::scheduler::phase_start_prefills: Prefill chunk 0/23940: 16384/23940 tokens
+2026-11-10T07:33:32.983172Z  INFO spark::scheduler::phase_continue_prefills::run_standard: Mixed forward: prefill 23940/23940 tokens + 2 decode
+2026-11-10T07:33:33.242234Z  INFO spark::scheduler::phase_continue_prefills::run_standard: Mixed prefill first token: 760
+2026-11-10T07:33:46.947743Z  INFO spark::scheduler::mtp_accept_debug: Done: 300 tokens (length) 21.9 tok/s, TTFT=16599.3ms, serial=0.00 mtp=1.00 p1=0.766 mean_na=2.181 tok_step=3.181 regime_reprobes=0 depth=k5 depth_switches=0 acc=-,-,-,-,-,-,- surv=0.77,0.52,0.34,0.22,0.17,0.10,0.06
+2026-11-10T07:33:51.257731Z  INFO spark::scheduler::mtp_accept_debug: Done: 600 tokens (length) 17.1 tok/s, TTFT=140.5ms, serial=0.00 mtp=1.00 p1=0.864 mean_na=3.545 tok_step=4.545 regime_reprobes=0 depth=k5 depth_switches=0 acc=-,-,-,-,-,-,- surv=0.86,0.71,0.60,0.47,0.38,0.29,0.23
+2026-11-10T07:33:54.795180Z  INFO spark::scheduler::mtp_accept_debug: Done: 600 tokens (length) 15.7 tok/s, TTFT=142.7ms, serial=0.00 mtp=1.00 p1=0.785 mean_na=2.488 tok_step=3.488 regime_reprobes=0 depth=k5 depth_switches=0 acc=-,-,-,-,-,-,- surv=0.78,0.58,0.38,0.30,0.20,0.13,0.10
+--- first drafter failures
+2026-11-10T07:32:36.897075Z  WARN spark_model::layers::dflash_head::propose: DFlash forward_block failed, falling back to no-spec: DSpark graph identity requires nonzero ctx_ptr
+2026-11-10T07:32:36.897080Z ERROR spark::scheduler::mtp_step::bootstrap: DFlash bootstrap propose: DSpark graph identity requires nonzero ctx_ptr
+2026-11-10T07:32:36.976143Z  WARN spark_model::layers::dflash_head::propose: DFlash forward_block failed, falling back to no-spec: DSpark graph identity requires nonzero ctx_ptr
+2026-11-10T07:32:36.976149Z ERROR spark::scheduler::mtp_step::bootstrap: run_mtp_propose_multi: DSpark graph identity requires nonzero ctx_ptr
+--- counts
+Mixed forward: 2
+requires nonzero ctx_ptr: 1194
+copy_d2d_async failed: 0
+other ERROR lines: 0
