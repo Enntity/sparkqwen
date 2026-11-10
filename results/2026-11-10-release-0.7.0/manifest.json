@@ -16,6 +16,8 @@
    "0.7.0"
   ],
   "local_image_id": "sha256:e79f1904dfa9d5b07ab0cb6fc08cbaf17cda774bf471a6625e6e1b810f07b213",
+  "registry_digest": "sha256:e79f1904dfa9d5b07ab0cb6fc08cbaf17cda774bf471a6625e6e1b810f07b213",
+  "arm64_manifest": "sha256:fadf4c5eb2cd62b4a2fe464067b3012cfb7fa956dde7e31b594f51a43a4b8081",
   "engine_binary_sha256": "50e9fd5bd8efe93090738f05c4646e9c59190ff733bd245a905131e1420346ee",
   "cpu_tests": {
    "passed": 8483,
@@ -35,6 +37,8 @@
    "0.7.0-27b"
   ],
   "local_image_id": "sha256:954b26f12ffee271ad2b6c7b15d74d422804ba5dc2a853942bcf050b1ef64bc9",
+  "registry_digest": "sha256:954b26f12ffee271ad2b6c7b15d74d422804ba5dc2a853942bcf050b1ef64bc9",
+  "arm64_manifest": "sha256:083a5759c6958fdf8f58f44080d1122799edc48e9b2a075d0c3d165d805df5ac",
   "engine_binary_sha256": "c333ddbff7f1caf6c9d08651d0765e45c4d061bf0f30c5817cf00c63d391ea1e",
   "cpu_tests": {
    "passed": 8581,
@@ -44,5 +48,5 @@
   "gpu_run_of_this_image": true,
   "qualification_status": "candidate"
  },
- "note": "Registry digests are recorded in the GitHub release once the images are pushed."
+ "anonymous_registry_verified": true
 }

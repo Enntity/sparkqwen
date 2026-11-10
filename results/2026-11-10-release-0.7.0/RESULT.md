@@ -11,10 +11,17 @@ has every repetition of every arm; [`raw/`](raw/) has the receipts.
 
 | | Flash-Next | Qwen3.8-27B |
 |---|---|---|
-| Tag (install tree `5b9fecbc`) | `5b9fecbcf5d9` | `5b9fecbcf5d9-27b` |
+| Tags (install tree `5b9fecbc`) | `5b9fecbcf5d9`, `0.7.0` | `5b9fecbcf5d9-27b`, `0.7.0-27b` |
+| Registry digest | `sha256:e79f1904dfa9d5b07ab0cb6fc08cbaf17cda774bf471a6625e6e1b810f07b213` | `sha256:954b26f12ffee271ad2b6c7b15d74d422804ba5dc2a853942bcf050b1ef64bc9` |
+| arm64 manifest | `sha256:fadf4c5eb2cd62b4a2fe464067b3012cfb7fa956dde7e31b594f51a43a4b8081` | `sha256:083a5759c6958fdf8f58f44080d1122799edc48e9b2a075d0c3d165d805df5ac` |
 | Engine | Enntity/atlas `spark` `8a193a86` | Enntity/atlas `q27/conc` `6a7091b3` |
 | Engine binary SHA256 | `50e9fd5b…0346ee` | `c333ddbf…91ea1e` |
 | Build tests | 8,483 passed, 0 failed | 8,581 passed, 0 failed |
+
+The four tags pull anonymously and resolve to these digests, which are also
+the image IDs the arms below recorded. The registry's answers are
+[here](raw/registry-5b9fecbcf5d9.json) and
+[here](raw/registry-5b9fecbcf5d9-27b.json).
 
 The first release candidate (install tree `be82343b`) had the same Flash-Next
 engine binary, byte for byte, so its Flash-Next arms below measure the
