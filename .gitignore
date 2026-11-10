@@ -14,3 +14,8 @@ bench/*.jsonl
 *.key
 *.pem
 .claude/
+
+# Finder metadata. install/.DS_Store was committed by mistake in 0.7.0 and is
+# part of that image tag (the install/ tree hash); remove it with the next
+# image build, not before.
+.DS_Store
