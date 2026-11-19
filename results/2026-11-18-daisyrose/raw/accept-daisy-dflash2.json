@@ -1,0 +1,67 @@
+{
+ "tag": "daisy-dflash2",
+ "model": "daisyrose-27b-atlas",
+ "max_tokens": 1024,
+ "rows": [
+  {
+   "kind": "prose",
+   "completion": 1024,
+   "accepted": 655,
+   "tokens_a_step": 2.775,
+   "tok_s": 28.2,
+   "finish": "length",
+   "reasoning_chars": 3974,
+   "content_head": "The bottle washed up on Tuesday, wedged between the black rocks below the lighthouse like a green tooth in a dark mouth."
+  },
+  {
+   "kind": "code",
+   "completion": 1024,
+   "accepted": 823,
+   "tokens_a_step": 5.095,
+   "tok_s": 51.3,
+   "finish": "length",
+   "reasoning_chars": 2240,
+   "content_head": "```python\n\"\"\"LRU (Least Recently Used) cache with O(1) get and put operations.\n\nUses a hash map for O(1) key lookup and "
+  },
+  {
+   "kind": "json",
+   "completion": 1024,
+   "accepted": 753,
+   "tokens_a_step": 3.779,
+   "tok_s": 39.1,
+   "finish": "length",
+   "reasoning_chars": 578,
+   "content_head": "[\n  {\n    \"title\": \"The Cartographer's Last Meridian\",\n    \"author\": \"Elara Voss\",\n    \"year\": 2019,\n    \"isbn\": \"978-0-"
+  },
+  {
+   "kind": "gotests",
+   "completion": 1024,
+   "accepted": 799,
+   "tokens_a_step": 4.551,
+   "tok_s": 46.2,
+   "finish": "length",
+   "reasoning_chars": 2383,
+   "content_head": "```go\npackage duration\n\nimport (\n\t\"fmt\"\n\t\"strconv\"\n\t\"strings\"\n\t\"time\"\n)\n\n// ParseDuration parses a duration string like "
+  },
+  {
+   "kind": "math",
+   "completion": 938,
+   "accepted": 782,
+   "tokens_a_step": 6.013,
+   "tok_s": 61.8,
+   "finish": "stop",
+   "reasoning_chars": 773,
+   "content_head": "# Filling the Tank \u2013 Step-by-Step\n\n## Given\n\n| Item | Value |\n|---|---|\n| Initial volume | 40 L |\n| Tank capacity | 400 "
+  },
+  {
+   "kind": "explain",
+   "completion": 1024,
+   "accepted": 721,
+   "tokens_a_step": 3.38,
+   "tok_s": 35.5,
+   "finish": "length",
+   "reasoning_chars": 437,
+   "content_head": "# TCP Congestion Control\n\nTCP congestion control is a set of algorithms that let a sender dynamically adjust its sending"
+  }
+ ]
+}

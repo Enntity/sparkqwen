@@ -249,9 +249,52 @@ class SingleSpark(unittest.TestCase):
         start = (HERE/'start-27b.sh').read_text()
         self.assertIn('overlay=$checkpoint+tandem-gdn-attn', start)
         self.assertIn('python3 install/tandem_overlay.py install/checkpoint-27b.json "$checkpoint" "$weights" "$overlay"', start)
-        self.assertIn('-e MODEL_PATH="$overlay"', start)
+        self.assertIn('model=$overlay; [[ $CHECKPOINT == qwen ]] || model=$checkpoint', start)
+        self.assertIn('-e MODEL_PATH="$model"', start)
         for path in ('$checkpoint', '$overlay', '$draft'):
             self.assertIn(f'--mount "type=bind,src={path},dst={path},readonly"', start)
+
+    DAISYROSE_REVISION = 'c4d85c5dfad123426555c22f4e24bb15381f0bdb'
+
+    def test_daisyrose_pin_is_whole(self):
+        d = json.loads((HERE/'checkpoint-27b.json').read_text())['daisyrose']
+        self.assertEqual(d['repository'], 'RadixArk/DaisyRose-27B-NVFP4')
+        self.assertEqual(d['revision'], self.DAISYROSE_REVISION)
+        self.assertEqual(d['license'], 'apache-2.0')
+        self.assertEqual(d['base_model'], 'Qwen/Qwen3.8-27B')
+        self.assertEqual(d['served_model_name'], 'daisyrose-27b-atlas')
+        # TandemLLM's projections are quantized from base Qwen: laid over
+        # DaisyRose they would undo part of its finetune.
+        self.assertNotIn('overlay', d)
+
+    def test_daisyrose_is_attributed(self):
+        for doc in ('NOTICE', 'docs/LICENSING.md', 'README.md'):
+            text = ' '.join((ROOT/doc).read_text().split())
+            with self.subTest(doc=doc):
+                self.assertIn('RadixArk/DaisyRose-27B-NVFP4', text)
+                self.assertRegex(text, r'DaisyRose.{0,300}Apache(-2\.0| License 2\.0)')
+        self.assertIn(self.DAISYROSE_REVISION, (ROOT/'NOTICE').read_text())
+
+    def start_status(self, **env):
+        with tempfile.TemporaryDirectory() as root:
+            base = {k: v for k, v in os.environ.items() if k not in ('CHECKPOINT', 'DRAFTER', 'PROFILE')}
+            return subprocess.run(['bash', str(HERE/'start-27b.sh'), 'status'], capture_output=True, text=True,
+                                  env={**base, 'IMAGE': 'sparkqwen:test', 'MODEL_ROOT': root, **env})
+
+    def test_start_picks_the_checkpoint(self):
+        qwen = self.start_status()
+        self.assertEqual(qwen.returncode, 0, qwen.stderr)
+        self.assertIn('checkpoint nvidia/Qwen3.8-27B-NVFP4 @ 482ca0f3832238542f8f5295dde86b5f22711d80'
+                      ' as qwen3.8-27b-atlas', qwen.stdout)
+        self.assertRegex(qwen.stdout, r'weights \S+/nvidia--Qwen3\.8-27B-NVFP4\+tandem-gdn-attn\n')
+        daisy = self.start_status(CHECKPOINT='daisyrose')
+        self.assertEqual(daisy.returncode, 0, daisy.stderr)
+        self.assertIn(f'checkpoint RadixArk/DaisyRose-27B-NVFP4 @ {self.DAISYROSE_REVISION}'
+                      ' as daisyrose-27b-atlas', daisy.stdout)
+        self.assertRegex(daisy.stdout, r'weights \S+/RadixArk--DaisyRose-27B-NVFP4\n')  # no overlay
+        bad = self.start_status(CHECKPOINT='tandem')
+        self.assertEqual(bad.returncode, 2)
+        self.assertIn('CHECKPOINT must be qwen or daisyrose', bad.stderr)
 
 
 def write_st(path, tensors):

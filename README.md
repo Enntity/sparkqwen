@@ -422,6 +422,21 @@ is not served from the prefix cache yet (a follow-up turn is).
 
 They are candidates: not yet qualified.
 
+`CHECKPOINT=daisyrose` serves
+[RadixArk/DaisyRose-27B-NVFP4](https://huggingface.co/RadixArk/DaisyRose-27B-NVFP4)
+instead, as `daisyrose-27b-atlas` on the same port with the same profiles and
+drafters. DaisyRose-27B is RadixArk's reinforcement-learning finetune of
+Qwen3.8-27B (Apache-2.0); its NVFP4 checkpoint matches NVIDIA's tensor for
+tensor and uses the same chat template, so the engine and image are unchanged.
+It is served as published, without TandemLLM's projections: those are quantized
+from base Qwen and would undo part of the finetune, so a decode step reads the
+checkpoint's FP8 Gated DeltaNet again. The drafters were trained on base Qwen
+and draft as well for DaisyRose: on six greedy prompts, 3.97 tokens a verify
+step with DFlash2 (base 3.84) and 4.19 with DSpine (base 4.14), with DFlash2
+decode 8% slower than the default checkpoint (43.7 against 47.7 tok/s). Both
+answered 52 of 52 quality-probe items
+([receipts and limits](results/2026-11-18-daisyrose/RESULT.md)).
+
 ## Other ways to run it
 
 **By hand:** every step of `./start.sh` as a separate command, in
