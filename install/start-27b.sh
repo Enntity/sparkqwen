@@ -48,7 +48,7 @@ DRAFTER=${DRAFTER:-dflash2}
 # $checkpoint; the checkpoint as published when its pin names no overlay.
 # TandemLLM's projections are quantized from base Qwen, so they never go over
 # DaisyRose.
-overlay= model=$checkpoint
+overlay='' model=$checkpoint
 if [[ $OVERLAY_REPO != - ]]; then
   weights=$MODEL_ROOT/${OVERLAY_REPO/\//--}
   overlay=$checkpoint+$OVERLAY_PREFIX-gdn-attn
