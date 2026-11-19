@@ -27,7 +27,12 @@ NAME=atlas-sparkqwen-27b
 API=http://127.0.0.1:8893
 CHECKPOINT=${CHECKPOINT:-qwen}
 [[ $CHECKPOINT =~ ^(qwen|daisyrose)$ ]] || { echo 'CHECKPOINT must be qwen or daisyrose' >&2; exit 2; }
-read -r CHECKPOINT_REPO CHECKPOINT_REVISION SERVED DRAFT_REPO DRAFT_REVISION OVERLAY_REPO OVERLAY_REVISION OVERLAY_FILES DSPINE_REPO DSPINE_REVISION DSPINE_FILES < <(python3 -c 'import json,sys; m=json.load(open(sys.argv[1])); t=m if sys.argv[2]=="qwen" else m[sys.argv[2]]; o=m["overlay"]; d=m["dspine"]; print(t["repository"], t["revision"], t["served_model_name"], m["draft"]["repository"], m["draft"]["revision"], o["repository"], o["revision"], ",".join(o["files"]), d["repository"], d["revision"], ",".join(d["files"]))' install/checkpoint-27b.json "$CHECKPOINT")
+# Each checkpoint's pin may name an overlay of NVFP4 GDN and attention
+# projections quantized from its own BF16 release; "-" when it has none.
+read -r CHECKPOINT_REPO CHECKPOINT_REVISION SERVED DRAFT_REPO DRAFT_REVISION OVERLAY_SECTION OVERLAY_REPO OVERLAY_REVISION OVERLAY_FILES OVERLAY_PREFIX DSPINE_REPO DSPINE_REVISION DSPINE_FILES < <(python3 -c 'import json,sys
+m = json.load(open(sys.argv[1])); q = sys.argv[2] == "qwen"; t = m if q else m[sys.argv[2]]; o = t.get("overlay"); d = m["dspine"]
+ov = [("overlay" if q else sys.argv[2] + ".overlay"), o["repository"], o["revision"], ",".join(o["files"]), o.get("prefix", "tandem")] if o else ["-"] * 5
+print(t["repository"], t["revision"], t["served_model_name"], m["draft"]["repository"], m["draft"]["revision"], *ov, d["repository"], d["revision"], ",".join(d["files"]))' install/checkpoint-27b.json "$CHECKPOINT")
 IMAGE=${IMAGE:-$(install/build.sh --tag)}
 mkdir -p "$MODEL_ROOT"; MODEL_ROOT=$(realpath "$MODEL_ROOT")
 checkpoint=$MODEL_ROOT/${CHECKPOINT_REPO/\//--}
@@ -38,13 +43,17 @@ profile_file=$PROFILE; [[ -f $profile_file ]] || profile_file=install/profiles/$
 DRAFTER=${DRAFTER:-$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1])).get("drafter", "dflash2"))' "$profile_file")}
 DRAFTER=${DRAFTER:-dflash2}
 [[ $DRAFTER =~ ^(dflash2|dspine|both)$ ]] || { echo 'DRAFTER must be dflash2, dspine or both' >&2; exit 2; }
-weights=$MODEL_ROOT/${OVERLAY_REPO/\//--}
-# The served weights. qwen: NVIDIA's files linked, TandemLLM's GDN and attention
-# projections re-keyed in (install/tandem_overlay.py), next to $checkpoint.
-# daisyrose: the checkpoint as published; TandemLLM's projections are quantized
-# from base Qwen and would undo part of DaisyRose's finetune.
-overlay=$checkpoint+tandem-gdn-attn
-model=$overlay; [[ $CHECKPOINT == qwen ]] || model=$checkpoint
+# The served weights: the checkpoint's files linked with its overlay's GDN and
+# attention projections re-keyed in (install/tandem_overlay.py), next to
+# $checkpoint; the checkpoint as published when its pin names no overlay.
+# TandemLLM's projections are quantized from base Qwen, so they never go over
+# DaisyRose.
+overlay= model=$checkpoint
+if [[ $OVERLAY_REPO != - ]]; then
+  weights=$MODEL_ROOT/${OVERLAY_REPO/\//--}
+  overlay=$checkpoint+$OVERLAY_PREFIX-gdn-attn
+  model=$overlay
+fi
 [[ -z ${GPU_MEMORY_UTILIZATION:-} || $GPU_MEMORY_UTILIZATION =~ ^0\.([4-8][0-9]|9[0-5])$ ]] ||
   { echo 'GPU_MEMORY_UTILIZATION must be 0.40 to 0.95' >&2; exit 2; }
 
@@ -76,13 +85,13 @@ download() {
       echo "$DSPINE_REVISION" > "$dspine/.sparkqwen-revision"
     fi
   fi
-  [[ $model == "$overlay" ]] || return 0
+  [[ -n $overlay ]] || return 0
   local files; IFS=, read -r -a files <<< "$OVERLAY_FILES"
   fetch "$OVERLAY_REPO" "$OVERLAY_REVISION" "$weights" "${files[@]}"
   if [[ $(cat "$overlay/.sparkqwen-overlay" 2>/dev/null) != "$OVERLAY_REVISION" ]]; then
     say "overlay: $OVERLAY_REPO GDN + attention into $CHECKPOINT_REPO (sha256 checked)"
     rm -rf "$overlay"
-    python3 install/tandem_overlay.py install/checkpoint-27b.json "$checkpoint" "$weights" "$overlay"
+    python3 install/tandem_overlay.py install/checkpoint-27b.json "$checkpoint" "$weights" "$overlay" "$OVERLAY_SECTION"
   fi
 }
 
@@ -91,7 +100,7 @@ stop() { docker rm -f "$NAME" >/dev/null 2>&1 || true; }
 serve() {
   local profile_mount=() profile=$PROFILE dspine_mount=() overlay_mount=() with=
   [[ $DRAFTER == dflash2 ]] || dspine_mount=(--mount "type=bind,src=$dspine,dst=$dspine,readonly")
-  if [[ $model == "$overlay" ]]; then
+  if [[ -n $overlay ]]; then
     overlay_mount=(--mount "type=bind,src=$overlay,dst=$overlay,readonly")
     with=" with $OVERLAY_REPO's GDN and attention"
   fi

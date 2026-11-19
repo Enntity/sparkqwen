@@ -247,9 +247,8 @@ class SingleSpark(unittest.TestCase):
 
     def test_start_serves_the_checked_overlay(self):
         start = (HERE/'start-27b.sh').read_text()
-        self.assertIn('overlay=$checkpoint+tandem-gdn-attn', start)
-        self.assertIn('python3 install/tandem_overlay.py install/checkpoint-27b.json "$checkpoint" "$weights" "$overlay"', start)
-        self.assertIn('model=$overlay; [[ $CHECKPOINT == qwen ]] || model=$checkpoint', start)
+        self.assertIn('overlay=$checkpoint+$OVERLAY_PREFIX-gdn-attn', start)
+        self.assertIn('python3 install/tandem_overlay.py install/checkpoint-27b.json "$checkpoint" "$weights" "$overlay" "$OVERLAY_SECTION"', start)
         self.assertIn('-e MODEL_PATH="$model"', start)
         for path in ('$checkpoint', '$overlay', '$draft'):
             self.assertIn(f'--mount "type=bind,src={path},dst={path},readonly"', start)
@@ -330,9 +329,9 @@ class Overlay(unittest.TestCase):
                 want = nearest_e4m3(overlay.f32(overlay.f32(overlay.e4m3(c)) * overlay.f32(ratio)))
                 self.assertEqual(table[c], want, (ratio, c))
 
-    def build(self, s2q, s2z, tamper=False):
+    def build(self, s2q, s2z, tamper=False, section=None, label=None, prefix=None):
         tmp = Path(tempfile.mkdtemp())
-        ck, w, ov = tmp/'ck', tmp/'w', tmp/'ck+tandem-gdn-attn'
+        ck, w, ov = tmp/'ck', tmp/'w', tmp/'ck+gdn-attn'
         ck.mkdir(); w.mkdir()
         f32 = lambda x: struct.pack('<f', x)
         L = 'model.language_model.layers.'
@@ -364,10 +363,14 @@ class Overlay(unittest.TestCase):
         if tamper:
             files['README.md'] = '0' * 64
         pin = tmp/'pin.json'
-        pin.write_text(json.dumps({'overlay': {'revision': 'a' * 40, 'files': files,
-                                               'serve': ['gdn.safetensors', 'attn.safetensors'],
-                                               'attribution': ['LICENSE', 'README.md']}}))
-        overlay.build(str(pin), str(ck), str(w), str(ov))
+        spec = {'revision': 'a' * 40, 'files': files, 'serve': ['gdn.safetensors', 'attn.safetensors'],
+                'attribution': ['LICENSE', 'README.md'], **({'label': label, 'prefix': prefix} if label else {})}
+        if section:
+            pin.write_text(json.dumps({'overlay': {'revision': 'b' * 40}, section.split('.')[0]: {'overlay': spec}}))
+            overlay.build(str(pin), str(ck), str(w), str(ov), section)
+        else:
+            pin.write_text(json.dumps({'overlay': spec}))
+            overlay.build(str(pin), str(ck), str(w), str(ov))
         return ck, w, ov, zs
 
     def test_rekeys_reexpresses_z_and_rewrites_the_index(self):
@@ -397,6 +400,15 @@ class Overlay(unittest.TestCase):
         self.assertEqual(os.readlink(ov/'model-1.safetensors'), '../ck/model-1.safetensors')
         self.assertEqual((ov/'TandemLLM-LICENSE').read_text(), 'Apache License 2.0')
         self.assertEqual((ov/'.sparkqwen-overlay').read_text().strip(), 'a' * 40)
+
+    def test_a_named_section_with_its_own_label(self):
+        _, _, ov, _ = self.build(1e-4, 1e-4, section='daisyrose.overlay', label='Enntity', prefix='enntity')
+        wm = json.loads((ov/'model.safetensors.index.json').read_text())['weight_map']
+        self.assertEqual(wm['model.language_model.layers.0.linear_attn.in_proj_qkv.weight'], 'enntity-gdn.safetensors')
+        self.assertEqual(wm['model.language_model.layers.3.self_attn.o_proj.weight'], 'enntity-attn.safetensors')
+        self.assertEqual((ov/'Enntity-LICENSE').read_text(), 'Apache License 2.0')
+        self.assertFalse((ov/'TandemLLM-LICENSE').exists())
+        self.assertEqual((ov/'.sparkqwen-overlay').read_text().strip(), 'a' * 40)  # the section's, not the top's
 
     def test_equal_scales_are_left_alone(self):
         _, w, ov, zs = self.build(1e-4, 1e-4)

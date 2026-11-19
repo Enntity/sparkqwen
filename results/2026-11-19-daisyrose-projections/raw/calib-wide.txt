@@ -1,0 +1,152 @@
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+  row 0: 2,048 tokens, 520 tok/s
+  row 25: 48,284 tokens, 597 tok/s
+  row 50: 95,085 tokens, 600 tok/s
+  row 75: 134,079 tokens, 597 tok/s
+  row 100: 179,574 tokens, 598 tok/s
+  row 125: 206,535 tokens, 594 tok/s
+  row 150: 234,465 tokens, 590 tok/s
+  row 175: 262,321 tokens, 589 tok/s
+  row 200: 281,966 tokens, 587 tok/s
+  row 225: 296,453 tokens, 585 tok/s
+  row 250: 310,916 tokens, 583 tok/s
+  row 275: 326,184 tokens, 582 tok/s
+  row 300: 341,348 tokens, 581 tok/s
+  row 325: 363,932 tokens, 581 tok/s
+  row 350: 399,745 tokens, 578 tok/s
+  row 375: 430,065 tokens, 574 tok/s
+  row 400: 460,586 tokens, 575 tok/s
+  row 425: 504,668 tokens, 577 tok/s
+  row 450: 542,468 tokens, 579 tok/s
+  row 475: 580,868 tokens, 580 tok/s
+calibration: 620,477 tokens; damp 0.1, scale range (0.8, 1.75)
+  layer 0 in_proj_qkv+in_proj_z 7.5s 0.00024 0.00045
+  layer 0 out_proj 4.1s 0.00004
+  layer 1 in_proj_qkv+in_proj_z 6.9s 0.00084 0.00069
+  layer 1 out_proj 4.1s 0.00045
+  layer 2 in_proj_qkv+in_proj_z 6.9s 0.00106 0.00075
+  layer 2 out_proj 4.1s 0.00184
+  layer 3 q_proj+k_proj+v_proj 6.2s 0.00012 0.00164 0.00280
+  layer 3 o_proj 4.1s 0.00011
+  layer 4 in_proj_qkv+in_proj_z 6.9s 0.00179 0.00155
+  layer 4 out_proj 4.1s 0.00170
+  layer 5 in_proj_qkv+in_proj_z 6.9s 0.00148 0.00078
+  layer 5 out_proj 4.1s 0.00197
+  layer 6 in_proj_qkv+in_proj_z 6.9s 0.00150 0.00052
+  layer 6 out_proj 4.2s 0.00206
+  layer 7 q_proj+k_proj+v_proj 6.1s 0.00013 0.00137 0.00224
+  layer 7 o_proj 4.1s 0.00059
+  layer 8 in_proj_qkv+in_proj_z 7.0s 0.00143 0.00104
+  layer 8 out_proj 4.1s 0.00194
+  layer 9 in_proj_qkv+in_proj_z 6.9s 0.00148 0.00067
+  layer 9 out_proj 4.1s 0.00247
+  layer 10 in_proj_qkv+in_proj_z 6.9s 0.00140 0.00069
+  layer 10 out_proj 4.1s 0.00204
+  layer 11 q_proj+k_proj+v_proj 6.2s 0.00015 0.00129 0.00197
+  layer 11 o_proj 4.1s 0.00062
+  layer 12 in_proj_qkv+in_proj_z 6.9s 0.00115 0.00051
+  layer 12 out_proj 4.1s 0.00220
+  layer 13 in_proj_qkv+in_proj_z 7.0s 0.00131 0.00044
+  layer 13 out_proj 4.1s 0.00292
+  layer 14 in_proj_qkv+in_proj_z 7.0s 0.00109 0.00054
+  layer 14 out_proj 4.1s 0.00262
+  layer 15 q_proj+k_proj+v_proj 6.2s 0.00016 0.00151 0.00198
+  layer 15 o_proj 4.1s 0.00146
+  layer 16 in_proj_qkv+in_proj_z 7.0s 0.00126 0.00051
+  layer 16 out_proj 4.1s 0.00302
+  layer 17 in_proj_qkv+in_proj_z 7.0s 0.00116 0.00037
+  layer 17 out_proj 4.1s 0.00359
+  layer 18 in_proj_qkv+in_proj_z 7.0s 0.00112 0.00046
+  layer 18 out_proj 4.1s 0.00255
+  layer 19 q_proj+k_proj+v_proj 6.2s 0.00029 0.00130 0.00231
+  layer 19 o_proj 4.1s 0.00272
+  layer 20 in_proj_qkv+in_proj_z 6.9s 0.00072 0.00052
+  layer 20 out_proj 4.1s 0.00359
+  layer 21 in_proj_qkv+in_proj_z 6.9s 0.00115 0.00077
+  layer 21 out_proj 4.1s 0.00264
+  layer 22 in_proj_qkv+in_proj_z 7.0s 0.00155 0.00097
+  layer 22 out_proj 4.1s 0.00386
+  layer 23 q_proj+k_proj+v_proj 6.2s 0.00041 0.00149 0.00267
+  layer 23 o_proj 4.2s 0.00295
+  layer 24 in_proj_qkv+in_proj_z 6.9s 0.00155 0.00125
+  layer 24 out_proj 4.1s 0.00397
+  layer 25 in_proj_qkv+in_proj_z 6.9s 0.00145 0.00081
+  layer 25 out_proj 4.1s 0.00372
+  layer 26 in_proj_qkv+in_proj_z 6.9s 0.00154 0.00080
+  layer 26 out_proj 4.1s 0.00344
+  layer 27 q_proj+k_proj+v_proj 6.1s 0.00055 0.00118 0.00175
+  layer 27 o_proj 4.1s 0.00263
+  layer 28 in_proj_qkv+in_proj_z 6.9s 0.00138 0.00072
+  layer 28 out_proj 4.1s 0.00374
+  layer 29 in_proj_qkv+in_proj_z 7.0s 0.00163 0.00051
+  layer 29 out_proj 4.1s 0.00402
+  layer 30 in_proj_qkv+in_proj_z 7.0s 0.00147 0.00061
+  layer 30 out_proj 4.1s 0.00358
+  layer 31 q_proj+k_proj+v_proj 6.2s 0.00068 0.00117 0.00189
+  layer 31 o_proj 4.1s 0.00334
+  layer 32 in_proj_qkv+in_proj_z 6.9s 0.00158 0.00061
+  layer 32 out_proj 4.2s 0.00378
+  layer 33 in_proj_qkv+in_proj_z 6.9s 0.00170 0.00040
+  layer 33 out_proj 4.1s 0.00433
+  layer 34 in_proj_qkv+in_proj_z 7.0s 0.00161 0.00062
+  layer 34 out_proj 4.3s 0.00345
+  layer 35 q_proj+k_proj+v_proj 6.2s 0.00084 0.00123 0.00256
+  layer 35 o_proj 4.1s 0.00298
+  layer 36 in_proj_qkv+in_proj_z 6.9s 0.00111 0.00066
+  layer 36 out_proj 4.1s 0.00340
+  layer 37 in_proj_qkv+in_proj_z 7.0s 0.00126 0.00069
+  layer 37 out_proj 4.2s 0.00384
+  layer 38 in_proj_qkv+in_proj_z 6.9s 0.00190 0.00084
+  layer 38 out_proj 4.2s 0.00431
+  layer 39 q_proj+k_proj+v_proj 6.2s 0.00081 0.00145 0.00300
+  layer 39 o_proj 4.1s 0.00341
+  layer 40 in_proj_qkv+in_proj_z 7.0s 0.00170 0.00119
+  layer 40 out_proj 4.2s 0.00411
+  layer 41 in_proj_qkv+in_proj_z 7.0s 0.00181 0.00098
+  layer 41 out_proj 4.2s 0.00414
+  layer 42 in_proj_qkv+in_proj_z 7.0s 0.00194 0.00096
+  layer 42 out_proj 4.1s 0.00343
+  layer 43 q_proj+k_proj+v_proj 6.2s 0.00080 0.00123 0.00201
+  layer 43 o_proj 4.1s 0.00320
+  layer 44 in_proj_qkv+in_proj_z 7.0s 0.00162 0.00085
+  layer 44 out_proj 4.1s 0.00372
+  layer 45 in_proj_qkv+in_proj_z 6.9s 0.00196 0.00070
+  layer 45 out_proj 4.1s 0.00359
+  layer 46 in_proj_qkv+in_proj_z 6.9s 0.00182 0.00075
+  layer 46 out_proj 4.1s 0.00355
+  layer 47 q_proj+k_proj+v_proj 6.2s 0.00085 0.00124 0.00237
+  layer 47 o_proj 4.1s 0.00326
+  layer 48 in_proj_qkv+in_proj_z 6.9s 0.00174 0.00079
+  layer 48 out_proj 4.1s 0.00345
+  layer 49 in_proj_qkv+in_proj_z 6.9s 0.00179 0.00053
+  layer 49 out_proj 4.1s 0.00407
+  layer 50 in_proj_qkv+in_proj_z 6.9s 0.00170 0.00068
+  layer 50 out_proj 4.1s 0.00301
+  layer 51 q_proj+k_proj+v_proj 6.2s 0.00095 0.00129 0.00252
+  layer 51 o_proj 4.1s 0.00234
+  layer 52 in_proj_qkv+in_proj_z 6.9s 0.00118 0.00072
+  layer 52 out_proj 4.1s 0.00278
+  layer 53 in_proj_qkv+in_proj_z 7.0s 0.00130 0.00082
+  layer 53 out_proj 4.1s 0.00353
+  layer 54 in_proj_qkv+in_proj_z 6.9s 0.00164 0.00078
+  layer 54 out_proj 4.2s 0.00400
+  layer 55 q_proj+k_proj+v_proj 6.4s 0.00114 0.00144 0.00312
+  layer 55 o_proj 4.1s 0.00247
+  layer 56 in_proj_qkv+in_proj_z 7.0s 0.00131 0.00091
+  layer 56 out_proj 4.1s 0.00340
+  layer 57 in_proj_qkv+in_proj_z 7.0s 0.00115 0.00089
+  layer 57 out_proj 4.1s 0.00416
+  layer 58 in_proj_qkv+in_proj_z 7.0s 0.00146 0.00085
+  layer 58 out_proj 4.1s 0.00408
+  layer 59 q_proj+k_proj+v_proj 6.2s 0.00121 0.00154 0.00217
+  layer 59 o_proj 4.2s 0.00211
+  layer 60 in_proj_qkv+in_proj_z 6.9s 0.00100 0.00068
+  layer 60 out_proj 4.1s 0.00320
+  layer 61 in_proj_qkv+in_proj_z 6.8s 0.00132 0.00074
+  layer 61 out_proj 4.1s 0.00385
+  layer 62 in_proj_qkv+in_proj_z 7.0s 0.00095 0.00063
+  layer 62 out_proj 4.2s 0.00266
+  layer 63 q_proj+k_proj+v_proj 6.3s 0.00076 0.00153 0.00050
+  layer 63 o_proj 4.6s 0.00107
+mean calibration relative output error 0.00172

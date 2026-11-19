@@ -435,7 +435,11 @@ and draft as well for DaisyRose: on six greedy prompts, 3.97 tokens a verify
 step with DFlash2 (base 3.84) and 4.19 with DSpine (base 4.14), with DFlash2
 decode 8% slower than the default checkpoint (43.7 against 47.7 tok/s). Both
 answered 52 of 52 quality-probe items
-([receipts and limits](results/2026-11-18-daisyrose/RESULT.md)).
+([receipts and limits](results/2026-11-18-daisyrose/RESULT.md)). Our own
+NVFP4 projections, quantized from DaisyRose's BF16 release, bring it to 50.2
+tok/s at +0.0020 nats/token with the quality probe level
+([receipts](results/2026-11-19-daisyrose-projections/RESULT.md)); the install
+will use them once they are published.
 
 ## Other ways to run it
 

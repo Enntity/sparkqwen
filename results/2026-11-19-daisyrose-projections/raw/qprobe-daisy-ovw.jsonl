@@ -1,0 +1,52 @@
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "-16698", "out": "\n\n**Step 2:** 4506 \u00d7 25 = 112650\n\n**Step 3:** 95047 \u2212 112650 = \u221217603\n\n**Step 4:** \u221217603 + 905 = \u221216698\n\nAnswer: -16698"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "249536", "out": " \u00d7 5\n= 210,350 + 21,035\n= **231,385**\n\n**Step 3:** 480,298 \u2212 231,385 + 623\n= 248,913 + 623\n= **249,536**\n\nAnswer: 249536"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "42473", "out": ",856\n- Sum = **67,896**\n\n**Step 3:** 109,584 \u2212 67,896 = **41,688**\n\n**Step 4:** 41,688 + 785 = **42,473**\n\nAnswer: 42473"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "487820", "out": "964300 \u00f7 4 = **241075**\n\n**Step 3:** 728736 \u2212 241075 = **487661**\n\n**Step 4:** 487661 + 159 = **487820**\n\nAnswer: 487820"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "132000", "out": "1409 \u00d7 3\n= 56,360 + 4,227\n= **60,587**\n\n**Step 3:** 191,995 \u2212 60,587 + 592\n= 131,408 + 592\n= **132,000**\n\nAnswer: 132000"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "-37503", "out": "4,820\n\nStep 2: 3833 \u00d7 92 = 352,636\n\nStep 3: 314,820 \u2212 352,636 = \u221237,816\n\nStep 4: \u221237,816 + 313 = \u221237,503\n\nAnswer: -37503"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "47947", "out": "2648 \u00d7 3\n= 105,920 + 7,944\n= **113,864**\n\n**Step 3:** 161,540 \u2212 113,864 + 271\n= 47,676 + 271\n= **47,947**\n\nAnswer: 47947"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "204581", "out": "7 \u00d7 3\n= 79,670 + 23,901\n= **103,571**\n\n**Step 3:** 307,260 \u2212 103,571 + 892\n= 203,689 + 892\n= **204,581**\n\nAnswer: 204581"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "-403100", "out": "(70 + 7) = 469210 + 46921 = **516131**\n\n**Step 3:** 112326 \u2212 516131 + 705 = \u2212403805 + 705 = **\u2212403100**\n\nAnswer: -403100"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "10293", "out": " \u00d7 42 = 74,340\n\nStep 2: 4982 \u00d7 13 = 64,766\n\nStep 3: 74,340 \u2212 64,766 = 9,574\n\nStep 4: 9,574 + 719 = 10,293\n\nAnswer: 10293"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "220276", "out": " Sum = **530,305**\n\n**Step 3:** 750,465 \u2212 530,305 = **220,160**\n\n**Step 4:** 220,160 + 116 = **220,276**\n\nAnswer: 220276"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "-67255", "out": "\n= 6305 \u00d7 30 + 6305 \u00d7 4\n= 189150 + 25220\n= 214370\n\nStep 3: 146379 \u2212 214370 + 736\n= \u221267991 + 736\n= \u221267255\n\nAnswer: -67255"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "-119926", "out": " = 74616\n\nStep 2: 2033 \u00d7 96 = 195168\n\nStep 3: 74616 \u2212 195168 = \u2212120552\n\nStep 4: \u2212120552 + 626 = \u2212119926\n\nAnswer: -119926"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "344512", "out": "409,440\n\nStep 2: 2731 \u00d7 24 = 65,544\n\nStep 3: 409,440 \u2212 65,544 = 343,896\n\nStep 4: 343,896 + 616 = 344,512\n\nAnswer: 344512"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "233610", "out": "97,860 + 48,930\n= **146,790**\n\n**Step 3:** Combine\n380,016 \u2212 146,790 + 384\n= 233,226 + 384\n= **233,610**\n\nAnswer: 233610"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "81469", "out": " 234180 \u2212 7806 = **226374**\n\n**Step 3:** 306912 \u2212 226374 = **80538**\n\n**Step 4:** 80538 + 931 = **81469**\n\nAnswer: 81469"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "543092", "out": "4 \u00d7 4\n= 140,320 + 7,016\n= **147,336**\n\n**Step 3:** 689,552 \u2212 147,336 + 876\n= 542,216 + 876\n= **543,092**\n\nAnswer: 543092"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "115412", "out": "\n- Sum = **87,021**\n\n**Step 3:** 201,768 \u2212 87,021 = **114,747**\n\n**Step 4:** 114,747 + 665 = **115,412**\n\nAnswer: 115412"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "-69792", "out": "88 \u00d7 33 = 85404\nStep 2: 6500 \u00d7 24 = 156000\nStep 3: 85404 \u2212 156000 = \u221270596\nStep 4: \u221270596 + 804 = \u221269792\n\nAnswer: -69792"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "-391996", "out": "90 + 6749 \u00d7 4 = 607,410 + 26,996 = 634,406\n\nStep 3: 242,040 \u2212 634,406 + 370 = \u2212392,366 + 370 = \u2212391,996\n\nAnswer: -391996"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "146275", "out": "207,160\n\nStep 2: 4707 \u00d7 13 = 61,191\n\nStep 3: 207,160 \u2212 61,191 = 145,969\n\nStep 4: 145,969 + 306 = 146,275\n\nAnswer: 146275"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "290830", "out": "1321 \u00d7 3\n= 79,260 + 3,963\n= **83,223**\n\n**Step 3:** 373,934 \u2212 83,223 + 119\n= 290,711 + 119\n= **290,830**\n\nAnswer: 290830"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "-487763", "out": "0\n\nStep 2: 7525 \u00d7 89 = 669,725\n\nStep 3: 181,740 \u2212 669,725 = \u2212487,985\n\nStep 4: \u2212487,985 + 222 = \u2212487,763\n\nAnswer: -487763"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "470504", "out": "p 2:** 7088 \u00d7 21 = 148,848\n\n**Step 3:** 618,936 \u2212 148,848 = 470,088\n\n**Step 4:** 470,088 + 416 = 470,504\n\nAnswer: 470504"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "455071", "out": "\n- Sum = **36,921**\n\n**Step 3:** 491,400 \u2212 36,921 = **454,479**\n\n**Step 4:** 454,479 + 592 = **455,071**\n\nAnswer: 455071"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "63826", "out": "40\n- Sum = **605,440**\n\n**Step 3:** 668,355 \u2212 605,440 = **62,915**\n\n**Step 4:** 62,915 + 911 = **63,826**\n\nAnswer: 63826"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "409135", "out": "7,890**\n\n**Step 3:** 626,535 \u2212 217,890 + 490\n- 626,535 \u2212 217,890 = 408,645\n- 408,645 + 490 = **409,135**\n\nAnswer: 409135"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "-211629", "out": "79\n\nStep 2: 3910 \u00d7 72 = 281,520\n\nStep 3: 69,479 \u2212 281,520 = \u2212212,041\n\nStep 4: \u2212212,041 + 412 = \u2212211,629\n\nAnswer: -211629"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "-569970", "out": "84\n\nStep 2: 7595 \u00d7 88 = 668,360\n\nStep 3: 97,584 \u2212 668,360 = \u2212570,776\n\nStep 4: \u2212570,776 + 806 = \u2212569,970\n\nAnswer: -569970"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "198197", "out": "\n- Sum = **54,964**\n\n**Step 3:** 252,539 \u2212 54,964 = **197,575**\n\n**Step 4:** 197,575 + 622 = **198,197**\n\nAnswer: 198197"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "525870", "out": "615,208\n\nStep 2: 5963 \u00d7 15 = 89,445\n\nStep 3: 615,208 \u2212 89,445 = 525,763\n\nStep 4: 525,763 + 107 = 525,870\n\nAnswer: 525870"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "-493732", "out": "2\n\nStep 2: 8386 \u00d7 92 = 771,512\n\nStep 3: 277,312 \u2212 771,512 = \u2212494,200\n\nStep 4: \u2212494,200 + 468 = \u2212493,732\n\nAnswer: -493732"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "-102623", "out": ") = 397,900 \u2212 15,916 = 381,984\n\nStep 3: 279,000 \u2212 381,984 = \u2212102,984\n\nStep 4: \u2212102,984 + 361 = \u2212102,623\n\nAnswer: -102623"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "-626410", "out": ":** Multiply by 83:\n\n$$83 \\times (-7559) = -627397$$\n\n**Step 4:** Add 987:\n\n$$-627397 + 987 = -626410$$\n\nAnswer: -626410"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "-199039", "out": "0\n\nStep 2: 8855 \u00d7 41 = 363,055\n\nStep 3: 163,100 \u2212 363,055 = \u2212199,955\n\nStep 4: \u2212199,955 + 916 = \u2212199,039\n\nAnswer: -199039"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "334864", "out": "00 + 33050 = **363550**\n\n**Step 3:** 698205 \u2212 363550 = **334655**\n\n**Step 4:** 334655 + 209 = **334864**\n\nAnswer: 334864"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "29972", "out": "= 254,138\n\nStep 2: 9370 \u00d7 24 = 224,880\n\nStep 3: 254,138 \u2212 224,880 = 29,258\n\nStep 4: 29,258 + 714 = 29,972\n\nAnswer: 29972"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "-49432", "out": "4,598\n\nStep 2: 4205 \u00d7 63 = 264,915\n\nStep 3: 214,598 \u2212 264,915 = \u221250,317\n\nStep 4: \u221250,317 + 885 = \u221249,432\n\nAnswer: -49432"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "35952", "out": "225 \u00d7 30 = **186,750**\n\n**Step 3:** 222,431 \u2212 186,750 = **35,681**\n\n**Step 4:** 35,681 + 271 = **35,952**\n\nAnswer: 35952"}
+{"tag": "daisy-ovw", "kind": "arith", "ok": true, "answer": "-381530", "out": "\n= 435360 + 50792\n= **486152**\n\n**Step 3:** Combine\n104027 \u2212 486152 + 595\n= \u2212382125 + 595\n= **\u2212381530**\n\nAnswer: -381530"}
+{"tag": "daisy-ovw", "kind": "needle", "ok": true, "answer": "79098087", "out": "79098087"}
+{"tag": "daisy-ovw", "kind": "needle", "ok": true, "answer": "06704974", "out": "06704974"}
+{"tag": "daisy-ovw", "kind": "needle", "ok": true, "answer": "69595526", "out": "69595526"}
+{"tag": "daisy-ovw", "kind": "needle", "ok": true, "answer": "97820892", "out": "97820892"}
+{"tag": "daisy-ovw", "kind": "needle", "ok": true, "answer": "58884302", "out": "58884302"}
+{"tag": "daisy-ovw", "kind": "needle", "ok": true, "answer": "23532875", "out": "23532875"}
+{"tag": "daisy-ovw", "kind": "needle", "ok": true, "answer": "94000233", "out": "94000233"}
+{"tag": "daisy-ovw", "kind": "needle", "ok": true, "answer": "85365588", "out": "85365588"}
+{"tag": "daisy-ovw", "kind": "needle", "ok": true, "answer": "85523407", "out": "85523407"}
+{"tag": "daisy-ovw", "kind": "needle", "ok": true, "answer": "34022437", "out": "34022437"}
+{"tag": "daisy-ovw", "kind": "needle", "ok": true, "answer": "39767714", "out": "39767714"}
+{"tag": "daisy-ovw", "kind": "needle", "ok": true, "answer": "52903839", "out": "52903839"}
