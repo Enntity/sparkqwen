@@ -3,7 +3,10 @@
 
 Made and measured on one NVIDIA DGX Spark on 2026-11-19. This is the overlay
 for `CHECKPOINT=daisyrose` that TandemLLM's projections are for NVIDIA's
-checkpoint; it is not yet published, so the install does not use it yet.
+checkpoint, published as
+[Enntity/DaisyRose-27B-NVFP4-GDN-Attn](https://huggingface.co/Enntity/DaisyRose-27B-NVFP4-GDN-Attn)
+at `071af22cfa355160c346384d02fab0de5b1471d3` (the served set below) and pinned
+in `install/checkpoint-27b.json`.
 
 **Quantized from DaisyRose's own BF16 release, the overlay brings DaisyRose's
 decode to 50.2 tok/s from 43.7 as published (+15%), past base Qwen with

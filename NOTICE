@@ -37,10 +37,14 @@ weight_scale_2, the only change made to them.
 
 With CHECKPOINT=daisyrose, the same variant downloads RadixArk's
 DaisyRose-27B, RadixArk/DaisyRose-27B-NVFP4 at commit
-c4d85c5dfad123426555c22f4e24bb15381f0bdb, in place of NVIDIA's checkpoint and
-without TandemLLM's projections. DaisyRose-27B is a finetune of
-Qwen/Qwen3.8-27B (Qwen team, Alibaba Cloud), distributed by RadixArk under the
-Apache License 2.0.
+c4d85c5dfad123426555c22f4e24bb15381f0bdb, in place of NVIDIA's checkpoint.
+DaisyRose-27B is a finetune of Qwen/Qwen3.8-27B (Qwen team, Alibaba Cloud),
+distributed by RadixArk under the Apache License 2.0. In place of TandemLLM's
+projections it downloads our own, Enntity/DaisyRose-27B-NVFP4-GDN-Attn at
+commit 071af22cfa355160c346384d02fab0de5b1471d3: NVFP4 Gated DeltaNet and
+attention projections quantized from RadixArk/DaisyRose-27B, distributed under
+the Apache License 2.0 with DaisyRose's LICENSE, which is kept next to the
+served overlay as Enntity-LICENSE (with the card as Enntity-README.md).
 
 With DRAFTER=dspine or DRAFTER=both, the same variant also downloads Tencent's
 DSpine drafter for Qwen3.8-27B, tencent/Qwen3.8-27B-DSpine-b16 at commit

@@ -262,17 +262,35 @@ class SingleSpark(unittest.TestCase):
         self.assertEqual(d['license'], 'apache-2.0')
         self.assertEqual(d['base_model'], 'Qwen/Qwen3.8-27B')
         self.assertEqual(d['served_model_name'], 'daisyrose-27b-atlas')
-        # TandemLLM's projections are quantized from base Qwen: laid over
-        # DaisyRose they would undo part of its finetune.
-        self.assertNotIn('overlay', d)
+        # Its own projections, quantized from DaisyRose's BF16 release: TandemLLM's
+        # are quantized from base Qwen and would undo part of its finetune.
+        o = d['overlay']
+        self.assertEqual(o['repository'], 'Enntity/DaisyRose-27B-NVFP4-GDN-Attn')
+        self.assertEqual(o['revision'], '071af22cfa355160c346384d02fab0de5b1471d3')
+        self.assertEqual(o['base_model'], 'RadixArk/DaisyRose-27B')
+        self.assertEqual(o['license'], 'apache-2.0')
+        self.assertEqual(set(o['files']), {'gdn.safetensors', 'attn.safetensors', 'LICENSE', 'README.md'})
+        self.assertEqual(o['files']['gdn.safetensors'], '4d0ff1be854b4e625505eaf8b1a2f6c93438389ae16808c2226a2114c9d6272c')
+        self.assertEqual(o['files']['attn.safetensors'], 'dafa2872af67534bf3bda3de3c31a78f507153cde010acbaa2329b5162e5ed90')
+        for name, digest in o['files'].items():
+            self.assertRegex(digest, r'^[0-9a-f]{64}$', name)
+        self.assertEqual(o['serve'], ['gdn.safetensors', 'attn.safetensors'])
+        self.assertEqual(o['attribution'], ['LICENSE', 'README.md'])
+        self.assertEqual((o['label'], o['prefix']), ('Enntity', 'enntity'))
+        # The served files are the ones the result measured.
+        sums = (ROOT/'results'/'2026-11-19-daisyrose-projections'/'RESULT.md').read_text()
+        for name in o['serve']:
+            self.assertIn(o['files'][name], sums, name)
 
     def test_daisyrose_is_attributed(self):
         for doc in ('NOTICE', 'docs/LICENSING.md', 'README.md'):
             text = ' '.join((ROOT/doc).read_text().split())
             with self.subTest(doc=doc):
                 self.assertIn('RadixArk/DaisyRose-27B-NVFP4', text)
+                self.assertIn('Enntity/DaisyRose-27B-NVFP4-GDN-Attn', text)
                 self.assertRegex(text, r'DaisyRose.{0,300}Apache(-2\.0| License 2\.0)')
         self.assertIn(self.DAISYROSE_REVISION, (ROOT/'NOTICE').read_text())
+        self.assertIn('071af22cfa355160c346384d02fab0de5b1471d3', (ROOT/'NOTICE').read_text())
 
     def start_status(self, **env):
         with tempfile.TemporaryDirectory() as root:
@@ -290,7 +308,7 @@ class SingleSpark(unittest.TestCase):
         self.assertEqual(daisy.returncode, 0, daisy.stderr)
         self.assertIn(f'checkpoint RadixArk/DaisyRose-27B-NVFP4 @ {self.DAISYROSE_REVISION}'
                       ' as daisyrose-27b-atlas', daisy.stdout)
-        self.assertRegex(daisy.stdout, r'weights \S+/RadixArk--DaisyRose-27B-NVFP4\n')  # no overlay
+        self.assertRegex(daisy.stdout, r'weights \S+/RadixArk--DaisyRose-27B-NVFP4\+enntity-gdn-attn\n')
         bad = self.start_status(CHECKPOINT='tandem')
         self.assertEqual(bad.returncode, 2)
         self.assertIn('CHECKPOINT must be qwen or daisyrose', bad.stderr)
