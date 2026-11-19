@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: AGPL-3.0-only
-"""Build the 27B checkpoint overlay: NVIDIA's Qwen3.8-27B-NVFP4 with its Gated
-DeltaNet and attention projections replaced by TandemLLM's NVFP4 weights.
+"""Build a 27B checkpoint overlay: an NVFP4 Qwen3.8-27B checkpoint with its Gated
+DeltaNet and attention projections replaced by separately published NVFP4
+weights (TandemLLM's for NVIDIA's checkpoint, Enntity's for DaisyRose).
 
-  tandem_overlay.py PIN CHECKPOINT_DIR WEIGHTS_DIR OVERLAY_DIR
+  tandem_overlay.py PIN CHECKPOINT_DIR WEIGHTS_DIR OVERLAY_DIR [SECTION]
 
-PIN is install/checkpoint-27b.json; its "overlay" entry names the files, their
-sha256 and the source revision. Every file in WEIGHTS_DIR is checked against it
-first. The weights are in the ModelOpt NVFP4 layout already (E2M1 codes low
+PIN is install/checkpoint-27b.json; its SECTION entry ("overlay" by default, or
+a dotted path such as "daisyrose.overlay") names the files, their sha256, the
+source revision, the prefix of the served files (tandem by default) and the
+label of the attribution copies (TandemLLM by default). Every file in
+WEIGHTS_DIR is checked against it first. The weights are in the ModelOpt NVFP4 layout already (E2M1 codes low
 nibble first, an E4M3 scale per 16 inputs in a plain [N, K/16] grid, one F32
 weight_scale_2 per tensor) under `layers.N.<module>.<proj>` names. This script
 copies their bytes under the checkpoint's `model.language_model.layers.N...`
@@ -128,8 +131,11 @@ def rekey(src, dst):
     return [names[k] for k in order]
 
 
-def build(pin, checkpoint, weights, overlay):
-    spec = json.load(open(pin))['overlay']
+def build(pin, checkpoint, weights, overlay, section='overlay'):
+    spec = json.load(open(pin))
+    for key in section.split('.'):
+        spec = spec[key]
+    prefix, label = spec.get('prefix', 'tandem'), spec.get('label', 'TandemLLM')
     for name, digest in spec['files'].items():
         got = sha256(os.path.join(weights, name))
         if got != digest:
@@ -143,7 +149,7 @@ def build(pin, checkpoint, weights, overlay):
     quant = json.load(open(os.path.join(checkpoint, 'hf_quant_config.json')))
     wm, layers = index['weight_map'], quant['quantization']['quantized_layers']
     for name in spec['serve']:
-        dst = 'tandem-' + name
+        dst = prefix + '-' + name
         written = rekey(os.path.join(weights, name), os.path.join(overlay, dst))
         modules = sorted({t.rsplit('.', 1)[0] for t in written})
         for mod in modules:
@@ -153,7 +159,7 @@ def build(pin, checkpoint, weights, overlay):
         for t in written:
             wm[t] = dst
     for name in spec['attribution']:
-        with open(os.path.join(weights, name), 'rb') as f, open(os.path.join(overlay, 'TandemLLM-' + name), 'wb') as g:
+        with open(os.path.join(weights, name), 'rb') as f, open(os.path.join(overlay, label + '-' + name), 'wb') as g:
             g.write(f.read())
     for path, obj in (('model.safetensors.index.json', index), ('hf_quant_config.json', quant)):
         with open(os.path.join(overlay, path + '.tmp'), 'w') as f:
@@ -164,6 +170,6 @@ def build(pin, checkpoint, weights, overlay):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) != 5:
+    if len(sys.argv) not in (5, 6):
         sys.exit(__doc__.split('\n\n')[1].strip())
     build(*sys.argv[1:])

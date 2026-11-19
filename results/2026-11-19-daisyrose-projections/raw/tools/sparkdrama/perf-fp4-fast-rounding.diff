@@ -1,0 +1,96 @@
+diff --git a/src/sparkdrama/quant/fp4.py b/src/sparkdrama/quant/fp4.py
+index 7ef8115..7cf9104 100644
+--- a/src/sparkdrama/quant/fp4.py
++++ b/src/sparkdrama/quant/fp4.py
+@@ -18,17 +18,20 @@ E4M3_MAX = 448.0
+ GROUP = 16
+ 
+ 
++# Midpoints between neighbouring E2M1 magnitudes; a value on a midpoint takes
++# the smaller magnitude (bucketize's default side).
++E2M1_MID = torch.tensor([0.25, 0.75, 1.25, 1.75, 2.5, 3.5, 5.0], dtype=torch.float32)
++
++
+ def e2m1_codes(q: torch.Tensor) -> torch.Tensor:
+     """Nearest E2M1 nibble index (0-15, sign in bit 3) per element."""
+-    ab = E2M1_ABS.to(q.device)
+-    d = (q.abs().unsqueeze(-1) - ab).abs()
+-    idx = d.argmin(-1).to(torch.uint8)
++    idx = torch.bucketize(q.abs(), E2M1_MID.to(q.device, q.dtype)).to(torch.uint8)
+     neg = (q < 0) | ((q == 0) & torch.signbit(q))
+-    return idx | torch.where(neg, torch.tensor(8, dtype=torch.uint8, device=q.device), torch.tensor(0, dtype=torch.uint8, device=q.device))
++    return idx | (neg.to(torch.uint8) << 3)
+ 
+ 
+ def e2m1_round(x: torch.Tensor) -> torch.Tensor:
+-    """Round float tensor to the nearest E2M1 value (ties to larger abs)."""
++    """Round float tensor to the nearest E2M1 value (ties to smaller abs)."""
+     return E2M1_LUT.to(x.device)[e2m1_codes(x).long()]
+ 
+ 
+diff --git a/src/sparkdrama/quant/scale.py b/src/sparkdrama/quant/scale.py
+index 9a8e48f..fe002ca 100644
+--- a/src/sparkdrama/quant/scale.py
++++ b/src/sparkdrama/quant/scale.py
+@@ -10,25 +10,36 @@ GROUP = 16
+ SCALE_FACTORS = [1.00 - 0.01 * i for i in range(21)]  # 1.00 .. 0.80
+ 
+ 
+-def mse_group_scale(w_group: torch.Tensor, s2: torch.Tensor) -> torch.Tensor:
++def mse_group_scale(w_group: torch.Tensor, s2: torch.Tensor,
++                    factors: tuple[float, float] = (SCALE_FACTORS[-1], SCALE_FACTORS[0])) -> torch.Tensor:
+     """Per-group E4M3 scale minimizing MSE over the candidate grid.
+ 
+     w_group: [.., 16] float weights. s2: per-tensor F32 scale (amax/(6*448)).
++    factors: (lowest, highest) multiple of amax_g/6 to try; the spec's grid is
++    (0.80, 1.00). A highest above 1 also tries scales that put the group's
++    largest value below E2M1's top level 6 (at 1.5 it lands on 4), which
++    spends the levels more evenly and is often the better choice.
+     Returns e4m3 float scale values (not bytes).
+     """
+     amax = w_group.abs().max(-1).values.clamp(min=1e-8)
+-    base = amax / 6.0 / s2  # candidate scale before the 1.00..0.80 grid
++    base = amax / 6.0 / s2  # candidate scale before the grid
++    # A 1% grid is finer than E4M3's spacing, so its candidates are exactly
++    # the E4M3 codes from round(highest * base) down to round(lowest * base).
++    # Try each code once, largest first; a later one wins only if strictly
++    # better, as the grid's order had it.
++    hi = e4m3_round((base * factors[1]).clamp(max=E4M3_MAX)).view(torch.uint8).to(torch.int16)
++    lo = e4m3_round((base * factors[0]).clamp(max=E4M3_MAX)).view(torch.uint8).to(torch.int16)
+     best_s = None
+     best_err = None
+-    for f in SCALE_FACTORS:
+-        cand = e4m3_round(base * f).to(torch.float32).clamp(min=1e-12)
+-        # MSE of the dequant error with this scale
++    for k in range(int((hi - lo).max()) + 1):
++        code = (hi - k).clamp(min=0)
++        cand = e4m3_decode(code.to(torch.uint8)).clamp(min=1e-12)
+         q = e2m1_round(w_group / (cand.unsqueeze(-1) * s2))
+         err = ((w_group - q * cand.unsqueeze(-1) * s2) ** 2).mean(-1)
+         if best_err is None:
+             best_err, best_s = err, cand
+         else:
+-            take = err < best_err
++            take = (err < best_err) & (hi - k >= lo)
+             best_err = torch.where(take, err, best_err)
+             best_s = torch.where(take, cand, best_s)
+     return best_s
+@@ -41,7 +52,8 @@ def per_tensor_scale(w: torch.Tensor) -> torch.Tensor:
+     )
+ 
+ 
+-def quantize_rtn(w: torch.Tensor) -> dict[str, torch.Tensor]:
++def quantize_rtn(w: torch.Tensor, factors: tuple[float, float] = (SCALE_FACTORS[-1], SCALE_FACTORS[0])
++                 ) -> dict[str, torch.Tensor]:
+     """Round-to-nearest NVFP4 quantization of a [N, K] weight.
+ 
+     Returns ModelOpt fields: weight (uint8 [N,K/2]), weight_scale (uint8 E4M3
+@@ -52,7 +64,7 @@ def quantize_rtn(w: torch.Tensor) -> dict[str, torch.Tensor]:
+     assert k % GROUP == 0
+     s2 = per_tensor_scale(w)
+     wg = w.reshape(n, k // GROUP, GROUP)
+-    s = mse_group_scale(wg, s2)  # [n, k/16] float
++    s = mse_group_scale(wg, s2, factors)  # [n, k/16] float
+     q = e2m1_round(wg / (s.unsqueeze(-1) * s2))
+     packed = _pack_rows(q.reshape(n, k))
+     return {

@@ -1,0 +1,67 @@
+{
+ "tag": "daisy-ovw-dflash2",
+ "model": "daisyrose-27b-atlas",
+ "max_tokens": 1024,
+ "rows": [
+  {
+   "kind": "prose",
+   "completion": 1024,
+   "accepted": 705,
+   "tokens_a_step": 3.21,
+   "tok_s": 36.2,
+   "finish": "length",
+   "reasoning_chars": 3798,
+   "content_head": "The bottle washed up on the third morning of the storm, wedged between the rocks like a green tooth.\n\nElias had kept the"
+  },
+  {
+   "kind": "code",
+   "completion": 1024,
+   "accepted": 808,
+   "tokens_a_step": 4.741,
+   "tok_s": 54.3,
+   "finish": "length",
+   "reasoning_chars": 2392,
+   "content_head": "```python\n\"\"\"LRU (Least Recently Used) cache with O(1) get and put.\n\nUses a hash map for O(1) key lookup and a doubly-li"
+  },
+  {
+   "kind": "json",
+   "completion": 1024,
+   "accepted": 744,
+   "tokens_a_step": 3.657,
+   "tok_s": 42.3,
+   "finish": "length",
+   "reasoning_chars": 733,
+   "content_head": "[\n  {\n    \"title\": \"The Cartographer's Last Meridian\",\n    \"author\": \"Elara Voss\",\n    \"year\": 2019,\n    \"isbn\": \"978-1-"
+  },
+  {
+   "kind": "gotests",
+   "completion": 1024,
+   "accepted": 800,
+   "tokens_a_step": 4.571,
+   "tok_s": 52.2,
+   "finish": "length",
+   "reasoning_chars": 1723,
+   "content_head": "```go\npackage duration\n\nimport (\n\t\"fmt\"\n\t\"strconv\"\n\t\"strings\"\n\t\"time\"\n)\n\n// ParseDuration parses a human-readable durati"
+  },
+  {
+   "kind": "math",
+   "completion": 864,
+   "accepted": 724,
+   "tokens_a_step": 6.171,
+   "tok_s": 70.5,
+   "finish": "stop",
+   "reasoning_chars": 757,
+   "content_head": "# Filling the Tank\n\n## Given\n\n| Item | Value |\n|---|---|\n| Initial volume | 40 L |\n| Tank capacity | 400 L |\n| Inlet 1 ("
+  },
+  {
+   "kind": "explain",
+   "completion": 1024,
+   "accepted": 762,
+   "tokens_a_step": 3.908,
+   "tok_s": 45.7,
+   "finish": "length",
+   "reasoning_chars": 428,
+   "content_head": "# TCP Congestion Control\n\nTCP congestion control is a set of algorithms that regulate how much data a sender injects int"
+  }
+ ]
+}

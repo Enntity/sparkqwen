@@ -76,6 +76,16 @@ scales against `in_proj_qkv`'s `weight_scale_2` (the engine concatenates the
 two), and keeps their `LICENSE` and `README.md` next to the overlay as
 `TandemLLM-LICENSE` and `TandemLLM-README.md`.
 
+With `CHECKPOINT=daisyrose` it downloads
+[`RadixArk/DaisyRose-27B-NVFP4`](https://huggingface.co/RadixArk/DaisyRose-27B-NVFP4)
+at commit `c4d85c5dfad1` in place of NVIDIA's checkpoint: RadixArk's
+reinforcement-learning finetune of `Qwen/Qwen3.8-27B`, published under the
+Apache License 2.0. Its Gated DeltaNet and attention projections come from
+[`Enntity/DaisyRose-27B-NVFP4-GDN-Attn`](https://huggingface.co/Enntity/DaisyRose-27B-NVFP4-GDN-Attn)
+at commit `071af22cfa35`, our own NVFP4 quantization of DaisyRose's BF16 release
+(Apache License 2.0), not TandemLLM's, which are quantized from base Qwen; the
+same `install/tandem_overlay.py` checks and lays them in.
+
 With `DRAFTER=dspine` or `DRAFTER=both` it also downloads Tencent's
 [`tencent/Qwen3.8-27B-DSpine-b16`](https://huggingface.co/tencent/Qwen3.8-27B-DSpine-b16)
 drafter at commit `ea909c0f5fab` (Apache License 2.0, Copyright Tencent);

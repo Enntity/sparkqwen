@@ -1,0 +1,67 @@
+{
+ "tag": "daisy-ov-dflash2",
+ "model": "daisyrose-27b-atlas",
+ "max_tokens": 1024,
+ "rows": [
+  {
+   "kind": "prose",
+   "completion": 1024,
+   "accepted": 641,
+   "tokens_a_step": 2.674,
+   "tok_s": 31.0,
+   "finish": "length",
+   "reasoning_chars": 2899,
+   "content_head": "# The Light and the Sea\n\nThe bottle washed up on the black rocks at the base of the lighthouse on a Tuesday in November,"
+  },
+  {
+   "kind": "code",
+   "completion": 1024,
+   "accepted": 808,
+   "tokens_a_step": 4.741,
+   "tok_s": 54.2,
+   "finish": "length",
+   "reasoning_chars": 2150,
+   "content_head": "```python\n\"\"\"LRU (Least Recently Used) cache with O(1) get and put.\n\nUses a hash map for O(1) key lookup and a doubly-li"
+  },
+  {
+   "kind": "json",
+   "completion": 1024,
+   "accepted": 742,
+   "tokens_a_step": 3.631,
+   "tok_s": 42.1,
+   "finish": "length",
+   "reasoning_chars": 527,
+   "content_head": "[\n  {\n    \"title\": \"The Cartographer's Last Meridian\",\n    \"author\": \"Elara Voss\",\n    \"year\": 2019,\n    \"isbn\": \"978-1-"
+  },
+  {
+   "kind": "gotests",
+   "completion": 1024,
+   "accepted": 805,
+   "tokens_a_step": 4.676,
+   "tok_s": 53.2,
+   "finish": "length",
+   "reasoning_chars": 2914,
+   "content_head": "```go\npackage duration\n\nimport (\n\t\"fmt\"\n\t\"strconv\"\n\t\"time\"\n)\n\n// ParseDuration parses a duration string like \"1h30"
+  },
+  {
+   "kind": "math",
+   "completion": 842,
+   "accepted": 707,
+   "tokens_a_step": 6.237,
+   "tok_s": 70.6,
+   "finish": "stop",
+   "reasoning_chars": 692,
+   "content_head": "# Filling the Tank\n\n## Setting Up the Rates\n\n| Source | Rate |\n|---|---|\n| Inlet 1 (always on) | +12 L/min |\n| Drain (al"
+  },
+  {
+   "kind": "explain",
+   "completion": 1024,
+   "accepted": 746,
+   "tokens_a_step": 3.683,
+   "tok_s": 43.0,
+   "finish": "length",
+   "reasoning_chars": 447,
+   "content_head": "# TCP Congestion Control\n\nTCP congestion control is a set of algorithms that work together to prevent a sender from over"
+  }
+ ]
+}

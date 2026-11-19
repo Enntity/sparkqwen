@@ -1,0 +1,1051 @@
+{
+ "damp": 0.1,
+ "scale_range": [
+  0.8,
+  1.75
+ ],
+ "tokens": 620477,
+ "mean": 0.0017171726982587684,
+ "rows": [
+  {
+   "layer": 0,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.00023879273142496968
+  },
+  {
+   "layer": 0,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0004475620169281903
+  },
+  {
+   "layer": 0,
+   "proj": "out_proj",
+   "calib_rel_error": 3.839442608459636e-05
+  },
+  {
+   "layer": 1,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0008369344090043836
+  },
+  {
+   "layer": 1,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0006890099067857511
+  },
+  {
+   "layer": 1,
+   "proj": "out_proj",
+   "calib_rel_error": 0.0004532193784102014
+  },
+  {
+   "layer": 2,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.001062897349752121
+  },
+  {
+   "layer": 2,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0007463866695742524
+  },
+  {
+   "layer": 2,
+   "proj": "out_proj",
+   "calib_rel_error": 0.00183691048627291
+  },
+  {
+   "layer": 3,
+   "proj": "q_proj",
+   "calib_rel_error": 0.00012348552591112886
+  },
+  {
+   "layer": 3,
+   "proj": "k_proj",
+   "calib_rel_error": 0.0016364524762361155
+  },
+  {
+   "layer": 3,
+   "proj": "v_proj",
+   "calib_rel_error": 0.002796935474050358
+  },
+  {
+   "layer": 3,
+   "proj": "o_proj",
+   "calib_rel_error": 0.00010778365769714305
+  },
+  {
+   "layer": 4,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0017906566742355453
+  },
+  {
+   "layer": 4,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0015470496338049968
+  },
+  {
+   "layer": 4,
+   "proj": "out_proj",
+   "calib_rel_error": 0.001700652534312174
+  },
+  {
+   "layer": 5,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0014810313453984467
+  },
+  {
+   "layer": 5,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0007835337153334751
+  },
+  {
+   "layer": 5,
+   "proj": "out_proj",
+   "calib_rel_error": 0.0019731695080574332
+  },
+  {
+   "layer": 6,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.001499804863849776
+  },
+  {
+   "layer": 6,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0005193153084467357
+  },
+  {
+   "layer": 6,
+   "proj": "out_proj",
+   "calib_rel_error": 0.0020624141684202173
+  },
+  {
+   "layer": 7,
+   "proj": "q_proj",
+   "calib_rel_error": 0.00013302197435775294
+  },
+  {
+   "layer": 7,
+   "proj": "k_proj",
+   "calib_rel_error": 0.001365587185678177
+  },
+  {
+   "layer": 7,
+   "proj": "v_proj",
+   "calib_rel_error": 0.0022448243465723
+  },
+  {
+   "layer": 7,
+   "proj": "o_proj",
+   "calib_rel_error": 0.0005898080460267184
+  },
+  {
+   "layer": 8,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0014342596057502163
+  },
+  {
+   "layer": 8,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0010429170638222532
+  },
+  {
+   "layer": 8,
+   "proj": "out_proj",
+   "calib_rel_error": 0.001940843300194292
+  },
+  {
+   "layer": 9,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0014793868849083333
+  },
+  {
+   "layer": 9,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0006679928163007053
+  },
+  {
+   "layer": 9,
+   "proj": "out_proj",
+   "calib_rel_error": 0.002471824983505925
+  },
+  {
+   "layer": 10,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0013988967502234768
+  },
+  {
+   "layer": 10,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0006862843477569267
+  },
+  {
+   "layer": 10,
+   "proj": "out_proj",
+   "calib_rel_error": 0.0020422846616997663
+  },
+  {
+   "layer": 11,
+   "proj": "q_proj",
+   "calib_rel_error": 0.00014958316448912572
+  },
+  {
+   "layer": 11,
+   "proj": "k_proj",
+   "calib_rel_error": 0.0012906008626243541
+  },
+  {
+   "layer": 11,
+   "proj": "v_proj",
+   "calib_rel_error": 0.00196808910906669
+  },
+  {
+   "layer": 11,
+   "proj": "o_proj",
+   "calib_rel_error": 0.0006171105263971818
+  },
+  {
+   "layer": 12,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0011496459722490214
+  },
+  {
+   "layer": 12,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.000513663894860701
+  },
+  {
+   "layer": 12,
+   "proj": "out_proj",
+   "calib_rel_error": 0.002196365390679774
+  },
+  {
+   "layer": 13,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0013060377398730952
+  },
+  {
+   "layer": 13,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0004354783572311702
+  },
+  {
+   "layer": 13,
+   "proj": "out_proj",
+   "calib_rel_error": 0.0029188113414054234
+  },
+  {
+   "layer": 14,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.001092865764939058
+  },
+  {
+   "layer": 14,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0005363625761117854
+  },
+  {
+   "layer": 14,
+   "proj": "out_proj",
+   "calib_rel_error": 0.0026242100734039887
+  },
+  {
+   "layer": 15,
+   "proj": "q_proj",
+   "calib_rel_error": 0.00015681204904047463
+  },
+  {
+   "layer": 15,
+   "proj": "k_proj",
+   "calib_rel_error": 0.0015055449313549117
+  },
+  {
+   "layer": 15,
+   "proj": "v_proj",
+   "calib_rel_error": 0.0019820326193221525
+  },
+  {
+   "layer": 15,
+   "proj": "o_proj",
+   "calib_rel_error": 0.001458135495721606
+  },
+  {
+   "layer": 16,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0012579455825553459
+  },
+  {
+   "layer": 16,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0005055718783723955
+  },
+  {
+   "layer": 16,
+   "proj": "out_proj",
+   "calib_rel_error": 0.0030228044852454697
+  },
+  {
+   "layer": 17,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.001159743232656322
+  },
+  {
+   "layer": 17,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0003674284752159236
+  },
+  {
+   "layer": 17,
+   "proj": "out_proj",
+   "calib_rel_error": 0.0035899763816923834
+  },
+  {
+   "layer": 18,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0011160737984669154
+  },
+  {
+   "layer": 18,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.00046054530949596236
+  },
+  {
+   "layer": 18,
+   "proj": "out_proj",
+   "calib_rel_error": 0.002551066405621571
+  },
+  {
+   "layer": 19,
+   "proj": "q_proj",
+   "calib_rel_error": 0.00029275369889180536
+  },
+  {
+   "layer": 19,
+   "proj": "k_proj",
+   "calib_rel_error": 0.0012961232521562474
+  },
+  {
+   "layer": 19,
+   "proj": "v_proj",
+   "calib_rel_error": 0.0023086552704757726
+  },
+  {
+   "layer": 19,
+   "proj": "o_proj",
+   "calib_rel_error": 0.0027243730108720845
+  },
+  {
+   "layer": 20,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0007211660036319914
+  },
+  {
+   "layer": 20,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.000517779617034443
+  },
+  {
+   "layer": 20,
+   "proj": "out_proj",
+   "calib_rel_error": 0.003592857543315118
+  },
+  {
+   "layer": 21,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.001147746315193782
+  },
+  {
+   "layer": 21,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0007653429218474897
+  },
+  {
+   "layer": 21,
+   "proj": "out_proj",
+   "calib_rel_error": 0.0026449934301043783
+  },
+  {
+   "layer": 22,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0015526710873522492
+  },
+  {
+   "layer": 22,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.00097160043527669
+  },
+  {
+   "layer": 22,
+   "proj": "out_proj",
+   "calib_rel_error": 0.003861368237726505
+  },
+  {
+   "layer": 23,
+   "proj": "q_proj",
+   "calib_rel_error": 0.0004113502734863171
+  },
+  {
+   "layer": 23,
+   "proj": "k_proj",
+   "calib_rel_error": 0.0014939830657869308
+  },
+  {
+   "layer": 23,
+   "proj": "v_proj",
+   "calib_rel_error": 0.002669164827336929
+  },
+  {
+   "layer": 23,
+   "proj": "o_proj",
+   "calib_rel_error": 0.0029484836240573215
+  },
+  {
+   "layer": 24,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0015491075001301164
+  },
+  {
+   "layer": 24,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0012534217661398805
+  },
+  {
+   "layer": 24,
+   "proj": "out_proj",
+   "calib_rel_error": 0.003970959472050544
+  },
+  {
+   "layer": 25,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0014517532668880278
+  },
+  {
+   "layer": 25,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0008120035273040184
+  },
+  {
+   "layer": 25,
+   "proj": "out_proj",
+   "calib_rel_error": 0.0037196813148007856
+  },
+  {
+   "layer": 26,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0015409262159154142
+  },
+  {
+   "layer": 26,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0007997444291796345
+  },
+  {
+   "layer": 26,
+   "proj": "out_proj",
+   "calib_rel_error": 0.00344139600325103
+  },
+  {
+   "layer": 27,
+   "proj": "q_proj",
+   "calib_rel_error": 0.0005545547842207058
+  },
+  {
+   "layer": 27,
+   "proj": "k_proj",
+   "calib_rel_error": 0.0011822230743987645
+  },
+  {
+   "layer": 27,
+   "proj": "v_proj",
+   "calib_rel_error": 0.0017539506754808306
+  },
+  {
+   "layer": 27,
+   "proj": "o_proj",
+   "calib_rel_error": 0.0026250919471097504
+  },
+  {
+   "layer": 28,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0013771722721622566
+  },
+  {
+   "layer": 28,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0007151653287927689
+  },
+  {
+   "layer": 28,
+   "proj": "out_proj",
+   "calib_rel_error": 0.003739075290929069
+  },
+  {
+   "layer": 29,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0016269861988006922
+  },
+  {
+   "layer": 29,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0005070239225367977
+  },
+  {
+   "layer": 29,
+   "proj": "out_proj",
+   "calib_rel_error": 0.004017014217304241
+  },
+  {
+   "layer": 30,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0014743019323872673
+  },
+  {
+   "layer": 30,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0006134890186324476
+  },
+  {
+   "layer": 30,
+   "proj": "out_proj",
+   "calib_rel_error": 0.0035757512154305626
+  },
+  {
+   "layer": 31,
+   "proj": "q_proj",
+   "calib_rel_error": 0.0006801214567627643
+  },
+  {
+   "layer": 31,
+   "proj": "k_proj",
+   "calib_rel_error": 0.0011664127991725477
+  },
+  {
+   "layer": 31,
+   "proj": "v_proj",
+   "calib_rel_error": 0.001893701966062989
+  },
+  {
+   "layer": 31,
+   "proj": "o_proj",
+   "calib_rel_error": 0.003335603247572741
+  },
+  {
+   "layer": 32,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0015754132622199022
+  },
+  {
+   "layer": 32,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0006055963667583707
+  },
+  {
+   "layer": 32,
+   "proj": "out_proj",
+   "calib_rel_error": 0.0037767953546195884
+  },
+  {
+   "layer": 33,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.001702283424702269
+  },
+  {
+   "layer": 33,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0003983411332465191
+  },
+  {
+   "layer": 33,
+   "proj": "out_proj",
+   "calib_rel_error": 0.00432831448523081
+  },
+  {
+   "layer": 34,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0016107451209298473
+  },
+  {
+   "layer": 34,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0006181624563261592
+  },
+  {
+   "layer": 34,
+   "proj": "out_proj",
+   "calib_rel_error": 0.003445612912552
+  },
+  {
+   "layer": 35,
+   "proj": "q_proj",
+   "calib_rel_error": 0.0008446149720788526
+  },
+  {
+   "layer": 35,
+   "proj": "k_proj",
+   "calib_rel_error": 0.0012320548047387732
+  },
+  {
+   "layer": 35,
+   "proj": "v_proj",
+   "calib_rel_error": 0.002561414134486597
+  },
+  {
+   "layer": 35,
+   "proj": "o_proj",
+   "calib_rel_error": 0.002978580048970481
+  },
+  {
+   "layer": 36,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0011077689617201112
+  },
+  {
+   "layer": 36,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0006561358426913121
+  },
+  {
+   "layer": 36,
+   "proj": "out_proj",
+   "calib_rel_error": 0.003397417157196716
+  },
+  {
+   "layer": 37,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0012621088752323537
+  },
+  {
+   "layer": 37,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0006871145820640457
+  },
+  {
+   "layer": 37,
+   "proj": "out_proj",
+   "calib_rel_error": 0.003839930707209249
+  },
+  {
+   "layer": 38,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0018959762034929841
+  },
+  {
+   "layer": 38,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0008449829271461125
+  },
+  {
+   "layer": 38,
+   "proj": "out_proj",
+   "calib_rel_error": 0.004310055696442918
+  },
+  {
+   "layer": 39,
+   "proj": "q_proj",
+   "calib_rel_error": 0.0008122685875380572
+  },
+  {
+   "layer": 39,
+   "proj": "k_proj",
+   "calib_rel_error": 0.0014460526229611314
+  },
+  {
+   "layer": 39,
+   "proj": "v_proj",
+   "calib_rel_error": 0.002995135425673417
+  },
+  {
+   "layer": 39,
+   "proj": "o_proj",
+   "calib_rel_error": 0.0034122394248662113
+  },
+  {
+   "layer": 40,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0016985190284265054
+  },
+  {
+   "layer": 40,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0011924375490468943
+  },
+  {
+   "layer": 40,
+   "proj": "out_proj",
+   "calib_rel_error": 0.004113522660996255
+  },
+  {
+   "layer": 41,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0018087926594393857
+  },
+  {
+   "layer": 41,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.000975481792073458
+  },
+  {
+   "layer": 41,
+   "proj": "out_proj",
+   "calib_rel_error": 0.00414266302551595
+  },
+  {
+   "layer": 42,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.001938266796680902
+  },
+  {
+   "layer": 42,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0009580138656963537
+  },
+  {
+   "layer": 42,
+   "proj": "out_proj",
+   "calib_rel_error": 0.003425972201591735
+  },
+  {
+   "layer": 43,
+   "proj": "q_proj",
+   "calib_rel_error": 0.0008030216625686209
+  },
+  {
+   "layer": 43,
+   "proj": "k_proj",
+   "calib_rel_error": 0.0012340938722188778
+  },
+  {
+   "layer": 43,
+   "proj": "v_proj",
+   "calib_rel_error": 0.0020098122093948146
+  },
+  {
+   "layer": 43,
+   "proj": "o_proj",
+   "calib_rel_error": 0.003203281679235703
+  },
+  {
+   "layer": 44,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0016200940857214493
+  },
+  {
+   "layer": 44,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0008475652056942548
+  },
+  {
+   "layer": 44,
+   "proj": "out_proj",
+   "calib_rel_error": 0.00372146490738017
+  },
+  {
+   "layer": 45,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0019594060663598754
+  },
+  {
+   "layer": 45,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.000696013138297884
+  },
+  {
+   "layer": 45,
+   "proj": "out_proj",
+   "calib_rel_error": 0.003592530383947488
+  },
+  {
+   "layer": 46,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0018228086532404962
+  },
+  {
+   "layer": 46,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0007515441259664877
+  },
+  {
+   "layer": 46,
+   "proj": "out_proj",
+   "calib_rel_error": 0.0035458442500297914
+  },
+  {
+   "layer": 47,
+   "proj": "q_proj",
+   "calib_rel_error": 0.0008542691574633711
+  },
+  {
+   "layer": 47,
+   "proj": "k_proj",
+   "calib_rel_error": 0.001243621032752468
+  },
+  {
+   "layer": 47,
+   "proj": "v_proj",
+   "calib_rel_error": 0.002367650276212903
+  },
+  {
+   "layer": 47,
+   "proj": "o_proj",
+   "calib_rel_error": 0.003259190023819221
+  },
+  {
+   "layer": 48,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0017385422438918254
+  },
+  {
+   "layer": 48,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0007943928133350519
+  },
+  {
+   "layer": 48,
+   "proj": "out_proj",
+   "calib_rel_error": 0.003448385599712579
+  },
+  {
+   "layer": 49,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0017888460308564974
+  },
+  {
+   "layer": 49,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0005322359483776318
+  },
+  {
+   "layer": 49,
+   "proj": "out_proj",
+   "calib_rel_error": 0.00406895917477246
+  },
+  {
+   "layer": 50,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.001704981101444622
+  },
+  {
+   "layer": 50,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0006790870318254254
+  },
+  {
+   "layer": 50,
+   "proj": "out_proj",
+   "calib_rel_error": 0.003010369961491566
+  },
+  {
+   "layer": 51,
+   "proj": "q_proj",
+   "calib_rel_error": 0.0009546345945252285
+  },
+  {
+   "layer": 51,
+   "proj": "k_proj",
+   "calib_rel_error": 0.0012870210171507326
+  },
+  {
+   "layer": 51,
+   "proj": "v_proj",
+   "calib_rel_error": 0.0025162650606785557
+  },
+  {
+   "layer": 51,
+   "proj": "o_proj",
+   "calib_rel_error": 0.002337370901779574
+  },
+  {
+   "layer": 52,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0011836526302749022
+  },
+  {
+   "layer": 52,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0007249229725515264
+  },
+  {
+   "layer": 52,
+   "proj": "out_proj",
+   "calib_rel_error": 0.002779203382620292
+  },
+  {
+   "layer": 53,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0013031842419813327
+  },
+  {
+   "layer": 53,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.00082171299376315
+  },
+  {
+   "layer": 53,
+   "proj": "out_proj",
+   "calib_rel_error": 0.003533187105901619
+  },
+  {
+   "layer": 54,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0016401288020378374
+  },
+  {
+   "layer": 54,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0007757389198679813
+  },
+  {
+   "layer": 54,
+   "proj": "out_proj",
+   "calib_rel_error": 0.003995087130188262
+  },
+  {
+   "layer": 55,
+   "proj": "q_proj",
+   "calib_rel_error": 0.0011391250159208028
+  },
+  {
+   "layer": 55,
+   "proj": "k_proj",
+   "calib_rel_error": 0.0014423920192797406
+  },
+  {
+   "layer": 55,
+   "proj": "v_proj",
+   "calib_rel_error": 0.003122573479290388
+  },
+  {
+   "layer": 55,
+   "proj": "o_proj",
+   "calib_rel_error": 0.002473758491851683
+  },
+  {
+   "layer": 56,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0013065210813463094
+  },
+  {
+   "layer": 56,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0009102317365620475
+  },
+  {
+   "layer": 56,
+   "proj": "out_proj",
+   "calib_rel_error": 0.0034020132914313658
+  },
+  {
+   "layer": 57,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0011454476791962081
+  },
+  {
+   "layer": 57,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0008850524182060558
+  },
+  {
+   "layer": 57,
+   "proj": "out_proj",
+   "calib_rel_error": 0.004164713373829145
+  },
+  {
+   "layer": 58,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0014640109938918744
+  },
+  {
+   "layer": 58,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.00084831140613684
+  },
+  {
+   "layer": 58,
+   "proj": "out_proj",
+   "calib_rel_error": 0.004077623701229771
+  },
+  {
+   "layer": 59,
+   "proj": "q_proj",
+   "calib_rel_error": 0.001213699540646696
+  },
+  {
+   "layer": 59,
+   "proj": "k_proj",
+   "calib_rel_error": 0.0015438160142540354
+  },
+  {
+   "layer": 59,
+   "proj": "v_proj",
+   "calib_rel_error": 0.0021666212919390884
+  },
+  {
+   "layer": 59,
+   "proj": "o_proj",
+   "calib_rel_error": 0.002114102056114817
+  },
+  {
+   "layer": 60,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0009995973146779454
+  },
+  {
+   "layer": 60,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0006791662913440091
+  },
+  {
+   "layer": 60,
+   "proj": "out_proj",
+   "calib_rel_error": 0.0032030576404397633
+  },
+  {
+   "layer": 61,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0013239040231878781
+  },
+  {
+   "layer": 61,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0007373368652295265
+  },
+  {
+   "layer": 61,
+   "proj": "out_proj",
+   "calib_rel_error": 0.003851728363297149
+  },
+  {
+   "layer": 62,
+   "proj": "in_proj_qkv",
+   "calib_rel_error": 0.0009493794292125757
+  },
+  {
+   "layer": 62,
+   "proj": "in_proj_z",
+   "calib_rel_error": 0.0006334550504354137
+  },
+  {
+   "layer": 62,
+   "proj": "out_proj",
+   "calib_rel_error": 0.0026596741191613742
+  },
+  {
+   "layer": 63,
+   "proj": "q_proj",
+   "calib_rel_error": 0.0007613787857521542
+  },
+  {
+   "layer": 63,
+   "proj": "k_proj",
+   "calib_rel_error": 0.0015319004406219748
+  },
+  {
+   "layer": 63,
+   "proj": "v_proj",
+   "calib_rel_error": 0.00050211237653313
+  },
+  {
+   "layer": 63,
+   "proj": "o_proj",
+   "calib_rel_error": 0.0010704363840660402
+  }
+ ]
+}

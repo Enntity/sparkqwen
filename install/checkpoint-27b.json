@@ -51,5 +51,39 @@
     "license": "apache-2.0",
     "method": "DSpine (Zhang et al., arXiv 2609.36173, github.com/Tencent/DSpine)",
     "why": "Tencent's DSpine block drafter for Qwen3.8-27B: 16-row blocks whose layers each pass a row its predecessor's predicted feature, so it guesses much further ahead on code, JSON and tool calls (8.4 tokens a round on the code probe against DFlash2's 6.1). Atlas verifies its blocks exactly, so it changes speed, not text. DRAFTER=dspine serves it alone; DRAFTER=both serves it beside DFlash2, each request on whichever its recent rounds favour."
+  },
+  "daisyrose": {
+    "repository": "RadixArk/DaisyRose-27B-NVFP4",
+    "revision": "c4d85c5dfad123426555c22f4e24bb15381f0bdb",
+    "size_gib": 20.4,
+    "format": "The same ModelOpt MIXED_PRECISION layout as nvidia/Qwen3.8-27B-NVFP4: all 2,194 tensors match it in name, dtype and shape, and the chat template is byte-identical.",
+    "served_model_name": "daisyrose-27b-atlas",
+    "base_model": "Qwen/Qwen3.8-27B",
+    "license": "apache-2.0",
+    "why": "RadixArk's reinforcement-learning finetune of Qwen3.8-27B (no SFT or distillation), served with CHECKPOINT=daisyrose with its own overlay: TandemLLM's NVFP4 projections are quantized from base Qwen and would undo part of the finetune. The drafters were trained on base Qwen; verify stays exact, so they change only how often drafts are accepted.",
+    "overlay": {
+      "repository": "Enntity/DaisyRose-27B-NVFP4-GDN-Attn",
+      "revision": "071af22cfa355160c346384d02fab0de5b1471d3",
+      "files": {
+        "gdn.safetensors": "4d0ff1be854b4e625505eaf8b1a2f6c93438389ae16808c2226a2114c9d6272c",
+        "attn.safetensors": "dafa2872af67534bf3bda3de3c31a78f507153cde010acbaa2329b5162e5ed90",
+        "LICENSE": "bbedc3fda3305820b977265f01b8619d87570a6739de3a5582c3464840f1e57a",
+        "README.md": "dc8554e0aa181686be2b081fe1e4814739f92c5ca77f4574658d9980d271a5fe"
+      },
+      "serve": [
+        "gdn.safetensors",
+        "attn.safetensors"
+      ],
+      "attribution": [
+        "LICENSE",
+        "README.md"
+      ],
+      "label": "Enntity",
+      "prefix": "enntity",
+      "size_gib": 3.8,
+      "base_model": "RadixArk/DaisyRose-27B",
+      "license": "apache-2.0",
+      "why": "Our NVFP4 Gated DeltaNet and attention projections, GPTQ-quantized from DaisyRose's BF16 release (620K calibration tokens in its chat template; damping 0.1, per-16 scales over 0.80-1.75 x amax/6) in TandemLLM's layout. In place of the checkpoint's FP8 GDN and the engine's load-time NVFP4 attention: decode 43.7 -> 50.2 tok/s on one Spark at +0.0020 nats/token held-out NLL, quality probe level (results/2026-11-19-daisyrose-projections)."
+    }
   }
 }
