@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: AGPL-3.0-only
-"""Build the 27B checkpoint overlay: NVIDIA's Qwen3.8-27B-NVFP4 with its Gated
-DeltaNet and attention projections replaced by TandemLLM's NVFP4 weights.
+"""Build the 27B checkpoint overlay: NVIDIA's NVFP4 Qwen3.8-27B with the Gated
+DeltaNet and attention projections it stores in FP8 replaced by TandemLLM's
+NVFP4 weights. Projections the checkpoint already stores in NVFP4 (most GDN
+layers of the QAD checkpoint) are kept; only FP8 ones are replaced, so every
+projection is served in NVFP4.
 
   tandem_overlay.py PIN CHECKPOINT_DIR WEIGHTS_DIR OVERLAY_DIR
 
@@ -84,10 +87,30 @@ def sha256(path):
     return h.hexdigest()
 
 
-def rekey(src, dst):
-    """Copy src under checkpoint names; returns the tensor names written."""
+def fp8_modules(checkpoint, weight_map):
+    """The checkpoint's modules whose weight is stored FP8 (E4M3), read from shard headers."""
+    dtypes = {}
+    for shard in sorted(set(weight_map.values())):
+        meta, _ = header(os.path.join(checkpoint, shard))
+        dtypes.update({k: v['dtype'] for k, v in meta.items() if k != '__metadata__'})
+    fp8 = {k[:-len('.weight')] for k, d in dtypes.items() if k.endswith('.weight') and d == 'F8_E4M3'}
+    # Atlas fuses a GDN layer's in_proj_qkv and in_proj_z under one weight_scale_2,
+    # so a layer is replaced whole or not at all.
+    for mod in sorted(m for m in fp8 if m.endswith('.linear_attn.in_proj_qkv') or m.endswith('.linear_attn.in_proj_z')):
+        layer = mod.rsplit('.', 1)[0]
+        if not {layer + '.in_proj_qkv', layer + '.in_proj_z'} <= fp8:
+            raise SystemExit(f'{layer}: in_proj_qkv and in_proj_z are stored in different formats')
+    return fp8
+
+
+def rekey(src, dst, keep):
+    """Copy src's tensors of the modules in `keep` under checkpoint names;
+    returns the tensor names written (none, and no file, when nothing is kept)."""
     meta, start = header(src)
-    info = {k: v for k, v in meta.items() if k != '__metadata__'}
+    info = {k: v for k, v in meta.items() if k != '__metadata__'
+            and (PRE + k[len('layers.'):]).rsplit('.', 1)[0] in keep}
+    if not info:
+        return []
     names = {k: PRE + k[len('layers.'):] for k in info}
     with open(src, 'rb') as f:
         def raw(k):
@@ -142,9 +165,10 @@ def build(pin, checkpoint, weights, overlay):
     index = json.load(open(os.path.join(checkpoint, 'model.safetensors.index.json')))
     quant = json.load(open(os.path.join(checkpoint, 'hf_quant_config.json')))
     wm, layers = index['weight_map'], quant['quantization']['quantized_layers']
+    keep = fp8_modules(checkpoint, wm)
     for name in spec['serve']:
         dst = 'tandem-' + name
-        written = rekey(os.path.join(weights, name), os.path.join(overlay, dst))
+        written = rekey(os.path.join(weights, name), os.path.join(overlay, dst), keep)
         modules = sorted({t.rsplit('.', 1)[0] for t in written})
         for mod in modules:
             for k in [k for k in wm if k.startswith(mod + '.')]:

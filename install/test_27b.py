@@ -172,8 +172,9 @@ class SingleSpark(unittest.TestCase):
 
     def test_checkpoint_pin_is_whole(self):
         pin = json.loads((HERE/'checkpoint-27b.json').read_text())
-        self.assertEqual(pin['repository'], 'nvidia/Qwen3.8-27B-NVFP4')
-        self.assertRegex(pin['revision'], r'^[0-9a-f]{40}$')
+        self.assertEqual(pin['repository'], 'nvidia/Qwen3.8-27B-NVFP4-QAD')
+        self.assertEqual(pin['revision'], 'cd46ab575a5a687f0bc3e54251016fc2cc1a6aef')
+        self.assertEqual(pin['license'], 'nvidia-open-model-license')
         self.assertEqual(pin['served_model_name'], 'qwen3.8-27b-atlas')
         self.assertEqual(pin['draft']['repository'], 'incoai/Qwen3.8-27B-DFlash2')
         self.assertRegex(pin['draft']['revision'], r'^[0-9a-f]{40}$')
@@ -299,6 +300,8 @@ class Overlay(unittest.TestCase):
             L + '0.linear_attn.in_proj_qkv.input_scale': ('F32', [], f32(1.0)),
             L + '0.linear_attn.in_proj_z.weight': ('F8_E4M3', [2, 16], bytes(32)),
             L + '0.linear_attn.in_proj_z.weight_scale': ('F32', [], f32(1.0)),
+            L + '3.self_attn.o_proj.weight': ('F8_E4M3', [2, 16], bytes(32)),
+            L + '3.self_attn.o_proj.weight_scale': ('F32', [], f32(1.0)),
             L + '0.mlp.down_proj.weight': ('U8', [2, 8], bytes(16))})
         index = {'weight_map': {k: 'model-1.safetensors' for k in read_st(ck/'model-1.safetensors')}}
         (ck/'model.safetensors.index.json').write_text(json.dumps(index))
@@ -363,6 +366,65 @@ class Overlay(unittest.TestCase):
     def test_a_file_that_does_not_match_its_pin_is_refused(self):
         with self.assertRaises(SystemExit):
             self.build(1e-4, 2e-4, tamper=True)
+
+    def test_only_the_checkpoints_fp8_projections_are_replaced(self):
+        # A base that already stores layer 1's GDN in NVFP4 (as the QAD checkpoint
+        # does for 38 of its 48 GDN layers) keeps it; the overlay fills only FP8.
+        tmp = Path(tempfile.mkdtemp())
+        ck, w, ov = tmp/'ck', tmp/'w', tmp/'ck+tandem-gdn-attn'
+        ck.mkdir(); w.mkdir()
+        f32 = lambda x: struct.pack('<f', x)
+        L = 'model.language_model.layers.'
+        base = {}
+        for p in ('in_proj_qkv', 'in_proj_z', 'out_proj'):
+            base[L + f'0.linear_attn.{p}.weight'] = ('F8_E4M3', [2, 16], bytes(32))
+            base[L + f'0.linear_attn.{p}.weight_scale'] = ('F32', [], f32(1.0))
+            base[L + f'1.linear_attn.{p}.weight'] = ('U8', [2, 8], bytes([7]) * 16)
+            base[L + f'1.linear_attn.{p}.weight_scale'] = ('F8_E4M3', [2, 1], b'\x30\x30')
+            base[L + f'1.linear_attn.{p}.weight_scale_2'] = ('F32', [], f32(2e-4))
+        write_st(ck/'model-1.safetensors', base)
+        (ck/'model.safetensors.index.json').write_text(json.dumps({'weight_map': {k: 'model-1.safetensors' for k in base}}))
+        nv = {L + '1.linear_attn.in_proj_qkv': {'quant_algo': 'NVFP4', 'group_size': 16}}
+        fp = {L + '0.linear_attn.in_proj_qkv': {'quant_algo': 'FP8'}}
+        (ck/'hf_quant_config.json').write_text(json.dumps({'quantization': {'quantized_layers': {**nv, **fp}}}))
+        tandem = {}
+        for i in (0, 1):
+            for p in ('in_proj_qkv', 'in_proj_z', 'out_proj'):
+                tandem[f'layers.{i}.linear_attn.{p}.weight'] = ('U8', [2, 8], bytes(range(16)))
+                tandem[f'layers.{i}.linear_attn.{p}.weight_scale'] = ('F8_E4M3', [2, 1], b'\x38\x39')
+                tandem[f'layers.{i}.linear_attn.{p}.weight_scale_2'] = ('F32', [], f32(1e-4))
+        write_st(w/'gdn.safetensors', tandem)
+        write_st(w/'attn.safetensors', {'layers.3.self_attn.o_proj.weight': ('U8', [2, 8], bytes(16))})
+        (w/'LICENSE').write_text('Apache License 2.0')
+        (w/'README.md').write_text('license: apache-2.0')
+        files = {n: overlay.sha256(w/n) for n in ('gdn.safetensors', 'attn.safetensors', 'LICENSE', 'README.md')}
+        pin = tmp/'pin.json'
+        pin.write_text(json.dumps({'overlay': {'revision': 'b' * 40, 'files': files,
+                                               'serve': ['gdn.safetensors', 'attn.safetensors'],
+                                               'attribution': ['LICENSE', 'README.md']}}))
+        overlay.build(str(pin), str(ck), str(w), str(ov))
+        wm = json.loads((ov/'model.safetensors.index.json').read_text())['weight_map']
+        q = json.loads((ov/'hf_quant_config.json').read_text())['quantization']['quantized_layers']
+        for p in ('in_proj_qkv', 'in_proj_z', 'out_proj'):
+            self.assertEqual(wm[L + f'0.linear_attn.{p}.weight'], 'tandem-gdn.safetensors')
+            self.assertNotIn(L + f'0.linear_attn.{p}.weight_scale_2', set(wm) - set(read_st(ov/'tandem-gdn.safetensors')))
+            for s in ('weight', 'weight_scale', 'weight_scale_2'):
+                self.assertEqual(wm[L + f'1.linear_attn.{p}.{s}'], 'model-1.safetensors')
+        self.assertEqual(sorted(read_st(ov/'tandem-gdn.safetensors')),
+                         sorted(L + k[len('layers.'):] for k in tandem if k.startswith('layers.0.')))
+        self.assertEqual(q[L + '0.linear_attn.in_proj_qkv'], {'quant_algo': 'NVFP4', 'group_size': 16})
+        self.assertEqual(q[L + '1.linear_attn.in_proj_qkv'], nv[L + '1.linear_attn.in_proj_qkv'])
+        # The base has no attention at layer 3, so nothing there is FP8 to replace.
+        self.assertNotIn(L + '3.self_attn.o_proj.weight', wm)
+        self.assertFalse((ov/'tandem-attn.safetensors').exists())
+
+    def test_a_gdn_layer_half_in_fp8_is_refused(self):
+        tmp = Path(tempfile.mkdtemp())
+        L = 'model.language_model.layers.0.linear_attn.'
+        write_st(tmp/'m.safetensors', {L + 'in_proj_qkv.weight': ('F8_E4M3', [2, 16], bytes(32)),
+                                       L + 'in_proj_z.weight': ('U8', [2, 8], bytes(16))})
+        with self.assertRaises(SystemExit):
+            overlay.fp8_modules(str(tmp), {L + 'in_proj_qkv.weight': 'm.safetensors'})
 
 
 if __name__ == '__main__':

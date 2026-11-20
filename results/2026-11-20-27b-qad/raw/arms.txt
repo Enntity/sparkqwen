@@ -1,0 +1,18 @@
+                              qad-a-main       qad-b-qad   delta
+decode prose tok/s               32.7200         35.2500    +7.7%
+decode code tok/s                57.2100         47.5400   -16.9%
+decode json tok/s                45.3400         46.7800    +3.2%
+cold TTFT 2K s                    1.2740          1.2650    -0.7%
+cold TTFT 8K s                    4.8920          4.8940    +0.0%
+cold TTFT 16K s                  10.4405         10.4185    -0.2%
+cold TTFT 28K s                  20.9025         20.8955    -0.0%
+C1 aggregate tok/s               32.9600         32.9100    -0.2%
+C2 aggregate tok/s               51.9950         51.3600    -1.2%
+C4 aggregate tok/s               74.7650         75.4300    +0.9%
+C8 aggregate tok/s               92.8850         94.3000    +1.5%
+warm TTFT 8K s                    0.2780          0.2790    +0.4%
+warm TTFT 20K s                   0.3400          0.3350    -1.5%
+qprobe arith                       40/40           40/40
+qprobe needle                      12/12           12/12
+tool probe                         21/21           21/21
+NLL nats/token                    0.8538          0.8386    -1.8%
