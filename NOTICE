@@ -32,7 +32,8 @@ distributed by their author under the Apache License 2.0; their LICENSE and
 README are kept next to the served overlay as TandemLLM-LICENSE and
 TandemLLM-README.md. Only the weights are used, not TandemLLM's code (AGPL-3.0);
 install/tandem_overlay.py, our own code, re-keys them to the checkpoint's tensor
-names and re-expresses in_proj_z's block scales against in_proj_qkv's
+names, uses them only in place of the projections the checkpoint stores in
+FP8, and re-expresses in_proj_z's block scales against in_proj_qkv's
 weight_scale_2, the only change made to them.
 
 With DRAFTER=dspine or DRAFTER=both, the same variant also downloads Tencent's
