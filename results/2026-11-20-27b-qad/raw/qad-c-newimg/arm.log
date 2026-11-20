@@ -1,0 +1,6 @@
+2026-11-20T21:35:11Z up (27b MODE= PROFILE=27b DRAFTER= IMAGE=ghcr.io/enntity/atlas-sparkqwen:b4541392c44b-27b)
+2026-11-20T21:35:23Z start exit 0: [1m== ready: http://127.0.0.1:8893/v1 model qwen3.8-27b-atlas[0m
+2026-11-20T21:35:23Z step greedy
+2026-11-20T21:35:56Z step checks
+2026-11-20T21:44:41Z step rig1
+2026-11-20T21:54:39Z done: greedy_eq 0 greedy_eq 0 lp_dump 0 tool_probe 0 quality_probe 0 rig1 0 

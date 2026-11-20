@@ -95,6 +95,21 @@ Greedy text differs from the earlier checkpoint's, as any weight change does;
 exactness of speculative against serial decode is the engine's and was not
 changed (`greedy_eq` passed in both arms).
 
+## The image for this install tree
+
+`ghcr.io/enntity/atlas-sparkqwen:b4541392c44b-27b`, built on the Spark from
+this branch with `SPARKQWEN_MODEL=27b install/build.sh`, records the same
+engine commit and tree as `acccc526b4ff-27b`, but its `spark` binary is not the
+same file: the machine code differs (`.text`, `.rodata`; 327 KB larger) while
+the CUDA kernels (`.nv_fatbin`) are identical (`raw/qad-c-newimg/same-as-old-image.txt`).
+The base images, rustup and the toolchain are digest-pinned and the build is
+`--locked`, so the difference comes from something unpinned in the build
+environment; not traced. Served with the QAD weights it behaves the same as
+the older image: greedy text 8/8 identical, prompt logprobs with zero drift on
+26,912 tokens (`lp_dump`, 1K, 6K and 20K prompts), probes 40/40, 12/12, 21/21,
+and RigMark code 66.3, prose 30.4, structured 86.3, 16K prefill 1,575, C8
+106.7, 9/9 gates (`raw/qad-c-newimg`).
+
 ## Licence
 
 The QAD checkpoint is governed by the NVIDIA Open Model Agreement (commercial

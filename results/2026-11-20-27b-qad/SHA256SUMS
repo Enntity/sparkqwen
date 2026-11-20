@@ -1,4 +1,4 @@
-f6829c0f4280a50c03277ac600fa06a54da5e16ef6165062dff904b7de2bbaca  RESULT.md
+625769d0f838dc83ea23afd4a08fa4fbce4830dbd35dfce2829c6a4f067f743b  RESULT.md
 b7f4a6effe1f1dd0bd26f936152eb6fc2d458fc32608208f69c213c66a8d6656  raw/arms.txt
 57d25ba8dc02f11591c5d1f91b0120e84b3e4af793a7f8fa9880de7c0e88a26f  raw/kl/compare1.log
 7be8bc801f6dddd113023c584988da5ea637c86dcd724f5cc487fb956d60bf04  raw/kl/kl-compare.json
@@ -26,6 +26,16 @@ f0bfd86b3857df4b85b9f538f411ecf503abad08c5e30b1b698ecf7d9c15ac3f  raw/qad-b-qad/
 949f31f7dabbf341b58216852c4707faeec4d6c7532d9a037f19c2518b3c09ce  raw/qad-b-rig/identity-rank0.json
 2b84f1c8136bc668d08a1e9bee56c043d8bec06c6ec089a313285091c560cd63  raw/qad-b-rig/rigmark.card.txt
 d641d4187c8e3ce109ecb16ad26dfd4917fed56b02a1e9dbf95959e13a7126ac  raw/qad-b-rig/rigmark.json
+465450516a20f6e36d12e2ae0a4252e1ea67daa9f521a50a08255a78f4537d51  raw/qad-c-newimg/arm.log
+b369952d62e38f0f88437c6e295f4c09a443c269709e63483f8e7ee2ba62f8bf  raw/qad-c-newimg/exits
+78b779671319c53389b1c07e7b3ec568035357353367303c5d8c5236ce17c233  raw/qad-c-newimg/greedy-qad-c-newimg.json
+29f3e35ad4f89c16276c3de7be0ea615c4e627a66a81372393d71e24c6d139bd  raw/qad-c-newimg/identity-rank0.json
+373430aa985887e3f22b879060648ae478ff8320869b4b740fea69a4ae864109  raw/qad-c-newimg/lpd-qad-c-newimg.json
+c43694164f6d16884313ed89dc6b1a2efdfe3a1dc913d4e00173233cd264af97  raw/qad-c-newimg/qprobe-qad-c-newimg.jsonl
+0b5fc8427772710421e679975c735296c18d9d8e599fe6fb0f806560d36cfe26  raw/qad-c-newimg/rigmark.card.txt
+8a77eff229eace5e90f66b331b890fc1b8420bbb5f85f659e901527a43d3373b  raw/qad-c-newimg/rigmark.json
+480b07f24a4feedcc907c9aec3891dafc1e3e571da654e01b9552b875128e145  raw/qad-c-newimg/same-as-old-image.txt
+85ddeb19e534aa5e48ce7f884e9db33c0f580413d31e4aa5e55fb64260ae6509  raw/qad-c-newimg/tools-qad-c-newimg.json
 15f21ce51e40533cab2c184e38da921f74357e3e0ea4050c250f3d0c5212eac8  raw/tools/arms.py
 5881cc13bcfc0ca009d737319c2b4e613fbd2e9a5eefc621a65d3d5a790b4e6c  raw/tools/kl_eval.py
 82fdc34bf00db59df9d056440ad106bd56a9ac2a2419105ddce4f7a17554c185  raw/tools/queue1.sh
