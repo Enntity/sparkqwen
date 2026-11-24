@@ -4,7 +4,7 @@
 # directly, so there is no converter and no native bridge stage.
 FROM nvidia/cuda:13.0.0-devel-ubuntu24.04@sha256:1e8ac7a54c184a1af8ef2167f28fa98281892a835c981ebcddb1fad04bdd452d AS builder
 RUN apt-get update -qq && apt-get install -y -qq --no-install-recommends --allow-change-held-packages \
-    git ca-certificates build-essential python3 curl pkg-config cmake libclang-dev \
+    git ca-certificates build-essential python3 curl pkg-config cmake libclang-dev ffmpeg \
     libibverbs-dev librdmacm-dev libnccl2=2.31.2-1+cuda13.3 libnccl-dev=2.31.2-1+cuda13.3 && \
     rm -rf /var/lib/apt/lists/*
 # rustup-init at a pinned release, checked against its published SHA-256
@@ -51,9 +51,8 @@ RUN mkdir -p /opt/cuda-stubs && \
 # Workspace contracts read source files, fixtures and committed benchmark
 # definitions. Preserve the exact checkout in the builder only.
 COPY engine/ /build/
-# Exercise the real bounded video decoder in CPU regressions as well.
-RUN apt-get update -qq && apt-get install -y -qq --no-install-recommends ffmpeg && \
-    rm -rf /var/lib/apt/lists/*
+# ffmpeg (installed with the toolchain above, so an engine change does not
+# reinstall it) exercises the real bounded video decoder in CPU regressions.
 # Full native CPU suite. GPU tests remain ignored here and are qualified on
 # the hardware separately. Keep failures fatal; never ship a partial gate.
 # Candidate engine (Atlas-Inf main): seven tests fail or flake on main
