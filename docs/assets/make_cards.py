@@ -96,20 +96,20 @@ class Card:
         self.inked.append((x, y0, x + 2, y1))
 
 
-def lanes(card, x0, x1, y, k, ky):
-    """Two lanes between x0 and x1 from y down; k scales the type, ky the leading."""
+def lanes(card, x0, x1, y, k, ky, cmd=18):
+    """Two lanes between x0 and x1 from y down; k scales the type, ky the leading, cmd sizes the commands."""
     mid = (x0 + x1) // 2
     card.rule(mid - int(18 * k), y, y + int(160 * ky))
     lane = [
-        (x0, ["ONE DGX SPARK", "CANDIDATE"], "Qwen3.8-27B", "./start.sh --model 27b",
+        (x0, ["ONE DGX SPARK", "CANDIDATE"], "Qwen3.8-27B", "./start.sh --model qwen3.8-27b",
          ["NVFP4", "DFlash2", "exact verify", "262K"]),
-        (mid + int(18 * k), ["TWO DGX SPARKS", "TP=2"], "Qwen3.8-Flash-Next", "./start.sh --model flash-next",
+        (mid + int(18 * k), ["TWO DGX SPARKS", "TP=2"], "Qwen3.8-Flash-Next", "./start.sh --model qwen3.8-flash-next",
          ["FP4-Local", "native MTP", "262K"]),
     ]
-    for x, label, name, cmd, detail in lane:
+    for x, label, name, command, detail in lane:
         card.text((x, y), label, int(19 * k), PURPLE)
         card.text((x, y + int(38 * ky)), [name], int(33 * k), YELLOW, glow=ORANGE)
-        card.text((x, y + int(95 * ky)), [cmd], int(18 * k), WHITE)
+        card.text((x, y + int(95 * ky)), [command], int(cmd * k), WHITE)
         card.text((x, y + int(138 * ky)), detail, int(15 * k), VIOLET, gap=int(11 * k))
 
 
@@ -143,7 +143,7 @@ def social(base, font, out):
     c.text((888, 180), ["ONE REPO"], 22, ORANGE, glow=(255, 90, 30))
     c.text((888, 218), ["TWO MODELS"], 22, YELLOW, glow=ORANGE)
     c.text((82, 308), ["Qwen3.8 on NVIDIA DGX Spark", "switch with --model"], 19, WHITE)
-    lanes(c, 82, 1150, 384, 0.84, 1.08)
+    lanes(c, 82, 1150, 384, 0.84, 1.08, cmd=16.7)  # the Flash-Next command stops short of the tunnel
     for y, parts in ((618, ["Common Atlas engine", "prefix caching"]),
                      (668, ["Tool-call exfiltration guard", "on by default"]),
                      (718, ["Flash-Next: 106.4 tok/s code", "4,142 prefill"])):

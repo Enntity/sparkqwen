@@ -10,18 +10,19 @@
 #   ./start.sh status       container state and health
 #   ./start.sh logs [worker]
 #   ./start.sh build | download    run one preparation step
-#   ./start.sh --model 27b [up|stop|status|logs|build|download]
-#                           Qwen3.8-27B on this one Spark instead (SPARKQWEN_MODEL=27b)
+#   ./start.sh --model qwen3.8-27b [up|stop|status|logs|build|download]
+#                           Qwen3.8-27B on this one Spark instead (SPARKQWEN_MODEL=qwen3.8-27b)
 set -euo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")"
 if [[ ${1:-} == --version ]]; then exec python3 install/serve.py --version; fi
 if [[ -f .env ]]; then set -a; . ./.env; set +a; fi
-# SPARKQWEN_MODEL=27b (or --model 27b) serves Qwen3.8-27B on this one Spark.
-if [[ ${1:-} == --model ]]; then SPARKQWEN_MODEL=${2:?--model needs flash-next or 27b}; shift 2; fi
-case ${SPARKQWEN_MODEL:-flash-next} in
-  flash-next) ;;
-  27b) export SPARKQWEN_MODEL; exec install/start-27b.sh "$@" ;;
-  *) echo 'SPARKQWEN_MODEL (--model) must be flash-next or 27b' >&2; exit 2 ;;
+# SPARKQWEN_MODEL=qwen3.8-27b (or --model qwen3.8-27b) serves Qwen3.8-27B on this one Spark.
+# The earlier names flash-next and 27b still work; install/ keeps them as the variant names.
+if [[ ${1:-} == --model ]]; then SPARKQWEN_MODEL=${2:?--model needs qwen3.8-flash-next or qwen3.8-27b}; shift 2; fi
+case ${SPARKQWEN_MODEL:-qwen3.8-flash-next} in
+  qwen3.8-flash-next|flash-next) SPARKQWEN_MODEL=flash-next ;;
+  qwen3.8-27b|27b) export SPARKQWEN_MODEL=27b; exec install/start-27b.sh "$@" ;;
+  *) echo 'SPARKQWEN_MODEL (--model) must be qwen3.8-flash-next or qwen3.8-27b' >&2; exit 2 ;;
 esac
 : "${WORKER:?set WORKER in .env to the ssh destination of the other Spark (see .env.example)}"
 [[ $WORKER != -* ]] || { echo "WORKER must be an ssh destination, not an option: $WORKER" >&2; exit 2; }
@@ -213,5 +214,5 @@ case ${1:-up} in
     echo "rank 0 $(state)"; echo "rank 1 $(worker_state) ($WORKER)"
     curl -sf "$API/health" >/dev/null && echo "health ok ($API)" || echo 'health: not serving' ;;
   logs) if [[ ${2:-} == worker ]]; then on_worker docker logs -f --tail 100 "${NAME}1"; else docker logs -f --tail 100 "${NAME}0"; fi ;;
-  *) sed -n '5,10p' "$0" >&2; exit 2 ;;
+  *) sed -n '5,14p' "$0" >&2; exit 2 ;;
 esac

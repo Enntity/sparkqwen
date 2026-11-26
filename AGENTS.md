@@ -7,7 +7,7 @@ claim.
 - Keep it simple: one entry point (`start.sh`), one install directory, one
   results tree. Prefer removing code to adding it.
 - SparkQwen serves Qwen3.8-Flash-Next on a pair and, as a candidate,
-  Qwen3.8-27B on one Spark (`--model 27b`). Qualify the actual pinned
+  Qwen3.8-27B on one Spark (`--model qwen3.8-27b`). Qualify the actual pinned
   product checkpoint and image, across the pair for Flash-Next. Atlas
   benchmarks using dense
   Qwen or other model families are separate engine evidence; they cannot

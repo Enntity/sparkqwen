@@ -41,7 +41,7 @@ kernel target.
 
 ## Qwen3.8-27B on one Spark
 
-`--model 27b` builds the `qwen3.8-27b` kernel target (model type `qwen3_5`)
+`--model qwen3.8-27b` builds the `qwen3.8-27b` kernel target (model type `qwen3_5`)
 from Enntity/atlas `q27/conc` at the commit pinned in
 [`install/atlas-source-27b.json`](../install/atlas-source-27b.json):
 `6a7091b3b` (tree `41d299bd`). That branch is the single-Spark serving series

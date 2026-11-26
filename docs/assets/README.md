@@ -6,9 +6,9 @@ matching social card (1733 × 907); `social-preview.jpg` is its same-dimension
 JPEG export, below 1 MB.
 
 The cards show the two models SparkQwen serves and how to pick one:
-Qwen3.8-27B on one DGX Spark (`./start.sh --model 27b`; NVFP4, DFlash2 with
+Qwen3.8-27B on one DGX Spark (`./start.sh --model qwen3.8-27b`; NVFP4, DFlash2 with
 exact verify, 262,144-token requests; a candidate that is not yet qualified) and
-Qwen3.8-Flash-Next on two DGX Sparks at TP=2 (`./start.sh --model flash-next`,
+Qwen3.8-Flash-Next on two DGX Sparks at TP=2 (`./start.sh --model qwen3.8-flash-next`,
 the default; FP4-Local, native MTP, up to 262,144-token requests by profile).
 
 They were composed on 2026-11-10 by [`make_cards.py`](make_cards.py) from the
@@ -24,6 +24,9 @@ python3 docs/assets/make_cards.py OLD_CARDS_DIR PressStart2P-Regular.ttf docs/as
 ```
 
 Both cards were visually checked. The cards carry no version number.
+They were rendered again on 2026-11-25 with the `--model` values named after
+the models (`qwen3.8-27b`, `qwen3.8-flash-next`); the social card sets the
+commands slightly smaller so the longer one stops short of the tunnel.
 
 The only figures on them are historical **0.3.1** Flash-Next measurements,
 labelled as such: code **106.4 tok/s** and cold 16K prefill **4,142 tok/s**
