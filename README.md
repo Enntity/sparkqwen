@@ -1,6 +1,6 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <p align="center">
-  <img src="docs/assets/banner.png" alt="SparkQwen: one repo, two models, switched with --model. Qwen3.8-27B on one DGX Spark (./start.sh --model 27b; candidate; NVFP4, DFlash2, exact verify, 262K) and Qwen3.8-Flash-Next on two DGX Sparks at TP=2 (./start.sh --model flash-next; FP4-Local, native MTP, 262K). Common Atlas engine, prefix caching, tool-call exfiltration guard on by default. Flash-Next historical 0.3.1 benchmarks: 106.4 tok/s code, 4,142 tok/s cold 16K prefill." width="100%">
+  <img src="docs/assets/banner.png" alt="SparkQwen: one repo, two models, switched with --model. Qwen3.8-27B on one DGX Spark (./start.sh --model qwen3.8-27b; candidate; NVFP4, DFlash2, exact verify, 262K) and Qwen3.8-Flash-Next on two DGX Sparks at TP=2 (./start.sh --model qwen3.8-flash-next; FP4-Local, native MTP, 262K). Common Atlas engine, prefix caching, tool-call exfiltration guard on by default. Flash-Next historical 0.3.1 benchmarks: 106.4 tok/s code, 4,142 tok/s cold 16K prefill." width="100%">
 </p>
 
 # SparkQwen
@@ -15,7 +15,7 @@ off two engine loop guards that cut 27B answers short. Both models were
 measured on the release images:
 [results/2026-11-10-release-0.7.0](results/2026-11-10-release-0.7.0/RESULT.md).
 
-Version 0.6 adds Qwen3.8-27B on one Spark, a candidate, behind `--model 27b`.
+Version 0.6 adds Qwen3.8-27B on one Spark, a candidate, behind `--model qwen3.8-27b`.
 The Flash-Next engine is 0.5.1's: the same Atlas commit, and an engine binary
 whose loaded sections are byte-identical
 ([what was checked](results/2026-11-10-release-0.6.0/RESULT.md)).
@@ -27,12 +27,14 @@ decode ([before and after](results/2026-11-10-27b-mixed-forward/RESULT.md),
 ## Two models, one entry point
 
 SparkQwen serves either of two Qwen3.8 models on NVIDIA DGX Spark. Pick one
-with `--model` (or `SPARKQWEN_MODEL` in `.env`):
+with `--model` (or `SPARKQWEN_MODEL` in `.env`). The values are the models'
+own names, the served ids without `-atlas`; the earlier `flash-next` and `27b`
+still work:
 
 | | Qwen3.8-Flash-Next | Qwen3.8-27B |
 |---|---|---|
 | DGX Sparks | two (TP=2; the second is driven over ssh) | one |
-| Start | `./start.sh` (`--model flash-next`, the default) | `./start.sh --model 27b` |
+| Start | `./start.sh` (`--model qwen3.8-flash-next`, the default) | `./start.sh --model qwen3.8-27b` |
 | Checkpoint | [nvidia/Qwen3.8-Flash-Next-FP4-Local](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local) | [nvidia/Qwen3.8-27B-NVFP4-QAD](https://huggingface.co/nvidia/Qwen3.8-27B-NVFP4-QAD) |
 | Speculation | the model's native MTP head | DFlash2 drafter (DSpine optional), exact verify |
 | Context per request | 32K to 262K by profile; 512K and 1M opt-in | 262,144 tokens in every profile |
@@ -43,7 +45,7 @@ Both serve the OpenAI API on `127.0.0.1:8893` with prefix caching and the
 tool-call guard, each on its own image and pinned Atlas commit
 (`install/atlas-source.json`, `install/atlas-source-27b.json`). A Spark runs
 one of them at a time: stop the one that is up (`./start.sh stop` or
-`./start.sh --model 27b stop`), then start the other. The sections below
+`./start.sh --model qwen3.8-27b stop`), then start the other. The sections below
 describe the Flash-Next pair until
 [One Spark: Qwen3.8-27B](#one-spark-qwen38-27b-candidate).
 
@@ -348,7 +350,7 @@ What it costs, per Spark:
   deletes its files as soon as it has them open, and clears leftovers from a
   crash when it starts.
 
-`--model 27b` does not use it.
+`--model qwen3.8-27b` does not use it.
 
 The versioned comparison uses explicit greedy settings for measurement. For real work leave sampling
 unset (the defaults above) or use the model card's values; greedy decoding can
@@ -371,7 +373,7 @@ See [docs/REPRODUCE.md](docs/REPRODUCE.md) for the exact commands.
 
 ## One Spark: Qwen3.8-27B (candidate)
 
-`./start.sh --model 27b` (or `SPARKQWEN_MODEL=27b` in `.env`) serves
+`./start.sh --model qwen3.8-27b` (or `SPARKQWEN_MODEL=qwen3.8-27b` in `.env`) serves
 [nvidia/Qwen3.8-27B-NVFP4-QAD](https://huggingface.co/nvidia/Qwen3.8-27B-NVFP4-QAD),
 NVIDIA's quantization-aware distillation of Qwen3.8-27B to NVFP4,
 on the Spark you run it on, with no worker and no fabric. It builds or pulls its
