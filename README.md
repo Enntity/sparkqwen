@@ -41,6 +41,10 @@ still work:
 | Served as | `qwen3.8-flash-next-atlas` | `qwen3.8-27b-atlas` |
 | Status | released | candidate, not yet qualified |
 
+`--model daisyrose-27b` serves RadixArk's DaisyRose-27B, a finetune of
+Qwen3.8-27B, the same way on one Spark, as `daisyrose-27b-atlas`
+([DaisyRose-27B](#one-spark-qwen38-27b-candidate)).
+
 Both serve the OpenAI API on `127.0.0.1:8893` with prefix caching and the
 tool-call guard, each on its own image and pinned Atlas commit
 (`install/atlas-source.json`, `install/atlas-source-27b.json`). A Spark runs
@@ -427,6 +431,25 @@ is not served from the prefix cache yet (a follow-up turn is).
 [All of it](results/2026-11-10-release-0.7.0/RESULT.md#qwen38-27b-on-one-spark).
 
 They are candidates: not yet qualified.
+
+`./start.sh --model daisyrose-27b` (or `SPARKQWEN_MODEL=daisyrose-27b`) serves
+[RadixArk/DaisyRose-27B-NVFP4](https://huggingface.co/RadixArk/DaisyRose-27B-NVFP4)
+instead, as `daisyrose-27b-atlas` on the same port with the same profiles and
+drafters. DaisyRose-27B is RadixArk's reinforcement-learning finetune of
+Qwen3.8-27B (Apache-2.0); its NVFP4 checkpoint matches NVIDIA's tensor for
+tensor and uses the same chat template, so the engine and image are unchanged.
+TandemLLM's projections are quantized from base Qwen and would undo part of the
+finetune, so it gets its own:
+[Enntity/DaisyRose-27B-NVFP4-GDN-Attn](https://huggingface.co/Enntity/DaisyRose-27B-NVFP4-GDN-Attn),
+NVFP4 Gated DeltaNet and attention projections we quantized from DaisyRose's
+BF16 release (Apache-2.0). With them DFlash2 decode reads 50.2 tok/s on six
+greedy prompts, against 43.7 as published and 47.7 for NVIDIA's earlier checkpoint with TandemLLM's projections,
+at +0.0020 nats/token held-out NLL, with the quality probe level
+([receipts](results/2026-11-19-daisyrose-projections/RESULT.md)). The drafters
+were trained on base Qwen and draft as well for DaisyRose: 3.97 tokens a verify
+step with DFlash2 (base 3.84) and 4.19 with DSpine (base 4.14), and both
+checkpoints answered 52 of 52 quality-probe items
+([receipts and limits](results/2026-11-18-daisyrose/RESULT.md)).
 
 ## Other ways to run it
 

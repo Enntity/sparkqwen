@@ -1,0 +1,67 @@
+{
+ "tag": "qwen-dflash2",
+ "model": "qwen3.8-27b-atlas",
+ "max_tokens": 1024,
+ "rows": [
+  {
+   "kind": "prose",
+   "completion": 1024,
+   "accepted": 640,
+   "tokens_a_step": 2.667,
+   "tok_s": 30.0,
+   "finish": "length",
+   "reasoning_chars": 3760,
+   "content_head": "*The sea is not kind. But someone is watching. Someone is keeping the light on. And that is enough. It has to be.*\n\n*\u2014 E"
+  },
+  {
+   "kind": "code",
+   "completion": 1024,
+   "accepted": 809,
+   "tokens_a_step": 4.763,
+   "tok_s": 54.2,
+   "finish": "length",
+   "reasoning_chars": 1776,
+   "content_head": "```python\n\"\"\"LRU (Least Recently Used) cache with O(1) get and put.\n\nUses a hash map for O(1) key lookup and a doubly-li"
+  },
+  {
+   "kind": "json",
+   "completion": 1024,
+   "accepted": 752,
+   "tokens_a_step": 3.765,
+   "tok_s": 43.1,
+   "finish": "length",
+   "reasoning_chars": 501,
+   "content_head": "[\n  {\n    \"title\": \"The Cartographer's Last Meridian\",\n    \"author\": \"Elara Voss\",\n    \"year\": 2019,\n    \"isbn\": \"978-0-"
+  },
+  {
+   "kind": "gotests",
+   "completion": 1024,
+   "accepted": 792,
+   "tokens_a_step": 4.414,
+   "tok_s": 49.6,
+   "finish": "length",
+   "reasoning_chars": 2832,
+   "content_head": "Here's a self-contained Go file with the parser and 20 table-driven test cases.\n\n```go\npackage duration\n\nimport (\n\t\"fmt\""
+  },
+  {
+   "kind": "math",
+   "completion": 872,
+   "accepted": 731,
+   "tokens_a_step": 6.184,
+   "tok_s": 71.1,
+   "finish": "stop",
+   "reasoning_chars": 740,
+   "content_head": "# Filling the Tank\n\n## Given\n\n| Item | Value |\n|---|---|\n| Initial volume | 40 L |\n| Tank capacity | 400 L |\n| Inlet 1 ("
+  },
+  {
+   "kind": "explain",
+   "completion": 1024,
+   "accepted": 709,
+   "tokens_a_step": 3.251,
+   "tok_s": 38.2,
+   "finish": "length",
+   "reasoning_chars": 488,
+   "content_head": "# TCP Congestion Control\n\nTCP congestion control is a set of algorithms that regulate the rate at which a sender transmi"
+  }
+ ]
+}

@@ -248,11 +248,71 @@ class SingleSpark(unittest.TestCase):
 
     def test_start_serves_the_checked_overlay(self):
         start = (HERE/'start-27b.sh').read_text()
-        self.assertIn('overlay=$checkpoint+tandem-gdn-attn', start)
-        self.assertIn('python3 install/tandem_overlay.py install/checkpoint-27b.json "$checkpoint" "$weights" "$overlay"', start)
-        self.assertIn('-e MODEL_PATH="$overlay"', start)
+        self.assertIn('overlay=$checkpoint+$OVERLAY_PREFIX-gdn-attn', start)
+        self.assertIn('python3 install/tandem_overlay.py install/checkpoint-27b.json "$checkpoint" "$weights" "$overlay" "$OVERLAY_SECTION"', start)
+        self.assertIn('-e MODEL_PATH="$model"', start)
         for path in ('$checkpoint', '$overlay', '$draft'):
             self.assertIn(f'--mount "type=bind,src={path},dst={path},readonly"', start)
+
+    DAISYROSE_REVISION = 'c4d85c5dfad123426555c22f4e24bb15381f0bdb'
+
+    def test_daisyrose_pin_is_whole(self):
+        d = json.loads((HERE/'checkpoint-27b.json').read_text())['daisyrose']
+        self.assertEqual(d['repository'], 'RadixArk/DaisyRose-27B-NVFP4')
+        self.assertEqual(d['revision'], self.DAISYROSE_REVISION)
+        self.assertEqual(d['license'], 'apache-2.0')
+        self.assertEqual(d['base_model'], 'Qwen/Qwen3.8-27B')
+        self.assertEqual(d['served_model_name'], 'daisyrose-27b-atlas')
+        # Its own projections, quantized from DaisyRose's BF16 release: TandemLLM's
+        # are quantized from base Qwen and would undo part of its finetune.
+        o = d['overlay']
+        self.assertEqual(o['repository'], 'Enntity/DaisyRose-27B-NVFP4-GDN-Attn')
+        self.assertEqual(o['revision'], '071af22cfa355160c346384d02fab0de5b1471d3')
+        self.assertEqual(o['base_model'], 'RadixArk/DaisyRose-27B')
+        self.assertEqual(o['license'], 'apache-2.0')
+        self.assertEqual(set(o['files']), {'gdn.safetensors', 'attn.safetensors', 'LICENSE', 'README.md'})
+        self.assertEqual(o['files']['gdn.safetensors'], '4d0ff1be854b4e625505eaf8b1a2f6c93438389ae16808c2226a2114c9d6272c')
+        self.assertEqual(o['files']['attn.safetensors'], 'dafa2872af67534bf3bda3de3c31a78f507153cde010acbaa2329b5162e5ed90')
+        for name, digest in o['files'].items():
+            self.assertRegex(digest, r'^[0-9a-f]{64}$', name)
+        self.assertEqual(o['serve'], ['gdn.safetensors', 'attn.safetensors'])
+        self.assertEqual(o['attribution'], ['LICENSE', 'README.md'])
+        self.assertEqual((o['label'], o['prefix']), ('Enntity', 'enntity'))
+        # The served files are the ones the result measured.
+        sums = (ROOT/'results'/'2026-11-19-daisyrose-projections'/'RESULT.md').read_text()
+        for name in o['serve']:
+            self.assertIn(o['files'][name], sums, name)
+
+    def test_daisyrose_is_attributed(self):
+        for doc in ('NOTICE', 'docs/LICENSING.md', 'README.md'):
+            text = ' '.join((ROOT/doc).read_text().split())
+            with self.subTest(doc=doc):
+                self.assertIn('RadixArk/DaisyRose-27B-NVFP4', text)
+                self.assertIn('Enntity/DaisyRose-27B-NVFP4-GDN-Attn', text)
+                self.assertRegex(text, r'DaisyRose.{0,300}Apache(-2\.0| License 2\.0)')
+        self.assertIn(self.DAISYROSE_REVISION, (ROOT/'NOTICE').read_text())
+        self.assertIn('071af22cfa355160c346384d02fab0de5b1471d3', (ROOT/'NOTICE').read_text())
+
+    def start_status(self, **env):
+        with tempfile.TemporaryDirectory() as root:
+            base = {k: v for k, v in os.environ.items() if k not in ('CHECKPOINT', 'DRAFTER', 'PROFILE')}
+            return subprocess.run(['bash', str(HERE/'start-27b.sh'), 'status'], capture_output=True, text=True,
+                                  env={**base, 'IMAGE': 'sparkqwen:test', 'MODEL_ROOT': root, **env})
+
+    def test_start_picks_the_checkpoint(self):
+        qwen = self.start_status()
+        self.assertEqual(qwen.returncode, 0, qwen.stderr)
+        pin = json.loads((HERE/'checkpoint-27b.json').read_text())
+        self.assertIn(f"checkpoint {pin['repository']} @ {pin['revision']} as qwen3.8-27b-atlas", qwen.stdout)
+        self.assertRegex(qwen.stdout, rf"weights \S+/{re.escape(pin['repository'].replace('/', '--'))}\+tandem-gdn-attn\n")
+        daisy = self.start_status(CHECKPOINT='daisyrose')
+        self.assertEqual(daisy.returncode, 0, daisy.stderr)
+        self.assertIn(f'checkpoint RadixArk/DaisyRose-27B-NVFP4 @ {self.DAISYROSE_REVISION}'
+                      ' as daisyrose-27b-atlas', daisy.stdout)
+        self.assertRegex(daisy.stdout, r'weights \S+/RadixArk--DaisyRose-27B-NVFP4\+enntity-gdn-attn\n')
+        bad = self.start_status(CHECKPOINT='tandem')
+        self.assertEqual(bad.returncode, 2)
+        self.assertIn('CHECKPOINT must be qwen or daisyrose', bad.stderr)
 
 
 def write_st(path, tensors):
@@ -288,9 +348,9 @@ class Overlay(unittest.TestCase):
                 want = nearest_e4m3(overlay.f32(overlay.f32(overlay.e4m3(c)) * overlay.f32(ratio)))
                 self.assertEqual(table[c], want, (ratio, c))
 
-    def build(self, s2q, s2z, tamper=False):
+    def build(self, s2q, s2z, tamper=False, section=None, label=None, prefix=None):
         tmp = Path(tempfile.mkdtemp())
-        ck, w, ov = tmp/'ck', tmp/'w', tmp/'ck+tandem-gdn-attn'
+        ck, w, ov = tmp/'ck', tmp/'w', tmp/'ck+gdn-attn'
         ck.mkdir(); w.mkdir()
         f32 = lambda x: struct.pack('<f', x)
         L = 'model.language_model.layers.'
@@ -324,10 +384,14 @@ class Overlay(unittest.TestCase):
         if tamper:
             files['README.md'] = '0' * 64
         pin = tmp/'pin.json'
-        pin.write_text(json.dumps({'overlay': {'revision': 'a' * 40, 'files': files,
-                                               'serve': ['gdn.safetensors', 'attn.safetensors'],
-                                               'attribution': ['LICENSE', 'README.md']}}))
-        overlay.build(str(pin), str(ck), str(w), str(ov))
+        spec = {'revision': 'a' * 40, 'files': files, 'serve': ['gdn.safetensors', 'attn.safetensors'],
+                'attribution': ['LICENSE', 'README.md'], **({'label': label, 'prefix': prefix} if label else {})}
+        if section:
+            pin.write_text(json.dumps({'overlay': {'revision': 'b' * 40}, section.split('.')[0]: {'overlay': spec}}))
+            overlay.build(str(pin), str(ck), str(w), str(ov), section)
+        else:
+            pin.write_text(json.dumps({'overlay': spec}))
+            overlay.build(str(pin), str(ck), str(w), str(ov))
         return ck, w, ov, zs
 
     def test_rekeys_reexpresses_z_and_rewrites_the_index(self):
@@ -357,6 +421,15 @@ class Overlay(unittest.TestCase):
         self.assertEqual(os.readlink(ov/'model-1.safetensors'), '../ck/model-1.safetensors')
         self.assertEqual((ov/'TandemLLM-LICENSE').read_text(), 'Apache License 2.0')
         self.assertEqual((ov/'.sparkqwen-overlay').read_text().strip(), 'a' * 40)
+
+    def test_a_named_section_with_its_own_label(self):
+        _, _, ov, _ = self.build(1e-4, 1e-4, section='daisyrose.overlay', label='Enntity', prefix='enntity')
+        wm = json.loads((ov/'model.safetensors.index.json').read_text())['weight_map']
+        self.assertEqual(wm['model.language_model.layers.0.linear_attn.in_proj_qkv.weight'], 'enntity-gdn.safetensors')
+        self.assertEqual(wm['model.language_model.layers.3.self_attn.o_proj.weight'], 'enntity-attn.safetensors')
+        self.assertEqual((ov/'Enntity-LICENSE').read_text(), 'Apache License 2.0')
+        self.assertFalse((ov/'TandemLLM-LICENSE').exists())
+        self.assertEqual((ov/'.sparkqwen-overlay').read_text().strip(), 'a' * 40)  # the section's, not the top's
 
     def test_equal_scales_are_left_alone(self):
         _, w, ov, zs = self.build(1e-4, 1e-4)

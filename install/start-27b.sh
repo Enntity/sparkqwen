@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
 # SPDX-License-Identifier: AGPL-3.0-only
 # SparkQwen's single-Spark variant: Qwen3.8-27B on this one DGX Spark, served
-# by Atlas on 127.0.0.1:8893. Run through ./start.sh --model 27b (or
-# SPARKQWEN_MODEL=27b ./start.sh); no worker, no fabric.
+# by Atlas on 127.0.0.1:8893. Run through ./start.sh --model qwen3.8-27b or
+# --model daisyrose-27b (or SPARKQWEN_MODEL in .env); no worker, no fabric.
 #
 #   up (default)      prepare whatever is missing, then serve and smoke-test
 #   build | download  run one preparation step
 #   stop | status | logs
 #
 # Settings (environment or .env): MODEL_ROOT (default ~/models/sparkqwen),
+# CHECKPOINT (qwen or daisyrose; ./start.sh sets it from --model),
 # PROFILE (27b, the default; 27b-max; 27b-saver; or a JSON file of your own),
 # DRAFTER (the profile's: dflash2, or both for 27b-max; dspine; both: DFlash2
 # and DSpine, each request on whichever its recent rounds favour),
@@ -23,7 +24,14 @@ MODEL_ROOT=${MODEL_ROOT:-$HOME/models/sparkqwen}
 PROFILE=${PROFILE:-27b}
 NAME=atlas-sparkqwen-27b
 API=http://127.0.0.1:8893
-read -r CHECKPOINT_REPO CHECKPOINT_REVISION SERVED DRAFT_REPO DRAFT_REVISION OVERLAY_REPO OVERLAY_REVISION OVERLAY_FILES DSPINE_REPO DSPINE_REVISION DSPINE_FILES < <(python3 -c 'import json,sys; m=json.load(open(sys.argv[1])); o=m["overlay"]; d=m["dspine"]; print(m["repository"], m["revision"], m["served_model_name"], m["draft"]["repository"], m["draft"]["revision"], o["repository"], o["revision"], ",".join(o["files"]), d["repository"], d["revision"], ",".join(d["files"]))' install/checkpoint-27b.json)
+CHECKPOINT=${CHECKPOINT:-qwen}
+[[ $CHECKPOINT =~ ^(qwen|daisyrose)$ ]] || { echo 'CHECKPOINT must be qwen or daisyrose' >&2; exit 2; }
+# Each checkpoint's pin may name an overlay of NVFP4 GDN and attention
+# projections quantized from its own BF16 release; "-" when it has none.
+read -r CHECKPOINT_REPO CHECKPOINT_REVISION SERVED DRAFT_REPO DRAFT_REVISION OVERLAY_SECTION OVERLAY_REPO OVERLAY_REVISION OVERLAY_FILES OVERLAY_PREFIX DSPINE_REPO DSPINE_REVISION DSPINE_FILES < <(python3 -c 'import json,sys
+m = json.load(open(sys.argv[1])); q = sys.argv[2] == "qwen"; t = m if q else m[sys.argv[2]]; o = t.get("overlay"); d = m["dspine"]
+ov = [("overlay" if q else sys.argv[2] + ".overlay"), o["repository"], o["revision"], ",".join(o["files"]), o.get("prefix", "tandem")] if o else ["-"] * 5
+print(t["repository"], t["revision"], t["served_model_name"], m["draft"]["repository"], m["draft"]["revision"], *ov, d["repository"], d["revision"], ",".join(d["files"]))' install/checkpoint-27b.json "$CHECKPOINT")
 IMAGE=${IMAGE:-$(install/build.sh --tag)}
 mkdir -p "$MODEL_ROOT"; MODEL_ROOT=$(realpath "$MODEL_ROOT")
 checkpoint=$MODEL_ROOT/${CHECKPOINT_REPO/\//--}
@@ -34,10 +42,17 @@ profile_file=$PROFILE; [[ -f $profile_file ]] || profile_file=install/profiles/$
 DRAFTER=${DRAFTER:-$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1])).get("drafter", "dflash2"))' "$profile_file")}
 DRAFTER=${DRAFTER:-dflash2}
 [[ $DRAFTER =~ ^(dflash2|dspine|both)$ ]] || { echo 'DRAFTER must be dflash2, dspine or both' >&2; exit 2; }
-weights=$MODEL_ROOT/${OVERLAY_REPO/\//--}
-# The served checkpoint: NVIDIA's files linked, TandemLLM's GDN and attention
-# projections re-keyed in (install/tandem_overlay.py). It sits next to $checkpoint.
-overlay=$checkpoint+tandem-gdn-attn
+# The served weights: the checkpoint's files linked with its overlay's GDN and
+# attention projections re-keyed in (install/tandem_overlay.py), next to
+# $checkpoint; the checkpoint as published when its pin names no overlay.
+# TandemLLM's projections are quantized from base Qwen, so they never go over
+# DaisyRose.
+overlay='' model=$checkpoint
+if [[ $OVERLAY_REPO != - ]]; then
+  weights=$MODEL_ROOT/${OVERLAY_REPO/\//--}
+  overlay=$checkpoint+$OVERLAY_PREFIX-gdn-attn
+  model=$overlay
+fi
 [[ -z ${GPU_MEMORY_UTILIZATION:-} || $GPU_MEMORY_UTILIZATION =~ ^0\.([4-8][0-9]|9[0-5])$ ]] ||
   { echo 'GPU_MEMORY_UTILIZATION must be 0.40 to 0.95' >&2; exit 2; }
 
@@ -69,37 +84,41 @@ download() {
       echo "$DSPINE_REVISION" > "$dspine/.sparkqwen-revision"
     fi
   fi
+  [[ -n $overlay ]] || return 0
   local files; IFS=, read -r -a files <<< "$OVERLAY_FILES"
   fetch "$OVERLAY_REPO" "$OVERLAY_REVISION" "$weights" "${files[@]}"
   if [[ $(cat "$overlay/.sparkqwen-overlay" 2>/dev/null) != "$OVERLAY_REVISION" ]]; then
     say "overlay: $OVERLAY_REPO GDN + attention into $CHECKPOINT_REPO (sha256 checked)"
     rm -rf "$overlay"
-    python3 install/tandem_overlay.py install/checkpoint-27b.json "$checkpoint" "$weights" "$overlay"
+    python3 install/tandem_overlay.py install/checkpoint-27b.json "$checkpoint" "$weights" "$overlay" "$OVERLAY_SECTION"
   fi
 }
 
 stop() { docker rm -f "$NAME" >/dev/null 2>&1 || true; }
 
 serve() {
-  local profile_mount=() profile=$PROFILE dspine_mount=()
+  local profile_mount=() profile=$PROFILE dspine_mount=() overlay_mount=() with=
   [[ $DRAFTER == dflash2 ]] || dspine_mount=(--mount "type=bind,src=$dspine,dst=$dspine,readonly")
+  if [[ -n $overlay ]]; then
+    overlay_mount=(--mount "type=bind,src=$overlay,dst=$overlay,readonly")
+    with=" with $OVERLAY_REPO's GDN and attention"
+  fi
   if [[ -f $profile ]]; then
     profile_mount=(--mount "type=bind,src=$(realpath "$profile"),dst=/opt/atlas/profiles/custom.json,readonly")
     profile=custom
   fi
   mkdir -p "$HOME/.cache/atlas-cuda"
   stop
-  say "serving $CHECKPOINT_REPO with $OVERLAY_REPO's GDN and attention on this Spark (profile $PROFILE, drafter $DRAFTER)"
+  say "serving $CHECKPOINT_REPO$with on this Spark (profile $PROFILE, drafter $DRAFTER)"
   # GB10 memory is shared with the host, and a host that runs out of it hangs
   # instead of killing a process: the container is capped at 114 GiB.
   docker run -d --name "$NAME" --restart no --network host --ipc host \
     --shm-size 16g --memory 114g --gpus all --security-opt no-new-privileges=true --stop-timeout 60 \
     --mount "type=bind,src=$checkpoint,dst=$checkpoint,readonly" \
-    --mount "type=bind,src=$overlay,dst=$overlay,readonly" \
-    --mount "type=bind,src=$draft,dst=$draft,readonly" \
+    ${overlay_mount[@]+"${overlay_mount[@]}"} --mount "type=bind,src=$draft,dst=$draft,readonly" \
     --mount "type=bind,src=$HOME/.cache/atlas-cuda,dst=/atlas-cuda-cache" ${profile_mount[@]+"${profile_mount[@]}"} \
     ${dspine_mount[@]+"${dspine_mount[@]}"} -e SPARKQWEN_DRAFTER="$DRAFTER" -e DSPINE_PATH="$dspine" \
-    -e MODEL_PATH="$overlay" -e DRAFT_PATH="$draft" -e SPARKQWEN_PROFILE="$profile" -e SERVED_MODEL_NAME="$SERVED" \
+    -e MODEL_PATH="$model" -e DRAFT_PATH="$draft" -e SPARKQWEN_PROFILE="$profile" -e SERVED_MODEL_NAME="$SERVED" \
     -e SPARKQWEN_TOOL_GUARD="${TOOL_GUARD:-on}" -e SPARKQWEN_TOOL_GUARD_MAX_BYTES="${TOOL_GUARD_MAX_BYTES:-1048576}" \
     -e SPARKQWEN_TOOL_GUARD_ALLOW_HOSTS="${TOOL_GUARD_ALLOW_HOSTS:-}" -e SPARKQWEN_TOOL_GUARD_DENY_HOSTS="${TOOL_GUARD_DENY_HOSTS:-}" \
     ${GPU_MEMORY_UTILIZATION:+-e SPARKQWEN_GPU_MEMORY_UTILIZATION="$GPU_MEMORY_UTILIZATION"} \
@@ -129,7 +148,7 @@ print("smoke: 17*23 =", text)'
       { docker logs --tail 40 "$NAME"; echo 'the server stopped' >&2; exit 1; }
     sleep 10
   done
-  echo 'not ready after 15 minutes; see ./start.sh --model 27b logs' >&2; exit 1
+  echo "not ready after 15 minutes; see ./start.sh --model ${SERVED%-atlas} logs" >&2; exit 1
 }
 
 case ${1:-up} in
@@ -137,8 +156,10 @@ case ${1:-up} in
   build | download | stop | serve) "$1" ;;
   status)
     echo "image  $IMAGE"
+    echo "checkpoint $CHECKPOINT_REPO @ $CHECKPOINT_REVISION as $SERVED"
+    echo "weights $model"
     echo "server $(docker inspect -f '{{.State.Status}}' "$NAME" 2>/dev/null || echo absent)"
     curl -sf "$API/health" >/dev/null && echo "health ok ($API)" || echo 'health: not serving' ;;
   logs) docker logs -f --tail 100 "$NAME" ;;
-  *) sed -n '2,15p' "$0" >&2; exit 2 ;;
+  *) sed -n '2,17p' "$0" >&2; exit 2 ;;
 esac
