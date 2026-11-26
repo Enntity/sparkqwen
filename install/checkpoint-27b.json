@@ -60,7 +60,7 @@
     "served_model_name": "daisyrose-27b-atlas",
     "base_model": "Qwen/Qwen3.8-27B",
     "license": "apache-2.0",
-    "why": "RadixArk's reinforcement-learning finetune of Qwen3.8-27B (no SFT or distillation), served with CHECKPOINT=daisyrose with its own overlay: TandemLLM's NVFP4 projections are quantized from base Qwen and would undo part of the finetune. The drafters were trained on base Qwen; verify stays exact, so they change only how often drafts are accepted.",
+    "why": "RadixArk's reinforcement-learning finetune of Qwen3.8-27B (no SFT or distillation), served with --model daisyrose-27b with its own overlay: TandemLLM's NVFP4 projections are quantized from base Qwen and would undo part of the finetune. The drafters were trained on base Qwen; verify stays exact, so they change only how often drafts are accepted.",
     "overlay": {
       "repository": "Enntity/DaisyRose-27B-NVFP4-GDN-Attn",
       "revision": "071af22cfa355160c346384d02fab0de5b1471d3",

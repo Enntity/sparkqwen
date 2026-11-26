@@ -9,9 +9,7 @@
 #   stop | status | logs
 #
 # Settings (environment or .env): MODEL_ROOT (default ~/models/sparkqwen),
-# CHECKPOINT (set by ./start.sh from --model: qwen, NVIDIA's NVFP4 Qwen3.8-27B
-# with TandemLLM's projections; daisyrose, RadixArk's DaisyRose-27B-NVFP4 with
-# ours),
+# CHECKPOINT (qwen or daisyrose; ./start.sh sets it from --model),
 # PROFILE (27b, the default; 27b-max; 27b-saver; or a JSON file of your own),
 # DRAFTER (the profile's: dflash2, or both for 27b-max; dspine; both: DFlash2
 # and DSpine, each request on whichever its recent rounds favour),
@@ -150,7 +148,7 @@ print("smoke: 17*23 =", text)'
       { docker logs --tail 40 "$NAME"; echo 'the server stopped' >&2; exit 1; }
     sleep 10
   done
-  echo 'not ready after 15 minutes; see ./start.sh --model 27b logs' >&2; exit 1
+  echo "not ready after 15 minutes; see ./start.sh --model ${SERVED%-atlas} logs" >&2; exit 1
 }
 
 case ${1:-up} in
@@ -163,5 +161,5 @@ case ${1:-up} in
     echo "server $(docker inspect -f '{{.State.Status}}' "$NAME" 2>/dev/null || echo absent)"
     curl -sf "$API/health" >/dev/null && echo "health ok ($API)" || echo 'health: not serving' ;;
   logs) docker logs -f --tail 100 "$NAME" ;;
-  *) sed -n '2,15p' "$0" >&2; exit 2 ;;
+  *) sed -n '2,17p' "$0" >&2; exit 2 ;;
 esac
