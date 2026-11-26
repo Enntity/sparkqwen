@@ -214,5 +214,5 @@ case ${1:-up} in
     echo "rank 0 $(state)"; echo "rank 1 $(worker_state) ($WORKER)"
     curl -sf "$API/health" >/dev/null && echo "health ok ($API)" || echo 'health: not serving' ;;
   logs) if [[ ${2:-} == worker ]]; then on_worker docker logs -f --tail 100 "${NAME}1"; else docker logs -f --tail 100 "${NAME}0"; fi ;;
-  *) sed -n '5,10p' "$0" >&2; exit 2 ;;
+  *) sed -n '5,14p' "$0" >&2; exit 2 ;;
 esac
