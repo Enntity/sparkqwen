@@ -1,0 +1,26 @@
+╭──────────────────────────────────────────────────────────────────────────────────────────╮
+│  R I G M A R K   //   AGENT WORKLOAD RECEIPT                                             │
+│  BENCHMARKS LOCAL AI HOW CODING AGENTS ACTUALLY USE IT                                   │
+│  ▲  8/9 BASIC OUTPUT GATES PASSED — DO NOT HEADLINE                                      │
+├─ SYSTEM ─────────────────────────────────────────────────────────────────────────────────┤
+│  MODEL      qwen3.8-27b-atlas                                                            │
+│  APPLIANCE  1 x NVIDIA DGX Spark, GB10, 128 GB unified memory                            │
+│  RUN        reasoning=low  •  protocol=1.1.0                                             │
+│  SOURCE     git:40fabcaf6e96  •  clean                                                   │
+├─ REAL OUTPUT ────────────────────────────────────────────────────────────────────────────┤
+│  WORKLOAD       DECODE EST.      LAST OUTPUT          RANGE          BASIC GATE          │
+│  CODE              67.0 tok/s      33.1s last     66.9–68.4     ✗ 2/3                    │
+│  PROSE             28.7 tok/s      46.0s last     27.4–28.9     ✓ 3/3                    │
+│  STRUCTURED*       84.9 tok/s      11.9s last     84.8–86.3     ✓ 3/3                    │
+│  * predictable-output ceiling; not a proxy for agent speed                               │
+├─ CONTEXT ────────────────────────────────────────────────────────────────────────────────┤
+│  16K PREFILL   cold 1,575 tok/s  •  immediate replay 1,576 tok/s                         │
+├─ CAPPED CONCURRENT GENERATION ───────────────────────────────────────────────────────────┤
+│  SHORT CODE • END-TO-END • 256-TOKEN CAP PER AGENT                                       │
+│  AGGREGATE   C1 43.9  •  C2 61.6  •  C4 93.3  •  C8 108.3 tok/s                          │
+│  C8 OUTPUT STATE   normal stop 0/16  •  visible 12/16  •  reasoning may be included      │
+├─ RECEIPT ────────────────────────────────────────────────────────────────────────────────┤
+│  JSON       sha256:37497738d0a99845…                                                     │
+│  SHARE THE CARD • LINK THE JSON RECEIPT • #RIGMARK                                       │
+│  github.com/alexellis/rigmark                                                            │
+╰──────────────────────────────────────────────────────────────────────────────────────────╯

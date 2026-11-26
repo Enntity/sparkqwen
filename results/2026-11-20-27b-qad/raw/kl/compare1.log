@@ -1,0 +1,15 @@
+current                      KL 0.0959 [0.0792, 0.1149]  top-1 93.11%  NLL -1.36%
+    chat_reasoning 0.0670  code 0.0204  math 0.1829  prose_en 0.0282  prose_ja 0.0296  science 0.0200  tool_calling 0.4692
+qad                          KL 0.0669 [0.0559, 0.0796]  top-1 93.72%  NLL -8.32%
+    chat_reasoning 0.0433  code 0.0154  math 0.1222  prose_en 0.0225  prose_ja 0.0222  science 0.0147  tool_calling 0.3303
+qad-attnrq                   KL 0.0740 [0.0622, 0.0875]  top-1 93.23%  NLL -7.82%
+    chat_reasoning 0.0483  code 0.0184  math 0.1419  prose_en 0.0262  prose_ja 0.0260  science 0.0180  tool_calling 0.3444
+qad-allrq                    KL 0.0778 [0.0660, 0.0916]  top-1 93.00%  NLL -7.48%
+    chat_reasoning 0.0495  code 0.0207  math 0.1552  prose_en 0.0291  prose_ja 0.0286  science 0.0194  tool_calling 0.3469
+qad-tandem                   KL 0.0692 [0.0580, 0.0820]  top-1 93.51%  NLL -7.38%
+    chat_reasoning 0.0437  code 0.0178  math 0.1178  prose_en 0.0249  prose_ja 0.0266  science 0.0163  tool_calling 0.3449
+qad - current: KL -0.0291 [-0.0360, -0.0224], lower on 213/224 docs
+qad-attnrq - current: KL -0.0219 [-0.0279, -0.0162], lower on 182/224 docs
+qad-allrq - current: KL -0.0181 [-0.0240, -0.0124], lower on 141/224 docs
+qad-tandem - current: KL -0.0267 [-0.0335, -0.0204], lower on 211/224 docs
+exit 0

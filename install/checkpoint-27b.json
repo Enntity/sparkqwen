@@ -1,12 +1,12 @@
 {
   "schema": "sparkqwen.checkpoint/v1",
-  "repository": "nvidia/Qwen3.8-27B-NVFP4",
-  "revision": "482ca0f3832238542f8f5295dde86b5f22711d80",
-  "size_gib": 20.4,
-  "format": "ModelOpt MIXED_PRECISION: MLP NVFP4 W4A16 (group 16), Gated DeltaNet and attention projections FP8 per-tensor, lm_head NVFP4",
-  "why": "NVIDIA's own quantization is preferred, as for the pair's checkpoint. Apache-2.0 and ungated; context up to 262K tokens per its card.",
+  "repository": "nvidia/Qwen3.8-27B-NVFP4-QAD",
+  "revision": "cd46ab575a5a687f0bc3e54251016fc2cc1a6aef",
+  "size_gib": 18.6,
+  "format": "ModelOpt MIXED_PRECISION from quantization-aware distillation (BF16 teacher, 1.26B tokens): MLP and lm_head NVFP4 W4A16 (group 16) in every layer, Gated DeltaNet projections NVFP4 in 38 of 48 layers and FP8 per-tensor in the other 10 (0-2, 4, 5, 57, 58, 60-62), attention projections FP8 per-tensor",
+  "why": "NVIDIA's own quantization is preferred, as for the pair's checkpoint, and this one is distilled: the NVFP4 weights were trained against the BF16 model's token distributions (1.26B tokens), so they track it more closely than one-shot calibration. On 224 held-out documents its next-token KL to BF16 is 0.069 as served here, against 0.096 for nvidia/Qwen3.8-27B-NVFP4 with TandemLLM's projections, lower on 211 of them (results/2026-11-20-27b-qad). Ungated; governed by the NVIDIA Open Model Agreement (the Qwen3.8-27B base is Apache-2.0); context up to 262K tokens per its card.",
   "served_model_name": "qwen3.8-27b-atlas",
-  "license": "apache-2.0",
+  "license": "nvidia-open-model-license",
   "draft": {
     "repository": "incoai/Qwen3.8-27B-DFlash2",
     "revision": "015e795645c74b1a0eeef3b570031fb62e769bc5",
@@ -34,7 +34,7 @@
     "size_gib": 3.8,
     "base_model": "Qwen/Qwen3.8-27B",
     "license": "apache-2.0",
-    "why": "TandemLLM's NVFP4 Gated DeltaNet and attention projections, quantized once from Qwen's BF16 release with GPTQ on about 150K tokens. In place of the checkpoint's FP8 GDN and the engine's load-time NVFP4 attention they cut the bytes a decode step reads by 2.4 GB (serial step 78.9 -> 69.2 ms) at +0.004 nats/token held-out NLL (code, prose, long context), with GSM8K-200 and the quality probe level. Weights only; no TandemLLM code is used."
+    "why": "TandemLLM's NVFP4 Gated DeltaNet and attention projections, quantized once from Qwen's BF16 release with GPTQ on about 150K tokens, laid only over the projections the checkpoint stores in FP8: the ten GDN layers 0-2, 4, 5, 57, 58, 60-62 and all sixteen attention layers. The checkpoint's own NVFP4 GDN layers are kept. Every projection is then NVFP4, so a decode step reads the same bytes as with the earlier checkpoint; the checkpoint's FP8 GDN served natively would add about 0.5 GB a step, and re-rounding it and the attention to NVFP4 at load costs more KL (0.078) than these weights (0.069). Weights only; no TandemLLM code is used."
   },
   "dspine": {
     "repository": "tencent/Qwen3.8-27B-DSpine-b16",

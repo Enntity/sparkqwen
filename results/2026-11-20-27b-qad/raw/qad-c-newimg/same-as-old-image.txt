@@ -1,0 +1,42 @@
+qad-b-qad vs qad-c-newimg: 8/8 identical
+prose   n=   984 mean|d|=0.00000 max|d|=0.0000 >0.05: 0 first>0.05 at None  sumA=-138.59 sumB=-138.59
+reg6k   n=  5910 mean|d|=0.00000 max|d|=0.0000 >0.05: 0 first>0.05 at None  sumA=-7511.17 sumB=-7511.17
+reg20k  n= 20018 mean|d|=0.00000 max|d|=0.0000 >0.05: 0 first>0.05 at None  sumA=-29024.61 sumB=-29024.61
+greedy same: True
+A elf/spark-acccc526b4ff-27b 104003392 bytes sha256 585c396cd4344fc7e412ddb4097099b8a94974a43399b57e5f049c7fe4cb7197
+B elf/spark-b4541392c44b-27b 104330976 bytes sha256 0f6d8592dc62dadebd9d0238ba00a633ec3ab99a67ab31e681c349b8b42a6d91
+(null)                          0 bytes  not loaded  same       e3b0c44298fc1c14 e3b0c44298fc1c14
+.interp                        27 bytes  loaded      same       be23adc91ec8582e be23adc91ec8582e
+.note.gnu.build-id             36 bytes  loaded      DIFFERENT  92a098b64cceea3e c5637829c2cf364f
+.note.ABI-tag                  32 bytes  loaded      same       247e0b50371ed3e4 247e0b50371ed3e4
+.gnu.hash                      36 bytes  loaded      same       c5f0b32ff87b620b c5f0b32ff87b620b
+.dynsym                      8448 bytes  loaded      DIFFERENT  1e785f944a8516e8 fa97da2f5552bde9
+.dynstr                      5539 bytes  loaded      same       b701e3952557924b b701e3952557924b
+.gnu.version                  704 bytes  loaded      same       8e538a245122cda1 8e538a245122cda1
+.gnu.version_r                528 bytes  loaded      same       13cf976bafc1e8b2 13cf976bafc1e8b2
+.rela.dyn                 1802280 bytes  loaded      DIFFERENT  ce2777511e727bb9 0bc72b46a2f55b9e
+.rela.plt                    8112 bytes  loaded      DIFFERENT  490c3a3f0a1b82f4 3d801ebeb8418bc4
+.init                          24 bytes  loaded      same       e408b8fcd28126be e408b8fcd28126be
+.plt                         5440 bytes  loaded      DIFFERENT  d68a7883c047408b 32bcc5d50ee09d19
+.text                    21927752 bytes  loaded      DIFFERENT  ceac221ce729abb4 f6052a2b6a29fa39
+.fini                          20 bytes  loaded      same       7d39706b791b17f4 7d39706b791b17f4
+.rodata                  61072316 bytes  loaded      DIFFERENT  679749011cebc6c4 7000505d4ca8bf4b
+.nv_fatbin                1792256 bytes  loaded      same       68238d642eaa1ac5 68238d642eaa1ac5
+.eh_frame_hdr              352924 bytes  loaded      DIFFERENT  0ef3437936e394a1 a9a90ae71c83cd1c
+.eh_frame                 2688132 bytes  loaded      DIFFERENT  9f845a3eaccda9d3 976f0f766f6f29d6
+.gcc_except_table         1089192 bytes  loaded      same       7048911aadb50e48 7048911aadb50e48
+.tdata                       3345 bytes  loaded      same       25c3bc8d72b25dbb 25c3bc8d72b25dbb
+.tbss                        1520 bytes  loaded      same       e3b0c44298fc1c14 e3b0c44298fc1c14
+.init_array                    64 bytes  loaded      DIFFERENT  eef7cfb134505b8b c3bac99566a6b0ae
+.fini_array                     8 bytes  loaded      same       41f6e9f47e6a9f2e 41f6e9f47e6a9f2e
+.data.rel.ro              1342088 bytes  loaded      DIFFERENT  9b6381e7325e2902 739d5eb36b82011a
+.dynamic                      640 bytes  loaded      DIFFERENT  80801eaf994e8c75 5526518be884eb9b
+.got                         7064 bytes  loaded      DIFFERENT  d2996c48550fe38e 043fd6e882d64e83
+.data                      100532 bytes  loaded      DIFFERENT  96864b7da229b516 e12428db42d541f6
+.nvFatBinSegment               96 bytes  loaded      DIFFERENT  dc044c3d881efa16 8ca09cc02a9281c2
+.bss                         5520 bytes  loaded      same       e3b0c44298fc1c14 e3b0c44298fc1c14
+.comment                      114 bytes  not loaded  same       226885db200996e7 226885db200996e7
+.symtab                   5097312 bytes  not loaded  DIFFERENT  c0c090d73daa7111 e9b2e3e94f9b7789
+.strtab                   6659213 bytes  not loaded  DIFFERENT  6ed947aff0fb29d0 2a9739b435692fcb
+.shstrtab                     322 bytes  not loaded  same       3fd7c53c9a513734 3fd7c53c9a513734
+differing sections: [('.note.gnu.build-id', 'loaded'), ('.dynsym', 'loaded'), ('.rela.dyn', 'loaded'), ('.rela.plt', 'loaded'), ('.plt', 'loaded'), ('.text', 'loaded'), ('.rodata', 'loaded'), ('.eh_frame_hdr', 'loaded'), ('.eh_frame', 'loaded'), ('.init_array', 'loaded'), ('.data.rel.ro', 'loaded'), ('.dynamic', 'loaded'), ('.got', 'loaded'), ('.data', 'loaded'), ('.nvFatBinSegment', 'loaded'), ('.symtab', 'not loaded'), ('.strtab', 'not loaded')]

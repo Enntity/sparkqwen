@@ -33,7 +33,7 @@ with `--model` (or `SPARKQWEN_MODEL` in `.env`):
 |---|---|---|
 | DGX Sparks | two (TP=2; the second is driven over ssh) | one |
 | Start | `./start.sh` (`--model flash-next`, the default) | `./start.sh --model 27b` |
-| Checkpoint | [nvidia/Qwen3.8-Flash-Next-FP4-Local](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local) | [nvidia/Qwen3.8-27B-NVFP4](https://huggingface.co/nvidia/Qwen3.8-27B-NVFP4) |
+| Checkpoint | [nvidia/Qwen3.8-Flash-Next-FP4-Local](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local) | [nvidia/Qwen3.8-27B-NVFP4-QAD](https://huggingface.co/nvidia/Qwen3.8-27B-NVFP4-QAD) |
 | Speculation | the model's native MTP head | DFlash2 drafter (DSpine optional), exact verify |
 | Context per request | 32K to 262K by profile; 512K and 1M opt-in | 262,144 tokens in every profile |
 | Served as | `qwen3.8-flash-next-atlas` | `qwen3.8-27b-atlas` |
@@ -372,17 +372,21 @@ See [docs/REPRODUCE.md](docs/REPRODUCE.md) for the exact commands.
 ## One Spark: Qwen3.8-27B (candidate)
 
 `./start.sh --model 27b` (or `SPARKQWEN_MODEL=27b` in `.env`) serves
-[nvidia/Qwen3.8-27B-NVFP4](https://huggingface.co/nvidia/Qwen3.8-27B-NVFP4)
+[nvidia/Qwen3.8-27B-NVFP4-QAD](https://huggingface.co/nvidia/Qwen3.8-27B-NVFP4-QAD),
+NVIDIA's quantization-aware distillation of Qwen3.8-27B to NVFP4,
 on the Spark you run it on, with no worker and no fabric. It builds or pulls its
 own image (the `qwen3.8-27b` kernel target, tag suffix `-27b`), downloads the
-20 GiB checkpoint and the 3.6 GiB
+18.6 GiB checkpoint and the 3.6 GiB
 [incoai/Qwen3.8-27B-DFlash2](https://huggingface.co/incoai/Qwen3.8-27B-DFlash2)
 drafter and the NVFP4 Gated DeltaNet and attention projections of
 [TandemLLM](https://huggingface.co/0xBakeer/TandemLLM-Qwen3.8-27B-NVFP4)'s
 Qwen3.8-27B set (Apache-2.0, weights only), all pinned in
-`install/checkpoint-27b.json`. Those projections replace the checkpoint's FP8
-GDN ones and the engine's load-time NVFP4 attention, so a decode step reads
-2.4 GB less (serial step 78.9 to 69.2 ms) at +0.004 nats/token held-out NLL.
+`install/checkpoint-27b.json`. Those projections replace only what the
+checkpoint stores in FP8 (ten of its 48 GDN layers and the attention), so every
+projection is served in NVFP4. On 224 held-out documents the served model's
+next-token KL to BF16 is 0.069, against 0.096 for the earlier
+nvidia/Qwen3.8-27B-NVFP4 set, with the same bytes read a decode step
+([results/2026-11-20-27b-qad](results/2026-11-20-27b-qad/RESULT.md)).
 It serves the OpenAI API on
 `127.0.0.1:8893` as `qwen3.8-27b-atlas`, with DFlash2 speculation and the
 tool-call guard. `DRAFTER=dspine` drafts with Tencent's
@@ -473,7 +477,8 @@ earlier results ([2026-10-08-rc15](results/2026-10-08-rc15/RESULT.md)) uses.
 The engine's Flash-Next fixes from Atlas-Inf name their origin commits in
 [docs/ENGINE.md](docs/ENGINE.md).
 
-Weights: the 27B variant serves the NVFP4 Gated DeltaNet and attention
+Weights: the 27B variant serves NVIDIA's QAD checkpoint (NVIDIA Open Model
+Agreement) and, over its FP8 layers, the NVFP4 Gated DeltaNet and attention
 projections Khaled Bakeer quantized for
 [TandemLLM](https://huggingface.co/0xBakeer/TandemLLM-Qwen3.8-27B-NVFP4)
 (GPTQ from Qwen's BF16 Qwen/Qwen3.8-27B, Apache-2.0), downloaded at install
