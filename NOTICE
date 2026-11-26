@@ -22,7 +22,7 @@ Video decoding uses the FFmpeg command-line tools from Ubuntu's ffmpeg package
 its package copyright and component notices remain at
 /usr/share/doc/ffmpeg/copyright in the image.
 
-The single-Spark Qwen3.8-27B variant (./start.sh --model 27b) downloads, at
+The single-Spark Qwen3.8-27B variant (./start.sh --model qwen3.8-27b) downloads, at
 install time, the Gated DeltaNet and attention projections (gdn.safetensors,
 attn.safetensors) of TandemLLM's NVFP4 set for Qwen3.8-27B,
 0xBakeer/TandemLLM-Qwen3.8-27B-NVFP4 at commit

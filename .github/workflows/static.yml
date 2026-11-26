@@ -19,6 +19,8 @@ jobs:
           python-version: "3.12"
       - name: Launch contract, profiles and engine pin
         run: python3 -m unittest discover -s install -p 'test_*.py' -v
+      - name: Model switch
+        run: python3 -m unittest discover -s tests -v
       - name: Shell scripts
         run: shellcheck -S warning -e SC2054 start.sh install/*.sh
       - name: Python compiles
