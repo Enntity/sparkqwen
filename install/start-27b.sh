@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
 # SPDX-License-Identifier: AGPL-3.0-only
 # SparkQwen's single-Spark variant: Qwen3.8-27B on this one DGX Spark, served
-# by Atlas on 127.0.0.1:8893. Run through ./start.sh --model 27b (or
-# SPARKQWEN_MODEL=27b ./start.sh); no worker, no fabric.
+# by Atlas on 127.0.0.1:8893. Run through ./start.sh --model qwen3.8-27b or
+# --model daisyrose-27b (or SPARKQWEN_MODEL in .env); no worker, no fabric.
 #
 #   up (default)      prepare whatever is missing, then serve and smoke-test
 #   build | download  run one preparation step
 #   stop | status | logs
 #
 # Settings (environment or .env): MODEL_ROOT (default ~/models/sparkqwen),
-# CHECKPOINT (qwen, the default: NVIDIA's NVFP4 Qwen3.8-27B with TandemLLM's
-# projections; daisyrose: RadixArk's DaisyRose-27B-NVFP4 as published),
+# CHECKPOINT (set by ./start.sh from --model: qwen, NVIDIA's NVFP4 Qwen3.8-27B
+# with TandemLLM's projections; daisyrose, RadixArk's DaisyRose-27B-NVFP4 with
+# ours),
 # PROFILE (27b, the default; 27b-max; 27b-saver; or a JSON file of your own),
 # DRAFTER (the profile's: dflash2, or both for 27b-max; dspine; both: DFlash2
 # and DSpine, each request on whichever its recent rounds favour),

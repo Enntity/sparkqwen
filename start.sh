@@ -11,18 +11,20 @@
 #   ./start.sh logs [worker]
 #   ./start.sh build | download    run one preparation step
 #   ./start.sh --model qwen3.8-27b [up|stop|status|logs|build|download]
-#                           Qwen3.8-27B on this one Spark instead (SPARKQWEN_MODEL=qwen3.8-27b)
+#                           Qwen3.8-27B on this one Spark instead (SPARKQWEN_MODEL=qwen3.8-27b);
+#                           --model daisyrose-27b serves RadixArk's DaisyRose-27B the same way
 set -euo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")"
 if [[ ${1:-} == --version ]]; then exec python3 install/serve.py --version; fi
 if [[ -f .env ]]; then set -a; . ./.env; set +a; fi
 # SPARKQWEN_MODEL=qwen3.8-27b (or --model qwen3.8-27b) serves Qwen3.8-27B on this one Spark.
 # The earlier names flash-next and 27b still work; install/ keeps them as the variant names.
-if [[ ${1:-} == --model ]]; then SPARKQWEN_MODEL=${2:?--model needs qwen3.8-flash-next or qwen3.8-27b}; shift 2; fi
+if [[ ${1:-} == --model ]]; then SPARKQWEN_MODEL=${2:?--model needs qwen3.8-flash-next, qwen3.8-27b or daisyrose-27b}; shift 2; fi
 case ${SPARKQWEN_MODEL:-qwen3.8-flash-next} in
   qwen3.8-flash-next|flash-next) SPARKQWEN_MODEL=flash-next ;;
-  qwen3.8-27b|27b) export SPARKQWEN_MODEL=27b; exec install/start-27b.sh "$@" ;;
-  *) echo 'SPARKQWEN_MODEL (--model) must be qwen3.8-flash-next or qwen3.8-27b' >&2; exit 2 ;;
+  qwen3.8-27b|27b) export SPARKQWEN_MODEL=27b CHECKPOINT=qwen; exec install/start-27b.sh "$@" ;;
+  daisyrose-27b) export SPARKQWEN_MODEL=27b CHECKPOINT=daisyrose; exec install/start-27b.sh "$@" ;;
+  *) echo 'SPARKQWEN_MODEL (--model) must be qwen3.8-flash-next, qwen3.8-27b or daisyrose-27b' >&2; exit 2 ;;
 esac
 : "${WORKER:?set WORKER in .env to the ssh destination of the other Spark (see .env.example)}"
 [[ $WORKER != -* ]] || { echo "WORKER must be an ssh destination, not an option: $WORKER" >&2; exit 2; }

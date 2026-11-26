@@ -80,7 +80,7 @@ scales against `in_proj_qkv`'s `weight_scale_2` (the engine concatenates the
 two), and keeps their `LICENSE` and `README.md` next to the overlay as
 `TandemLLM-LICENSE` and `TandemLLM-README.md`.
 
-With `CHECKPOINT=daisyrose` it downloads
+With `--model daisyrose-27b` it downloads
 [`RadixArk/DaisyRose-27B-NVFP4`](https://huggingface.co/RadixArk/DaisyRose-27B-NVFP4)
 at commit `c4d85c5dfad1` in place of NVIDIA's checkpoint: RadixArk's
 reinforcement-learning finetune of `Qwen/Qwen3.8-27B`, published under the
